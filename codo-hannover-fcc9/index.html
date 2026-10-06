@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Codo – Vietnamesische Street Kitchen, Lister Meile 67, Hannover</title>
+<meta name="description" content="Codo Street Kitchen an der Lister Meile 67 in Hannover: Phở, Bún, Curry und Frühlingsrollen. Täglich 11:30–22:00 Uhr. Vor Ort, draußen, zum Mitnehmen und Lieferung. Telefon 0511 8993689.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;1,400&family=Be+Vietnam+Pro:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+:root{--creme:#F5ECDF;--creme2:#EDE0CD;--text:#2A201B;--leise:#5B4A3F;--rot:#B3232C;--rot-d:#8F1B23;--rosa:#F0B9BF;--moos:#3E5A34;--holz:#9A7350;--rand:clamp(1rem,5vw,4rem);--abst:clamp(4rem,9vw,8rem);--gap:clamp(1rem,2vw,1.5rem);--kopf:64px;--display:"Fraunces",Georgia,serif;--sans:"Be Vietnam Pro",system-ui,sans-serif}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--creme);color:var(--text);font:400 1rem/1.6 var(--sans);overflow-x:clip}
+main{overflow-x:clip}
+@media (min-width:820px){body{font-size:1.0625rem}}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.1;margin:0;hyphens:auto;overflow-wrap:break-word;letter-spacing:-.01em}
+p{margin:0}
+:focus-visible{outline:3px solid var(--text);outline-offset:3px}
+.wand :focus-visible,.fuss :focus-visible,.leiste :focus-visible{outline-color:var(--creme)}
+.wrap{max-width:1280px;margin:0 auto;padding-inline:var(--rand)}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);row-gap:clamp(2rem,4vw,3rem)}
+.grid>*{grid-column:1/-1;min-width:0}
+section{scroll-margin-top:calc(var(--kopf) + 1rem)}
+.knopf{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:48px;padding:.75rem 1.5rem;border-radius:3px;background:var(--rot);color:var(--creme);font-weight:700;text-decoration:none;border:2px solid var(--rot);line-height:1.2;transition:background-color .2s}
+.knopf:hover{background:var(--rot-d);border-color:var(--rot-d)}
+.knopf.linie{background:transparent;color:var(--text);border-color:var(--text)}
+.knopf.linie:hover{background:var(--text);color:var(--creme)}
+.foto-nachweis{font-size:.8125rem;line-height:1.35;color:var(--leise);text-decoration:underline;text-underline-offset:2px}
+.ki-label{position:absolute;left:.5rem;top:.5rem;background:var(--text);color:var(--creme);font-size:.8125rem;line-height:1;padding:.375rem .5rem;border-radius:3px}
+.rahmen{position:relative;overflow:hidden;background:var(--creme2);margin:0}
+.rahmen img{width:100%;height:100%;object-fit:cover}
+figure{margin:0}
+figcaption{margin-top:.5rem}
+[data-status]{display:inline-flex;align-items:center;min-height:2.25rem;padding:.25rem .75rem;border-radius:0;border:2px solid currentColor;background:transparent;font-weight:700;font-variant-numeric:tabular-nums}
+[data-status]:empty{display:none}
+[data-status][data-offen="ja"]{background:var(--moos);color:var(--creme)}
+[data-status][data-offen="nein"]{background:var(--rosa);color:var(--text)}
+.kopf{position:sticky;top:0;z-index:1000;background:var(--creme);border-bottom:1px solid var(--holz)}
+.kopf .wrap{height:var(--kopf);display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.marke{display:flex;align-items:baseline;gap:.625rem;text-decoration:none;min-height:44px;align-items:center}
+.marke b{font:700 1.75rem/1 var(--display);color:var(--rot);letter-spacing:-.02em}
+.marke span{font-size:.875rem;font-weight:700;color:var(--leise);white-space:nowrap}
+.nav{display:flex;align-items:center;gap:clamp(1rem,2vw,2rem)}
+.nav a:not(.knopf){display:none;text-decoration:none;font-weight:700;min-height:44px;align-items:center}
+.nav a:not(.knopf):hover{color:var(--rot)}
+.nav .knopf{min-height:44px;padding:.5rem 1.25rem}
+.nav .lang{display:none}
+@media (min-width:820px){.nav a:not(.knopf){display:inline-flex}.nav .lang{display:inline}.nav .kurz{display:none}}
+.start{padding:clamp(2rem,5vw,4rem) 0 clamp(2rem,4vw,3rem)}
+.start .grid{row-gap:clamp(1rem,2vw,1.5rem)}
+.ort{font-weight:700;color:var(--rot);margin-bottom:1rem}
+.start h1{font-size:clamp(2.25rem,5.5vw,4.5rem);max-width:18ch}
+.start-text p.satz{max-width:34rem;margin:1.25rem 0 .5rem}
+.adresse{font-weight:700}
+.aktionen{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem}
+.boegen{display:flex;gap:clamp(.5rem,1.2vw,.875rem);overflow-x:auto;scroll-snap-type:x mandatory;padding:0 0 .75rem;margin:0;list-style:none;scrollbar-width:thin;scrollbar-color:var(--rot) var(--creme2)}
+.boegen{min-width:0;max-width:100%}
+.bogen{flex:0 0 max(140px,42vw);scroll-snap-align:start}
+@media (min-width:600px){.bogen{flex-basis:36%}}
+.bogen figure{width:100%}
+.bogen .rahmen{aspect-ratio:2/3;border-radius:999px 999px 0 0;animation:auf .4s ease-out both;animation-delay:calc(var(--i,0)*60ms)}
+.bogen .rahmen img{position:absolute;inset:0}
+.bogen-tafel{background:var(--rot);color:var(--creme);display:flex;flex-direction:column;justify-content:flex-end;padding:1rem .75rem;font-variant-numeric:tabular-nums}
+.bogen-tafel span{font-size:.875rem;line-height:1.3}
+.bogen-tafel b{font:700 clamp(1.125rem,1.7vw,1.5rem)/1.15 var(--display);margin-top:.25rem}
+@media (min-width:1100px){.boegen{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;overflow:visible;padding:0}}
+@keyframes auf{from{clip-path:inset(100% 0 0 0)}}
+.band{margin-top:clamp(2rem,4vw,3rem);background:var(--rot);color:var(--creme);display:flex;gap:3rem;white-space:nowrap;overflow:hidden;font-size:.875rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.375rem 0}
+.wand{background:var(--rot);color:var(--creme);padding:clamp(4rem,8vw,6rem) 0}
+.wand .grid{align-items:center}
+.wand h2{font-size:clamp(2rem,4.6vw,3.75rem);max-width:14ch}
+.wand p{margin-top:1.5rem;max-width:30rem}
+.wand .rahmen{aspect-ratio:3/2;background:var(--rot-d)}
+.karte{padding:var(--abst) 0}
+.karte h2,.galerie h2,.zeiten h2,.lage h2,.schluss h2{font-size:clamp(2rem,4vw,3.25rem)}
+.hinweis{margin-top:1rem;color:var(--leise);max-width:36rem}
+.kat{border-top:2px solid var(--text);padding-top:1.25rem;margin-top:2.5rem}
+.kat-kopf{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+.kat h3{font-size:clamp(1.375rem,2.2vw,1.75rem)}
+.kat-kopf figure{flex:0 0 clamp(6rem,14vw,8.5rem)}
+.kat-kopf .rahmen{aspect-ratio:1}
+.kat ul{list-style:none;margin:1.5rem 0 0;padding:0}
+.kat li:first-child{padding-top:0}
+.kat li{padding:.875rem 0;border-bottom:1px dashed rgba(42,32,27,.4)}
+.kat li b{display:block;font-size:1.0625rem}
+.kat li span{color:var(--leise)}
+.zettel{position:relative;background:var(--rosa);padding:clamp(1.5rem,3vw,2rem);margin-bottom:12px}
+.zettel::after{content:"";position:absolute;left:0;right:0;bottom:-10px;height:10px;background:linear-gradient(135deg,var(--rosa) 50%,transparent 50%) 0 0/16px 10px repeat-x,linear-gradient(225deg,var(--rosa) 50%,transparent 50%) 0 0/16px 10px repeat-x}
+.zettel h3{font-size:1.75rem;margin-bottom:.5rem}
+.zettel dl{margin:0}
+.zettel dt{font-weight:700;margin-top:1.25rem;padding-top:1rem;border-top:1px solid rgba(42,32,27,.35)}
+.zettel dd{margin:.25rem 0 0}
+.zettel a{font-weight:700}
+.tages{margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid rgba(42,32,27,.35)}
+.tages .rahmen{aspect-ratio:1}
+.galerie{padding:0 0 var(--abst)}
+.galerie h2{margin-bottom:clamp(1.5rem,3vw,2.5rem)}
+.g-quer .rahmen{aspect-ratio:3/2}
+.g-hoch .rahmen{aspect-ratio:3/4}
+.g-zutat{display:grid;grid-template-columns:minmax(0,9rem) 1fr;gap:var(--gap);align-items:end}
+.g-zutat .rahmen{aspect-ratio:2/3}
+.g-zutat p{font:400 clamp(1.25rem,2.2vw,1.625rem)/1.3 var(--display);font-style:italic;max-width:22rem}
+.zeiten{background:var(--creme2);padding:var(--abst) 0}
+.zeiten .grid{align-items:center}
+.zeit-bogen{background:var(--rot);color:var(--creme);border-radius:999px 999px 0 0;aspect-ratio:4/5;min-height:20rem;max-width:24rem;width:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(1.5rem,4vw,2.5rem);font-variant-numeric:tabular-nums}
+.zeit-bogen span{font-weight:700;font-size:1.125rem}
+.zeit-bogen b{font:700 clamp(2.75rem,6vw,4.5rem)/.95 var(--display);margin-top:.5rem}
+.zeit-info p{margin-top:1rem;max-width:32rem}
+.zeit-info [data-status]{margin-top:1.5rem}
+.tage{display:flex;gap:.375rem;list-style:none;padding:0;margin:2rem 0 0;max-width:36rem}
+.tage li{flex:1;min-height:5.5rem;display:flex;align-items:flex-end;justify-content:center;padding-bottom:.625rem;border:1.5px solid var(--holz);border-bottom:0;border-radius:999px 999px 0 0;position:relative;font-weight:700;font-size:.9375rem;font-variant-numeric:tabular-nums}
+.tage li.heute{border-color:var(--rot);background:var(--rot);color:var(--creme)}
+.tage li::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--rot);transform:scaleX(0);transform-origin:left}
+.tage li.heute::after{background:var(--text);transform:scaleX(1);animation:strich .3s ease-out .2s both}
+@keyframes strich{from{transform:scaleX(0)}}
+.lage{padding:var(--abst) 0}
+.lage .grid{align-items:start}
+.lage address{font-style:normal;font-weight:700;font-size:1.125rem;margin:1.25rem 0}
+.lage p+p{margin-top:1rem}
+.lage .knopf{margin-top:1.75rem}
+.kartenrahmen{position:relative;z-index:0;isolation:isolate;aspect-ratio:4/3;min-height:320px;border:1px solid var(--holz);background:var(--creme2);overflow:hidden}
+.kartenrahmen>div{width:100%;height:100%}
+.schluss{border-top:1px solid var(--holz);padding:var(--abst) 0}
+.schluss p{margin-top:1rem;max-width:34rem}
+.gross{margin-top:2rem;font:700 clamp(1.625rem,5vw,3rem)/1.1 var(--display);padding:1.125rem clamp(1.5rem,4vw,2.5rem);font-variant-numeric:tabular-nums}
+.fuss{background:var(--text);color:var(--creme);padding:clamp(3rem,6vw,4.5rem) 0 2rem}
+.fuss .grid{align-items:start}
+.fuss h2{font-size:2rem;color:var(--creme)}
+.fuss p{margin-top:.5rem}
+.fuss .logo{width:fit-content}
+.fuss .logo img{width:180px;height:auto;filter:brightness(0) invert(93%) sepia(10%)}
+.fuss small{display:block;margin-top:.5rem;font-size:.875rem}
+.rechtliches{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(245,236,223,.3);font-size:.875rem}
+.rechtliches p+p{margin-top:.5rem}
+.rechtliches a{display:inline-block;min-height:44px;line-height:44px}
+.leiste{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;gap:.5rem;padding:.5rem .75rem calc(.5rem + env(safe-area-inset-bottom));background:var(--text)}
+.leiste a{flex:1;min-height:48px;display:flex;align-items:center;justify-content:center;font-weight:700;text-decoration:none;border-radius:3px}
+.leiste a:first-child{background:var(--rot);color:var(--creme)}
+.leiste a:last-child{border:2px solid var(--creme);color:var(--creme)}
+@media (max-width:819px){body{padding-bottom:0}.fuss{padding-bottom:calc(64px + 2rem + env(safe-area-inset-bottom))}.zeit-bogen{margin-inline:auto}}
+@media (min-width:820px){
+.leiste{display:none}
+.wand-text{grid-column:1/8}.wand .rahmen{grid-column:9/13}
+.galerie .grid{grid-template-rows:auto auto}
+.g-quer{grid-column:1/9;grid-row:1}.g-zutat{grid-column:1/9;grid-row:2}.g-hoch{grid-column:9/13;grid-row:1/3}
+.schluss-text{grid-column:1/8}.schluss-karte{grid-column:8/13}
+.zeit-wrap{grid-column:1/6}.zeit-info{grid-column:7/13}
+.lage-text{grid-column:1/6}.kartenrahmen{grid-column:6/13}
+.fuss-a{grid-column:1/5}.fuss-b{grid-column:5/9}.fuss-c{grid-column:9/13}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+.nachweise{font-size:.875rem;line-height:1.45;color:var(--leise)}
+.nachweise a{text-decoration:none;font-size:inherit}
+.nachweise a:hover{text-decoration:underline}
+.strasse{margin:0;padding-bottom:.25rem;border-bottom:4px solid var(--rot);color:var(--rot);font-weight:700;display:flex;flex-wrap:wrap;justify-content:space-between;gap:.25rem 1rem;font-variant-numeric:tabular-nums}
+@media (min-width:1100px){.start-titel{grid-column:1/12;grid-row:1}.start-text{grid-column:1/6;grid-row:2/5;align-self:end}.boegen{grid-column:6/13;grid-row:2}.strasse{grid-column:6/13;grid-row:3}.nachweise{grid-column:6/13;grid-row:4}.karte-liste{grid-column:1/9}.karte-seite{grid-column:9/13}.kats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--gap)}}
+.bogen:nth-child(1) .rahmen img{object-position:60% 50%}
+.bogen:nth-child(3) .rahmen img{object-position:40% 50%}
+.wand .rahmen{max-width:30rem}
+.schluss .grid{align-items:end}
+.schluss-karte{margin:0;background:var(--creme2);border-top:4px solid var(--rot);padding:clamp(1.25rem,3vw,2rem);font-variant-numeric:tabular-nums}
+.schluss-karte div{display:grid;grid-template-columns:7rem minmax(0,1fr);gap:1rem;padding:.75rem 0;border-bottom:1px solid rgba(42,32,27,.3)}
+.schluss-karte div:last-child{border-bottom:0}
+.schluss-karte dt{font-weight:700}
+.schluss-karte dd{margin:0}
+.schluss-karte a{font-weight:700}
+.fuss-c a{text-decoration:none;display:inline-flex;min-height:44px;align-items:center}
+.fuss-c a:hover{text-decoration:underline}
+</style>
+<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}</style></head>
+<body><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für Codo. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
+<header class="kopf">
+<div class="wrap">
+<a class="marke" href="#start" aria-label="Codo Street Kitchen, zum Seitenanfang"><b>CODO</b><span>Street Kitchen</span></a>
+<nav class="nav" aria-label="Hauptnavigation">
+<a href="#karte">Karte</a>
+<a href="#zeiten">Zeiten</a>
+<a href="#lage">Lage</a>
+<a class="knopf" href="tel:+495118993689"><span class="lang">0511 8993689 anrufen</span><span class="kurz">Anrufen</span></a>
+</nav>
+</div>
+</header>
+
+<main id="start">
+<section class="start" aria-labelledby="titel">
+<div class="wrap grid">
+<h1 id="titel" class="start-titel">Phở, Bún und Curry an der Lister Meile</h1>
+<ul class="boegen" aria-label="Gerichte von Codo">
+<li class="bogen" data-foto style="--i:0"><figure><div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmMvbbOJ0QYqgsSmWT6gzWgdGw9fJxuKqoROkBmALrIikTp8liLluFy_KrzQt27BviNFO6yRbyMGWJQShTMUiyY7qTmhaGm3gZ16N6HwDC8X4IUzsKMcPEvszpqZCi2M767dhgDRqw=s4800-w1800" referrerpolicy="no-referrer" width="2133" height="1600" alt="Gebratene Nudeln mit frischem Gemüse und Karotten in schwarzer Schale"></div></figure></li>
+<li class="bogen" data-foto style="--i:1"><figure><div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmOD6Y7OTu7TNlHi0toLo4vst_hLo_UahqyMA2pIAcnG0UxPw-USt_4MAToVAh7rIToLSe5-kyZmNW3xP5-vMDEwXjo_Qh4kN7tMEHn74IGzNUa4HmgQwZL3Ldzf5tCQH0cBP7pIe79X7BWX=s4800-w1000" referrerpolicy="no-referrer" width="1360" height="1024" alt="Würzige Suppe mit Tofu, Brokkoli und Frühlingszwiebeln"></div></figure></li>
+<li class="bogen" data-foto style="--i:2"><figure><div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmO1LLrDWBGgV4W-puwsOiEPLbwVlUL-CC3F6foKvSTvAeZ9z9LeI6ebJzi-6n0xgboHneg282h0tZg7Rc1wVglqXEE01-ZT7R-tNJ8aYGE9XRcu-9KlFsvmnN9Dxn_mN3sfswSVO7OTmgH8=s4800-w1000" referrerpolicy="no-referrer" width="1600" height="900" alt="Rotes Curry mit knusprigem Fleisch und Jasminreis"></div></figure></li>
+<li class="bogen" data-foto style="--i:3"><figure><div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmPzExU797aL4qSxhv3MAbwbdwQvODW2fPhcVT94dxxjNdfGOW4unUmDYahmAMadDYo68sDSsqZc5STqG2tu-ZaDG1avQ-Rkl6mUtY3n-d89EQ8h5SclK6oEf9myexhvnZVbYHh0=s4800-w1000" referrerpolicy="no-referrer" width="1600" height="1197" alt="Knuspriges Hähnchen mit Reis, Gemüse und dunkler Soße"></div></figure></li>
+</ul>
+<p class="strasse"><span>Lister Meile 67</span><span>Mo–So 11:30–22:00</span></p>
+<div class="start-text">
+<span data-status></span>
+<p class="satz">Vietnamesische Street Kitchen in Hannover-List. Ab 11:30 Mittagstisch, abends bis 22:00. Iss drinnen an der Pfingstrosenwand, draußen in der Fußgängerzone, nimm’s mit oder lass liefern.</p>
+<p class="adresse">Lister Meile 67, 30161 Hannover</p>
+<div class="aktionen">
+<a class="knopf" href="tel:+495118993689">0511 8993689 anrufen</a>
+<a class="knopf linie" href="https://www.google.com/maps/dir/?api=1&amp;destination=CODO+Street+Kitchen+Lister+Meile+67+30161+Hannover" target="_blank" rel="noopener">Route planen</a>
+</div>
+</div>
+<p class="nachweise">Fotos von links: <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/101078120922969667803" target="_blank" rel="noopener">CODO - Street Kitchen</a>, <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/112094205391944043211" target="_blank" rel="noopener">Per Hol</a>, <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/104665441280047704670" target="_blank" rel="noopener">bayardo alejandro ramirez gonzalez</a>, <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/111496445775079768473" target="_blank" rel="noopener">Hayashi yui</a> · Google Maps</p>
+</div>
+
+</section>
+
+<section class="wand" aria-labelledby="haltung">
+<div class="wrap grid">
+<div class="wand-text">
+<h2 id="haltung">Mittags schnell auf die Hand. Abends so lange du willst.</h2>
+<p>Drinnen helle Holztische und rote Hocker vor der Pfingstrosenwand. Wenn die Sonne scheint, sitzt du draußen direkt an der Lister Meile.</p>
+</div>
+<figure class="rahmen"><img src="ki-pfingstrosen-wand.webp" width="1536" height="1024" loading="lazy" alt="Gemalte rosa Pfingstrosen mit grünen Blättern auf roter Putzwand"><span class="ki-label">KI-Bild</span></figure>
+</div>
+</section>
+
+<section class="karte" id="karte" aria-labelledby="karte-titel">
+<div class="wrap grid">
+<div class="karte-liste">
+<h2 id="karte-titel">Was es gibt</h2>
+<p class="hinweis">Eine Auswahl aus der Karte. Die komplette Karte mit Preisen liegt vor Ort aus und wird dir beim Bestellen am Telefon vorgelesen.</p>
+<div class="kats">
+<div class="kat">
+<h3>Suppe &amp; Phở</h3>
+<ul>
+<li><b>Phở Bò Trộn</b><span>Phở mit Rind, gemischt statt in Brühe</span></li>
+<li><b>Suppe mit Tofu und Brokkoli</b><span>mit Frühlingszwiebeln, würzig</span></li>
+</ul>
+</div>
+<div class="kat">
+<h3>Bún &amp; Salate</h3>
+<ul>
+<li><b>Bún mit Hühnchen</b><span>Reisnudeln mit Zitronengras-Hühnchen</span></li>
+<li><b>Salat mit Hähnchen und Erdnüssen</b><span>Hähnchen, Erdnüsse, frischer Salat</span></li>
+</ul>
+</div>
+<div class="kat">
+<h3>Aus Wok und Topf</h3>
+<ul>
+<li><b>Gebratene Nudeln mit Gemüse</b><span>mit Karotten, in der schwarzen Schale</span></li>
+<li><b>Curry mit Reis</b><span>rotes Curry mit Jasminreis</span></li>
+<li><b>Knuspriges Hähnchen mit Reis</b><span>mit Gemüse und dunkler Soße</span></li>
+</ul>
+</div>
+<div class="kat">
+<h3>Zum Anfang</h3>
+<ul>
+<li><b>Frühlingsrollen mit Dip</b><span>knusprig, mit Salat</span></li>
+</ul>
+</div>
+<div class="kat">
+<h3>Getränke &amp; Süßes</h3>
+<ul>
+<li><b>Hausgemachte Limonade</b><span>frisch im Glas</span></li>
+<li><b>Kaffee, Bier und Wein</b><span>zum Essen oder danach</span></li>
+<li><b>Desserts</b><span>was es gerade gibt, steht vor Ort</span></li>
+</ul>
+</div>
+</div>
+</div>
+<aside class="karte-seite" aria-labelledby="bestellen">
+<div class="zettel">
+<h3 id="bestellen">So bestellst du</h3>
+<dl>
+<dt>Abholen</dt>
+<dd>Ruf an unter <a href="tel:+495118993689">0511 8993689</a>, sag was du willst. Wir sagen dir, wann es auf dem Tresen steht.</dd>
+<dt>Liefern</dt>
+<dd>Wir liefern auch. Gebiet und Bedingungen erfährst du am Telefon.</dd>
+<dt>Vegetarisch</dt>
+<dd>Mehrere Gerichte gibt es ohne Fleisch. Frag beim Bestellen.</dd>
+<dt>Tisch</dt>
+<dd>Reservieren geht per Telefon, mittags wie abends.</dd>
+</dl>
+<div class="tages">
+<p><b>Tagesgericht</b><br>Zum Beispiel Reis mit Bio-Süßkartoffeln, Erdnüssen und Hühnchen. Was heute drankommt, hörst du am Telefon.</p>
+</div>
+</div>
+</aside>
+</div>
+</section>
+
+<section class="galerie" aria-labelledby="galerie-titel">
+<div class="wrap">
+<h2 id="galerie-titel">So kommt es auf den Tisch</h2>
+<div class="grid">
+<figure class="g-quer" data-foto><div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmPF1EeMOKVIKj4Jay03wChQj1DsLW2wodiiVabXIN1A2U4YFmrFWMf6AIhTFraQdkkPCLjZjsIAPB7jgI-L0kO2agjmXmEvzxOwc0GxNGWPe0IXKFlEsZCJ68ic19_m5VLbyDYQ=s4800-w1000" referrerpolicy="no-referrer" width="1600" height="898" loading="lazy" alt="Knusprige Frühlingsrollen mit Dip und Salat auf dunklem Teller"></div><figcaption><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/101078120922969667803" target="_blank" rel="noopener">Foto: CODO - Street Kitchen · Google Maps</a></figcaption></figure>
+<figure class="g-hoch" data-foto><div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmO0RPbwUiRCJaaQmxOOW4c_1DL9sChHRUvleX6q6UWQ8kQRoZBoybHnYVGQcBMoNGwNYRzBrYhz3BVYYo970I6PLEbURT-ldJ_MxuAbWf_zN340NIBDc7godEmSA8me5VuZ18-x14J_ZJgk=s4800-w1000" referrerpolicy="no-referrer" width="900" height="1200" loading="lazy" alt="Salat mit Hähnchen und Erdnüssen, Curry und hausgemachte Limonaden auf dem Holztisch"></div><figcaption><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/104864094646353286871" target="_blank" rel="noopener">Foto: lorena A. · Google Maps</a></figcaption></figure>
+<div class="g-zutat">
+<figure class="rahmen"><img src="ki-zitronengras.webp" width="1024" height="1536" loading="lazy" alt="Gemaltes Bündel Zitronengras mit Limettenhälften und roten Chilis"><span class="ki-label">KI-Bild</span></figure>
+<p>Zitronengras gehört ans Hühnchen im Bún, Limette und Chili kommen extra dazu.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="zeiten" id="zeiten" aria-labelledby="zeiten-titel">
+<div class="wrap grid">
+<div class="zeit-wrap">
+<div class="zeit-bogen"><span>Mo–So</span><b>11:30–<br>22:00</b></div>
+</div>
+<div class="zeit-info">
+<h2 id="zeiten-titel">Jeden Tag dieselben Zeiten</h2>
+<span data-status></span>
+<p>Mittagstisch ab 11:30, Abendessen bis 22:00 Uhr. Auch am Wochenende, auch sonntags.</p>
+<ol class="tage" aria-label="Wochentage, alle 11:30 bis 22:00 Uhr">
+<li>Mo</li><li>Di</li><li>Mi</li><li>Do</li><li>Fr</li><li>Sa</li><li>So</li>
+</ol>
+</div>
+</div>
+</section>
+
+<section class="lage" id="lage" aria-labelledby="lage-titel">
+<div class="wrap grid">
+<div class="lage-text">
+<h2 id="lage-titel">Mitten in der Fußgängerzone</h2>
+<address>Lister Meile 67<br>30161 Hannover</address>
+<p>Die Lister Meile beginnt am Hauptbahnhof, Ausgang Raschplatz. Von dort gehst du sie zu Fuß hinauf, bis zur Hausnummer 67.</p>
+<p>Vor der Fensterfront stehen bei gutem Wetter Tische draußen.</p>
+<a class="knopf" href="https://www.google.com/maps/dir/?api=1&amp;destination=CODO+Street+Kitchen+Lister+Meile+67+30161+Hannover" target="_blank" rel="noopener">Route in Google Maps</a>
+</div>
+<div class="kartenrahmen"><div data-karte data-stil="warm" data-farbe="#B3232C"></div></div>
+</div>
+</section>
+
+<section class="schluss" aria-labelledby="schluss-titel">
+<div class="wrap grid">
+<div class="schluss-text">
+<h2 id="schluss-titel">Bestellen, abholen, reservieren</h2>
+<p>Alles über eine Nummer. Ruf an, sag was du willst und wann du kommst.</p>
+<a class="knopf gross" href="tel:+495118993689">0511 8993689</a>
+</div>
+<dl class="schluss-karte">
+<div><dt>Adresse</dt><dd>Lister Meile 67, 30161 Hannover</dd></div>
+<div><dt>Geöffnet</dt><dd>Mo–So 11:30–22:00</dd></div>
+<div><dt>Vor Ort</dt><dd>Drinnen an der Pfingstrosenwand, draußen an der Meile</dd></div>
+<div><dt>Außer Haus</dt><dd>Abholen und Lieferung</dd></div>
+<div><dt>Route</dt><dd><a href="https://www.google.com/maps/dir/?api=1&amp;destination=CODO+Street+Kitchen+Lister+Meile+67+30161+Hannover" target="_blank" rel="noopener">In Google Maps öffnen</a></dd></div>
+</dl>
+</div>
+</section>
+</main>
+
+<footer class="fuss">
+<div class="wrap">
+<div class="grid">
+<div class="fuss-a">
+<h2>CODO</h2>
+<p>Street Kitchen · Lister Meile 67</p>
+<p>30161 Hannover</p>
+</div>
+<div class="fuss-b">
+<p><b>Täglich 11:30–22:00 Uhr</b></p>
+<p><a href="tel:+495118993689">0511 8993689</a></p>
+<p>Vor Ort, draußen, zum Mitnehmen, Lieferung</p>
+</div>
+<div class="fuss-c">
+<p><a href="#karte">Was es gibt</a></p>
+<p><a href="#zeiten">Öffnungszeiten</a></p>
+<p><a href="#lage">Anfahrt</a></p>
+</div>
+</div>
+<div class="rechtliches"><p>Entwurf von Medialyte, 21147 Hamburg. Adresse und Öffnungszeiten: Google. Fotos: Google Maps, Urheber jeweils am Bild. Mit „KI-Bild“ markierte Bilder und das Logo sind KI-generierte Vorschläge.</p><p><a href="https://medialyte.de/impressum" style="color:inherit;text-decoration:underline">Impressum</a> · <a href="https://medialyte.de/datenschutzerklaerung" style="color:inherit;text-decoration:underline">Datenschutz</a></p></div>
+</div>
+</footer>
+
+<nav class="leiste" aria-label="Schnellzugriff">
+<a href="tel:+495118993689">Anrufen</a>
+<a href="https://www.google.com/maps/dir/?api=1&amp;destination=CODO+Street+Kitchen+Lister+Meile+67+30161+Hannover" target="_blank" rel="noopener">Route</a>
+</nav>
+
+<script>
+(function(){var t=document.querySelectorAll('.tage li'),i=(new Date().getDay()+6)%7;if(t[i]){t[i].classList.add('heute');t[i].setAttribute('aria-current','date');}})();
+</script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>[data-karte]{width:100%;height:100%;min-height:260px}[data-karte] .leaflet-tile-pane{filter:var(--karte-filter)}
+[data-karte] .leaflet-control-attribution{font-size:10px}.karte-pin{position:relative;width:34px;height:34px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+box-shadow:0 6px 16px rgba(0,0,0,.35);border:3px solid #fff}.karte-pin i{position:absolute;inset:9px;border-radius:50%;background:#fff}</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>(function(){var C={"lat": 52.3867439, "lng": 9.748240299999999, "name": "Codo", "filter": {"hell": "grayscale(1) contrast(1.05) brightness(1.04)", "dunkel": "grayscale(1) invert(1) contrast(.88) brightness(.82)", "warm": "grayscale(1) sepia(.5) contrast(1.02) brightness(1.02)", "kuehl": "grayscale(1) sepia(.35) hue-rotate(175deg) saturate(.55) brightness(1.03)", "mono": "grayscale(1) contrast(1.2)"}};function draw(){if(!window.L)return;document.querySelectorAll('[data-karte]').forEach(function(el){
+if(el._map)return;var st=el.getAttribute('data-stil')||'hell',col=el.getAttribute('data-farbe')||'#c0392b';
+el.style.setProperty('--karte-filter',C.filter[st]||C.filter.hell);
+var m=L.map(el,{scrollWheelZoom:false,zoomControl:true,attributionControl:true}).setView([C.lat,C.lng],16);el._map=m;
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(m);
+var icon=L.divIcon({className:'',html:'<div class="karte-pin" style="background:'+col+'"><i></i></div>',iconSize:[34,34],iconAnchor:[17,34]});
+L.marker([C.lat,C.lng],{icon:icon,title:C.name,alt:C.name}).addTo(m);setTimeout(function(){m.invalidateSize()},300);});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',draw);else draw();window.addEventListener('load',draw);})();</script><script>(function(){
+var P=[[690, 1320], [2130, 2760], [3570, 4200], [5010, 5640], [6450, 7080], [7890, 8520], [9330, 9960]];
+function fmt(m){m=((m%1440)+1440)%1440;var h=Math.floor(m/60),mi=m%60;return (h<10?'0':'')+h+':'+(mi<10?'0':'')+mi;}
+function now(){var d=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Berlin'}));return d.getDay()*1440+d.getHours()*60+d.getMinutes();}
+function status(){if(!P.length)return null;var t=now(),W=10080;
+ for(var i=0;i<P.length;i++){var s=P[i][0],e=P[i][1];if((t>=s&&t<e)||(t+W>=s&&t+W<e))return {offen:true,text:'Jetzt geöffnet bis '+fmt(e)};}
+ var best=null;for(var j=0;j<P.length;j++){var d=(P[j][0]-t+W)%W;if(best===null||d<best.d)best={d:d,s:P[j][0]};}
+ var tag=Math.floor(t/1440),ot=Math.floor(best.s/1440)%7,names=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+ var when=best.d<1440&&ot===tag?'heute':(best.d<2880&&ot===(tag+1)%7?'morgen':names[ot]);
+ return {offen:false,text:'Geschlossen · öffnet '+when+' um '+fmt(best.s)};}
+function run(){var s=status();document.querySelectorAll('[data-status]').forEach(function(el){
+ if(!s){el.style.display='none';return;}el.textContent=s.text;el.setAttribute('data-offen',s.offen?'ja':'nein');});}
+document.querySelectorAll('[data-foto] img').forEach(function(img){
+ function hide(){var b=img.closest('[data-foto]');if(b)b.style.display='none';}
+ if(!img.getAttribute('src'))hide();else{img.addEventListener('error',hide);if(img.complete&&img.naturalWidth===0)hide();}});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();setInterval(run,60000);
+})();</script></body>
+</html>

@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sultan Kebap · Grill · Döner · Pizza · Podbielskistraße 348, Hannover</title>
+<meta name="description" content="Sultan Kebap, Podbielskistraße 348, 30659 Hannover: Grill, Döner, Pide und Pizza. Mo–Fr 11–21, So 12–21 Uhr, Samstag Ruhetag. Vor Ort, zum Mitnehmen, Lieferservice. Tel. 0511 95179867.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:ital,wght@0,400;0,700;1,400&family=Hanken+Grotesk:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+:root{--hell:#F1ECE3;--hell2:#E4DCCD;--anth:#1F2225;--terra:#A34E21;--terra-d:#86401B;--moos:#33472A;--creme:#FFF8F0;--grau:#4A4D52;--grau-h:#C9C2B6;--rand:clamp(1rem,5vw,4rem);--gap:clamp(1rem,2.5vw,2rem);--abs:4rem;--disp:"Unbounded",system-ui,sans-serif;--text:"Hanken Grotesk",system-ui,sans-serif;--fokus:var(--anth)}
+*,*::before,*::after{box-sizing:border-box}
+html{overflow-x:clip;scroll-behavior:smooth}
+body{margin:0;background:var(--hell);color:var(--anth);font-family:var(--text);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.12;margin:0;hyphens:manual;-webkit-hyphens:manual;overflow-wrap:normal}
+h2{font-size:clamp(1.75rem,1rem + 2.8vw,3rem);letter-spacing:-.01em;max-width:18ch}
+p{margin:0 0 1rem;max-width:62ch}
+:focus-visible{outline:3px solid var(--fokus);outline-offset:3px}
+.dunkel{--fokus:var(--hell)}
+.wrap{max-width:1320px;margin:0 auto;padding-inline:var(--rand)}
+.abschnitt{padding-block:var(--abs)}
+[id]{scroll-margin-top:72px}
+.raster{display:grid;gap:var(--gap)}
+.kopf{position:sticky;top:0;z-index:1000;background:var(--anth);color:var(--hell);border-bottom:1px solid rgba(241,236,227,.3)}
+.kopf-in{height:64px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nav{display:none;align-items:center;gap:.25rem}
+.nav a:not(.knopf){min-height:44px;display:inline-flex;align-items:center;padding:0 .75rem;text-decoration:none}
+.nav a:not(.knopf):hover{text-decoration:underline;text-underline-offset:.3em}
+.marke{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.06em;display:inline-flex;align-items:center;gap:.4em;white-space:nowrap;line-height:1.05;color:var(--hell);text-decoration:none;margin:0}
+.marke::before,.marke::after{content:"";flex:0 0 .75em;height:.2em;background:currentColor}
+.marke span{text-align:left}
+.kopf .marke{font-size:clamp(.875rem,.7rem + .6vw,1.125rem);min-height:44px}
+.knopf{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.75rem 1.25rem;background:var(--terra);color:var(--creme);border:2px solid var(--terra);font-weight:700;text-decoration:none;line-height:1.2;text-align:center;transition:background-color .2s,color .2s}
+.knopf:hover{background:var(--terra-d);border-color:var(--terra-d)}
+.knopf.rahmen{background:transparent;border-color:var(--hell);color:var(--hell)}
+.knopf.rahmen:hover{background:var(--hell);color:var(--anth)}
+.knopf.rahmen.hellgrund{border-color:var(--anth);color:var(--anth)}
+.knopf.rahmen.hellgrund:hover{background:var(--anth);color:var(--hell)}
+.kopf .knopf{min-height:44px;padding:.625rem 1.125rem}
+.held{background:var(--hell);color:var(--anth)}
+.schildband{background:var(--anth);color:var(--hell);border-bottom:6px solid var(--terra)}
+.schildband-in{min-height:clamp(120px,14vw,160px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding-block:1.25rem}
+.held-in{display:grid;gap:1.5rem;padding-block:2rem var(--gap)}
+.band{display:flex;flex-direction:column;min-width:0}
+.schild{display:flex;flex-direction:column;align-items:flex-start;max-width:100%}
+.gross{font-size:clamp(1.5rem,.5rem + 5.6vw,3.25rem)}
+.tuete{margin:.75rem 0 0;color:var(--grau-h);font-size:.875rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-align:left}
+.lead{font-size:clamp(1.0625rem,1rem + .4vw,1.25rem);margin-bottom:1rem}
+.jetzt{display:flex;flex-wrap:wrap;gap:.25rem 1.25rem;margin-bottom:1.5rem;font-variant-numeric:tabular-nums;color:var(--grau-h)}
+[data-status]{display:inline-flex;align-items:center;gap:.5rem;font-weight:700;color:var(--hell)}
+[data-status]:empty{display:none}
+[data-status]::before{content:"";width:.6rem;height:.6rem;background:var(--grau-h)}
+[data-status][data-offen="ja"]::before{background:#8DC26F}
+[data-status][data-offen="nein"]::before{background:#D98B5F}
+.knoepfe{display:flex;flex-wrap:wrap;gap:.75rem}
+figure{margin:0}
+.rahmen{position:relative;overflow:hidden;background:var(--hell2)}
+.rahmen img{width:100%;height:100%;object-fit:cover}
+.r45{aspect-ratio:4/5}.r43{aspect-ratio:4/3}.r34{aspect-ratio:3/4}.r11{aspect-ratio:1/1}.r169{aspect-ratio:16/9}
+.held .rahmen img{object-position:40% 75%;transform:scale(1.2);transform-origin:40% 75%}
+.nachweis{min-height:44px;display:flex;flex-wrap:wrap;align-items:center;gap:0 1rem;font-size:.875rem;color:var(--grau)}
+.nachweis b{color:var(--anth);font-weight:700;font-size:1rem}
+.dunkel .nachweis{color:var(--grau-h)}
+.foto-nachweis{color:inherit;min-height:44px;display:inline-flex;align-items:center}
+.ki-label{position:absolute;top:0;left:0;background:var(--anth);color:var(--hell);font-size:.875rem;padding:.25rem .6rem}
+.kopf-abschnitt{align-items:end;margin-bottom:clamp(2rem,5vw,3.5rem)}
+.kopf-abschnitt p{margin:0}
+.karte{display:grid;gap:2.5rem var(--gap)}
+.wort{font-size:clamp(2rem,1rem + 3.2vw,3.75rem);line-height:1;letter-spacing:-.02em;margin:0;padding-bottom:1rem;border-bottom:3px solid var(--anth)}
+.s-doener .wort{color:var(--terra-d)}
+.s-doener figure{margin-top:1.5rem}
+.paar{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.gerichte{list-style:none;margin:1.25rem 0 0;padding:0}
+.gerichte li{border-top:1px solid rgba(31,34,37,.25);padding:.85rem 0}
+.gerichte b{display:block;font-size:1.125rem}
+.gerichte span{color:var(--grau)}
+.nachtisch{margin:0;padding:1.25rem 0;border-block:2px solid var(--anth);display:flex;flex-direction:column;gap:.25rem;font-size:1.125rem;align-self:end}
+.nachtisch p{margin:0}
+.teller{align-items:start;margin-top:clamp(2.5rem,5vw,4rem)}
+.draussen{background:var(--hell2)}
+.draussen .raster{align-items:center}
+.draussen .tel-link{color:var(--terra-d)}
+.draussen h2,.zeiten h2{font-size:clamp(1.6rem,1rem + 1.8vw,2.4rem)}
+.draussen p{margin-top:1.25rem}
+.wege{list-style:none;margin:1.5rem 0;padding:0}
+.wege li{padding:.75rem 0;border-top:1px solid rgba(31,34,37,.25)}
+.wege b{display:block}
+.tel-link{font-weight:700;color:var(--terra);font-size:1.125rem;min-height:44px;display:inline-flex;align-items:center;text-underline-offset:.25em}
+.moos{background:var(--moos);color:var(--hell)}
+.moos h2{margin-bottom:clamp(2rem,5vw,3rem)}
+.moos .raster{align-items:start}
+.moos p{margin-top:1.5rem}
+.fakten{margin:1.5rem 0 0;display:grid;gap:0}
+.fakten div{display:grid;grid-template-columns:9rem 1fr;gap:1rem;padding:.75rem 0;border-top:1px solid rgba(241,236,227,.3)}
+.fakten dt{font-weight:700}
+.fakten dd{margin:0;color:var(--grau-h)}
+.woche{list-style:none;margin:clamp(2rem,5vw,3rem) 0 var(--gap);padding:0;display:grid;border:1px solid var(--anth);font-variant-numeric:tabular-nums}
+.woche li{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.25rem 1rem;min-height:52px;padding:.5rem 1rem;border-top:1px solid var(--anth)}
+.woche li:first-child{border-top:0}
+.woche .lang{font-weight:700}
+.woche .kurz{display:none;font-family:var(--disp);font-weight:700;font-size:1.5rem}
+.zeit{white-space:nowrap;font-variant-numeric:tabular-nums;font-size:1.125rem;font-weight:700}
+.ruhe{background:repeating-linear-gradient(135deg,var(--hell2) 0 6px,var(--hell) 6px 12px)}
+.woche .heute{background:var(--terra);color:var(--creme)}
+.heute-mark{font-size:.875rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.weg{align-items:start}
+.karte-rahmen{aspect-ratio:16/10;background:var(--hell2);border:1px solid var(--anth);position:relative;z-index:0;isolation:isolate;overflow:hidden}
+.karte-rahmen [data-karte]{width:100%;height:100%}
+.adresse h3{font-size:1.25rem;margin-bottom:1rem}
+address{font-style:normal;font-size:1.125rem;margin-bottom:.5rem}
+.adresse .knoepfe{margin-top:1.25rem}
+.schluss{background:var(--anth);color:var(--hell);padding-block:clamp(3.5rem,8vw,6rem)}
+.schluss-in{display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.5rem}
+.mittel{font-size:clamp(1.5rem,1rem + 2vw,2.5rem)}
+.anruf p{color:var(--grau-h);margin-bottom:.75rem}
+.tel-gross{font-family:var(--disp);font-weight:700;font-size:clamp(1.25rem,.6rem + 3.6vw,3.25rem);padding:.45em .8em;font-variant-numeric:tabular-nums}
+.fuss{background:var(--anth);color:var(--grau-h);border-top:1px solid rgba(241,236,227,.3);padding-block:2rem;font-size:.9375rem}
+.fuss-in{display:grid;gap:1rem}
+.fuss .rechtliches p{margin:0 0 .5rem}
+.fuss .rechtliches a{display:inline-flex;min-height:44px;align-items:center}
+.leiste{position:fixed;left:0;right:0;bottom:0;z-index:1000;display:flex;gap:.5rem;padding:.5rem var(--rand) calc(.5rem + env(safe-area-inset-bottom));background:var(--anth);border-top:1px solid rgba(241,236,227,.3)}
+.leiste .knopf{flex:1}
+body{padding-bottom:calc(66px + env(safe-area-inset-bottom))}
+@keyframes balken{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.gross::before{transform-origin:right;animation:balken .3s ease-out .15s both}
+.gross::after{transform-origin:left;animation:balken .3s ease-out .15s both}
+@media (min-width:820px){
+body{padding-bottom:0}
+.leiste{display:none}
+.raster{grid-template-columns:repeat(12,minmax(0,1fr))}
+.g3{grid-column:span 3}.g4{grid-column:span 4}.g5{grid-column:span 5}.g7{grid-column:span 7}.g8{grid-column:span 8}
+.karte{grid-template-columns:5fr 4fr 3fr;column-gap:clamp(1.5rem,3vw,3rem)}
+.s-doener{grid-row:span 2}
+.nachtisch{grid-column:2 / 4}
+.held-in{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);align-items:start;padding-block:clamp(2rem,4vw,3rem)}
+.band{grid-column:1 / 6;padding-top:.5rem}
+.held figure{grid-column:6 / 13}
+.woche{grid-template-columns:repeat(7,minmax(0,1fr))}
+.woche li{flex-direction:column;align-items:flex-start;justify-content:flex-start;min-height:9.5rem;padding:1rem .85rem;border-top:0;border-left:1px solid var(--anth)}
+.woche li:first-child{border-left:0}
+.woche .lang{display:none}
+.woche .kurz{display:block}
+.woche li{min-height:7rem}
+.gross{font-size:clamp(2rem,4vw,3.5rem)}
+.teller .rahmen{aspect-ratio:auto;height:clamp(18rem,30vw,25rem)}
+.fuss-in{grid-template-columns:1fr 2fr;align-items:start}
+}
+@media (min-width:960px){.nav{display:flex}.kopf .nur-mobil{display:none}}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+.tafel{margin:0 0 1.5rem;max-width:34rem}
+.tafel div{display:grid;grid-template-columns:4rem 1fr;gap:1rem;padding:.75rem 0;border-top:1px solid rgba(31,34,37,.25);font-variant-numeric:tabular-nums}
+.tafel div:last-child{border-bottom:1px solid rgba(31,34,37,.25)}
+.tafel dt{font-weight:700;color:var(--grau)}
+.tafel dd{margin:0;display:flex;flex-direction:column;gap:.15rem}
+.ki-bild img{filter:sepia(.2) saturate(.92) brightness(1.04) hue-rotate(-6deg)}
+.ki-bild .nachweis{color:var(--grau)}
+@media (max-width:819px){.anruf{width:100%}.tel-gross{width:100%}}
+.kopf .marke::before,.kopf .marke::after{content:none}
+.held [data-status]{color:var(--anth)}
+.held [data-status][data-offen="ja"]::before{background:#3F7A2A}
+.held [data-status][data-offen="nein"]::before{background:var(--terra)}
+.nw{white-space:nowrap}
+.schluss{border-top:6px solid var(--terra)}
+.schluss .tel-gross{width:100%}
+.schluss .tuete{text-align:center;margin:0}
+@media (min-width:820px){:root{--abs:6rem}}
+@media (max-width:819px){.held figure{order:-1}.held .rahmen{aspect-ratio:1/1}.schildband-in{min-height:0;padding-block:1.25rem}.held-in{padding-block:1rem 2rem}.zeiten{padding-bottom:3rem}}
+</style>
+<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}</style></head>
+<body><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für Sultan Kebap. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
+<header class="kopf dunkel">
+<div class="wrap kopf-in">
+<a class="marke" href="#start" aria-label="Sultan Kebap, zum Seitenanfang"><span>Sultan Kebap</span></a>
+<nav class="nav" aria-label="Hauptnavigation">
+<a href="#karte">Karte</a>
+<a href="#drinnen">Drinnen</a>
+<a href="#draussen">Draußen</a>
+<a href="#zeiten">Zeiten &amp; Weg</a>
+<a class="knopf" href="tel:+4951195179867">Anrufen</a>
+</nav>
+<a class="knopf nur-mobil" href="tel:+4951195179867">Anrufen</a>
+</div>
+</header>
+
+<main id="start">
+<section class="held" aria-labelledby="titel">
+<div class="schildband dunkel"><div class="wrap schildband-in">
+<h1 class="marke gross" id="titel"><span>Sultan Kebap</span></h1>
+<p class="tuete">Grill · Döner · Pizza · Groß-Buchholz</p>
+</div></div>
+<div class="wrap held-in">
+<div class="band">
+<p class="lead">Türkisches Schnellrestaurant in Hannover: Döner, Grillteller, Pide und Pizza.</p>
+<dl class="tafel">
+<div><dt>Wo</dt><dd>Podbielskistraße&nbsp;348, 30659&nbsp;Hannover</dd></div>
+<div><dt>Wann</dt><dd><span data-status></span><span><span class="nw">Mo–Fr 11–21</span> · <span class="nw">So 12–21</span> · <span class="nw">Sa Ruhetag</span></span></dd></div>
+<div><dt>Wie</dt><dd>drinnen, auf der Terrasse, zum Mitnehmen oder geliefert</dd></div>
+</dl>
+<div class="knoepfe">
+<a class="knopf" href="tel:+4951195179867">0511 95179867 anrufen</a>
+<a class="knopf rahmen hellgrund" href="https://www.google.com/maps/dir/?api=1&amp;destination=Podbielskistra%C3%9Fe+348%2C+30659+Hannover" target="_blank" rel="noopener">Route</a>
+</div>
+</div>
+<figure data-foto>
+<div class="rahmen r45"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLeWCDwU6AuRQwQFd_YrRVpQ3eE6N5k-a_O0yEqjSGr5IXPfyAhhzCxniydfRKxu1K5w-jafICJAVi8DsaIPumOBbNBTIdRZTeLKxyBgFuVr_sn7axfRm8QFF989IV0043SdJrY=s4800-w1000" referrerpolicy="no-referrer" width="1152" height="2048" alt="Döner im Fladenbrot mit Rucola, daneben Sütlaç im Tontopf"></div>
+<figcaption class="nachweis"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/114830516581630817262" target="_blank" rel="noopener">Foto: Sultan Kebap Schnellrestaurant · Google Maps</a></figcaption>
+</figure>
+</div>
+</section>
+
+<section class="abschnitt" id="karte" aria-labelledby="karte-titel">
+<div class="wrap">
+<div class="raster kopf-abschnitt">
+<h2 class="g7" id="karte-titel">Was auf der Tüte steht</h2>
+<p class="g5">Die ganze Karte mit aktuellen Preisen hängt an der Theke. Oder kurz anrufen: <a class="tel-link" href="tel:+4951195179867">0511 95179867</a></p>
+</div>
+<div class="karte">
+<div class="s-doener">
+<h3 class="wort">Döner</h3>
+<ul class="gerichte">
+<li><b>Döner Kebab im Fladenbrot</b><span>mit Salat, Zwiebeln, Rotkohl und Soße</span></li>
+<li><b>Hähnchen-Dönerbox</b><span>in der Box, gut zum Mitnehmen</span></li>
+</ul>
+<figure data-foto>
+<div class="rahmen r43"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfZ_poQnkKxZzL0gMn4VL7oAauV5TxBe7X1N4NVhvbZDa-i7o7GtoNFGA9VLccJthhJGgQwYRsLgig9wkLiTJYiWzJoS2rU8BJzp4Sg3JFP8Yp5GtriH99maX4WDt2jkcwF4j7Meg=s4800-w1000" referrerpolicy="no-referrer" width="1200" height="900" loading="lazy" alt="Döner im Fladenbrot mit Fleisch, Zwiebeln und Rotkohl auf weißem Teller"></div>
+<figcaption class="nachweis"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/114461894438529263864" target="_blank" rel="noopener">Foto: Peter Specht · Google Maps</a></figcaption>
+</figure>
+</div>
+<div>
+<h3 class="wort">Grill</h3>
+<ul class="gerichte">
+<li><b>Kalb-Teller</b><span>Kalbfleisch auf dem Teller, mit Beilagen</span></li>
+<li><b>Falafelteller</b><span>Falafel mit Salat, ohne Fleisch</span></li>
+</ul>
+</div>
+<div>
+<h3 class="wort">Pizza</h3>
+<ul class="gerichte">
+<li><b>Pide</b><span>auf dem Holzbrett serviert</span></li>
+<li><b>Pizza</b><span>Sorten auf der Karte an der Theke</span></li>
+</ul>
+</div>
+<div class="nachtisch"><strong>Nachtisch &amp; Getränke</strong><p>Sütlaç im Tontopf · Kaffee · Bier · Wein</p></div>
+</div>
+<div class="raster teller">
+<figure class="g7" data-foto>
+<div class="rahmen r43"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLdZkwsSAJMNyiHnQoi3etNuujwNmxTPhZa3UWswUGKwUJlH984KIaOp4M9tlizc4GsOtljANzhqKXUTeVlDZ8QtdTNU_A_tssyBoJP6ysZCPi4oCiq-7T1Fj1Udp25R38SZVK5YJDkqUrqY=s4800-w1000" referrerpolicy="no-referrer" width="1200" height="900" loading="lazy" alt="Dönerteller mit Pommes, Salat und Soße"></div>
+<figcaption class="nachweis"><b>Dönerteller mit Pommes, Salat und Soße</b><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/100747051941977771716" target="_blank" rel="noopener">Foto: Ahmet Celik · Google Maps</a></figcaption>
+</figure>
+<figure class="g5" data-foto>
+<div class="rahmen r43"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLe_Ncsx3pFXQMZZeSoC9PCqrkQF6gbL6jXJbIY4Sjf3dPG8JVqZlS-T6xXVps5epFWgJcCJlO4ZBdcz3i6K80dn2hVhXD_JtnFg42jch6kuPm8MBVBYbwnu8WCBLkl8vOERVPw9vHkiKA42=s4800-w1000" referrerpolicy="no-referrer" width="1200" height="900" loading="lazy" alt="Burger mit Pommes und Dips auf einem Holzbrett, von oben"></div>
+<figcaption class="nachweis"><b>Burger mit Pommes und Dips</b><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/101843945844334078080" target="_blank" rel="noopener">Foto: Thaer Al Obeydi · Google Maps</a></figcaption>
+</figure>
+</div>
+</div>
+</section>
+
+<section class="abschnitt moos dunkel" id="drinnen" aria-labelledby="drinnen-titel">
+<div class="wrap">
+<h2 id="drinnen-titel">Drinnen: Holztische vor der Mooswand</h2>
+<div class="raster">
+<div class="g7">
+<figure data-foto>
+<div class="rahmen r43"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfOP0SCMeL5sLq3MrUElTY935upOd0mKZmQPaLUpf1K0aSlieao-X9nT2wCoBo6HK3mX9qOGq0FGxSQyqG-i96DmMIxCOxt6icyTojxo3b6PtFhDXI5y66L4byOicp2JMNjFr-syMpAIeij=s4800-w1800" referrerpolicy="no-referrer" width="1200" height="900" loading="lazy" alt="Gastraum mit Holztischen, beigen Stühlen und Mooswand mit Sultan-Kebap-Schriftzug"></div>
+<figcaption class="nachweis"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/117157680447909676754" target="_blank" rel="noopener">Foto: İbrahim Ergül · Google Maps</a></figcaption>
+</figure>
+<p>Drinnen sitzen Sie an dunklen Holztischen auf beigen Lederstühlen. An der Wand: Moos und unser Name in Leuchtbuchstaben, die die Farbe wechseln, mal pink, mal türkis. Die Theke ist grau-weiß gefliest.</p>
+<dl class="fakten">
+<div><dt>Mittagstisch</dt><dd>ab 11 Uhr, sonntags ab 12 Uhr</dd></div>
+<div><dt>Abendessen</dt><dd>bis 21 Uhr</dd></div>
+<div><dt>Dazu</dt><dd>Kaffee, Sütlaç, Bier und Wein</dd></div>
+</dl>
+</div>
+<figure class="g5" data-foto>
+<div class="rahmen r34"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLehjHRGup37xmS_qa8vRgUK7pztZZSJN_IUTwDnwmv5l5ET7flasChMEdmSIo6igxhCSmNPpuW-15Ls2ALEr1femK6OtOCh3ENEdL9M4Y93L6gsQwudt0wTvsTOpgWnF7yHjSvZzzKoJzo=s4800-w1000" referrerpolicy="no-referrer" width="900" height="1200" loading="lazy" alt="Sultan-Kebap-Schriftzug in Leuchtbuchstaben auf der grünen Mooswand"></div>
+<figcaption class="nachweis"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/115317465425089914153" target="_blank" rel="noopener">Foto: Alfonso Ortega · Google Maps</a></figcaption>
+</figure>
+</div>
+</div>
+</section>
+
+<section class="abschnitt draussen" id="draussen" aria-labelledby="draussen-titel">
+<div class="wrap raster">
+<figure class="g7" data-foto>
+<div class="rahmen r169"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLcKniRgf0ctnxiVt2UrwD5E82-h9Ub71WFzKIFqh3CU_uk6NqD_z6C_fMedQEv6CBeArUmkbfNlljivtH4a_-rpkQRVIpnj2GeOKwKhCAHXfEkM0K-RmyvCFWsQcMMtWEPps5mThg=s4800-w1000" referrerpolicy="no-referrer" width="1125" height="634" loading="lazy" alt="Außenansicht von Sultan Kebap mit Terrasse, Sonnenschirmen und Pflanzkübeln"></div>
+<figcaption class="nachweis"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/114830516581630817262" target="_blank" rel="noopener">Foto: Sultan Kebap Schnellrestaurant · Google Maps</a></figcaption>
+</figure>
+<div class="g5">
+<h2 id="draussen-titel">Draußen, zum Mitnehmen, geliefert</h2>
+<p>Die Terrasse liegt direkt an der Podbielskistraße, zwischen Palmen und Olivenbäumchen in Holzkübeln. Wer es eilig hat, bestellt vorher am Telefon und holt ab.</p>
+<ul class="wege">
+<li><b>Vor Ort</b>drinnen oder auf der Terrasse</li>
+<li><b>Mitnehmen</b>anrufen, bestellen, abholen</li>
+<li><b>Lieferservice</b>telefonisch bestellen, Liefergebiet am Telefon erfragen</li>
+</ul>
+<a class="tel-link" href="tel:+4951195179867">0511 95179867</a>
+</div>
+</div>
+</section>
+
+<section class="abschnitt zeiten" id="zeiten" aria-labelledby="zeiten-titel">
+<div class="wrap">
+<div class="raster kopf-abschnitt">
+<h2 class="g7" id="zeiten-titel">Zeiten &amp; Weg</h2>
+<p class="g5">Samstag ist bei uns zu. Sonntag ab 12, sonst ab 11 Uhr, jeden Tag bis 21 Uhr.</p>
+</div>
+<ol class="woche" aria-label="Öffnungszeiten">
+<li data-tag="1"><span class="lang">Montag</span><span class="kurz">Mo</span><span class="zeit">11–21</span></li>
+<li data-tag="2"><span class="lang">Dienstag</span><span class="kurz">Di</span><span class="zeit">11–21</span></li>
+<li data-tag="3"><span class="lang">Mittwoch</span><span class="kurz">Mi</span><span class="zeit">11–21</span></li>
+<li data-tag="4"><span class="lang">Donnerstag</span><span class="kurz">Do</span><span class="zeit">11–21</span></li>
+<li data-tag="5"><span class="lang">Freitag</span><span class="kurz">Fr</span><span class="zeit">11–21</span></li>
+<li data-tag="6" class="ruhe"><span class="lang">Samstag</span><span class="kurz">Sa</span><span class="zeit">Ruhetag</span></li>
+<li data-tag="0"><span class="lang">Sonntag</span><span class="kurz">So</span><span class="zeit">12–21</span></li>
+</ol>
+<div class="raster weg">
+<div class="g7 karte-rahmen"><div data-karte data-stil="hell" data-farbe="#A34E21"></div></div>
+<div class="g5 adresse">
+<h3>Sultan Kebap Schnellrestaurant</h3>
+<address>Podbielskistraße 348<br>30659 Hannover</address>
+<a class="tel-link" href="tel:+4951195179867">0511 95179867</a>
+<p>Bestellungen zum Mitnehmen und für den Lieferservice nehmen wir am Telefon an.</p>
+<div class="knoepfe">
+<a class="knopf" href="https://www.google.com/maps/dir/?api=1&amp;destination=Podbielskistra%C3%9Fe+348%2C+30659+Hannover" target="_blank" rel="noopener">Route planen</a>
+<a class="knopf rahmen hellgrund" href="tel:+4951195179867">Anrufen</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="schluss dunkel" aria-label="Bestellen per Telefon">
+<div class="wrap schluss-in">
+<p class="marke mittel"><span>Sultan Kebap</span></p>
+<a class="knopf tel-gross" href="tel:+4951195179867">0511 95179867</a>
+<p class="tuete">Bestellen · Abholen · Liefern lassen · Podbielskistraße&nbsp;348</p>
+</div>
+</section>
+</main>
+
+<footer class="fuss dunkel">
+<div class="wrap fuss-in">
+<p>Sultan Kebap · Podbielskistraße 348, 30659 Hannover<br>Mo–Fr 11–21 Uhr · So 12–21 Uhr · Sa Ruhetag</p>
+<div class="rechtliches"><p>Entwurf von Medialyte, 21147 Hamburg. Adresse und Öffnungszeiten: Google. Fotos: Google Maps, Urheber jeweils am Bild. Mit „KI-Bild“ markierte Bilder und das Logo sind KI-generierte Vorschläge.</p><p><a href="https://medialyte.de/impressum" style="color:inherit;text-decoration:underline">Impressum</a> · <a href="https://medialyte.de/datenschutzerklaerung" style="color:inherit;text-decoration:underline">Datenschutz</a></p></div>
+</div>
+</footer>
+
+<nav class="leiste dunkel" aria-label="Schnellzugriff">
+<a class="knopf" href="tel:+4951195179867">Anrufen</a>
+<a class="knopf rahmen" href="https://www.google.com/maps/dir/?api=1&amp;destination=Podbielskistra%C3%9Fe+348%2C+30659+Hannover" target="_blank" rel="noopener">Route</a>
+</nav>
+
+<script>
+(()=>{const li=document.querySelector('.woche [data-tag="'+new Date().getDay()+'"]');if(!li)return;li.classList.add('heute');li.setAttribute('aria-current','date');li.insertAdjacentHTML('beforeend','<span class="heute-mark">heute</span>')})();
+</script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>[data-karte]{width:100%;height:100%;min-height:260px}[data-karte] .leaflet-tile-pane{filter:var(--karte-filter)}
+[data-karte] .leaflet-control-attribution{font-size:10px}.karte-pin{position:relative;width:34px;height:34px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+box-shadow:0 6px 16px rgba(0,0,0,.35);border:3px solid #fff}.karte-pin i{position:absolute;inset:9px;border-radius:50%;background:#fff}</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>(function(){var C={"lat": 52.4058792, "lng": 9.801083799999999, "name": "Sultan Kebap", "filter": {"hell": "grayscale(1) contrast(1.05) brightness(1.04)", "dunkel": "grayscale(1) invert(1) contrast(.88) brightness(.82)", "warm": "grayscale(1) sepia(.5) contrast(1.02) brightness(1.02)", "kuehl": "grayscale(1) sepia(.35) hue-rotate(175deg) saturate(.55) brightness(1.03)", "mono": "grayscale(1) contrast(1.2)"}};function draw(){if(!window.L)return;document.querySelectorAll('[data-karte]').forEach(function(el){
+if(el._map)return;var st=el.getAttribute('data-stil')||'hell',col=el.getAttribute('data-farbe')||'#c0392b';
+el.style.setProperty('--karte-filter',C.filter[st]||C.filter.hell);
+var m=L.map(el,{scrollWheelZoom:false,zoomControl:true,attributionControl:true}).setView([C.lat,C.lng],16);el._map=m;
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(m);
+var icon=L.divIcon({className:'',html:'<div class="karte-pin" style="background:'+col+'"><i></i></div>',iconSize:[34,34],iconAnchor:[17,34]});
+L.marker([C.lat,C.lng],{icon:icon,title:C.name,alt:C.name}).addTo(m);setTimeout(function(){m.invalidateSize()},300);});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',draw);else draw();window.addEventListener('load',draw);})();</script><script>(function(){
+var P=[[720, 1260], [2100, 2700], [3540, 4140], [4980, 5580], [6420, 7020], [7860, 8460]];
+function fmt(m){m=((m%1440)+1440)%1440;var h=Math.floor(m/60),mi=m%60;return (h<10?'0':'')+h+':'+(mi<10?'0':'')+mi;}
+function now(){var d=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Berlin'}));return d.getDay()*1440+d.getHours()*60+d.getMinutes();}
+function status(){if(!P.length)return null;var t=now(),W=10080;
+ for(var i=0;i<P.length;i++){var s=P[i][0],e=P[i][1];if((t>=s&&t<e)||(t+W>=s&&t+W<e))return {offen:true,text:'Jetzt geöffnet bis '+fmt(e)};}
+ var best=null;for(var j=0;j<P.length;j++){var d=(P[j][0]-t+W)%W;if(best===null||d<best.d)best={d:d,s:P[j][0]};}
+ var tag=Math.floor(t/1440),ot=Math.floor(best.s/1440)%7,names=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+ var when=best.d<1440&&ot===tag?'heute':(best.d<2880&&ot===(tag+1)%7?'morgen':names[ot]);
+ return {offen:false,text:'Geschlossen · öffnet '+when+' um '+fmt(best.s)};}
+function run(){var s=status();document.querySelectorAll('[data-status]').forEach(function(el){
+ if(!s){el.style.display='none';return;}el.textContent=s.text;el.setAttribute('data-offen',s.offen?'ja':'nein');});}
+document.querySelectorAll('[data-foto] img').forEach(function(img){
+ function hide(){var b=img.closest('[data-foto]');if(b)b.style.display='none';}
+ if(!img.getAttribute('src'))hide();else{img.addEventListener('error',hide);if(img.complete&&img.naturalWidth===0)hide();}});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();setInterval(run,60000);
+})();</script></body>
+</html>
