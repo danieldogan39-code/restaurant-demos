@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Al Joud · Grill & Konditorei · Eiffestraße 612, Hamburg</title>
+<meta name="description" content="Al Joud an der Eiffestraße 612 in Hamburg: Grillplatte, Kebab, Lamm, Mezze und Baklava aus der eigenen Konditorei-Theke. Jeden Tag 10 bis 23 Uhr. Vor Ort, zum Mitnehmen, Lieferung.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:ital,wght@0,400;0,700;1,400&family=Hanken+Grotesk:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+:root{--hell:#F4EFE7;--hell2:#E9E1D3;--nacht:#13213A;--eis:#7AD3E6;--kupfer:#94582F;--linie:#CDBFA8;--rand:clamp(1rem,5vw,4rem);--max:1280px;--s2:16px;--s3:24px;--s4:48px;--s5:clamp(56px,9vw,96px);--kopf:72px;--kufi:"Reem Kufi",system-ui,sans-serif}
+@media(min-width:820px){:root{--kopf:84px;--schild:84px}}
+@media(min-width:960px){:root{--kopf:126px}}
+*,*::before,*::after{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+[id]{scroll-margin-top:calc(var(--kopf) + 16px)}
+body{font:400 1.0625rem/1.6 "Hanken Grotesk",system-ui,sans-serif;color:var(--nacht);background:var(--hell);overflow-x:hidden;hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--nacht);outline-offset:3px}
+.dunkel :focus-visible,.grill :focus-visible{outline-color:var(--eis)}
+h1,h2,h3{font-family:var(--kufi);font-weight:700;line-height:1.08;letter-spacing:-.01em;hyphens:manual;-webkit-hyphens:manual}
+h2{font-size:clamp(2rem,1.3rem + 3vw,3.5rem)}
+h3{font-size:clamp(1.35rem,1.15rem + .9vw,1.75rem)}
+p{max-width:62ch}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--rand)}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.dunkel{background:var(--nacht);color:var(--hell)}
+section{padding-block:var(--s5)}
+.rahmen{position:relative;overflow:hidden;aspect-ratio:var(--ar,4/3);background:var(--hell2)}
+.rahmen img{width:100%;height:100%;object-fit:cover}
+.nachweis{font-size:.875rem;line-height:1.3}
+.foto-nachweis{display:inline-block;padding:10px 0;text-decoration:none;opacity:1;color:inherit;text-underline-offset:3px}
+.foto-nachweis:hover{text-decoration:underline;opacity:1}
+.ki-label{position:absolute;top:8px;left:8px;background:var(--nacht);color:var(--hell);font-size:.875rem;line-height:1;padding:5px 8px}
+.knopf{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:12px 24px;background:var(--eis);color:var(--nacht);font-weight:700;text-decoration:none;font-variant-numeric:tabular-nums;border:2px solid var(--eis)}
+.knopf:hover{background:var(--hell);border-color:var(--hell)}
+.knopf.hell{background:var(--nacht);color:var(--hell);border-color:var(--nacht)}
+.knopf.hell:hover{background:var(--kupfer);border-color:var(--kupfer)}
+.textlink{display:inline-flex;align-items:center;min-height:44px;font-weight:700;text-underline-offset:5px;text-decoration-thickness:2px}
+.sq{flex:none;position:relative;display:grid;place-items:center;width:var(--g,72px);aspect-ratio:1;background:var(--nacht);color:var(--eis)}
+.sq svg{width:62%;height:62%}
+
+.leiste{position:sticky;top:0;z-index:20;background:var(--hell);border-bottom:3px solid var(--nacht)}
+.leiste .schild{display:flex;align-items:center;justify-content:center;gap:12px;height:var(--schild,72px)}
+.kasten{font-family:var(--kufi);font-weight:700;font-size:.875rem;letter-spacing:.12em;line-height:1;border:2px solid var(--nacht);padding:6px 9px 5px;white-space:nowrap}
+.marke{display:inline-flex;align-items:baseline;gap:.22em;background:var(--nacht);color:var(--eis);font-family:var(--kufi);font-size:clamp(1.45rem,1rem + 1.6vw,2.3rem);line-height:1;padding:.18em .45em .26em;text-decoration:none;white-space:nowrap}
+.marke .al{font-weight:400;font-size:.74em}
+.marke b{font-weight:700;letter-spacing:.05em}
+
+.nav{display:none;justify-content:center;gap:8px;border-top:1px solid var(--linie)}
+.nav a{display:inline-flex;align-items:center;min-height:42px;padding:0 12px;text-decoration:none;font-weight:700;font-size:.875rem;letter-spacing:.02em}
+.nav a:hover{text-decoration:underline;text-underline-offset:5px}
+.stern{width:64px;height:64px;aspect-ratio:1;padding:4px;font-size:.875rem;font-weight:700;line-height:1.15;text-align:center;hyphens:none;font-variant-numeric:tabular-nums;color:var(--hell);overflow:hidden}
+.sq.stern svg{position:absolute;inset:3px;width:calc(100% - 6px);height:calc(100% - 6px);color:var(--eis);opacity:.2}
+.stern-txt{position:relative;z-index:1}
+.stern b{color:var(--eis)}
+@media(max-width:419px){.leiste .schild{gap:8px}.leiste .kasten{font-size:.8125rem;letter-spacing:.06em;padding:5px 6px 4px}.marke{font-size:1.2rem}}
+@media(min-width:960px){.nav{display:flex}}
+
+.held-text{padding:clamp(32px,6vw,72px) var(--rand) clamp(32px,5vw,64px)}
+.held h1{font-size:clamp(1.6rem,1.2rem + 1.6vw,2.4rem);margin-bottom:var(--s3);hyphens:none;-webkit-hyphens:none;overflow-wrap:normal}
+.held h1 .wm{display:block;font-size:2.4em;font-weight:400;color:var(--eis);line-height:.95;margin-bottom:.2em;white-space:nowrap}
+.held h1 .wm b{font-weight:700;letter-spacing:.05em}
+.held h1 .z{display:block}
+.held h1 em{font-style:normal}
+.lead{font-size:clamp(1.0625rem,1rem + .3vw,1.25rem);margin-bottom:var(--s4)}
+.status{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-variant-numeric:tabular-nums;margin-bottom:var(--s3);border-top:1px solid rgba(244,239,231,.25);padding-top:var(--s2)}
+.status::before{content:"";width:12px;height:12px;background:var(--hell);flex:none}
+.status:has([data-offen="ja"])::before{background:var(--eis)}
+[data-offen="ja"]{color:var(--eis);font-weight:700}
+.aktion{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px}
+.held{display:flex;flex-direction:column}
+.held figure{--ar:4/3;color:var(--hell);position:relative;order:-1}
+.held .rahmen img{object-position:70% 40%}
+.held figure .nachweis{position:absolute;right:0;bottom:0;padding:0 10px;background:rgba(19,33,58,.82)}
+@media(min-width:820px){
+.held{flex-direction:row}
+.held figure{order:0}
+.held-text{flex:5 1 0;padding-left:max(var(--rand),calc((100% - var(--max))/2 + var(--rand)));padding-right:var(--s4)}
+.held figure{flex:7 1 0;display:flex;flex-direction:column}
+.held figure .rahmen{--ar:3/2;flex:1 1 auto}
+
+}
+
+.theken{display:grid;gap:var(--s4)}
+.grill{background:var(--kupfer);color:var(--hell);padding:clamp(24px,4vw,48px)}
+.grill h2,.kond h2{margin-bottom:var(--s2)}
+.grill>p{margin-bottom:var(--s3)}
+.grill figure{margin-bottom:var(--s3)}
+.liste{list-style:none;padding:0;margin-bottom:var(--s3)}
+.liste li{display:grid;gap:2px;padding:12px 0;border-top:1px solid rgba(244,239,231,.4)}
+.liste b{font-family:var(--kufi);font-size:1.4rem;font-weight:700}
+.liste span{font-size:1rem;opacity:.92}
+.grill .streifen{--ar:3/1}
+.kond{position:relative;background:var(--hell2);border-top:6px solid var(--nacht);padding:clamp(24px,3.5vw,40px)}
+.kond .kasten{display:inline-block;margin-bottom:var(--s3)}
+.kond figure{margin-block:var(--s3) var(--s2)}
+.kond figure .rahmen{--ar:1/1}
+.kond .eck{position:absolute;top:0;right:0;--g:clamp(56px,8vw,80px)}
+.mitnahme{display:block}
+.mitnahme .rahmen{--ar:3/2;width:100%}
+.mitnahme p{font-family:var(--kufi);font-size:1.25rem;line-height:1.3;margin-top:var(--s2);hyphens:none;-webkit-hyphens:none}
+@media(min-width:1024px){
+.theken{grid-template-columns:repeat(12,1fr);gap:0 var(--s3);align-items:start}
+.grill{grid-column:1/9;grid-row:1;align-self:start;padding-right:calc(12.5% + 48px)}
+.kond{grid-column:8/13;grid-row:1;align-self:start;margin-top:96px;z-index:1}
+}
+
+.tisch{padding-top:0}
+.tisch .rahmen{--ar:4/3}
+.legende{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 32px;padding-top:var(--s2);border-bottom:1px solid var(--linie)}
+.legende h2{font-size:clamp(1.6rem,1.2rem + 1.8vw,2.4rem)}
+.legende ul{display:flex;flex-wrap:wrap;gap:4px 24px;list-style:none;padding:0}
+.legende li::before{content:"";display:inline-block;width:8px;height:8px;background:var(--kupfer);margin-right:10px;vertical-align:middle}
+@media(min-width:820px){.tisch .rahmen{--ar:16/9}}
+
+.karte-kopf{display:grid;gap:var(--s3);margin-bottom:var(--s4)}
+.karte-kopf h2{margin-bottom:var(--s2)}
+.karte-kopf .rahmen{--ar:2/1}
+.aushang{display:grid;gap:var(--s4);border-top:3px solid var(--nacht);padding-top:var(--s4)}
+.aushang h3{margin-bottom:var(--s2)}
+.aushang ul{list-style:none;padding:0}
+.aushang li{padding:10px 0;border-bottom:1px solid var(--linie)}
+.aushang li b{display:block;font-family:var(--kufi);font-size:1.25rem}
+.aushang li span{font-size:1rem}
+.aushang figure{margin-top:var(--s3)}
+.aushang .hoch{--ar:3/4;max-width:240px}
+.hinweis{margin-top:var(--s4);padding:var(--s3);background:var(--hell2);display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between}
+.hinweis p{font-weight:700}
+@media(min-width:820px){
+.karte-kopf{grid-template-columns:repeat(12,1fr);align-items:end}
+.karte-kopf div{grid-column:1/7}
+.karte-kopf figure{grid-column:8/13}
+.aushang{grid-template-columns:1fr 1.15fr .85fr;gap:0}
+.aushang>div{padding-inline:var(--s3)}
+.aushang>div:first-child{padding-left:0}
+.aushang>div+div{border-left:1px solid var(--kupfer)}
+}
+
+.raeume h2{margin-bottom:var(--s2)}
+.raeume>.wrap>p{margin-bottom:var(--s4)}
+.galerie{display:grid;gap:var(--s3)}
+.galerie figcaption p{font-family:var(--kufi);font-size:1.25rem;line-height:1.3;margin-top:12px}
+.galerie .quer .rahmen{--ar:4/3}
+.galerie .hoch .rahmen{--ar:3/4}
+@media(min-width:820px){.galerie{grid-template-columns:repeat(12,1fr);align-items:start}.galerie .quer{grid-column:1/9}.galerie .hoch{grid-column:9/13;margin-top:var(--s5)}}
+
+.zeiten-kopf{display:flex;align-items:center;gap:var(--s3);margin-bottom:var(--s4)}
+.zeiten-kopf .sq{--g:clamp(56px,9vw,88px)}
+.tage{position:relative;display:grid;grid-template-columns:repeat(7,1fr);list-style:none;padding:0;border:2px solid var(--nacht);font-variant-numeric:tabular-nums}
+.tage::before{content:"";position:absolute;inset:0 auto 0 0;width:calc(100%/7);background:var(--nacht);opacity:0;transform:translateX(calc(var(--d,0)*100%));transition:transform .4s cubic-bezier(.2,.7,.3,1)}
+.tage.bereit::before{opacity:1}
+.tage li{position:relative;z-index:1;text-align:center;padding:16px 2px;transition:color .4s}
+.tage li+li{border-left:1px solid var(--nacht)}
+.tage abbr{display:block;text-decoration:none;font-family:var(--kufi);font-weight:700;font-size:clamp(1.1rem,.9rem + 1vw,1.6rem);margin-bottom:6px}
+.tage span{display:block;font-size:1rem}
+.tage li.heute{color:var(--eis)}
+.zeiten p.tagesablauf{margin-top:var(--s3)}
+@media(min-width:620px){.tage span{display:inline;font-size:1.125rem}}
+
+.lage-grid{display:grid;gap:var(--s4)}
+.karte{aspect-ratio:4/3;background:var(--hell2);border:2px solid var(--nacht)}
+.karte [data-karte]{width:100%;height:100%}
+.lage h2{margin-bottom:8px}
+.lage address{font-style:normal;margin-bottom:var(--s3)}
+.wege{display:grid;margin-bottom:var(--s3)}
+.wege div{display:grid;gap:2px 24px;padding:12px 0;border-top:1px solid var(--linie)}
+.wege dt{font-family:var(--kufi);font-weight:700;font-size:1.2rem}
+@media(min-width:480px){.wege div{grid-template-columns:9rem 1fr}}
+@media(min-width:600px) and (max-width:1023px){.karte{aspect-ratio:16/9}}
+@media(min-width:1024px){.lage-grid{grid-template-columns:repeat(12,1fr)}.karte{grid-column:1/7}.lage-grid>div{grid-column:8/13}}
+
+.schluss .wrap{display:grid;gap:var(--s4)}
+.schluss h2{margin-bottom:var(--s2)}
+.ruf{display:flex;align-items:stretch;gap:0}
+.ruf .sq{--g:64px;width:64px;aspect-ratio:auto;flex:none;border:2px solid var(--eis);border-right:0}
+.ruf .knopf{flex:1 1 auto;font-family:var(--kufi);font-size:clamp(1.6rem,1rem + 2.6vw,3.2rem);padding:12px clamp(16px,3vw,40px);min-height:80px;white-space:nowrap}
+@media(min-width:820px){.schluss .wrap{grid-template-columns:repeat(12,1fr);align-items:center;gap:var(--s3)}.schluss .wrap>div:first-child{grid-column:1/7}.ruf{grid-column:7/13}}
+
+footer{background:var(--hell2);padding-block:var(--s4);font-size:1rem;hyphens:none;-webkit-hyphens:none}
+footer .wrap{display:grid;gap:var(--s3)}
+.fuss-logo{display:flex;align-items:center;gap:var(--s2)}
+.fuss-logo img{width:140px;height:auto;background:none;mix-blend-mode:multiply}
+.rechtliches{border-top:1px solid var(--linie);padding-top:var(--s2)}
+.rechtliches a{display:inline-flex;align-items:center;min-height:44px}
+@media(min-width:560px){footer .wrap{grid-template-columns:1fr 1fr}.fuss-logo{grid-column:1/-1}.rechtliches{grid-column:1/-1}}
+@media(min-width:900px){footer .wrap{grid-template-columns:1fr 1fr 1fr}.fuss-logo{grid-column:auto}}
+
+.unten{position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;gap:8px;padding:8px var(--rand) calc(8px + env(safe-area-inset-bottom));background:var(--nacht);border-top:3px solid var(--eis)}
+.unten a{flex:1;min-height:48px;display:flex;align-items:center;justify-content:center;font-weight:700;text-decoration:none;color:var(--hell);border:2px solid var(--hell)}
+.unten a:first-child{background:var(--eis);border-color:var(--eis);color:var(--nacht)}
+body{padding-bottom:calc(70px + env(safe-area-inset-bottom))}
+@media(min-width:820px){.unten{display:none}body{padding-bottom:0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before{animation:none!important;transition:none!important}}
+.dunkel .foto-nachweis{color:#c9d1dc}
+.grill .foto-nachweis{color:#f3e6d6}
+.foto-nachweis{font-size:.875rem}
+.karte{min-height:220px}
+.fuss-logo span{white-space:nowrap}
+.wege a[href^="tel"],.hinweis .knopf{white-space:nowrap}
+</style>
+<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}</style></head>
+<body><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für Al Joud. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="st" viewBox="0 0 40 40"><g fill="currentColor"><rect x="8" y="8" width="24" height="24"/><rect x="8" y="8" width="24" height="24" transform="rotate(45 20 20)"/></g></symbol></svg>
+
+<header class="leiste">
+<div class="wrap schild">
+<span class="kasten" aria-hidden="true">KONDITOREI</span>
+<a class="marke" href="#start" aria-label="Al Joud, zum Seitenanfang"><span class="al" aria-hidden="true">al</span><b aria-hidden="true">JOUD</b></a>
+<div class="sq stern"><svg aria-hidden="true"><use href="#st"/></svg><span class="stern-txt">10–23<br>Uhr</span></div>
+</div>
+<nav class="nav" aria-label="Hauptnavigation"><a href="#theken">Theken</a><a href="#karte">Karte</a><a href="#zeiten">Zeiten</a><a href="#lage">Lage</a></nav>
+</header>
+
+<main id="start">
+<section class="held dunkel" style="padding:0">
+<div class="held-text">
+<h1><span class="wm" aria-label="Al Joud">al <b>JOUD</b></span><span class="z">Grill &amp; <em>Konditorei</em></span></h1>
+<p class="lead">Eiffestraße 612, Hamburg-Hamm. Vorne die Grillvitrine unter der Kupferhaube, daneben die Theke mit Baklava. Vor Ort, zum Mitnehmen oder geliefert.</p>
+<p class="status"><span data-status></span></p>
+<div class="aktion">
+<a class="knopf" href="tel:+4917661297102">Anrufen · 0176 61297102</a>
+<a class="textlink" href="https://www.google.com/maps/dir/?api=1&amp;destination=Al+Joud%2C+Eiffestra%C3%9Fe+612%2C+20537+Hamburg" target="_blank" rel="noopener">Route planen →</a>
+</div>
+</div>
+<figure data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLdr4E4XMy5MKed9hSE1tctO1SqXJvNY3kK7YoKZ9vi-BPI39NJxNNIUGPkmxSBG-kQI03DT79VbaIzoVktfkh8xvbEPboB-g9-ejHkAiWI5ICzvruXgsCMjge5Bh6eUyjYjczz1oVmZnPKZ=s4800-w1000" referrerpolicy="no-referrer" width="1600" height="900" alt="Die Eckfassade von Al Joud bei Nacht mit eisblauer Leuchtschrift und dem Schild Konditorei"></div>
+<figcaption class="nachweis"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/114844504854325441308" target="_blank" rel="noopener">Foto: H Channel · Google Maps</a></figcaption>
+</figure>
+</section>
+
+<section id="theken" class="wrap theken" aria-label="Grill und Konditorei">
+<article class="grill">
+<h2>Vom Grill</h2>
+<p>Gegrillt wird in der Vitrine unter der Kupferhaube. Die Grillplatte kommt mit Spießen, Kebab und Gemüse, dazu Hummus und Salat.</p>
+<figure data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLdrQDU5UE24dlmJZCbNqxy4I1aTDDToKL8YClK5HLJBJkiesMU2-6OmxBX3xxhvWhZiTiEmVMjazUE9EoWmIH2uFiCMuFHebmFn2kuDnDBt9Nsgrlr94ZoKRuCORwujx8sduflWeyrFPYUL=s4800-w1800" referrerpolicy="no-referrer" width="1200" height="900" loading="lazy" alt="Große Grillplatte mit Kebab, Fleischspießen und gegrilltem Gemüse, daneben Hummus und Salat"></div>
+<figcaption class="nachweis"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/115107728048465249827" target="_blank" rel="noopener">Foto: abdullah maaz · Google Maps</a></figcaption>
+</figure>
+<ul class="liste">
+<li><b>Grillplatte</b><span>Spieße, Kebab, Gemüse, Hummus, Salat</span></li>
+<li><b>Lamm</b></li>
+<li><b>Spieße</b><span>einzeln oder auf der Platte</span></li>
+<li><b>Hähnchen-Shawarma</b><span>im Wrap, mit Pommes und Knoblauchcreme</span></li>
+</ul>
+</article>
+
+<article class="kond">
+<h2>Die Theke nebenan</h2>
+<p>Nach dem Essen noch an die Konditorei-Theke? Baklava mit Pistazie, dazu Tee im Glas oder Kaffee.</p>
+<figure data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLcBA3IQ8IDnVoXDADVIkdWeYlEuiyg1LjMxOJBXNfsWVoMZON57DxlM5fD5Aa8h6xECxRlRtpGHQ9Q-uvkyKuBc7Afz_Bi8XXNDSRNABaLbeb4n0HQMq2lpKOW-72PQo85VLERKyZHfWmff=s4800-w1000" referrerpolicy="no-referrer" width="1500" height="1391" loading="lazy" alt="Baklava-Auswahl mit Pistazien auf schwarzem Teller, daneben Tee in Gläsern"><span class="sq eck" aria-hidden="true"><svg><use href="#st"/></svg></span></div>
+<figcaption class="nachweis"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/104714419350445083729" target="_blank" rel="noopener">Foto: Sanja Savic · Google Maps</a></figcaption>
+</figure>
+<div class="mitnahme">
+<div class="rahmen"><img src="ki-pistazie-sirup.webp" width="800" height="800" loading="lazy" alt="Gehackte Pistazien und Sirup auf dünnen Filoteigschichten"><span class="ki-label">KI-Bild</span></div>
+<p>Baklava gibt es auch zum Mitnehmen.</p>
+</div>
+</article>
+</section>
+
+<section class="tisch" aria-label="Der volle Tisch">
+<figure data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLeanpxvjNj6sUBK78B2651tw-JjvxUt77wdXM2tPQX8OiBLG-Kc5rkC0ECy-zT-Djq_qTXJnIiZ1x6_drLbvsqKgk1HL4s-KjDsJy3dl0FNDic0veyddXDSrzbmHOO020NRvI4JOKYFy0g=s4800-w1000" referrerpolicy="no-referrer" width="1321" height="938" loading="lazy" alt="Reich gedeckter Tisch mit Grillgerichten, Reis und mehreren Schalen Hummus"></div>
+<figcaption class="wrap">
+<div class="legende"><h2>Der volle Tisch</h2><ul><li>Hummus-Variationen</li><li>Reis</li><li>vom Grill</li></ul></div>
+<span class="nachweis"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/115935721499065486003" target="_blank" rel="noopener">Foto: Hanin Orabi · Google Maps</a></span>
+</figcaption>
+</figure>
+</section>
+
+<section id="karte" class="wrap" style="padding-top:0">
+<div class="karte-kopf">
+<div><h2>Was auf den Tisch kommt</h2><p>Ein Auszug. Die ganze Karte mit Preisen liegt vor Ort aus.</p></div>
+<figure><div class="rahmen"><img src="ki-hummus-sumach.webp" width="1200" height="800" loading="lazy" alt="Hummus mit Olivenöl und Sumach von oben"><span class="ki-label">KI-Bild</span></div></figure>
+</div>
+<div class="aushang">
+<div>
+<h3>Mezze</h3>
+<ul><li><b>Hummus</b><span>in mehreren Variationen</span></li><li><b>Tabouleh</b><span>Petersilie, Bulgur, Tomate, Zitrone</span></li><li><b>Mezze für die Tischmitte</b><span>zum Teilen</span></li></ul>
+<figure><div class="rahmen hoch"><img src="ki-tabouleh-zutaten.webp" width="800" height="1067" loading="lazy" alt="Gehackte Petersilie, Bulgur, Tomatenwürfel und eine halbe Zitrone"><span class="ki-label">KI-Bild</span></div></figure>
+</div>
+<div>
+<h3>Vom Grill</h3>
+<ul><li><b>Grillplatte</b><span>Spieße, Kebab, Gemüse</span></li><li><b>Kebab</b></li><li><b>Lamm</b></li><li><b>Hähnchen-Shawarma</b><span>im Wrap, mit Pommes und Knoblauchcreme</span></li></ul>
+<figure data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLesMNBFBl0y8fS8NTSusnQ2Uno1HbaUfrLwktJ2GifwGO8GdEUbZj62k1DdjOA2WheamT1DQaXDnj42XbFQ5lJwivp8n_uDU0yj9aCIAmklzBa5P6GxO-_w-VwAulVWLg_YMp1pi_7OTCzI=s4800-w1000" referrerpolicy="no-referrer" width="1496" height="1146" loading="lazy" alt="Hähnchen-Shawarma-Wraps mit Pommes, Krautsalat und Knoblauchcreme"></div>
+<figcaption class="nachweis"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/105913255354135288648" target="_blank" rel="noopener">Foto: Liv · Google Maps</a></figcaption>
+</figure>
+</div>
+<div>
+<h3>Süßes</h3>
+<ul><li><b>Baklava</b><span>mit Pistazie, auch zum Mitnehmen</span></li><li><b>Tee</b><span>im Glas</span></li><li><b>Kaffee</b></li></ul>
+</div>
+</div>
+<div class="hinweis"><p>Ganze Karte vor Ort oder am Telefon.</p><a class="knopf hell" href="tel:+4917661297102">0176 61297102</a></div>
+</section>
+
+<section class="raeume" aria-labelledby="raeume-h">
+<div class="wrap">
+<h2 id="raeume-h">Zwei Räume</h2>
+<p>Drinnen unter der Kupferhaube, draußen auf der überdachten Terrasse. Reservieren am besten telefonisch.</p>
+<div class="galerie">
+<figure class="quer" data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLeHtBj1ez5ZFwsmZ6HXkTbdvH_f0omitfKJI-EdR-F4FR4kTJg49X1sEpj8YU9dyvPfgRt05jLw9cuUYzVS0BGMNlGkTwyygeMQz1ntjD76l5QdLzsD1GQArkCErXrW66OOcKNzdu54kNvE=s4800-w1000" referrerpolicy="no-referrer" width="1200" height="900" loading="lazy" alt="Heller Gastraum mit verzierter Grillhaube aus Kupfer, Holztischen und Pendelleuchten"></div>
+<figcaption><p>Drinnen: Holztische, Pendelleuchten und die gravierte Haube über dem Grill.</p><span class="nachweis"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/116211525934359479757" target="_blank" rel="noopener">Foto: Iryna Huskova · Google Maps</a></span></figcaption>
+</figure>
+<figure class="hoch" data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLe6NKdzLr0WcceD_uLrU-yStT6ecXdFdxTvsV0O1F--3PQ_HOqjbQvsdf4PwtnE5Ip8ie41YqCY6jEoR5QXB2jvYpziry4lHry7lVV9FMkkNcunt2wMCziglvfuWHQJdNzG3jgkn-koIoQ=s4800-w1000" referrerpolicy="no-referrer" width="900" height="1200" loading="lazy" alt="Überdachte Terrasse mit Rattanstühlen unter roter Kelim-Bespannung"></div>
+<figcaption><p>Draußen sitzen unter Kelim, auch wenn es tröpfelt.</p><span class="nachweis"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/101186980577519526201" target="_blank" rel="noopener">Foto: Tarek Alkadi · Google Maps</a></span></figcaption>
+</figure>
+</div>
+</div>
+</section>
+
+<section id="zeiten" class="zeiten wrap" style="padding-top:0">
+<div class="zeiten-kopf"><span class="sq" aria-hidden="true"><svg><use href="#st"/></svg></span><h2>Jeden Tag. 10 bis 23 Uhr.</h2></div>
+<ol class="tage" aria-label="Öffnungszeiten, jeweils 10:00 bis 23:00 Uhr">
+<li><abbr title="Montag">Mo</abbr><span>10–</span><span>23</span></li>
+<li><abbr title="Dienstag">Di</abbr><span>10–</span><span>23</span></li>
+<li><abbr title="Mittwoch">Mi</abbr><span>10–</span><span>23</span></li>
+<li><abbr title="Donnerstag">Do</abbr><span>10–</span><span>23</span></li>
+<li><abbr title="Freitag">Fr</abbr><span>10–</span><span>23</span></li>
+<li><abbr title="Samstag">Sa</abbr><span>10–</span><span>23</span></li>
+<li><abbr title="Sonntag">So</abbr><span>10–</span><span>23</span></li>
+</ol>
+<p class="tagesablauf">Montag bis Sonntag 10:00 – 23:00 Uhr, auch am Wochenende. Ab 10 Uhr Kaffee und Süßes, mittags Mittagstisch, abends Grill.</p>
+</section>
+
+<section id="lage" class="lage wrap" style="padding-top:0">
+<div class="lage-grid">
+<div class="karte"><div data-karte data-stil="warm" data-farbe="#13213A"></div></div>
+<div>
+<h2>Eiffestraße 612</h2>
+<address>Al Joud<br>Eiffestraße 612<br>20537 Hamburg</address>
+<dl class="wege">
+<div><dt>Vor Ort</dt><dd>Drinnen oder auf der überdachten Terrasse.</dd></div>
+<div><dt>Mitnehmen</dt><dd>Grill und Baklava. Kurz vorher anrufen, dann liegt es bereit.</dd></div>
+<div><dt>Liefern</dt><dd>Lieferservice: Liefergebiet am Telefon erfragen.</dd></div>
+<div><dt>Mittagstisch</dt><dd>Jeden Tag, das Haus ist ab 10 Uhr offen.</dd></div>
+<div><dt>Reservieren</dt><dd>Am besten telefonisch: <a href="tel:+4917661297102">0176 61297102</a></dd></div>
+</dl>
+<a class="knopf hell" href="https://www.google.com/maps/dir/?api=1&amp;destination=Al+Joud%2C+Eiffestra%C3%9Fe+612%2C+20537+Hamburg" target="_blank" rel="noopener">Route in Google Maps</a>
+</div>
+</div>
+</section>
+
+<section class="schluss dunkel" aria-labelledby="ruf-h">
+<div class="wrap">
+<div><h2 id="ruf-h">Tisch, Abholung oder Lieferung?</h2><p>Ein Anruf genügt. Jeden Tag von 10 bis 23 Uhr.</p></div>
+<div class="ruf"><span class="sq" aria-hidden="true"><svg><use href="#st"/></svg></span><a class="knopf" href="tel:+4917661297102">0176 61297102</a></div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="wrap">
+<div class="fuss-logo"><img src="logo.svg" width="280" height="80" loading="lazy" alt="Logo-Vorschlag al JOUD"><span>Logo-Vorschlag</span></div>
+<p>Al Joud · Grill &amp; Konditorei<br>Eiffestraße 612, 20537 Hamburg<br><a href="tel:+4917661297102">0176 61297102</a></p>
+<p>Montag bis Sonntag<br>10:00 – 23:00 Uhr</p>
+<div class="rechtliches"><p>Entwurf von Medialyte, 21147 Hamburg. Adresse und Öffnungszeiten: Google. Fotos: Google Maps, Urheber jeweils am Bild. Mit „KI-Bild“ markierte Bilder und das Logo sind KI-generierte Vorschläge.</p><p><a href="https://medialyte.de/impressum">Impressum</a> · <a href="https://medialyte.de/datenschutzerklaerung">Datenschutz</a></p></div>
+</div>
+</footer>
+
+<nav class="unten" aria-label="Schnellzugriff">
+<a href="tel:+4917661297102">Anrufen</a>
+<a href="https://www.google.com/maps/dir/?api=1&amp;destination=Al+Joud%2C+Eiffestra%C3%9Fe+612%2C+20537+Hamburg" target="_blank" rel="noopener">Route</a>
+</nav>
+
+<script>
+(function(){
+var p={};
+try{new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Berlin',weekday:'short',hour:'numeric',hourCycle:'h23'}).formatToParts(new Date()).forEach(function(x){p[x.type]=x.value})}catch(e){}
+var now=new Date();
+var d=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].indexOf(p.weekday);
+if(d<0)d=(now.getDay()+6)%7;
+var h=p.hour!==undefined?+p.hour:now.getHours();
+var s=document.querySelector('.stern-txt');
+if(s)s.innerHTML=(h>=10&&h<23)?'<b>offen</b><br>bis 23':'zu<br>ab 10';
+var ds=document.querySelector('[data-status]');
+if(ds&&!ds.textContent.trim())ds.textContent=(h>=10&&h<23)?'Jetzt geöffnet · bis 23 Uhr':'Geschlossen · ab 10 Uhr';
+var t=document.querySelector('.tage');
+if(!t)return;
+var li=t.children[d];
+function los(){
+t.classList.add('bereit');
+requestAnimationFrame(function(){requestAnimationFrame(function(){
+t.style.setProperty('--d',d);li.classList.add('heute');li.setAttribute('aria-current','date');
+})});
+}
+if('IntersectionObserver' in window){
+var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){o.disconnect();los()}},{threshold:.6});
+o.observe(t);
+}else los();
+})();
+</script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>[data-karte]{width:100%;height:100%;min-height:260px}[data-karte] .leaflet-tile-pane{filter:var(--karte-filter)}
+[data-karte] .leaflet-control-attribution{font-size:10px}.karte-pin{position:relative;width:34px;height:34px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+box-shadow:0 6px 16px rgba(0,0,0,.35);border:3px solid #fff}.karte-pin i{position:absolute;inset:9px;border-radius:50%;background:#fff}</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>(function(){var C={"lat": 53.5509936, "lng": 10.057037399999999, "name": "Al Joud", "filter": {"hell": "grayscale(1) contrast(1.05) brightness(1.04)", "dunkel": "grayscale(1) invert(1) contrast(.88) brightness(.82)", "warm": "grayscale(1) sepia(.5) contrast(1.02) brightness(1.02)", "kuehl": "grayscale(1) sepia(.35) hue-rotate(175deg) saturate(.55) brightness(1.03)", "mono": "grayscale(1) contrast(1.2)"}};function draw(){if(!window.L)return;document.querySelectorAll('[data-karte]').forEach(function(el){
+if(el._map)return;var st=el.getAttribute('data-stil')||'hell',col=el.getAttribute('data-farbe')||'#c0392b';
+el.style.setProperty('--karte-filter',C.filter[st]||C.filter.hell);
+var m=L.map(el,{scrollWheelZoom:false,zoomControl:true,attributionControl:true}).setView([C.lat,C.lng],16);el._map=m;
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(m);
+var icon=L.divIcon({className:'',html:'<div class="karte-pin" style="background:'+col+'"><i></i></div>',iconSize:[34,34],iconAnchor:[17,34]});
+L.marker([C.lat,C.lng],{icon:icon,title:C.name,alt:C.name}).addTo(m);setTimeout(function(){m.invalidateSize()},300);});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',draw);else draw();window.addEventListener('load',draw);})();</script><script>(function(){
+var P=[[600, 1380], [2040, 2820], [3480, 4260], [4920, 5700], [6360, 7140], [7800, 8580], [9240, 10020]];
+function fmt(m){m=((m%1440)+1440)%1440;var h=Math.floor(m/60),mi=m%60;return (h<10?'0':'')+h+':'+(mi<10?'0':'')+mi;}
+function now(){var d=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Berlin'}));return d.getDay()*1440+d.getHours()*60+d.getMinutes();}
+function status(){if(!P.length)return null;var t=now(),W=10080;
+ for(var i=0;i<P.length;i++){var s=P[i][0],e=P[i][1];if((t>=s&&t<e)||(t+W>=s&&t+W<e))return {offen:true,text:'Jetzt geöffnet bis '+fmt(e)};}
+ var best=null;for(var j=0;j<P.length;j++){var d=(P[j][0]-t+W)%W;if(best===null||d<best.d)best={d:d,s:P[j][0]};}
+ var tag=Math.floor(t/1440),ot=Math.floor(best.s/1440)%7,names=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+ var when=best.d<1440&&ot===tag?'heute':(best.d<2880&&ot===(tag+1)%7?'morgen':names[ot]);
+ return {offen:false,text:'Geschlossen · öffnet '+when+' um '+fmt(best.s)};}
+function run(){var s=status();document.querySelectorAll('[data-status]').forEach(function(el){
+ if(!s){el.style.display='none';return;}el.textContent=s.text;el.setAttribute('data-offen',s.offen?'ja':'nein');});}
+document.querySelectorAll('[data-foto] img').forEach(function(img){
+ function hide(){var b=img.closest('[data-foto]');if(b)b.style.display='none';}
+ if(!img.getAttribute('src'))hide();else{img.addEventListener('error',hide);if(img.complete&&img.naturalWidth===0)hide();}});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();setInterval(run,60000);
+})();</script></body>
+</html>
