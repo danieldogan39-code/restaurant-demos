@@ -735,7 +735,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "0c19d9e65f";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "66f94fbf91";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -1971,9 +1971,29 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     if (!st.token) { RUN.active = isLive(DATA) ? { status: "in_progress", run_started_at: (DATA.live || {}).start } : null; runRender(); return Promise.resolve(); }
     return api("/actions/runs?per_page=15").then(function (r) {
       var act = (r.workflow_runs || []).filter(function (x) { return x.name === "Wochenlauf" && ["queued", "in_progress", "waiting", "requested", "pending"].indexOf(x.status) >= 0; });
-      // der älteste aktive ist der laufende, jüngere warten nur
-      RUN.active = act.length ? act[act.length - 1] : null; RUN.queued = Math.max(0, act.length - 1); if (RUN.active) RUN.starting = 0; runRender();
+      // je Lauf nachsehen, was der Türsteher entschieden hat: baut, wartet, prüft noch oder abgewiesen
+      return Promise.all(act.map(function (x) {
+        return api("/actions/runs/" + x.id + "/jobs").then(function (j) { return { run: x, ph: runPhase(x, j.jobs || []) }; })
+          .catch(function () { return { run: x, ph: { p: x.status === "in_progress" ? "baut" : "wartet" } }; });
+      }));
+    }).then(function (list) {
+      list.sort(function (a, b) { return a.run.id - b.run.id; });
+      var building = list.filter(function (z) { return z.ph.p === "baut"; })[0], waiting = list.filter(function (z) { return z.ph.p === "wartet"; });
+      RUN.active = building ? Object.assign({}, building.run, { status: "in_progress", run_started_at: building.ph.start || building.run.run_started_at })
+        : waiting[0] ? Object.assign({}, waiting[0].run, { status: "queued" }) : null;
+      RUN.queued = building ? waiting.length : Math.max(0, waiting.length - 1);
+      RUN.checking = list.some(function (z) { return z.ph.p === "pruefung"; });
+      if (RUN.active) RUN.starting = 0; runRender();
     }).catch(function () { return runCheckByCommands(); });
+  }
+  /* Phase eines Laufs aus seinen Jobs (wie agent/auftrag.py): Türsteher „Auftrag prüfen“, danach der Bau-Job */
+  function runPhase(run, jobs) {
+    var gate = jobs.filter(function (j) { return j.name === "Auftrag prüfen"; })[0], main = jobs.filter(function (j) { return j.name !== "Auftrag prüfen"; })[0];
+    if (gate && gate.status !== "completed") return { p: "pruefung" };
+    if (!main) return { p: gate && gate.conclusion && gate.conclusion !== "success" ? "aus" : "pruefung" };
+    if (main.status === "completed") return { p: "aus" };
+    if (main.status === "in_progress") return { p: "baut", start: main.started_at };
+    return { p: "wartet" };
   }
   /* Ohne Leserecht für Actions: Befehlsdateien mit dem letzten Lauf vergleichen */
   function runCheckByCommands() {
