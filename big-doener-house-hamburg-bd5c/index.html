@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#F3A712">
+<title>Big Döner House – Kebabimbiss in Hamburg</title>
+<meta name="description" content="Big Döner House: Kebabimbiss in Neugrabener Bahnhofstraße 10, Harburg, Hamburg. Öffnungszeiten, Anfahrt und Kontakt.">
+<meta property="og:title" content="Big Döner House – Kebabimbiss in Hamburg">
+<meta property="og:description" content="Big Döner House: Kebabimbiss in Neugrabener Bahnhofstraße 10, Harburg, Hamburg. Öffnungszeiten, Anfahrt und Kontakt.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23D7381E'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' text-anchor='middle' fill='%23FFFFFF'%3EB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&amp;display=swap">
+<style>
+:root {
+  --bg: #FFFFFF; --surface: #FFF6E8; --ink: #1E1A17; --muted: #5C534C;
+  --accent: #D7381E; --accent-ink: #FFFFFF; --accent2: #F3A712;
+  --line: #EFE3D3;
+  --hero-bg: #F3A712; --hero-ink: #1E1A17; --hero-muted: #4A3A26;
+  --blob1: #D7381E; --blob2: #E8467C; --blob3: #FFD23F;
+  --display: &#39;Bricolage Grotesque&#39;, system-ui, sans-serif; --body: &#39;Bricolage Grotesque&#39;, system-ui, sans-serif;
+  --dw: 800; --ds: normal; --dt: -0.035em;
+  --dcase: none; --dstyle: normal;
+  --radius: 18px; --btn-radius: 14px;
+  --name-scale: 1.000;
+  --ease: cubic-bezier(.2,.75,.15,1);
+  --spring: cubic-bezier(.34,1.56,.64,1);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 5rem; }
+html, body { overflow-x: clip; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 1.0625rem; line-height: 1.6; }
+a { color: inherit; }
+img, svg { display: block; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 3px solid var(--accent2); outline-offset: 3px; border-radius: 4px; }
+.wrap { width: min(74rem, 100% - 2.5rem); margin-inline: auto; }
+.display { font-family: var(--display); font-weight: var(--dw); font-stretch: var(--ds); letter-spacing: var(--dt); text-transform: var(--dcase); font-style: var(--dstyle); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- Entwurfs-Hinweis ---------- */
+.demo-bar { position: relative; z-index: 60; background: #111; color: #f2f2f2; font-size: .8125rem; line-height: 1.4; }
+.demo-bar .wrap { display: flex; gap: .4rem 1.25rem; align-items: center; justify-content: space-between; padding: .55rem 0; flex-wrap: wrap; }
+.demo-bar a { color: #fff; font-weight: 600; }
+.demo-bar button { background: none; border: 0; color: #bbb; font-size: 1.1rem; line-height: 1; padding: .2rem .4rem; }
+
+/* ---------- Fortschritt & Navigation ---------- */
+.progress { position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 80; background: var(--accent); transform-origin: 0 50%; transform: scaleX(0); }
+.nav { position: fixed; inset: 0 0 auto 0; z-index: 50; color: var(--hero-ink); transition: background .4s var(--ease), color .4s var(--ease), box-shadow .4s, transform .5s var(--ease); }
+.nav.has-bar { top: var(--bar-h, 0px); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 4.25rem; }
+.nav.solid { background: color-mix(in srgb, var(--bg) 82%, transparent); color: var(--ink); backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4); box-shadow: 0 1px 0 var(--line); top: 0; }
+.nav.hide { transform: translateY(-110%); }
+.brand { font-size: 1.3rem; text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 55vw; }
+.nav-links { display: flex; gap: 1.75rem; align-items: center; }
+.nav-links a { text-decoration: none; font-weight: 500; font-size: .95rem; position: relative; padding: .3rem 0; }
+.nav-links a:not(.btn)::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .35s var(--ease); }
+.nav-links a:not(.btn):hover::after, .nav-links a.active::after { transform: scaleX(1); transform-origin: left; }
+.burger { display: none; background: none; border: 0; width: 44px; height: 44px; position: relative; }
+.burger span { position: absolute; left: 10px; right: 10px; height: 2px; background: currentColor; transition: transform .4s var(--ease), opacity .3s; }
+.burger span:nth-child(1) { top: 16px; } .burger span:nth-child(2) { top: 26px; }
+.menu-open .burger span:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+.menu-open .burger span:nth-child(2) { transform: translateY(-5px) rotate(-45deg); }
+.overlay { position: fixed; inset: 0; z-index: 45; background: var(--hero-bg); color: var(--hero-ink); display: grid; align-content: center; padding: 6rem 1.5rem 2rem; clip-path: circle(0% at calc(100% - 2.6rem) 2.6rem); transition: clip-path .7s var(--ease); visibility: hidden; }
+.menu-open .overlay { clip-path: circle(150% at calc(100% - 2.6rem) 2.6rem); visibility: visible; }
+.overlay a { display: block; text-decoration: none; font-size: clamp(2.2rem, 9vw, 3.5rem); line-height: 1.15; padding: .2rem 0; opacity: 0; transform: translateY(30px); transition: opacity .5s, transform .6s var(--ease); }
+.menu-open .overlay a { opacity: 1; transform: none; transition-delay: calc(.15s + var(--i) * .07s); }
+.menu-open .nav { color: var(--hero-ink); background: transparent; box-shadow: none; backdrop-filter: none; }
+
+/* ---------- Buttons ---------- */
+.btn { --mx: 0px; --my: 0px; position: relative; overflow: hidden; display: inline-flex; align-items: center; gap: .55rem; text-decoration: none; font-weight: 600; font-size: 1rem; padding: .9rem 1.4rem; border-radius: var(--btn-radius); border: 2px solid currentColor; transform: translate(var(--mx), var(--my)); transition: transform .35s var(--ease), background .3s, color .3s, box-shadow .3s; isolation: isolate; white-space: nowrap; }
+.btn svg { width: 1.1em; height: 1.1em; flex: none; }
+.btn-primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn-primary:hover { box-shadow: 0 12px 30px -10px var(--accent); }
+.btn-ghost { background: transparent; }
+.btn-ghost::before { content: ""; position: absolute; inset: 0; background: currentColor; transform: translateY(101%); transition: transform .45s var(--ease); z-index: -1; opacity: .12; }
+.btn-ghost:hover::before { transform: none; }
+.btn-small { padding: .55rem 1rem; font-size: .9rem; }
+.ripple { position: absolute; border-radius: 50%; background: currentColor; opacity: .3; transform: scale(0); animation: ripple .7s var(--ease) forwards; pointer-events: none; }
+@keyframes ripple { to { transform: scale(4); opacity: 0; } }
+
+/* ---------- Hero ---------- */
+.hero { position: relative; min-height: 100svh; display: grid; align-items: center; background: var(--hero-bg); color: var(--hero-ink); overflow: hidden; padding: 7.5rem 0 5rem; isolation: isolate; }
+.aurora { position: absolute; inset: -20%; z-index: -2; filter: blur(70px) saturate(1.2); opacity: .75; }
+.blob { position: absolute; width: 46vmax; height: 46vmax; border-radius: 50%; mix-blend-mode: screen; transform: translate(var(--px, 0), var(--py, 0)); transition: transform 1.2s var(--ease); }
+.blob i { position: absolute; inset: 0; border-radius: inherit; animation: drift 18s ease-in-out infinite alternate; }
+.blob:nth-child(1) { left: 0; top: 5%; } .blob:nth-child(1) i { background: radial-gradient(circle, var(--blob1), transparent 65%); }
+.blob:nth-child(2) { right: -5%; top: -10%; } .blob:nth-child(2) i { background: radial-gradient(circle, var(--blob2), transparent 65%); animation-duration: 22s; animation-delay: -6s; }
+.blob:nth-child(3) { left: 30%; bottom: -25%; } .blob:nth-child(3) i { background: radial-gradient(circle, var(--blob3), transparent 65%); animation-duration: 26s; animation-delay: -12s; }
+.theme-streetfood .blob { mix-blend-mode: multiply; }
+@keyframes drift { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(8%, -6%) scale(1.15); } 100% { transform: translate(-6%, 8%) scale(.9); } }
+.grain { position: absolute; inset: 0; z-index: -1; opacity: .16; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.hero-inner { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2rem 3rem; align-items: end; }
+.status { display: inline-flex; align-items: center; gap: .6rem; padding: .45rem .95rem .45rem .75rem; border-radius: 999px; background: color-mix(in srgb, var(--hero-ink) 12%, transparent); border: 1px solid color-mix(in srgb, var(--hero-ink) 22%, transparent); backdrop-filter: blur(8px); font-size: .9rem; font-weight: 600; margin-bottom: 1.6rem; opacity: 0; animation: fadeUp .8s var(--ease) 1.1s forwards; }
+.status .dot { width: .6rem; height: .6rem; border-radius: 50%; background: #8a8f98; position: relative; }
+.status.open .dot { background: #34d17a; }
+.status.soon .dot { background: #ffb02e; }
+.status.open .dot::after, .status.soon .dot::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: inherit; animation: ping 1.8s cubic-bezier(0,0,.2,1) infinite; }
+@keyframes ping { 75%, 100% { transform: scale(2.6); opacity: 0; } }
+.hero h1 { margin: 0 0 1.4rem; line-height: .92; font-size: calc(clamp(3.2rem, 11vw, 9.5rem) * var(--name-scale)); overflow-wrap: break-word; hyphens: auto; }
+.theme-urban .hero h1 { line-height: .84; font-size: calc(clamp(3.6rem, 14vw, 12rem) * var(--name-scale)); }
+.hero h1 .w { display: inline-block; white-space: nowrap; }
+.hero h1 .ch { display: inline-block; opacity: 0; transform: translateY(.6em) rotate(8deg); animation: charIn .9s var(--spring) forwards; animation-delay: calc(.15s + var(--i) * .035s); transition: transform .4s var(--spring), color .3s; }
+.hero h1 .ch:hover { transform: translateY(-.12em) rotate(-4deg) scale(1.06); color: var(--accent2); }
+.theme-streetfood .hero h1 .ch:hover { color: var(--accent); }
+@keyframes charIn { to { opacity: 1; transform: none; } }
+.hero .slogan { font-size: clamp(1.25rem, 2.6vw, 1.75rem); font-weight: 600; margin: 0 0 .7rem; opacity: 0; animation: fadeUp .9s var(--ease) .8s forwards; }
+.hero .lead { max-width: 34em; color: var(--hero-muted); margin: 0 0 2rem; opacity: 0; animation: fadeUp .9s var(--ease) .95s forwards; }
+.hero .actions { opacity: 0; animation: fadeUp .9s var(--ease) 1.15s forwards; }
+.hero .btn-ghost { color: var(--hero-ink); }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+.actions { display: flex; flex-wrap: wrap; gap: .8rem; }
+.badge { width: 9.5rem; height: 9.5rem; position: relative; opacity: 0; animation: fadeUp 1s var(--ease) 1.3s forwards; color: var(--hero-ink); }
+.badge svg { width: 100%; height: 100%; animation: spin 22s linear infinite; }
+.badge text { font-size: 10.5px; letter-spacing: .14em; fill: currentColor; font-family: var(--body); font-weight: 600; }
+.badge .glyph { position: absolute; inset: 0; display: grid; place-items: center; font-size: 1.9rem; color: var(--accent2); }
+.theme-streetfood .badge .glyph { color: var(--accent); }
+@keyframes spin { to { transform: rotate(360deg); } }
+.scroll-cue { position: absolute; left: 50%; bottom: 1.5rem; transform: translateX(-50%); width: 26px; height: 42px; border: 2px solid color-mix(in srgb, var(--hero-ink) 55%, transparent); border-radius: 14px; opacity: 0; animation: fadeUp 1s var(--ease) 1.8s forwards; }
+.scroll-cue::after { content: ""; position: absolute; left: 50%; top: 8px; width: 4px; height: 8px; margin-left: -2px; border-radius: 2px; background: var(--hero-ink); animation: cue 1.8s var(--ease) infinite; }
+@keyframes cue { 0% { transform: translateY(0); opacity: 1; } 70% { transform: translateY(14px); opacity: 0; } 100% { opacity: 0; } }
+
+/* ---------- Laufband ---------- */
+.marquee { background: var(--accent); color: var(--accent-ink); overflow: hidden; padding: 1.05rem 0; border-block: 2px solid var(--ink); }
+.theme-mediterran .marquee, .theme-hanseatisch .marquee { border-block: 0; }
+.marquee-track { display: flex; width: max-content; will-change: transform; }
+.marquee-track span { font-size: clamp(1.15rem, 2.4vw, 1.6rem); padding-inline: 1.25rem; white-space: nowrap; display: inline-flex; align-items: center; gap: 2.5rem; }
+.marquee-track span::after { content: "●"; font-family: var(--body); font-size: .8em; opacity: .7; }
+
+/* ---------- Abschnitte ---------- */
+section.block { padding: clamp(4rem, 10vw, 8rem) 0; position: relative; }
+.kicker { display: inline-flex; align-items: center; gap: .6rem; font-weight: 600; color: var(--accent); margin-bottom: 1rem; font-size: .95rem; }
+.theme-urban .kicker { color: var(--ink); }
+.kicker::before { content: ""; width: 2rem; height: 2px; background: currentColor; }
+.h2 { font-size: clamp(2rem, 5.5vw, 4rem); line-height: 1; margin: 0 0 2rem; overflow-wrap: break-word; hyphens: auto; max-width: 18em; }
+.address { overflow-wrap: break-word; hyphens: auto; }
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s var(--ease), transform 1s var(--ease); transition-delay: calc(var(--d, 0) * 90ms); }
+.reveal.in { opacity: 1; transform: none; }
+
+/* Über uns */
+.about { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 5rem); align-items: center; }
+.about-text p { font-size: clamp(1.25rem, 2.2vw, 1.65rem); line-height: 1.45; margin: 0 0 1.2rem; max-width: 30em; }
+.about-text .word { opacity: .16; transition: opacity .25s linear; }
+.about-text .word.lit { opacity: 1; }
+.photo { position: relative; aspect-ratio: 4/5; border-radius: var(--radius); overflow: hidden; clip-path: inset(18% 18% 18% 18% round var(--radius)); transition: clip-path 1.4s var(--ease); background: var(--hero-bg); color: var(--hero-ink); display: grid; place-items: center; text-align: center; padding: 2rem; transform-style: preserve-3d; }
+.photo.in { clip-path: inset(0 0 0 0 round var(--radius)); }
+.photo::before { content: ""; position: absolute; inset: -30%; background: conic-gradient(from var(--a, 0deg), var(--blob1), var(--blob2), var(--blob3), var(--blob1)); filter: blur(40px); opacity: .55; animation: rot 14s linear infinite; }
+@property --a { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+@keyframes rot { to { --a: 360deg; } }
+.photo span { position: relative; max-width: 16em; font-size: .95rem; }
+.photo span b { display: block; font-family: var(--display); font-weight: var(--dw); font-stretch: var(--ds); font-style: var(--dstyle); font-size: 1.6rem; margin-bottom: .35rem; text-transform: var(--dcase); }
+
+/* Highlights */
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; perspective: 1200px; }
+.card { --rx: 0deg; --ry: 0deg; --gx: 50%; --gy: 50%; position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 2rem 1.75rem 1.9rem; transform: rotateX(var(--rx)) rotateY(var(--ry)); transition: transform .5s var(--ease), box-shadow .5s; overflow: hidden; }
+.card:hover { box-shadow: 0 30px 60px -30px color-mix(in srgb, var(--ink) 45%, transparent); }
+.card::after { content: ""; position: absolute; inset: 0; background: radial-gradient(420px circle at var(--gx) var(--gy), color-mix(in srgb, var(--accent) 16%, transparent), transparent 45%); opacity: 0; transition: opacity .4s; pointer-events: none; }
+.card:hover::after { opacity: 1; }
+.card .icon { width: 3.25rem; height: 3.25rem; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; margin-bottom: 1.4rem; }
+.card .icon svg { width: 1.5rem; height: 1.5rem; stroke-dasharray: 80; stroke-dashoffset: 80; transition: stroke-dashoffset 1.6s var(--ease) .3s; }
+.card.in .icon svg { stroke-dashoffset: 0; }
+.card h3 { font-size: 1.35rem; margin: 0 0 .5rem; line-height: 1.2; }
+.card p { margin: 0; color: var(--muted); }
+
+/* Galerie */
+.gallery { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; padding: 2.5rem 0 1rem; cursor: grab; scrollbar-width: none; }
+.gallery::-webkit-scrollbar { display: none; }
+.gallery.dragging { cursor: grabbing; scroll-snap-type: none; }
+.shot { flex: 0 0 clamp(15rem, 30vw, 22rem); aspect-ratio: 4/3; scroll-snap-align: start; border-radius: var(--radius); border: 2px dashed color-mix(in srgb, var(--muted) 60%, transparent); display: grid; place-items: center; color: var(--muted); font-size: .95rem; text-align: center; padding: 1rem; background: repeating-linear-gradient(-45deg, transparent 0 14px, color-mix(in srgb, var(--line) 55%, transparent) 14px 15px); transition: transform .5s var(--ease), border-color .3s, color .3s; user-select: none; }
+.shot:hover { transform: translateY(-6px) rotate(-1deg); border-color: var(--accent); color: var(--ink); }
+.drag-hint { display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: .9rem; }
+.drag-hint .arrows { display: flex; gap: .5rem; }
+.drag-hint button { width: 2.75rem; height: 2.75rem; border-radius: 50%; border: 1.5px solid var(--line); background: var(--surface); display: grid; place-items: center; transition: background .3s, color .3s, transform .3s var(--spring); }
+.drag-hint button:hover { background: var(--ink); color: var(--bg); transform: scale(1.08); }
+
+/* Speisekarte */
+.menu-wrap { background: var(--hero-bg); color: var(--hero-ink); border-radius: calc(var(--radius) * 1.4); padding: clamp(1.75rem, 5vw, 4rem); position: relative; overflow: hidden; }
+.menu-wrap .kicker { color: var(--accent2); }
+.theme-streetfood .menu-wrap { background: var(--ink); color: #FFF6E8; --hero-ink: #FFF6E8; --hero-muted: #CDBFAE; }
+.tabs { display: flex; gap: .4rem; flex-wrap: wrap; position: relative; margin-bottom: 2rem; }
+.tab { position: relative; z-index: 1; background: transparent; border: 0; padding: .7rem 1.2rem; border-radius: 999px; font-weight: 600; color: var(--hero-muted); transition: color .3s; }
+.tab[aria-selected="true"] { color: var(--accent-ink); }
+.tab-pill { position: absolute; z-index: 0; top: 0; left: 0; height: 100%; border-radius: 999px; background: var(--accent); transition: transform .5s var(--spring), width .5s var(--spring), height .5s var(--spring); }
+.panel { display: grid; gap: 0; }
+.dish { display: grid; grid-template-columns: 1fr auto; gap: .35rem 1.5rem; align-items: baseline; padding: 1.1rem 0; border-bottom: 1px dashed color-mix(in srgb, var(--hero-ink) 25%, transparent); opacity: 0; transform: translateX(-16px); animation: dishIn .6s var(--ease) forwards; animation-delay: calc(var(--i) * 80ms); }
+@keyframes dishIn { to { opacity: 1; transform: none; } }
+.skel { height: .95rem; border-radius: 6px; background: linear-gradient(90deg, color-mix(in srgb, var(--hero-ink) 12%, transparent) 0%, color-mix(in srgb, var(--hero-ink) 30%, transparent) 50%, color-mix(in srgb, var(--hero-ink) 12%, transparent) 100%); background-size: 200% 100%; animation: shimmer 1.8s linear infinite; }
+.skel.title { width: var(--w, 60%); height: 1.15rem; }
+.skel.desc { grid-column: 1; width: calc(var(--w, 60%) + 15%); max-width: 100%; height: .75rem; opacity: .7; }
+.skel.price { width: 3.5rem; }
+@keyframes shimmer { to { background-position: -200% 0; } }
+.menu-note { margin: 1.75rem 0 0; color: var(--hero-muted); max-width: 40em; font-size: .95rem; }
+
+/* Öffnungszeiten */
+.hours-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+.week { display: grid; gap: .35rem; }
+.day { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 1rem; align-items: center; padding: .55rem .75rem; border-radius: 12px; transition: background .3s; }
+.day:hover, .day.today { background: color-mix(in srgb, var(--accent) 9%, transparent); }
+.day .label { font-weight: 600; font-size: .95rem; }
+.day.today .label { color: var(--accent); }
+.theme-urban .day.today .label { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 4px; text-underline-offset: 4px; }
+.track { position: relative; height: 2.1rem; border-radius: 8px; background: repeating-linear-gradient(90deg, color-mix(in srgb, var(--line) 80%, transparent) 0 1px, transparent 1px calc(100% / 24)); background-color: color-mix(in srgb, var(--line) 30%, transparent); overflow: visible; }
+.seg { position: absolute; top: 3px; bottom: 3px; border-radius: 6px; background: var(--accent); transform-origin: left; transform: scaleX(0); transition: transform 1.1s var(--ease); transition-delay: calc(var(--i) * 70ms); }
+.theme-urban .seg { background: var(--ink); }
+.week.in .seg { transform: scaleX(1); }
+.seg-label { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 600; color: var(--accent-ink); white-space: nowrap; overflow: hidden; }
+.theme-urban .seg-label { color: var(--bg); }
+.closed-label { position: absolute; inset: 0; display: flex; align-items: center; padding-left: .75rem; font-size: .85rem; color: var(--muted); }
+.needle { position: absolute; top: -6px; bottom: -6px; width: 2px; background: var(--ink); border-radius: 2px; z-index: 2; }
+.needle::before { content: ""; position: absolute; top: -5px; left: 50%; width: 10px; height: 10px; margin-left: -5px; border-radius: 50%; background: var(--ink); box-shadow: 0 0 0 4px color-mix(in srgb, var(--ink) 18%, transparent); animation: breathe 2s ease-in-out infinite; }
+@keyframes breathe { 50% { box-shadow: 0 0 0 8px color-mix(in srgb, var(--ink) 6%, transparent); } }
+.axis { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 1rem; padding: 0 .75rem; font-size: .75rem; color: var(--muted); }
+.axis div { display: flex; justify-content: space-between; }
+.hours-list { list-style: none; margin: 0; padding: 0; }
+.hours-list li { display: flex; justify-content: space-between; gap: 1rem; padding: .7rem 0; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+.hours-list li.today { font-weight: 700; }
+
+/* Anfahrt */
+.visit { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: clamp(2rem, 5vw, 4rem); align-items: stretch; }
+.address { font-size: clamp(1.5rem, 3vw, 2.2rem); line-height: 1.2; margin: 0 0 1.5rem; }
+.contact-rows { display: grid; gap: .8rem; margin-bottom: 2rem; }
+.contact-rows button, .contact-rows a { display: flex; align-items: center; gap: .75rem; background: none; border: 0; padding: 0; text-align: left; text-decoration: none; font-size: 1rem; }
+.contact-rows .ico { width: 2.5rem; height: 2.5rem; border-radius: 50%; background: var(--surface); border: 1px solid var(--line); display: grid; place-items: center; flex: none; transition: background .3s, color .3s, transform .4s var(--spring); }
+.contact-rows :is(a, button):hover .ico { background: var(--accent); color: var(--accent-ink); transform: rotate(-12deg) scale(1.08); }
+.contact-rows svg { width: 1.1rem; height: 1.1rem; }
+.map { position: relative; border-radius: calc(var(--radius) * 1.2); overflow: hidden; min-height: 22rem; background: var(--hero-bg); color: var(--hero-ink); }
+.map-art { position: absolute; inset: 0; background:
+  linear-gradient(115deg, transparent 47%, color-mix(in srgb, var(--hero-ink) 22%, transparent) 47.4% 48.6%, transparent 49%),
+  linear-gradient(20deg, transparent 60%, color-mix(in srgb, var(--hero-ink) 16%, transparent) 60.3% 61%, transparent 61.3%),
+  linear-gradient(170deg, transparent 30%, color-mix(in srgb, var(--blob1) 50%, transparent) 30.5% 34%, transparent 34.5%),
+  repeating-linear-gradient(0deg, transparent 0 46px, color-mix(in srgb, var(--hero-ink) 8%, transparent) 46px 47px),
+  repeating-linear-gradient(90deg, transparent 0 46px, color-mix(in srgb, var(--hero-ink) 8%, transparent) 46px 47px); }
+.pin { position: absolute; left: 50%; top: 45%; width: 3rem; height: 3rem; margin: -3rem 0 0 -1.5rem; color: var(--accent); animation: bounce 2.2s var(--ease) infinite; filter: drop-shadow(0 8px 10px rgba(0,0,0,.35)); }
+.theme-urban .pin { color: var(--accent); }
+.pin-shadow { position: absolute; left: 50%; top: 45%; width: 1.6rem; height: .5rem; margin-left: -.8rem; border-radius: 50%; background: rgba(0,0,0,.35); animation: shadow 2.2s var(--ease) infinite; }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+@keyframes shadow { 0%, 100% { transform: scale(1); opacity: .5; } 50% { transform: scale(.6); opacity: .25; } }
+.map-cta { position: absolute; left: 1.25rem; right: 1.25rem; bottom: 1.25rem; display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; justify-content: space-between; background: color-mix(in srgb, var(--hero-bg) 70%, transparent); backdrop-filter: blur(10px); padding: .9rem 1rem; border-radius: var(--radius); font-size: .85rem; color: var(--hero-muted); }
+.map-cta .btn { color: var(--hero-ink); }
+.map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; opacity: 0; transition: opacity .8s; }
+.map.loaded iframe { opacity: 1; }
+
+/* Schlussbild */
+.finale { background: var(--hero-bg); color: var(--hero-ink); text-align: center; overflow: hidden; position: relative; isolation: isolate; }
+.finale .aurora { opacity: .45; }
+.finale .big { font-size: clamp(2.6rem, 9vw, 7rem); line-height: .95; margin: 0 0 2rem; }
+.finale .actions { justify-content: center; }
+.finale .btn-ghost { color: var(--hero-ink); }
+
+footer { background: var(--hero-bg); color: var(--hero-muted); font-size: .875rem; border-top: 1px solid color-mix(in srgb, var(--hero-ink) 14%, transparent); padding: 1.75rem 0 calc(1.75rem + env(safe-area-inset-bottom)); }
+footer .wrap { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; justify-content: space-between; }
+footer nav { display: flex; gap: 1.25rem; }
+
+/* Mobile Aktionsleiste */
+.dock { position: fixed; left: .75rem; right: .75rem; bottom: calc(.75rem + env(safe-area-inset-bottom)); z-index: 40; display: none; grid-template-columns: repeat(3, 1fr); gap: .4rem; padding: .4rem; border-radius: 20px; background: color-mix(in srgb, var(--ink) 88%, transparent); backdrop-filter: blur(14px); box-shadow: 0 18px 40px -12px rgba(0,0,0,.45); transform: translateY(140%); transition: transform .6s var(--spring); }
+.dock.show { transform: none; }
+.dock a { display: grid; justify-items: center; gap: .15rem; padding: .55rem .25rem; border-radius: 14px; text-decoration: none; color: var(--bg); font-size: .75rem; font-weight: 600; }
+.dock a:first-child { background: var(--accent); color: var(--accent-ink); }
+.dock svg { width: 1.3rem; height: 1.3rem; }
+.toast { position: fixed; left: 50%; bottom: 6.5rem; z-index: 90; transform: translate(-50%, 20px); opacity: 0; background: var(--ink); color: var(--bg); padding: .7rem 1.1rem; border-radius: 999px; font-size: .9rem; font-weight: 600; transition: opacity .3s, transform .5s var(--spring); pointer-events: none; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+@media (max-width: 860px) {
+  .nav-links { display: none; }
+  .burger { display: block; }
+  .hero-inner { grid-template-columns: 1fr; }
+  .badge { position: absolute; right: 0; top: -6.5rem; width: 6.5rem; height: 6.5rem; }
+  .badge .glyph { font-size: 1.3rem; }
+  .about, .hours-grid, .visit { grid-template-columns: 1fr; }
+  .cards { grid-template-columns: 1fr; }
+  .photo { aspect-ratio: 4/3; }
+  .dock { display: grid; }
+  footer { padding-bottom: calc(6rem + env(safe-area-inset-bottom)); }
+  .day, .axis { grid-template-columns: 4.6rem minmax(0, 1fr); gap: .6rem; }
+}
+@media (max-width: 480px) {
+  .hero .actions .btn { flex: 1 1 100%; justify-content: center; }
+  .hero { padding-top: 9rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  .reveal, .hero h1 .ch, .status, .hero .slogan, .hero .lead, .hero .actions, .badge, .scroll-cue, .dish { opacity: 1 !important; transform: none !important; }
+  .photo { clip-path: none; }
+  .about-text .word { opacity: 1; }
+}
+</style>
+</head>
+<body class="theme-streetfood">
+
+<div class="demo-bar" id="demo-bar" role="note">
+  <div class="wrap">
+    <span>Unverbindlicher Entwurf von Medialyte für Big Döner House. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht.</span>
+    <span>Gefällt Ihnen der Entwurf? <a href="tel:01709647532">0170 9647532</a>
+      <button type="button" aria-label="Hinweis ausblenden" data-close-bar>×</button></span>
+  </div>
+</div>
+
+<div class="progress" aria-hidden="true"></div>
+
+<header class="nav has-bar" id="nav">
+  <div class="wrap">
+    <a class="brand display" href="#top">Big Döner House</a>
+    <nav class="nav-links" aria-label="Hauptnavigation">
+      <a href="#ueber-uns">Über uns</a>
+      <a href="#speisekarte">Speisekarte</a>
+      <a href="#zeiten">Öffnungszeiten</a>
+      <a href="#anfahrt">Anfahrt</a>
+<a class="btn btn-primary btn-small magnetic" href="tel:04046639345">Anrufen</a>    </nav>
+    <button class="burger" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="overlay"><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="overlay" id="overlay" aria-hidden="true">
+  <nav aria-label="Mobile Navigation">
+    <a class="display" style="--i:0" href="#ueber-uns">Über uns</a>
+    <a class="display" style="--i:1" href="#speisekarte">Speisekarte</a>
+    <a class="display" style="--i:2" href="#zeiten">Öffnungszeiten</a>
+    <a class="display" style="--i:3" href="#anfahrt">Anfahrt</a>
+<a class="display" style="--i:4" href="tel:04046639345">Anrufen</a>  </nav>
+</div>
+
+<main id="top">
+  <section class="hero" aria-labelledby="name">
+    <div class="aurora" aria-hidden="true"><div class="blob"><i></i></div><div class="blob"><i></i></div><div class="blob"><i></i></div></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <div>
+        <div class="status" id="status" hidden><span class="dot"></span><span id="status-text"></span></div>
+        <h1 class="display" id="name" aria-label="Big Döner House"><span class="w" aria-hidden="true"><span class="ch" style="--i:0">B</span><span class="ch" style="--i:1">i</span><span class="ch" style="--i:2">g</span></span> <span class="w" aria-hidden="true"><span class="ch" style="--i:3">D</span><span class="ch" style="--i:4">ö</span><span class="ch" style="--i:5">n</span><span class="ch" style="--i:6">e</span><span class="ch" style="--i:7">r</span></span> <span class="w" aria-hidden="true"><span class="ch" style="--i:8">H</span><span class="ch" style="--i:9">o</span><span class="ch" style="--i:10">u</span><span class="ch" style="--i:11">s</span><span class="ch" style="--i:12">e</span></span></h1>
+        <p class="slogan">Kebabimbiss in Hamburg</p>
+        <p class="lead">Schön, dass Sie da sind. Bei Big Döner House in Neugrabener Bahnhofstraße 10, Harburg sind Sie herzlich willkommen.</p>
+        <div class="actions">
+<a class="btn btn-primary magnetic" href="tel:04046639345"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>040 46639345</a>          <a class="btn btn-ghost magnetic" href="#speisekarte">Zur Speisekarte</a>
+        </div>
+      </div>
+      <div class="badge" aria-hidden="true">
+        <svg viewBox="0 0 120 120"><defs><path id="circle" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs>
+          <text><textPath href="#circle" textLength="286" lengthAdjust="spacing">KEBABIMBISS • HAMBURG • </textPath></text></svg>
+        <span class="glyph">●</span>
+      </div>
+    </div>
+    <a class="scroll-cue" href="#ueber-uns" aria-label="Weiter nach unten"></a>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track" id="marquee">
+<span class="display">Kebabimbiss</span><span class="display">in Hamburg</span><span class="display">Vor Ort essen</span><span class="display">Zum Mitnehmen</span><span class="display">Plätze draußen</span><span class="display">Mittagstisch</span><span class="display">Abendessen</span><span class="display">Kaffee</span><span class="display">Desserts</span><span class="display">Kebabimbiss</span><span class="display">in Hamburg</span><span class="display">Vor Ort essen</span><span class="display">Zum Mitnehmen</span><span class="display">Plätze draußen</span><span class="display">Mittagstisch</span><span class="display">Abendessen</span><span class="display">Kaffee</span><span class="display">Desserts</span><span class="display">Kebabimbiss</span><span class="display">in Hamburg</span><span class="display">Vor Ort essen</span><span class="display">Zum Mitnehmen</span><span class="display">Plätze draußen</span><span class="display">Mittagstisch</span><span class="display">Abendessen</span><span class="display">Kaffee</span><span class="display">Desserts</span><span class="display">Kebabimbiss</span><span class="display">in Hamburg</span><span class="display">Vor Ort essen</span><span class="display">Zum Mitnehmen</span><span class="display">Plätze draußen</span><span class="display">Mittagstisch</span><span class="display">Abendessen</span><span class="display">Kaffee</span><span class="display">Desserts</span>    </div>
+  </div>
+
+  <section class="block" id="ueber-uns">
+    <div class="wrap about">
+      <div class="about-text">
+        <div class="kicker reveal">Über uns</div>
+<p class="scrub">Big Döner House ist Ihr Ort für Kebabimbiss in Hamburg. Kommen Sie vorbei – wir freuen uns auf Sie.</p>      </div>
+      <div class="photo reveal-clip"><span><b>Ihr Foto</b>Hier zeigen wir Ihren Gastraum, Ihr Team oder Ihr Lieblingsgericht.</span></div>
+    </div>
+  </section>
+
+  <section class="block" id="erlebnis" style="padding-top: 0">
+    <div class="wrap">
+      <div class="kicker reveal">Was Sie erwartet</div>
+      <h2 class="h2 display reveal" style="--d:1">Kebabimbiss in Hamburg</h2>
+      <div class="cards">
+        <article class="card reveal tilt" style="--d:1">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M8 4l1 4M16 4l-1 4M4 13h16M6 13a6 6 0 0 0 12 0M9 20h6"/></svg></div>
+          <h3>Vor Ort essen</h3>
+          <p>Nehmen Sie Platz, wir bringen Ihnen das Essen an den Tisch.</p>
+        </article>
+        <article class="card reveal tilt" style="--d:2">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <h3>Zum Mitnehmen</h3>
+          <p>Keine Zeit zum Bleiben? Wir packen Ihnen alles zum Mitnehmen ein.</p>
+        </article>
+        <article class="card reveal tilt" style="--d:3">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></div>
+          <h3>Plätze draußen</h3>
+          <p>Bei gutem Wetter sitzen Sie bei uns draußen.</p>
+        </article>
+      </div>
+      <div class="gallery" id="gallery" tabindex="0" aria-label="Platz für Fotos, seitlich scrollbar">
+        <div class="shot">Ihr Lieblingsgericht</div>
+        <div class="shot">Ihr Gastraum</div>
+        <div class="shot">Ihre Küche in Aktion</div>
+        <div class="shot">Ihr Team</div>
+        <div class="shot">Ihre Terrasse oder Theke</div>
+        <div class="shot">Ein besonderer Abend</div>
+      </div>
+      <div class="drag-hint"><span>Ziehen oder wischen: Hier kommen Ihre Fotos hin.</span>
+        <span class="arrows"><button type="button" data-scroll="-1" aria-label="Zurück"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button><button type="button" data-scroll="1" aria-label="Weiter"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></span></div>
+    </div>
+  </section>
+
+  <section class="block" id="speisekarte" style="padding-top: 0">
+    <div class="wrap">
+      <div class="menu-wrap reveal">
+        <div class="kicker">Speisekarte</div>
+        <h2 class="h2 display">Unsere Karte</h2>
+        <div class="tabs" role="tablist" aria-label="Kategorien">
+          <span class="tab-pill" aria-hidden="true"></span>
+          <button class="tab" role="tab" type="button" id="tab-1" aria-controls="panel" aria-selected="true" data-cat="Vorspeisen">Vorspeisen</button>
+          <button class="tab" role="tab" type="button" id="tab-2" aria-controls="panel" aria-selected="false" data-cat="Hauptgerichte">Hauptgerichte</button>
+          <button class="tab" role="tab" type="button" id="tab-3" aria-controls="panel" aria-selected="false" data-cat="Desserts">Desserts</button>
+          <button class="tab" role="tab" type="button" id="tab-4" aria-controls="panel" aria-selected="false" data-cat="Getränke">Getränke</button>
+        </div>
+        <div class="panel" id="panel" role="tabpanel" aria-live="polite"></div>
+        <p class="menu-note">In der fertigen Website stehen hier Ihre Gerichte mit Beschreibung und Preis. Sie können die Karte jederzeit selbst ändern.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="zeiten" style="padding-top: 0">
+    <div class="wrap">
+      <div class="kicker reveal">Öffnungszeiten</div>
+      <h2 class="h2 display reveal" style="--d:1">Wann wir für Sie da sind</h2>
+      <div class="hours-grid">
+        <div>
+          <div class="week reveal" id="week" aria-hidden="true"></div>
+          <div class="axis" aria-hidden="true"><span></span><div><span>0</span><span>6</span><span>12</span><span>18</span><span>24 Uhr</span></div></div>
+        </div>
+        <ul class="hours-list reveal" style="--d:2">
+<li data-day="0"><span>Montag</span><span>09:00 – 22:00 Uhr</span></li><li data-day="1"><span>Dienstag</span><span>09:00 – 22:00 Uhr</span></li><li data-day="2"><span>Mittwoch</span><span>09:00 – 22:00 Uhr</span></li><li data-day="3"><span>Donnerstag</span><span>09:00 – 22:00 Uhr</span></li><li data-day="4"><span>Freitag</span><span>09:00 – 23:00 Uhr</span></li><li data-day="5"><span>Samstag</span><span>09:00 – 23:00 Uhr</span></li><li data-day="6"><span>Sonntag</span><span>09:00 – 22:00 Uhr</span></li>        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="anfahrt" style="padding-top: 0">
+    <div class="wrap visit">
+      <div>
+        <div class="kicker reveal">Anfahrt &amp; Kontakt</div>
+        <p class="address display reveal" style="--d:1">Neugrabener Bahnhofstraße 10, Harburg<br>21149 Hamburg</p>
+        <div class="contact-rows reveal" style="--d:2">
+<a href="tel:04046639345"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>040 46639345</a>          <button type="button" data-copy="Neugrabener Bahnhofstraße 10, Harburg, 21149 Hamburg"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></span>Adresse kopieren</button>
+          <button type="button" data-share><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg></span>Seite teilen</button>
+        </div>
+        <div class="actions reveal" style="--d:3"><a class="btn btn-primary magnetic" href="https://www.google.com/maps/search/?api=1&amp;query=Big+D%C3%B6ner+House%2C+Neugrabener+Bahnhofstra%C3%9Fe+10%2C+Harburg%2C+21149+Hamburg" target="_blank" rel="noopener">Route planen</a></div>
+      </div>
+      <div class="map reveal" style="--d:2" id="map" data-lat="53.471317799999994" data-lng="9.854066999999999">
+        <div class="map-art" aria-hidden="true"></div>
+        <div class="pin-shadow" aria-hidden="true"></div>
+        <svg class="pin" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7.5 7.5 0 0 0-7.5 7.5C4.5 15.3 12 22 12 22s7.5-6.7 7.5-12.5A7.5 7.5 0 0 0 12 2zm0 10.2a2.7 2.7 0 1 1 0-5.4 2.7 2.7 0 0 1 0 5.4z"/></svg>
+<div class="map-cta"><span>Beim Laden der Karte werden Daten an OpenStreetMap übertragen.</span><button class="btn btn-ghost btn-small" type="button" data-load-map>Karte laden</button></div>      </div>
+    </div>
+  </section>
+
+  <section class="block finale">
+    <div class="aurora" aria-hidden="true"><div class="blob"><i></i></div><div class="blob"><i></i></div><div class="blob"><i></i></div></div>
+    <div class="wrap">
+      <p class="big display reveal">Wir freuen uns auf Sie.</p>
+      <div class="actions reveal" style="--d:1">
+<a class="btn btn-primary magnetic" href="tel:04046639345">Jetzt anrufen</a>        <a class="btn btn-ghost magnetic" href="https://www.google.com/maps/search/?api=1&amp;query=Big+D%C3%B6ner+House%2C+Neugrabener+Bahnhofstra%C3%9Fe+10%2C+Harburg%2C+21149+Hamburg" target="_blank" rel="noopener">Route planen</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Entwurf von Medialyte, 21147 Hamburg. Adresse und Öffnungszeiten: Google.</span>
+    <nav><a href="https://medialyte.de/impressum">Impressum</a><a href="https://medialyte.de/datenschutzerklaerung">Datenschutz</a></nav>
+  </div>
+</footer>
+
+<nav class="dock" id="dock" aria-label="Schnellzugriff">
+<a href="tel:04046639345"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Anrufen</a>  <a href="https://www.google.com/maps/search/?api=1&amp;query=Big+D%C3%B6ner+House%2C+Neugrabener+Bahnhofstra%C3%9Fe+10%2C+Harburg%2C+21149+Hamburg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>Route</a>
+  <a href="#zeiten"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Zeiten</a>
+</nav>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script type="application/json" id="data">{"kategorien": ["Vorspeisen", "Hauptgerichte", "Desserts", "Getr\u00e4nke"], "perioden": [[540, 1320], [1980, 2760], [3420, 4200], [4860, 5640], [6300, 7080], [7740, 8580], [9180, 10020]]}</script>
+<script>
+(function () {
+  "use strict";
+  var data = JSON.parse(document.getElementById("data").textContent);
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var fine = window.matchMedia("(pointer: fine)").matches;
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var WEEK = 10080, DAYS = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
+
+  function toast(msg) { var t = $("#toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(t._h); t._h = setTimeout(function () { t.classList.remove("show"); }, 2200); }
+  function hm(min) { min = ((min % 1440) + 1440) % 1440; var h = Math.floor(min / 60), m = min % 60; return (h < 10 ? "0" : "") + h + ":" + (m < 10 ? "0" : "") + m; }
+  function weekNow() { var d = new Date(); return d.getDay() * 1440 + d.getHours() * 60 + d.getMinutes(); }
+
+  /* ---- Entwurfs-Hinweis & Navigation ---- */
+  var bar = $("#demo-bar"), nav = $("#nav");
+  function barHeight() { document.documentElement.style.setProperty("--bar-h", (bar && !bar.hidden ? bar.offsetHeight : 0) + "px"); }
+  barHeight(); window.addEventListener("resize", barHeight);
+  $("[data-close-bar]").addEventListener("click", function () { bar.hidden = true; nav.classList.remove("has-bar"); barHeight(); });
+
+  var lastY = 0, progress = $(".progress");
+  function onScroll() {
+    var y = window.scrollY, h = document.documentElement.scrollHeight - innerHeight;
+    progress.style.transform = "scaleX(" + (h > 0 ? y / h : 0) + ")";
+    nav.classList.toggle("solid", y > innerHeight * 0.6);
+    nav.classList.toggle("hide", y > lastY && y > innerHeight && !document.body.classList.contains("menu-open"));
+    $("#dock").classList.toggle("show", y > innerHeight * 0.7);
+    lastY = y;
+  }
+  window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+  var burger = $(".burger"), overlay = $("#overlay");
+  function menu(open) { document.body.classList.toggle("menu-open", open); burger.setAttribute("aria-expanded", open); burger.setAttribute("aria-label", open ? "Menü schließen" : "Menü öffnen"); overlay.setAttribute("aria-hidden", !open); document.body.style.overflow = open ? "hidden" : ""; }
+  burger.addEventListener("click", function () { menu(!document.body.classList.contains("menu-open")); });
+  $$("#overlay a").forEach(function (a) { a.addEventListener("click", function () { menu(false); }); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") menu(false); });
+
+  // aktiven Abschnitt in der Navigation markieren
+  var links = $$(".nav-links a[href^='#']");
+  if ("IntersectionObserver" in window) {
+    var spy = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) links.forEach(function (l) { l.classList.toggle("active", l.getAttribute("href") === "#" + e.target.id); }); }); }, { rootMargin: "-45% 0px -50% 0px" });
+    ["ueber-uns", "speisekarte", "zeiten", "anfahrt"].forEach(function (id) { var el = document.getElementById(id); if (el) spy.observe(el); });
+  }
+
+  /* ---- Live-Status: jetzt geöffnet? ---- */
+  var periods = data.perioden || [];
+  function status() {
+    if (!periods.length) return null;
+    var now = weekNow(), i, p, s, e;
+    for (i = 0; i < periods.length; i++) {
+      p = periods[i];
+      for (var k = -1; k <= 0; k++) {
+        s = p[0] + k * WEEK; e = p[1] + k * WEEK;
+        if (now >= s && now < e) {
+          if (e - s >= WEEK) return { cls: "open", text: "Rund um die Uhr geöffnet" };
+          var left = e - now;
+          return left <= 60 ? { cls: "soon", text: "Schließt bald, um " + hm(e) + " Uhr" } : { cls: "open", text: "Jetzt geöffnet bis " + hm(e) + " Uhr" };
+        }
+      }
+    }
+    var best = null;
+    periods.forEach(function (p) { [p[0], p[0] + WEEK].forEach(function (st) { if (st > now && (best === null || st < best)) best = st; }); });
+    if (best === null) return null;
+    var dayDiff = Math.floor(best / 1440) - Math.floor(now / 1440);
+    var when = dayDiff === 0 ? "heute" : dayDiff === 1 ? "morgen" : "am " + DAYS[Math.floor(best / 1440) % 7];
+    return { cls: best - now <= 60 ? "soon" : "closed", text: "Geschlossen, öffnet " + when + " um " + hm(best) + " Uhr" };
+  }
+  function paintStatus() { var st = status(), el = $("#status"); if (!st) return; el.hidden = false; el.className = "status " + st.cls; $("#status-text").textContent = st.text; }
+  paintStatus(); setInterval(paintStatus, 30000);
+
+  /* ---- Wochen-Zeitleiste ---- */
+  var week = $("#week"), order = [1, 2, 3, 4, 5, 6, 0], todayIdx = new Date().getDay();
+  order.forEach(function (gd, row) {
+    var start = gd * 1440, end = start + 1440, segs = [];
+    periods.forEach(function (p) { [0, -WEEK, WEEK].forEach(function (sh) { var s = Math.max(p[0] + sh, start), e = Math.min(p[1] + sh, end); if (e > s) segs.push([s - start, e - start]); }); });
+    var el = document.createElement("div"); el.className = "day" + (gd === todayIdx ? " today" : "");
+    var label = document.createElement("span"); label.className = "label"; label.textContent = DAYS[gd].slice(0, innerWidth < 860 ? 2 : 10); el.appendChild(label);
+    var track = document.createElement("div"); track.className = "track";
+    el.appendChild(track); week.appendChild(el);
+    if (!periods.length) { var u = document.createElement("span"); u.className = "closed-label"; u.textContent = "folgt"; track.appendChild(u); }
+    else if (!segs.length) { var c = document.createElement("span"); c.className = "closed-label"; c.textContent = "geschlossen"; track.appendChild(c); }
+    segs.forEach(function (sg, j) {
+      var b = document.createElement("span"); b.className = "seg"; b.style.left = (sg[0] / 14.4) + "%"; b.style.width = ((sg[1] - sg[0]) / 14.4) + "%"; b.style.setProperty("--i", row + j);
+      b.title = hm(sg[0]) + "–" + (sg[1] >= 1440 ? "24:00" : hm(sg[1]));
+      if ((sg[1] - sg[0]) / 1440 * track.clientWidth > 92 || (sg[1] - sg[0] >= 300 && !track.clientWidth)) { var t = document.createElement("span"); t.className = "seg-label"; t.textContent = b.title; b.appendChild(t); }
+      track.appendChild(b);
+    });
+    if (gd === todayIdx) { var nd = document.createElement("span"); nd.className = "needle"; nd.id = "needle"; track.appendChild(nd); }
+  });
+  function moveNeedle() { var n = $("#needle"); if (!n) return; var d = new Date(); n.style.left = ((d.getHours() * 60 + d.getMinutes()) / 14.4) + "%"; }
+  moveNeedle(); setInterval(moveNeedle, 30000);
+  var li = $(".hours-list li[data-day='" + ((todayIdx + 6) % 7) + "']"); if (li) li.classList.add("today");
+
+  /* ---- Speisekarte: Tabs ---- */
+  var tabs = $$(".tab"), pill = $(".tab-pill"), panel = $("#panel");
+  var widths = [[62, 48], [44, 70], [70, 40], [52, 64], [38, 55]];
+  function select(tab) {
+    tabs.forEach(function (t) { t.setAttribute("aria-selected", t === tab); });
+    pill.style.width = tab.offsetWidth + "px"; pill.style.height = tab.offsetHeight + "px";
+    pill.style.transform = "translate(" + tab.offsetLeft + "px," + tab.offsetTop + "px)";
+    panel.setAttribute("aria-labelledby", tab.id); panel.innerHTML = "";
+    var seed = tab.textContent.length;
+    for (var i = 0; i < 4; i++) {
+      var w = widths[(seed + i) % widths.length], row = document.createElement("div");
+      row.className = "dish"; row.style.setProperty("--i", i);
+      row.innerHTML = '<span class="skel title" style="--w:' + w[0] + '%"></span><span class="skel price"></span><span class="skel desc" style="--w:' + w[1] + '%"></span>';
+      panel.appendChild(row);
+    }
+    var sr = document.createElement("p"); sr.className = "sr-only"; sr.textContent = "Platzhalter für Gerichte der Kategorie " + tab.textContent; panel.appendChild(sr);
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener("click", function () { select(t); });
+    t.addEventListener("keydown", function (e) { var n = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0; if (n) { var nt = tabs[(i + n + tabs.length) % tabs.length]; nt.focus(); select(nt); } });
+  });
+  function initTabs() { var cur = tabs.filter(function (t) { return t.getAttribute("aria-selected") === "true"; })[0] || tabs[0]; if (cur) select(cur); }
+  initTabs(); window.addEventListener("resize", initTabs);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(initTabs);
+
+  /* ---- Einblenden beim Scrollen ---- */
+  if ("IntersectionObserver" in window && !reduce) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }); }, { threshold: 0.15 });
+    $$(".reveal, .reveal-clip, .card, .week").forEach(function (el) { io.observe(el); });
+  } else { $$(".reveal, .reveal-clip, .card, .week").forEach(function (el) { el.classList.add("in"); }); }
+
+  /* ---- Über uns: Wort für Wort beim Scrollen ---- */
+  var words = [];
+  $$(".scrub").forEach(function (p) {
+    var parts = p.textContent.split(/(\s+)/); p.textContent = "";
+    parts.forEach(function (w) { if (/^\s+$/.test(w)) { p.appendChild(document.createTextNode(w)); return; } var s = document.createElement("span"); s.className = "word"; s.textContent = w; p.appendChild(s); words.push(s); });
+  });
+  function scrub() {
+    if (!words.length) return;
+    var box = $(".about-text").getBoundingClientRect(), vh = innerHeight;
+    var prog = Math.min(1, Math.max(0, (vh * 0.85 - box.top) / (box.height + vh * 0.35)));
+    var lit = Math.round(prog * words.length);
+    words.forEach(function (w, i) { w.classList.toggle("lit", reduce || i < lit); });
+  }
+  window.addEventListener("scroll", scrub, { passive: true }); scrub();
+
+  /* ---- Laufband: reagiert auf Scrollrichtung und -tempo ---- */
+  var track = $("#marquee"), x = 0, dir = -1, boost = 0, prevY = scrollY;
+  function loop() {
+    var dy = scrollY - prevY; prevY = scrollY;
+    if (dy) { dir = dy > 0 ? -1 : 1; boost = Math.min(12, Math.abs(dy) * 0.4); }
+    boost *= 0.92;
+    x += dir * (0.6 + boost);
+    var half = track.scrollWidth / 2;
+    if (x <= -half) x += half; if (x > 0) x -= half;
+    track.style.transform = "translate3d(" + x + "px,0,0)";
+    requestAnimationFrame(loop);
+  }
+  if (!reduce) requestAnimationFrame(loop);
+
+  /* ---- Hero: Farbwolken folgen der Maus ---- */
+  if (fine && !reduce) {
+    var blobs = $$(".hero .blob");
+    $(".hero").addEventListener("pointermove", function (e) {
+      var r = this.getBoundingClientRect(), dx = (e.clientX - r.left) / r.width - 0.5, dy = (e.clientY - r.top) / r.height - 0.5;
+      blobs.forEach(function (b, i) { var k = (i + 1) * 40; b.style.setProperty("--px", dx * k + "px"); b.style.setProperty("--py", dy * k + "px"); });
+    });
+  }
+
+  /* ---- Magnetische Buttons & Klick-Welle ---- */
+  $$(".magnetic").forEach(function (btn) {
+    if (fine && !reduce) {
+      btn.addEventListener("pointermove", function (e) { var r = btn.getBoundingClientRect(); btn.style.setProperty("--mx", (e.clientX - r.left - r.width / 2) * 0.25 + "px"); btn.style.setProperty("--my", (e.clientY - r.top - r.height / 2) * 0.35 + "px"); });
+      btn.addEventListener("pointerleave", function () { btn.style.setProperty("--mx", "0px"); btn.style.setProperty("--my", "0px"); });
+    }
+  });
+  $$(".btn").forEach(function (btn) {
+    btn.addEventListener("pointerdown", function (e) { var r = btn.getBoundingClientRect(), s = Math.max(r.width, r.height), w = document.createElement("span"); w.className = "ripple"; w.style.width = w.style.height = s + "px"; w.style.left = e.clientX - r.left - s / 2 + "px"; w.style.top = e.clientY - r.top - s / 2 + "px"; btn.appendChild(w); setTimeout(function () { w.remove(); }, 700); });
+  });
+
+  /* ---- Karten: 3D-Neigung mit Lichtschein ---- */
+  if (fine && !reduce) {
+    $$(".tilt").forEach(function (card) {
+      card.addEventListener("pointermove", function (e) { var r = card.getBoundingClientRect(), px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height; card.style.setProperty("--ry", (px - 0.5) * 10 + "deg"); card.style.setProperty("--rx", (0.5 - py) * 10 + "deg"); card.style.setProperty("--gx", px * 100 + "%"); card.style.setProperty("--gy", py * 100 + "%"); });
+      card.addEventListener("pointerleave", function () { card.style.setProperty("--rx", "0deg"); card.style.setProperty("--ry", "0deg"); });
+    });
+  }
+
+  /* ---- Galerie: ziehen & Pfeile ---- */
+  var gal = $("#gallery"), down = false, startX = 0, startL = 0, moved = false;
+  gal.addEventListener("pointerdown", function (e) { if (e.pointerType !== "mouse") return; down = true; moved = false; startX = e.clientX; startL = gal.scrollLeft; gal.classList.add("dragging"); });
+  window.addEventListener("pointermove", function (e) { if (!down) return; var d = e.clientX - startX; if (Math.abs(d) > 3) moved = true; gal.scrollLeft = startL - d; });
+  window.addEventListener("pointerup", function () { if (!down) return; down = false; gal.classList.remove("dragging"); });
+  $$("[data-scroll]").forEach(function (b) { b.addEventListener("click", function () { gal.scrollBy({ left: +b.dataset.scroll * gal.clientWidth * 0.8, behavior: reduce ? "auto" : "smooth" }); }); });
+
+  /* ---- Adresse kopieren, Teilen, Karte ---- */
+  $$("[data-copy]").forEach(function (b) { b.addEventListener("click", function () { var t = b.dataset.copy; (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () { toast("Adresse kopiert"); }, function () { toast(t); }); }); });
+  $$("[data-share]").forEach(function (b) { b.addEventListener("click", function () { var d = { title: document.title, url: location.href }; if (navigator.share) navigator.share(d).catch(function () {}); else if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(function () { toast("Link kopiert"); }); }); });
+  var lm = $("[data-load-map]");
+  if (lm) lm.addEventListener("click", function () {
+    var m = $("#map"), lat = +m.dataset.lat, lng = +m.dataset.lng, d = 0.006;
+    var f = document.createElement("iframe"); f.title = "Karte"; f.loading = "lazy";
+    f.src = "https://www.openstreetmap.org/export/embed.html?bbox=" + (lng - d) + "%2C" + (lat - d * 0.6) + "%2C" + (lng + d) + "%2C" + (lat + d * 0.6) + "&layer=mapnik&marker=" + lat + "%2C" + lng;
+    f.addEventListener("load", function () { m.classList.add("loaded"); });
+    m.appendChild(f); lm.closest(".map-cta").remove();
+  });
+})();
+</script>
+</body>
+</html>
