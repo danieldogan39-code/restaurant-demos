@@ -735,7 +735,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "2b0b5c1d5e";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "0c19d9e65f";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -1518,7 +1518,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     var L = liveOf(DATA), R = runObj();
     if (!runBusy()) return '<span class="c-badge hot">deine Auswahl</span>';
     if (!inCurrentRun(x)) return R.queuedAt ? '<span class="c-badge work">eingereiht, startet direkt danach</span>' : '<span class="c-badge">„Danach bauen“ reiht es ein</span>';
-    if (!L) return '<span class="c-badge work">Lauf startet, gleich dran</span>';
+    if (!L) return '<span class="c-badge work">' + (R.active && R.active.status === "in_progress" ? "in diesem Lauf dabei" : "Lauf startet, gleich dran") + "</span>";
     var busy = (L.in_arbeit || []).indexOf(x.name) >= 0 || L.phase === "Baue Websites";
     return '<span class="c-badge work">' + (busy ? "wird gerade gebaut" : "in diesem Lauf, gleich dran") + "</span>";
   }
