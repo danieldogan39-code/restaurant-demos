@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#070B1A">
+<title>Cockpit · Website-Agent</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23070B1A'/%3E%3Ccircle cx='32' cy='32' r='18' fill='none' stroke='%236BE4FF' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%236BE4FF'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  --space: #070B1A; --panel: rgba(16, 23, 52, .62); --panel-solid: #0E1430; --edge: rgba(120, 140, 220, .18); --edge-hot: rgba(107, 228, 255, .55);
+  --ink: #E9EEFF; --ink2: #A9B3D6; --ink3: #6E7AA6;
+  --cyan: #6BE4FF; --violet: #A08CFF; --ok: #4BE3A6; --warn: #FFB547; --bad: #FF6B8E;
+  --display: "Chakra Petch", system-ui, sans-serif; --body: "Manrope", system-ui, sans-serif;
+  --ease: cubic-bezier(.2,.75,.15,1); --spring: cubic-bezier(.34,1.56,.64,1);
+  --r: 18px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; overflow-x: clip; }
+body { background: var(--space); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+button, input { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 6px; }
+.num { font-family: var(--display); font-variant-numeric: tabular-nums; letter-spacing: .01em; }
+
+/* Hintergrund: Sternenfeld + Raster + Lichtkegel */
+#stars { position: fixed; inset: 0; z-index: -3; width: 100%; height: 100%; }
+.grid-bg { position: fixed; inset: 0; z-index: -2; pointer-events: none; background-image: linear-gradient(rgba(107,228,255,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(107,228,255,.045) 1px, transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 75%); }
+.glow { position: fixed; z-index: -2; width: 60vmax; height: 60vmax; border-radius: 50%; filter: blur(120px); opacity: .22; pointer-events: none; animation: float 24s ease-in-out infinite alternate; }
+.glow.a { background: var(--violet); top: -30vmax; left: -15vmax; }
+.glow.b { background: var(--cyan); bottom: -35vmax; right: -20vmax; animation-delay: -10s; opacity: .14; }
+@keyframes float { to { transform: translate(6vmax, 4vmax) scale(1.1); } }
+
+/* ---------- Sperrbildschirm ---------- */
+.lock { position: fixed; inset: 0; display: grid; place-items: center; padding: 1.5rem; z-index: 10; transition: opacity .7s var(--ease), transform .9s var(--ease); }
+.lock.gone { opacity: 0; transform: scale(1.06); pointer-events: none; }
+.lock-card { width: min(26rem, 100%); text-align: center; }
+.orb { width: 9rem; height: 9rem; margin: 0 auto 2rem; position: relative; }
+.orb i { position: absolute; inset: 0; border-radius: 50%; border: 1.5px solid var(--edge-hot); animation: orbit 6s linear infinite; }
+.orb i:nth-child(1) { border-color: transparent; border-top-color: var(--cyan); border-right-color: var(--cyan); }
+.orb i:nth-child(2) { inset: 14px; border-color: transparent; border-bottom-color: var(--violet); border-left-color: var(--violet); animation-duration: 4s; animation-direction: reverse; }
+.orb i:nth-child(3) { inset: 32px; border: 1px dashed rgba(107,228,255,.35); animation-duration: 14s; }
+.orb b { position: absolute; inset: 48px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff, var(--cyan) 35%, #1b5b86 75%); box-shadow: 0 0 40px var(--cyan), 0 0 90px rgba(107,228,255,.35); animation: pulse 2.6s ease-in-out infinite; }
+.lock.busy .orb i { animation-duration: .9s; }
+@keyframes orbit { to { transform: rotate(360deg); } }
+@keyframes pulse { 50% { transform: scale(.88); box-shadow: 0 0 22px var(--cyan), 0 0 50px rgba(107,228,255,.25); } }
+.lock h1 { font-family: var(--display); font-weight: 600; font-size: 1.9rem; margin: 0 0 .35rem; letter-spacing: .02em; }
+.lock p { color: var(--ink2); margin: 0 0 1.75rem; }
+.field { display: flex; gap: .5rem; padding: .4rem; border-radius: 14px; background: var(--panel); border: 1px solid var(--edge); backdrop-filter: blur(12px); transition: border-color .3s, box-shadow .3s; }
+.field:focus-within { border-color: var(--edge-hot); box-shadow: 0 0 0 4px rgba(107,228,255,.12); }
+.field input { flex: 1; min-width: 0; background: transparent; border: 0; padding: .7rem .8rem; outline: none; font-size: 1rem; }
+.btn { display: inline-flex; align-items: center; gap: .5rem; border: 1px solid var(--edge); background: rgba(255,255,255,.04); border-radius: 12px; padding: .6rem 1rem; font-weight: 600; text-decoration: none; cursor: pointer; transition: background .25s, border-color .25s, transform .3s var(--spring), box-shadow .3s; white-space: nowrap; }
+.btn:hover { border-color: var(--edge-hot); background: rgba(107,228,255,.08); transform: translateY(-1px); }
+.btn svg { width: 1.05em; height: 1.05em; }
+.btn-hot { background: linear-gradient(135deg, var(--cyan), #7aa8ff); color: #061026; border-color: transparent; box-shadow: 0 8px 26px -8px rgba(107,228,255,.7); }
+.btn-hot:hover { background: linear-gradient(135deg, #8cecff, #94b8ff); }
+.remember { display: flex; align-items: center; justify-content: center; gap: .5rem; margin-top: 1rem; color: var(--ink2); font-size: .9rem; cursor: pointer; }
+.remember input { accent-color: var(--cyan); }
+.lock-msg { min-height: 1.5rem; margin-top: 1rem; font-size: .92rem; color: var(--bad); }
+.lock-msg.info { color: var(--ink2); }
+.shake { animation: shake .45s var(--ease); }
+@keyframes shake { 20%, 60% { transform: translateX(-8px); } 40%, 80% { transform: translateX(8px); } }
+
+/* ---------- Cockpit ---------- */
+.app { opacity: 0; transform: translateY(20px); transition: opacity .8s var(--ease) .2s, transform .9s var(--ease) .2s; padding: 1.25rem clamp(1rem, 3vw, 2.25rem) 3rem; max-width: 92rem; margin: 0 auto; }
+.app.on { opacity: 1; transform: none; }
+.app[hidden] { display: none; }
+.top { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+.title { display: flex; align-items: center; gap: .9rem; }
+.title .mini-orb { width: 2.4rem; height: 2.4rem; border-radius: 50%; position: relative; border: 1.5px solid var(--edge-hot); }
+.title .mini-orb::after { content: ""; position: absolute; inset: 9px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 16px var(--cyan); animation: pulse 2.6s ease-in-out infinite; }
+.title h1 { font-family: var(--display); font-weight: 600; font-size: 1.45rem; margin: 0; line-height: 1.1; }
+.title small { color: var(--ink3); font-size: .85rem; }
+.top-actions { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
+.chip { display: inline-flex; align-items: center; gap: .5rem; padding: .45rem .85rem; border-radius: 999px; border: 1px solid var(--edge); background: var(--panel); font-size: .88rem; font-weight: 600; backdrop-filter: blur(10px); }
+.chip .led { width: .55rem; height: .55rem; border-radius: 50%; background: var(--ok); box-shadow: 0 0 10px var(--ok); position: relative; }
+.chip .led::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: inherit; animation: ping 2s cubic-bezier(0,0,.2,1) infinite; }
+.chip.warn .led { background: var(--warn); box-shadow: 0 0 10px var(--warn); }
+.chip.bad .led { background: var(--bad); box-shadow: 0 0 10px var(--bad); }
+@keyframes ping { 75%, 100% { transform: scale(2.8); opacity: 0; } }
+
+.panel { position: relative; background: var(--panel); border: 1px solid var(--edge); border-radius: var(--r); padding: 1.25rem 1.35rem; backdrop-filter: blur(16px) saturate(1.3); -webkit-backdrop-filter: blur(16px) saturate(1.3); overflow: hidden; opacity: 0; transform: translateY(18px); animation: rise .8s var(--ease) forwards; animation-delay: calc(.25s + var(--d, 0) * 80ms); }
+.panel::before { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; background: radial-gradient(500px circle at var(--mx, -500px) var(--my, -500px), var(--edge-hot), transparent 40%); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
+@keyframes rise { to { opacity: 1; transform: none; } }
+.panel h2 { font-family: var(--display); font-weight: 600; font-size: 1.02rem; margin: 0 0 .2rem; letter-spacing: .02em; }
+.panel .sub { color: var(--ink3); font-size: .85rem; margin: 0 0 1rem; }
+.panel-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; }
+
+.grid { display: grid; gap: 1rem; }
+.kpis { grid-template-columns: repeat(6, minmax(0, 1fr)); margin-bottom: 1rem; }
+.row2 { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); margin-bottom: 1rem; }
+.row4 { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); margin-top: 1rem; }
+
+/* KPI-Kacheln */
+.kpi { padding: 1.1rem 1.15rem 1rem; }
+.kpi .label { color: var(--ink2); font-size: .85rem; font-weight: 600; display: flex; align-items: center; gap: .45rem; }
+.kpi .label svg { width: 1rem; height: 1rem; color: var(--cyan); }
+.kpi .value { font-family: var(--display); font-weight: 700; font-size: clamp(1.9rem, 3vw, 2.5rem); line-height: 1.05; margin: .55rem 0 .2rem; font-variant-numeric: tabular-nums; }
+.kpi .value small { font-size: .5em; color: var(--ink3); font-weight: 600; }
+.kpi .hint { color: var(--ink3); font-size: .8rem; }
+.spark { width: 100%; height: 34px; margin-top: .55rem; overflow: visible; }
+.spark path.line { fill: none; stroke: var(--cyan); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 600; stroke-dashoffset: 600; animation: draw 1.6s var(--ease) .6s forwards; }
+.spark path.area { fill: url(#sparkfill); opacity: 0; animation: fade 1s ease 1.2s forwards; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes fade { to { opacity: 1; } }
+
+/* Countdown */
+.countdown { display: flex; gap: .35rem; align-items: baseline; }
+.countdown span { font-family: var(--display); font-weight: 700; font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+.countdown em { font-style: normal; color: var(--ink3); font-size: .78rem; margin-right: .3rem; }
+
+/* Radar */
+.radar-wrap { display: grid; grid-template-columns: minmax(0, 1fr) 15rem; gap: 1.25rem; align-items: center; }
+.radar { width: 100%; max-width: 30rem; aspect-ratio: 1; margin: 0 auto; position: relative; }
+.radar svg { width: 100%; height: 100%; overflow: visible; }
+.radar .ring { fill: none; stroke: rgba(107,228,255,.14); }
+.radar .spoke { stroke: rgba(107,228,255,.07); }
+.radar .beam { transform-origin: 50% 50%; transform-box: view-box; animation: orbit 5s linear infinite; }
+.radar .dot { cursor: pointer; transition: r .25s var(--spring); }
+.radar .dot.cur { animation: blink 1.2s ease-in-out infinite; }
+@keyframes blink { 50% { opacity: .35; } }
+.radar-side .big { font-family: var(--display); font-weight: 700; font-size: 2.8rem; line-height: 1; }
+.radar-side .area-name { font-weight: 700; font-size: 1.05rem; margin: .5rem 0 .25rem; min-height: 1.5em; }
+.radar-side dl { display: grid; grid-template-columns: 1fr auto; gap: .35rem .75rem; margin: 1rem 0 0; font-size: .88rem; }
+.radar-side dt { color: var(--ink2); }
+.radar-side dd { margin: 0; font-family: var(--display); font-weight: 600; text-align: right; }
+.legend { display: flex; gap: 1rem; flex-wrap: wrap; font-size: .8rem; color: var(--ink2); margin-top: 1rem; }
+.legend span { display: inline-flex; align-items: center; gap: .4rem; }
+.legend i { width: .7rem; height: .7rem; border-radius: 50%; display: inline-block; }
+.tip { position: fixed; z-index: 30; pointer-events: none; background: rgba(9, 14, 34, .94); border: 1px solid var(--edge-hot); border-radius: 10px; padding: .55rem .75rem; font-size: .85rem; opacity: 0; transform: translateY(6px); transition: opacity .15s, transform .2s var(--ease); max-width: 16rem; box-shadow: 0 10px 30px rgba(0,0,0,.4); }
+.tip.on { opacity: 1; transform: none; }
+.tip b { display: block; margin-bottom: .15rem; }
+.tip span { color: var(--ink2); }
+
+/* Pipeline */
+.flow { display: grid; gap: .9rem; margin-top: .5rem; }
+.stage { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr) 4.5rem; gap: .9rem; align-items: center; }
+.stage .name { font-weight: 600; font-size: .92rem; }
+.stage .name small { display: block; color: var(--ink3); font-weight: 500; font-size: .78rem; }
+.bar { height: 14px; border-radius: 7px; background: rgba(255,255,255,.05); position: relative; overflow: hidden; }
+.bar b { position: absolute; inset: 0 auto 0 0; border-radius: 7px; background: linear-gradient(90deg, var(--violet), var(--cyan)); width: 0; transition: width 1.4s var(--ease); box-shadow: 0 0 14px rgba(107,228,255,.45); }
+.bar b::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent 0 18px, rgba(255,255,255,.35) 18px 20px); animation: stream 1.2s linear infinite; mix-blend-mode: overlay; }
+@keyframes stream { to { background-position: 40px 0; } }
+.stage .val { font-family: var(--display); font-weight: 700; font-size: 1.15rem; text-align: right; font-variant-numeric: tabular-nums; }
+.stage.off { opacity: .45; }
+.stage.off .bar b { background: repeating-linear-gradient(45deg, rgba(255,255,255,.12) 0 6px, transparent 6px 12px); box-shadow: none; }
+
+/* Demos */
+.toolbar { display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; }
+.search { display: flex; align-items: center; gap: .5rem; padding: .35rem .75rem; border-radius: 12px; border: 1px solid var(--edge); background: rgba(255,255,255,.03); min-width: 15rem; }
+.search input { background: transparent; border: 0; outline: none; padding: .35rem 0; flex: 1; min-width: 0; }
+.search kbd { font-family: var(--display); font-size: .75rem; color: var(--ink3); border: 1px solid var(--edge); border-radius: 6px; padding: 0 .4rem; }
+.seg-ctl { display: inline-flex; border: 1px solid var(--edge); border-radius: 12px; padding: 3px; background: rgba(255,255,255,.03); }
+.seg-ctl button { border: 0; background: transparent; padding: .45rem .8rem; border-radius: 9px; font-weight: 600; font-size: .85rem; color: var(--ink2); cursor: pointer; transition: background .25s, color .25s; }
+.seg-ctl button[aria-pressed="true"] { background: rgba(107,228,255,.14); color: var(--ink); }
+.demos { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 1rem; margin-top: 1rem; }
+.demo { position: relative; border-radius: 16px; border: 1px solid var(--edge); background: rgba(9, 14, 34, .55); overflow: hidden; transition: transform .45s var(--ease), border-color .3s, box-shadow .45s; animation: rise .6s var(--ease) both; animation-delay: calc(var(--i) * 45ms); }
+.demo:hover { transform: translateY(-4px); border-color: var(--edge-hot); box-shadow: 0 24px 50px -24px rgba(107,228,255,.45); }
+.screen { position: relative; aspect-ratio: 16/10; overflow: hidden; background: linear-gradient(135deg, #111a3d, #0a1029); }
+.screen iframe { position: absolute; top: 0; left: 0; width: 400%; height: 400%; transform: scale(.25); transform-origin: 0 0; border: 0; pointer-events: none; opacity: 0; transition: opacity .6s; }
+.screen iframe.ready { opacity: 1; }
+.screen .scan { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 0 46%, rgba(107,228,255,.2) 50%, transparent 54%); background-size: 100% 220%; animation: scan 2.4s linear infinite; }
+.screen.loaded .scan { display: none; }
+@keyframes scan { from { background-position: 0 -120%; } to { background-position: 0 120%; } }
+.demo .body { padding: .9rem 1rem 1rem; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .2rem .75rem; align-items: center; }
+.demo h3 { margin: 0; font-size: 1rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.demo .meta { color: var(--ink3); font-size: .8rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.life { width: 2.75rem; height: 2.75rem; grid-row: span 2; position: relative; }
+.life svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.life circle { fill: none; stroke-width: 4; }
+.life .bg { stroke: rgba(255,255,255,.08); }
+.life .fg { stroke: var(--cyan); stroke-linecap: round; transition: stroke-dashoffset 1.4s var(--ease); }
+.life.low .fg { stroke: var(--warn); }
+.life span { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--display); font-weight: 700; font-size: .78rem; }
+.tags { display: flex; gap: .35rem; flex-wrap: wrap; padding: 0 1rem .9rem; }
+.tag { font-size: .72rem; font-weight: 600; padding: .2rem .55rem; border-radius: 999px; border: 1px solid var(--edge); color: var(--ink2); }
+.tag.keep { border-color: rgba(75,227,166,.5); color: var(--ok); }
+.demo .acts { display: flex; gap: .4rem; padding: 0 1rem 1rem; }
+.demo .acts .btn { padding: .45rem .7rem; font-size: .82rem; flex: 1; justify-content: center; }
+.empty { border: 1px dashed var(--edge); border-radius: 16px; padding: 2.5rem 1rem; text-align: center; color: var(--ink2); grid-column: 1 / -1; }
+
+/* Läufe */
+.runs { display: grid; gap: .5rem; max-height: 30rem; overflow: auto; padding-right: .25rem; scrollbar-width: thin; scrollbar-color: var(--edge) transparent; }
+.run { border: 1px solid var(--edge); border-radius: 12px; background: rgba(9, 14, 34, .45); }
+.run summary { list-style: none; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: .8rem; align-items: center; padding: .7rem .9rem; cursor: pointer; }
+.run summary::-webkit-details-marker { display: none; }
+.run .st { display: inline-flex; align-items: center; gap: .4rem; font-size: .8rem; font-weight: 700; padding: .2rem .55rem; border-radius: 999px; }
+.st.ok { color: var(--ok); background: rgba(75,227,166,.1); }
+.st.leer, .st.wartet { color: var(--warn); background: rgba(255,181,71,.1); }
+.st.fehler { color: var(--bad); background: rgba(255,107,142,.12); }
+.st.laeuft { color: var(--cyan); background: rgba(107,228,255,.1); }
+.run .when { font-weight: 600; }
+.run .when small { color: var(--ink3); font-weight: 500; margin-left: .4rem; }
+.run .nums { display: flex; gap: .9rem; color: var(--ink2); font-size: .82rem; }
+.run .nums b { font-family: var(--display); color: var(--ink); }
+.term { margin: 0 .9rem .9rem; padding: .8rem .9rem; border-radius: 10px; background: #050816; border: 1px solid rgba(107,228,255,.12); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .8rem; line-height: 1.55; color: #9FE9FF; max-height: 16rem; overflow: auto; white-space: pre-wrap; }
+.term .err { color: var(--bad); }
+.term .caret { display: inline-block; width: .55em; height: 1em; background: var(--cyan); vertical-align: -2px; animation: blink 1s steps(1) infinite; }
+
+/* Wochen-Chart */
+.chart { width: 100%; height: 15rem; }
+.chart .gridline { stroke: rgba(255,255,255,.06); }
+.chart .axis-t { fill: var(--ink3); font-size: 11px; font-family: var(--body); }
+.chart .col { fill: url(#colfill); transition: opacity .2s; }
+.chart .col:hover { opacity: .8; }
+.chart .colval { fill: var(--ink); font-family: var(--display); font-weight: 700; font-size: 12px; text-anchor: middle; }
+
+footer.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1.5rem; color: var(--ink3); font-size: .82rem; margin-top: 2rem; }
+footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2); text-decoration: underline; cursor: pointer; }
+
+@media (max-width: 1200px) { .kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 900px) {
+  .row2, .row4 { grid-template-columns: 1fr; }
+  .radar-wrap { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stage { grid-template-columns: 6.8rem minmax(0, 1fr) 3rem; gap: .6rem; }
+  .search { min-width: 0; flex: 1 1 100%; }
+  .run .nums { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .panel, .demo { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+<canvas id="stars" aria-hidden="true"></canvas>
+<div class="grid-bg" aria-hidden="true"></div>
+<div class="glow a" aria-hidden="true"></div><div class="glow b" aria-hidden="true"></div>
+
+<!-- Sperrbildschirm -->
+<section class="lock" id="lock" aria-labelledby="lock-title">
+  <form class="lock-card" id="unlock" autocomplete="on">
+    <div class="orb" aria-hidden="true"><i></i><i></i><i></i><b></b></div>
+    <h1 id="lock-title">Cockpit</h1>
+    <p>Dein Website-Agent auf einen Blick. Die Daten sind verschlüsselt.</p>
+    <input type="text" name="username" value="cockpit" autocomplete="username" hidden>
+    <div class="field">
+      <input id="pw" type="password" autocomplete="current-password" placeholder="Passwort" aria-label="Passwort" required>
+      <button class="btn btn-hot" type="submit">Entsperren</button>
+    </div>
+    <label class="remember"><input type="checkbox" id="remember"> Auf diesem Gerät angemeldet bleiben</label>
+    <div class="lock-msg" id="lock-msg" role="alert"></div>
+  </form>
+</section>
+
+<!-- Cockpit -->
+<div class="app" id="app" hidden>
+  <header class="top">
+    <div class="title"><span class="mini-orb" aria-hidden="true"></span>
+      <div><h1>Cockpit</h1><small id="stamp">Stand: –</small></div></div>
+    <div class="top-actions">
+      <span class="chip" id="health"><span class="led"></span><span id="health-text">Agent bereit</span></span>
+      <span class="chip" title="Nächster automatischer Wochenlauf"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="countdown" id="countdown"></span></span>
+      <a class="btn btn-hot" id="run-now" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Lauf starten</a>
+      <a class="btn" id="reports" target="_blank" rel="noopener">Berichte</a>
+      <a class="btn" id="settings" target="_blank" rel="noopener">Einstellungen</a>
+    </div>
+  </header>
+
+  <section class="grid kpis" id="kpis" aria-label="Kennzahlen"></section>
+
+  <section class="grid row2">
+    <article class="panel" style="--d:6" aria-labelledby="radar-title">
+      <div class="panel-head"><div><h2 id="radar-title">Suchradar</h2><p class="sub">Alle Suchgebiete im Uhrzeigersinn. Der blinkende Punkt ist das Gebiet, in dem der Agent als Nächstes sucht.</p></div></div>
+      <div class="radar-wrap">
+        <div class="radar" id="radar"></div>
+        <div class="radar-side" id="radar-side"></div>
+      </div>
+      <div class="legend"><span><i style="background:#3A4680"></i>noch nicht durchsucht</span><span><i style="background:#3B6E8F"></i>durchsucht, keine Treffer</span><span><i style="background:var(--cyan); box-shadow:0 0 8px var(--cyan)"></i>Restaurants ohne Website (größer = mehr)</span></div>
+    </article>
+    <article class="panel" style="--d:7" aria-labelledby="flow-title">
+      <h2 id="flow-title">Pipeline</h2><p class="sub">Vom ersten Treffer bis zur Demo, über alle bisherigen Läufe.</p>
+      <div class="flow" id="flow"></div>
+      <div style="margin-top:1.5rem"><h2>Letzte Läufe</h2><p class="sub">Neue Demos pro Lauf</p><svg class="chart" id="chart" role="img" aria-label="Neue Demos pro Lauf"></svg></div>
+    </article>
+  </section>
+
+  <section class="panel" style="--d:8" aria-labelledby="demos-title">
+    <div class="panel-head">
+      <div><h2 id="demos-title">Live-Demos</h2><p class="sub" id="demos-sub"></p></div>
+      <div class="toolbar">
+        <label class="search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" placeholder="Restaurant, Ort, Gebiet" aria-label="Demos durchsuchen"><kbd>/</kbd></label>
+        <div class="seg-ctl" role="group" aria-label="Sortierung">
+          <button type="button" data-sort="neu" aria-pressed="true">Neueste</button>
+          <button type="button" data-sort="ablauf" aria-pressed="false">Läuft ab</button>
+          <button type="button" data-sort="beliebt" aria-pressed="false">Beliebt</button>
+        </div>
+      </div>
+    </div>
+    <div class="demos" id="demos"></div>
+  </section>
+
+  <section class="grid row4">
+    <article class="panel" style="--d:9" aria-labelledby="runs-title">
+      <h2 id="runs-title">Protokoll</h2><p class="sub">Jeder Lauf des Agenten. Antippen zeigt das vollständige Protokoll.</p>
+      <div class="runs" id="runs"></div>
+    </article>
+    <article class="panel" style="--d:10" aria-labelledby="cfg-title">
+      <h2 id="cfg-title">Einstellungen im Überblick</h2><p class="sub">Ändern kannst du sie in der Datei config.yaml.</p>
+      <div class="radar-side" id="cfg"></div>
+    </article>
+  </section>
+
+  <footer class="foot"><span>Daten verschlüsselt mit AES-256. Aktualisiert sich alle 5 Minuten.</span><button type="button" id="logout">Abmelden</button></footer>
+</div>
+
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function () {
+  "use strict";
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var STORE = "cockpit-pw", DATA = null, PW = null;
+  var fmt = new Intl.NumberFormat("de-DE");
+  var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
+  var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+  function h(tag, attrs, html) { var e = document.createElement(tag); for (var k in attrs || {}) e.setAttribute(k, attrs[k]); if (html != null) e.innerHTML = html; return e; }
+
+  /* ---------- Sternenfeld ---------- */
+  (function stars() {
+    var c = $("#stars"), x = c.getContext("2d"), pts = [], w, ht, dpr = Math.min(2, devicePixelRatio || 1);
+    function size() { w = c.width = innerWidth * dpr; ht = c.height = innerHeight * dpr; pts = []; for (var i = 0; i < Math.min(220, innerWidth / 6); i++) pts.push({ x: Math.random() * w, y: Math.random() * ht, r: Math.random() * 1.3 * dpr + .2, s: Math.random() * .25 + .05, t: Math.random() * 6.28 }); }
+    function frame() { x.clearRect(0, 0, w, ht); for (var i = 0; i < pts.length; i++) { var p = pts[i]; p.t += .015; p.y -= p.s; if (p.y < 0) { p.y = ht; p.x = Math.random() * w; } x.globalAlpha = .35 + Math.sin(p.t) * .3; x.fillStyle = i % 7 ? "#c9d6ff" : "#6BE4FF"; x.beginPath(); x.arc(p.x, p.y, p.r, 0, 6.283); x.fill(); } if (!reduce) requestAnimationFrame(frame); }
+    size(); addEventListener("resize", size); frame();
+  })();
+
+  /* ---------- Entschlüsseln ---------- */
+  function b64(s) { var b = atob(s), a = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) a[i] = b.charCodeAt(i); return a; }
+  function decrypt(blob, pw) {
+    var enc = new TextEncoder();
+    return crypto.subtle.importKey("raw", enc.encode(pw), "PBKDF2", false, ["deriveKey"]).then(function (base) {
+      return crypto.subtle.deriveKey({ name: "PBKDF2", salt: b64(blob.salt), iterations: blob.iter, hash: "SHA-256" }, base, { name: "AES-GCM", length: 256 }, false, ["decrypt"]);
+    }).then(function (key) { return crypto.subtle.decrypt({ name: "AES-GCM", iv: b64(blob.iv) }, key, b64(blob.data)); })
+      .then(function (buf) { return JSON.parse(new TextDecoder().decode(buf)); });
+  }
+  function fetchBlob() { return fetch("data.json?t=" + Date.now(), { cache: "no-store" }).then(function (r) { if (!r.ok) throw new Error("nodata"); return r.json(); }); }
+
+  var lock = $("#lock"), msg = $("#lock-msg");
+  function setMsg(t, info) { msg.textContent = t; msg.className = "lock-msg" + (info ? " info" : ""); }
+  function unlock(pw, silent) {
+    lock.classList.add("busy"); setMsg(silent ? "" : "Entschlüssele …", true);
+    return fetchBlob().then(function (blob) { return decrypt(blob, pw); }).then(function (data) {
+      PW = pw; DATA = data;
+      if ($("#remember").checked) try { localStorage.setItem(STORE, pw); } catch (e) {}
+      lock.classList.add("gone"); setTimeout(function () { lock.hidden = true; }, 800);
+      var app = $("#app"); app.hidden = false; requestAnimationFrame(function () { app.classList.add("on"); });
+      render(data);
+    }).catch(function (err) {
+      lock.classList.remove("busy");
+      if (err && err.message === "nodata") setMsg("Noch keine Daten. Starte den ersten Wochenlauf und prüfe, ob das Secret DASHBOARD_PASSWORT eingetragen ist.", true);
+      else { setMsg("Das Passwort stimmt nicht."); var card = $(".lock-card"); card.classList.remove("shake"); void card.offsetWidth; card.classList.add("shake"); try { localStorage.removeItem(STORE); } catch (e) {} }
+    });
+  }
+  $("#unlock").addEventListener("submit", function (e) { e.preventDefault(); unlock($("#pw").value); });
+  try { var saved = localStorage.getItem(STORE); if (saved) { $("#remember").checked = true; unlock(saved, true); } } catch (e) {}
+  $("#logout").addEventListener("click", function () { try { localStorage.removeItem(STORE); } catch (e) {} location.reload(); });
+  setInterval(function () { if (!PW) return; fetchBlob().then(function (b) { return decrypt(b, PW); }).then(function (d) { if (d.erstellt !== DATA.erstellt) { DATA = d; render(d); } }).catch(function () {}); }, 300000);
+
+  /* ---------- Hilfen ---------- */
+  function countUp(el, to, dur) {
+    if (reduce || !to) { el.textContent = fmt.format(to || 0); return; }
+    var t0 = performance.now(); dur = dur || 1400;
+    (function step(t) { var p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 4); el.textContent = fmt.format(Math.round(to * e)); if (p < 1) requestAnimationFrame(step); })(t0);
+  }
+  function sparkPath(vals, w, hgt) {
+    if (vals.length < 2) vals = [0].concat(vals.length ? vals : [0]);
+    var max = Math.max.apply(null, vals) || 1, step = w / (vals.length - 1);
+    var pts = vals.map(function (v, i) { return [i * step, hgt - 3 - (v / max) * (hgt - 6)]; });
+    var d = "M" + pts.map(function (p) { return p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" L");
+    return { line: d, area: d + " L" + w + " " + hgt + " L0 " + hgt + " Z" };
+  }
+  var tip = $("#tip");
+  function showTip(e, html) { tip.innerHTML = html; tip.classList.add("on"); var x = e.clientX + 14, y = e.clientY + 14; if (x + 260 > innerWidth) x = e.clientX - 270; tip.style.left = x + "px"; tip.style.top = y + "px"; }
+  function hideTip() { tip.classList.remove("on"); }
+  function daysUntil(iso) { if (!iso) return null; return Math.ceil((new Date(iso + "T23:59:59") - new Date()) / 864e5); }
+
+  // Lichtrand folgt der Maus
+  document.addEventListener("pointermove", function (e) { var p = e.target.closest && e.target.closest(".panel"); if (!p) return; var r = p.getBoundingClientRect(); p.style.setProperty("--mx", e.clientX - r.left + "px"); p.style.setProperty("--my", e.clientY - r.top + "px"); });
+
+  /* ---------- Rendern ---------- */
+  function render(d) {
+    var runs = d.laeufe || [], real = runs.filter(function (r) { return !r.probe; });
+    var used = real.length ? real : runs;
+    $("#stamp").textContent = "Stand: " + dfmt.format(new Date(d.erstellt));
+    $("#run-now").href = d.links.wochenlauf; $("#reports").href = d.links.berichte; $("#settings").href = d.links.einstellungen;
+
+    // Zustand
+    var last = used[used.length - 1], health = $("#health");
+    health.className = "chip" + (!last ? " warn" : last.status === "fehler" ? " bad" : last.status === "ok" ? "" : " warn");
+    $("#health-text").textContent = !last ? "Noch kein Lauf" : last.status === "fehler" ? "Letzter Lauf fehlgeschlagen" : last.status === "wartet" ? "Wartet auf Freigabe" : last.status === "leer" ? "Letzter Lauf ohne neue Demos" : "Agent bereit";
+
+    // Kennzahlen
+    var sum = function (k) { return used.reduce(function (a, r) { return a + (typeof k === "function" ? k(r) : (r[k] || 0)); }, 0); };
+    var checked = sum(function (r) { return (r.gebiete || []).reduce(function (a, g) { return a + g.restaurants; }, 0); });
+    var hits = sum(function (r) { return (r.gebiete || []).reduce(function (a, g) { return a + g.ohne_website; }, 0); });
+    var searched = (d.gebiete || []).filter(function (g) { return g.zuletzt; }).length;
+    var monthAgo = Date.now() - 30 * 864e5;
+    var google30 = used.filter(function (r) { return new Date(r.start) > monthAgo; }).reduce(function (a, r) { return a + (r.google_suche || 0) + (r.google_details || 0); }, 0);
+    var series = function (f) { return used.slice(-12).map(f); };
+    var ICON = {
+      live: '<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+      scan: '<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>',
+      target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+      map: '<path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/>',
+      api: '<path d="M4 7h16M4 12h16M4 17h10"/>',
+      ai: '<path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/>'
+    };
+    var kpis = [
+      { k: "Demos online", v: d.demos.length, hint: fmt.format(d.demos_jemals || 0) + " insgesamt gebaut", icon: "live", s: series(function (r) { return (r.demos || []).length; }) },
+      { k: "Restaurants geprüft", v: checked, hint: "über " + used.length + " Läufe", icon: "scan", s: series(function (r) { return (r.gebiete || []).reduce(function (a, g) { return a + g.restaurants; }, 0); }) },
+      { k: "Ohne Website", v: hits, hint: checked ? Math.round(hits / checked * 100) + " % der geprüften" : "noch keine Daten", icon: "target", s: series(function (r) { return (r.gebiete || []).reduce(function (a, g) { return a + g.ohne_website; }, 0); }) },
+      { k: "Gebiete durchsucht", v: searched, unit: " / " + d.einstellungen.gebiete, hint: Math.round(searched / d.einstellungen.gebiete * 100) + " % der Region", icon: "map", s: series(function (r) { return (r.gebiete || []).length; }) },
+      { k: "Google-Anfragen", v: google30, hint: "letzte 30 Tage, max. " + d.einstellungen.google_budget + " Suchen pro Lauf", icon: "api", s: series(function (r) { return (r.google_suche || 0) + (r.google_details || 0); }) },
+      { k: "KI-Texte", v: sum("ki_texte"), hint: sum("ki_ersatztexte") ? sum("ki_ersatztexte") + " mit Standardtext" : "alle von Claude geschrieben", icon: "ai", s: series(function (r) { return r.ki_texte || 0; }) }
+    ];
+    var kp = $("#kpis"); kp.innerHTML = "";
+    kpis.forEach(function (o, i) {
+      var p = sparkPath(o.s, 200, 34);
+      var el = h("article", { class: "panel kpi", style: "--d:" + i },
+        '<div class="label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + ICON[o.icon] + "</svg>" + esc(o.k) + "</div>" +
+        '<div class="value"><span class="n">0</span>' + (o.unit ? "<small>" + esc(o.unit) + "</small>" : "") + "</div>" +
+        '<div class="hint">' + esc(o.hint) + "</div>" +
+        '<svg class="spark" viewBox="0 0 200 34" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="sparkfill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6BE4FF" stop-opacity=".35"/><stop offset="1" stop-color="#6BE4FF" stop-opacity="0"/></linearGradient></defs><path class="area" d="' + p.area + '"/><path class="line" d="' + p.line + '"/></svg>');
+      kp.appendChild(el); countUp($(".n", el), o.v);
+    });
+
+    renderRadar(d);
+    renderFlow(d, checked, hits, used);
+    renderChart(used);
+    renderDemos(d);
+    renderRuns(runs);
+    renderCfg(d);
+    startCountdown(d.naechster_lauf);
+  }
+
+  /* Suchradar */
+  function renderRadar(d) {
+    var areas = d.gebiete || [], n = areas.length || 1, cx = 200, cy = 200, R = 170;
+    var maxHits = Math.max.apply(null, areas.map(function (a) { return a.ohne_website || 0; }).concat([1]));
+    var svg = '<svg viewBox="0 0 400 400" role="img" aria-label="Suchradar mit ' + n + ' Gebieten"><defs>' +
+      '<radialGradient id="rg"><stop offset="0" stop-color="#6BE4FF" stop-opacity=".12"/><stop offset="1" stop-color="#6BE4FF" stop-opacity="0"/></radialGradient>' +
+      '<linearGradient id="beam" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6BE4FF" stop-opacity="0"/><stop offset="1" stop-color="#6BE4FF" stop-opacity=".45"/></linearGradient></defs>' +
+      '<circle cx="200" cy="200" r="185" fill="url(#rg)"/>';
+    [.25, .5, .75, 1].forEach(function (f) { svg += '<circle class="ring" cx="200" cy="200" r="' + R * f + '"/>'; });
+    for (var s = 0; s < 12; s++) { var a = s / 12 * 2 * Math.PI; svg += '<line class="spoke" x1="200" y1="200" x2="' + (cx + Math.sin(a) * R) + '" y2="' + (cy - Math.cos(a) * R) + '"/>'; }
+    var curA = (d.gebiet_index % n) / n * 360;
+    svg += '<g transform="rotate(' + curA + ' 200 200)"><g class="beam"><path d="M200 200 L200 30 A170 170 0 0 1 ' + (200 + Math.sin(0.5) * 170) + " " + (200 - Math.cos(0.5) * 170) + ' Z" fill="url(#beam)" transform="rotate(-28.6 200 200)"/><line x1="200" y1="200" x2="200" y2="30" stroke="#6BE4FF" stroke-width="1.5" stroke-opacity=".8"/></g></g>';
+    areas.forEach(function (g, i) {
+      var a = i / n * 2 * Math.PI, ring = R * (0.55 + 0.4 * ((i % 3) / 2));
+      var x = cx + Math.sin(a) * ring, y = cy - Math.cos(a) * ring;
+      var hitsN = g.ohne_website || 0, done = !!g.zuletzt;
+      var r = done ? (hitsN ? 3.5 + 6 * Math.sqrt(hitsN / maxHits) : 3) : 2.7;
+      var fill = !done ? "#3A4680" : hitsN ? "#6BE4FF" : "#3B6E8F";
+      var glow = done && hitsN ? ' style="filter: drop-shadow(0 0 6px #6BE4FF)"' : "";
+      svg += '<circle class="dot' + (i === d.gebiet_index % n ? " cur" : "") + '" data-i="' + i + '" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + r.toFixed(1) + '" fill="' + fill + '"' + glow + "/>";
+    });
+    var cur = areas[d.gebiet_index % n] || {};
+    svg += '<circle cx="200" cy="200" r="5" fill="#6BE4FF"/></svg>';
+    var box = $("#radar"); box.innerHTML = svg;
+    var side = $("#radar-side");
+    function sideFor(g, label) {
+      side.innerHTML = '<div class="hint" style="color:var(--ink3);font-size:.85rem">' + esc(label) + "</div>" +
+        '<div class="area-name">' + esc(g.name || "–") + "</div>" +
+        "<dl><dt>Zuletzt durchsucht</dt><dd>" + (g.zuletzt ? dshort.format(new Date(g.zuletzt)) : "noch nie") + "</dd>" +
+        "<dt>Restaurants gefunden</dt><dd>" + fmt.format(g.restaurants || 0) + "</dd>" +
+        "<dt>Davon ohne Website</dt><dd>" + fmt.format(g.ohne_website || 0) + "</dd>" +
+        "<dt>Durchläufe</dt><dd>" + fmt.format(g.durchlaeufe || 0) + "</dd></dl>";
+    }
+    sideFor(cur, "Als Nächstes dran");
+    box.querySelectorAll(".dot").forEach(function (dot) {
+      var g = areas[+dot.dataset.i];
+      dot.addEventListener("pointerenter", function (e) { dot.setAttribute("r", +dot.getAttribute("r") + 3); showTip(e, "<b>" + esc(g.name) + "</b><span>" + (g.zuletzt ? fmt.format(g.ohne_website || 0) + " ohne Website von " + fmt.format(g.restaurants || 0) : "noch nicht durchsucht") + "</span>"); sideFor(g, "Ausgewählt"); });
+      dot.addEventListener("pointermove", function (e) { showTip(e, tip.innerHTML); });
+      dot.addEventListener("pointerleave", function () { dot.setAttribute("r", +dot.getAttribute("r") - 3); hideTip(); sideFor(cur, "Als Nächstes dran"); });
+    });
+  }
+
+  /* Pipeline */
+  function renderFlow(d, checked, hits, used) {
+    var built = d.demos_jemals || 0, sc = d.status_zahlen || {};
+    var stages = [
+      { n: "Geprüft", s: "Restaurants in Suchgebieten", v: checked },
+      { n: "Ohne Website", s: "gute Bewertung, keine eigene Seite", v: hits },
+      { n: "Demo gebaut", s: "Website-Entwurf online gestellt", v: built },
+      { n: "Brief verschickt", s: d.einstellungen.briefe_aktiv ? "an das Restaurant" : "Briefversand ist aus", v: sc.verschickt || 0, off: !d.einstellungen.briefe_aktiv },
+      { n: "Behalten", s: "Interessenten", v: sc.behalten || 0 }
+    ];
+    var max = Math.max(1, checked), box = $("#flow"); box.innerHTML = "";
+    stages.forEach(function (st, i) {
+      var el = h("div", { class: "stage" + (st.off ? " off" : "") }, '<div class="name">' + esc(st.n) + "<small>" + esc(st.s) + '</small></div><div class="bar"><b></b></div><div class="val">0</div>');
+      box.appendChild(el);
+      var pct = st.v ? Math.max(2, Math.sqrt(st.v / max) * 100) : 0;
+      setTimeout(function () { $("b", el).style.width = pct + "%"; }, 300 + i * 160);
+      countUp($(".val", el), st.v, 1200 + i * 150);
+    });
+  }
+
+  /* Säulen: neue Demos pro Lauf */
+  function renderChart(runs) {
+    var svg = $("#chart"), list = runs.slice(-10), W = svg.clientWidth || 500, H = 240, pad = 28, top = 18;
+    var max = Math.max(1, Math.max.apply(null, list.map(function (r) { return (r.demos || []).length; })));
+    var bw = list.length ? Math.min(42, (W - pad) / list.length - 10) : 0;
+    var out = '<defs><linearGradient id="colfill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6BE4FF"/><stop offset="1" stop-color="#A08CFF"/></linearGradient></defs>';
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    [0, .5, 1].forEach(function (f) { var y = top + (H - pad - top) * (1 - f); out += '<line class="gridline" x1="0" x2="' + W + '" y1="' + y + '" y2="' + y + '"/><text class="axis-t" x="0" y="' + (y - 4) + '">' + Math.round(max * f) + "</text>"; });
+    if (!list.length) out += '<text class="axis-t" x="' + W / 2 + '" y="' + H / 2 + '" text-anchor="middle">Noch keine Läufe</text>';
+    list.forEach(function (r, i) {
+      var v = (r.demos || []).length, slot = (W - pad) / list.length, x = pad + slot * i + (slot - bw) / 2;
+      var hh = (H - pad - top) * v / max, y = H - pad - hh;
+      out += '<g class="colg" data-i="' + i + '"><rect x="' + (pad + slot * i) + '" y="' + top + '" width="' + slot + '" height="' + (H - pad - top) + '" fill="transparent"/>' +
+        '<rect class="col" x="' + x + '" y="' + (H - pad) + '" width="' + bw + '" height="0" rx="4" data-y="' + y + '" data-h="' + hh + '"/>' +
+        (v ? '<text class="colval" x="' + (x + bw / 2) + '" y="' + (y - 6) + '">' + v + "</text>" : "") +
+        '<text class="axis-t" x="' + (x + bw / 2) + '" y="' + (H - 8) + '" text-anchor="middle">' + dshort.format(new Date(r.start)) + "</text></g>";
+    });
+    svg.innerHTML = out;
+    svg.querySelectorAll(".col").forEach(function (c, i) {
+      var y = c.dataset.y, hh = c.dataset.h;
+      if (reduce) { c.setAttribute("y", y); c.setAttribute("height", hh); return; }
+      var t0 = performance.now() + i * 70;
+      (function grow(t) { var p = Math.max(0, Math.min(1, (t - t0) / 900)), e = 1 - Math.pow(1 - p, 3); c.setAttribute("y", 240 - 28 - hh * e); c.setAttribute("height", hh * e); if (p < 1) requestAnimationFrame(grow); })(performance.now());
+    });
+    svg.querySelectorAll(".colg").forEach(function (g) {
+      var r = list[+g.dataset.i];
+      g.addEventListener("pointermove", function (e) { showTip(e, "<b>" + dfmt.format(new Date(r.start)) + "</b><span>" + (r.demos || []).length + " neue Demos, " + (r.gebiete || []).length + " Gebiete, " + ((r.google_suche || 0) + (r.google_details || 0)) + " Google-Anfragen</span>"); });
+      g.addEventListener("pointerleave", hideTip);
+    });
+  }
+
+  /* Demos */
+  var sortMode = "neu", query = "", io = null;
+  function renderDemos(d) {
+    var list = d.demos.filter(function (x) { var q = query.toLowerCase(); return !q || [x.name, x.ort, x.gebiet, x.kueche].join(" ").toLowerCase().indexOf(q) >= 0; });
+    list.sort(function (a, b) {
+      if (sortMode === "ablauf") return (a.loescht_am || "9999") < (b.loescht_am || "9999") ? -1 : 1;
+      if (sortMode === "beliebt") return (b.anzahl || 0) - (a.anzahl || 0);
+      return (b.erstellt || "") < (a.erstellt || "") ? -1 : 1;
+    });
+    $("#demos-sub").textContent = d.demos.length + " Demo-Websites sind gerade online" + (query ? ", " + list.length + " passen zur Suche" : "") + ".";
+    var box = $("#demos"); box.innerHTML = "";
+    if (!list.length) { box.appendChild(h("div", { class: "empty" }, d.demos.length ? "Keine Demo passt zu deiner Suche." : "Noch keine Demos online. Sie erscheinen hier nach dem nächsten Wochenlauf.")); return; }
+    if (io) io.disconnect();
+    io = "IntersectionObserver" in window ? new IntersectionObserver(function (es) { es.forEach(function (e) { if (!e.isIntersecting) return; var f = e.target.querySelector("iframe"); if (f && !f.src) f.src = f.dataset.src; io.unobserve(e.target); }); }, { rootMargin: "200px" }) : null;
+    list.forEach(function (x, i) {
+      var left = daysUntil(x.loescht_am), total = d.einstellungen.loeschen_nach, C = 2 * Math.PI * 18;
+      var frac = left == null ? 1 : Math.max(0, Math.min(1, left / total));
+      var why = x.website_art === "plattform" ? "nur " + (x.plattform || "Plattform") : "keine Website";
+      var card = h("article", { class: "demo", style: "--i:" + Math.min(i, 20) },
+        '<div class="screen"><iframe title="Vorschau ' + esc(x.name) + '" data-src="' + esc(x.url) + '" loading="lazy" tabindex="-1" aria-hidden="true"></iframe><div class="scan"></div></div>' +
+        '<div class="body"><h3 title="' + esc(x.name) + '">' + esc(x.name) + '</h3>' +
+        '<div class="life' + (left != null && left <= 7 ? " low" : "") + '" title="' + (left == null ? "wird behalten" : "wird in " + left + " Tagen gelöscht") + '"><svg viewBox="0 0 44 44"><circle class="bg" cx="22" cy="22" r="18"/><circle class="fg" cx="22" cy="22" r="18" stroke-dasharray="' + C + '" stroke-dashoffset="' + C + '" data-off="' + C * (1 - frac) + '"/></svg><span>' + (left == null ? "∞" : left + "T") + "</span></div>" +
+        '<div class="meta">' + esc([x.kueche, x.ort].filter(Boolean).join(", ")) + "</div></div>" +
+        '<div class="tags"><span class="tag">' + esc(why) + "</span>" + (x.theme ? '<span class="tag">' + esc(x.theme) + "</span>" : "") + (x.bewertung ? '<span class="tag">' + String(x.bewertung).replace(".", ",") + " ★ · " + fmt.format(x.anzahl || 0) + "</span>" : "") + (x.status === "behalten" ? '<span class="tag keep">behalten</span>' : "") + "</div>" +
+        '<div class="acts"><a class="btn" href="' + esc(x.url) + '" target="_blank" rel="noopener">Öffnen</a><button class="btn" type="button" data-copy="' + esc(x.url) + '">Link kopieren</button></div>');
+      box.appendChild(card);
+      var f = $("iframe", card); f.addEventListener("load", function () { if (f.src) { f.classList.add("ready"); $(".screen", card).classList.add("loaded"); } });
+      if (io) io.observe(card); else f.src = f.dataset.src;
+      setTimeout(function () { var fg = $(".fg", card); fg.style.strokeDashoffset = fg.dataset.off; }, 400 + i * 40);
+    });
+    box.querySelectorAll("[data-copy]").forEach(function (b) { b.addEventListener("click", function () { navigator.clipboard && navigator.clipboard.writeText(b.dataset.copy).then(function () { var t = b.textContent; b.textContent = "Kopiert"; setTimeout(function () { b.textContent = t; }, 1400); }); }); });
+  }
+  $("#q").addEventListener("input", function (e) { query = e.target.value; if (DATA) renderDemos(DATA); });
+  document.querySelectorAll("[data-sort]").forEach(function (b) { b.addEventListener("click", function () { sortMode = b.dataset.sort; document.querySelectorAll("[data-sort]").forEach(function (x) { x.setAttribute("aria-pressed", x === b); }); if (DATA) renderDemos(DATA); }); });
+  document.addEventListener("keydown", function (e) { if (e.key === "/" && document.activeElement.tagName !== "INPUT") { e.preventDefault(); $("#q").focus(); } });
+
+  /* Protokoll */
+  var STATUS = { ok: "Erfolgreich", leer: "Keine neuen", wartet: "Wartet", fehler: "Fehler", laeuft: "Läuft" };
+  var STICON = { ok: "✓", leer: "–", wartet: "…", fehler: "!", laeuft: "◌" };
+  function renderRuns(runs) {
+    var box = $("#runs"); box.innerHTML = "";
+    if (!runs.length) { box.appendChild(h("div", { class: "empty" }, "Noch kein Lauf protokolliert.")); return; }
+    runs.slice().reverse().forEach(function (r, i) {
+      var dur = r.ende ? Math.max(1, Math.round((new Date(r.ende) - new Date(r.start)) / 1000)) : null;
+      var el = h("details", { class: "run" },
+        '<summary><span class="st ' + esc(r.status) + '">' + STICON[r.status] + " " + esc(STATUS[r.status] || r.status) + "</span>" +
+        '<span class="when">' + dfmt.format(new Date(r.start)) + (r.probe ? "<small>Probelauf</small>" : "") + (dur ? "<small>" + (dur >= 60 ? Math.round(dur / 60) + " min" : dur + " s") + "</small>" : "") + "</span>" +
+        '<span class="nums"><span><b>' + (r.demos || []).length + "</b> Demos</span><span><b>" + (r.gebiete || []).length + "</b> Gebiete</span></span></summary>" +
+        '<div class="term" aria-live="off"></div>');
+      el.addEventListener("toggle", function () {
+        if (!el.open) return; var term = $(".term", el); if (term.dataset.done) return; term.dataset.done = 1;
+        var lines = (r.log || []).concat(r.fehler ? ["Fehler: " + r.fehler] : []), k = 0;
+        (function type() {
+          if (k >= lines.length || reduce) { if (reduce) lines.forEach(add); var c = h("span", { class: "caret" }); term.appendChild(c); return; }
+          add(lines[k++]); term.scrollTop = term.scrollHeight; setTimeout(type, 45);
+        })();
+        function add(line) { var s = h("div", line.indexOf("Fehler") === 0 ? { class: "err" } : {}); s.textContent = "› " + line; term.appendChild(s); }
+      });
+      box.appendChild(el);
+      if (i === 0 && r.status === "fehler") el.open = true;
+    });
+  }
+
+  /* Einstellungen */
+  function renderCfg(d) {
+    var e = d.einstellungen;
+    $("#cfg").innerHTML = '<div class="big num">' + e.demos_pro_woche + '</div><div class="hint" style="color:var(--ink2)">neue Demos pro Woche, höchstens</div>' +
+      "<dl><dt>Suchgebiete</dt><dd>" + e.gebiete + "</dd>" +
+      "<dt>Google-Suchen pro Lauf</dt><dd>max. " + e.google_budget + "</dd>" +
+      "<dt>Mindestbewertung</dt><dd>" + String(e.mindestbewertung).replace(".", ",") + " ★, " + e.mindestanzahl + " Bewertungen</dd>" +
+      "<dt>Demos löschen nach</dt><dd>" + e.loeschen_nach + " Tagen</dd>" +
+      "<dt>Briefversand</dt><dd>" + (e.briefe_aktiv ? (e.briefmodus === "live" ? "an" : "an (Testmodus)") : "aus") + "</dd>" +
+      "<dt>KI-Modell</dt><dd>" + esc(e.modell) + "</dd></dl>";
+  }
+
+  /* Countdown */
+  var cdTimer = null;
+  function startCountdown(iso) {
+    clearInterval(cdTimer); var target = new Date(iso), el = $("#countdown");
+    function tick() {
+      var s = Math.max(0, Math.floor((target - new Date()) / 1000)), dd = Math.floor(s / 86400), hh = Math.floor(s % 86400 / 3600), mm = Math.floor(s % 3600 / 60), ss = s % 60;
+      var p = function (n) { return (n < 10 ? "0" : "") + n; };
+      el.innerHTML = "<span>" + dd + "</span><em>T</em><span>" + p(hh) + "</span><em>Std</em><span>" + p(mm) + "</span><em>Min</em><span>" + p(ss) + "</span><em>Sek</em>";
+    }
+    tick(); cdTimer = setInterval(tick, 1000);
+  }
+  addEventListener("resize", function () { if (DATA) renderChart((DATA.laeufe || []).filter(function (r) { return !r.probe; }).length ? DATA.laeufe.filter(function (r) { return !r.probe; }) : DATA.laeufe || []); });
+})();
+</script>
+</body>
+</html>
