@@ -152,6 +152,8 @@ button, input { font: inherit; color: inherit; }
 .cd-label { font-size: .7rem; color: var(--ink3); font-weight: 500; margin-right: .2rem; }
 #run-now.running { background: rgba(255,181,71,.12); color: #FFB547; border-color: rgba(255,181,71,.5); box-shadow: none; cursor: default; }
 #run-now.running svg { animation: blink 1.2s infinite; }
+#build-now.running { background: rgba(255,181,71,.12); color: #FFB547; border-color: rgba(255,181,71,.5); box-shadow: none; cursor: default; }
+#build-now.running::before { content: ""; display: inline-block; width: .5rem; height: .5rem; margin-right: .45rem; border-radius: 50%; background: currentColor; animation: blink 1.2s infinite; vertical-align: .05rem; }
 #run-stop { border-color: rgba(255,87,87,.45); color: #FF8C8C; }
 
 .areas-box { margin-top: 1.2rem; border-top: 1px solid var(--edge); padding-top: 1rem; }
@@ -357,6 +359,8 @@ button, input { font: inherit; color: inherit; }
 .c-groups i b { display: block; height: 100%; border-radius: 2px; }
 .c-badge { display: inline-block; margin-top: .45rem; font-size: .68rem; padding: .12rem .45rem; border-radius: 999px; border: 1px solid var(--edge); color: var(--ink2); }
 .c-badge.hot { border-color: rgba(255,87,87,.6); color: #FF8C8C; }
+.c-badge.work { border-color: rgba(255,181,71,.6); color: #FFB547; }
+.c-badge.work::before { content: ""; display: inline-block; width: .42rem; height: .42rem; margin-right: .35rem; border-radius: 50%; background: currentColor; animation: blink 1.2s infinite; }
 .c-more { display: none; margin-top: .6rem; border-top: 1px solid var(--edge); padding-top: .55rem; cursor: default; }
 .card.open .c-more { display: block; }
 .c-more h4 { margin: .5rem 0 .25rem; font-size: .72rem; font-weight: 600; color: var(--ink2); display: flex; justify-content: space-between; }
@@ -731,7 +735,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "6c908a735d";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "2b0b5c1d5e";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -788,12 +792,16 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       var was = isLive(DATA), now = isLive(d), moreDemos = (d.demos || []).length > (DATA.demos || []).length || verChanged;
       var newIntro = d.intro && d.intro.id && (!DATA.intro || DATA.intro.id !== d.intro.id);
       var newLines = now && was ? (d.live.log || []).length !== (DATA.live.log || []).length || d.live.phase !== DATA.live.phase : false;
+      var prevData = DATA;
       DATA = d;
       if (newIntro && !now) offerNewIntro(d);
       if (now && was) {
+        var boardChanged = liveKey(d) !== liveKey(prevData);
         renderLive(d);
-        if (moreDemos) { renderDemos(d); renderRanks(d); }
-      } else render(d);
+        if (moreDemos) renderDemos(d);
+        if (moreDemos || boardChanged) renderRanks(d);
+        runRender();
+      } else { render(d); runRender(); }
       if (moreDemos) Sound.play("demo"); else if (was && !now) Sound.play((d.laeufe || []).slice(-1)[0] && d.laeufe.slice(-1)[0].status === "fehler" ? "error" : "done");
       else if (now && !was) Sound.play("start"); else if (newLines) Sound.play("blip");
     }).catch(function () {});
@@ -885,8 +893,10 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     box.hidden = false;
     $("#lphase").textContent = L.phase || "Läuft";
     var started = L.start ? Math.max(0, Math.round((Date.now() - new Date(L.start)) / 60000)) : null;
-    $("#lprog").textContent = (L.ziel ? L.demos + " / " + L.ziel + " Websites" : "") + (started != null ? " · seit " + started + " Min." : "");
-    var phases = ["Start", "Ältere Demos auffrischen", "Suche Restaurants", "Bewerte Restaurants", "Baue Websites"];
+    var work = (L.in_arbeit || []).slice(0, 3);
+    $("#lprog").textContent = (L.ziel ? L.demos + " / " + L.ziel + " Websites" : "") + (started != null ? " · seit " + started + " Min." : "") + (work.length ? " · baut: " + work.join(", ") : "");
+    var phases = L.nur_manuell ? ["Start", "Lerne aus deinen Bewertungen", "Neubau nach deinem Wunsch", "Baue Websites"]
+      : ["Start", "Lerne aus deinen Bewertungen", "Neubau nach deinem Wunsch", "Ältere Demos auffrischen", "Suche Restaurants", "Bewerte Restaurants", "Baue Websites"];
     var base = Math.max(0, phases.indexOf(L.phase)) / phases.length;
     var frac = L.phase === "Baue Websites" && L.ziel ? base + (L.demos / L.ziel) / phases.length : base + .05;
     $("#lbar").style.width = Math.min(100, Math.round(frac * 100)) + "%";
@@ -1481,7 +1491,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   function cardHTML(x) {
     var t = x.stufe || tierOf(x.punkte || 0), g = groupsOf(x), km = x.entfernung_km == null ? "" : " · " + String(x.entfernung_km).replace(".", ",") + " km";
     var cats = {}; (x.kategorien || []).forEach(function (k) { var n = k.gruppe || "Weitere"; (cats[n] = cats[n] || []).push(k); });
-    var badge = (DEC[x.place_id] || {}).aktion === "bauen" && x.col === "bauen" ? '<span class="c-badge hot">deine Auswahl</span>' : x.col === "nie" && x.isDemo ? '<span class="c-badge hot">Demo wird entfernt</span>' : x.note ? '<span class="c-badge">Einzelstück · Note ' + x.note + "/10</span>" : "";
+    var badge = (DEC[x.place_id] || {}).aktion === "bauen" && x.col === "bauen" ? buildBadge(x) : x.col === "nie" && x.isDemo ? '<span class="c-badge hot">Demo wird entfernt</span>' : x.note ? '<span class="c-badge">Einzelstück · Note ' + x.note + "/10</span>" : "";
     return '<div class="c-top"><span class="tier ' + t + '" title="Stufe ' + t + '">' + t + '</span><b class="c-name" title="' + esc(x.name) + '">' + esc(x.name) + '</b><span class="c-score">' + (x.punkte || "–") + "<small>/100</small></span></div>" +
       '<div class="c-meta">' + esc([x.kueche, x.ort].filter(Boolean).join(" · ")) + km + "</div>" +
       (g.length ? '<div class="c-groups">' + g.map(function (k) { return '<span title="' + esc(k.name) + ": " + String(k.punkte).replace(".", ",") + " von " + String(k.max).replace(".", ",") + '">' + esc(k.name) + '<i><b style="width:' + (k.max ? Math.round(k.punkte / k.max * 100) : 0) + "%;background:" + (GCOL[k.name] || "#7BAFFF") + '"></b></i></span>'; }).join("") + "</div>" : "") + badge +
@@ -1492,6 +1502,27 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       '<div class="c-acts">' + Object.keys(COLS).filter(function (c) { return c !== x.col && c !== "demo" && !(c === "bauen" && x.isDemo); }).map(function (c) { return '<button class="btn" type="button" data-move="' + c + '">→ ' + COLS[c] + "</button>"; }).join("") +
       (x.maps_url ? '<a class="btn" href="' + esc(x.maps_url) + '" target="_blank" rel="noopener">Maps</a>' : "") + (x.demo_url ? '<a class="btn" href="' + esc(x.demo_url) + '" target="_blank" rel="noopener">Demo</a>' : "") + "</div></div>";
   }
+  /* Was passiert gerade mit deiner Auswahl? (Lauf aktiv, Restaurant in diesem Lauf dabei, gerade in Arbeit) */
+  function runObj() { return typeof RUN === "object" && RUN ? RUN : {}; }
+  function liveOf(d) { return d && d.live && d.live.aktiv ? d.live : null; }
+  function runBusy() { var R = runObj(); return !!(R.active || liveOf(DATA) || (R.starting && Date.now() - R.starting < 120000)); }
+  /* Gehört eine Karte zum laufenden Lauf? Der Lauf kennt seine Auswahl; ältere Läufe: Zeitpunkt der Entscheidung */
+  function inCurrentRun(x) {
+    var L = liveOf(DATA), R = runObj();
+    if (L && L.auswahl) return L.auswahl.some(function (a) { return a.place_id === x.place_id; });
+    var start = (L && L.start) || (R.active && R.active.run_started_at) || (R.starting ? new Date(R.starting).toISOString() : null), z = (DEC[x.place_id] || {}).zeit;
+    return !start || !z || new Date(z) <= new Date(start);
+  }
+  function picks() { return DATA ? items(DATA).filter(function (x) { return x.col === "bauen"; }) : []; }
+  function buildBadge(x) {
+    var L = liveOf(DATA), R = runObj();
+    if (!runBusy()) return '<span class="c-badge hot">deine Auswahl</span>';
+    if (!inCurrentRun(x)) return R.queuedAt ? '<span class="c-badge work">eingereiht, startet direkt danach</span>' : '<span class="c-badge">„Danach bauen“ reiht es ein</span>';
+    if (!L) return '<span class="c-badge work">Lauf startet, gleich dran</span>';
+    var busy = (L.in_arbeit || []).indexOf(x.name) >= 0 || L.phase === "Baue Websites";
+    return '<span class="c-badge work">' + (busy ? "wird gerade gebaut" : "in diesem Lauf, gleich dran") + "</span>";
+  }
+  function liveKey(d) { var L = d && d.live && d.live.aktiv ? d.live : null; return L ? [L.phase, (L.in_arbeit || []).join("|"), (L.auswahl || []).length].join("#") : ""; }
   function renderRanks(d) {
     var all = items(d), sel = $("#rkueche"), kitchens = {};
     all.forEach(function (x) { if (x.kueche) kitchens[x.kueche] = (kitchens[x.kueche] || 0) + 1; });
@@ -1634,12 +1665,25 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   }
   $("#build-now").addEventListener("click", function () {
     var st = DATA.steuerung || {}; if (!st.token) { toast("Steuerung noch nicht eingerichtet: Es fehlt das Secret COCKPIT_GITHUB_TOKEN."); return; }
-    if (guardRunning()) return;
-    var b = this; b.disabled = true; RUN.starting = Date.now(); runRender();
-    saving.then(function () { return command("bauen", st.workflow, { nur_manuell: "true" }); })
-      .then(function () { Sound.play("start"); toast("Lauf gestartet. Das Cockpit zeigt ihn in ein bis zwei Minuten live."); })
-      .catch(function (e) { Sound.play("error"); toast("Start fehlgeschlagen (" + e.message + ")."); })
-      .then(function () { setTimeout(function () { b.disabled = false; }, 4000); });
+    var b = this; if (b.disabled) return; b.disabled = true;
+    // erst frisch nachsehen, ob schon ein Lauf läuft oder wartet: ein zweiter Klick startet keinen zweiten Lauf
+    runCheck().then(function () {
+      if (runBusy()) {
+        var fresh = picks().filter(function (x) { return !inCurrentRun(x); });
+        if (!fresh.length) { Sound.play("deny"); toast("Deine Auswahl wird gerade gebaut. Die Demos erscheinen nach und nach unter „Demo online“."); return; }
+        if (RUN.queued > 0 || RUN.queuedAt) { Sound.play("deny"); toast("Ist schon eingereiht: startet direkt nach dem laufenden Lauf."); return; }
+        // neue Karten seit Laufbeginn: einen Folgelauf einreihen (GitHub hält höchstens einen wartenden Lauf)
+        return saving.then(function () { return command("bauen"); }).then(function () {
+          RUN.queuedAt = Date.now(); RUN.queuedFor = RUN.active && RUN.active.id; runRender(); renderRanks(DATA); Sound.play("drop");
+          toast(fresh.map(function (x) { return x.name; }).join(", ") + ": eingereiht, wird direkt nach dem laufenden Lauf gebaut.");
+          setTimeout(runCheck, 15000);
+        }).catch(function (e) { Sound.play("error"); toast("Einreihen fehlgeschlagen (" + e.message + ")."); });
+      }
+      RUN.starting = Date.now(); runRender(); renderRanks(DATA);
+      return saving.then(function () { return command("bauen", st.workflow, { nur_manuell: "true" }); })
+        .then(function () { Sound.play("start"); toast("Bau gestartet. Die Karten zeigen den Stand, live mit Protokoll in ein bis zwei Minuten."); setTimeout(runCheck, 15000); setTimeout(runCheck, 45000); })
+        .catch(function (e) { RUN.starting = 0; runRender(); renderRanks(DATA); Sound.play("error"); toast("Start fehlgeschlagen (" + e.message + ")."); });
+    }).then(function () { setTimeout(function () { b.disabled = false; runRender(); }, 2500); });
   });
   function syncDecisions(d) {
     DEC = Object.assign({}, d.entscheidungen || {});
@@ -1921,14 +1965,25 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   }
 
   /* ---------- Lauf starten / abbrechen: immer nur ein Lauf ---------- */
-  var RUN = { active: null, starting: 0, timer: 0 };
+  var RUN = { active: null, starting: 0, timer: 0, queued: 0, queuedAt: 0, queuedFor: null, badgeKey: "" };
   function runCheck() {
     var st = (DATA && DATA.steuerung) || {};
     if (!st.token) { RUN.active = isLive(DATA) ? { status: "in_progress", run_started_at: (DATA.live || {}).start } : null; runRender(); return Promise.resolve(); }
     return api("/actions/runs?per_page=15").then(function (r) {
       var act = (r.workflow_runs || []).filter(function (x) { return x.name === "Wochenlauf" && ["queued", "in_progress", "waiting", "requested", "pending"].indexOf(x.status) >= 0; });
-      RUN.active = act[0] || null; if (RUN.active) RUN.starting = 0; runRender();
-    }).catch(function () { RUN.active = isLive(DATA) ? { status: "in_progress" } : null; runRender(); });
+      // der älteste aktive ist der laufende, jüngere warten nur
+      RUN.active = act.length ? act[act.length - 1] : null; RUN.queued = Math.max(0, act.length - 1); if (RUN.active) RUN.starting = 0; runRender();
+    }).catch(function () { return runCheckByCommands(); });
+  }
+  /* Ohne Leserecht für Actions: Befehlsdateien mit dem letzten Lauf vergleichen */
+  function runCheckByCommands() {
+    if (isLive(DATA)) { RUN.active = { status: "in_progress", run_started_at: (DATA.live || {}).start }; runRender(); return Promise.resolve(); }
+    return Promise.all(["bauen", "lauf"].map(function (n) { return api("/contents/data/befehle/" + n + ".json", { allow404: true }).then(function (f) { return f ? (JSON.parse(fromU8(f.content) || "{}").zeit || "") : ""; }).catch(function () { return ""; }); }))
+      .then(function (z) {
+        var cmd = z.sort().pop(), last = (DATA.laeufe || []).slice(-1)[0], lastStart = last && last.start ? new Date(last.start) : new Date(0);
+        var pending = cmd && new Date(cmd) > lastStart && Date.now() - new Date(cmd) < 150 * 60000;
+        RUN.active = pending ? { status: "queued", run_started_at: cmd } : null; if (RUN.active) RUN.starting = 0; runRender();
+      });
   }
   function runRender() {
     var b = $("#run-now"), lab = $("#run-label"), stop = $("#run-stop"), a = RUN.active;
@@ -1937,9 +1992,18 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     if (a) { var m = a.run_started_at ? Math.max(0, Math.round((Date.now() - new Date(a.run_started_at)) / 60000)) : null; lab.textContent = a.status === "queued" ? "Lauf wartet auf Start" : "Lauf läuft bereits" + (m != null ? " · " + m + " Min." : ""); }
     else lab.textContent = starting ? "Lauf startet …" : "Lauf starten";
     stop.hidden = !(a && a.id);
+    var bn = $("#build-now"), busy = runBusy();
+    // eingereihter Folgelauf ist erledigt, sobald nichts mehr läuft oder der damalige Lauf vorbei ist
+    if (RUN.queuedAt && (!busy || (RUN.queuedFor && a && a.id && a.id !== RUN.queuedFor) || Date.now() - RUN.queuedAt > 160 * 60000)) RUN.queuedAt = 0;
+    var fresh = busy && !RUN.queuedAt && !RUN.queued ? picks().filter(function (x) { return !inCurrentRun(x); }).length : 0;
+    var mins = a && a.run_started_at ? " · " + Math.max(0, Math.round((Date.now() - new Date(a.run_started_at)) / 60000)) + " Min." : "";
+    bn.classList.toggle("running", busy && !fresh);
+    bn.textContent = !busy ? "Jetzt bauen" : fresh ? "Danach bauen (" + fresh + ")" : RUN.queuedAt || RUN.queued ? "Eingereiht · startet danach" : a && a.status === "queued" ? "Bau wartet auf Start" : starting && !a ? "Bau startet …" : "Wird gebaut" + mins;
+    bn.title = !busy ? "" : fresh ? "Reiht einen Lauf direkt nach dem laufenden ein, für die Karten, die neu dazugekommen sind." : "Läuft schon. Die Demos erscheinen nach und nach unter „Demo online“.";
+    var k = busy + "|" + fresh + "|" + !!RUN.queuedAt + "|" + liveKey(DATA); if (k !== RUN.badgeKey) { RUN.badgeKey = k; if (DATA) renderRanks(DATA); }
   }
   function guardRunning() {
-    if (RUN.active || (RUN.starting && Date.now() - RUN.starting < 120000)) { Sound.play("deny"); toast("Es läuft bereits ein Lauf. Du kannst ihn abbrechen oder warten, bis er fertig ist."); return true; }
+    if (RUN.active || isLive(DATA) || (RUN.starting && Date.now() - RUN.starting < 120000)) { Sound.play("deny"); toast("Es läuft bereits ein Lauf. Was du jetzt noch in „Website bauen“ ziehst, baut der nächste Lauf. Du kannst den aktuellen auch abbrechen."); return true; }
     return false;
   }
   $("#run-now").addEventListener("click", function () {
