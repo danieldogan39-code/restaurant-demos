@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mar‘a Beef Club – Steak, Pizza, Pasta & Bar · Osterstraße 3, Hannover</title>
+<meta name="description" content="Mar‘a Beef Club in der Osterstraße 3, Hannover-Mitte: Steak vom Grill, Pizza, Pasta und Bar. Täglich 11:00 bis 02:00 Uhr. Tischreservierung unter 0511 47351172.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+:root{
+--schwarz:#141414;--hell:#F2ECE3;--rot:#B5152B;--rot-d:#8E0E22;--silber:#B5B0A8;--holz:#7A4A2E;--linie:#34312e;
+--rand:clamp(1rem,5vw,4rem);--max:1280px;--kopf:64px;
+--s1:.5rem;--s2:1rem;--s3:1.5rem;--s4:2rem;--s5:3rem;--s6:4rem;--s7:6rem;
+--abschnitt:clamp(3.5rem,9vw,7.5rem);
+--sans:"Sora",system-ui,sans-serif;--serif:"Newsreader",Georgia,serif;
+--fokus:var(--schwarz)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--hell);color:var(--schwarz);font-family:var(--serif);font-size:clamp(1.0625rem,1vw + .8rem,1.1875rem);line-height:1.6;overflow-x:hidden;hyphens:auto;-webkit-hyphens:auto}
+img{display:block;max-width:100%}
+h1,h2,h3{font-family:var(--sans);font-weight:700;line-height:1.08;margin:0;hyphens:manual;letter-spacing:-.015em}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--fokus);outline-offset:3px}
+.dunkel{background:var(--schwarz);color:var(--hell);--fokus:var(--hell)}
+.w{max-width:var(--max);margin-inline:auto;padding-inline:var(--rand)}
+[id]{scroll-margin-top:calc(var(--kopf) + 24px)}
+.wm{font-family:var(--sans);font-weight:700;color:var(--hell);letter-spacing:-.02em;text-decoration:none}
+.pt{display:inline-block;width:.22em;height:.22em;border-radius:50%;background:var(--rot);vertical-align:.2em;margin:0 .2em}
+.mp{color:var(--silber);padding:0 .35em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:48px;padding:14px 24px;font-family:var(--sans);font-weight:700;font-size:1rem;line-height:1.2;text-decoration:none;border:2px solid transparent;transition:background-color .2s,color .2s}
+.btn-rot{background:var(--rot);color:var(--hell)}
+.btn-rot:hover{background:var(--rot-d)}
+.btn-kontur{border-color:var(--hell);color:var(--hell)}
+.btn-kontur:hover{background:var(--hell);color:var(--schwarz)}
+.btn-schwarz{background:var(--schwarz);color:var(--hell)}
+.btn-schwarz:hover{background:#000;border-color:var(--hell)}
+.btn-dunkel{border-color:var(--schwarz);color:var(--schwarz)}
+.btn-dunkel:hover{background:var(--schwarz);color:var(--hell)}
+.rahmen{position:relative;overflow:hidden;background:#2a2725}
+.rahmen img{width:100%;height:100%;object-fit:cover}
+figure{margin:0}
+figcaption{font-family:var(--sans);font-size:.875rem;line-height:1.4;padding-top:.5rem}
+.foto-nachweis{color:inherit;text-underline-offset:2px}
+.hell-cap{color:var(--holz)}
+.dunkel figcaption{color:var(--silber)}
+.ki-label{position:absolute;left:.5rem;bottom:.5rem;background:var(--schwarz);color:var(--hell);font-family:var(--sans);font-size:.875rem;line-height:1;padding:.35rem .5rem}
+
+.kopf{position:sticky;top:0;z-index:50;background:var(--schwarz);color:var(--hell);--fokus:var(--hell)}
+.kopf::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--rot);transform-origin:left}
+.mk .kopf::after{transform:scaleX(0)}
+.mk.aus .kopf::after{transform:scaleX(1);transition:transform .4s ease-out}
+.kopf .w{display:flex;flex-wrap:nowrap;align-items:center;justify-content:space-between;gap:var(--s3);height:var(--kopf)}
+.kopf nav{min-width:0}
+.marke{font-size:1.25rem;white-space:nowrap;flex:none}
+.kopf nav{display:flex;flex-wrap:nowrap;align-items:center;gap:var(--s4)}
+.kopf ul{display:flex;flex-wrap:nowrap;align-items:center;gap:32px;list-style:none;margin:0;padding:0}
+.kopf ul a,.kopf .btn{white-space:nowrap}
+.kopf .btn{flex:none;min-height:40px;padding:10px 20px;line-height:1.2;font-size:.9375rem}
+.kopf ul a{display:inline-flex;align-items:center;min-height:44px;font-family:var(--sans);font-size:.9375rem;text-decoration:none;color:var(--hell)}
+.kopf ul a:hover{text-decoration:underline;text-underline-offset:6px}
+.kurz{display:none}
+
+.hero{display:flex;min-height:calc(100svh - var(--kopf) - 11rem);background:var(--schwarz);color:var(--hell);--fokus:var(--hell)}
+.hero-text{flex:1 1 0;display:flex;flex-direction:column;justify-content:center;gap:var(--s3);padding:clamp(2.5rem,7vw,6rem) var(--rand);padding-left:max(var(--rand),calc((100vw - var(--max))/2 + var(--rand)))}
+.hero h1{font-size:clamp(2.75rem,7.2vw,6.5rem);line-height:.98;width:fit-content}
+.hero h1 .z{display:block}
+.unter{font-family:var(--sans);font-size:clamp(1.0625rem,1.6vw,1.375rem);color:var(--hell)}
+.ort{color:var(--silber);font-family:var(--sans);font-size:1rem;line-height:1.5}
+.hero-satz{max-width:36ch;font-family:var(--sans);font-size:1.0625rem;line-height:1.55}
+.knoepfe{display:flex;flex-wrap:wrap;gap:var(--s2)}
+[data-status]{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--sans);font-size:1rem;color:var(--hell)}
+[data-status]:empty{display:none}
+[data-status]::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:var(--silber)}
+[data-status][data-offen="ja"]::before{background:var(--rot);outline:2px solid var(--hell);outline-offset:1px}
+.hero-foto{flex:0 0 41.666%;display:flex;flex-direction:column;position:relative}
+.hero-foto .rahmen{flex:1 1 auto;min-height:420px}
+.hero-foto .rahmen img{position:absolute;inset:0}
+.hero-foto figcaption{position:absolute;right:0;bottom:0;z-index:1;padding:.35rem .6rem;background:rgba(20,20,20,.88);color:var(--hell);font-size:.875rem}
+
+.band{border-top:6px solid var(--rot);padding-block:2rem var(--s4)}
+.band-kopf{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:.5rem var(--s3);margin-bottom:var(--s3);font-family:var(--sans);font-size:1rem}
+.band-kopf strong{color:var(--hell)}
+#jetzt{color:#D8D3CB}
+.phasen{display:grid;grid-template-columns:4fr 3fr 5fr 4fr;list-style:none;margin:0;padding:0}
+.phasen li{border-left:1px solid var(--linie);padding:0 clamp(.5rem,1.2vw,1rem) .25rem}
+.ph-name{display:block;font-family:var(--sans);font-size:.9375rem;color:var(--silber);margin-bottom:.6rem}
+.ph-std{display:flex;justify-content:space-between;gap:.35rem;font-family:var(--sans);font-weight:700;font-size:clamp(1rem,1.7vw,1.5rem);color:#D8D3CB;font-variant-numeric:tabular-nums}
+.h{display:inline-flex;align-items:center;gap:clamp(.25rem,.6vw,.5rem)}
+.h::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--silber);flex:none}
+.h.jetzt{color:var(--hell)}
+.h.jetzt::before{width:12px;height:12px;background:var(--rot);outline:2px solid var(--hell);outline-offset:1px;animation:fuell .3s ease-out both}
+@keyframes fuell{from{transform:scale(.5);background:var(--silber)}}
+
+.karte{padding-block:var(--abschnitt) 64px}
+.karte-kopf{display:grid;gap:var(--s2);margin-bottom:var(--s5);max-width:52rem}
+.karte-kopf h2{font-size:clamp(2.1rem,4.6vw,3.75rem)}
+.karte-kopf p{max-width:45ch}
+.karte-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--s4);align-items:start}
+.liste{grid-column:1/9;display:grid;grid-template-columns:1fr 1fr;gap:0 var(--s5)}
+.gruppe .mp{color:var(--rot);font-weight:700}
+.fussnote{grid-column:1/-1;border-top:1px solid var(--holz);padding-top:var(--s2);font-family:var(--sans);font-size:1rem}
+.fussnote a{font-family:var(--sans);font-weight:700;display:inline-flex;align-items:center;min-height:44px;text-decoration-color:var(--rot);text-underline-offset:4px}
+.gruppe{border-top:1px solid var(--holz);padding-block:var(--s3)}
+.gruppe h3{font-size:1rem;color:var(--holz);margin-bottom:var(--s2);letter-spacing:0}
+.gruppe ul{list-style:none;margin:0;padding:0}
+.gruppe li{font-size:clamp(1.25rem,1.8vw,1.5rem);line-height:1.3;padding-block:.4rem}
+.gruppe li small{display:block;font-size:1rem;font-style:italic;color:#4d3a2c;padding-top:.15rem}
+.hinweis{display:flex;gap:var(--s2);align-items:center;border-top:1px solid var(--holz);padding-top:var(--s3)}
+.hinweis .rahmen{flex:0 0 132px;aspect-ratio:1}
+.hinweis p{font-size:1rem}
+.hinweis a{font-family:var(--sans);font-weight:700;display:inline-flex;align-items:center;min-height:44px}
+.fotos{grid-column:10/13;display:grid;gap:var(--s3);align-content:start}
+.fotos .q .rahmen{aspect-ratio:4/3}
+.fotos .hk .rahmen{aspect-ratio:1/1}
+.fotos .hk img{object-position:center top}
+
+.raum-block{padding:0}
+.raum .rahmen{aspect-ratio:16/7}
+.raum img{object-position:70% center}
+.raum figcaption{max-width:var(--max);margin-inline:auto;padding:.5rem var(--rand) 0}
+.haltung{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--s4);padding-block:64px}
+.haltung p{grid-column:2/11;font-style:italic;font-size:clamp(1.5rem,2.8vw,2.4rem);line-height:1.25;max-width:32ch}
+
+.tag{padding-bottom:var(--abschnitt)}
+.tag-kopf{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--s4);border-top:1px solid var(--linie);padding-top:var(--s5);margin-bottom:var(--s4)}
+.tag-kopf h2{grid-column:1/7;font-size:clamp(2.1rem,4.6vw,3.75rem)}
+.tag-kopf p{grid-column:7/13;align-self:end;color:var(--hell);max-width:40ch}
+.zeile{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--s4);padding-block:var(--s4);border-top:1px solid var(--linie);align-items:start}
+.zeit{grid-column:1/4;font-family:var(--sans);font-weight:700;font-size:clamp(2.75rem,6.4vw,5.5rem);line-height:.9;color:var(--silber);font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+.zeile-text{grid-column:4/8;display:grid;gap:var(--s2);padding-top:.4rem}
+.zeile-text h3{font-size:clamp(1.35rem,2vw,1.75rem)}
+.zeile figure{grid-column:8/13}
+.zeile .rahmen{aspect-ratio:3/2}
+.zeile.ohne .zeile-text{grid-column:4/11;max-width:56ch}
+
+.lage{padding-block:var(--abschnitt)}
+.lage-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--s5) var(--s4);align-items:start}
+.karte-rahmen{grid-column:1/8;aspect-ratio:4/3;min-height:300px;background:#e4dccf;border:1px solid #d6cbbb}
+.karte-rahmen>div{width:100%;height:100%}
+.lage-info{grid-column:8/13;display:grid;gap:var(--s3)}
+.lage-info h2{font-size:clamp(2rem,4vw,3.25rem)}
+.lage-info address{font-style:normal;font-family:var(--sans);font-size:1.0625rem;line-height:1.5}
+.merk{list-style:none;margin:0;padding:0;border-top:1px solid var(--holz)}
+.merk li{padding:.55rem 0;border-bottom:1px solid #d8ccbb}
+.zeiten{margin:0;display:grid;grid-template-columns:1fr auto;font-family:var(--sans);font-size:1rem;font-variant-numeric:tabular-nums}
+.zeiten dt,.zeiten dd{margin:0;padding:.35rem 0;border-bottom:1px solid #d8ccbb}
+.zeiten dd{text-align:right}
+.zeiten-titel{font-size:1rem;color:var(--holz);margin-bottom:.5rem}
+.lage-info .knoepfe .btn-rot{min-width:9rem}
+
+.abschluss{background:var(--rot);color:var(--hell);--fokus:var(--hell);padding-block:clamp(3rem,7vw,5.5rem)}
+.abschluss .w{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--s3) var(--s4);align-items:end}
+.schluss-text{grid-column:1/5;display:grid;gap:var(--s2);min-width:0}
+.abschluss h2{font-size:clamp(2rem,3.4vw,3rem);line-height:1.05}
+.abschluss p{color:var(--hell);font-family:var(--sans);font-size:1rem;line-height:1.5;max-width:36ch}
+.tel-gross{grid-column:5/13;justify-self:end;min-width:0;font-family:var(--sans);font-weight:700;font-size:clamp(2.5rem,6.2vw,5.25rem);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--hell);text-decoration:underline;text-decoration-color:var(--schwarz);text-decoration-thickness:.07em;text-underline-offset:.14em;padding-block:.15em}
+.tel-gross:hover{text-decoration-color:var(--hell)}
+@media (max-width:1099px){.abschluss .w{grid-template-columns:1fr}.schluss-text,.tel-gross{grid-column:1/-1;justify-self:start}}
+.btn-gross{font-size:clamp(1.125rem,2vw,1.4rem);padding:20px 32px;min-height:64px;font-variant-numeric:tabular-nums}
+
+.fuss{padding-block:var(--s5) var(--s4);font-size:1rem}
+.fuss-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--s4);padding-bottom:var(--s4);border-bottom:1px solid var(--linie)}
+.fuss-marke{grid-column:1/5;display:grid;gap:.5rem;align-content:start}
+.fuss-marke .wm{font-size:1.5rem}
+.fuss-marke p,.fuss-adr{color:var(--silber);font-family:var(--sans);font-size:.9375rem}
+.fuss-adr{grid-column:5/9;line-height:1.7}
+.fuss-adr a{display:inline-flex;min-height:44px;align-items:center;color:var(--hell)}
+.logo-v{grid-column:9/13}
+.logo-rahmen{aspect-ratio:3/1;max-width:240px;background:var(--hell);padding:.75rem}
+.logo-rahmen img{width:100%;height:100%;object-fit:contain}
+.rechtliches{padding-top:var(--s3);color:var(--silber);font-size:.875rem;line-height:1.6;max-width:75ch}
+.rechtliches p+p{margin-top:.5rem}
+.rechtliches a{display:inline-block;padding-block:.6rem}
+
+.leiste{display:none}
+
+@media (max-width:899px){
+.kopf ul{display:none}
+.lang{display:none}.kurz{display:inline}
+.kopf .btn{padding:10px 18px}
+.hero-text{padding:2rem var(--rand);gap:var(--s2)}
+.hero h1{font-size:clamp(2.5rem,7vw,3.75rem)}
+.haltung{padding-block:48px}
+.haltung p{grid-column:1/-1}
+.phasen{grid-template-columns:1fr}
+.phasen li{border-left:4px solid var(--linie);padding:.75rem 1rem;margin-bottom:.5rem;background:#1b1b1b}
+.phasen li.aktiv{border-left-color:var(--rot)}
+.ph-std{justify-content:flex-start;gap:.9rem;font-size:1.125rem}
+.karte-kopf,.karte-grid,.tag-kopf,.zeile,.lage-grid,.fuss-grid,.raum-block,.abschluss .w{grid-template-columns:1fr}
+.karte-kopf>*,.karte-grid>*,.tag-kopf>*,.zeile>*,.lage-grid>*,.fuss-grid>*,.zeile.ohne .zeile-text,.karte-kopf h2,.karte-kopf p,.tag-kopf h2,.tag-kopf p,.zeile figure,.raum,.haltung,.abschluss h2,.abschluss p,.tel-gross{grid-column:1/-1}
+.abschluss p,.tel-gross{justify-self:start}
+.tel-gross{font-size:clamp(2rem,10.5vw,3rem)}
+.karte-kopf h2,.tag-kopf h2,.lage-info h2{font-size:clamp(2rem,9vw,3.5rem);overflow-wrap:break-word}
+.raum-block{padding-top:0}
+.karte-kopf{gap:var(--s2)}
+.liste{grid-template-columns:1fr}
+.raum .rahmen{aspect-ratio:4/3}
+.zeile{gap:var(--s2)}
+.karte-rahmen{aspect-ratio:1}
+.leiste{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--schwarz);padding-bottom:env(safe-area-inset-bottom);border-top:1px solid var(--linie);--fokus:var(--hell)}
+.leiste a{flex:1;min-height:56px;display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-weight:700;text-decoration:none;color:var(--hell)}
+.leiste a:first-child{background:var(--rot)}
+body{padding-bottom:calc(56px + env(safe-area-inset-bottom))}
+}
+@media (min-width:900px) and (max-width:1023px){
+.liste{grid-column:1/-1}
+.fotos{grid-column:1/-1;grid-template-columns:1fr 1fr;align-items:start}
+.zeit{grid-column:1/-1}
+.zeile-text{grid-column:1/7}
+.zeile figure{grid-column:7/13}
+.zeile.ohne .zeile-text{grid-column:1/11}
+.karte-rahmen{grid-column:1/-1;aspect-ratio:16/9}
+.lage-info{grid-column:1/-1}
+}
+@media (max-width:699px){
+.hero{flex-direction:column;min-height:0}
+.hero-foto{order:-1;flex-basis:auto}
+.hero-foto .rahmen{flex:none;aspect-ratio:4/3;min-height:0}
+.hero-text{padding:1.25rem var(--rand) 2rem}
+.hero h1{font-size:clamp(2.5rem,12vw,3.5rem)}
+}
+@media (prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+*,*::before,*::after{animation:none!important;transition:none!important}
+.mk .kopf::after{transform:none}
+}
+</style>
+<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}</style></head>
+<body id="top"><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für Mar‘a Beef Club. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
+
+<header class="kopf">
+<div class="w">
+<a class="marke wm" href="#top" aria-label="Mar‘a Beef Club, zum Seitenanfang">Mar‘a<span class="pt"></span>Beef Club</a>
+<nav aria-label="Hauptnavigation">
+<ul>
+<li><a href="#karte">Karte</a></li>
+<li><a href="#tag">Tag</a></li>
+<li><a href="#lage">Lage</a></li>
+</ul>
+<a class="btn btn-rot" href="tel:+4951147351172"><span class="lang">Reservieren</span><span class="kurz">Anrufen</span></a>
+</nav>
+</div>
+</header>
+
+<main>
+<section class="hero" aria-labelledby="titel">
+<div class="hero-text">
+<h1 id="titel" class="wm"><span class="z">Mar‘a<span class="pt"></span></span><span class="z">Beef Club</span></h1>
+<p class="unter">Steak<span class="mp" aria-hidden="true">•</span>Pizza<span class="mp" aria-hidden="true">•</span>Pasta<span class="mp" aria-hidden="true">•</span>Bar</p>
+<span data-status></span>
+<p class="ort">Osterstraße 3, Hannover-Mitte<br>Täglich 11:00 – 02:00 Uhr</p>
+<p class="hero-satz">Ab 11 Uhr Mittagstisch, bis 2 Uhr nachts ein Glas an der Bar – jeden Tag.</p>
+<div class="knoepfe">
+<a class="btn btn-rot" href="tel:+4951147351172">0511 47351172 anrufen</a>
+<a class="btn btn-kontur" href="https://www.google.com/maps/dir/?api=1&amp;destination=Osterstra%C3%9Fe+3%2C+30159+Hannover" target="_blank" rel="noopener">Route</a>
+</div>
+</div>
+<figure class="hero-foto" data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLcb3XNiFlmH6yGnCtGx-YjrimwFg2fiaDu0MrULQjSTN4XlSSrL3euyGFtDBGiFpfOctfBaMYHR4RJUqvEZrTO7kDC8l_m4zgflP30_YhoNrtzQkvaG5bfyRS5JRyOX6O-ylDVLBjJWB8I=s4800-w1000" referrerpolicy="no-referrer" width="800" height="1000" fetchpriority="high" alt="Aufgeschnittenes Tomahawk-Steak am Knochen mit Grillmais und Gemüse auf dunklem Teller"></div>
+<figcaption><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/102424091434336521875" target="_blank" rel="noopener">Foto: Frau Unbekannt · Google Maps</a></figcaption>
+</figure>
+</section>
+
+<section class="band dunkel" aria-label="Der Tag im Mar‘a Beef Club">
+<div class="w">
+<div class="band-kopf"><strong>Jeden Tag von 11 bis 2 Uhr nachts</strong><span id="jetzt"></span></div>
+<ol class="phasen">
+<li data-phase="Mittagstisch"><span class="ph-name">Mittagstisch</span><span class="ph-std"><span class="h" data-h="11">11</span><span class="h" data-h="12">12</span><span class="h" data-h="13">13</span><span class="h" data-h="14">14</span></span></li>
+<li data-phase="Nachmittag"><span class="ph-name">Nachmittag</span><span class="ph-std"><span class="h" data-h="15">15</span><span class="h" data-h="16">16</span><span class="h" data-h="17">17</span></span></li>
+<li data-phase="Abendessen"><span class="ph-name">Abendessen</span><span class="ph-std"><span class="h" data-h="18">18</span><span class="h" data-h="19">19</span><span class="h" data-h="20">20</span><span class="h" data-h="21">21</span><span class="h" data-h="22">22</span></span></li>
+<li data-phase="Bar"><span class="ph-name">Bar</span><span class="ph-std"><span class="h" data-h="23">23</span><span class="h" data-h="0">00</span><span class="h" data-h="1">01</span><span class="h" data-h="2">02</span></span></li>
+</ol>
+</div>
+</section>
+
+<section class="karte" id="karte" aria-labelledby="karte-titel">
+<div class="w">
+<div class="karte-kopf">
+<h2 id="karte-titel">Was auf den Tisch kommt</h2>
+<p>Rib-Eye, Filet oder der Spieß: Sagen Sie uns, wie Sie Ihr Steak möchten.</p>
+</div>
+<div class="karte-grid">
+<div class="liste">
+<div>
+<div class="gruppe">
+<h3>Vom Grill</h3>
+<ul>
+<li>Tomahawk-Steak<small>am Knochen, aufgeschnitten serviert</small></li>
+<li>Rib-Eye-Steak</li>
+<li>Rinderfilet</li>
+<li>Rindfleisch-Spieß</li>
+</ul>
+</div>
+<div class="gruppe">
+<h3>Zum Schluss</h3>
+<ul><li>Schoko-Soufflé<small>mit Vanilleeis</small></li></ul>
+</div>
+</div>
+<div>
+<div class="gruppe">
+<h3>Außerdem</h3>
+<ul>
+<li>Pizza</li>
+<li>Pasta</li>
+<li>Mittagsmenü<small>zum Mittagstisch ab 11 Uhr</small></li>
+</ul>
+</div>
+<div class="gruppe">
+<h3>Bar</h3>
+<ul>
+<li>Cocktails</li>
+<li>Bier<span class="mp" aria-hidden="true">•</span>Wein</li>
+<li>Kaffee</li>
+</ul>
+</div>
+</div>
+<p class="fussnote">Preise und aktuelle Karte im Lokal oder am Telefon: <a href="tel:+4951147351172">0511 47351172</a></p>
+</div>
+<div class="fotos">
+<figure class="q" data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLdxQbnB3U_RR47-pDGLkPIYGAoRWKWbx7oqdJA7cYBHtBusqWPoOFqbh4xCDFGHZrXml6bsuwcj3m_zVS5FKM5dZzUbyYeG6RNOAs_GicpxAZ9FIvfkmEyB0W2DiQz7_NAwejdQXTzJYyCz=s4800-w694" referrerpolicy="no-referrer" width="800" height="600" loading="lazy" alt="Gegrillte Rindfleischspieße mit Bratkartoffeln und frischem Salat"></div>
+<figcaption class="hell-cap"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/112616275683987837823" target="_blank" rel="noopener">Foto: Mar‘a Beef Club · Google Maps</a></figcaption>
+</figure>
+<figure class="hk" data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLelBBb1K5fpDMQRV2wGgcdIcHasD5xsk-crzX6TqeR13O7oMChKNiHoULrk-lXYDSmmzlxb_em6SpE8dO3OHpDQZ7zE0Zaj5G4Ki2BkF6oX-aCCxI2Lms75ykgt9N9PBR4NhOR8LEUcArk=s4800-w1000" referrerpolicy="no-referrer" width="600" height="800" loading="lazy" alt="Gegrillte Steaks mit Maiskolben, Grillgemüse, Salat und Pommes"></div>
+<figcaption class="hell-cap"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/114308186507069439543" target="_blank" rel="noopener">Foto: Sutthida Jantasing · Google Maps</a></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+
+<div class="dunkel">
+<div class="raum-block">
+<figure class="raum" data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLcKCnHDKkb5dkeK2aQ5ImIZK88WmjAs0CwLGXNunRgaG5xnWZN0byi9B2espdxvhn2u3Dp6RG-qCmiJ5TIPfimAtosynk4-ugvXgRrfIX0DzUk8fsTe5zIov0Dp3Nw9yrazJJAz-K5NXsb9=s4800-w795" referrerpolicy="no-referrer" width="1600" height="700" loading="lazy" alt="Gastraum mit Ziegelwänden, massiven Holztischen und warmem Licht der Kugelleuchten"></div>
+<figcaption><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/112616275683987837823" target="_blank" rel="noopener">Foto: Mar‘a Beef Club · Google Maps</a></figcaption>
+</figure>
+<div class="haltung w">
+<p>Ziegel, dunkles Holz, warmes Licht – und Platz für die ganze Familie oder nur für einen Drink an der Bar.</p>
+</div>
+</div>
+
+<section class="tag w" id="tag" aria-labelledby="tag-titel">
+<div class="tag-kopf">
+<h2 id="tag-titel">Vier Gelegenheiten</h2>
+<p>Fünfzehn Stunden am Stück, sieben Tage die Woche. Kommen Sie, wann es passt.</p>
+</div>
+<article class="zeile ohne">
+<p class="zeit">11:00</p>
+<div class="zeile-text">
+<h3>Mittagstisch</h3>
+<p>Um elf geht die Tür auf. Mittags gibt es das Mittagsmenü, dazu Pizza und Pasta für die kurze Pause.</p>
+</div>
+</article>
+<article class="zeile">
+<p class="zeit">15:00</p>
+<div class="zeile-text">
+<h3>Nachmittag</h3>
+<p>Zeit für einen Kaffee und etwas Süßes. Das Schoko-Soufflé kommt mit Vanilleeis.</p>
+</div>
+<figure><div class="rahmen"><img src="ki-souffle.webp" width="900" height="600" loading="lazy" alt="Schoko-Soufflé in schwarzer Keramikform mit einer Kugel Vanilleeis"><span class="ki-label">KI-Bild</span></div></figure>
+</article>
+<article class="zeile">
+<p class="zeit">18:00</p>
+<div class="zeile-text">
+<h3>Abendessen</h3>
+<p>Jetzt kommt das Rind auf den Grill: Tomahawk, Rib-Eye, Filet oder der Spieß. Für größere Runden besser vorher anrufen.</p>
+</div>
+<figure><div class="rahmen"><img src="ki-marmorierung.webp" width="900" height="600" loading="lazy" alt="Rohes, marmoriertes Rib-Eye-Steak auf Schiefer mit grobem Salz und Pfeffer"><span class="ki-label">KI-Bild</span></div></figure>
+</article>
+<article class="zeile">
+<p class="zeit">23:00</p>
+<div class="zeile-text">
+<h3>Bar</h3>
+<p>Nach dem Essen noch bleiben oder später dazukommen. Cocktails, Bier und Wein bis 2 Uhr nachts.</p>
+</div>
+<figure><div class="rahmen"><img src="ki-bar-glas.webp" width="900" height="600" loading="lazy" alt="Kurzer Cocktail im schweren Kristallglas mit großem Eiswürfel und Orangenzeste"><span class="ki-label">KI-Bild</span></div></figure>
+</article>
+</section>
+</div>
+
+<section class="lage" id="lage" aria-labelledby="lage-titel">
+<div class="w lage-grid">
+<div class="karte-rahmen"><div data-karte data-stil="warm" data-farbe="#B3122B"></div></div>
+<div class="lage-info">
+<h2 id="lage-titel">Osterstraße 3</h2>
+<address>Mar‘a Beef Club<br>Osterstraße 3<br>30159 Hannover</address>
+<ul class="merk">
+<li>In der Innenstadt, wenige Minuten vom Kröpcke</li>
+<li>Plätze draußen an der Straße</li>
+<li>Zum Mitnehmen und mit Lieferservice</li>
+<li>Tischreservierung telefonisch</li>
+</ul>
+<div>
+<h3 class="zeiten-titel">Öffnungszeiten</h3>
+<dl class="zeiten">
+<dt>Montag</dt><dd>11:00 – 02:00 Uhr</dd>
+<dt>Dienstag</dt><dd>11:00 – 02:00 Uhr</dd>
+<dt>Mittwoch</dt><dd>11:00 – 02:00 Uhr</dd>
+<dt>Donnerstag</dt><dd>11:00 – 02:00 Uhr</dd>
+<dt>Freitag</dt><dd>11:00 – 02:00 Uhr</dd>
+<dt>Samstag</dt><dd>11:00 – 02:00 Uhr</dd>
+<dt>Sonntag</dt><dd>11:00 – 02:00 Uhr</dd>
+</dl>
+</div>
+<div class="knoepfe">
+<a class="btn btn-rot" href="https://www.google.com/maps/dir/?api=1&amp;destination=Osterstra%C3%9Fe+3%2C+30159+Hannover" target="_blank" rel="noopener">Route planen</a>
+<a class="btn btn-dunkel" href="tel:+4951147351172">0511 47351172</a>
+</div>
+</div>
+</div>
+</section>
+
+<section class="abschluss" aria-labelledby="schluss-titel">
+<div class="w">
+<div class="schluss-text">
+<h2 id="schluss-titel">Tisch für heute Abend?</h2>
+<p>Reservieren, abholen oder liefern lassen. Täglich 11:00 – 02:00 Uhr, Osterstraße 3.</p>
+</div>
+<a class="tel-gross" href="tel:+4951147351172" aria-label="0511 47351172 anrufen">0511 47351172</a>
+</div>
+</section>
+</main>
+
+<footer class="fuss dunkel">
+<div class="w">
+<div class="fuss-grid">
+<div class="fuss-marke">
+<span class="wm">Mar‘a<span class="pt"></span>Beef Club</span>
+<p>Steak<span class="mp" aria-hidden="true">•</span>Pizza<span class="mp" aria-hidden="true">•</span>Pasta<span class="mp" aria-hidden="true">•</span>Bar</p>
+<p>Früher Boga Beef &amp; Bar</p>
+</div>
+<p class="fuss-adr">Osterstraße 3, 30159 Hannover<br>Täglich 11:00 – 02:00 Uhr<br><a href="tel:+4951147351172">0511 47351172</a></p>
+</div>
+<div class="rechtliches"><p>Entwurf von Medialyte, 21147 Hamburg. Adresse und Öffnungszeiten: Google. Fotos: Google Maps, Urheber jeweils am Bild. Mit „KI-Bild“ markierte Bilder und das Logo sind KI-generierte Vorschläge.</p><p><a href="https://medialyte.de/impressum" style="color:inherit;text-decoration:underline">Impressum</a> · <a href="https://medialyte.de/datenschutzerklaerung" style="color:inherit;text-decoration:underline">Datenschutz</a></p></div>
+</div>
+</footer>
+
+<nav class="leiste" aria-label="Schnellzugriff">
+<a href="tel:+4951147351172">Anrufen</a>
+<a href="https://www.google.com/maps/dir/?api=1&amp;destination=Osterstra%C3%9Fe+3%2C+30159+Hannover" target="_blank" rel="noopener">Route</a>
+</nav>
+
+<script>
+(function(){
+var d=document.documentElement,rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!rm&&scrollY<10){d.classList.add('mk');addEventListener('scroll',function(){d.classList.add('aus')},{once:true,passive:true})}
+var h;
+try{h=parseInt(new Intl.DateTimeFormat('de-DE',{hour:'2-digit',hourCycle:'h23',timeZone:'Europe/Berlin'}).format(new Date()),10)}catch(e){h=new Date().getHours()}
+var j=document.getElementById('jetzt');
+if(h>=11||h<2){
+var el=document.querySelector('.h[data-h="'+h+'"]');
+if(el){el.classList.add('jetzt');var li=el.closest('li');li.classList.add('aktiv');j.textContent='Jetzt: '+li.dataset.phase+', '+(h<10?'0':'')+h+' Uhr'}
+}else{j.textContent='Gerade geschlossen – ab 11:00 Uhr wieder offen'}
+})();
+</script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>[data-karte]{width:100%;height:100%;min-height:260px}[data-karte] .leaflet-tile-pane{filter:var(--karte-filter)}
+[data-karte] .leaflet-control-attribution{font-size:10px}.karte-pin{position:relative;width:34px;height:34px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+box-shadow:0 6px 16px rgba(0,0,0,.35);border:3px solid #fff}.karte-pin i{position:absolute;inset:9px;border-radius:50%;background:#fff}</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>(function(){var C={"lat": 52.373516599999995, "lng": 9.7351552, "name": "Mar\u2018a Beef Club", "filter": {"hell": "grayscale(1) contrast(1.05) brightness(1.04)", "dunkel": "grayscale(1) invert(1) contrast(.88) brightness(.82)", "warm": "grayscale(1) sepia(.5) contrast(1.02) brightness(1.02)", "kuehl": "grayscale(1) sepia(.35) hue-rotate(175deg) saturate(.55) brightness(1.03)", "mono": "grayscale(1) contrast(1.2)"}};function draw(){if(!window.L)return;document.querySelectorAll('[data-karte]').forEach(function(el){
+if(el._map)return;var st=el.getAttribute('data-stil')||'hell',col=el.getAttribute('data-farbe')||'#c0392b';
+el.style.setProperty('--karte-filter',C.filter[st]||C.filter.hell);
+var m=L.map(el,{scrollWheelZoom:false,zoomControl:true,attributionControl:true}).setView([C.lat,C.lng],16);el._map=m;
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(m);
+var icon=L.divIcon({className:'',html:'<div class="karte-pin" style="background:'+col+'"><i></i></div>',iconSize:[34,34],iconAnchor:[17,34]});
+L.marker([C.lat,C.lng],{icon:icon,title:C.name,alt:C.name}).addTo(m);setTimeout(function(){m.invalidateSize()},300);});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',draw);else draw();window.addEventListener('load',draw);})();</script><script>(function(){
+var P=[[660, 1560], [2100, 3000], [3540, 4440], [4980, 5880], [6420, 7320], [7860, 8760], [9300, 10200]];
+function fmt(m){m=((m%1440)+1440)%1440;var h=Math.floor(m/60),mi=m%60;return (h<10?'0':'')+h+':'+(mi<10?'0':'')+mi;}
+function now(){var d=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Berlin'}));return d.getDay()*1440+d.getHours()*60+d.getMinutes();}
+function status(){if(!P.length)return null;var t=now(),W=10080;
+ for(var i=0;i<P.length;i++){var s=P[i][0],e=P[i][1];if((t>=s&&t<e)||(t+W>=s&&t+W<e))return {offen:true,text:'Jetzt geöffnet bis '+fmt(e)};}
+ var best=null;for(var j=0;j<P.length;j++){var d=(P[j][0]-t+W)%W;if(best===null||d<best.d)best={d:d,s:P[j][0]};}
+ var tag=Math.floor(t/1440),ot=Math.floor(best.s/1440)%7,names=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+ var when=best.d<1440&&ot===tag?'heute':(best.d<2880&&ot===(tag+1)%7?'morgen':names[ot]);
+ return {offen:false,text:'Geschlossen · öffnet '+when+' um '+fmt(best.s)};}
+function run(){var s=status();document.querySelectorAll('[data-status]').forEach(function(el){
+ if(!s){el.style.display='none';return;}el.textContent=s.text;el.setAttribute('data-offen',s.offen?'ja':'nein');});}
+document.querySelectorAll('[data-foto] img').forEach(function(img){
+ function hide(){var b=img.closest('[data-foto]');if(b)b.style.display='none';}
+ if(!img.getAttribute('src'))hide();else{img.addEventListener('error',hide);if(img.complete&&img.naturalWidth===0)hide();}});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();setInterval(run,60000);
+})();</script></body>
+</html>
