@@ -181,6 +181,14 @@ button, input { font: inherit; color: inherit; }
 .tag.keep { border-color: rgba(75,227,166,.5); color: var(--ok); }
 .demo .acts { display: flex; gap: .4rem; padding: 0 1rem 1rem; }
 .demo .acts .btn { padding: .45rem .7rem; font-size: .82rem; flex: 1; justify-content: center; }
+.tag.score { border-color: rgba(107,228,255,.6); color: var(--cyan); font-family: var(--display); }
+.why { margin: 0 1rem .9rem; font-size: .82rem; }
+.why summary { cursor: pointer; color: var(--ink2); font-weight: 600; }
+.why .cat { display: grid; grid-template-columns: 8.5rem 1fr 3rem; gap: .2rem .6rem; align-items: center; margin-top: .55rem; }
+.why .cat small { grid-column: 1 / -1; color: var(--ink3); }
+.why .bar2 { height: 6px; border-radius: 3px; background: rgba(255,255,255,.06); overflow: hidden; }
+.why .bar2 b { display: block; height: 100%; background: linear-gradient(90deg, var(--violet), var(--cyan)); }
+.why .pt { text-align: right; font-family: var(--display); }
 .empty { border: 1px dashed var(--edge); border-radius: 16px; padding: 2.5rem 1rem; text-align: center; color: var(--ink2); grid-column: 1 / -1; }
 
 /* Läufe */
@@ -290,7 +298,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
         <div class="seg-ctl" role="group" aria-label="Sortierung">
           <button type="button" data-sort="neu" aria-pressed="true">Neueste</button>
           <button type="button" data-sort="ablauf" aria-pressed="false">Läuft ab</button>
-          <button type="button" data-sort="beliebt" aria-pressed="false">Beliebt</button>
+          <button type="button" data-sort="eignung" aria-pressed="false">Eignung</button>
         </div>
       </div>
     </div>
@@ -542,7 +550,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     var list = d.demos.filter(function (x) { var q = query.toLowerCase(); return !q || [x.name, x.ort, x.gebiet, x.kueche].join(" ").toLowerCase().indexOf(q) >= 0; });
     list.sort(function (a, b) {
       if (sortMode === "ablauf") return (a.loescht_am || "9999") < (b.loescht_am || "9999") ? -1 : 1;
-      if (sortMode === "beliebt") return (b.anzahl || 0) - (a.anzahl || 0);
+      if (sortMode === "eignung") return (b.punkte || 0) - (a.punkte || 0);
       return (b.erstellt || "") < (a.erstellt || "") ? -1 : 1;
     });
     $("#demos-sub").textContent = d.demos.length + " Demo-Websites sind gerade online" + (query ? ", " + list.length + " passen zur Suche" : "") + ".";
@@ -559,7 +567,8 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
         '<div class="body"><h3 title="' + esc(x.name) + '">' + esc(x.name) + '</h3>' +
         '<div class="life' + (left != null && left <= 7 ? " low" : "") + '" title="' + (left == null ? "wird behalten" : "wird in " + left + " Tagen gelöscht") + '"><svg viewBox="0 0 44 44"><circle class="bg" cx="22" cy="22" r="18"/><circle class="fg" cx="22" cy="22" r="18" stroke-dasharray="' + C + '" stroke-dashoffset="' + C + '" data-off="' + C * (1 - frac) + '"/></svg><span>' + (left == null ? "∞" : left + "T") + "</span></div>" +
         '<div class="meta">' + esc([x.kueche, x.ort].filter(Boolean).join(", ")) + "</div></div>" +
-        '<div class="tags"><span class="tag">' + esc(why) + "</span>" + (x.theme ? '<span class="tag">' + esc(x.theme) + "</span>" : "") + (x.bewertung ? '<span class="tag">' + String(x.bewertung).replace(".", ",") + " ★ · " + fmt.format(x.anzahl || 0) + "</span>" : "") + (x.status === "behalten" ? '<span class="tag keep">behalten</span>' : "") + "</div>" +
+        '<div class="tags">' + (x.punkte != null ? '<span class="tag score">' + x.punkte + "/100 Eignung</span>" : "") + '<span class="tag">' + esc(why) + "</span>" + (x.theme ? '<span class="tag">' + esc(x.theme) + "</span>" : "") + (x.bewertung ? '<span class="tag">' + String(x.bewertung).replace(".", ",") + " ★ · " + fmt.format(x.anzahl || 0) + "</span>" : "") + (x.status === "behalten" ? '<span class="tag keep">behalten</span>' : "") + "</div>" +
+        '' + (x.kategorien && x.kategorien.length ? '<details class="why"><summary>Warum ausgewählt?</summary>' + x.kategorien.map(function (k) { return '<div class="cat"><span>' + esc(k.name) + '</span><span class="bar2"><b style="width:' + Math.round(k.punkte / k.max * 100) + '%"></b></span><span class="pt">' + String(k.punkte).replace(".", ",") + "/" + k.max + '</span><small>' + esc(k.warum) + "</small></div>"; }).join("") + "</details>" : "") +
         '<div class="acts"><a class="btn" href="' + esc(x.url) + '" target="_blank" rel="noopener">Öffnen</a><button class="btn" type="button" data-copy="' + esc(x.url) + '">Link kopieren</button></div>');
       box.appendChild(card);
       var f = $("iframe", card); f.addEventListener("load", function () { if (f.src) { f.classList.add("ready"); $(".screen", card).classList.add("loaded"); } });
