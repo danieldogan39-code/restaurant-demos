@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Cantina · Spanische Tapas · Perlstraße 1, Hannover</title>
+<meta name="description" content="La Cantina in Hannover: spanische Tapas, Tortilla und Salate. Dienstag bis Sonntag ab 17 Uhr, Montag Ruhetag. Perlstraße 1, Telefon 0511 3880210.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caprasimo:ital,wght@0,400;0,700;1,400&family=Archivo:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+:root{
+--schiefer:#1A1918;--schiefer-2:#242220;--creme:#F3ECDF;--rot:#D33A22;--rot-tief:#B8301B;--holz:#A9824A;--kreide:#B9B4AC;
+--rand:clamp(1rem,5vw,4rem);--max:1280px;--kopf:64px;
+--abstand:clamp(3.5rem,8vw,7rem);
+--display:"Caprasimo",Georgia,serif;--text:"Archivo",Arial,sans-serif;
+--rauschen:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:calc(var(--kopf) + 1rem);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--schiefer);color:var(--creme);font-family:var(--text);font-size:1.0625rem;line-height:1.6;overflow-x:clip;hyphens:manual;overflow-wrap:break-word}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.05;margin:0;hyphens:none;text-wrap:balance}
+p{margin:0}
+:focus-visible{outline:3px solid var(--holz);outline-offset:3px}
+.schluss :focus-visible{outline-color:var(--creme)}
+.rahmen{position:relative;width:100%;overflow:hidden;background:var(--schiefer-2)}
+.rahmen img{width:100%;height:100%;object-fit:cover}
+.foto-nachweis{font-size:.875rem;text-decoration:underline;text-underline-offset:2px}
+.ki-label{display:inline-block;font-size:.875rem;line-height:1.3;color:var(--kreide)}
+.innen{max-width:var(--max);margin:0 auto;padding:0 var(--rand)}
+.knopf{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:48px;padding:.75rem 1.6rem;border-radius:4px;background:var(--rot-tief);color:var(--creme);font-weight:700;text-decoration:none;border:2px solid var(--rot-tief);font-size:1rem;letter-spacing:.02em;cursor:pointer;font-family:var(--text)}
+.knopf:hover{background:#9E2816;border-color:#9E2816}
+.knopf.linie{background:transparent;border-color:var(--creme);color:var(--creme)}
+.knopf.linie:hover{background:var(--creme);color:var(--schiefer)}
+
+.kopf{position:sticky;top:0;z-index:1000;height:var(--kopf);background:var(--schiefer);border-bottom:2px solid var(--rot)}
+.kopf .innen{height:100%;display:flex;align-items:center;gap:1rem}
+.marke{display:flex;align-items:center;gap:.6rem;text-decoration:none;margin-right:auto;min-height:44px}
+.marke svg{width:32px;height:32px;flex:none;display:block}
+.marke span{font-family:var(--display);color:var(--creme);font-size:clamp(1.3rem,4vw,1.6rem);line-height:1}
+.kopf nav{display:flex;align-items:center;gap:.25rem}
+.kopf nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 .9rem;text-decoration:none;font-weight:700;font-size:.9375rem}
+.kopf nav a:hover{text-decoration:underline;text-underline-offset:4px}
+.kopf .knopf{min-height:44px;padding:.55rem 1.35rem}
+
+.einstieg{display:flex;align-items:stretch;gap:clamp(2rem,4vw,4rem);padding:clamp(2rem,4vw,3rem) 0 clamp(2rem,4vw,3rem) max(var(--rand),calc((100% - var(--max))/2 + var(--rand)));background:var(--schiefer)}
+.einstieg-text{flex:5 1 0;min-width:0;display:flex;flex-direction:column;background:var(--schiefer)}
+.einstieg-bild{flex:7 1 0;min-width:0;margin:0;display:flex;flex-direction:column}
+.einstieg-bild .rahmen{flex:1;min-height:clamp(360px,32vw,500px)}
+.einstieg-bild .rahmen img{position:absolute;inset:0}
+.einstieg-bild figcaption{padding:.6rem var(--rand) 0 0;color:#b9b2a6;font-size:.9375rem}
+.einstieg h1{color:var(--rot);font-size:clamp(3rem,6.4vw,6rem);line-height:.92}
+.kueche{margin-top:1.5rem;font-weight:700;font-size:1.25rem;line-height:1.35;padding-bottom:1.25rem;border-bottom:1px solid var(--holz)}
+.status-zeile{margin-top:1.25rem;display:flex;flex-wrap:wrap;gap:.5rem 1rem;align-items:center}
+[data-status]{display:inline-flex;align-items:center;gap:.5rem;font-weight:700}
+[data-status]:empty{display:none}
+[data-status]::before{content:"";width:.7rem;height:.7rem;border-radius:50%;background:var(--kreide)}
+[data-status][data-offen="ja"]::before{background:#5BA35B}
+[data-status][data-offen="nein"]::before{background:var(--rot)}
+.status-zeile small{color:var(--kreide);font-size:1rem}
+.aktionen{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem}
+.vorschau{margin-top:3rem;padding-top:0;max-width:30ch;font-size:1.125rem}
+.vorschau b{font-family:var(--display);font-weight:400;color:var(--rot);font-size:2.4rem;line-height:1;display:block;margin-bottom:.35rem}
+.vorschau a{display:inline-block;margin-top:.6rem;font-weight:700;min-height:44px;line-height:44px;text-underline-offset:4px}
+
+.haltung{background:var(--creme);color:var(--schiefer);padding:6rem 0}
+.haltung .innen{display:grid;grid-template-columns:repeat(12,1fr);gap:1.5rem}
+.haltung p:first-child{grid-column:1/9;grid-row:1;font-family:var(--display);font-size:clamp(1.75rem,4.2vw,3.4rem);line-height:1.12;hyphens:none;text-wrap:balance}
+.haltung p+p{grid-column:1/8;grid-row:2;font-size:1.125rem;max-width:52ch;padding-top:1rem;border-top:2px solid var(--rot-tief)}
+.haltung-liste{grid-column:9/13;grid-row:1/3;align-self:start;list-style:none;margin:0;padding:0;border-top:2px solid var(--schiefer)}
+.haltung-liste li{padding:.75rem 0;border-bottom:1px solid rgba(26,25,24,.2);font-weight:700;font-size:1.0625rem}
+
+.tafel{background:var(--schiefer);padding:var(--abstand) 0}
+.karte-raster{display:grid;grid-template-columns:8fr 4fr;gap:clamp(2rem,4vw,4rem);align-items:start}
+.karte-kopf h2{font-size:clamp(2.4rem,5.5vw,4.5rem)}
+.karte-kopf p{margin-top:1rem;max-width:48ch;font-size:1.125rem}
+.kat{margin-top:clamp(2.5rem,5vw,4rem)}
+.kat-kopf{display:flex;align-items:flex-end;gap:1.25rem;padding-bottom:1rem;border-bottom:2px solid var(--holz)}
+.kat-marke{margin:0;width:clamp(96px,12vw,140px);flex:none}
+.kat-marke .rahmen{aspect-ratio:1;background:var(--creme);border-radius:4px}
+.kat-kopf h3{font-size:clamp(1.8rem,3.5vw,2.6rem)}
+.kat-kopf p{color:var(--kreide);margin-top:.35rem;font-variant-numeric:tabular-nums}
+.gerichte{list-style:none;margin:0;padding:0}
+.gericht{width:100%;display:grid;grid-template-columns:clamp(3rem,6vw,4.25rem) 1fr;column-gap:1rem;align-items:baseline;padding:.95rem .5rem;min-height:60px;background:none;border:0;border-bottom:1px solid rgba(169,130,74,.35);color:var(--creme);text-align:left;font:inherit;cursor:pointer;transition:background-color .2s}
+.gericht:hover{background:rgba(243,236,223,.05)}
+.gericht[aria-pressed="true"]{background:rgba(243,236,223,.08)}
+.nr{font-family:var(--display);font-size:clamp(1.7rem,3vw,2.3rem);color:var(--rot);line-height:1;font-variant-numeric:tabular-nums}
+.zeile{display:flex;align-items:baseline;gap:.6rem;min-width:0}
+.name{font-weight:700;font-size:1.0625rem;min-width:0;overflow-wrap:anywhere;hyphens:auto}
+.punkte{flex:1;min-width:1rem;border-bottom:2px dotted var(--holz);align-self:center}
+.preis{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+.haken{flex:none;width:28px;height:28px;align-self:center;border:2px solid var(--holz);border-radius:50%;display:grid;place-items:center;font-weight:700;line-height:1}
+.haken::after{content:"+"}
+.gericht[aria-pressed="true"] .haken{background:var(--rot-tief);border-color:var(--rot-tief)}
+.gericht[aria-pressed="true"] .haken::after{content:"✓"}
+.beschr{grid-column:2;color:var(--kreide);font-size:1rem;margin-top:.35rem;max-width:60ch}
+.tafel-hinweis{display:flex;gap:1.25rem;align-items:flex-start;margin-top:clamp(2.5rem,5vw,4rem);padding:1.5rem;border:1px solid var(--holz);border-radius:4px}
+.tafel-hinweis p{font-size:1.0625rem}
+.tafel-hinweis p+p{margin-top:.5rem;color:var(--kreide)}
+.handy-hinweis{display:none}
+
+.zettel{position:sticky;top:calc(var(--kopf) + 1.5rem);background:var(--creme);color:var(--schiefer);padding:1.5rem 1.5rem 1.25rem;border-radius:3px;transform:rotate(-1.2deg);box-shadow:0 14px 30px rgba(0,0,0,.45);background-image:repeating-linear-gradient(to bottom,transparent 0 calc(2.25rem - 1px),rgba(26,25,24,.12) calc(2.25rem - 1px) 2.25rem);background-position:0 4.6rem}
+.zettel:focus{outline:none}
+.z-kopf{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding-bottom:.75rem;border-bottom:2px solid var(--schiefer)}
+.z-kopf h2{font-size:1.75rem}
+.z-kopf span{font-size:.9375rem}
+.z-zu{display:none}
+.z-leer{margin:1.25rem 0;font-size:1.0625rem}
+.z-liste{list-style:none;margin:.75rem 0 0;padding:0}
+.z-liste li{display:grid;grid-template-columns:3rem 1fr auto;gap:.5rem;align-items:baseline;min-height:2.25rem;padding:.1rem 0}
+.z-nr{font-family:var(--display);color:var(--rot);font-size:1.6rem;line-height:1.3;font-variant-numeric:tabular-nums}
+.z-liste .z-name{font-size:.9375rem;line-height:1.35}
+.z-preis{font-variant-numeric:tabular-nums;font-size:.9375rem}
+.z-liste li.neu .z-nr{animation:schreiben .25s ease-out}
+@keyframes schreiben{from{transform:scale(1.1) translateX(-6px);opacity:.3}to{transform:none;opacity:1}}
+.z-summe{display:flex;justify-content:space-between;align-items:baseline;margin-top:.75rem;padding-top:.6rem;border-top:2px solid var(--schiefer);font-weight:700;font-variant-numeric:tabular-nums}
+.z-summe b{font-size:1.4rem}
+.zettel .knopf{width:100%;margin-top:1.25rem;padding-inline:1rem}
+.z-leeren{display:block;margin:.5rem auto 0;min-height:44px;padding:0 1rem;background:none;border:0;color:var(--schiefer);font:inherit;font-size:.9375rem;text-decoration:underline;cursor:pointer}
+.z-hinweis{font-size:.9375rem;margin-top:.75rem}
+
+.galerie{background:var(--creme);color:var(--schiefer);padding:var(--abstand) 0}
+.galerie h2{font-size:clamp(2.4rem,5.5vw,4.5rem)}
+.galerie .einleitung{margin-top:.75rem;max-width:50ch;font-size:1.125rem}
+.reihe{display:grid;grid-template-columns:2fr 1fr;gap:clamp(1rem,2vw,1.5rem);margin-top:clamp(2rem,4vw,3rem);align-items:start}
+.reihe.um{grid-template-columns:1fr 2fr}
+.reihe figure{margin:0}
+.quer .rahmen{aspect-ratio:3/2}
+.hoch .rahmen{aspect-ratio:3/4}
+.reihe figcaption{margin-top:.6rem;font-size:1rem;line-height:1.45}
+.reihe figcaption .foto-nachweis{display:block;margin-top:.15rem;color:#4A4642}
+
+.zeiten{background:var(--schiefer);padding:var(--abstand) 0}
+.zeiten-kopf{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem}
+.zeiten h2{font-size:clamp(2.4rem,5.5vw,4.5rem);color:var(--rot)}
+.zeiten-kopf p{margin-top:1rem;font-size:1.25rem;max-width:36ch}
+.zeiten-kopf figure{margin:0;width:clamp(96px,14vw,150px);flex:none}
+.zeiten-kopf .rahmen{aspect-ratio:1;background:var(--creme);border-radius:4px}
+.woche{list-style:none;margin:clamp(2rem,4vw,3rem) 0 0;padding:0;display:grid;grid-template-columns:repeat(7,1fr);gap:.5rem}
+.woche li{border:1px solid rgba(169,130,74,.6);border-radius:4px;padding:1rem .75rem 1.1rem;display:flex;flex-direction:column;gap:.5rem;position:relative}
+.tag{font-weight:700;font-size:.9375rem}
+.uhr{font-family:var(--display);font-size:clamp(1.25rem,2vw,1.6rem);line-height:1.1;font-variant-numeric:tabular-nums}
+.uhr span{display:block;color:var(--kreide);font-family:var(--text);font-size:.9375rem;margin:.15rem 0}
+.woche .zu{background:var(--schiefer-2)}
+.woche .zu .tag{text-decoration:line-through;text-decoration-color:var(--rot);text-decoration-thickness:2px}
+.woche .zu .uhr{color:var(--kreide)}
+.woche .heute{border:3px solid var(--rot);padding:calc(1rem - 2px) calc(.75rem - 2px) calc(1.1rem - 2px)}
+.heute-label{font-size:.9375rem;font-weight:700;color:var(--holz)}
+
+.anfahrt{background:var(--creme);color:var(--schiefer);padding:var(--abstand) 0}
+.anfahrt .innen{display:grid;grid-template-columns:7fr 5fr;gap:clamp(2rem,4vw,4rem);align-items:start}
+.karte-rahmen{position:relative;z-index:0;isolation:isolate;aspect-ratio:4/3;border:2px solid var(--schiefer);border-radius:4px;overflow:hidden;background:#E4DBCB}
+.karte-rahmen [data-karte]{width:100%;height:100%}
+.anfahrt h2{font-size:clamp(2.2rem,4.5vw,3.6rem)}
+.anfahrt .ort{font-size:1.25rem;margin-top:.5rem}
+.anfahrt .aktionen .knopf.linie{border-color:var(--schiefer);color:var(--schiefer)}
+.anfahrt .aktionen .knopf.linie:hover{background:var(--schiefer);color:var(--creme)}
+.angebot{list-style:none;margin:2rem 0 0;padding:0;border-top:2px solid var(--schiefer)}
+.angebot li{padding:.7rem 0;border-bottom:1px solid rgba(26,25,24,.2);font-weight:700}
+
+.schluss{background:var(--rot-tief);color:var(--creme);padding:6rem 0}
+.schluss .innen{display:grid;grid-template-columns:repeat(12,1fr);gap:2rem 1.5rem;align-items:end}
+.schluss-anruf{grid-column:1/8}
+.schluss-zeiten{grid-column:8/13;margin:0;display:grid;grid-template-columns:auto 1fr;border-top:2px solid var(--creme);font-variant-numeric:tabular-nums;font-size:1.0625rem}
+.schluss-zeiten dt,.schluss-zeiten dd{margin:0;padding:.6rem 0;border-bottom:1px solid rgba(243,236,223,.45)}
+.schluss-zeiten dt{font-weight:700;padding-right:1.5rem}
+.schluss-zeiten dd{text-align:right}
+.schluss a.tel{display:inline-block;font-family:var(--display);font-size:clamp(2.1rem,6.2vw,5rem);line-height:1;text-decoration:none;font-variant-numeric:tabular-nums;white-space:nowrap}
+.schluss a.tel:hover{text-decoration:underline;text-decoration-thickness:4px;text-underline-offset:8px}
+.schluss p{font-size:clamp(1.25rem,2.4vw,1.75rem);font-weight:700;margin-top:1.25rem}
+
+.fuss{padding:3rem 0 2.5rem;color:var(--kreide);font-size:.9375rem}
+.fuss .innen{display:grid;gap:1.5rem}
+.fuss-zeile{display:flex;flex-wrap:wrap;gap:.5rem 2rem;align-items:baseline;color:var(--creme)}
+.fuss-zeile strong{font-family:var(--display);font-weight:400;color:var(--rot);font-size:1.6rem}
+.fuss-zeile a{display:inline-flex;align-items:center;min-height:44px}
+.rechtliches p+p{margin-top:.5rem}
+.rechtliches a{display:inline-block;min-height:44px;line-height:44px}
+
+.leiste{display:none}
+
+@media (max-width:999px){
+.woche{grid-template-columns:1fr}
+.woche li{flex-direction:row;justify-content:space-between;align-items:center;padding:.75rem 1rem;min-height:56px}
+.woche .heute{padding:calc(.75rem - 2px) calc(1rem - 2px)}
+.uhr{display:flex;gap:.5rem;align-items:baseline;font-size:1.25rem}
+.uhr span{margin:0}
+.heute-label{order:-1}
+.woche li .tag{margin-right:auto}
+}
+@media (max-width:899px){
+:root{--kopf:56px}
+.schluss{padding:4rem 0}
+.schluss .innen{grid-template-columns:1fr}
+.schluss-anruf,.schluss-zeiten{grid-column:1}
+.schluss a.tel{font-size:clamp(2.1rem,11vw,4rem)}
+.kopf nav a:not(.knopf){display:none}
+.kopf .knopf{min-height:44px;padding:0 1rem}
+.einstieg{flex-direction:column;padding:0 0 var(--abstand);gap:1.5rem}
+.einstieg-text,.einstieg-bild{flex:none;width:100%}
+.einstieg-text{padding:0 var(--rand)}
+.einstieg-bild{order:-1}
+.einstieg-bild .rahmen{flex:none;min-height:0;aspect-ratio:4/3}
+.einstieg-bild figcaption{padding:.5rem var(--rand) 0}
+.einstieg h1{font-size:clamp(2.75rem,13vw,4rem)}
+.vorschau,.einstieg .aktionen .route{display:none}
+.haltung .innen{grid-template-columns:1fr}
+.haltung{padding:4rem 0}
+.haltung p:first-child,.haltung p+p,.haltung-liste{grid-column:1;grid-row:auto}
+.karte-raster,.anfahrt .innen{grid-template-columns:1fr}
+.reihe,.reihe.um{grid-template-columns:1fr}
+.hoch .rahmen{aspect-ratio:4/5}
+.zeiten-kopf{align-items:flex-start}
+.karte-rahmen{aspect-ratio:1}
+.handy-hinweis{display:block;margin-top:1rem;color:var(--kreide)}
+.zettel{position:fixed;left:.75rem;right:.75rem;top:auto;bottom:calc(68px + env(safe-area-inset-bottom) + .5rem);z-index:60;max-height:min(70vh,560px);overflow:auto;transform:none;display:none}
+.zettel.offen{display:block}
+.z-zu{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;margin:-.5rem -.5rem 0 0;background:none;border:0;font:inherit;font-size:1.6rem;color:var(--schiefer);cursor:pointer}
+body{padding-bottom:calc(68px + env(safe-area-inset-bottom))}
+.leiste{display:grid;grid-template-columns:1fr 1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:70;background:var(--schiefer);border-top:2px solid var(--rot);padding:.5rem .5rem calc(.5rem + env(safe-area-inset-bottom));gap:.5rem}
+.leiste a,.leiste button{display:flex;align-items:center;justify-content:center;gap:.4rem;min-height:52px;border-radius:4px;font:inherit;font-weight:700;font-size:1rem;text-decoration:none;color:var(--creme);background:var(--schiefer-2);border:1px solid rgba(169,130,74,.6);cursor:pointer}
+.leiste a:first-child{background:var(--rot-tief);border-color:var(--rot-tief)}
+.z-zahl{display:inline-grid;min-width:1.6rem;height:1.6rem;place-items:center;overflow:hidden;background:var(--creme);color:var(--schiefer);border-radius:3px;font-variant-numeric:tabular-nums}
+.z-zahl .tausch{animation:tausch .2s ease-out}
+}
+@keyframes tausch{from{transform:translateY(80%);opacity:0}to{transform:none;opacity:1}}
+@media (max-width:420px){
+.gericht{column-gap:.6rem;padding-inline:.25rem}
+.name{font-size:1rem}
+.zeile{gap:.45rem}
+.tafel-hinweis{flex-direction:column}
+}
+@media (min-width:900px) and (max-width:1100px){.einstieg .aktionen{flex-wrap:nowrap}.einstieg .aktionen .knopf{padding-inline:1rem}}
+@media (min-width:900px) and (max-width:1100px){.z-kopf{flex-wrap:wrap;gap:.25rem 1rem}.z-kopf span{white-space:nowrap}}
+@media (max-width:479px){
+.punkte{display:none}
+.zeile{align-items:flex-start}
+.name{flex:1}
+.preis{margin-left:auto;align-self:flex-start}
+.haken{align-self:flex-start}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}</style></head>
+<body><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für La Cantina. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
+<header class="kopf">
+<div class="innen">
+<a class="marke" href="#start" aria-label="La Cantina, zum Seitenanfang"><svg viewBox="0 0 32 32" width="32" height="32" aria-hidden="true" focusable="false"><circle cx="16" cy="16" r="16" fill="#D33A22"/><path d="M5 8c1 4.5 4 7 7.5 7h7c3.5 0 6.5-2.5 7.5-7-2 2.2-4.2 3.3-6.5 3.3h-9C9.2 11.3 7 10.2 5 8z" fill="#F3ECDF"/><path d="M12 14.5h8l-1.2 8c-.3 2-1.4 3.2-2.8 3.2s-2.5-1.2-2.8-3.2z" fill="#F3ECDF"/></svg><span>La Cantina</span></a>
+<nav aria-label="Hauptnavigation">
+<a href="#karte">Karte</a><a href="#zeiten">Zeiten</a><a href="#anfahrt">Anfahrt</a>
+<a class="knopf" href="tel:+495113880210">Anrufen</a>
+</nav>
+</div>
+</header>
+
+<main id="start">
+<section class="einstieg" aria-labelledby="titel">
+<div class="einstieg-text">
+<h1 id="titel">La Cantina</h1>
+<p class="kueche">Spanische Tapas · Perlstraße 1, Hannover</p>
+<div class="status-zeile"><span data-status></span><small>Di–So ab 17 Uhr · Montag Ruhetag</small></div>
+<div class="aktionen">
+<a class="knopf" href="tel:+495113880210" aria-label="0511 3880210 anrufen">0511 3880210</a>
+<a class="knopf linie route" href="https://www.google.com/maps/dir/?api=1&amp;destination=Perlstra%C3%9Fe+1,+30161+Hannover" target="_blank" rel="noopener">Route</a>
+</div>
+<p class="vorschau"><b>85</b>Nummer 85 ist die Tortilla mit Chorizo – 9,30 €.<br><a href="#karte">Zur Karte mit allen Nummern</a></p>
+</div>
+<figure class="einstieg-bild" data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLeNdcm2E1-pSWtJNtLGZfLenGEfV1Km9Rv_8XBkl1gKdVn71pZzqZ15aZcXeeCvpnuRBy5mE9kpZRrPsTruzEoUUeinDivI2cR6-Sw1SFPeWg9tX3Jc4TtzdckA3uH_-86P7jU=s4800-w1000" referrerpolicy="no-referrer" width="1600" height="1200" fetchpriority="high" alt="Gastraum der La Cantina am Abend: Bar mit Flaschenwand, Kerzen auf den Tischen und hohe hölzerne Rundbogenfenster"></div>
+<figcaption><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/109555702357085574410" target="_blank" rel="noopener">Foto: Martin Weiler · Google Maps</a></figcaption>
+</figure>
+</section>
+
+<section class="haltung" aria-label="Kurz gesagt">
+<div class="innen">
+<p>Tapas, Tortilla, Fischplatte – abends ab 17 Uhr, dienstags bis sonntags.</p>
+<p>Bestellen und reservieren unter 0511 3880210. Am Telefon reicht die Nummer von der Karte.</p>
+<ul class="haltung-liste" aria-label="So gibt es das Essen"><li>Vor Ort am Tisch</li><li>Zum Mitnehmen</li><li>Lieferung</li><li>Plätze draußen</li></ul>
+</div>
+</section>
+
+<section class="tafel" id="karte" aria-labelledby="karte-titel">
+<div class="innen karte-raster">
+<div>
+<div class="karte-kopf">
+<h2 id="karte-titel">Die Karte</h2>
+<p>Jedes Gericht hat seine Nummer. Antippen, dann landet es auf dem Zettel. Mit dem Zettel anrufen, Nummern durchgeben, fertig.</p>
+<p class="handy-hinweis">Ihre Auswahl sammelt sich unten unter „Zettel“.</p>
+</div>
+
+<div class="kat">
+<div class="kat-kopf">
+<figure class="kat-marke"><div class="rahmen"><img src="ki-salat.webp" width="240" height="240" loading="lazy" alt="Siebdruck-Grafik: Schüssel mit gemischtem Salat"></div><span class="ki-label">KI-Bild</span></figure>
+<div><h3>Salate</h3><p>Nr. 70–75</p></div>
+</div>
+<ul class="gerichte">
+<li><button class="gericht" type="button" aria-pressed="false" data-nr="70" data-name="Salat a la Cantina" data-cent="830"><span class="nr">70</span><span class="zeile"><span class="name">Salat a la Cantina</span><span class="punkte"></span><span class="preis">8,30 €</span><span class="haken" aria-hidden="true"></span></span><span class="beschr">Blattsalate mit Tomaten, Gurken, Paprika, Karotten, Mais und roten Zwiebeln, dazu hausgemachtes Dressing</span></button></li>
+<li><button class="gericht" type="button" aria-pressed="false" data-nr="71" data-name="Salat mit Serrano Schinken" data-cent="1250"><span class="nr">71</span><span class="zeile"><span class="name">Mit Serrano Schinken</span><span class="punkte"></span><span class="preis">12,50 €</span><span class="haken" aria-hidden="true"></span></span></button></li>
+<li><button class="gericht" type="button" aria-pressed="false" data-nr="72" data-name="Salat mit Feta und Oliven" data-cent="1160"><span class="nr">72</span><span class="zeile"><span class="name">Mit Feta und Oliven</span><span class="punkte"></span><span class="preis">11,60 €</span><span class="haken" aria-hidden="true"></span></span></button></li>
+<li><button class="gericht" type="button" aria-pressed="false" data-nr="73" data-name="Salat mit Thunfisch" data-cent="1160"><span class="nr">73</span><span class="zeile"><span class="name">Mit Thunfisch</span><span class="punkte"></span><span class="preis">11,60 €</span><span class="haken" aria-hidden="true"></span></span></button></li>
+<li><button class="gericht" type="button" aria-pressed="false" data-nr="74" data-name="Salat mit Hähnchenbruststreifen" data-cent="1220"><span class="nr">74</span><span class="zeile"><span class="name">Mit Hähnchen&shy;brust&shy;streifen</span><span class="punkte"></span><span class="preis">12,20 €</span><span class="haken" aria-hidden="true"></span></span></button></li>
+<li><button class="gericht" type="button" aria-pressed="false" data-nr="75" data-name="Salat mit geschälten Garnelen" data-cent="1490"><span class="nr">75</span><span class="zeile"><span class="name">Mit geschälten Garnelen</span><span class="punkte"></span><span class="preis">14,90 €</span><span class="haken" aria-hidden="true"></span></span></button></li>
+</ul>
+</div>
+
+<div class="kat">
+<div class="kat-kopf">
+<figure class="kat-marke"><div class="rahmen"><img src="ki-tortilla.webp" width="240" height="240" loading="lazy" alt="Siebdruck-Grafik: ein Stück spanische Tortilla auf einem kleinen Teller"></div><span class="ki-label">KI-Bild</span></figure>
+<div><h3>Spanische Tortilla</h3><p>Nr. 80–86</p></div>
+</div>
+<ul class="gerichte">
+<li><button class="gericht" type="button" aria-pressed="false" data-nr="80" data-name="Tortilla Classic" data-cent="760"><span class="nr">80</span><span class="zeile"><span class="name">Tortilla Classic</span><span class="punkte"></span><span class="preis">7,60 €</span><span class="haken" aria-hidden="true"></span></span></button></li>
+<li><button class="gericht" type="button" aria-pressed="false" data-nr="81" data-name="Tortilla mit Thunfisch" data-cent="850"><span class="nr">81</span><span class="zeile"><span class="name">Tortilla mit Thunfisch</span><span class="punkte"></span><span class="preis">8,50 €</span><span class="haken" aria-hidden="true"></span></span></button></li>
+<li><button class="gericht" type="button" aria-pressed="false" data-nr="82" data-name="Tortilla mit Manchego" data-cent="850"><span class="nr">82</span><span class="zeile"><span class="name">Tortilla mit Manchego</span><span class="punkte"></span><span class="preis">8,50 €</span><span class="haken" aria-hidden="true"></span></span></button></li>
+<li><button class="gericht" type="button" aria-pressed="false" data-nr="83" data-name="Tortilla mit Hähnchen" data-cent="890"><span class="nr">83</span><span class="zeile"><span class="name">Tortilla mit Hähnchen</span><span class="punkte"></span><span class="preis">8,90 €</span><span class="haken" aria-hidden="true"></span></span></button></li>
+<li><button class="gericht" type="button" aria-pressed="false" data-nr="84" data-name="Tortilla mit Gemüse" data-cent="870"><span class="nr">84</span><span class="zeile"><span class="name">Tortilla mit Gemüse</span><span class="punkte"></span><span class="preis">8,70 €</span><span class="haken" aria-hidden="true"></span></span></button></li>
+<li><button class="gericht" type="button" aria-pressed="false" data-nr="85" data-name="Tortilla mit Chorizo" data-cent="930"><span class="nr">85</span><span class="zeile"><span class="name">Tortilla mit Chorizo</span><span class="punkte"></span><span class="preis">9,30 €</span><span class="haken" aria-hidden="true"></span></span></button></li>
+<li><button class="gericht" type="button" aria-pressed="false" data-nr="86" data-name="Tortilla mit Garnelen" data-cent="1250"><span class="nr">86</span><span class="zeile"><span class="name">Tortilla mit Garnelen</span><span class="punkte"></span><span class="preis">12,50 €</span><span class="haken" aria-hidden="true"></span></span></button></li>
+</ul>
+</div>
+
+<div class="tafel-hinweis">
+<figure class="kat-marke"><div class="rahmen"><img src="ki-cazuela.webp" width="240" height="240" loading="lazy" alt="Siebdruck-Grafik: Tonschale mit drei Fleischbällchen in Tomatensauce"></div><span class="ki-label">KI-Bild</span></figure>
+<div>
+<p>Weitere Tapas und Tagesgerichte stehen im Lokal auf der Tafel.</p>
+<p>Zum Beispiel Albóndigas, Minichorizo mit Datteln, Kroketten und die Fischplatte. Die vollständige Karte mit Preisen liegt vor Ort aus.</p>
+</div>
+</div>
+</div>
+
+<aside class="zettel" id="zettel" tabindex="-1" aria-labelledby="zettel-titel">
+<div class="z-kopf"><h2 id="zettel-titel">Ihr Zettel</h2><span>La Cantina</span><button class="z-zu" type="button" aria-label="Zettel schließen">×</button></div>
+<p class="z-leer">Nummern antippen, dann anrufen.</p>
+<ol class="z-liste" aria-live="polite"></ol>
+<div class="z-summe" hidden><span>Summe</span><b>0,00 €</b></div>
+<a class="knopf" href="tel:+495113880210">0511 3880210 anrufen</a>
+<p class="z-hinweis">Zum Abholen, für die Lieferung oder als Tischreservierung.</p>
+<button class="z-leeren" type="button" hidden>Zettel leeren</button>
+</aside>
+</div>
+</section>
+
+<section class="galerie" aria-labelledby="galerie-titel">
+<div class="innen">
+<h2 id="galerie-titel">Vom Tisch</h2>
+<p class="einleitung">Was in La Cantina auf die Steintische kommt, fotografiert von Gästen auf Google Maps.</p>
+<div class="reihe">
+<figure class="quer" data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfb98af7WgFaPMiYsy-aF7GameyakNIrvTheguVLNpRpAFXRabrxYSuUJ1AYoMNnEnSNttx9C9hWYTZoH2X4O1WaKEWHsV7s2-rDaGLgPH9JX3IzT5vWhJH3kbc35nnoJsbdOfJAYwqHXY=s4800-w1800" referrerpolicy="no-referrer" width="1500" height="1000" loading="lazy" alt="Fischplatte mit frittiertem Fisch, Garnelen, Kartoffeln und Salat"></div>
+<figcaption>Fischplatte: frittierter Fisch, Garnelen, Kartoffeln, Salat. <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/112881484221459165115" target="_blank" rel="noopener">Foto: Jennifer Amesöder · Google Maps</a></figcaption>
+</figure>
+<figure class="hoch" data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLekci_lZLGNwbbXkWsTKtTkFGu5E1tF7tlKi_CizxVScH2ROUWYMbRFV7OhoAslljPP1DxV-No97Yx9WZec-zS0GseUz9BNLGUow4SU6tQGWGOhhqBUahIjqj6WLc61jJwQf-XhGNNNG0vQ=s4800-w1000" referrerpolicy="no-referrer" width="900" height="1200" loading="lazy" alt="Tapas-Auswahl mit Albóndigas, Kartoffelsalat, Kroketten und Oliven"></div>
+<figcaption>Tapas: Albóndigas, Kroketten, Oliven. <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/116274956194251026517" target="_blank" rel="noopener">Foto: CRAZY COOKING QUEEN Sandra · Google Maps</a></figcaption>
+</figure>
+</div>
+<div class="reihe um">
+<figure class="hoch" data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLf-yVyams2ND4Nsl_QgDL1nqL_0iQaTf7FFf_QKM0XxkSOOYsiNLfN6uKv2SgzlNGWuEBdy9EQgvLnRQQAE8KfsGmFw0ixSDw-G3jNQpOwEOXKNx7Lq_FjU3H68djUswRVa-wvd3RLHgZUQ=s4800-w1000" referrerpolicy="no-referrer" width="900" height="1200" loading="lazy" alt="Tonschale mit Chorizo und Fleisch in cremiger Sauce, mit Petersilie"></div>
+<figcaption>Cazuela mit Chorizo in cremiger Sauce. <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/103194683513341541563" target="_blank" rel="noopener">Foto: Urs Müller · Google Maps</a></figcaption>
+</figure>
+<figure class="quer" data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLcog1dkEOcJLvLzNpyI2l7DlAq8k-yhbxUSYEGeDbb_WRMDYUSgqbSHriQlqMpBYqGXWcE_Gapw6KKnYPFKsTiekHxArgbekBR4u3JS7FNgib7YTmNjYsR1wd2RzbLO4w5OGjY=s4800-w1000" referrerpolicy="no-referrer" width="1500" height="1000" loading="lazy" alt="Gegrillte Auberginenscheiben mit Paprikacreme, Artischocken und Petersilie"></div>
+<figcaption>Gegrillte Aubergine mit Paprikacreme und Artischocken. <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/103803946646889082837" target="_blank" rel="noopener">Foto: phill · Google Maps</a></figcaption>
+</figure>
+</div>
+</div>
+</section>
+
+<section class="zeiten" id="zeiten" aria-labelledby="zeiten-titel">
+<div class="innen">
+<div class="zeiten-kopf">
+<div>
+<h2 id="zeiten-titel">Montag ist zu.</h2>
+<p>Dienstag bis Sonntag ab 17 Uhr, freitags bis 23 Uhr.</p>
+</div>
+<figure><div class="rahmen"><img src="ki-oliven.webp" width="240" height="240" loading="lazy" alt="Siebdruck-Grafik: Schälchen mit grünen Oliven"></div><span class="ki-label">KI-Bild</span></figure>
+</div>
+<ol class="woche">
+<li class="zu"><span class="tag">Montag</span><span class="uhr">Ruhetag</span></li>
+<li><span class="tag">Dienstag</span><span class="uhr">17:00<span>bis</span>22:30</span></li>
+<li><span class="tag">Mittwoch</span><span class="uhr">17:00<span>bis</span>22:30</span></li>
+<li><span class="tag">Donnerstag</span><span class="uhr">17:00<span>bis</span>22:30</span></li>
+<li><span class="tag">Freitag</span><span class="uhr">17:00<span>bis</span>23:00</span></li>
+<li><span class="tag">Samstag</span><span class="uhr">17:00<span>bis</span>22:30</span></li>
+<li><span class="tag">Sonntag</span><span class="uhr">17:00<span>bis</span>22:30</span></li>
+</ol>
+</div>
+</section>
+
+<section class="anfahrt" id="anfahrt" aria-labelledby="anfahrt-titel">
+<div class="innen">
+<div class="karte-rahmen"><div data-karte data-stil="warm" data-farbe="#D33A22"></div></div>
+<div>
+<h2 id="anfahrt-titel">Perlstraße 1</h2>
+<p class="ort">30161 Hannover</p>
+<div class="aktionen">
+<a class="knopf" href="https://www.google.com/maps/dir/?api=1&amp;destination=Perlstra%C3%9Fe+1,+30161+Hannover" target="_blank" rel="noopener">Route planen</a>
+<a class="knopf linie" href="tel:+495113880210">0511 3880210</a>
+</div>
+<ul class="angebot">
+<li>Vor Ort essen</li>
+<li>Zum Mitnehmen</li>
+<li>Lieferung</li>
+<li>Plätze draußen</li>
+<li>Tischreservierung</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section class="schluss" aria-label="Anrufen">
+<div class="innen">
+<div class="schluss-anruf">
+<a class="tel" href="tel:+495113880210">0511 3880210</a>
+<p>Tisch reservieren oder Nummern durchgeben.</p>
+</div>
+<dl class="schluss-zeiten" aria-label="Öffnungszeiten">
+<dt>Montag</dt><dd>Ruhetag</dd>
+<dt>Di – Do</dt><dd>17:00–22:30</dd>
+<dt>Freitag</dt><dd>17:00–23:00</dd>
+<dt>Sa – So</dt><dd>17:00–22:30</dd>
+</dl>
+</div>
+</section>
+</main>
+
+<footer class="fuss">
+<div class="innen">
+<div class="fuss-zeile"><strong>La Cantina</strong><span>Perlstraße 1, 30161 Hannover</span><a href="tel:+495113880210">0511 3880210</a></div>
+<div class="rechtliches"><p>Entwurf von Medialyte, 21147 Hamburg. Adresse und Öffnungszeiten: Google. Fotos: Google Maps, Urheber jeweils am Bild. Mit „KI-Bild“ markierte Bilder und das Logo sind KI-generierte Vorschläge.</p><p><a href="https://medialyte.de/impressum" style="color:inherit;text-decoration:underline">Impressum</a> · <a href="https://medialyte.de/datenschutzerklaerung" style="color:inherit;text-decoration:underline">Datenschutz</a></p></div>
+</div>
+</footer>
+
+<nav class="leiste" aria-label="Schnellzugriff">
+<a href="tel:+495113880210">Anrufen</a>
+<a href="https://www.google.com/maps/dir/?api=1&amp;destination=Perlstra%C3%9Fe+1,+30161+Hannover" target="_blank" rel="noopener">Route</a>
+<button class="z-knopf" type="button" aria-expanded="false" aria-controls="zettel">Zettel <span class="z-zahl"><span>0</span></span></button>
+</nav>
+
+<script>
+(()=>{
+const z=document.getElementById('zettel'),liste=z.querySelector('.z-liste'),leer=z.querySelector('.z-leer'),summe=z.querySelector('.z-summe'),leeren=z.querySelector('.z-leeren'),zahl=document.querySelector('.z-zahl'),zk=document.querySelector('.z-knopf'),wahl=new Map();
+const euro=c=>(c/100).toFixed(2).replace('.',',')+' €';
+let alt=0;
+function zeichne(neu){
+liste.innerHTML='';
+let s=0;
+[...wahl].sort((a,b)=>a[0]-b[0]).forEach(([nr,g])=>{
+s+=g.cent;
+const li=document.createElement('li');
+if(nr===neu)li.className='neu';
+li.innerHTML='<span class="z-nr">'+nr+'</span><span class="z-name">'+g.name+'</span><span class="z-preis">'+euro(g.cent)+'</span>';
+liste.append(li);
+});
+const n=wahl.size;
+leer.hidden=n>0;summe.hidden=n===0;leeren.hidden=n===0;
+summe.querySelector('b').textContent=euro(s);
+if(n!==alt){zahl.innerHTML='<span class="tausch">'+n+'</span>';alt=n}
+}
+document.querySelectorAll('.gericht').forEach(b=>b.addEventListener('click',()=>{
+const nr=+b.dataset.nr,an=b.getAttribute('aria-pressed')!=='true';
+b.setAttribute('aria-pressed',an);
+an?wahl.set(nr,{name:b.dataset.name,cent:+b.dataset.cent}):wahl.delete(nr);
+zeichne(an?nr:null);
+}));
+leeren.addEventListener('click',()=>{
+wahl.clear();
+document.querySelectorAll('.gericht[aria-pressed="true"]').forEach(b=>b.setAttribute('aria-pressed','false'));
+zeichne();
+});
+function blatt(o){z.classList.toggle('offen',o);zk.setAttribute('aria-expanded',o);if(o)z.focus();else zk.focus()}
+zk.addEventListener('click',()=>blatt(!z.classList.contains('offen')));
+z.querySelector('.z-zu').addEventListener('click',()=>blatt(false));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&z.classList.contains('offen'))blatt(false)});
+const tag=document.querySelectorAll('.woche li')[(new Date().getDay()+6)%7];
+if(tag){tag.classList.add('heute');tag.setAttribute('aria-current','date');const l=document.createElement('span');l.className='heute-label';l.textContent='Heute';tag.prepend(l)}
+})();
+</script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>[data-karte]{width:100%;height:100%;min-height:260px}[data-karte] .leaflet-tile-pane{filter:var(--karte-filter)}
+[data-karte] .leaflet-control-attribution{font-size:10px}.karte-pin{position:relative;width:34px;height:34px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+box-shadow:0 6px 16px rgba(0,0,0,.35);border:3px solid #fff}.karte-pin i{position:absolute;inset:9px;border-radius:50%;background:#fff}</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>(function(){var C={"lat": 52.3828684, "lng": 9.740023899999999, "name": "La Cantina", "filter": {"hell": "grayscale(1) contrast(1.05) brightness(1.04)", "dunkel": "grayscale(1) invert(1) contrast(.88) brightness(.82)", "warm": "grayscale(1) sepia(.5) contrast(1.02) brightness(1.02)", "kuehl": "grayscale(1) sepia(.35) hue-rotate(175deg) saturate(.55) brightness(1.03)", "mono": "grayscale(1) contrast(1.2)"}};function draw(){if(!window.L)return;document.querySelectorAll('[data-karte]').forEach(function(el){
+if(el._map)return;var st=el.getAttribute('data-stil')||'hell',col=el.getAttribute('data-farbe')||'#c0392b';
+el.style.setProperty('--karte-filter',C.filter[st]||C.filter.hell);
+var m=L.map(el,{scrollWheelZoom:false,zoomControl:true,attributionControl:true}).setView([C.lat,C.lng],16);el._map=m;
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(m);
+var icon=L.divIcon({className:'',html:'<div class="karte-pin" style="background:'+col+'"><i></i></div>',iconSize:[34,34],iconAnchor:[17,34]});
+L.marker([C.lat,C.lng],{icon:icon,title:C.name,alt:C.name}).addTo(m);setTimeout(function(){m.invalidateSize()},300);});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',draw);else draw();window.addEventListener('load',draw);})();</script><script>(function(){
+var P=[[1020, 1350], [3900, 4230], [5340, 5670], [6780, 7110], [8220, 8580], [9660, 9990]];
+function fmt(m){m=((m%1440)+1440)%1440;var h=Math.floor(m/60),mi=m%60;return (h<10?'0':'')+h+':'+(mi<10?'0':'')+mi;}
+function now(){var d=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Berlin'}));return d.getDay()*1440+d.getHours()*60+d.getMinutes();}
+function status(){if(!P.length)return null;var t=now(),W=10080;
+ for(var i=0;i<P.length;i++){var s=P[i][0],e=P[i][1];if((t>=s&&t<e)||(t+W>=s&&t+W<e))return {offen:true,text:'Jetzt geöffnet bis '+fmt(e)};}
+ var best=null;for(var j=0;j<P.length;j++){var d=(P[j][0]-t+W)%W;if(best===null||d<best.d)best={d:d,s:P[j][0]};}
+ var tag=Math.floor(t/1440),ot=Math.floor(best.s/1440)%7,names=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+ var when=best.d<1440&&ot===tag?'heute':(best.d<2880&&ot===(tag+1)%7?'morgen':names[ot]);
+ return {offen:false,text:'Geschlossen · öffnet '+when+' um '+fmt(best.s)};}
+function run(){var s=status();document.querySelectorAll('[data-status]').forEach(function(el){
+ if(!s){el.style.display='none';return;}el.textContent=s.text;el.setAttribute('data-offen',s.offen?'ja':'nein');});}
+document.querySelectorAll('[data-foto] img').forEach(function(img){
+ function hide(){var b=img.closest('[data-foto]');if(b)b.style.display='none';}
+ if(!img.getAttribute('src'))hide();else{img.addEventListener('error',hide);if(img.complete&&img.naturalWidth===0)hide();}});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();setInterval(run,60000);
+})();</script></body>
+</html>
