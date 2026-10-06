@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sunrice – Asiatische Küche am Engelbosteler Damm, Hannover</title>
+<meta name="description" content="Sunrice in der Hannoveraner Nordstadt: Sushi, Curry, Bowls und Tapas. Täglich 11:30–22:00 Uhr, Engelbosteler Damm 46. Vor Ort, zum Mitnehmen oder geliefert. Telefon 0511 71304363.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Figtree:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+:root{--creme:#F5EFE2;--creme2:#ECE4D2;--anth:#2F3236;--grau:#55585C;--gruen:#1E5843;--gelb:#F2D46B;--gelb2:#F7E296;--fd:"Bricolage Grotesque",system-ui,sans-serif;--ft:"Figtree",system-ui,sans-serif;--rand:clamp(1rem,5vw,4rem);--max:1280px;--gap:clamp(1rem,2.5vw,2rem);--abschnitt:clamp(3.5rem,9vw,7.5rem);--kopf:64px}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--creme);color:var(--anth);font:400 1.0625rem/1.6 var(--ft);overflow-x:hidden}
+img{display:block;max-width:100%}
+h1,h2,h3{font-family:var(--fd);font-weight:800;line-height:1.02;margin:0;letter-spacing:-.02em}
+p,li,dd{hyphens:auto;overflow-wrap:break-word}
+h1,h2,h3,.lead{hyphens:none;overflow-wrap:break-word}
+p{margin:0 0 1rem;max-width:62ch}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--anth);outline-offset:3px}
+.dunkel :focus-visible,.gruen :focus-visible{outline-color:var(--gelb)}
+.wrap{width:100%;max-width:calc(var(--max) + 2*var(--rand));margin:0 auto;padding:0 var(--rand)}
+section{scroll-margin-top:80px}
+h2{font-size:clamp(2.1rem,5.2vw,3.5rem);margin-bottom:clamp(1rem,2.5vw,1.75rem)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:48px;padding:.8rem 1.6rem;border-radius:3px;font:700 1.0625rem/1.2 var(--ft);text-decoration:none;border:2px solid transparent;transition:background-color .2s,color .2s}
+.btn-gelb{background:var(--gelb);color:var(--anth);border-color:var(--gelb)}
+.btn-gelb:hover{background:var(--gelb2);border-color:var(--gelb2)}
+.btn-rand{border-color:var(--creme);color:var(--creme)}
+.btn-rand:hover{background:var(--creme);color:var(--gruen)}
+.btn-dunkel{background:var(--anth);color:var(--creme)}
+.btn-dunkel:hover{background:var(--gruen)}
+.kopf{position:sticky;top:0;z-index:1000;background:var(--anth);color:var(--creme);border-bottom:4px solid var(--gruen)}
+.kopf .wrap{height:var(--kopf);display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.marke{font:700 1.6rem/1 var(--fd);letter-spacing:.06em;color:var(--gelb);text-decoration:none;padding:.5rem 0}
+.kopf nav{display:flex;flex-wrap:nowrap;align-items:center;gap:32px;white-space:nowrap;flex:none}
+.kopf nav a{flex:none}
+.kopf nav a:not(.btn){display:inline-flex;align-items:center;min-height:44px;text-decoration:none;font-weight:700;padding:0;border-bottom:2px solid transparent}
+.kopf nav a:not(.btn):hover{border-bottom-color:var(--gelb)}
+.kopf .btn{min-height:44px;padding:.6rem 1.4rem}
+.hero{padding:clamp(1rem,2.5vw,2rem) 0 48px}
+.hero .wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap);align-items:stretch}
+.markise{grid-column:1/8;position:relative;background:var(--gruen);color:var(--creme);padding:clamp(2rem,5vw,4rem) clamp(1.25rem,4vw,3.5rem) clamp(3.5rem,6vw,4.5rem);display:flex;flex-direction:column;justify-content:center}
+.markise::before{content:"";position:absolute;left:0;right:0;bottom:8px;height:2px;background:var(--creme)}
+.markise::after{content:"";position:absolute;left:0;right:0;top:100%;height:12px;background:radial-gradient(circle at 12px 0,var(--gruen) 11.5px,transparent 12px) 0 0/24px 12px repeat-x}
+.status{display:inline-flex;align-items:center;gap:.6rem;font-weight:700;margin-bottom:1.5rem;min-height:1.6em}
+.status::before{content:"";width:1rem;height:1rem;border-radius:50%;background:var(--gelb);flex:none}
+.status:has([data-offen="nein"])::before{background:transparent;box-shadow:inset 0 0 0 2px var(--gelb)}
+.markise h1{font-size:clamp(3.5rem,9vw,7.5rem);color:var(--gelb);margin-bottom:1rem}
+.lead{font:400 clamp(1.3rem,2.4vw,1.7rem)/1.3 var(--fd);margin-bottom:1.25rem;max-width:30ch}
+.markise p:not(.lead){max-width:48ch}
+.aktionen{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem}
+.fassade{grid-column:8/13;margin:0;display:flex;flex-direction:column;position:relative}
+.fassade .bild{flex:1;aspect-ratio:auto;min-height:440px}
+.fassade .bild img{position:absolute;inset:0}
+.bild{position:relative;overflow:hidden;background:var(--creme2)}
+.bild img{width:100%;height:100%;object-fit:cover}
+figure{margin:0}
+figcaption{font-size:.9375rem;line-height:1.45;color:#45484C;padding-top:.6rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:.25rem 1rem}
+.dunkel figcaption{color:#D9D3C5}
+.foto-nachweis{text-decoration:underline;text-underline-offset:2px}
+.r45{aspect-ratio:4/5}.r34{aspect-ratio:3/4}.r32{aspect-ratio:3/2}.r11{aspect-ratio:1/1}
+.fassade img{object-position:50% 0}
+.zeiten{padding:0 0 var(--abschnitt)}
+.zeiten .wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap);align-items:center}
+.zeiten-text{grid-column:1/5}
+.zeiten-text h2{font-size:clamp(1.9rem,4vw,2.75rem)}
+.uhr{font:700 clamp(2.25rem,5vw,3.25rem)/1 var(--fd);font-variant-numeric:tabular-nums;margin-bottom:.75rem}
+.bogen{grid-column:5/13;position:relative}
+.bogen svg{width:100%;height:auto;overflow:visible}
+.achse{position:relative;height:2.2rem;font:700 1rem/1 var(--fd);font-variant-numeric:tabular-nums}
+.achse span{position:absolute;top:.4rem;transform:translateX(-50%);white-space:nowrap}
+.achse span::before{content:"";position:absolute;left:50%;top:-.55rem;width:2px;height:.4rem;background:var(--anth)}
+.teile{display:grid;grid-template-columns:48.2fr 43.8fr;gap:4px;margin:0 4%;font-weight:700;line-height:1.3}
+.teile span{border-top:6px solid var(--gruen);padding-top:.6rem}
+.teile span:last-child{border-top-color:var(--anth);text-align:right}
+.teile small{display:block;font-size:1rem;font-weight:400;font-variant-numeric:tabular-nums}
+#sonneText{font:700 clamp(1.25rem,2.4vw,1.6rem)/1.3 var(--fd);margin:1.25rem 4% 0;display:flex;align-items:center;gap:.6rem}
+#sonneText::before{content:"";width:14px;height:14px;border-radius:50%;background:#F2D46B;border:2px solid var(--anth);flex:none}
+.bogen[data-offen="nein"] #sonne{fill:var(--creme)}
+.teller{padding:0 0 var(--abschnitt)}
+.galerie{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap)}
+.g-sushi{grid-column:1/9}.g-curry{grid-column:9/13}
+.g-text{grid-column:1/4;align-self:start;padding-top:.25rem}.g-text p{font-size:1.125rem;margin:0 0 1.25rem}
+.g-bowl{grid-column:4/13}
+.g-huhn{grid-column:10/13;display:flex;flex-direction:column}
+.g-huhn .bild{flex:1;aspect-ratio:auto;min-height:0}.g-huhn .bild img{position:absolute;inset:0}
+.karte-abschnitt{background:var(--creme2);padding:var(--abschnitt) 0}
+.karte-kopf{display:grid;grid-template-columns:7fr 4fr;gap:var(--gap);align-items:center;margin-bottom:clamp(2rem,5vw,3.5rem)}
+.karte-kopf figure{max-width:340px;justify-self:end;width:100%}
+.liste{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(2rem,5vw,4.5rem);list-style:none;margin:0;padding:0}
+.posten{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem;align-items:start;padding:1.1rem 0 1.25rem;border-top:2px solid var(--anth)}
+.posten h3{font-size:clamp(1.35rem,2.4vw,1.65rem);margin-bottom:.35rem;display:flex;align-items:center;gap:.55rem}
+.posten h3::before{content:"";width:.55rem;height:.55rem;background:var(--gruen);flex:none}
+.posten p{margin:0;color:var(--grau)}
+.posten .bild{width:clamp(84px,11vw,124px);background:none}
+.posten .bild.r34{width:clamp(72px,9vw,100px)}
+.hinweis{margin-top:clamp(2rem,4vw,3rem);display:flex;flex-wrap:wrap;align-items:center;gap:1rem 2rem}
+.hinweis p{margin:0;font-weight:700;font-size:1.125rem}
+.dunkel{background:var(--anth);color:var(--creme)}
+.bleiben{padding:var(--abschnitt) 0}
+.bleiben .wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap);align-items:center}
+.bleiben-text{grid-column:1/7}
+.bleiben-text h2{color:var(--gelb)}
+.fakten{margin:1.75rem 0 0;display:grid;grid-template-columns:1fr 1fr;gap:1.25rem 2rem}
+.fakten dt{font:700 1.2rem/1.2 var(--fd);color:var(--gelb)}
+.fakten dd{margin:.25rem 0 0}
+.paar{grid-column:7/13;display:grid;grid-template-columns:4fr 3fr;gap:var(--gap);align-items:end}
+.band{aspect-ratio:4/1;overflow:hidden;background:var(--creme)}
+.band img{width:100%;height:100%;object-fit:cover}
+.lage{padding:var(--abschnitt) 0 96px}
+.lage .wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap);align-items:stretch}
+.lage-text{grid-column:1/6}
+.adresse{font:700 clamp(1.5rem,3vw,2.25rem)/1.2 var(--fd);font-style:normal;margin-bottom:1.25rem}
+.karte{grid-column:6/13;min-height:360px;max-height:480px;border:4px solid var(--anth);background:var(--creme2);position:relative;z-index:0;isolation:isolate;overflow:hidden}
+.karte>div{width:100%;height:100%}
+.gruen{background:var(--gruen);color:var(--creme);padding:clamp(3rem,7vw,5.5rem) 0 clamp(3.5rem,7vw,6rem);position:relative}
+.gruen::before{content:"";position:absolute;left:0;right:0;bottom:20px;height:2px;background:var(--creme)}
+.gruen::after{content:"";position:absolute;left:0;right:0;bottom:0;height:14px;background:#143B2D}
+.gruen .wrap{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:2rem}
+.gruen h2{margin-bottom:.75rem}
+.gruen p{margin:0}
+.tel-gross{font:700 clamp(1.6rem,5vw,3rem)/1 var(--fd);font-variant-numeric:tabular-nums;padding:1.1rem 2rem}
+.fuss{background:var(--anth);color:var(--creme);padding:clamp(2.5rem,5vw,4rem) 0 2rem;font-size:1rem}
+.fuss-raster{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap);margin-bottom:2rem}
+.fuss h3{font:700 1rem/1.4 var(--ft);color:var(--gelb);margin-bottom:.4rem}
+.fuss p{margin:0}
+.fuss a{text-underline-offset:3px;display:inline-block;padding:.25rem 0}
+.rechtliches{border-top:1px solid #5A5E63;padding-top:1.25rem;font-size:.875rem;color:#DCD6C8}
+.rechtliches p{margin:0 0 .4rem;max-width:none}
+.leiste{display:none}
+@media (max-width:1023px){.markise{grid-column:1/8}.fassade{grid-column:8/13}.fakten{grid-template-columns:1fr}.g-text{grid-column:1/13}.g-bowl{grid-column:1/13}.fuss-raster{grid-template-columns:1fr 1fr}}
+@media (max-width:819px){
+.kopf nav a:not(.btn){display:none}
+.hero .wrap,.zeiten .wrap,.bleiben .wrap,.lage .wrap{grid-template-columns:minmax(0,1fr)}
+.hero .wrap{padding:0}
+.fassade{grid-column:1;order:-1;margin:0}
+.fassade .bild{aspect-ratio:4/3;flex:none;min-height:0}
+.hero{padding-top:0}
+.fassade figcaption{padding:.6rem var(--rand) 0}
+.markise{grid-column:1}
+.aktionen .btn{width:100%}
+.zeiten-text,.bogen,.bleiben-text,.paar,.lage-text,.karte{grid-column:1}
+.achse .k{display:none}
+.galerie,.karte-kopf,.liste,.fuss-raster{grid-template-columns:minmax(0,1fr)}
+.g-sushi,.g-curry,.g-text,.g-bowl,.g-huhn{grid-column:1}.g-huhn{display:block}.g-huhn .bild{aspect-ratio:3/4}
+.karte-kopf figure{justify-self:start;max-width:280px}
+.karte{aspect-ratio:4/3;min-height:0}
+.fakten{grid-template-columns:1fr 1fr}
+.gruen .btn{width:100%}
+body{padding-bottom:calc(56px + env(safe-area-inset-bottom))}
+.leiste{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;left:0;right:0;bottom:0;z-index:1000;background:var(--anth);border-top:3px solid var(--gruen);padding-bottom:env(safe-area-inset-bottom)}
+.leiste a{display:flex;align-items:center;justify-content:center;min-height:52px;color:var(--creme);font-weight:700;text-decoration:none}
+.leiste a:first-child{background:var(--gelb);color:var(--anth)}
+}
+@media (max-width:420px){.fakten{grid-template-columns:1fr}.marke{font-size:1.4rem}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+.r43{aspect-ratio:4/3}
+.nw{white-space:nowrap}
+.marke{flex:none}
+@media (max-width:899px){.kopf nav a:not(.btn){display:none}}
+.fassade figcaption{position:absolute;left:0;right:0;bottom:0;padding:.5rem .875rem;background:rgba(47,50,54,.94);color:var(--creme)}
+.text-link{font-weight:700;text-underline-offset:4px;text-decoration-thickness:2px;display:inline-block;padding:.25rem 0}
+.hinweis .btn-gelb{border-color:var(--anth)}
+@media (max-width:819px){.fassade figcaption{padding:.4rem var(--rand)}}
+</style>
+<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}</style></head>
+<body><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für Sunrice. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
+<header class="kopf">
+<div class="wrap">
+<a class="marke" href="#start" aria-label="Sunrice, zum Seitenanfang">SUNRICE</a>
+<nav aria-label="Hauptnavigation">
+<a href="#karte">Karte</a>
+<a href="#zeiten">Zeiten</a>
+<a href="#lage">Lage</a>
+<a class="btn btn-gelb" href="tel:+4951171304363">Anrufen</a>
+</nav>
+</div>
+</header>
+
+<main id="start">
+<section class="hero" aria-labelledby="titel">
+<div class="wrap">
+<div class="markise">
+<p class="status"><span data-status>Täglich 11:30 – 22:00 Uhr</span></p>
+<h1 id="titel">Sunrice</h1>
+<p class="lead">Asiatische Küche in der Nordstadt –<br>Sushi, Curry, Bowls, Tapas.</p>
+<p>Mittagstisch ab 11:30, Abendessen bis 22 Uhr – jeden Tag, auch sonntags. Am Tisch, zum Abholen oder geliefert. Tische reservieren Sie am Telefon.</p>
+<div class="aktionen">
+<a class="btn btn-gelb" href="tel:+4951171304363">0511 71304363 anrufen</a>
+<a class="btn btn-rand" href="#karte">Zur Karte</a>
+</div>
+</div>
+<figure class="fassade" data-foto>
+<div class="bild r45"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLccX2oyVzX0IADd3YsMctGZsJ_nm42OVNJgyrPuSclYdtjhNz2fOohXGH0iCSruxfj4K6Yf36ezbf4iGHBpm0iLBAhIWvT-Lyi-MIFyOFRceywuHYH9LYsiO7mDBWulA3x8coVIwg=s4800-w1000" referrerpolicy="no-referrer" width="3024" height="4032" fetchpriority="high" alt="Ladenfront von Sunrice am Engelbosteler Damm: dunkle Blende mit gelbem Schriftzug, grüne Markise, Holztische auf dem Gehweg und Blick in den beleuchteten Gastraum"></div>
+<figcaption><span>Engelbosteler Damm 46</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/109840457986351482999" target="_blank" rel="noopener">Foto: SUNRICE · Google Maps</a></figcaption>
+</figure>
+</div>
+</section>
+
+<section class="zeiten" id="zeiten" aria-labelledby="zeiten-titel">
+<div class="wrap">
+<div class="zeiten-text">
+<h2 id="zeiten-titel">Jeden Tag ab 11:30 offen, auch sonntags</h2>
+<p class="uhr">11:30 – 22:00</p>
+<p>Montag bis Sonntag, jeden Tag gleich.</p>
+</div>
+<div class="bogen" id="bogen">
+<svg viewBox="0 0 1000 310" role="img" aria-label="Tagesbogen von 11:30 bis 22:00 Uhr mit der aktuellen Uhrzeit als Sonne">
+<path d="M40 290 Q500 -30 960 290" fill="none" stroke="#1E5843" stroke-width="12" stroke-linecap="round"/>
+<line x1="40" y1="290" x2="960" y2="290" stroke="#2F3236" stroke-width="3"/>
+<line x1="522" y1="140" x2="522" y2="290" stroke="#2F3236" stroke-width="3" stroke-dasharray="8 8"/>
+<circle id="sonne" cx="40" cy="290" r="30" fill="#F2D46B" stroke="#2F3236" stroke-width="4"/>
+</svg>
+<div class="achse" aria-hidden="true">
+<span style="left:4%">11:30</span><span class="k" style="left:25.9%">14:00</span><span style="left:52.2%">17:00</span><span class="k" style="left:78.5%">20:00</span><span style="left:96%">22:00</span>
+</div>
+<div class="teile"><span>Mittagstisch<small>11:30 – 17:00</small></span><span>Abendessen<small>17:00 – 22:00</small></span></div>
+<p id="sonneText" aria-live="polite">Täglich von 11:30 bis 22:00 Uhr geöffnet</p>
+</div>
+</div>
+</section>
+
+<section class="teller" aria-labelledby="teller-titel">
+<div class="wrap">
+<h2 id="teller-titel">Was auf den Tisch kommt</h2>
+<div class="galerie">
+<figure class="g-sushi" data-foto>
+<div class="bild r32"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLeZ_LMvYcZOU3nEGZsOUKrVUJiVFzirotLgSa-2U50T9SYJ3oa2ctr9V_EsZzhkglJrvxwTt-afmmPZfOV5B98bb1ggjRXj4QLbYgDkdB3RrLdkAOSm57QPwCwrJReJZyKV5QOicC_1SZJT=s4800-w1000" referrerpolicy="no-referrer" width="4032" height="3024" loading="lazy" alt="Sushi-Platte mit Inside-Out-Rollen und gebackenen Rollen, Ingwer, Wakame und Sojasauce auf Schiefer"></div>
+<figcaption><span>Sushi-Platte mit Inside-Out- und gebackenen Rollen</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/108457756459051722515" target="_blank" rel="noopener">Foto: Anna Golubytska · Google Maps</a></figcaption>
+</figure>
+<figure class="g-curry" data-foto>
+<div class="bild r34"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfKt-9IC1BUMDe0cHkWy9Kw_4fqmR48wf39x11z_Km-EAyXfT7rJEqbM3MzXcNWFs0sOlN7EA7eZtZBMD3FFrAtabO6FilPg9cKlcN95rtvfR9xZuiN8gZzbNQkvOaKqAmgC00xQo8aPos=s4800-w1000" referrerpolicy="no-referrer" width="3024" height="4032" loading="lazy" alt="Gedeckter Tisch mit Curry und Reis, Frühlingsrollen mit Chilisauce, panierten Garnelen und Limonade"></div>
+<figcaption><span>Curry, Frühlingsrollen, Garnelen</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/113436786244937250125" target="_blank" rel="noopener">Foto: Alina · Google Maps</a></figcaption>
+</figure>
+<div class="g-text"><p>Sushi, Curry, Bowls und kleine Teller zum Teilen. Dazu Limonaden, Kaffee und Dessert. Vegetarisches steht auch auf der Karte.</p><a class="text-link" href="#karte">Alle Rubriken der Karte</a></div>
+<figure class="g-bowl" data-foto>
+<div class="bild r32"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLcv6xlhEhPy7Jq0UzihuOsBNiWVBPmYXREma8-qGm9ZkhQEGusnvStVCR3bKQeu1O7JbMFle5bSO-_TYSwR6bhs9y-nBFtJelmzxczqmDPxvARShywkgIcILYOHsQLDWwpYu2tdOKW0ICoP=s4800-w1800" referrerpolicy="no-referrer" width="4800" height="3600" loading="lazy" alt="Bowl mit gebratenem Rindfleisch, Salat, Karotten und Sesam auf einem Holztisch"></div>
+<figcaption><span>Bowl mit gebratenem Rindfleisch, Salat, Karotten und Sesam</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/115783003527165983955" target="_blank" rel="noopener">Foto: Manuel K · Google Maps</a></figcaption>
+</figure>
+</div>
+</div>
+</section>
+
+<section class="karte-abschnitt" id="karte" aria-labelledby="karte-titel">
+<div class="wrap">
+<div class="karte-kopf">
+<div>
+<h2 id="karte-titel">Die Karte</h2>
+<p>Was es bei uns gibt, nach Rubriken. Preise und das aktuelle Tagesgericht nennen wir Ihnen im Lokal und am Telefon.</p>
+</div>
+<figure data-foto>
+<div class="bild r34"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfYq2M1AAjC8fgbs0FA8Tgbs3H5dvV46GROjAPk3pfOctrMbkdcfZtxDUYYU5LWCXeETD5KQx78QCyY7ja5KhtdBmu1OKs0-8HxoyuxusmMJahRQw7dIA1JlflYTS_nktsg5l_QEx4G6xY=s4800-w1000" referrerpolicy="no-referrer" width="3600" height="4800" loading="lazy" alt="Drei Curry-Schalen mit Reis, knusprigem Hähnchen und Gemüse auf einem Holztisch"></div>
+<figcaption><span>Curry mit knusprigem Hähnchen</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/100251034099823023708" target="_blank" rel="noopener">Foto: A A · Google Maps</a></figcaption>
+</figure>
+</div>
+<ul class="liste">
+<li class="posten"><div><h3>Mittagstisch</h3><p>Ab 11:30 – am Tisch oder zum Mitnehmen.</p></div></li>
+<li class="posten"><div><h3>Limonaden</h3><p>Matcha-Limonade und weitere Limonaden, mit Limette und Minze im geriffelten Glas.</p></div><div class="bild r34"><img src="ki-matcha-limo.webp" width="768" height="1024" loading="lazy" alt="Illustration: Glas Matcha-Limonade mit Minze und Zitrone"></div></li>
+<li class="posten"><div><h3>Tagesgericht</h3><p>Jeden Tag ein anderes – am Telefon erfragen.</p></div></li>
+<li class="posten"><div><h3>Kaffee</h3><p>Nach dem Essen oder zwischendurch.</p></div></li>
+<li class="posten"><div><h3>Sushi-Platten</h3><p>Inside-Out-Rollen und gebackene Rollen, dazu Ingwer, Wakame und Sojasauce.</p></div><div class="bild r11"><img src="ki-sushi-rollen.webp" width="1024" height="1024" loading="lazy" alt="Illustration: Maki-Rollen mit Sojasauce, Ingwer und Algensalat"></div></li>
+<li class="posten"><div><h3>Desserts</h3><p>Zum Beispiel Matcha-Dessert mit Beeren und Sahne.</p></div></li>
+<li class="posten"><div><h3>Curry</h3><p>Als Teller mit Reis, etwa mit knusprigem Hähnchen und Gemüse.</p></div></li>
+<li class="posten"><div><h3>Bier und Wein</h3><p>Zum Abendessen, gern draußen auf den Bänken.</p></div></li>
+<li class="posten"><div><h3>Bowls und Tapas</h3><p>Bowls mit gebratenem Rindfleisch und Salat, kleine Teller zum Teilen.</p></div></li>
+<li class="posten"><div><h3>Vegetarisches</h3><p>Vegetarische Gerichte stehen auf der Karte – fragen Sie nach der Auswahl.</p></div></li>
+</ul>
+<div class="hinweis">
+<p>Die vollständige Karte mit Preisen gibt es im Lokal und am Telefon.</p>
+<a class="btn btn-gelb" href="tel:+4951171304363">Anrufen und bestellen</a>
+</div>
+</div>
+</section>
+
+<section class="bleiben dunkel" aria-labelledby="bleiben-titel">
+<div class="wrap">
+<div class="bleiben-text">
+<h2 id="bleiben-titel">Drinnen, draußen, zum Mitnehmen</h2>
+<p>Die Faltglastüren gehen zur Straße auf. Draußen stehen Bänke und Tische unter der grünen Markise, drinnen hängen Papierlaternen unter einer begrünten Decke.</p>
+<p>Mittags schnell am Tisch, abends draußen auf den Bänken am Engelbosteler Damm.</p>
+<dl class="fakten">
+<div><dt>Vor Ort</dt><dd>Drinnen oder draußen auf dem Gehweg.</dd></div>
+<div><dt>Abholen</dt><dd>Anrufen, bestellen, mitnehmen.</dd></div>
+<div><dt>Liefern</dt><dd>Wir liefern auch – fragen Sie am Telefon.</dd></div>
+<div><dt>Reservieren</dt><dd><a href="tel:+4951171304363">0511 71304363</a></dd></div>
+</dl>
+</div>
+<div class="paar">
+<figure data-foto>
+<div class="bild r34"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLf6urZOPWuYGKrngxJ19Kmi8AiTFaAytPCRLW8lNXxGW-ZLixntWpJ_1cu25K_qatUMToTUSsGB1KHHrkxe1DjcNDWxEuxtf8KedlJcLy9e8fXHeUvvA6nxCsSOxtPKZJs9nEc3B2zy8uzp=s4800-w1000" referrerpolicy="no-referrer" width="3024" height="4032" loading="lazy" alt="Matcha-Dessert mit Beeren, Orangenscheiben, Sahnetupfern und Puderzucker"></div>
+<figcaption><span>Matcha-Dessert</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/104572179645201937334" target="_blank" rel="noopener">Foto: jjdkd · Google Maps</a></figcaption>
+</figure>
+<figure data-foto>
+<div class="bild r11"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLdoc8kdUFu_qXy6TgSeMJBJYPuWtDU3rAyZrEt6g-CSG2F2Q5HqE4DrZh95DxdGTbPq_yPB7xCIlwIQ8GVL--UIWd4pzoPFnJu2md7GEqiuj5frITJjtXQugcWLUc1KGmPq32TSAGRXQMB2=s4800-w1000" referrerpolicy="no-referrer" width="3024" height="3014" loading="lazy" alt="Limonade mit Limette, Minze und Papierstrohhalm im geriffelten Glas"></div>
+<figcaption><span>Limonade mit Limette und Minze</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/116812783647260377874" target="_blank" rel="noopener">Foto: G IC · Google Maps</a></figcaption>
+</figure>
+</div>
+</div>
+</section>
+
+
+
+<section class="lage" id="lage" aria-labelledby="lage-titel">
+<div class="wrap">
+<div class="lage-text">
+<h2 id="lage-titel">So finden Sie uns</h2>
+<address class="adresse">Engelbosteler Damm 46<br>30167 Hannover</address>
+<p>In der Nordstadt, unter der grünen Markise mit dem gelben Schriftzug SUNRICE.</p>
+<div class="aktionen">
+<a class="btn btn-dunkel" href="https://www.google.com/maps/dir/?api=1&amp;destination=Engelbosteler+Damm+46,+30167+Hannover" target="_blank" rel="noopener">Route planen</a>
+<a class="btn btn-gelb" href="tel:+4951171304363">Anrufen</a>
+</div>
+</div>
+<div class="karte"><div data-karte data-stil="warm" data-farbe="#1E5843"></div></div>
+</div>
+</section>
+
+
+</main>
+
+<footer class="fuss">
+<div class="wrap">
+<div class="fuss-raster">
+<div><a class="marke" href="#start">SUNRICE</a><p>Asiatische Küche</p></div>
+<div><h3>Adresse</h3><p><span class="nw">Engelbosteler Damm 46</span><br><span class="nw">30167 Hannover</span></p></div>
+<div><h3>Geöffnet</h3><p>Montag bis Sonntag<br>11:30 – 22:00 Uhr</p></div>
+<div><h3>Telefon</h3><p><a href="tel:+4951171304363">0511 71304363</a></p></div>
+</div>
+<div class="rechtliches"><p>Entwurf von Medialyte, 21147 Hamburg. Adresse und Öffnungszeiten: Google. Fotos: Google Maps, Urheber jeweils am Bild. Einige Bilder und das Logo sind KI-generierte Vorschläge.</p><p><a href="https://medialyte.de/impressum" style="color:inherit;text-decoration:underline">Impressum</a> · <a href="https://medialyte.de/datenschutzerklaerung" style="color:inherit;text-decoration:underline">Datenschutz</a></p></div>
+</div>
+</footer>
+
+<nav class="leiste" aria-label="Schnellzugriff">
+<a href="tel:+4951171304363">Anrufen</a>
+<a href="https://www.google.com/maps/dir/?api=1&amp;destination=Engelbosteler+Damm+46,+30167+Hannover" target="_blank" rel="noopener">Route</a>
+<a href="#zeiten">Zeiten</a>
+</nav>
+
+<script>
+(function(){
+var S=document.getElementById('sonne'),T=document.getElementById('sonneText'),B=document.getElementById('bogen');
+if(!S||!T||!B)return;
+var ruhig=window.matchMedia('(prefers-reduced-motion: reduce)').matches,zeit=0,gesetzt=false;
+function jetzt(){try{var p=new Intl.DateTimeFormat('de-DE',{timeZone:'Europe/Berlin',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date());var g=function(k){return +p.filter(function(x){return x.type===k})[0].value};return g('hour')+g('minute')/60}catch(e){var d=new Date();return d.getHours()+d.getMinutes()/60}}
+function pos(t){var u=1-t;S.setAttribute('cx',(40+920*t).toFixed(1));S.setAttribute('cy',(u*u*290-60*u*t+t*t*290).toFixed(1))}
+function lage(){var h=jetzt(),offen=h>=11.5&&h<22;zeit=Math.min(1,Math.max(0,(h-11.5)/10.5));T.textContent=offen?'Jetzt geöffnet – noch bis 22:00':(h<11.5?'Öffnet heute um 11:30':'Geschlossen – öffnet morgen um 11:30');B.setAttribute('data-offen',offen?'ja':'nein');return zeit}
+function gleiten(){var z=lage();if(ruhig){pos(z);return}var s=null;function f(ts){if(!s)s=ts;var k=Math.min(1,(ts-s)/500),e=1-Math.pow(1-k,3);pos(z*e);if(k<1)requestAnimationFrame(f)}requestAnimationFrame(f)}
+lage();
+if('IntersectionObserver' in window&&!ruhig){var o=new IntersectionObserver(function(en){if(en[0].isIntersecting&&!gesetzt){gesetzt=true;gleiten();o.disconnect()}},{threshold:.4});o.observe(B)}else{gesetzt=true;pos(zeit)}
+setInterval(function(){lage();if(gesetzt)pos(zeit)},60000);
+})();
+</script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>[data-karte]{width:100%;height:100%;min-height:260px}[data-karte] .leaflet-tile-pane{filter:var(--karte-filter)}
+[data-karte] .leaflet-control-attribution{font-size:10px}.karte-pin{position:relative;width:34px;height:34px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+box-shadow:0 6px 16px rgba(0,0,0,.35);border:3px solid #fff}.karte-pin i{position:absolute;inset:9px;border-radius:50%;background:#fff}</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>(function(){var C={"lat": 52.385576199999996, "lng": 9.7245748, "name": "Sunrice", "filter": {"hell": "grayscale(1) contrast(1.05) brightness(1.04)", "dunkel": "grayscale(1) invert(1) contrast(.88) brightness(.82)", "warm": "grayscale(1) sepia(.5) contrast(1.02) brightness(1.02)", "kuehl": "grayscale(1) sepia(.35) hue-rotate(175deg) saturate(.55) brightness(1.03)", "mono": "grayscale(1) contrast(1.2)"}};function draw(){if(!window.L)return;document.querySelectorAll('[data-karte]').forEach(function(el){
+if(el._map)return;var st=el.getAttribute('data-stil')||'hell',col=el.getAttribute('data-farbe')||'#c0392b';
+el.style.setProperty('--karte-filter',C.filter[st]||C.filter.hell);
+var m=L.map(el,{scrollWheelZoom:false,zoomControl:true,attributionControl:true}).setView([C.lat,C.lng],16);el._map=m;
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(m);
+var icon=L.divIcon({className:'',html:'<div class="karte-pin" style="background:'+col+'"><i></i></div>',iconSize:[34,34],iconAnchor:[17,34]});
+L.marker([C.lat,C.lng],{icon:icon,title:C.name,alt:C.name}).addTo(m);setTimeout(function(){m.invalidateSize()},300);});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',draw);else draw();window.addEventListener('load',draw);})();</script><script>(function(){
+var P=[[690, 1320], [2130, 2760], [3570, 4200], [5010, 5640], [6450, 7080], [7890, 8520], [9330, 9960]];
+function fmt(m){m=((m%1440)+1440)%1440;var h=Math.floor(m/60),mi=m%60;return (h<10?'0':'')+h+':'+(mi<10?'0':'')+mi;}
+function now(){var d=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Berlin'}));return d.getDay()*1440+d.getHours()*60+d.getMinutes();}
+function status(){if(!P.length)return null;var t=now(),W=10080;
+ for(var i=0;i<P.length;i++){var s=P[i][0],e=P[i][1];if((t>=s&&t<e)||(t+W>=s&&t+W<e))return {offen:true,text:'Jetzt geöffnet bis '+fmt(e)};}
+ var best=null;for(var j=0;j<P.length;j++){var d=(P[j][0]-t+W)%W;if(best===null||d<best.d)best={d:d,s:P[j][0]};}
+ var tag=Math.floor(t/1440),ot=Math.floor(best.s/1440)%7,names=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+ var when=best.d<1440&&ot===tag?'heute':(best.d<2880&&ot===(tag+1)%7?'morgen':names[ot]);
+ return {offen:false,text:'Geschlossen · öffnet '+when+' um '+fmt(best.s)};}
+function run(){var s=status();document.querySelectorAll('[data-status]').forEach(function(el){
+ if(!s){el.style.display='none';return;}el.textContent=s.text;el.setAttribute('data-offen',s.offen?'ja':'nein');});}
+document.querySelectorAll('[data-foto] img').forEach(function(img){
+ function hide(){var b=img.closest('[data-foto]');if(b)b.style.display='none';}
+ if(!img.getAttribute('src'))hide();else{img.addEventListener('error',hide);if(img.complete&&img.naturalWidth===0)hide();}});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();setInterval(run,60000);
+})();</script></body>
+</html>

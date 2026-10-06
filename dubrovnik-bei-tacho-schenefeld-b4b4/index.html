@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dubrovnik bei Tacho – Kroatisches Restaurant in Schenefeld</title>
+<meta name="description" content="Dubrovnik bei Tacho, Lornsenstraße 111 in Schenefeld: kroatische Küche, Steaks vom Lavastein, Pfannen und Platten ab zwei Personen. Mo–Sa 17–22 Uhr, So 12–21 Uhr, Mittwoch Ruhetag. Tel. 040 8391568.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+:root{--lack:#16120F;--papier:#F5EFE6;--ton:#EAE1D3;--rot:#B01E33;--rot-d:#8E1628;--lampe:#F5EFE6;--grau:#5A5148;--hell:#CFC5B8;--linie:rgba(22,18,15,.16);--d:"Fraunces",Georgia,serif;--s:"Source Sans 3",system-ui,sans-serif;--rand:clamp(1rem,5vw,4rem);--max:1280px;--abst:clamp(4rem,9vw,8rem);--kopf:64px}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--papier);color:var(--lack);font:400 1.0625rem/1.6 var(--s);hyphens:manual;overflow-wrap:break-word}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3,h4,p{margin:0}
+:focus-visible{outline:3px solid var(--rot);outline-offset:3px}
+.dunkel :focus-visible,.dunkel:focus-visible{outline-color:var(--lampe)}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--rand)}
+section[id]{scroll-margin-top:calc(var(--kopf) + 3px)}
+.knopf{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:48px;padding:.75rem 1.5rem;font-weight:700;font-size:1.0625rem;line-height:1.2;text-decoration:none;border:2px solid transparent;border-radius:2px;transition:background-color .2s,color .2s}
+.rot{background:var(--rot);color:var(--papier)}
+.rot:hover{background:var(--rot-d)}
+.rand{border-color:var(--papier);color:var(--papier)}
+.rand:hover{background:var(--papier);color:var(--lack)}
+.kopfzeile{position:sticky;top:0;z-index:20;background:var(--lack);color:var(--papier);border-bottom:3px solid var(--rot)}
+.kopfzeile .wrap{height:var(--kopf);display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.marke{display:inline-flex;align-items:baseline;gap:.35rem;padding-block:.65rem;text-decoration:none;font-size:1.6rem;line-height:1}
+.marke b{font:italic 400 1em/1 var(--d)}
+.marke span{font:400 .55em/1 var(--s)}
+.nav{display:flex;align-items:center;gap:.25rem}
+.nav a:not(.knopf){display:none;padding:.75rem .75rem;text-decoration:none;min-height:44px;align-items:center}
+.nav a:not(.knopf):hover{text-decoration:underline;text-underline-offset:4px}
+.nav .knopf{min-height:44px;padding:.625rem 1.25rem}
+.nav .lang{display:none}
+.hero{background:var(--lack);color:var(--papier);padding-block:clamp(2.5rem,6vw,5rem)}
+.hero .wrap{display:flex;flex-direction:column}
+.status{display:inline-flex;align-items:center;gap:.6rem;min-height:2rem;font-weight:700;color:var(--papier)}
+.status::before{content:"";width:.6rem;height:.6rem;border-radius:50%;background:var(--grau);flex:none}
+.status:has([data-offen="ja"])::before{background:var(--papier)}
+[data-status]{display:inline-block}
+.hero h1{margin:1rem 0 1.25rem;line-height:.95}
+.hero h1 .n{display:block;font:italic 400 clamp(3rem,6vw,5.5rem)/.95 var(--d);letter-spacing:-.01em;white-space:nowrap;hyphens:none;overflow-wrap:normal}
+.hero h1 .b{display:block;margin-top:.6rem;font:400 clamp(1.25rem,2.4vw,1.75rem)/1.2 var(--s);white-space:nowrap}
+.lead{font-size:clamp(1.1875rem,1.8vw,1.375rem);line-height:1.5;max-width:38ch}
+.fakten{list-style:none;padding:0;margin:1.5rem 0 2rem;color:var(--hell);max-width:46ch}
+.fakten li{padding:.4rem 0;border-top:1px solid rgba(245,239,230,.22)}
+.aktionen{display:flex;flex-direction:column;gap:.75rem}
+.hero figure{position:relative;margin:3rem 0 0}
+.rahmen{overflow:hidden;background:#2a231e}
+.rahmen img{width:100%;height:100%;object-fit:cover}
+.r45{aspect-ratio:4/5}.r34{aspect-ratio:3/4}.r43{aspect-ratio:4/3}.r219{aspect-ratio:4/3}.streifen{aspect-ratio:2/1}
+.hero .rahmen img{object-position:top}
+.foto-nachweis{display:inline-flex;align-items:center;min-height:44px;font-size:.875rem;color:var(--grau);text-decoration:underline;text-underline-offset:3px}
+.dunkel .foto-nachweis{color:var(--hell)}
+.stempel{display:block;color:var(--rot);transform:rotate(-12deg)}
+.hero .stempel{position:absolute;top:-24px;right:8px;width:120px;height:120px;animation:druck .32s ease-out both}
+.karte-abschnitt{padding-block:var(--abst)}
+.karte-kopf{display:grid;gap:2rem;margin-bottom:clamp(2.5rem,5vw,4rem)}
+h2{font:italic 400 clamp(2.5rem,5.5vw,4.5rem)/1 var(--d);letter-spacing:-.01em}
+.karte-kopf div p{margin-top:1rem;max-width:52ch;font-size:1.1875rem}
+.kapitel{margin-top:clamp(3rem,6vw,5rem)}
+.kapitel:first-of-type{margin-top:0}
+h3{font:italic 400 clamp(2rem,4vw,3.25rem)/1.05 var(--d);margin-bottom:1rem}
+h3 small{font:400 1.0625rem/1 var(--s);font-style:normal;color:var(--grau);margin-left:.3rem}
+.liste{list-style:none;margin:0;padding:0}
+.g{display:grid;grid-template-columns:clamp(2.75rem,6vw,4rem) 1fr;gap:0 1rem;padding:1.125rem 0;border-top:1px solid var(--linie)}
+.liste .g:last-child{border-bottom:1px solid var(--linie)}
+.nr{font:italic 400 clamp(1.875rem,3.5vw,2.5rem)/1 var(--d);font-variant-numeric:lining-nums tabular-nums}
+.kopf{display:flex;align-items:baseline;gap:.5rem}
+.kopf h4{font-size:1.1875rem;font-weight:700;line-height:1.3;min-width:0}
+.kopf i{flex:1 1 1rem;min-width:.75rem;border-bottom:2px dotted rgba(22,18,15,.4);transform:translateY(-.3em)}
+.p{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right;min-width:7.2ch}
+.g .t>p{margin-top:.25rem;color:var(--grau);max-width:62ch;hyphens:auto}
+.weitere{display:flex;justify-content:space-between;gap:.5rem;margin-top:.5rem;font-size:1rem;font-variant-numeric:tabular-nums}
+.weitere span:last-child{font-weight:700}
+.gr{display:flex;justify-content:flex-end;gap:.5rem;padding:1.5rem 0 .4rem;font-size:.9375rem;font-weight:700;color:var(--grau)}
+.gr span{min-width:7.2ch;text-align:right}
+.gr span:first-child{margin-right:auto;min-width:0;text-align:left;font-weight:400}
+.pfeffer{display:none}
+.ki{margin:clamp(3rem,6vw,5rem) 0 0}
+.split{display:flex;flex-direction:column;gap:2rem}
+.split figure{margin:0}
+.h-stempel{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.h-stempel .stempel{width:120px;height:120px;flex:none}
+.karte-kopf .beilage{font:italic 400 clamp(1.375rem,2.4vw,1.875rem)/1.3 var(--d);max-width:24ch;border-top:4px solid var(--rot);padding-top:1rem}
+.mehr{padding-block:0 var(--abst)}
+.mehr .text{max-width:56ch;margin-bottom:2rem}
+.mehr .text p{margin-top:1rem;font-size:1.1875rem}
+.galerie{display:grid;gap:1.25rem}
+.galerie figure{margin:0}
+.theke{background:var(--lack);color:var(--papier)}
+.theke figure{margin:0}
+.theke .foto-nachweis{margin-left:var(--rand)}
+.haltung{padding-block:clamp(2.5rem,6vw,5rem) clamp(3.5rem,7vw,6rem)}
+.haltung p{font:italic 400 clamp(1.625rem,3.6vw,2.75rem)/1.25 var(--d);max-width:28ch}
+.zeiten{padding-block:var(--abst)}
+.zeiten .text{display:flex;flex-direction:column;gap:1rem;margin-bottom:2.5rem}
+.zeiten .text p{max-width:50ch;font-size:1.1875rem}
+.woche{list-style:none;margin:0;padding:0;font-variant-numeric:tabular-nums}
+.woche li{position:relative;display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:1rem .75rem;border-top:1px solid var(--linie)}
+.woche li:last-child{border-bottom:1px solid var(--linie)}
+.tag{font-weight:700}
+.zeit{text-align:right;font-size:1.1875rem}
+.zeit span{white-space:nowrap}
+.woche small{display:block;font-size:.9375rem;color:var(--grau)}
+.ruhe{background:var(--ton)}
+.tag small{font-weight:400}
+.heute::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:4px;background:var(--rot);transform-origin:left;animation:strich .4s ease-out both}
+.heute .tag::after{content:" · heute";font-weight:400}
+.band{margin:0}
+.band .rahmen{aspect-ratio:2/1}
+.anfahrt{padding-block:var(--abst) clamp(3rem,7vw,6rem);background:var(--ton)}
+.anfahrt .wrap{display:flex;flex-direction:column;gap:2.5rem}
+.adresse{font:400 clamp(2rem,4.6vw,3.5rem)/1.1 var(--d);font-style:normal}
+.adresse span{display:block;font-style:italic}
+.anfahrt .info p{margin-top:1.25rem;max-width:46ch}
+.merkmale{color:var(--grau)}
+.anfahrt .aktionen{margin-top:2rem}
+.anfahrt .rand{border-color:var(--lack);color:var(--lack)}
+.anfahrt .rand:hover{background:var(--lack);color:var(--papier)}
+.karte{aspect-ratio:4/3;min-height:260px;background:var(--papier);border:1px solid var(--linie)}
+.karte>div{width:100%;height:100%}
+.schluss{background:var(--rot);color:var(--papier);padding-block:clamp(3.5rem,8vw,6.5rem)}
+.schluss .wrap{display:flex;flex-direction:column;gap:2rem}
+.schluss :focus-visible{outline-color:var(--papier)}
+.schluss h2{font-size:clamp(1.75rem,3.6vw,2.75rem)}
+.schluss .tel{display:inline-block;margin-top:.5rem;font:400 clamp(2.75rem,8vw,6rem)/1.05 var(--d);text-decoration:none;font-variant-numeric:lining-nums;white-space:nowrap}
+.schluss .tel:hover{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:8px}
+.schluss p{margin-top:1rem;font-size:1.1875rem;font-variant-numeric:tabular-nums}
+.schluss p span{display:block;white-space:nowrap}
+.schluss .stempel{display:none;width:150px;height:150px;color:var(--papier);--sx:var(--rot);flex:none}
+.fuss{background:var(--lack);color:var(--hell);padding-block:3rem;font-size:1rem}
+.fuss .wrap{display:flex;flex-direction:column;gap:1.5rem}
+.fuss .marke{color:var(--papier)}
+.rechtliches p{margin-top:.5rem;max-width:70ch}
+.rechtliches a{display:inline-block;padding:.6rem 0}
+.leiste{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:repeat(3,1fr);background:var(--lack);border-top:1px solid rgba(245,239,230,.22);padding-bottom:env(safe-area-inset-bottom)}
+.leiste a{display:flex;align-items:center;justify-content:center;min-height:48px;color:var(--papier);font-weight:700;text-decoration:none}
+.leiste a:first-child{background:var(--rot)}
+body{padding-bottom:calc(48px + env(safe-area-inset-bottom))}
+@keyframes druck{from{opacity:0;transform:rotate(-12deg) scale(1.08)}to{opacity:1;transform:rotate(-12deg) scale(1)}}
+@keyframes rein{from{opacity:0;transform:translateX(-12px)}to{opacity:1;transform:none}}
+@keyframes strich{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (min-width:600px){.aktionen{flex-direction:row;flex-wrap:wrap}}
+@media (min-width:820px){
+body{padding-bottom:0}
+.leiste{display:none}
+.nav a:not(.knopf){display:inline-flex}
+.nav .kurz{display:none}.nav .lang{display:inline}
+.nav .knopf{margin-left:.75rem}
+.hero .wrap{flex-direction:row;align-items:center;gap:clamp(3rem,6vw,6rem)}
+.hero .text{flex:1 1 0;min-width:0}
+.hero figure{flex:0 0 46%;margin:0}
+.hero .stempel{top:-40px;right:-28px;width:148px;height:148px}
+.split{flex-direction:row;align-items:flex-start;gap:clamp(2rem,5vw,4.5rem)}
+.split>.liste,.split>.rechts{flex:1 1 0;min-width:0}
+.split>figure{flex:0 0 40%;position:sticky;top:calc(var(--kopf) + 32px)}
+.split.umgekehrt>figure{flex-basis:38%}
+.g.mit-bild{grid-template-columns:clamp(2.75rem,6vw,4rem) 1fr 88px}
+.pfeffer{display:block;width:88px;aspect-ratio:1;align-self:start}
+.pfeffer img{width:100%;height:100%;object-fit:cover}
+.streifen{aspect-ratio:4/1}
+.r219{aspect-ratio:21/9}
+.galerie{grid-template-columns:1.13fr 1fr}
+.galerie figure:first-child{grid-row:span 2}
+.band .rahmen{aspect-ratio:4/1}
+.anfahrt .wrap{flex-direction:row;align-items:center}
+.anfahrt .info,.karte{flex:1 1 0;min-width:0}
+.schluss .wrap{flex-direction:row;align-items:center;justify-content:space-between}
+.schluss .wrap>div{flex:0 0 62%}
+.schluss .stempel{display:block;width:170px;height:170px}
+.fuss .wrap{flex-direction:row;justify-content:space-between;align-items:flex-start}
+.zeiten .text{flex-direction:row;justify-content:space-between;align-items:flex-end;gap:3rem}
+}
+@media (min-width:980px){
+.woche{display:grid;grid-template-columns:repeat(7,1fr);border-top:1px solid var(--linie);border-bottom:1px solid var(--linie)}
+.woche li{flex-direction:column;justify-content:flex-start;gap:.75rem;padding:1.25rem 1rem 1.5rem;border:0;border-left:1px solid var(--linie);min-height:11rem}
+.woche li:last-child{border-bottom:0}
+.woche li:first-child{border-left:0}
+.zeit{text-align:left;font-size:1.25rem}
+.zeit span{display:block}
+.heute .tag::after{content:"";}
+.heute .tag::before{content:"Heute";display:block;font-weight:400;font-size:.9375rem}
+}
+@media (max-width:599px){.kopf{align-items:flex-start}.kopf i{display:none}.kopf h4{flex:1 1 auto;text-wrap:balance}.p,.gr span{min-width:6.5ch}}
+@media (min-width:820px){.platten .t{display:grid;grid-template-columns:minmax(0,1fr) minmax(14rem,20rem);column-gap:clamp(2rem,5vw,4.5rem);align-items:baseline}.platten .kopf{grid-column:1/-1}.platten .kopf h4{font:italic 400 1.75rem/1.2 var(--d)}.platten .weitere{margin-top:0;border-left:1px solid var(--linie);padding-left:1rem}.h-stempel{justify-content:flex-start;gap:1.25rem}.h-stempel .stempel{order:-1;margin-left:calc(-1 * clamp(2rem,5vw,4.5rem) - 2.5rem)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+@media (min-width:820px){.karte-kopf{grid-template-columns:repeat(12,minmax(0,1fr));align-items:end}.karte-kopf>div{grid-column:1/8}.karte-kopf .beilage{grid-column:9/13}}
+</style>
+<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}</style></head>
+<body><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für Dubrovnik bei Tacho. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<defs>
+<filter id="rau" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="2" seed="7"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 9 0 0 0 -5.6"/></filter>
+<mask id="abrieb" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200"><rect width="200" height="200" fill="#fff"/><rect width="200" height="200" filter="url(#rau)"/><path d="M150 22c8 4 14 10 17 16l-5 2c-3-6-8-11-14-14zM28 140c3 9 8 15 13 19l-3 3c-6-5-11-12-14-20z" fill="#000"/></mask>
+<path id="ring" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0"/>
+<symbol id="stempel" viewBox="0 0 200 200"><g mask="url(#abrieb)"><circle cx="100" cy="100" r="97" fill="currentColor"/><g fill="none" style="stroke:var(--sx,#F5EFE6)"><circle cx="100" cy="100" r="93" stroke-width="2.5"/><circle cx="100" cy="100" r="62" stroke-width="2"/></g><g style="fill:var(--sx,#F5EFE6)"><text font-family="Source Sans 3,sans-serif" font-weight="700" font-size="24" letter-spacing="1"><textPath href="#ring" textLength="445" lengthAdjust="spacing">ALLE STEAKS · GEGRILLT AUF ·</textPath></text><text x="100" y="110" text-anchor="middle" font-family="Fraunces,serif" font-style="italic" font-size="30" textLength="112" lengthAdjust="spacingAndGlyphs">Lavastein</text></g></g></symbol>
+</defs>
+</svg>
+
+<header class="kopfzeile dunkel">
+<div class="wrap">
+<a class="marke" href="#top" aria-label="Dubrovnik bei Tacho, zum Seitenanfang"><b>Dubrovnik</b><span>bei Tacho</span></a>
+<nav class="nav" aria-label="Hauptnavigation">
+<a href="#karte">Speisekarte</a>
+<a href="#zeiten">Zeiten</a>
+<a href="#anfahrt">Anfahrt</a>
+<a class="knopf rot" href="tel:+49408391568"><span class="kurz">Anrufen</span><span class="lang">040 8391568</span></a>
+</nav>
+</div>
+</header>
+
+<main id="top">
+<section class="hero dunkel" aria-labelledby="titel">
+<div class="wrap">
+<div class="text">
+<p class="status"><span data-status>Mo–Sa ab 17:00, So ab 12:00 Uhr</span></p>
+<h1 id="titel"><span class="n">Dubrovnik</span> <span class="b">bei Tacho</span></h1>
+<p class="lead">Kroatische Küche, Steaks vom Lavastein und Pfannen, die bis zum Rand voll sind – in der Lornsenstraße 111, Schenefeld.</p>
+<ul class="fakten">
+<li>Platten ab zwei Personen, jede weitere Person bestellen Sie einfach dazu.</li>
+<li>Sonntags Mittagstisch ab 12 Uhr. Mittwoch Ruhetag.</li>
+<li>Vor Ort, draußen oder zum Mitnehmen.</li>
+</ul>
+<div class="aktionen">
+<a class="knopf rot" href="tel:+49408391568">Anrufen &amp; reservieren</a>
+<a class="knopf rand" href="#karte">Karte mit Nummern</a>
+</div>
+</div>
+<figure data-foto>
+<div class="rahmen r45"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmM47Rz0UqViIQW0ovwBI5NldZj3Iu5R_1hUv_C5wR-i_KIEfggj5a4jRZo5WeHgjGEw6y-ZWgHjoz0Cb0-s2wMogGUmnFFggL9m6B3MhN4ogdFvFV5Il4LbSW97DmjqaORmzR2e8rnj-DW1=s4800-w1000" referrerpolicy="no-referrer" width="1200" height="1500" alt="Große Platte mit Cevapcici, panierten Schnitzeln mit Zitrone und Gemüse"></div>
+<svg class="stempel" role="img" aria-label="Stempel: Alle Steaks auf Lavastein gegrillt"><use href="#stempel"/></svg>
+<a class="foto-nachweis" href="https://maps.google.com/maps/contrib/114642633496570567590" target="_blank" rel="noopener">Foto: Restaurant Dubrovnik bei Tacho · Google Maps</a>
+</figure>
+</div>
+</section>
+
+<section id="karte" class="karte-abschnitt" aria-labelledby="karte-titel">
+<div class="wrap">
+<div class="karte-kopf">
+<div><h2 id="karte-titel">Die Karte</h2>
+<p>Bestellt wird nach Nummer. Die 54 ist die Dubrovnik-Pfanne: drei kleine Steaks, Champignons, Bratkartoffeln, Hollandaise.</p></div>
+<p class="beilage">Zu jedem Steak: Röstbrot, Folienkartoffel (oder Pommes) und ein gemischter Salat.</p>
+</div>
+
+<div class="kapitel platten">
+<h3>Platten <small>(ab 2 Personen)</small></h3>
+<ul class="liste">
+<li class="g"><span class="nr">45</span><div class="t"><div class="kopf"><h4>Steak-Platte für 2 Personen</h4><i></i><span class="p">60,00 €</span></div><p>Hacksteak, Rindersteak, Schweinefilet und Putenfilet, dazu Champignons, Gemüse, Zwiebeln, Djuwetschreis, Kroketten und Salat.</p><div class="weitere"><span>jede weitere Person</span><span>30,00 €</span></div></div></li>
+<li class="g"><span class="nr">46</span><div class="t"><div class="kopf"><h4>Chefkoch-Platte für 2 Personen</h4><i></i><span class="p">62,00 €</span></div><p>Huftsteak, Schweinefilet, Schweinerückensteak und Hacksteak, dazu Champignons-Sauce, Kaisergemüse, Butterreis, Kroketten und Salat.</p><div class="weitere"><span>jede weitere Person</span><span>31,00 €</span></div></div></li>
+</ul>
+</div>
+
+
+
+<div class="kapitel">
+<h3>Aus der Pfanne</h3>
+<div class="split">
+<ul class="liste">
+<li class="g"><span class="nr">50</span><div class="t"><div class="kopf"><h4>Muckalica (pikant)</h4><i></i><span class="p">21,00 €</span></div><p>Geschnetzeltes Schweinefleisch mit Gemüse aus Paprika, Tomaten und Zwiebeln, dazu Butterreis</p></div></li>
+<li class="g"><span class="nr">51</span><div class="t"><div class="kopf"><h4>Satarasch (scharf)</h4><i></i><span class="p">22,90 €</span></div><p>Geschnetzeltes Schweinefleisch mit Ei und Gemüse aus Paprika, Tomaten und Zwiebeln, dazu Butterreis</p></div></li>
+<li class="g"><span class="nr">52</span><div class="t"><div class="kopf"><h4>Medaillons-Pfanne</h4><i></i><span class="p">23,90 €</span></div><p>Schweinemedaillons mit Blattspinat und Käse überbacken, dazu Kroketten</p></div></li>
+<li class="g"><span class="nr">53</span><div class="t"><div class="kopf"><h4>Hauspfanne „Dubrovnik“</h4><i></i><span class="p">24,50 €</span></div><p>Schweinemedaillons und Champignon-Sauce, mit Käse überbacken, dazu Knoblauchbrot</p></div></li>
+<li class="g"><span class="nr">54</span><div class="t"><div class="kopf"><h4>Dubrovnik-Pfanne</h4><i></i><span class="p">25,90 €</span></div><p>3 kleine Steaks: Rumpsteak, Schweinerückensteak und Putenbrustfilet, mit frischen Champignons, knusprigen Bratkartoffeln und Sauce Hollandaise</p></div></li>
+<li class="g"><span class="nr">55</span><div class="t"><div class="kopf"><h4>Brokkoli-Pfanne</h4><i></i><span class="p">24,90 €</span></div><p>Putensteak mit Brokkoli, Sauce Hollandaise und Käse überbacken</p></div></li>
+</ul>
+<figure data-foto>
+<div class="rahmen r43"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmMAxDxhMJDJzJ-DcqR0K71owjGP8-8TkgJ50GcUfxNtFpRELbk9m1u27tqfKt5nZ77XpLLEMoiq7v_DJM1tUYv_iCDYHRfS-KIRwukk-6N4NblDCbz36WgZ89cKXVy69ZAEzPP6AkkWHTgk=s4800-w1000" referrerpolicy="no-referrer" width="1200" height="900" loading="lazy" alt="Pfanne mit Fleisch, Gemüse und Reis, mit Petersilie garniert"></div>
+<a class="foto-nachweis" href="https://maps.google.com/maps/contrib/105263697681449587424" target="_blank" rel="noopener">Foto: 平川るみ · Google Maps</a>
+</figure>
+</div>
+</div>
+
+<figure class="ki"><div class="rahmen streifen"><img src="ki-lavastein.webp" width="1600" height="400" loading="lazy" alt="Gegrilltes Rumpsteak mit Röststreifen und grobem Salz auf einem heißen Lavastein"></div></figure>
+
+<div class="kapitel">
+<div class="split umgekehrt">
+<figure data-foto>
+<div class="rahmen r34"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmOYbGMf65-LYMAvlEK2iZvzUJaRrNoMyZRQm-_MfK9SttWOZJ12gWMmu96Cetcf679MBQPFHZOajSc9-jwaPNv8Ut5ZUou1dHntaU4fOJPQy-Yz1q10NyQbOEAHnkoUukf4q-9wLw=s4800-w1000" referrerpolicy="no-referrer" width="1200" height="1600" loading="lazy" alt="Gegrillte Medaillons mit Brokkoli und Sauce Hollandaise auf dekoriertem Teller"></div>
+<a class="foto-nachweis" href="https://maps.google.com/maps/contrib/114642633496570567590" target="_blank" rel="noopener">Foto: Restaurant Dubrovnik bei Tacho · Google Maps</a>
+</figure>
+<div class="rechts">
+<div class="h-stempel"><h3>Saftige Steaks</h3><svg class="stempel" role="img" aria-label="Stempel: Alle Steaks auf Lavastein gegrillt"><use href="#stempel"/></svg></div>
+<ul class="liste">
+<li class="g"><span class="nr">60</span><div class="t"><div class="kopf"><h4>Putensteak</h4><i></i><span class="p">21,90 €</span></div><p>Mit einer leichten Sauce Hollandaise</p></div></li>
+<li class="g"><span class="nr">62</span><div class="t"><div class="kopf"><h4>Veseli Bosanac</h4><i></i><span class="p">26,50 €</span></div><p>Rindersteak mit Schinken und Käse gefüllt</p></div></li>
+</ul>
+<p class="gr" aria-hidden="true"><span>In zwei Größen</span><span>180 g</span><span>250 g XL</span></p>
+<ul class="liste">
+<li class="g"><span class="nr">64</span><div class="t"><div class="kopf"><h4>Huftsteak</h4><i></i><span class="p" aria-label="180 Gramm 24,90 Euro">24,90 €</span><span class="p" aria-label="250 Gramm 25,90 Euro">25,90 €</span></div><p>Aus der Rinderkeule geschnitten, fettfrei, flach portioniert, saftig gegrillt, mit herzhaftem Aroma</p></div></li>
+<li class="g mit-bild"><span class="nr">66</span><div class="t"><div class="kopf"><h4>Pfeffersteak</h4><i></i><span class="p" aria-label="180 Gramm 25,90 Euro">25,90 €</span><span class="p" aria-label="250 Gramm 27,50 Euro">27,50 €</span></div><p>Mit Pfeffersauce und ganzen Pfefferkörnern</p></div><div class="pfeffer"><img src="ki-pfefferkoerner.webp" width="400" height="400" loading="lazy" alt="Steak mit Pfeffersauce und ganzen Pfefferkörnern"></div></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+
+<section class="mehr" aria-labelledby="mehr-titel">
+<div class="wrap">
+<div class="text">
+<h3 id="mehr-titel">Das ist nur ein Ausschnitt</h3>
+<p>Cevapcici, Wiener Schnitzel, Calamares, Spinatsuppe, Djuwetschreis und vieles mehr: Die ganze Karte liegt im Restaurant aus. Was heute geht, sagen wir Ihnen auch am Telefon unter <a href="tel:+49408391568">040 8391568</a>.</p>
+</div>
+<div class="galerie">
+<figure data-foto>
+<div class="rahmen r34"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmMMZ6ON0sjOl38MKceELTvUKKTBL7ywD5YprP6VY4zQGsv6bpsjd1r7qj8FK2OoJpP3pey6Q7gSS7GZQ1XDrBqG16EOwIIh48sIMT_HAyevyoEfteWpcPytDns-lgVL_4Sq2Ly3UZclcbiO=s4800-w1000" referrerpolicy="no-referrer" width="1200" height="1600" loading="lazy" alt="Grillteller mit Cevapcici, Steak, Pommes frites und Djuwetschreis"></div>
+<a class="foto-nachweis" href="https://maps.google.com/maps/contrib/117522890646546830994" target="_blank" rel="noopener">Foto: OliMet · Google Maps</a>
+</figure>
+<figure data-foto>
+<div class="rahmen r43"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmNrL5CJvwugQB9f0CW8P8xAC-7u0BO5CNJfvs9Bg1Qb1sd6Y9LC9iuRGX37yp1F9TWSL1Z15M59NIsUVFfMfCgjPOPauxk7U5EHHvfXNF2OudohiIcK1a_9vqq6HnFnnR-OPR_i6IyPi18=s4800-w1000" referrerpolicy="no-referrer" width="1600" height="1200" loading="lazy" alt="Grillplatte mit Steaks, Putenfilet, Kroketten und Djuwetschreis"></div>
+<a class="foto-nachweis" href="https://maps.google.com/maps/contrib/117522890646546830994" target="_blank" rel="noopener">Foto: OliMet · Google Maps</a>
+</figure>
+<figure data-foto>
+<div class="rahmen r43"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmN8nfiUVlHLIDOZetZN-PzZ3YMQpZm9FAv59nIvAyj0kPD5N7cebMv_SVSp_wITIS5sga77C59HMnftz2Sshqi8NdzAyaMzZm-7YQ7vthAL-KuZd7ypynSeY3E-bmTmnXc7hFl62H-E-5Nk=s4800-w1000" referrerpolicy="no-referrer" width="1600" height="1200" loading="lazy" alt="Gegrillte Calamares mit Mangold und Reis"></div>
+<a class="foto-nachweis" href="https://maps.google.com/maps/contrib/105263697681449587424" target="_blank" rel="noopener">Foto: 平川るみ · Google Maps</a>
+</figure>
+</div>
+</div>
+</section>
+
+<section class="theke dunkel" aria-label="Die Theke">
+<figure data-foto>
+<div class="rahmen r219"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmOVfK_nwyECpiCefNbDG5DGP7vRA7qYZ-fTQo8cdpvoJaR5QGjwN7wcI206aAMMYAFePXrSfTpeiOUBL_9FUSEGEf6OnaAHABEXbzhdTO2tY7wtkUKV3Fx0E8d2L8lLJxDC1VWCV-iIMekn=s4800-w1800" referrerpolicy="no-referrer" width="2100" height="900" loading="lazy" alt="Schwarz lackierte Bartheke mit Weinregal, roten Orchideen und Spirituosen"></div>
+<a class="foto-nachweis" href="https://maps.google.com/maps/contrib/104451967698232846655" target="_blank" rel="noopener">Foto: Daniel Czarnecki · Google Maps</a>
+</figure>
+<div class="wrap haltung">
+<p>Bier, Wein, Kaffee und ein Dessert zum Schluss gibt es an dieser Theke. Und wer nicht weiß, was er nehmen soll, fragt einfach nach.</p>
+</div>
+</section>
+
+<section id="zeiten" class="zeiten" aria-labelledby="zeiten-titel">
+<div class="wrap">
+<div class="text">
+<h2 id="zeiten-titel">Abends ab 17, sonntags ab 12</h2>
+<p>Mittwochs bleibt die Küche kalt. Sonntags gibt es schon ab 12 Uhr warmes Essen.</p>
+</div>
+<ol class="woche">
+<li data-tag="1"><span class="tag">Montag</span><span class="zeit"><span>17:00</span> <span>bis 22:00</span></span></li>
+<li data-tag="2"><span class="tag">Dienstag</span><span class="zeit"><span>17:00</span> <span>bis 22:00</span></span></li>
+<li data-tag="3" class="ruhe"><span class="tag">Mittwoch</span><span class="zeit"><span>Ruhetag</span></span></li>
+<li data-tag="4"><span class="tag">Donnerstag</span><span class="zeit"><span>17:00</span> <span>bis 22:00</span></span></li>
+<li data-tag="5"><span class="tag">Freitag</span><span class="zeit"><span>17:00</span> <span>bis 22:00</span></span></li>
+<li data-tag="6"><span class="tag">Samstag</span><span class="zeit"><span>17:00</span> <span>bis 22:00</span></span></li>
+<li data-tag="0" class="so"><span class="tag">Sonntag<small>Mittagstisch</small></span><span class="zeit"><span>12:00</span> <span>bis 21:00</span></span></li>
+</ol>
+</div>
+</section>
+
+
+
+<section id="anfahrt" class="anfahrt" aria-labelledby="anfahrt-titel">
+<div class="wrap">
+<div class="info">
+<h2 id="anfahrt-titel" class="adresse"><span>Lornsenstraße 111</span>22869 Schenefeld</h2>
+<p class="merkmale">Vor Ort essen · zum Mitnehmen · Plätze draußen · Tischreservierung · Mittagstisch am Sonntag</p>
+<p>Zum Abholen anrufen, Nummer vom Gericht nennen, vorbeikommen.</p>
+<div class="aktionen">
+<a class="knopf rot" href="https://www.google.com/maps/dir/?api=1&amp;destination=Lornsenstra%C3%9Fe+111%2C+22869+Schenefeld" target="_blank" rel="noopener">Route planen</a>
+<a class="knopf rand" href="tel:+49408391568">040 8391568</a>
+</div>
+</div>
+<div class="karte"><div data-karte data-stil="mono" data-farbe="#B01E33"></div></div>
+</div>
+</section>
+
+<section class="schluss" aria-labelledby="schluss-titel">
+<div class="wrap">
+<div>
+<h2 id="schluss-titel">Tisch reservieren oder abholen:</h2>
+<a class="tel" href="tel:+49408391568">040 8391568</a>
+<p><span>Mo, Di, Do–Sa 17:00–22:00</span><span>So 12:00–21:00 · Mi Ruhetag</span></p>
+</div>
+<svg class="stempel" role="img" aria-label="Stempel: Alle Steaks auf Lavastein gegrillt"><use href="#stempel"/></svg>
+</div>
+</section>
+</main>
+
+<footer class="fuss dunkel">
+<div class="wrap">
+<div>
+<a class="marke" href="#top"><b>Dubrovnik</b><span>bei Tacho</span></a>
+<p>Lornsenstraße 111, 22869 Schenefeld<br><a href="tel:+49408391568">040 8391568</a></p>
+</div>
+<div class="rechtliches"><p>Entwurf von Medialyte, 21147 Hamburg. Adresse und Öffnungszeiten: Google. Fotos: Google Maps, Urheber jeweils am Bild. Einige Bilder und das Logo sind KI-generierte Vorschläge.</p><p><a href="https://medialyte.de/impressum" style="color:inherit;text-decoration:underline">Impressum</a> · <a href="https://medialyte.de/datenschutzerklaerung" style="color:inherit;text-decoration:underline">Datenschutz</a></p></div>
+</div>
+</footer>
+
+<nav class="leiste dunkel" aria-label="Schnellzugriff">
+<a href="tel:+49408391568">Anrufen</a>
+<a href="https://www.google.com/maps/dir/?api=1&amp;destination=Lornsenstra%C3%9Fe+111%2C+22869+Schenefeld" target="_blank" rel="noopener">Route</a>
+<a href="#zeiten">Zeiten</a>
+</nav>
+
+<script>
+(function(){var t=document.querySelector('.woche [data-tag="'+new Date().getDay()+'"]');if(t){t.classList.add('heute');t.setAttribute('aria-current','date')}})();
+</script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>[data-karte]{width:100%;height:100%;min-height:260px}[data-karte] .leaflet-tile-pane{filter:var(--karte-filter)}
+[data-karte] .leaflet-control-attribution{font-size:10px}.karte-pin{position:relative;width:34px;height:34px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+box-shadow:0 6px 16px rgba(0,0,0,.35);border:3px solid #fff}.karte-pin i{position:absolute;inset:9px;border-radius:50%;background:#fff}</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>(function(){var C={"lat": 53.607836299999995, "lng": 9.8401686, "name": "Dubrovnik bei Tacho", "filter": {"hell": "grayscale(1) contrast(1.05) brightness(1.04)", "dunkel": "grayscale(1) invert(1) contrast(.88) brightness(.82)", "warm": "grayscale(1) sepia(.5) contrast(1.02) brightness(1.02)", "kuehl": "grayscale(1) sepia(.35) hue-rotate(175deg) saturate(.55) brightness(1.03)", "mono": "grayscale(1) contrast(1.2)"}};function draw(){if(!window.L)return;document.querySelectorAll('[data-karte]').forEach(function(el){
+if(el._map)return;var st=el.getAttribute('data-stil')||'hell',col=el.getAttribute('data-farbe')||'#c0392b';
+el.style.setProperty('--karte-filter',C.filter[st]||C.filter.hell);
+var m=L.map(el,{scrollWheelZoom:false,zoomControl:true,attributionControl:true}).setView([C.lat,C.lng],16);el._map=m;
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(m);
+var icon=L.divIcon({className:'',html:'<div class="karte-pin" style="background:'+col+'"><i></i></div>',iconSize:[34,34],iconAnchor:[17,34]});
+L.marker([C.lat,C.lng],{icon:icon,title:C.name,alt:C.name}).addTo(m);setTimeout(function(){m.invalidateSize()},300);});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',draw);else draw();window.addEventListener('load',draw);})();</script><script>(function(){
+var P=[[720, 1260], [2460, 2760], [3900, 4200], [6780, 7080], [8220, 8520], [9660, 9960]];
+function fmt(m){m=((m%1440)+1440)%1440;var h=Math.floor(m/60),mi=m%60;return (h<10?'0':'')+h+':'+(mi<10?'0':'')+mi;}
+function now(){var d=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Berlin'}));return d.getDay()*1440+d.getHours()*60+d.getMinutes();}
+function status(){if(!P.length)return null;var t=now(),W=10080;
+ for(var i=0;i<P.length;i++){var s=P[i][0],e=P[i][1];if((t>=s&&t<e)||(t+W>=s&&t+W<e))return {offen:true,text:'Jetzt geöffnet bis '+fmt(e)};}
+ var best=null;for(var j=0;j<P.length;j++){var d=(P[j][0]-t+W)%W;if(best===null||d<best.d)best={d:d,s:P[j][0]};}
+ var tag=Math.floor(t/1440),ot=Math.floor(best.s/1440)%7,names=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+ var when=best.d<1440&&ot===tag?'heute':(best.d<2880&&ot===(tag+1)%7?'morgen':names[ot]);
+ return {offen:false,text:'Geschlossen · öffnet '+when+' um '+fmt(best.s)};}
+function run(){var s=status();document.querySelectorAll('[data-status]').forEach(function(el){
+ if(!s){el.style.display='none';return;}el.textContent=s.text;el.setAttribute('data-offen',s.offen?'ja':'nein');});}
+document.querySelectorAll('[data-foto] img').forEach(function(img){
+ function hide(){var b=img.closest('[data-foto]');if(b)b.style.display='none';}
+ if(!img.getAttribute('src'))hide();else{img.addEventListener('error',hide);if(img.complete&&img.naturalWidth===0)hide();}});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();setInterval(run,60000);
+})();</script></body>
+</html>
