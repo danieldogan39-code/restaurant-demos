@@ -731,7 +731,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "094e594028";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "d1bfcc5474";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -1180,6 +1180,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       (function loop() { if (!voiceOn) return; var l = 0; if (an) { an.getByteFrequencyData(data); var sum = 0; for (var i = 2; i < 48; i++) sum += data[i]; l = sum / (46 * 255); } level(l); voiceRaf = requestAnimationFrame(loop); })();
       return;
     }
+    if ((d.intro || {}).hinweis === "kontingent" && !startVoice.told) { startVoice.told = true; setTimeout(function () { toast("ElevenLabs-Kontingent aufgebraucht: Ich lese den aktuellen Bericht mit der Browserstimme vor."); }, 7000); }
     if (!("speechSynthesis" in window)) { voiceOn = false; return; }
     var u = new SpeechSynthesisUtterance(text); u.lang = "de-DE"; u.rate = .95; u.pitch = .75;
     var de = speechSynthesis.getVoices().filter(function (v) { return /^de/i.test(v.lang); });
@@ -1893,6 +1894,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     var TF = { anthropic: "kosten_claude", recraft: "kosten_recraft", google: "kosten_google", elevenlabs: "kosten_stimme", github: "kosten_github" };
     $("#cost-tools").innerHTML = (v.tools || []).map(function (t) { return '<div class="row" data-focus="' + (TF[t.tool] || "") + '"><span>' + esc(TNAME[t.tool] || t.tool) + '</span><span class="bar"><b style="width:' + Math.max(2, Math.round(t.eur / max * 100)) + "%;background:" + (TCOL[t.tool] || "#7BAFFF") + '"></b></span><em>' + eur.format(t.eur) + "</em></div>"; }).join("") || '<p class="sub">Noch keine Verbrauchsdaten. Sie entstehen ab dem nächsten Lauf.</p>';
     var fr = v.freikontingente || {}, names = { google_suche: "Google-Suchen", google_details: "Google-Details", google_fotos: "Google-Fotos", github_minuten: "GitHub-Minuten" };
+    var sk = v.stimme_konto; if (sk && sk.limit) { fr = Object.assign({}, fr, { elevenlabs: [sk.verbraucht, sk.limit] }); names.elevenlabs = "ElevenLabs-Zeichen" + (sk.tarif ? " (" + sk.tarif + ")" : "") + (sk.reset ? ", neu ab " + dfmt.format(new Date(sk.reset)) : ""); }
     $("#cost-frei").innerHTML = "<span>Gratiskontingente diesen Monat</span>" + Object.keys(names).map(function (k) { var a = fr[k] || [0, 1], pc = Math.min(100, Math.round(a[0] / a[1] * 100)); return "<div>" + names[k] + ": " + n0(a[0]) + " von " + n0(a[1]) + ' frei<div class="bar"><b class="' + (pc >= 100 ? "bad" : pc >= 75 ? "warn" : "") + '" style="width:' + pc + '%"></b></div></div>'; }).join("");
     $("#cost-table").innerHTML = "<tr><th>Tool · Zweck</th><th>Menge</th><th style=\"text-align:right\">Kosten</th></tr>" + (v.posten || []).map(function (p) { return '<tr><td><i class="tl" style="background:' + (TCOL[p.tool] || "#7BAFFF") + '"></i>' + esc(TNAME[p.tool] || p.tool) + "<br><small class=\"sub\">" + esc(p.zweck) + "</small></td><td>" + amount(p) + '</td><td class="n">' + eur.format(p.eur || 0) + "</td></tr>"; }).join("");
     var a = d.kostenanalyse;
