@@ -135,8 +135,9 @@ button, input { font: inherit; color: inherit; }
 .ai-wait i { width: .6rem; height: .6rem; border-radius: 50%; background: var(--coral); animation: blink 1s infinite; }
 @media (max-width: 900px) { .cost-grid { grid-template-columns: 1fr; } }
 
-.vpill { position: fixed; left: 50%; bottom: 1.2rem; transform: translate(-50%, 140%); z-index: 950; display: flex; align-items: center; gap: .7rem; padding: .5rem .55rem .5rem .9rem; border-radius: 999px; border: 1px solid var(--edge); background: rgba(14,25,42,.9); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 16px 40px -16px rgba(0,0,0,.9); transition: transform .5s var(--spring), opacity .35s, visibility .35s; max-width: calc(100vw - 1.5rem); opacity: 0; visibility: hidden; pointer-events: none; }
-.vpill.on { transform: translate(-50%, 0); opacity: 1; visibility: visible; pointer-events: auto; }
+.vpill { position: fixed; left: 50%; bottom: 1.2rem; transform: translate(-50%, 140%); z-index: 950; display: flex; align-items: center; gap: .7rem; padding: .5rem .55rem .5rem .9rem; border-radius: 999px; border: 1px solid var(--edge); background: rgba(14,25,42,.9); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 16px 40px -16px rgba(0,0,0,.9); transition: transform .5s var(--spring), opacity .18s, visibility 0s .18s; max-width: calc(100vw - 1.5rem); opacity: 0; visibility: hidden; pointer-events: none; }
+.vpill.on { transform: translate(-50%, 0); opacity: 1; visibility: visible; pointer-events: auto; transition: transform .5s var(--spring), opacity .25s, visibility 0s; }
+.vpill.off { transform: translate(-50%, 0); transition: opacity .18s, visibility 0s .18s; }
 .vpill .wave { display: flex; gap: 3px; align-items: center; height: 18px; }
 .vpill .wave i { width: 3px; border-radius: 2px; background: var(--coral); height: calc(4px + var(--lv, 0) * 14px * var(--k)); transition: height .08s; }
 .vpill span { font-size: .8rem; color: var(--ink2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 46vw; }
@@ -625,7 +626,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null;
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "460ae9bc2b";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -888,7 +889,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     var sb = $("#vpill-stop"); if (sb) { sb.dataset.mode = ""; sb.textContent = "Stopp"; }
     document.querySelectorAll(".spot").forEach(function (e) { e.classList.remove("spot"); });
     if (introAudio) introAudio.pause(); if (window.speechSynthesis) speechSynthesis.cancel();
-    $("#vpill").classList.remove("on");
+    var vp = $("#vpill"); if (vp.classList.contains("on")) { vp.classList.add("off"); vp.classList.remove("on"); setTimeout(function () { vp.classList.remove("off"); }, 400); }
   }
   $("#vpill-stop").addEventListener("click", function () {
     if (this.dataset.mode === "play") { this.dataset.mode = ""; this.textContent = "Stopp"; Sound.play("voice"); startVoice(DATA, null); $("#vpill").classList.add("on"); return; }
@@ -1012,7 +1013,15 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   document.addEventListener("pointermove", function (e) { var p = e.target.closest && e.target.closest(".panel"); if (!p) return; var r = p.getBoundingClientRect(); p.style.setProperty("--mx", e.clientX - r.left + "px"); p.style.setProperty("--my", e.clientY - r.top + "px"); });
 
   /* ---------- Rendern ---------- */
+  function checkVersion(d) {
+    if (d.cockpit_version && VERSION.indexOf("__") !== 0 && d.cockpit_version !== VERSION) {
+      var key = "cockpit-reload-" + d.cockpit_version;
+      try { if (sessionStorage.getItem(key)) return; sessionStorage.setItem(key, "1"); } catch (e) {}
+      location.replace(location.pathname + "?v=" + d.cockpit_version + location.hash);
+    }
+  }
   function render(d) {
+    checkVersion(d);
     var runs = d.laeufe || [], real = runs.filter(function (r) { return !r.probe; });
     var used = real.length ? real : runs;
     $("#stamp").textContent = "Stand: " + dfmt.format(new Date(d.erstellt));
@@ -1365,16 +1374,17 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     return saving;
   }
   /* Läufe starten: erst direkt, sonst über eine Befehlsdatei (braucht nur Schreibrecht) */
-  function command(name, workflow, inputs) {
-    var st = DATA.steuerung || {};
-    return api("/actions/workflows/" + workflow + "/dispatches", { method: "POST", body: { ref: "main", inputs: inputs || undefined } })
-      .catch(function (e) {
-        if (e.status !== 403 && e.status !== 404 && e.status !== 422) throw e;
-        var path = "data/befehle/" + name + ".json";
-        return api("/contents/" + path, { allow404: true }).then(function (f) {
-          return writeFile(path, { befehl: name, zeit: new Date().toISOString() }, "Cockpit: " + name + " starten", f && f.sha);
-        });
+  function command(name) {
+    // Start über eine Befehlsdatei im Repository: funktioniert mit dem Schreibrecht des Cockpit-Schlüssels
+    var path = "data/befehle/" + name + ".json";
+    return api("/contents/" + path, { allow404: true }).then(function (f) {
+      return writeFile(path, { befehl: name, zeit: new Date().toISOString() }, "Cockpit: " + name + " starten", f && f.sha);
+    }).catch(function (e) {
+      if (e.status !== 409 && e.status !== 422) throw e;
+      return api("/contents/" + path, { allow404: true }).then(function (f) {
+        return writeFile(path, { befehl: name, zeit: new Date().toISOString() }, "Cockpit: " + name + " starten", f && f.sha);
       });
+    });
   }
   function move(x, col) {
     var st = DATA.steuerung || {};
@@ -1446,7 +1456,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     $("#cost-frei").innerHTML = "<span>Gratiskontingente diesen Monat</span>" + Object.keys(names).map(function (k) { var a = fr[k] || [0, 1], pc = Math.min(100, Math.round(a[0] / a[1] * 100)); return "<div>" + names[k] + ": " + n0(a[0]) + " von " + n0(a[1]) + ' frei<div class="bar"><b class="' + (pc >= 100 ? "bad" : pc >= 75 ? "warn" : "") + '" style="width:' + pc + '%"></b></div></div>'; }).join("");
     $("#cost-table").innerHTML = "<tr><th>Tool · Zweck</th><th>Menge</th><th style=\"text-align:right\">Kosten</th></tr>" + (v.posten || []).map(function (p) { return '<tr><td><i class="tl" style="background:' + (TCOL[p.tool] || "#7BAFFF") + '"></i>' + esc(TNAME[p.tool] || p.tool) + "<br><small class=\"sub\">" + esc(p.zweck) + "</small></td><td>" + amount(p) + '</td><td class="n">' + eur.format(p.eur || 0) + "</td></tr>"; }).join("");
     var a = d.kostenanalyse;
-    if (aiPending && a && a.erstellt > aiPending) aiPending = null;
+    if (aiPending && ((a && new Date(a.erstellt) > new Date(aiPending)) || Date.now() - new Date(aiPending) > 300000)) aiPending = null;
     $("#ai-meta").textContent = a ? "Stand " + dfmt.format(new Date(a.erstellt)) : "Noch keine Analyse";
     $("#ai-text").innerHTML = aiPending ? '<span class="ai-wait"><i></i>Analyse läuft, dauert etwa ein bis zwei Minuten …</span>' + (a ? md(a.text) : "") : a ? md(a.text) : '<p class="sub">Per Knopfdruck wertet Claude Tokens, Bilder, Google-Anfragen, Sprachzeichen und Laufzeit aus und zeigt, wo Kosten und Nutzen stehen.</p>';
     $("#ai-run").disabled = !!aiPending;
