@@ -423,6 +423,98 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .panel, .demo { opacity: 1; transform: none; }
 }
+
+/* ---------- Bewertung & Neubau auf den Demo-Karten ---------- */
+.rating { padding: 0 1rem .8rem; display: grid; grid-template-columns: minmax(0, 1fr); gap: .5rem; }
+.rate { display: flex; align-items: center; gap: .4rem; }
+.thumb { width: 2.4rem; height: 2.4rem; display: grid; place-items: center; border-radius: 11px; border: 1px solid var(--edge); background: rgba(255,255,255,.03); color: var(--ink2); cursor: pointer; transition: background .2s, border-color .2s, color .2s, transform .35s var(--spring); flex: 0 0 auto; }
+.thumb svg { width: 1.15rem; height: 1.15rem; }
+.thumb.down svg { transform: scaleY(-1); }
+.thumb:hover { border-color: rgba(255,255,255,.35); color: #fff; }
+.thumb:active { transform: scale(.9); }
+.thumb.up[aria-pressed="true"] { background: rgba(75,227,166,.16); border-color: rgba(75,227,166,.75); color: var(--ok); }
+.thumb.down[aria-pressed="true"] { background: rgba(255,87,87,.16); border-color: rgba(255,87,87,.8); color: var(--coral); }
+.thumb.pop { animation: pop .45s var(--spring); }
+@keyframes pop { 40% { transform: scale(1.22); } }
+.rstate { font-size: .78rem; color: var(--ink3); min-width: 0; flex: 1; line-height: 1.3; }
+.rstate.ok { color: var(--ok); }
+.rstate.busy { color: var(--warn); }
+.rstate.bad { color: var(--bad); }
+.rstate.new { color: var(--cyan); }
+.demo .acts .btn.regen { flex: 1.5; }
+.demo .acts .btn.regen:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+.demo .acts .btn.regen[aria-expanded="true"] { border-color: rgba(255,87,87,.6); background: rgba(255,87,87,.08); }
+.demo .acts .btn.icon { flex: 0 0 auto; padding: .45rem .6rem; }
+.regen-slot:not(:empty) { padding: 0 1rem 1rem; }
+.demo .acts .regen .sm { display: none; }
+.rnote { font-size: .78rem; color: var(--ink2); border-radius: 10px; padding: .5rem .65rem; background: rgba(255,255,255,.035); border: 1px solid var(--edge); overflow-wrap: anywhere; }
+.rnote.wait { border-color: rgba(255,181,71,.45); }
+.rnote.err { border-color: rgba(255,107,142,.5); color: var(--bad); }
+.rnote b { color: var(--ink); font-weight: 600; }
+.linkbtn { background: none; border: 0; padding: 0; color: var(--cyan); text-decoration: underline; cursor: pointer; font: inherit; font-size: .78rem; }
+.why-in { display: flex; gap: .4rem; }
+.why-in input { flex: 1 1 auto; width: 100%; min-width: 0; background: rgba(255,255,255,.03); border: 1px solid var(--edge); border-radius: 10px; padding: .45rem .6rem; font-size: .8rem; color: var(--ink); }
+.why-in input::placeholder { color: var(--ink3); }
+.why-in .btn { flex: 0 0 auto; padding: .4rem .7rem; font-size: .78rem; }
+.regen-box { display: grid; gap: .55rem; padding: .75rem; border-radius: 12px; border: 1px solid rgba(255,87,87,.4); background: rgba(255,87,87,.05); }
+.regen-box textarea { width: 100%; min-height: 5.4rem; resize: vertical; background: rgba(9,14,34,.6); border: 1px solid var(--edge); border-radius: 10px; padding: .55rem .65rem; color: var(--ink); font: inherit; font-size: .82rem; line-height: 1.45; }
+.regen-box textarea::placeholder { color: var(--ink3); }
+.regen-box .seg-ctl { width: 100%; }
+.regen-box .seg-ctl button { flex: 1; font-size: .78rem; padding: .4rem .5rem; }
+.regen-box .seg-ctl button:disabled { opacity: .4; cursor: not-allowed; }
+.regen-box .mhint { margin: 0; font-size: .74rem; color: var(--ink3); }
+.regen-box .row { display: flex; gap: .4rem; justify-content: flex-end; }
+.regen-box .row .btn { padding: .45rem .8rem; font-size: .8rem; }
+.tag.welt { border-color: rgba(255,255,255,.22); color: var(--ink); }
+
+/* ---------- Design-Gedächtnis ---------- */
+.mem-stats { display: flex; flex-wrap: wrap; gap: .4rem; }
+#mem { margin-top: .4rem; }
+.ms { font-size: .78rem; color: var(--ink2); border: 1px solid var(--edge); border-radius: 999px; padding: .25rem .65rem; white-space: nowrap; }
+.ms b { font-family: var(--display); color: var(--ink); margin-right: .2rem; }
+.ms.up b { color: var(--ok); }
+.ms.down b { color: var(--coral); }
+.ms.wait { border-color: rgba(255,181,71,.45); color: var(--warn); }
+.mem-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 1.25rem; }
+.mem-col h3 { margin: 0 0 .25rem; font-size: .95rem; }
+.mem-col > p { margin: 0 0 .7rem; font-size: .78rem; color: var(--ink3); }
+.rules { list-style: none; margin: 0 0 1rem; padding: 0; display: grid; gap: .35rem; }
+.rules li { display: grid; grid-template-columns: 1.3rem minmax(0, 1fr) auto; gap: .5rem; align-items: start; padding: .5rem .55rem; border-radius: 10px; background: rgba(255,255,255,.03); border: 1px solid transparent; font-size: .84rem; line-height: 1.4; transition: border-color .2s, opacity .3s; }
+.rules li:hover { border-color: var(--edge); }
+.rules li .ic { width: 1.3rem; height: 1.3rem; border-radius: 50%; display: grid; place-items: center; font-size: .7rem; font-weight: 800; margin-top: .05rem; }
+.rules li.do .ic { background: rgba(75,227,166,.15); color: var(--ok); }
+.rules li.dont .ic { background: rgba(255,87,87,.15); color: var(--coral); }
+.rules li small { display: block; color: var(--ink3); font-size: .72rem; margin-top: .1rem; }
+.rules li .veto { background: none; border: 0; color: var(--ink3); cursor: pointer; font-size: 1rem; line-height: 1; padding: .1rem .3rem; border-radius: 6px; opacity: .5; }
+.rules li:hover .veto, .rules li .veto:focus-visible { opacity: 1; }
+.rules li .veto:hover { color: var(--coral); background: rgba(255,87,87,.1); }
+.rules li.gone { opacity: .25; }
+.rules .none { display: block; color: var(--ink3); font-size: .8rem; padding: .3rem 0; background: none; }
+.worlds { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: .9rem; }
+.worlds button { border: 1px solid var(--edge); background: rgba(255,255,255,.03); color: var(--ink2); border-radius: 999px; padding: .35rem .75rem; font-size: .8rem; font-weight: 600; cursor: pointer; display: inline-flex; gap: .4rem; align-items: center; }
+.worlds button i { font-style: normal; font-family: var(--display); font-size: .72rem; color: var(--ink3); }
+.worlds button[aria-pressed="true"] { background: rgba(123,175,255,.14); border-color: rgba(123,175,255,.6); color: #fff; }
+.wsplit { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: .9rem; }
+.wsplit h4, .gal-h { margin: 0 0 .45rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink3); font-weight: 700; }
+.gal { display: grid; grid-template-columns: repeat(auto-fill, minmax(11.5rem, 1fr)); gap: .7rem; margin-bottom: .6rem; }
+.vb { border: 1px solid var(--edge); border-radius: 12px; overflow: hidden; background: rgba(9,14,34,.5); }
+.vb .img { aspect-ratio: 16/10; background: linear-gradient(135deg, #111a3d, #0a1029); display: block; position: relative; }
+.vb .img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; opacity: 0; transition: opacity .5s; }
+.vb .img img.on { opacity: 1; }
+.vb .img .mark { position: absolute; top: .45rem; left: .45rem; width: 1.6rem; height: 1.6rem; border-radius: 8px; display: grid; place-items: center; background: rgba(14,25,42,.85); }
+.vb .img .mark svg { width: .95rem; height: .95rem; }
+.vb.good .mark { color: var(--ok); }
+.vb.bad .mark { color: var(--coral); }
+.vb.bad .mark svg { transform: scaleY(-1); }
+.vb .txt { padding: .55rem .65rem .65rem; font-size: .76rem; color: var(--ink2); line-height: 1.4; }
+.vb .txt b { display: block; color: var(--ink); font-size: .84rem; margin-bottom: .15rem; }
+.vb .txt q { display: block; color: var(--ink); font-style: italic; margin-top: .3rem; }
+.vb .txt q::before, .vb .txt q::after { content: none; }
+.vb .txt em { display: block; font-style: normal; color: var(--ink3); margin-top: .3rem; font-size: .7rem; }
+.mem-empty { border: 1px dashed var(--edge); border-radius: 14px; padding: 1.4rem 1rem; color: var(--ink2); font-size: .85rem; text-align: center; }
+.fence { margin-top: .6rem; display: flex; gap: .5rem; align-items: flex-start; font-size: .76rem; color: var(--ink3); }
+.fence svg { width: 1rem; height: 1rem; flex: 0 0 auto; color: var(--cyan); margin-top: .1rem; }
+@media (max-width: 900px) { .mem-grid, .wsplit { grid-template-columns: 1fr; } }
 /* ---------- Handy ---------- */
 .mnav { display: none; }
 @media (max-width: 640px) {
@@ -459,6 +551,10 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   .mnav a { flex: 1; display: grid; justify-items: center; gap: .15rem; text-decoration: none; color: var(--ink3); font-size: .64rem; font-weight: 600; padding: .25rem 0; border-radius: 10px; }
   .mnav a svg { width: 20px; height: 20px; }
   .mnav a.on { color: #fff; background: rgba(255,87,87,.14); }
+  .gal { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; }
+  .demo .acts .btn { padding: .45rem .55rem; }
+  .demo .acts .regen .lg { display: none; }
+  .demo .acts .regen .sm { display: inline; }
 }
 
 </style>
@@ -566,6 +662,14 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     <div class="demos" id="demos"></div>
   </section>
 
+  <section class="panel" style="--d:8" aria-labelledby="mem-title" data-focus="gedaechtnis" id="memory">
+    <div class="panel-head">
+      <div><h2 id="mem-title">Design-Gedächtnis</h2><p class="sub">Was die KI aus deinen Bewertungen lernt. Jede Küche lernt für sich, nur stilfreies Handwerk gilt für alle.</p></div>
+      <div class="mem-stats" id="mem-stats"></div>
+    </div>
+    <div id="mem"></div>
+  </section>
+
   <section class="panel" style="--d:9" aria-labelledby="rank-title" data-focus="board">
     <div class="panel-head">
       <div><h2 id="rank-title">Restaurants</h2><p class="sub" id="rank-sub">Die besten 100 gescannten Restaurants ohne eigene Website. Zieh eine Karte in eine andere Spalte, um selbst zu entscheiden.</p></div>
@@ -626,7 +730,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "460ae9bc2b";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "3f9413d2e7";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -677,7 +781,9 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   function poll() {
     if (PW) fetchBlob().then(function (b) { return decrypt(b, PW); }).then(function (d) {
       if (d.erstellt === DATA.erstellt) return;
-      var was = isLive(DATA), now = isLive(d), moreDemos = (d.demos || []).length > (DATA.demos || []).length;
+      var oldVer = {}; (DATA.demos || []).forEach(function (z) { oldVer[z.slug] = z.version; });
+      var verChanged = (d.demos || []).some(function (z) { return oldVer[z.slug] && oldVer[z.slug] !== z.version; });
+      var was = isLive(DATA), now = isLive(d), moreDemos = (d.demos || []).length > (DATA.demos || []).length || verChanged;
       var newIntro = d.intro && d.intro.id && (!DATA.intro || DATA.intro.id !== d.intro.id);
       var newLines = now && was ? (d.live.log || []).length !== (DATA.live.log || []).length || d.live.phase !== DATA.live.phase : false;
       DATA = d;
@@ -1072,7 +1178,10 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     renderRadar(d);
     renderFlow(d, checked, hits, used);
     renderChart(used);
+    if (!syncRatings.done) { RAT = normRat(d.bewertungen); syncRatings.done = true; }
     renderDemos(d);
+    renderMemory(d);
+    syncRatings();
     if (!syncDecisions.done) { syncDecisions(d); syncAreas(); syncDecisions.done = true; } else renderAreas();
     DEC = Object.assign({}, d.entscheidungen || {}, DEC);
     renderRanks(d);
@@ -1201,15 +1310,17 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
         '<div class="body"><h3 title="' + esc(x.name) + '">' + esc(x.name) + '</h3>' +
         '<div class="life' + (left != null && left <= 7 ? " low" : "") + '" title="' + (left == null ? "wird behalten" : "wird in " + left + " Tagen gelöscht") + '"><svg viewBox="0 0 44 44"><circle class="bg" cx="22" cy="22" r="18"/><circle class="fg" cx="22" cy="22" r="18" stroke-dasharray="' + C + '" stroke-dashoffset="' + C + '" data-off="' + C * (1 - frac) + '"/></svg><span>' + (left == null ? "∞" : left + "T") + "</span></div>" +
         '<div class="meta">' + esc([x.kueche, x.ort].filter(Boolean).join(", ")) + "</div></div>" +
-        '<div class="tags">' + (x.punkte != null ? '<span class="tag score">' + x.punkte + "/100 Eignung</span>" : "") + '<span class="tag">' + esc(why) + "</span>" + (x.design === "einzeln" ? '<span class="tag">Einzelstück' + (x.note ? " · Note " + x.note + "/10" : "") + "</span>" : x.theme ? '<span class="tag">' + esc(x.theme) + "</span>" : "") + (x.entfernung_km != null ? '<span class="tag">' + String(x.entfernung_km).replace(".", ",") + " km</span>" : "") + (x.bewertung ? '<span class="tag">' + String(x.bewertung).replace(".", ",") + " ★ · " + fmt.format(x.anzahl || 0) + "</span>" : "") + (x.status === "behalten" ? '<span class="tag keep">behalten</span>' : "") + "</div>" +
+        '<div class="tags">' + (x.punkte != null ? '<span class="tag score">' + x.punkte + "/100 Eignung</span>" : "") + '<span class="tag">' + esc(why) + "</span>" + (x.design === "einzeln" ? '<span class="tag">Einzelstück' + (x.note ? " · Note " + x.note + "/10" : "") + "</span>" : x.theme ? '<span class="tag">' + esc(x.theme) + "</span>" : "") + (x.entfernung_km != null ? '<span class="tag">' + String(x.entfernung_km).replace(".", ",") + " km</span>" : "") + (x.bewertung ? '<span class="tag">' + String(x.bewertung).replace(".", ",") + " ★ · " + fmt.format(x.anzahl || 0) + "</span>" : "") + (x.status === "behalten" ? '<span class="tag keep">behalten</span>' : "") + (x.welt_label && x.welt !== "unbestimmt" ? '<span class="tag welt" title="Stilwelt: lernt nur aus Demos derselben Küche">' + esc(x.welt_label) + "</span>" : "") + "</div>" +
+        '<div class="rating"></div>' +
         '' + (x.kategorien && x.kategorien.length ? '<details class="why"><summary>Warum ausgewählt?</summary>' + x.kategorien.map(function (k) { return '<div class="cat"><span>' + esc(k.name) + '</span><span class="bar2"><b style="width:' + Math.round(k.punkte / k.max * 100) + '%"></b></span><span class="pt">' + String(k.punkte).replace(".", ",") + "/" + k.max + '</span><small>' + esc(k.warum) + "</small></div>"; }).join("") + "</details>" : "") +
-        '<div class="acts"><a class="btn" href="' + esc(x.url) + '" target="_blank" rel="noopener">Öffnen</a><button class="btn" type="button" data-copy="' + esc(x.url) + '">Link kopieren</button></div>');
+        '<div class="acts"><a class="btn" href="' + esc(x.url) + '" target="_blank" rel="noopener">Öffnen</a><button class="btn regen" type="button" data-regen title="Neu generieren">' + REGEN + '<span class="lg">Neu generieren</span><span class="sm">Neu</span></button><button class="btn icon copy" type="button" data-copy="' + esc(x.url) + '" title="Link kopieren" aria-label="Link kopieren"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg></button></div><div class="regen-slot"></div>');
       box.appendChild(card);
+      card._x = x; paintRate(card);
       var f = $("iframe", card); f.addEventListener("load", function () { if (f.src) { f.classList.add("ready"); $(".screen", card).classList.add("loaded"); } });
       if (io) io.observe(card); else f.src = f.dataset.src;
       setTimeout(function () { var fg = $(".fg", card); fg.style.strokeDashoffset = fg.dataset.off; }, 400 + i * 40);
     });
-    box.querySelectorAll("[data-copy]").forEach(function (b) { b.addEventListener("click", function () { navigator.clipboard && navigator.clipboard.writeText(b.dataset.copy).then(function () { var t = b.textContent; b.textContent = "Kopiert"; setTimeout(function () { b.textContent = t; }, 1400); }); }); });
+    box.querySelectorAll("[data-copy]").forEach(function (b) { b.addEventListener("click", function () { navigator.clipboard && navigator.clipboard.writeText(b.dataset.copy).then(function () { toast("Link kopiert."); }); }); });
   }
   $("#q").addEventListener("input", function (e) { query = e.target.value; if (DATA) renderDemos(DATA); });
   document.querySelectorAll("[data-sort]").forEach(function (b) { b.addEventListener("click", function () { sortMode = b.dataset.sort; document.querySelectorAll("[data-sort]").forEach(function (x) { x.setAttribute("aria-pressed", x === b); }); if (DATA) renderDemos(DATA); }); });
@@ -1417,6 +1528,218 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     var st = d.steuerung || {}; if (!st.token) return;
     loadDecisions().then(function (cur) { DEC = Object.assign({}, cur); renderRanks(DATA); }).catch(function () {});
   }
+
+  /* ---------- Bewertungen, Neubau & Design-Gedächtnis ---------- */
+  var THUMB = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v11H4.5A1.5 1.5 0 0 1 3 19.5v-8A1.5 1.5 0 0 1 4.5 10H7z"/><path d="M7 10l4-7.2a1.9 1.9 0 0 1 3.5 1.3L13.8 9h5.4a2 2 0 0 1 2 2.3l-1.3 8A2 2 0 0 1 17.9 21H7"/></svg>';
+  var REGEN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.6-4.5L3 9"/><path d="M3 3v6h6"/><path d="M4 13a8 8 0 0 0 14.6 4.5L21 15"/><path d="M21 21v-6h-6"/></svg>';
+  var FENCE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>';
+  var RAT = { demos: {}, verworfen: [] }, ratSha = null, ratRemote = null, ratSaving = Promise.resolve();
+  function normRat(r) { r = r && typeof r === "object" ? JSON.parse(JSON.stringify(r)) : {}; r.demos = r.demos || {}; r.verworfen = r.verworfen || []; return r; }
+  function ctl() { var st = (DATA && DATA.steuerung) || {}; if (!st.token) { Sound.play("deny"); toast("Steuerung noch nicht eingerichtet: Es fehlt das Secret COCKPIT_GITHUB_TOKEN."); return false; } return true; }
+  function loadRatings() {
+    return api("/contents/data/bewertungen.json", { allow404: true }).then(function (f) {
+      ratSha = f ? f.sha : null; ratRemote = normRat(f ? JSON.parse(fromU8(f.content) || "{}") : {}); return ratRemote;
+    });
+  }
+  function saveRatings(apply, message) {
+    ratSaving = ratSaving.catch(function () {}).then(function () {
+      function attempt(retry) {
+        return (ratRemote ? Promise.resolve(ratRemote) : loadRatings()).then(function (cur) {
+          cur = normRat(cur); apply(cur);
+          return writeFile("data/bewertungen.json", cur, "Cockpit: " + message, ratSha)
+            .then(function (res) { ratSha = res && res.content ? res.content.sha : null; ratRemote = cur; });
+        }).catch(function (e) {
+          if (retry && (e.status === 409 || e.status === 422)) { ratRemote = null; return attempt(false); }
+          throw e;
+        });
+      }
+      return attempt(true);
+    });
+    return ratSaving;
+  }
+  function syncRatings() {
+    var st = (DATA && DATA.steuerung) || {}; if (!st.token) return;
+    ratSaving.catch(function () {}).then(function () { return loadRatings(); }).then(function (cur) {
+      if (JSON.stringify(cur) === JSON.stringify(RAT)) return;
+      RAT = normRat(cur); repaintRatings(); renderMemory(DATA);
+    }).catch(function () {});
+  }
+  function repaintRatings() { document.querySelectorAll(".demo").forEach(function (c) { if (c._x) paintRate(c); }); }
+  function ratingOf(x) { var r = RAT.demos[x.slug]; return r && String(r.version) === String(x.version) ? r : null; }
+  function fpOf(r) { return String(+r.daumen || 0) + "|" + String(r.kommentar || "").trim().slice(0, 800); }
+  function isLearned(x, r) { return (((DATA.gedaechtnis || {}).verarbeitet) || {})[x.slug + "@" + x.version] === fpOf(r); }
+  function pendingRebuild(x) {
+    var r = RAT.demos[x.slug], nb = r && r.neubau; if (!nb || !nb.zeit) return null;
+    return nb.zeit > ((((DATA.neubau || {}).erledigt) || {})[x.slug] || "") ? nb : null;
+  }
+  function failedRebuild(x) { var f = (((DATA.neubau || {}).fehler) || {})[x.slug], r = RAT.demos[x.slug]; return f && r && r.neubau && r.neubau.zeit === f.zeit ? f : null; }
+  function waitingToLearn() {
+    var n = 0; (DATA.demos || []).forEach(function (x) { var r = ratingOf(x); if (r && ((+r.daumen) || (r.kommentar || "").trim()) && !isLearned(x, r)) n++; }); return n;
+  }
+  function paintRate(card) {
+    var x = card._x, box = $(".rating", card); if (!box) return;
+    var r = ratingOf(x) || {}, d = +r.daumen || 0, nb = pendingRebuild(x), fail = !nb && failedRebuild(x);
+    var prev = RAT.demos[x.slug], olderRated = prev && !ratingOf(x) && (prev.daumen || prev.kommentar);
+    var rated = d || (r.kommentar || "").trim();
+    var st = nb ? ["busy", RUN.active ? "Neubau läuft oder ist eingereiht" : "Neubau angefordert"]
+      : fail ? ["bad", "Neubau fehlgeschlagen"]
+      : rated ? (isLearned(x, r) ? ["ok", "Gelernt"] : ["", "Gespeichert, die KI lernt gleich daraus"])
+      : olderRated ? ["new", "Neue Version, bitte bewerten"] : ["", "Wie gefällt sie dir?"];
+    var html = '<div class="rate">' +
+      '<button class="thumb up" type="button" data-rate="1" aria-pressed="' + (d > 0) + '" aria-label="Gefällt mir" title="Gefällt mir">' + THUMB + "</button>" +
+      '<button class="thumb down" type="button" data-rate="-1" aria-pressed="' + (d < 0) + '" aria-label="Gefällt mir nicht" title="Gefällt mir nicht">' + THUMB + "</button>" +
+      '<span class="rstate ' + st[0] + '">' + st[1] + "</span></div>";
+    if (nb) html += '<div class="rnote wait"><b>Dein Wunsch (' + (nb.modus === "ueberarbeiten" ? "überarbeiten" : "neu entwerfen") + "):</b> " + esc(nb.wunsch || "kein konkreter Wunsch, frischer Entwurf") + (RUN.active ? "" : ' · <button type="button" class="linkbtn" data-withdraw>Zurückziehen</button>') + "</div>";
+    if (fail) html += '<div class="rnote err">' + esc(fail.fehler || "Unbekannter Fehler") + "</div>";
+    if (rated && !nb && !card._regen) html += '<div class="why-in"><input type="text" maxlength="400" value="' + esc(r.kommentar || "") + '" placeholder="' + (d > 0 ? "Was gefällt dir besonders? (optional)" : d < 0 ? "Was stört dich? (optional)" : "Kommentar") + '" aria-label="Kommentar zur Bewertung"><button class="btn" type="button" data-why-save>Speichern</button></div>';
+    box.innerHTML = html;
+    var rb = $(".acts .regen", card); if (rb) { rb.disabled = !!nb; rb.setAttribute("aria-expanded", card._regen ? "true" : "false"); }
+    var slot = $(".regen-slot", card); if (slot) slot.innerHTML = card._regen ? regenBoxHTML(card) : "";
+  }
+  function regenBoxHTML(card) {
+    var x = card._x, r = ratingOf(x) || {}, can = x.design === "einzeln";
+    var m = card._mode || (can && (+r.daumen || 0) > 0 ? "ueberarbeiten" : "neu"); if (!can) m = "neu"; card._mode = m;
+    return '<div class="regen-box"><textarea maxlength="1200" aria-label="Was soll besser werden?" placeholder="Was soll besser werden? z. B. Kopfzeile ruhiger, Titelfoto größer. Leer lassen für einen frischen Entwurf.">' + esc(card._wish || r.kommentar || "") + "</textarea>" +
+      '<div class="seg-ctl" role="group" aria-label="Art des Neubaus"><button type="button" data-mode="ueberarbeiten" aria-pressed="' + (m === "ueberarbeiten") + '"' + (can ? "" : ' disabled title="Nur bei Einzelanfertigungen"') + '>Überarbeiten</button><button type="button" data-mode="neu" aria-pressed="' + (m === "neu") + '">Neu entwerfen</button></div>' +
+      '<p class="mhint">' + (m === "ueberarbeiten" ? "Das Design bleibt, dein Wunsch wird gezielt umgesetzt und geprüft. Dauert ein paar Minuten." : "Neues Konzept mit deinem Wunsch und dem Gedächtnis dieser Küche. Dauert etwa zehn Minuten.") + "</p>" +
+      '<div class="row"><button class="btn" type="button" data-cancel>Abbrechen</button><button class="btn btn-hot" type="button" data-go>Neu generieren</button></div></div>';
+  }
+  function rate(card, val) {
+    var x = card._x; if (!ctl()) return;
+    var cur = ratingOf(x) || {}, nd = (+cur.daumen || 0) === val ? 0 : val;
+    var before = RAT.demos[x.slug] ? JSON.parse(JSON.stringify(RAT.demos[x.slug])) : null;
+    var apply = function (c) {
+      var e = c.demos[x.slug] || {}; if (String(e.version) !== String(x.version)) e = e.neubau ? { neubau: e.neubau } : {};
+      e.version = x.version; e.daumen = nd; e.name = x.name; e.welt = x.welt; e.zeit = new Date().toISOString(); c.demos[x.slug] = e;
+    };
+    apply(RAT); paintRate(card);
+    var b = $(".thumb." + (val > 0 ? "up" : "down"), card); if (b) b.classList.add("pop");
+    Sound.play(nd > 0 ? "demo" : nd < 0 ? "close" : "tick");
+    saveRatings(apply, (nd > 0 ? "Daumen hoch" : nd < 0 ? "Daumen runter" : "Bewertung zurückgenommen") + " · " + x.name).then(function () {
+      renderMemory(DATA);
+      if (nd) {
+        toast(nd > 0 ? "Gefällt dir. Die KI lernt in ein paar Minuten, warum, und zwar nur für " + (x.welt_label || "diese Küche") + " plus allgemeines Handwerk." : "Notiert. Die KI sucht die Ursachen und vermeidet sie künftig.");
+        var inp = $(".why-in input", card); if (inp && matchMedia("(pointer: fine)").matches) inp.focus({ preventScroll: true });
+      }
+    }).catch(function (err) { if (before) RAT.demos[x.slug] = before; else delete RAT.demos[x.slug]; paintRate(card); Sound.play("error"); toast("Speichern hat nicht geklappt (" + err.message + ")."); });
+  }
+  function saveWhy(card) {
+    var x = card._x, inp = $(".why-in input", card); if (!inp || !ctl()) return;
+    var v = inp.value.trim();
+    var apply = function (c) { var e = c.demos[x.slug] || {}; if (String(e.version) !== String(x.version)) e = e.neubau ? { neubau: e.neubau } : {}; e.version = x.version; e.kommentar = v; e.name = x.name; e.welt = x.welt; e.zeit = new Date().toISOString(); c.demos[x.slug] = e; };
+    apply(RAT); paintRate(card); Sound.play("blip");
+    saveRatings(apply, "Kommentar · " + x.name).then(function () { toast("Kommentar gespeichert. Er ist für die KI ein starkes Signal."); renderMemory(DATA); })
+      .catch(function (err) { Sound.play("error"); toast("Speichern hat nicht geklappt (" + err.message + ")."); });
+  }
+  function submitRegen(card) {
+    var x = card._x; if (!ctl()) return;
+    var ta = $(".regen-box textarea", card), wish = (ta ? ta.value : "").trim();
+    var req = { wunsch: wish, modus: card._mode === "ueberarbeiten" && x.design === "einzeln" ? "ueberarbeiten" : "neu", zeit: new Date().toISOString(), version: x.version };
+    var before = RAT.demos[x.slug] ? JSON.parse(JSON.stringify(RAT.demos[x.slug])) : null, busy = !!RUN.active;
+    var apply = function (c) { var e = c.demos[x.slug] || {}; if (String(e.version) !== String(x.version)) e = { version: x.version }; e.neubau = req; e.name = x.name; e.welt = x.welt; c.demos[x.slug] = e; };
+    apply(RAT); card._regen = false; card._wish = ""; paintRate(card); Sound.play("start");
+    saveRatings(apply, "Neubau · " + x.name).then(function () { return command("bauen"); }).then(function () {
+      if (!busy) { RUN.starting = Date.now(); runRender(); }
+      toast(busy ? x.name + ": Neubau ist eingereiht und startet direkt nach dem laufenden Lauf." : x.name + ": Neubau gestartet. Das Cockpit zeigt ihn gleich live.");
+      setTimeout(runCheck, 8000);
+    }).catch(function (err) { if (before) RAT.demos[x.slug] = before; else delete RAT.demos[x.slug]; paintRate(card); Sound.play("error"); toast("Neubau nicht gestartet (" + err.message + ")."); });
+  }
+  function withdraw(card) {
+    var x = card._x; if (!ctl()) return;
+    var apply = function (c) { var e = c.demos[x.slug]; if (e) delete e.neubau; };
+    var before = RAT.demos[x.slug] ? JSON.parse(JSON.stringify(RAT.demos[x.slug])) : null;
+    apply(RAT); paintRate(card); Sound.play("close");
+    saveRatings(apply, "Neubau zurückgezogen · " + x.name).then(function () { toast("Neubau zurückgezogen."); })
+      .catch(function (err) { if (before) RAT.demos[x.slug] = before; paintRate(card); Sound.play("error"); toast("Hat nicht geklappt (" + err.message + ")."); });
+  }
+  $("#demos").addEventListener("click", function (e) {
+    var card = e.target.closest(".demo"); if (!card || !card._x) return;
+    var t = e.target.closest("[data-rate]");
+    if (t) { rate(card, +t.getAttribute("data-rate")); return; }
+    if (e.target.closest("[data-regen]")) { if (!ctl()) return; card._regen = true; paintRate(card); Sound.play("open"); var ta = $(".regen-box textarea", card); if (ta) ta.focus({ preventScroll: true }); return; }
+    if (e.target.closest("[data-cancel]")) { card._regen = false; card._wish = ""; paintRate(card); Sound.play("close"); return; }
+    t = e.target.closest("[data-mode]");
+    if (t && !t.disabled) { var ta2 = $(".regen-box textarea", card); card._wish = ta2 ? ta2.value : ""; card._mode = t.getAttribute("data-mode"); paintRate(card); return; }
+    if (e.target.closest("[data-go]")) { submitRegen(card); return; }
+    if (e.target.closest("[data-withdraw]")) { withdraw(card); return; }
+    if (e.target.closest("[data-why-save]")) { saveWhy(card); return; }
+  });
+  $("#demos").addEventListener("keydown", function (e) {
+    if (e.key === "Enter" && e.target.matches(".why-in input")) { e.preventDefault(); saveWhy(e.target.closest(".demo")); }
+    if (e.key === "Enter" && (e.metaKey || e.ctrlKey) && e.target.matches(".regen-box textarea")) { e.preventDefault(); submitRegen(e.target.closest(".demo")); }
+  });
+
+  var memWorld = null, MEDIA_KEY = null, thumbs = {};
+  function mediaKey() {
+    var k = DATA && DATA.medien && DATA.medien.schluessel; if (!k) return Promise.reject(new Error("kein Schlüssel"));
+    if (!MEDIA_KEY || MEDIA_KEY.k !== k) MEDIA_KEY = { k: k, p: crypto.subtle.importKey("raw", b64(k), "AES-GCM", false, ["decrypt"]) };
+    return MEDIA_KEY.p;
+  }
+  function thumb(id) {
+    if (!thumbs[id]) thumbs[id] = mediaKey().then(function (key) {
+      return fetch("bilder/" + id + ".json").then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(function (blob) { return crypto.subtle.decrypt({ name: "AES-GCM", iv: b64(blob.iv) }, key, b64(blob.data)); })
+        .then(function (buf) { return URL.createObjectURL(new Blob([buf], { type: "image/jpeg" })); });
+    }).catch(function (e) { delete thumbs[id]; throw e; });
+    return thumbs[id];
+  }
+  function rulesHTML(list, cls) {
+    var gone = RAT.verworfen || [];
+    list = (list || []).filter(function (r) { return gone.indexOf(r.id) < 0; });
+    if (!list.length) return '<ul class="rules"><li class="none">Noch nichts gelernt.</li></ul>';
+    return '<ul class="rules">' + list.map(function (r) {
+      return '<li class="' + cls + '"><span class="ic" aria-hidden="true">' + (cls === "do" ? "✓" : "✕") + "</span><span>" + esc(r.regel) + "<small>aus " + r.belege + " Bewertung" + (r.belege === 1 ? "" : "en") + '</small></span><button class="veto" type="button" data-veto="' + esc(r.id) + '" aria-label="Regel verwerfen" title="Regel verwerfen: Die KI vergisst sie und nimmt sie nicht wieder auf">×</button></li>';
+    }).join("") + "</ul>";
+  }
+  function vbHTML(v, kind) {
+    var live = (DATA.demos || []).some(function (z) { return z.slug === v.slug && String(z.version) === String(v.version); });
+    var img = (v.bild ? '<img alt="" data-thumb="' + esc(v.bild) + '">' : "") + '<span class="mark">' + THUMB + "</span>";
+    return '<article class="vb ' + kind + '">' + (live && v.url ? '<a class="img" href="' + esc(v.url) + '" target="_blank" rel="noopener" aria-label="' + esc(v.name) + ' öffnen">' + img + "</a>" : '<div class="img" title="Diese Version ist nicht mehr online, das Gedächtnis behält sie.">' + img + "</div>") +
+      '<div class="txt"><b>' + esc(v.name) + "</b>" + esc(v.warum || "Wird gerade ausgewertet.") + (v.kommentar ? "<q>„" + esc(v.kommentar) + "“</q>" : "") + (v.schriften && v.schriften.length ? "<em>Schriften: " + esc(v.schriften.join(" / ")) + "</em>" : "") + "</div></article>";
+  }
+  function renderMemory(d) {
+    if (!d) return;
+    var g = d.gedaechtnis || {}, worlds = g.welten || [], wait = waitingToLearn();
+    var ms = function (n, t, c) { return '<span class="ms' + (c ? " " + c : "") + '"><b>' + fmt.format(n || 0) + "</b>" + t + "</span>"; };
+    $("#mem-stats").innerHTML = ms(g.gelernt, "gelernt") + ms(g.hoch, "Daumen hoch", "up") + ms(g.runter, "Daumen runter", "down") + ms(worlds.length, "Stilwelten") + (wait ? ms(wait, "warten aufs Lernen", "wait") : "");
+    var box = $("#mem");
+    if (!g.gelernt && !worlds.length) {
+      box.innerHTML = '<div class="mem-empty">' + (wait ? "Deine ersten Bewertungen werden gerade gelernt. In ein paar Minuten steht hier, was die KI daraus ableitet." : "Noch nichts gelernt. Bewerte die Demos oben mit Daumen hoch oder runter, gern mit einem Satz dazu. Die KI findet heraus, warum, und baut die nächsten Demos derselben Küche danach. Für alle Küchen gilt nur stilfreies Handwerk wie Lesbarkeit, Kopfzeile und Fotos.") + "</div>";
+      return;
+    }
+    if (!memWorld || !worlds.some(function (w) { return w.key === memWorld; })) memWorld = worlds.length ? worlds[0].key : null;
+    var hw = g.handwerk || {};
+    var w = worlds.filter(function (z) { return z.key === memWorld; })[0];
+    var html = '<div class="mem-grid"><div class="mem-col"><h3>Handwerk</h3><p>Gilt für jede Küche. Stilfrei: keine Schriften, Farben oder Motive.</p>' + rulesHTML(hw.tun, "do") + rulesHTML(hw.meiden, "dont") + "</div>";
+    html += '<div class="mem-col"><h3>Stilwelten</h3><p>Was dir bei einer Küche gefällt, bleibt bei dieser Küche.</p><div class="worlds" role="group" aria-label="Stilwelt wählen">' + worlds.map(function (z) {
+      return '<button type="button" data-world="' + esc(z.key) + '" aria-pressed="' + (z.key === memWorld) + '">' + esc(z.label) + " <i>+" + z.vorbilder.length + " −" + z.abgelehnt.length + "</i></button>";
+    }).join("") + "</div>";
+    if (w) {
+      var none = w.key === "unbestimmt";
+      html += (none ? "" : '<div class="wsplit"><div><h4>Gefällt dir</h4>' + rulesHTML(w.gut, "do") + "</div><div><h4>Gefällt dir nicht</h4>" + rulesHTML(w.meiden, "dont") + "</div></div>") +
+        (w.vorbilder.length ? '<h4 class="gal-h">Vorbilder · Daumen hoch</h4><div class="gal">' + w.vorbilder.slice().reverse().map(function (v) { return vbHTML(v, "good"); }).join("") + "</div>" : "") +
+        (w.abgelehnt.length ? '<h4 class="gal-h">Daumen runter</h4><div class="gal">' + w.abgelehnt.slice().reverse().map(function (v) { return vbHTML(v, "bad"); }).join("") + "</div>" : "") +
+        '<div class="fence">' + FENCE + "<span>" + (none ? "Lokale ohne erkennbare Küche lernen nur Handwerk, kein Stilwissen." : "Diese Regeln und Vorbilder bekommt nur eine neue Demo der Küche „" + esc(w.label) + "“. Die Schriften der Vorbilder sind für neue Demos dieser Küche tabu, damit sich kein Lokal wiederholt.") + "</span></div>";
+    }
+    html += "</div></div>";
+    box.innerHTML = html;
+    box.querySelectorAll("img[data-thumb]").forEach(function (im) { thumb(im.getAttribute("data-thumb")).then(function (u) { im.src = u; im.onload = function () { im.classList.add("on"); }; }).catch(function () {}); });
+  }
+  function veto(id) {
+    if (!ctl()) return;
+    var apply = function (c) { c.verworfen = (c.verworfen || []).filter(function (z) { return z !== id; }).concat([id]); };
+    var undo = function (c) { c.verworfen = (c.verworfen || []).filter(function (z) { return z !== id; }); };
+    apply(RAT); renderMemory(DATA); Sound.play("trash");
+    saveRatings(apply, "Regel verworfen").then(function () {
+      toast("Regel verworfen. Die KI vergisst sie und nimmt sie nicht wieder auf.", function () { undo(RAT); renderMemory(DATA); saveRatings(undo, "Regel wiederhergestellt"); Sound.play("close"); });
+    }).catch(function (err) { undo(RAT); renderMemory(DATA); Sound.play("error"); toast("Hat nicht geklappt (" + err.message + ")."); });
+  }
+  $("#mem").addEventListener("click", function (e) {
+    var t = e.target.closest("[data-world]");
+    if (t) { memWorld = t.getAttribute("data-world"); renderMemory(DATA); return; }
+    t = e.target.closest("[data-veto]");
+    if (t) veto(t.getAttribute("data-veto"));
+  });
 
   /* ---------- Kosten & Verbrauch ---------- */
   var TCOL = { anthropic: "#FF5757", recraft: "#FFB547", google: "#7BAFFF", elevenlabs: "#4BE3A6", github: "#B8C4DC" };
