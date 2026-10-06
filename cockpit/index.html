@@ -487,9 +487,10 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   /* Pipeline */
   function renderFlow(d, checked, hits, used) {
     var built = d.demos_jemals || 0, sc = d.status_zahlen || {};
+    var chainsOut = used.reduce(function (a, r) { return a + (r.ketten || 0) + (r.ketten_ki || 0); }, 0);
     var stages = [
       { n: "Geprüft", s: "Restaurants in Suchgebieten", v: checked },
-      { n: "Ohne Website", s: "gute Bewertung, keine eigene Seite", v: hits },
+      { n: "Ohne Website", s: "gute Bewertung, keine Kette" + (chainsOut ? " (" + fmt.format(chainsOut) + " Ketten aussortiert)" : ""), v: hits },
       { n: "Demo gebaut", s: "Website-Entwurf online gestellt", v: built },
       { n: "Brief verschickt", s: d.einstellungen.briefe_aktiv ? "an das Restaurant" : "Briefversand ist aus", v: sc.verschickt || 0, off: !d.einstellungen.briefe_aktiv },
       { n: "Behalten", s: "Interessenten", v: sc.behalten || 0 }
