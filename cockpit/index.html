@@ -644,8 +644,10 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     if (PW) fetchBlob().then(function (b) { return decrypt(b, PW); }).then(function (d) {
       if (d.erstellt === DATA.erstellt) return;
       var was = isLive(DATA), now = isLive(d), moreDemos = (d.demos || []).length > (DATA.demos || []).length;
+      var newIntro = d.intro && d.intro.id && (!DATA.intro || DATA.intro.id !== d.intro.id);
       var newLines = now && was ? (d.live.log || []).length !== (DATA.live.log || []).length || d.live.phase !== DATA.live.phase : false;
       DATA = d;
+      if (newIntro && !now) offerNewIntro(d);
       if (now && was) {
         renderLive(d);
         if (moreDemos) { renderDemos(d); renderRanks(d); }
@@ -850,11 +852,23 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   var voiceOn = false, voiceRaf = 0;
   function stopVoice() {
     voiceOn = false; cancelAnimationFrame(voiceRaf);
+    var sb = $("#vpill-stop"); if (sb) { sb.dataset.mode = ""; sb.textContent = "Stopp"; }
     document.querySelectorAll(".spot").forEach(function (e) { e.classList.remove("spot"); });
     if (introAudio) introAudio.pause(); if (window.speechSynthesis) speechSynthesis.cancel();
     $("#vpill").classList.remove("on");
   }
-  $("#vpill-stop").addEventListener("click", function () { Sound.play("close"); stopVoice(); });
+  $("#vpill-stop").addEventListener("click", function () {
+    if (this.dataset.mode === "play") { this.dataset.mode = ""; this.textContent = "Stopp"; Sound.play("voice"); startVoice(DATA, null); $("#vpill").classList.add("on"); return; }
+    Sound.play("close"); stopVoice();
+  });
+  function offerNewIntro(d) {
+    loadIntro(d).then(function () {
+      if (voiceOn || BOOTING) return;
+      var pill = $("#vpill"), b = $("#vpill-stop");
+      $("#vpill-text").textContent = "Neuer Lagebericht verfügbar"; b.textContent = "Anhören"; b.dataset.mode = "play";
+      pill.classList.add("on"); Sound.play("toast");
+    });
+  }
   function sentenceAt(text, f) {
     var parts = text.match(/[^.!?]+[.!?]*/g) || [text], pos = f * text.length, acc = 0;
     for (var i = 0; i < parts.length; i++) { acc += parts[i].length; if (acc >= pos) return parts[i].trim(); }
