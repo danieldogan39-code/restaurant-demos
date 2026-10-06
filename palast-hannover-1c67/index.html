@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Palast Restaurant · Steintorstraße 7, Hannover · Schawarma, Grill, Falafel, Pizza</title>
+<meta name="description" content="Palast am Steintor in Hannover: Schawarma vom Spieß, Grillplatten, Falafel, Hummus und Pizza. Täglich ab 10 Uhr, Fr bis 1 Uhr, Sa bis 2 Uhr. Vor Ort, zum Mitnehmen, Lieferservice. Tel. 0511 89734186.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=El+Messiri:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans+Arabic:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+:root{
+--s:#121110;--s2:#0B0A09;--c:#F3EDE2;--g:#C9A24A;--o:#E8761C;--oh:#C95F0E;--n:#1C2132;
+--m:#C4BCAE;--linie:#3A352E;--rand:clamp(1rem,5vw,4rem);--max:1240px;--kopf:64px;
+--abschnitt:clamp(3.5rem,8vw,7rem);--d:"El Messiri",Georgia,serif;--t:"IBM Plex Sans Arabic",system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--s);color:var(--c);font:400 1.0625rem/1.6 var(--t);overflow-x:hidden}
+h1,h2,h3{font-family:var(--d);font-weight:700;line-height:1.05;margin:0;hyphens:auto;overflow-wrap:break-word}
+h2{font-size:clamp(2rem,4.6vw,3.5rem)}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--g);outline-offset:3px}
+.hell :focus-visible{outline-color:var(--s)}
+.sr{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.wrap{max-width:calc(var(--max) + 2*var(--rand));margin-inline:auto;padding-inline:var(--rand)}
+section{scroll-margin-top:var(--kopf)}
+[lang=ar]{font-family:var(--d)}
+.knopf{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:48px;padding:.75rem 1.6rem;font:700 1rem/1.2 var(--t);text-decoration:none;border-radius:2px;border:2px solid transparent;transition:background-color .2s,color .2s}
+.knopf-o{background:var(--o);color:var(--s)}
+.knopf-o:hover{background:var(--oh)}
+.knopf-g{border-color:var(--g);color:var(--c)}
+.knopf-g:hover{background:var(--g);color:var(--s)}
+figure{margin:0;position:relative}
+figure img{display:block;width:100%;height:auto;aspect-ratio:var(--r,4/3);object-fit:cover;background:#2A2622}
+.foto-nachweis{display:block;margin-top:8px;color:#B8B0A4;font-size:.875rem;line-height:1.35;text-decoration:none}
+.foto-nachweis:hover{text-decoration:underline;color:var(--c)}
+
+.kopf{position:sticky;top:0;z-index:1000;height:var(--kopf);background:var(--s);border-bottom:1px solid var(--g)}
+.kopf .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.marke{display:flex;align-items:baseline;gap:.6rem;text-decoration:none;min-height:44px;align-items:center}
+.marke b{font:700 1.6rem/1 var(--d);letter-spacing:.06em;color:var(--g)}
+.marke span{font:700 1.25rem/1 var(--d);color:var(--c)}
+.nav{display:flex;align-items:center;gap:clamp(1rem,2.5vw,2rem)}
+.nav a:not(.knopf){text-decoration:none;font-weight:700;padding:.6rem 0;min-height:44px;display:inline-flex;align-items:center}
+.nav a:not(.knopf):hover{color:var(--g)}
+.nav .knopf{min-height:44px;padding:.55rem 1.4rem}
+
+.hero{display:flex;border-bottom:12px solid var(--g);background:var(--s)}
+.hero-tafel{flex:5 1 0;min-width:0;padding:clamp(2rem,5vw,4.5rem) var(--rand);padding-left:max(var(--rand),calc((100vw - var(--max))/2));display:flex;flex-direction:column;justify-content:center;gap:1.4rem}
+.hero-foto{flex:7 1 0;min-width:0;--r:4/3;display:flex;flex-direction:column}
+.hero-foto img{flex:1 1 auto;min-height:0}
+.hero-foto .foto-nachweis{padding-inline:8px;margin-bottom:8px}
+.status{margin:0}
+.status [data-status]{display:inline-block;background:var(--o);color:var(--s);font-weight:700;padding:.4rem .9rem;border:2px solid var(--o);font-variant-numeric:tabular-nums}
+.status [data-status][data-offen="nein"]{background:transparent;color:var(--c)}
+.name{display:inline-grid;font-size:clamp(3.5rem,6.8vw,7rem);letter-spacing:.05em;line-height:.95}
+.name-de{color:var(--g)}
+.name-ar{justify-self:stretch;text-align:end;font-size:.42em;letter-spacing:0;line-height:1.2;color:var(--c);margin-top:.2em}
+.unter{display:flex;align-items:center;gap:.75rem;color:var(--m);font-size:1rem;margin-top:1rem}
+.angebot{font:700 clamp(1.3rem,2vw,1.7rem)/1.25 var(--d);max-width:28ch}
+.hero-tafel p.text{color:var(--m);max-width:46ch}
+.aktionen{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:.4rem}
+
+.tafel-ab{padding-block:var(--abschnitt) clamp(2rem,4vw,3rem)}
+.kopfzeile{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:1rem 2rem;align-items:end;margin-bottom:clamp(1.5rem,3vw,2.5rem)}
+.kopfzeile p{color:var(--m);max-width:52ch}
+.tafel{background:var(--s2);border:1px solid var(--linie)}
+.reiter{display:flex;gap:.5rem;overflow-x:auto;padding:.75rem;border-bottom:1px solid var(--linie);scroll-snap-type:x proximity;scrollbar-width:thin}
+.reiter button{flex:none;scroll-snap-align:start;min-height:44px;padding:.55rem 1rem;background:transparent;color:var(--c);border:2px solid var(--o);font:700 .95rem/1 var(--d);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:2px}
+.reiter button[aria-selected="true"]{background:var(--o);color:var(--s)}
+.spalten{overflow:hidden}
+.spalte{display:none;padding:0 0 1.25rem}
+.spalte.aktiv{display:block;animation:rein .25s ease-out}
+@keyframes rein{from{transform:translateX(var(--dx,32px))}to{transform:none}}
+.spalte h3{background:var(--o);color:var(--s);font-size:1rem;letter-spacing:.03em;text-transform:uppercase;padding:.6rem 1rem;display:flex;flex-direction:column;justify-content:center;gap:2px;min-height:4.25rem;line-height:1.2;min-width:0}
+.spalte h3 span{white-space:nowrap;min-width:0}
+.spalte h3 [lang=ar]{align-self:flex-end}
+.spalte h3 [lang=ar]{letter-spacing:0}
+.spalte ul{list-style:none;margin:0;padding:.75rem 1.1rem 0}
+.posten{display:grid;grid-template-columns:auto minmax(1.5rem,1fr) auto;align-items:baseline;gap:.5rem;padding:.6rem 0}
+.posten .punkte{border-bottom:2px dotted rgba(201,162,74,.55);transform:translateY(-.3em)}
+.posten [lang=ar]{color:var(--g);font-size:1.1rem;white-space:nowrap}
+.mehr{color:var(--m);font-size:1rem;padding:.6rem 0;border-top:1px solid var(--linie);margin-top:.4rem}
+.tafel-fuss{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem 2rem;padding:1rem 1.1rem;border-top:1px solid var(--linie);font-size:1rem;color:var(--m)}
+.tafel-fuss a{color:var(--o);font-weight:700;font-variant-numeric:tabular-nums}
+.leiste-fotos{display:flex;gap:8px;margin-top:24px}
+.reihe{display:flex;gap:8px}
+.reihe>*,.leiste-fotos>*{flex:var(--r) 1 0;min-width:0}
+
+.ruf{background:var(--c);color:var(--s);padding-block:var(--abschnitt)}
+.ruf .wrap{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(2rem,5vw,4rem);align-items:start}
+.ruf figure{--r:1}
+.ruf ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));--gap:clamp(1.5rem,3vw,2.5rem);gap:var(--gap)}
+.ruf li{position:relative}
+.ruf li+li::before{content:"";position:absolute;left:calc(var(--gap)/-2 - 6px);top:.95em;width:12px;height:12px;border-radius:50%;background:var(--g)}
+.ruf strong{display:block;font:700 clamp(2rem,3.2vw,2.9rem)/1.1 var(--d);margin-bottom:.6rem}
+.ruf li p{max-width:26ch}
+.ruf li a{font-weight:700;font-variant-numeric:tabular-nums}
+.ruf .zusatz{margin-top:clamp(2rem,4vw,3rem);padding-top:1.25rem;border-top:2px solid var(--s);display:flex;flex-wrap:wrap;gap:1rem 2rem;align-items:center;justify-content:space-between}
+
+.zeiten{background:var(--n);padding-block:var(--abschnitt)}
+.zeiten .wrap{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(2rem,5vw,4rem);align-items:center}
+.zeiten-text p{color:#C9CCD6;margin-top:1.25rem;max-width:36ch}
+.zeiten-text .knopf{margin-top:1.75rem}
+.fahrplan{list-style:none;margin:0;padding:0;font-variant-numeric:tabular-nums}
+.zeile,.skala{display:grid;grid-template-columns:7.5rem 9.5rem minmax(0,1fr);gap:1rem;align-items:center}
+.zeile{padding:.7rem .75rem;border-top:1px solid rgba(243,237,226,.16)}
+.zeile:last-child{border-bottom:1px solid rgba(243,237,226,.16)}
+.zeile .tag{font-weight:700}
+.zeile .zeit{text-align:right}
+.zeile.heute{background:rgba(243,237,226,.08);box-shadow:inset 4px 0 0 var(--o)}
+.zeile.heute .tag::after{content:" · heute";font-weight:400;color:var(--o)}
+.skala{padding:0 .75rem .5rem;font-size:.875rem;color:#C9CCD6}
+.skala div{position:relative;height:1.3em;grid-column:3}
+.skala span{position:absolute;transform:translateX(-50%)}
+.skala span:first-child{transform:none}
+.skala span:last-child{transform:translateX(-100%)}
+.balken{position:relative;height:12px;background:rgba(243,237,226,.14)}
+.balken i{position:absolute;inset:0 auto 0 0;width:calc(var(--e)/16*100%);background:linear-gradient(90deg,var(--g) calc(1400%/var(--e)),var(--o) 0)}
+.jetzt{position:absolute;top:-8px;bottom:-8px;left:calc(var(--p,0)*100%);width:3px;margin-left:-1px;background:var(--c);box-shadow:0 0 0 2px var(--n);transition:left .4s cubic-bezier(.3,.7,.3,1)}
+.jetzt b{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);font-size:.875rem;color:var(--c);white-space:nowrap;padding-bottom:2px}
+.zeichen{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;margin-top:1rem;font-size:.95rem;color:#C9CCD6}
+.zeichen span::before{content:"";display:inline-block;width:1.4rem;height:10px;margin-right:.5rem;background:var(--g)}
+.zeichen span+span::before{background:var(--o)}
+
+.galerie{padding-block:var(--abschnitt)}
+.galerie h2{margin-bottom:clamp(1.5rem,3vw,2.5rem);max-width:18ch}
+
+.lage{background:var(--c);color:var(--s);padding-block:var(--abschnitt) 4rem}
+.lage .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(2rem,5vw,4rem);align-items:start}
+.lage h2{font-size:clamp(2rem,4vw,3rem)}
+.lage .ort{font:700 1.4rem/1.3 var(--d);margin-top:.5rem}
+.lage p.text{margin-top:1.5rem;max-width:38ch}
+.lage .aktionen{margin-top:2rem}
+.lage .knopf-r{border-color:var(--s);color:var(--s)}
+.lage .knopf-r:hover{background:var(--s);color:var(--c)}
+.karte{position:relative;z-index:0;isolation:isolate;overflow:hidden;aspect-ratio:3/2;border:2px solid var(--s);background:#E4DCCD}
+.karte [data-karte]{width:100%;height:100%}
+
+.schluss{border-top:12px solid var(--g);padding-block:var(--abschnitt) clamp(2.5rem,5vw,4rem)}
+.schluss .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:2rem clamp(2rem,5vw,4rem);align-items:end}
+.schluss .zeile-k{font:700 1.15rem/1.3 var(--d);color:var(--g);letter-spacing:.04em}
+.nummer{display:inline-block;font:700 clamp(2.25rem,6vw,5.5rem)/1 var(--d);color:var(--g);text-decoration:none;font-variant-numeric:tabular-nums;white-space:nowrap;padding-block:.25rem}
+.nummer:hover{color:var(--o)}
+.schluss .rechts p{color:var(--m);margin-bottom:1rem}
+.schluss .rechts p strong{color:var(--c)}
+.fuss{border-top:1px solid var(--linie);padding-block:2rem;color:var(--m);font-size:.9375rem}
+.fuss .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2rem}
+.rechtliches p+p{margin-top:.5rem}
+.rechtliches a{display:inline-block;padding-block:.5rem}
+
+.leiste{display:none}
+
+@media (min-width:1100px){
+.reiter{display:none}
+.spalten{display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
+.spalte,.spalte.aktiv{display:block;animation:none}
+.spalte+.spalte{border-left:1px solid var(--linie)}
+.spalte .posten{grid-template-columns:minmax(1.5rem,1fr) auto;row-gap:.15rem}
+.spalte .posten .de{grid-column:1/-1}
+}
+@media (max-width:1099px){
+.spalte h3{display:none}
+.spalte ul{padding-top:.5rem}
+}
+@media (max-width:1023px){
+.ruf .ruf-text{grid-template-columns:1fr}
+.zeile,.skala{grid-template-columns:6.5rem 8.5rem minmax(0,1fr)}
+}
+@media (max-width:819px){
+.nav a:not(.knopf){display:none}
+.marke span{display:none}
+.hero{flex-direction:column}
+.hero-foto{flex:none;order:-1;width:100%}
+.hero-tafel{flex:none;padding:2rem var(--rand) 2.5rem}
+.name{font-size:clamp(3.5rem,18vw,7rem)}
+.aktionen{flex-direction:column}
+.aktionen .knopf{width:100%}
+.kopfzeile,.ruf .wrap,.zeiten .wrap,.lage .wrap,.schluss .wrap{grid-template-columns:1fr}
+.ruf figure{max-width:20rem;width:100%}
+.leiste-fotos,.reihe{flex-direction:column}
+.leiste-fotos>*,.reihe>*{flex:none;width:100%}
+.zeile{grid-template-columns:1fr auto;grid-template-areas:"t z" "b b";row-gap:.75rem}
+.zeile .tag{grid-area:t}.zeile .zeit{grid-area:z}.zeile .balken{grid-area:b}
+.skala{grid-template-columns:1fr}
+.skala div{grid-column:1}
+.jetzt{top:-6px;bottom:-6px}
+.leiste{display:grid;grid-template-columns:1.3fr 1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--s);border-top:1px solid var(--g);padding-bottom:env(safe-area-inset-bottom)}
+.leiste a{display:flex;align-items:center;justify-content:center;min-height:52px;font-weight:700;text-decoration:none;padding:.5rem}
+.leiste a:first-child{background:var(--o);color:var(--s)}
+.leiste a+a{border-left:1px solid var(--linie)}
+body{padding-bottom:calc(52px + env(safe-area-inset-bottom))}
+}
+@media (prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+*,*::before,*::after{animation:none!important;transition:none!important}
+}
+.ruf h2{font-size:clamp(1.75rem,4vw,2.5rem)}
+.ruf .satz{font:700 clamp(2.25rem,5vw,4rem)/1.1 var(--d);margin-top:1rem;padding-bottom:1.25rem;border-bottom:2px solid var(--s)}
+.ruf .satz span{color:#8A6A1F;padding-inline:.1em}
+.ruf .ruf-text{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem 2rem;margin-top:1.5rem}
+.ruf .ruf-text p{max-width:42ch}
+.ruf .ruf-text a{font-weight:700;font-variant-numeric:tabular-nums}
+.ruf .knopf{margin-top:2rem}
+.mosaik{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px 8px}
+.mosaik figure{display:flex;flex-direction:column}
+.mosaik img{flex:1 1 auto;min-height:0}
+.m8{grid-column:span 8}.m4{grid-column:span 4}
+.heute-hinweis{margin-top:1.5rem;padding:.75rem 1rem;border-left:4px solid var(--o);background:#E9E1D2;font-weight:700;font-variant-numeric:tabular-nums;max-width:38ch}
+.nummer-h{font-size:inherit;line-height:1}
+.sozial{display:flex;flex-wrap:wrap;gap:.25rem 1.5rem;margin-top:1rem}
+.sozial a{color:var(--g);font-weight:700;min-height:44px;display:inline-flex;align-items:center;text-underline-offset:4px}
+.sozial a:hover{color:var(--c)}
+@media (max-width:819px){.mosaik{grid-template-columns:1fr}.mosaik>*{grid-column:auto}.mosaik img{flex:none}}
+.ruf figure img{filter:saturate(.55) contrast(.95) brightness(1.02)}
+.ruf ol{margin-top:.25rem}
+.ruf ol strong{font-size:clamp(1.75rem,2.8vw,2.5rem);white-space:nowrap;padding-bottom:.75rem;border-bottom:2px solid var(--s);margin-bottom:1rem}
+.ruf li+li::before{top:calc(clamp(1.75rem,2.8vw,2.5rem)*.55 - 6px)}
+.ruf li p{max-width:30ch}
+.lage .links{display:flex;flex-wrap:wrap;gap:.25rem 1.5rem;margin-top:1rem}
+.lage .links a{font-weight:700;min-height:44px;display:inline-flex;align-items:center;text-underline-offset:4px;font-variant-numeric:tabular-nums}
+.lage .links a:hover{color:#8A4A0A}
+.leiste-fotos .ki-schale img{object-position:center 30%}
+.nachweise a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.fuss .wrap>div:first-child p+p{margin-top:.5rem}
+@media (max-width:819px){
+.hero-foto img{aspect-ratio:4/3;max-height:45vh;flex:none}
+.hero-tafel{gap:1rem;padding-top:1.5rem}
+.name{font-size:clamp(3rem,14vw,5rem)}
+.hero-tafel .text{order:5}
+.ruf ol{grid-template-columns:1fr;gap:1.75rem}
+.ruf li+li::before{display:none}
+.ruf ol strong{white-space:normal}
+.leiste-fotos{flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px}
+.leiste-fotos>*{flex:0 0 82%;width:auto;scroll-snap-align:start}
+.leiste-fotos img{aspect-ratio:4/3}
+.lage .links{flex-direction:column;gap:0}
+}
+</style>
+<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}</style></head>
+<body><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für Palast. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
+
+<header class="kopf">
+<div class="wrap">
+<a class="marke" href="#start" aria-label="Palast, zum Seitenanfang"><b>PALAST</b><span lang="ar" dir="rtl">القصر</span></a>
+<nav class="nav" aria-label="Hauptnavigation">
+<a href="#tafel">Tafel</a>
+<a href="#zeiten">Zeiten</a>
+<a href="#anfahrt">Anfahrt</a>
+<a class="knopf knopf-o" href="tel:+4951189734186">Anrufen</a>
+</nav>
+</div>
+</header>
+
+<main id="start">
+<section class="hero" aria-labelledby="titel">
+<div class="hero-tafel">
+<p class="status"><span data-status>Täglich ab 10:00 geöffnet</span></p>
+<div>
+<h1 class="name" id="titel"><span class="name-de">PALAST</span><span class="name-ar" lang="ar" dir="rtl">القصر – مطعم</span></h1>
+<p class="unter">Restaurant · Steintor</p>
+</div>
+<p class="angebot">Schawarma, Grill, Falafel und Pizza – Steintorstraße 7, Hannover.</p>
+<p class="text">Essen an der Theke oder draußen, zum Mitnehmen oder mit Lieferservice. Täglich ab 10 Uhr, freitags bis eins, samstags bis zwei.</p>
+<div class="aktionen">
+<a class="knopf knopf-o" href="tel:+4951189734186">0511 89734186 anrufen</a>
+<a class="knopf knopf-g" href="#tafel">Zur Tafel</a>
+</div>
+</div>
+<figure class="hero-foto" data-foto>
+<img src="https://lh3.googleusercontent.com/grass-cs/ACvplmPHVALsB5Z944_Z0ARXv0fOYtaBXrBTKkKJK-Dcq0zkNWwmvjYbdYAW0_S_c72Jf9-swMvnIhfW8NCdPCpAOldI4OFh48fZ_DQXUoYL80do88JcdysW3-y5wFVNgeRONtZJispx=s4800-w1242" referrerpolicy="no-referrer" width="1242" height="795" fetchpriority="high" alt="Gemischte Grillplatte im Palast: Kebab, Hähnchen, gegrilltes Gemüse und Fladenbrot">
+</figure>
+</section>
+
+<section class="tafel-ab" id="tafel" aria-labelledby="tafel-titel">
+<div class="wrap">
+<div class="kopfzeile">
+<h2 id="tafel-titel">Die Tafel über der Theke</h2>
+<p>Links Deutsch, rechts Arabisch – wie im Laden. Hier eine Auswahl, die ganze Karte mit allen Preisen hängt am Steintor.</p>
+</div>
+<div class="tafel">
+<div class="reiter" role="tablist" aria-label="Kategorien der Tafel">
+<button role="tab" id="r1" aria-controls="s1" aria-selected="true">Sandwich</button>
+<button role="tab" id="r2" aria-controls="s2" aria-selected="false" tabindex="-1">Vorspeisen</button>
+<button role="tab" id="r3" aria-controls="s3" aria-selected="false" tabindex="-1">Salate</button>
+<button role="tab" id="r4" aria-controls="s4" aria-selected="false" tabindex="-1">Grill &amp; Menü</button>
+<button role="tab" id="r5" aria-controls="s5" aria-selected="false" tabindex="-1">Pizza &amp; Gebäck</button>
+</div>
+<div class="spalten">
+<div class="spalte aktiv" id="s1" role="tabpanel" aria-labelledby="r1">
+<h3><span>Sandwich</span><span lang="ar" dir="rtl">ساندويش</span></h3>
+<ul>
+<li class="posten"><span class="de">Schawarma Hähnchen</span><span class="punkte"></span><span lang="ar" dir="rtl">شاورما دجاج</span></li>
+<li class="posten"><span class="de">Schawarma Lamm</span><span class="punkte"></span><span lang="ar" dir="rtl">شاورما لحم</span></li>
+<li class="posten"><span class="de">Arabisches Schawarma (Röllchen) mit Pommes</span><span class="punkte"></span><span lang="ar" dir="rtl">شاورما عربي</span></li>
+</ul>
+</div>
+<div class="spalte" id="s2" role="tabpanel" aria-labelledby="r2">
+<h3><span>Vorspeisen</span><span lang="ar" dir="rtl">مقبلات</span></h3>
+<ul>
+<li class="posten"><span class="de">Hummus</span><span class="punkte"></span><span lang="ar" dir="rtl">حمص</span></li>
+<li class="posten"><span class="de">Falafel</span><span class="punkte"></span><span lang="ar" dir="rtl">فلافل</span></li>
+<li class="posten"><span class="de">Knoblauchcreme</span><span class="punkte"></span><span lang="ar" dir="rtl">ثومية</span></li>
+</ul>
+</div>
+<div class="spalte" id="s3" role="tabpanel" aria-labelledby="r3">
+<h3><span>Salate</span><span lang="ar" dir="rtl">سلطات</span></h3>
+<ul>
+<li class="posten"><span class="de">Taboulé</span><span class="punkte"></span><span lang="ar" dir="rtl">تبولة</span></li>
+<li class="mehr">Weitere Salate in der Auslage an der Theke.</li>
+</ul>
+</div>
+<div class="spalte" id="s4" role="tabpanel" aria-labelledby="r4">
+<h3><span>Grill &amp; Menü</span><span lang="ar" dir="rtl">مشاوي ووجبات</span></h3>
+<ul>
+<li class="posten"><span class="de">Gemischte Grillplatte</span><span class="punkte"></span><span lang="ar" dir="rtl">مشاوي مشكلة</span></li>
+<li class="posten"><span class="de">Kebab</span><span class="punkte"></span><span lang="ar" dir="rtl">كباب</span></li>
+<li class="posten"><span class="de">Hähnchen vom Grill</span><span class="punkte"></span><span lang="ar" dir="rtl">دجاج مشوي</span></li>
+</ul>
+</div>
+<div class="spalte" id="s5" role="tabpanel" aria-labelledby="r5">
+<h3><span>Pizza &amp; Gebäck</span><span lang="ar" dir="rtl">بيتزا ومعجنات</span></h3>
+<ul>
+<li class="posten"><span class="de">Pizza</span><span class="punkte"></span><span lang="ar" dir="rtl">بيتزا</span></li>
+<li class="mehr">Sorten und Gebäck stehen auf der Tafel im Laden.</li>
+</ul>
+</div>
+</div>
+<div class="tafel-fuss">
+<p>Preise an der Theke oder telefonisch: <a href="tel:+4951189734186">0511 89734186</a></p>
+<p>Vegetarisch geht auch. Allergien bitte bei der Bestellung nennen.</p>
+</div>
+</div>
+<div class="leiste-fotos">
+<figure style="--r:1" data-foto>
+<img src="https://lh3.googleusercontent.com/grass-cs/ACvplmNKBbRnqBzmOvHqMduQlcSGxcOHTyGg5TF6v3w3jtnw61Q7uqDX6n3yOpkQcA5KOabHxlv7O_YCtGiZoaYw6KrsicpbOvhTBaDX2QqyH58DgzDYtI5R8paagOlOHwjOvkA_uRr8ww=s4800-w1000" referrerpolicy="no-referrer" width="1240" height="1239" loading="lazy" alt="Arabisches Schawarma in Röllchen geschnitten, mit Pommes, Knoblauchcreme und Gemüse">
+</figure>
+<figure style="--r:1.778" data-foto>
+<img src="https://lh3.googleusercontent.com/grass-cs/ACvplmMBjKkzMyxMFpAIrkUpAvZtMrDsarGKMZ6CXultqZsNgy-jzlOV8rfYoTOMBpEUMZRsoYeqCc3Hs7gNdObGgVIC34oLVImpCTRpJmAW_hdpThGzl3AI9pB1djWIMu4e_Jj442Cu3GE6gmeJ=s4800-w1000" referrerpolicy="no-referrer" width="4000" height="2252" loading="lazy" alt="Gegrilltes Hähnchen auf Safranreis mit Knoblauchcreme und Brot">
+</figure>
+<figure class="ki-schale" style="--r:1.5">
+<img src="ki-knoblauchcreme.webp" width="1500" height="1000" loading="lazy" alt="Schälchen mit Knoblauchcreme, eingelegtem Rotkohl und Gurken">
+</figure>
+</div>
+</div>
+</section>
+
+<section class="ruf hell" aria-labelledby="ruf-titel">
+<div class="wrap">
+<figure>
+<img src="ki-spiesse.webp" width="900" height="1200" loading="lazy" alt="Marinierte Hähnchen- und Kofta-Spieße nebeneinander auf einem Blech">
+</figure>
+<div>
+<h2 id="ruf-titel" class="sr">Bestellen und abholen</h2>
+<ol>
+<li><strong>Anrufen</strong><p><a href="tel:+4951189734186">0511&nbsp;89734186</a> wählen, täglich ab 10&nbsp;Uhr. Auch für Lieferservice und Tischreservierung.</p></li>
+<li><strong>Bestellen</strong><p>Gerichte von der Tafel nennen und die Abholzeit absprechen. Allergien gleich mit angeben.</p></li>
+<li><strong>Abholen</strong><p>An der Theke in der Steintorstraße&nbsp;7. Wer bleibt, isst drinnen oder draußen vor der Tür.</p></li>
+</ol>
+<a class="knopf knopf-o" href="tel:+4951189734186">Jetzt anrufen</a>
+</div>
+</div>
+</section>
+
+<section class="zeiten" id="zeiten" aria-labelledby="zeiten-titel">
+<div class="wrap">
+<div class="zeiten-text">
+<h2 id="zeiten-titel">Freitag bis eins, Samstag bis zwei.</h2>
+<p>An allen anderen Tagen von 10 Uhr bis Mitternacht. Jeden Tag geöffnet, auch sonntags.</p>
+<a class="knopf knopf-o" href="tel:+4951189734186">Vorbestellen: 0511 89734186</a>
+</div>
+<div>
+<div class="skala" aria-hidden="true"><div><span style="left:0">10</span><span style="left:25%">14</span><span style="left:50%">18</span><span style="left:75%">22</span><span style="left:87.5%">00</span><span style="left:100%">02</span></div></div>
+<ol class="fahrplan" aria-label="Öffnungszeiten">
+<li class="zeile" style="--e:14"><span class="tag">Montag</span><span class="zeit">10:00 – 00:00</span><span class="balken" aria-hidden="true"><i></i></span></li>
+<li class="zeile" style="--e:14"><span class="tag">Dienstag</span><span class="zeit">10:00 – 00:00</span><span class="balken" aria-hidden="true"><i></i></span></li>
+<li class="zeile" style="--e:14"><span class="tag">Mittwoch</span><span class="zeit">10:00 – 00:00</span><span class="balken" aria-hidden="true"><i></i></span></li>
+<li class="zeile" style="--e:14"><span class="tag">Donnerstag</span><span class="zeit">10:00 – 00:00</span><span class="balken" aria-hidden="true"><i></i></span></li>
+<li class="zeile" style="--e:15"><span class="tag">Freitag</span><span class="zeit">10:00 – 01:00</span><span class="balken" aria-hidden="true"><i></i></span></li>
+<li class="zeile" style="--e:16"><span class="tag">Samstag</span><span class="zeit">10:00 – 02:00</span><span class="balken" aria-hidden="true"><i></i></span></li>
+<li class="zeile" style="--e:14"><span class="tag">Sonntag</span><span class="zeit">10:00 – 00:00</span><span class="balken" aria-hidden="true"><i></i></span></li>
+</ol>
+<p class="zeichen" aria-hidden="true"><span>bis Mitternacht</span><span>nach Mitternacht</span></p>
+</div>
+</div>
+</section>
+
+<section class="galerie" aria-labelledby="galerie-titel">
+<div class="wrap">
+<h2 id="galerie-titel">Was am Steintor über die Theke geht</h2>
+<div class="mosaik">
+<figure class="m8" style="--r:1.778" data-foto>
+<img src="https://lh3.googleusercontent.com/grass-cs/ACvplmPg8El5oJoclkqGclmURTNu2R_m3fs3gV0io3cgnbbopDyQEqsgfR6GghEEJvVJ7yVYmJ9k8VynelZbEjzgS8o2H2XoujGOpBU0V82mE9jY3QmnrmrrCCk46ysBAxWYJVVwmrvj=s4800-w1000" referrerpolicy="no-referrer" width="1242" height="699" loading="lazy" alt="Teller mit Falafel, Schawarma, Hummus und frischem Salat">
+</figure>
+<figure class="m4" style="--r:1" data-foto>
+<img src="https://lh3.googleusercontent.com/grass-cs/ACvplmMB5q1aZgrTrhvJzoYjMRKeyufKUM1s3Kl2Fco9KMWk8M9vKmV1D0xye2RrziMehEqxig3nyCBeLiBSHmuaVAfJ5n3dIsuT8d0kHnoBfIUscw6_0sWjfoX8ff7MyKDsGiZaOELGxg=s4800-w1000" referrerpolicy="no-referrer" width="1240" height="1239" loading="lazy" alt="Taboulé mit Römersalat, Karotten und Zitronenscheiben">
+</figure>
+<figure class="m4" style="--r:1">
+<img src="ki-sumach-hummus.webp" width="1000" height="1000" loading="lazy" alt="Hummus mit Sumach und Olivenöl am Tellerrand">
+</figure>
+<figure class="m8" style="--r:1.778" data-foto>
+<img src="https://lh3.googleusercontent.com/grass-cs/ACvplmOHj5ve7DZeA3HU_NVLyr4Lctg6AqeD-janl7q92nTvJbvPi9Y1UjegGhy59wnlWW5L3BKzRM5ui5vQKFw4LOwOEyAdZpKM6mZflzTT2yTOT9Ml5uBV0w3NEnFEpt2yCb-0h1q3=s4800-w1000" referrerpolicy="no-referrer" width="4032" height="3024" loading="lazy" alt="Theke im Palast mit Schawarma-Spießen, Salatauslage und der beleuchteten Menütafel">
+</figure>
+</div>
+</div>
+</section>
+
+<section class="lage hell" id="anfahrt" aria-labelledby="lage-titel">
+<div class="wrap">
+<div>
+<h2 id="lage-titel">Steintorstraße&nbsp;7</h2>
+<p class="ort">30159 Hannover</p>
+<p class="text">Am Steintor, mitten in der Innenstadt. Drinnen an der Theke oder draußen an den Tischen vor der Tür.</p>
+<p class="heute-hinweis" data-heute>Täglich ab 10:00 · Fr bis 01:00, Sa bis 02:00</p>
+<div class="aktionen">
+<a class="knopf knopf-o" href="https://www.google.com/maps/dir/?api=1&amp;destination=Palast+Restaurant+Steintorstra%C3%9Fe+7+30159+Hannover" target="_blank" rel="noopener">Route in Google Maps</a>
+</div>
+<p class="links"><a href="tel:+4951189734186">0511&nbsp;89734186 anrufen</a><a href="#zeiten">Alle Öffnungszeiten</a></p>
+</div>
+<div class="karte"><div data-karte data-stil="warm" data-farbe="#E8761C"></div></div>
+</div>
+</section>
+
+<section class="schluss" aria-labelledby="schluss-titel">
+<div class="wrap">
+<div>
+<h2 id="schluss-titel" class="nummer-h"><a class="nummer" href="tel:+4951189734186">0511 89734186</a></h2>
+<p class="sozial"><a href="https://www.instagram.com/explore/search/keyword/?q=palast%20hannover" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/search/top?q=Palast%20Restaurant%20Hannover" target="_blank" rel="noopener">Facebook</a></p>
+</div>
+<div class="rechts">
+<p><strong>Palast</strong> <span lang="ar" dir="rtl">القصر – مطعم</span><br>Steintorstraße 7, 30159 Hannover</p>
+<p>Lieferservice und Tischreservierung telefonisch. Abholung an der Theke.</p>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="fuss">
+<div class="wrap">
+<div>
+<p>Palast Restaurant · Steintorstraße 7 · 30159 Hannover</p>
+<p class="nachweise">Fotos (Google Maps): <a href="https://maps.google.com/maps/contrib/100304502709599320969" target="_blank" rel="noopener">Palast Restaurant - Hannover</a> · <a href="https://maps.google.com/maps/contrib/112709220623842079678" target="_blank" rel="noopener">Ahmad Agha</a> (Hähnchen auf Safranreis)</p>
+</div>
+<div class="rechtliches"><p>Entwurf von Medialyte, 21147 Hamburg. Adresse und Öffnungszeiten: Google. Fotos: Google Maps, Urheber jeweils am Bild. Einige Bilder und das Logo sind KI-generierte Vorschläge.</p><p><a href="https://medialyte.de/impressum" style="color:inherit;text-decoration:underline">Impressum</a> · <a href="https://medialyte.de/datenschutzerklaerung" style="color:inherit;text-decoration:underline">Datenschutz</a></p></div>
+</div>
+</footer>
+
+<nav class="leiste" aria-label="Schnellzugriff">
+<a href="tel:+4951189734186">Anrufen</a>
+<a href="https://www.google.com/maps/dir/?api=1&amp;destination=Palast+Restaurant+Steintorstra%C3%9Fe+7+30159+Hannover" target="_blank" rel="noopener">Route</a>
+<a href="#zeiten">Zeiten</a>
+</nav>
+
+<script>
+(()=>{
+const tabs=[...document.querySelectorAll('[role=tab]')],spalten=[...document.querySelectorAll('.spalte')],liste=document.querySelector('.reiter'),box=document.querySelector('.spalten');
+let akt=0;
+const zeige=(i,fokus)=>{
+if(i<0||i>=tabs.length||i===akt)return;
+spalten[i].style.setProperty('--dx',(i>akt?32:-32)+'px');
+akt=i;
+tabs.forEach((t,j)=>{t.setAttribute('aria-selected',j===i);t.tabIndex=j===i?0:-1});
+spalten.forEach((s,j)=>s.classList.toggle('aktiv',j===i));
+liste.scrollLeft=tabs[i].offsetLeft-16;
+if(fokus)tabs[i].focus();
+};
+tabs.forEach((t,i)=>{
+t.addEventListener('click',()=>zeige(i));
+t.addEventListener('keydown',e=>{
+if(e.key==='ArrowRight')zeige(Math.min(akt+1,tabs.length-1),1);
+if(e.key==='ArrowLeft')zeige(Math.max(akt-1,0),1);
+});
+});
+let x0=null;
+box.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passive:true});
+box.addEventListener('touchend',e=>{
+if(x0===null)return;
+const d=e.changedTouches[0].clientX-x0;x0=null;
+if(Math.abs(d)>50&&getComputedStyle(liste).display!=='none')zeige(akt+(d<0?1:-1));
+});
+const ende=[14,14,14,14,15,16,14],jetzt=new Date(),h=jetzt.getHours()+jetzt.getMinutes()/60,kal=(jetzt.getDay()+6)%7;
+let tag=kal,t=h-10;
+if(h<10){tag=(kal+6)%7;t+=24}
+const offen=t>=0&&t<=ende[tag],zeilen=document.querySelectorAll('.zeile'),heute=zeilen[offen?tag:kal];
+heute.classList.add('heute');heute.setAttribute('aria-current','date');
+const hw=document.querySelector('[data-heute]');if(hw)hw.textContent=offen?'Jetzt geöffnet · heute bis '+String((10+ende[tag])%24).padStart(2,'0')+':00 Uhr':'Gerade geschlossen · ab 10:00 Uhr wieder geöffnet';
+if(!offen)return;
+const balken=heute.querySelector('.balken'),strich=document.createElement('span'),pad=n=>String(n).padStart(2,'0');
+strich.className='jetzt';
+strich.innerHTML='<b>'+pad(jetzt.getHours())+':'+pad(jetzt.getMinutes())+'</b>';
+balken.appendChild(strich);
+const setze=()=>balken.style.setProperty('--p',(t/16).toFixed(4));
+if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window)){setze();return}
+const io=new IntersectionObserver(es=>{if(es[0].isIntersecting){requestAnimationFrame(setze);io.disconnect()}},{threshold:.6});
+io.observe(balken);
+})();
+</script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>[data-karte]{width:100%;height:100%;min-height:260px}[data-karte] .leaflet-tile-pane{filter:var(--karte-filter)}
+[data-karte] .leaflet-control-attribution{font-size:10px}.karte-pin{position:relative;width:34px;height:34px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+box-shadow:0 6px 16px rgba(0,0,0,.35);border:3px solid #fff}.karte-pin i{position:absolute;inset:9px;border-radius:50%;background:#fff}</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>(function(){var C={"lat": 52.3751677, "lng": 9.733379399999999, "name": "Palast", "filter": {"hell": "grayscale(1) contrast(1.05) brightness(1.04)", "dunkel": "grayscale(1) invert(1) contrast(.88) brightness(.82)", "warm": "grayscale(1) sepia(.5) contrast(1.02) brightness(1.02)", "kuehl": "grayscale(1) sepia(.35) hue-rotate(175deg) saturate(.55) brightness(1.03)", "mono": "grayscale(1) contrast(1.2)"}};function draw(){if(!window.L)return;document.querySelectorAll('[data-karte]').forEach(function(el){
+if(el._map)return;var st=el.getAttribute('data-stil')||'hell',col=el.getAttribute('data-farbe')||'#c0392b';
+el.style.setProperty('--karte-filter',C.filter[st]||C.filter.hell);
+var m=L.map(el,{scrollWheelZoom:false,zoomControl:true,attributionControl:true}).setView([C.lat,C.lng],16);el._map=m;
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(m);
+var icon=L.divIcon({className:'',html:'<div class="karte-pin" style="background:'+col+'"><i></i></div>',iconSize:[34,34],iconAnchor:[17,34]});
+L.marker([C.lat,C.lng],{icon:icon,title:C.name,alt:C.name}).addTo(m);setTimeout(function(){m.invalidateSize()},300);});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',draw);else draw();window.addEventListener('load',draw);})();</script><script>(function(){
+var P=[[600, 1440], [2040, 2880], [3480, 4320], [4920, 5760], [6360, 7200], [7800, 8700], [9240, 10200]];
+function fmt(m){m=((m%1440)+1440)%1440;var h=Math.floor(m/60),mi=m%60;return (h<10?'0':'')+h+':'+(mi<10?'0':'')+mi;}
+function now(){var d=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Berlin'}));return d.getDay()*1440+d.getHours()*60+d.getMinutes();}
+function status(){if(!P.length)return null;var t=now(),W=10080;
+ for(var i=0;i<P.length;i++){var s=P[i][0],e=P[i][1];if((t>=s&&t<e)||(t+W>=s&&t+W<e))return {offen:true,text:'Jetzt geöffnet bis '+fmt(e)};}
+ var best=null;for(var j=0;j<P.length;j++){var d=(P[j][0]-t+W)%W;if(best===null||d<best.d)best={d:d,s:P[j][0]};}
+ var tag=Math.floor(t/1440),ot=Math.floor(best.s/1440)%7,names=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+ var when=best.d<1440&&ot===tag?'heute':(best.d<2880&&ot===(tag+1)%7?'morgen':names[ot]);
+ return {offen:false,text:'Geschlossen · öffnet '+when+' um '+fmt(best.s)};}
+function run(){var s=status();document.querySelectorAll('[data-status]').forEach(function(el){
+ if(!s){el.style.display='none';return;}el.textContent=s.text;el.setAttribute('data-offen',s.offen?'ja':'nein');});}
+document.querySelectorAll('[data-foto] img').forEach(function(img){
+ function hide(){var b=img.closest('[data-foto]');if(b)b.style.display='none';}
+ if(!img.getAttribute('src'))hide();else{img.addEventListener('error',hide);if(img.complete&&img.naturalWidth===0)hide();}});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();setInterval(run,60000);
+})();</script></body>
+</html>
