@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Star Döner Ohlendorf – Karte, Preise, Öffnungszeiten · Seevetal</title>
+<meta name="description" content="Star Döner, Ohlendorfer Str. 46 in 21220 Seevetal. Drehspieß, Grillteller, Falafel, Kumpir mit Nummern und Preisen. Mo–Sa 11–21 Uhr, So 12–21 Uhr. Telefon 04185 8097897.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:ital,wght@0,400;0,700;1,400&family=Instrument+Sans:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+:root{
+  --rot:#D42A2C;
+  --schwarz:#161314;
+  --weiss:#F6F3EC;
+  --gelb:#EFCB2F;
+  --grau:#5d5658;
+  --kopf:3.75rem;
+  --rand:clamp(1rem,4vw,3rem);
+  --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --text:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--weiss);color:var(--schwarz);font-family:var(--text);font-size:1rem;line-height:1.5;overflow-x:clip}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3,p,ul,ol,figure{margin:0;padding:0}
+ul,ol{list-style:none}
+:focus-visible{outline:3px solid var(--rot);outline-offset:3px}
+.dunkel :focus-visible,.kopf :focus-visible,.sockel :focus-visible{outline-color:var(--gelb)}
+.skip{position:absolute;left:-999px;top:0;background:var(--gelb);color:var(--schwarz);padding:.75rem 1rem;font-weight:700;z-index:100}
+.skip:focus{left:1rem}
+
+.kopf{position:sticky;top:0;z-index:50;background:var(--schwarz);color:var(--weiss);min-height:var(--kopf);display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.4rem var(--rand)}
+.marke{font-family:var(--display);font-weight:700;font-size:1.75rem;line-height:1;text-transform:uppercase;letter-spacing:.03em;text-decoration:none;white-space:nowrap}
+.marke .a{display:inline-block;width:.62em;height:.72em;line-height:.72em;overflow:hidden;color:transparent;background:var(--rot);clip-path:polygon(50% 0,100% 100%,0 100%);margin:0 .02em}
+.kopf-rechts{display:flex;flex-direction:column;align-items:flex-end;gap:.1rem;text-align:right}
+.kopf-tel{font-weight:700;font-size:1rem;text-decoration:none;white-space:nowrap;font-variant-numeric:tabular-nums}
+.kopf-tel:hover{text-decoration:underline}
+[data-status]{font-size:.8rem;line-height:1.2;color:#cfc9c3}
+[data-status]:empty{display:none}
+[data-status][data-offen="ja"]{color:var(--weiss)}
+[data-status][data-offen="ja"]::before{content:"";display:inline-block;width:.55em;height:.55em;background:var(--rot);margin-right:.4em;vertical-align:.05em}
+@media (min-width:640px){
+  .kopf-rechts{flex-direction:row-reverse;align-items:center;gap:1.5rem}
+  [data-status]{font-size:.9rem}
+  .kopf-tel{font-size:1.1rem}
+}
+
+.foto{position:relative;margin:0;background:#2a2526}
+.foto img{width:100%;height:100%;object-fit:cover}
+.foto figcaption{position:absolute;left:0;bottom:0;max-width:100%}
+.foto-nachweis{display:inline-block;background:var(--schwarz);color:var(--weiss);font-size:.72rem;line-height:1.3;padding:.3rem .55rem;text-decoration:none}
+.foto-nachweis:hover{text-decoration:underline}
+.ki{position:relative;margin:0;background:#2a2526}
+.ki img{width:100%;height:100%;object-fit:cover}
+.ki-label{position:absolute;top:.5rem;right:.5rem;background:var(--schwarz);color:var(--weiss);font-size:.7rem;font-weight:700;letter-spacing:.04em;padding:.2rem .45rem}
+
+.einstieg{display:flex;flex-direction:column}
+.einstieg .foto{aspect-ratio:4/3}
+.einstieg-text{padding:2rem var(--rand) 3rem;display:flex;flex-direction:column;gap:1.5rem}
+.ort{font-weight:700;font-size:1.05rem;line-height:1.35}
+.ort a{text-decoration-thickness:2px;text-underline-offset:3px}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(2.6rem,9vw,4.25rem);line-height:.9;text-transform:uppercase}
+.eins{display:grid;grid-template-columns:auto 1fr;align-items:end;gap:.25rem 1rem;text-decoration:none;border-top:6px solid var(--schwarz);padding-top:.75rem}
+.eins .nr{font-family:var(--display);font-weight:700;color:var(--rot);font-size:clamp(8rem,34vw,15rem);line-height:.78;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.eins-t{padding-bottom:.4rem;font-size:1.05rem;line-height:1.35}
+.eins-t b{display:block;font-family:var(--display);font-size:2.2rem;line-height:1;margin-top:.35rem;font-variant-numeric:tabular-nums}
+.eins:hover .eins-t span{text-decoration:underline}
+.einstieg-zeiten{font-size:.95rem;color:var(--grau)}
+.einstieg-zeiten a{color:var(--schwarz);font-weight:700}
+@media (min-width:900px){
+  .einstieg{flex-direction:row;min-height:min(calc(100vh - var(--kopf)),860px)}
+  .einstieg .foto{flex:7 1 0;aspect-ratio:auto;min-height:32rem}
+  .einstieg-text{flex:5 1 0;padding:3rem var(--rand) 3rem clamp(2rem,4vw,4rem);justify-content:space-between;max-width:42rem}
+}
+
+.karte{padding:4rem 0 0}
+.karte-kopf{padding:0 var(--rand) 2.5rem;display:grid;gap:1rem;max-width:90rem;margin:0 auto}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(3rem,11vw,6.5rem);line-height:.88;text-transform:uppercase}
+.karte-kopf p{max-width:38rem;font-size:1.05rem}
+.karte-kopf small{display:block;color:var(--grau);font-size:.85rem;margin-top:.4rem}
+@media (min-width:900px){.karte-kopf{grid-template-columns:14rem 1fr;align-items:end;column-gap:2rem}}
+
+.kat{border-top:6px solid var(--schwarz);max-width:90rem;margin:0 auto;padding:0 var(--rand) 3.5rem;display:grid;grid-template-columns:1fr;gap:0 2rem}
+.kat h3{position:sticky;top:var(--kopf);z-index:5;background:var(--weiss);font-family:var(--display);font-weight:700;font-size:1.9rem;line-height:1.1;padding:.6rem 0;border-bottom:2px solid var(--schwarz);margin:0 0 .25rem}
+.kat h3 span{display:block;font-family:var(--text);font-weight:400;font-size:.85rem;color:var(--grau)}
+.gerichte li{display:grid;grid-template-columns:4.4rem 1fr auto;gap:.9rem;align-items:start;padding:1rem 0;border-bottom:1px solid rgba(22,19,20,.18)}
+.gerichte li:last-child{border-bottom:0}
+.gerichte .nr{font-family:var(--display);font-weight:700;color:var(--rot);font-size:4.2rem;line-height:.8;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.gerichte strong{display:block;font-size:1.08rem;line-height:1.25}
+.gerichte p{font-size:.93rem;color:var(--grau);margin-top:.2rem;max-width:34rem}
+.gerichte .preis{font-family:var(--display);font-weight:700;font-size:1.65rem;line-height:1;white-space:nowrap;font-variant-numeric:tabular-nums;text-align:right;padding-top:.1rem}
+.kat-bild{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1rem}
+.kat-bild > *{aspect-ratio:3/4}
+.kat-bild.eins-bild{grid-template-columns:1fr}
+.kat-bild.eins-bild > *{aspect-ratio:4/3}
+@media (min-width:640px){
+  .gerichte li{grid-template-columns:7rem 1fr auto;gap:1.25rem;padding:1.25rem 0}
+  .gerichte .nr{font-size:6.5rem}
+  .gerichte strong{font-size:1.2rem}
+  .gerichte .preis{font-size:2rem}
+}
+@media (min-width:900px){
+  .kat{grid-template-columns:14rem minmax(0,1fr) minmax(14rem,22rem);padding-top:1.5rem}
+  .kat h3{top:calc(var(--kopf) + 1.25rem);align-self:start;border-bottom:0;padding:0;font-size:2.4rem;background:transparent}
+  .kat-bild{grid-template-columns:1fr;margin-top:0;align-self:start;gap:1rem}
+  .kat-bild > *{aspect-ratio:3/4}
+  .kat-bild.eins-bild > *{aspect-ratio:1/1}
+  .gerichte li:first-child{padding-top:0}
+}
+@media (min-width:1200px){.gerichte .nr{font-size:8rem}.gerichte li{grid-template-columns:8.5rem 1fr auto}}
+
+.grill{background:var(--schwarz);color:var(--weiss);margin-top:2rem}
+.grill-innen{max-width:90rem;margin:0 auto;padding:0 var(--rand) 4rem;display:grid;gap:2rem}
+.grill-bilder{display:grid;gap:1rem}
+.grill-bilder .foto{aspect-ratio:4/3;margin:0 calc(var(--rand) * -1)}
+.grill-bilder .ki{aspect-ratio:1/1;max-width:16rem}
+.grill h3{font-family:var(--display);font-weight:700;font-size:clamp(3rem,11vw,6rem);line-height:.88;text-transform:uppercase}
+.grill h3 span{display:block;font-family:var(--text);font-weight:400;font-size:1rem;text-transform:none;color:#cfc9c3;margin-top:.75rem;line-height:1.4}
+.grill .gerichte li{border-bottom-color:rgba(246,243,236,.22)}
+.grill .gerichte p{color:#cfc9c3}
+.grill .gerichte .nr{color:var(--rot)}
+@media (min-width:900px){
+  .grill{margin-top:6rem}
+  .grill-innen{grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:clamp(2rem,5vw,5rem);padding-bottom:5rem}
+  .grill-bilder{align-self:start;transform:translateY(-4rem)}
+  .grill-bilder .foto{margin:0;aspect-ratio:4/5}
+  .grill-bilder .ki{max-width:60%;margin-left:auto}
+  .grill-liste{padding-top:3.5rem}
+}
+.grill-bilder .foto{order:0}
+@media (max-width:899px){.grill-bilder{padding-top:0}}
+
+.theke{padding:4.5rem var(--rand) 3.5rem;max-width:110rem;margin:0 auto}
+.theke-raster{display:grid;gap:.75rem}
+.theke .foto{aspect-ratio:4/3}
+.theke .ki{aspect-ratio:16/7}
+.theke-zeile{display:grid;gap:.75rem;margin-top:1.5rem;max-width:62rem}
+.theke-zeile p{font-size:1.15rem;line-height:1.45}
+@media (min-width:900px){
+  .theke-raster{grid-template-columns:minmax(0,1fr) clamp(10rem,16vw,16rem);gap:1rem;height:min(80vh,52rem)}
+  .theke .foto,.theke .ki{aspect-ratio:auto;height:100%}
+  .theke-zeile{grid-template-columns:14rem 1fr;column-gap:2rem;align-items:start}
+}
+
+.info{border-top:6px solid var(--schwarz);max-width:90rem;margin:0 auto;padding:2.5rem var(--rand) 4rem;display:grid;gap:2.5rem}
+.info h2{font-size:clamp(2.2rem,6vw,3.6rem)}
+.info p{margin-top:.75rem;max-width:30rem;font-size:1.05rem}
+.info a{font-weight:700}
+.info-veg{color:var(--grau);font-size:.95rem}
+@media (min-width:760px){.info{grid-template-columns:1fr 1fr;column-gap:3rem}.info-veg{grid-column:1/-1}}
+
+.sockel{background:repeating-linear-gradient(180deg,var(--rot) 0 22px,var(--schwarz) 22px 34px);padding:clamp(2.5rem,7vw,5rem) var(--rand)}
+.tafel{max-width:80rem;margin:0 auto;background:var(--schwarz);color:var(--weiss);padding:clamp(1.5rem,4vw,3rem);display:grid;gap:2.5rem}
+.tafel h2{font-size:clamp(2.2rem,6vw,3.4rem);margin-bottom:1rem}
+.tel-gross{display:inline-block;font-family:var(--display);font-weight:700;font-size:clamp(2.6rem,11vw,5rem);line-height:1;text-decoration:none;font-variant-numeric:tabular-nums;border-bottom:4px solid var(--rot);white-space:nowrap}
+.tel-gross:hover{border-bottom-color:var(--weiss)}
+.tafel address{font-style:normal;font-size:1.15rem;margin-top:1.5rem;line-height:1.4}
+.route{display:inline-block;margin-top:1rem;background:var(--rot);color:var(--weiss);font-weight:700;padding:.75rem 1.1rem;text-decoration:none}
+.route:hover{background:var(--weiss);color:var(--schwarz)}
+.zeiten{width:100%;border-collapse:collapse;font-family:var(--display);font-size:1.6rem;font-variant-numeric:tabular-nums}
+.zeiten th,.zeiten td{padding:.45rem .6rem;border-bottom:1px solid rgba(246,243,236,.18);text-align:left;font-weight:400}
+.zeiten td{text-align:right;white-space:nowrap}
+.zeiten tr.heute th,.zeiten tr.heute td{background:var(--gelb);color:var(--schwarz);font-weight:700;border-bottom-color:var(--gelb)}
+.zeiten caption{caption-side:bottom;text-align:left;font-family:var(--text);font-size:.9rem;color:#cfc9c3;padding-top:.9rem}
+@media (min-width:860px){.tafel{grid-template-columns:1fr 1fr;column-gap:4rem}}
+
+.fuss{padding:2rem var(--rand) 2.5rem;max-width:90rem;margin:0 auto;display:grid;gap:1.5rem;font-size:.85rem;color:var(--grau)}
+.logo-vorschlag{display:flex;align-items:center;gap:1rem}
+.logo-vorschlag img{width:9rem;height:auto;background:#fff}
+.rechtliches p+p{margin-top:.5rem}
+.rechtliches a{color:var(--schwarz)}
+@media (min-width:760px){.fuss{grid-template-columns:auto 1fr;align-items:center;column-gap:3rem}}
+</style>
+<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}</style></head>
+<body><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für Star Döner. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
+<a class="skip" href="#karte">Zur Karte springen</a>
+
+<header class="kopf">
+  <a class="marke" href="#start" aria-label="Star Döner, zum Seitenanfang">St<span class="a">A</span>r Döner</a>
+  <div class="kopf-rechts">
+    <a class="kopf-tel" href="tel:+4941858097897">04185 8097897</a>
+    <span data-status></span>
+  </div>
+</header>
+
+<main id="start">
+  <section class="einstieg" aria-labelledby="titel">
+    <figure class="foto" data-foto>
+      <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmO2u_3gd0cdBA51kq37cZNjwtn--GyxroB9D8RPjsVmvgJR0j4kba6lRK5ae22q5H43oq3r-afFjkAQLxzTnPXjnt0odlgEVPEgfm8G3JuPMQ891thX3WEN19ANcmesrTHVAmQv0Q=s4800-w1800" referrerpolicy="no-referrer" alt="Gedeckter Tisch von oben: Grillplatte, Dönerteller, Fladenbrot und Ayran" width="1200" height="900">
+      <figcaption><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/112094273586705254208" target="_blank" rel="noopener">Foto: Yusuf Koyuncu · Google Maps</a></figcaption>
+    </figure>
+    <div class="einstieg-text">
+      <div>
+        <p class="ort"><a href="#sockel">Ohlendorfer Str. 46<br>21220 Seevetal</a></p>
+      </div>
+      <h1 id="titel">Star Döner<br>Ohlendorf</h1>
+      <a class="eins" href="#karte">
+        <span class="nr" aria-hidden="true">01</span>
+        <span class="eins-t"><span>Die 01: Drehspieß im Brot, mit Salat und Soße.</span><b>8,50 €</b></span>
+      </a>
+      <p class="einstieg-zeiten">Montag bis Samstag ab 11, sonntags ab 12, jeden Tag bis 21 Uhr. <a href="#karte">Ganze Karte: 01 bis 70</a></p>
+    </div>
+  </section>
+
+  <section class="karte" id="karte" aria-labelledby="karte-titel">
+    <div class="karte-kopf">
+      <h2 id="karte-titel">Die Karte</h2>
+      <p>Bestellt wird mit der Nummer. Am Tresen oder am Telefon: Nummer sagen, fertig.
+        <small>Gerichte und Preise laut Karte im Laden. Getränke wie Ayran, Kaffee und Desserts gibt es vor Ort.</small></p>
+    </div>
+
+    <section class="kat" aria-labelledby="k-dreh">
+      <h3 id="k-dreh">Drehspieß <span>01 – 11</span></h3>
+      <ul class="gerichte">
+        <li><span class="nr">01</span><div><strong>Drehspieß im Brot</strong><p>mit Salat und Soße</p></div><span class="preis">8,50 €</span></li>
+        <li><span class="nr">05</span><div><strong>Dürüm Drehspieß</strong><p>mit Salat und Soße</p></div><span class="preis">9,50 €</span></li>
+        <li><span class="nr">06</span><div><strong>Drehspieß Teller</strong><p>mit Salat, Soße, Reis oder Pommes</p></div><span class="preis">14,50 €</span></li>
+        <li><span class="nr">08</span><div><strong>Vedo Drehspieß Teller</strong><p>mit Sauce Hollandaise und Gouda überbacken, dazu Salat, Pommes oder Reis</p></div><span class="preis">16,50 €</span></li>
+        <li><span class="nr">11</span><div><strong>Drehspieß Box</strong><p>mit Salat, Soße, Reis oder Pommes</p></div><span class="preis">9,50 €</span></li>
+      </ul>
+      <div class="kat-bild">
+        <figure class="foto" data-foto>
+          <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmNXwyjn86LpH-SqkEJlN6---Pk4d3F5Ay1y2vmdpqupzSwNdr1cBAiUn-EXVIcBpDQZgRZmSUsSETQN_RAPp5I4EIhALASvavOp_nAKvalbUeBB94RIow9gQxjyaOdFtAVpwDBuVKE8zJlN=s4800-w1000" referrerpolicy="no-referrer" alt="Döner im Fladenbrot mit Fleisch, Krautsalat und Soße, in Papier eingeschlagen" loading="lazy" width="600" height="800">
+          <figcaption><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/112797448083102427160" target="_blank" rel="noopener">Foto: Jens Moseing · Google Maps</a></figcaption>
+        </figure>
+        <figure class="foto" data-foto>
+          <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmPtV_o9_oeHlTsVLkS_l3jWu_3JWXJeb4Nj1fVErBQXqLYOrj6A-Y8EzSzjPhmJlvsi7pPYqDyTzutL36biPeIbcXZWiFZIaSc7SqPnq9yMuZ7qj14nMFKU3BMMgANizFWJfs1glaJbOuc=s4800-w1000" referrerpolicy="no-referrer" alt="Zwei Dönerspieße am Grill in der Küche" loading="lazy" width="600" height="800">
+          <figcaption><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/112797448083102427160" target="_blank" rel="noopener">Foto: Jens Moseing · Google Maps</a></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="kat" aria-labelledby="k-kart">
+      <h3 id="k-kart">Kartoffel <span>51 – 53</span></h3>
+      <ul class="gerichte">
+        <li><span class="nr">51</span><div><strong>Drehspieß Kartoffel</strong><p>Drehspieß, Salat und Soße</p></div><span class="preis">9,50 €</span></li>
+        <li><span class="nr">53</span><div><strong>Fitness Kumpir</strong><p>Backkartoffel mit 4 Gemüse- oder Salatbeilagen und Soße</p></div><span class="preis">9,00 €</span></li>
+      </ul>
+      <div class="kat-bild eins-bild">
+        <figure class="ki">
+          <img src="ki-kumpir.webp" alt="Aufgeschnittene Backkartoffel mit Gemüse, Krautsalat und heller Soße in einer Schale" loading="lazy" width="800" height="800">
+          <span class="ki-label">KI-Bild</span>
+        </figure>
+      </div>
+    </section>
+
+    <section class="kat" aria-labelledby="k-imbiss">
+      <h3 id="k-imbiss">Imbiss <span>17 – 27</span></h3>
+      <ul class="gerichte">
+        <li><span class="nr">17</span><div><strong>Riesen Currywurst</strong><p>mit Pommes; mit Ketchup oder Mayo + 0,30 €</p></div><span class="preis">8,90 €</span></li>
+        <li><span class="nr">18</span><div><strong>Chicken Nuggets</strong><p>6 Stück mit Pommes; mit Ketchup oder Mayo + 0,30 €</p></div><span class="preis">8,00 €</span></li>
+        <li><span class="nr">19</span><div><strong>Chicken Nuggets ohne Pommes</strong></div><span class="preis">5,00 €</span></li>
+        <li><span class="nr">27</span><div><strong>Jägerschnitzel</strong><p>mit Pommes, Salat und Soße</p></div><span class="preis">11,50 €</span></li>
+      </ul>
+      <div class="kat-bild eins-bild">
+        <figure class="foto" data-foto>
+          <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmMuGoGHjC5GoXGr9H5fzpM-juvW1JsnNtH7AdAN6acrUq7sPdQDrmQqG4I5RYQS39TRk-l7A1SztjCrOdVjMYL26xyQiLpRxvFlv6dYy09vMz3DBrgjdk50bnxalWTVC_Z9Pu4kx3I245LU=s4800-w1000" referrerpolicy="no-referrer" alt="Currywurst mit Pommes und Krautsalat auf weißem Teller" loading="lazy" width="800" height="800">
+          <figcaption><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/102665583082448758891" target="_blank" rel="noopener">Foto: Jürgen Kirsch · Google Maps</a></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="grill dunkel" aria-labelledby="k-grill">
+      <div class="grill-innen">
+        <div class="grill-bilder">
+          <figure class="foto" data-foto>
+            <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmPeF9HlAb-yrhlOj1z7xw9E1RdAw093BUNpBvLR4INIbScaI5CiWaCKmwJnb1UFeZMejQaeQ1B_gQWg5B_QjmQ5fn1YYgy3OlfFhBXK5tt3sS9o233A28oaZK-JZPU9cxxgZkdW=s4800-w1000" referrerpolicy="no-referrer" alt="Gegrillte Lammkoteletts mit Reis, Salat, Tomate und Peperoni auf weißem Teller" loading="lazy" width="800" height="1000">
+            <figcaption><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/104067619016231196424" target="_blank" rel="noopener">Foto: Andreas Birnbaum · Google Maps</a></figcaption>
+          </figure>
+          <figure class="ki">
+            <img src="ki-peperoni-grill.webp" alt="Gegrillte grüne Peperoni und halbierte Tomaten mit Grillstreifen auf weißem Teller" loading="lazy" width="600" height="600">
+            <span class="ki-label">KI-Bild</span>
+          </figure>
+        </div>
+        <div class="grill-liste">
+          <h3 id="k-grill">Grillteller<span>35 bis 40. Jeder Teller mit Salat, Soße und wahlweise Pommes oder Reis.</span></h3>
+          <ul class="gerichte">
+            <li><span class="nr">35</span><div><strong>Souvlaki</strong><p>zwei Fleischspieße</p></div><span class="preis">17,50 €</span></li>
+            <li><span class="nr">37</span><div><strong>Putenspieß</strong><p>zwei Spieße</p></div><span class="preis">17,50 €</span></li>
+            <li><span class="nr">38</span><div><strong>Köfte Teller</strong><p>4 Frikadellen</p></div><span class="preis">17,50 €</span></li>
+            <li><span class="nr">39</span><div><strong>Lamm Teller</strong><p>4 Lammkoteletts</p></div><span class="preis">21,00 €</span></li>
+            <li><span class="nr">40</span><div><strong>Grill Teller</strong><p>1 Souvlaki-Spieß, 1 Putensteak, 1 Köfte-Frikadelle und Dönerfleisch</p></div><span class="preis">22,00 €</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="kat" aria-labelledby="k-falafel" style="padding-top:2rem">
+      <h3 id="k-falafel">Falafel &amp; Salat <span>45 – 70</span></h3>
+      <ul class="gerichte">
+        <li><span class="nr">45</span><div><strong>Falafel im Brot</strong><p>hausgemachte Falafel mit Salat und Soße</p></div><span class="preis">8,00 €</span></li>
+        <li><span class="nr">47</span><div><strong>Falafel Teller</strong><p>4 hausgemachte Falafel mit Pommes oder Reis, Salat und Soße</p></div><span class="preis">13,00 €</span></li>
+        <li><span class="nr">70</span><div><strong>Gemischter Salat</strong><p>nach Saison, mit American- oder Joghurtdressing</p></div><span class="preis">7,00 €</span></li>
+      </ul>
+      <div class="kat-bild eins-bild">
+        <figure class="ki">
+          <img src="ki-fladenbrot-stapel.webp" alt="Gefaltetes dünnes Fladenbrot auf einem Teller neben einer Rolle in Alufolie" loading="lazy" width="600" height="800">
+          <span class="ki-label">KI-Bild</span>
+        </figure>
+      </div>
+    </section>
+  </section>
+
+  <section class="theke" aria-labelledby="theke-titel">
+    <div class="theke-raster">
+      <figure class="foto" data-foto>
+        <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmP0hT0cC9fnKwoWh6ZkzmXnHqD4NlQKViC3F2boL6xI7pCPuvBdWYgkFl624Qx-NNodzAFciWFejXUZwDTIPX-EMqEptgiDkdOJLUrzUVE5x1_eeER06Z3-Gi14p-w47oDHPlEcVQyuCsMQ=s4800-w1000" referrerpolicy="no-referrer" alt="Salatauslage an der Star-Döner-Theke mit Paprika, Tomaten und Zitronen" loading="lazy" width="1600" height="1000">
+        <figcaption><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/112797448083102427160" target="_blank" rel="noopener">Foto: Jens Moseing · Google Maps</a></figcaption>
+      </figure>
+      <figure class="ki">
+        <img src="ki-zitronen-reihe.webp" alt="Reihe aus Zitronen und Tomaten auf einer schwarzen Thekenkante vor Schalen mit Krautsalat" loading="lazy" width="800" height="450">
+        <span class="ki-label">KI-Bild</span>
+      </figure>
+    </div>
+    <div class="theke-zeile">
+      <h2 id="theke-titel" style="font-size:clamp(2.2rem,6vw,3.6rem)">Die Theke</h2>
+      <p>In der Auslage: Krautsalat, Tomaten, Paprika, Peperoni, Oliven, Zitronen. Was ins Brot oder auf den Teller kommt, sagt man direkt am Tresen.</p>
+    </div>
+  </section>
+
+  <section class="info" aria-label="Essen vor Ort und Reservierung">
+    <div>
+      <h2>Vor Ort, draußen oder zum Mitnehmen</h2>
+      <p>Mittags und abends drinnen am Tisch, bei gutem Wetter draußen, oder eingepackt für unterwegs.</p>
+    </div>
+    <div>
+      <h2>Tisch reservieren: anrufen</h2>
+      <p>Für größere Runden vorher durchrufen: <a href="tel:+4941858097897">04185 8097897</a>.</p>
+    </div>
+    <p class="info-veg">Vegetarisch: 45 und 47 Falafel, 53 Fitness Kumpir, 70 Gemischter Salat.</p>
+  </section>
+</main>
+
+<footer>
+  <section class="sockel" id="sockel" aria-labelledby="sockel-titel">
+    <div class="tafel">
+      <div>
+        <h2 id="sockel-titel">So kommen Sie hin</h2>
+        <a class="tel-gross" href="tel:+4941858097897">04185 8097897</a>
+        <address>Star Döner<br>Ohlendorfer Str. 46<br>21220 Seevetal</address>
+        <a class="route" href="https://www.google.com/maps/dir/?api=1&amp;destination=Star%20D%C3%B6ner%2C%20Ohlendorfer%20Str.%2046%2C%2021220%20Seevetal" target="_blank" rel="noopener">Route in Google Maps</a>
+      </div>
+      <div>
+        <h2>Öffnungszeiten</h2>
+        <table class="zeiten">
+          <caption>Montag bis Samstag ab 11, sonntags ab 12, jeden Tag bis 21 Uhr.</caption>
+          <tbody>
+            <tr data-tag="1"><th scope="row">Montag</th><td>11:00 – 21:00</td></tr>
+            <tr data-tag="2"><th scope="row">Dienstag</th><td>11:00 – 21:00</td></tr>
+            <tr data-tag="3"><th scope="row">Mittwoch</th><td>11:00 – 21:00</td></tr>
+            <tr data-tag="4"><th scope="row">Donnerstag</th><td>11:00 – 21:00</td></tr>
+            <tr data-tag="5"><th scope="row">Freitag</th><td>11:00 – 21:00</td></tr>
+            <tr data-tag="6"><th scope="row">Samstag</th><td>11:00 – 21:00</td></tr>
+            <tr data-tag="0"><th scope="row">Sonntag</th><td>12:00 – 21:00</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <div class="fuss">
+    <div class="logo-vorschlag">
+      <img src="logo.svg" alt="Logo-Vorschlag: Schriftzug Star Döner mit rotem Dreieck als A" width="144" height="48" loading="lazy">
+      <span>Logo-Vorschlag</span>
+    </div>
+    <div class="rechtliches"><p>Entwurf von Medialyte, 21147 Hamburg. Adresse und Öffnungszeiten: Google. Fotos: Google Maps, Urheber jeweils am Bild. Mit „KI-Bild“ markierte Bilder und das Logo sind KI-generierte Vorschläge.</p><p><a href="https://medialyte.de/impressum">Impressum</a> · <a href="https://medialyte.de/datenschutzerklaerung">Datenschutz</a></p></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var heute=new Date().getDay();
+  var zeile=document.querySelector('.zeiten tr[data-tag="'+heute+'"]');
+  if(zeile){
+    zeile.classList.add('heute');
+    var th=zeile.querySelector('th');
+    if(th){th.setAttribute('aria-current','date');th.textContent+=' (heute)';}
+  }
+})();
+</script>
+<script>(function(){
+var P=[[720, 1260], [2100, 2700], [3540, 4140], [4980, 5580], [6420, 7020], [7860, 8460], [9300, 9900]];
+function fmt(m){m=((m%1440)+1440)%1440;var h=Math.floor(m/60),mi=m%60;return (h<10?'0':'')+h+':'+(mi<10?'0':'')+mi;}
+function now(){var d=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Berlin'}));return d.getDay()*1440+d.getHours()*60+d.getMinutes();}
+function status(){if(!P.length)return null;var t=now(),W=10080;
+ for(var i=0;i<P.length;i++){var s=P[i][0],e=P[i][1];if((t>=s&&t<e)||(t+W>=s&&t+W<e))return {offen:true,text:'Jetzt geöffnet bis '+fmt(e)};}
+ var best=null;for(var j=0;j<P.length;j++){var d=(P[j][0]-t+W)%W;if(best===null||d<best.d)best={d:d,s:P[j][0]};}
+ var tag=Math.floor(t/1440),ot=Math.floor(best.s/1440)%7,names=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+ var when=best.d<1440&&ot===tag?'heute':(best.d<2880&&ot===(tag+1)%7?'morgen':names[ot]);
+ return {offen:false,text:'Geschlossen · öffnet '+when+' um '+fmt(best.s)};}
+function run(){var s=status();document.querySelectorAll('[data-status]').forEach(function(el){
+ if(!s){el.style.display='none';return;}el.textContent=s.text;el.setAttribute('data-offen',s.offen?'ja':'nein');});}
+document.querySelectorAll('[data-foto] img').forEach(function(img){
+ function hide(){var b=img.closest('[data-foto]');if(b)b.style.display='none';}
+ if(!img.getAttribute('src'))hide();else{img.addEventListener('error',hide);if(img.complete&&img.naturalWidth===0)hide();}});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();setInterval(run,60000);
+})();</script></body>
+</html>
