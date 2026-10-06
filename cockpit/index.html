@@ -99,7 +99,8 @@ button, input { font: inherit; color: inherit; }
 .boot .skip { position: absolute; right: .9rem; top: .9rem; border: 1px solid var(--edge); background: rgba(255,255,255,.04); color: var(--ink3); border-radius: 8px; padding: .3rem .6rem; font-size: .72rem; cursor: pointer; opacity: .75; }
 .boot .skip:hover { opacity: 1; color: var(--ink); }
 .boot .go[hidden] { display: none; }
-.boot .go { position: absolute; top: calc(50% + min(15rem, 43vw) + 1.2rem); left: 50%; transform: translateX(-50%); }
+.boot .go { position: absolute; top: calc(50% + min(15rem, 43vw) + 1.2rem); left: 0; right: 0; margin: 0 auto; width: max-content; transform: none !important; transition: box-shadow .3s, background .3s; }
+.boot .go:hover { box-shadow: 0 0 34px -6px rgba(255,87,87,.8); }
 .boot .scan { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 0, rgba(123,175,255,.07) 50%, transparent 100%); background-size: 100% 12rem; background-repeat: no-repeat; animation: bootscan 2.2s linear infinite; pointer-events: none; }
 @keyframes bootscan { from { background-position: 0 -12rem; } to { background-position: 0 110vh; } }
 
@@ -133,6 +134,14 @@ button, input { font: inherit; color: inherit; }
 .ai-wait { display: inline-flex; gap: .5rem; align-items: center; color: var(--ink3); font-size: .85rem; }
 .ai-wait i { width: .6rem; height: .6rem; border-radius: 50%; background: var(--coral); animation: blink 1s infinite; }
 @media (max-width: 900px) { .cost-grid { grid-template-columns: 1fr; } }
+
+.vpill { position: fixed; left: 50%; bottom: 1.2rem; transform: translate(-50%, 140%); z-index: 950; display: flex; align-items: center; gap: .7rem; padding: .5rem .55rem .5rem .9rem; border-radius: 999px; border: 1px solid var(--edge); background: rgba(14,25,42,.9); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 16px 40px -16px rgba(0,0,0,.9); transition: transform .5s var(--spring); max-width: calc(100vw - 1.5rem); }
+.vpill.on { transform: translate(-50%, 0); }
+.vpill .wave { display: flex; gap: 3px; align-items: center; height: 18px; }
+.vpill .wave i { width: 3px; border-radius: 2px; background: var(--coral); height: calc(4px + var(--lv, 0) * 14px * var(--k)); transition: height .08s; }
+.vpill span { font-size: .8rem; color: var(--ink2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 46vw; }
+.vpill button { border: 1px solid var(--edge); background: rgba(255,255,255,.05); color: var(--ink); border-radius: 999px; padding: .3rem .7rem; font-size: .75rem; cursor: pointer; }
+@media (max-width: 640px) { .vpill { bottom: calc(5rem + env(safe-area-inset-bottom)); } }
 
 /* ---------- Sperrbildschirm ---------- */
 .lock { position: fixed; inset: 0; display: grid; place-items: center; padding: 1.5rem; z-index: 10; transition: opacity .7s var(--ease), transform .9s var(--ease); }
@@ -553,6 +562,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
 
 <div class="tip" id="tip" role="tooltip"></div>
 <div class="toast" id="toast" role="status"></div>
+<div class="vpill" id="vpill" role="status" aria-live="off"><div class="wave" aria-hidden="true"><i style="--k:.6"></i><i style="--k:1"></i><i style="--k:.8"></i><i style="--k:1.2"></i><i style="--k:.7"></i></div><span id="vpill-text">Lagebericht</span><button type="button" id="vpill-stop">Stopp</button></div>
 <nav class="mnav" id="mnav" aria-label="Bereiche">
   <a href="#kpis" data-sec="kpis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>Übersicht</a>
   <a href="#rank-title" data-sec="rank-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="10" rx="1.5"/><rect x="17" y="4" width="4" height="13" rx="1.5"/></svg>Board</a>
@@ -832,42 +842,61 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     if (!gesture) { go.hidden = false; go.onclick = function () { go.hidden = true; GESTURE = true; runBoot(d); }; return true; }
     go.hidden = true; runBoot(d); return true;
   }
+  var voiceOn = false, voiceRaf = 0;
+  function stopVoice() {
+    voiceOn = false; cancelAnimationFrame(voiceRaf);
+    if (introAudio) introAudio.pause(); if (window.speechSynthesis) speechSynthesis.cancel();
+    $("#vpill").classList.remove("on");
+  }
+  $("#vpill-stop").addEventListener("click", function () { Sound.play("close"); stopVoice(); });
+  function sentenceAt(text, f) {
+    var parts = text.match(/[^.!?]+[.!?]*/g) || [text], pos = f * text.length, acc = 0;
+    for (var i = 0; i < parts.length; i++) { acc += parts[i].length; if (acc >= pos) return parts[i].trim(); }
+    return parts[parts.length - 1].trim();
+  }
+  function startVoice(d, music) {
+    if (voiceOn || !Sound.on) return;
+    var text = (d.intro || {}).text || ""; if (!text) return;
+    voiceOn = true; subtitles(text);
+    var b = $("#boot"), pill = $("#vpill");
+    function level(l) { b.style.setProperty("--lv", l.toFixed(3)); pill.style.setProperty("--lv", l.toFixed(3)); }
+    function progress(f) { subProgress(f); $("#vpill-text").textContent = sentenceAt(text, f); }
+    function ended() { progress(1); setTimeout(stopVoice, 400); }
+    if (music) music.duck();
+    if (introAudio) {
+      var c = Sound.ctx(), an = null, data = null;
+      try { var src = c.createMediaElementSource(introAudio); an = c.createAnalyser(); an.fftSize = 256; data = new Uint8Array(an.frequencyBinCount); src.connect(an); an.connect(c.destination); } catch (e) {}
+      introAudio.addEventListener("timeupdate", function () { if (introAudio.duration) progress(introAudio.currentTime / introAudio.duration); });
+      introAudio.addEventListener("ended", ended);
+      introAudio.currentTime = 0;
+      introAudio.play().catch(function () { stopVoice(); });
+      (function loop() { if (!voiceOn) return; var l = 0; if (an) { an.getByteFrequencyData(data); var sum = 0; for (var i = 2; i < 48; i++) sum += data[i]; l = sum / (46 * 255); } level(l); voiceRaf = requestAnimationFrame(loop); })();
+      return;
+    }
+    if (!("speechSynthesis" in window)) { voiceOn = false; return; }
+    var u = new SpeechSynthesisUtterance(text); u.lang = "de-DE"; u.rate = .95; u.pitch = .75;
+    var de = speechSynthesis.getVoices().filter(function (v) { return /^de/i.test(v.lang); });
+    if (de.length) u.voice = de.filter(function (v) { return /male|mann|markus|yannick|conrad|stefan/i.test(v.name); })[0] || de[0];
+    u.onboundary = function (e) { progress(text.length ? (e.charIndex + 1) / text.length : 0); level(.2 + Math.random() * .4); };
+    u.onend = ended;
+    speechSynthesis.cancel(); speechSynthesis.speak(u);
+  }
   function runBoot(d) {
-    var b = $("#boot"), music = Sound.on ? Intro.play() : null, timers = [], done = false, speaking = false, raf = 0;
+    var b = $("#boot"), music = Sound.on ? Intro.play() : null, timers = [], done = false;
+    stopVoice();
     var lines = ["Verbinde mit Website-Agent", "Entschlüssele Daten · AES-256", "Lade Rangliste · " + (d.rangliste || []).length + " Restaurants", "Prüfe " + (d.demos || []).length + " Demo-Websites", "Stimme bereit"];
     lines.forEach(function (l, i) { timers.push(setTimeout(function () { var el = h("div", null, esc(l) + ' <span class="ok">✓</span>'); $("#boot-lines").appendChild(el); while ($("#boot-lines").children.length > 4) $("#boot-lines").firstChild.remove(); if (!music) Sound.play("type"); }, 250 + i * 420)); });
     var t0 = performance.now();
     (function pct() { if (done) return; var p = Math.min(100, Math.round((performance.now() - t0) / 2400 * 100)); $("#boot-pct").textContent = p + " %"; if (p < 100) requestAnimationFrame(pct); })();
     timers.push(setTimeout(function () { b.classList.add("hit"); $("#boot-lines").innerHTML = "<b>SYSTEME ONLINE</b>"; }, 2450));
-    timers.push(setTimeout(function () { (introLoading || Promise.resolve()).then(speak); }, 2900));
-    function speak() {
-      if (done) return;
-      var text = (d.intro || {}).text || "";
-      if (!Sound.on || !text) { timers.push(setTimeout(finish, 1800)); return; }
-      speaking = true; b.classList.add("talk"); subtitles(text);
-      if (music) music.duck();
-      if (introAudio) {
-        var c = Sound.ctx(), an = null, data = null;
-        try { var src = c.createMediaElementSource(introAudio); an = c.createAnalyser(); an.fftSize = 256; data = new Uint8Array(an.frequencyBinCount); src.connect(an); an.connect(c.destination); } catch (e) {}
-        introAudio.addEventListener("timeupdate", function () { if (introAudio.duration) subProgress(introAudio.currentTime / introAudio.duration); });
-        introAudio.addEventListener("ended", function () { subProgress(1); timers.push(setTimeout(finish, 900)); });
-        introAudio.play().catch(function () { timers.push(setTimeout(finish, 1200)); });
-        (function level() { if (done) return; var l = 0; if (an) { an.getByteFrequencyData(data); var sum = 0; for (var i = 2; i < 48; i++) sum += data[i]; l = sum / (46 * 255); } b.style.setProperty("--lv", l.toFixed(3)); raf = requestAnimationFrame(level); })();
-        return;
-      }
-      if (!("speechSynthesis" in window)) { timers.push(setTimeout(finish, 1500)); return; }
-      var u = new SpeechSynthesisUtterance(text); u.lang = "de-DE"; u.rate = .95; u.pitch = .75;
-      var de = speechSynthesis.getVoices().filter(function (v) { return /^de/i.test(v.lang); });
-      if (de.length) u.voice = de.filter(function (v) { return /male|mann|markus|yannick|conrad|stefan/i.test(v.name); })[0] || de[0];
-      u.onboundary = function (e) { subProgress(text.length ? (e.charIndex + 1) / text.length : 0); b.style.setProperty("--lv", (.25 + Math.random() * .3).toFixed(2)); };
-      u.onend = function () { subProgress(1); timers.push(setTimeout(finish, 900)); };
-      speechSynthesis.cancel(); speechSynthesis.speak(u);
-    }
+    timers.push(setTimeout(function () { b.classList.add("talk"); (introLoading || Promise.resolve()).then(function () { startVoice(d, music); }); }, 2900));
+    timers.push(setTimeout(finish, 6400));
     function finish() {
-      if (done) return; done = true; timers.forEach(clearTimeout); cancelAnimationFrame(raf);
-      if (introAudio) introAudio.pause(); if (window.speechSynthesis) speechSynthesis.cancel();
+      if (done) return; done = true; timers.forEach(clearTimeout);
       b.classList.add("gone"); b.setAttribute("aria-hidden", "true"); BOOTING = false;
       if (music) music.stop();
+      // Stimme läuft im Dashboard weiter
+      (introLoading || Promise.resolve()).then(function () { startVoice(d, null); if (voiceOn) $("#vpill").classList.add("on"); });
     }
     $("#boot-skip").onclick = function () { Sound.play("close"); finish(); };
     document.addEventListener("keydown", function esc1(e) { if (e.key === "Escape") { document.removeEventListener("keydown", esc1); finish(); } });
