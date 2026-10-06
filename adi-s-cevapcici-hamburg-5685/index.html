@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adi’s Ćevapčići – Balkanküche an der Billstedter Hauptstraße 1, Hamburg</title>
+<meta name="description" content="Adi’s Ćevapčići, Billstedter Hauptstraße 1, 22111 Hamburg: Ćevapčići im Fladenbrot mit Kajmak, Ajvar und Zwiebeln, Bohnensuppe, Börek. Täglich 06:30–23:00 Uhr. Telefon 040 23954224.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Figtree:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+:root{--an:#33373B;--bg:#F1EEE8;--bg2:#E6E1D8;--ge:#F4C21B;--tx:#1C1D1F;--kl:#9E4A33;--mu:#55585C;--hl:#C9C6BF;--li:#BDB6AA;--d:'Big Shoulders Display',system-ui,sans-serif;--t:'Figtree',system-ui,sans-serif;--pad:clamp(1rem,5vw,4rem);--sek:clamp(3.5rem,9vw,7.5rem);--sz:7.5rem;--ease:cubic-bezier(.2,.7,.3,1)}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--bg);color:var(--tx);font:400 1.0625rem/1.6 var(--t);overflow-x:clip;padding-bottom:calc(3.25rem + env(safe-area-inset-bottom))}
+h1,h2,h3{font-family:var(--d);font-weight:800;line-height:1.05;margin:0;letter-spacing:0;hyphens:manual;overflow-wrap:normal;text-wrap:balance}
+h2{font-size:clamp(2rem,1.3rem + 3vw,3.75rem)}
+p{margin:0;hyphens:manual;overflow-wrap:break-word}
+a{color:inherit;text-underline-offset:3px}
+img{display:block;max-width:100%}
+.wrap{max-width:1320px;margin-inline:auto;padding-inline:var(--pad)}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--tx);outline-offset:3px}
+.kopf :focus-visible,.tafel :focus-visible,.schluss :focus-visible,.leiste :focus-visible{outline-color:var(--ge)}
+section[id]{scroll-margin-top:4.5rem}
+.bild{position:relative;margin:0;overflow:hidden;background:var(--bg2)}
+.bild img{width:100%;height:100%;object-fit:cover}
+.r43{aspect-ratio:4/3}.r34{aspect-ratio:3/4}.r32{aspect-ratio:3/2}.r11{aspect-ratio:1}.r169{aspect-ratio:16/9}.rt{aspect-ratio:3912/2871}
+.foto-nachweis{position:absolute;right:0;bottom:0;max-width:100%;background:rgba(0,0,0,.6);color:#fff!important;font-size:.875rem;line-height:1.3;padding:.3rem .6rem;text-decoration:none}
+.foto-nachweis:hover{text-decoration:underline}
+.ki-label{position:absolute;left:0;bottom:0;background:var(--bg);color:var(--tx);font-size:.875rem;line-height:1.3;padding:.25rem .5rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:3rem;padding:.5rem 1.4rem;font:700 1rem/1.2 var(--d);text-decoration:none;border-radius:.2rem;font-variant-numeric:tabular-nums}
+.btn-ge{background:var(--ge);color:var(--tx)}
+.btn-ge:hover{background:#E3B30F}
+.btn-an{background:var(--an);color:var(--bg)}
+.btn-an:hover{background:var(--tx)}
+.kopf{position:sticky;top:0;z-index:30;background:var(--an);color:var(--bg)}
+.kopf-in{position:relative;display:flex;flex-wrap:wrap;align-items:flex-end;gap:.25rem 2.5rem;min-height:max(clamp(6rem,18vh,10rem),calc(var(--sz) + 1.5rem));padding-block:1rem 1.25rem;padding-right:calc(var(--pad) + var(--sz) + 1rem);transition:min-height .3s ease,padding .3s ease}
+.marke{display:block;text-decoration:none}
+.wm{display:block;font:800 clamp(1.9rem,9vw,3rem)/.95 var(--d);text-transform:uppercase;letter-spacing:.03em;transition:font-size .3s ease}
+.wm span{display:block}
+.claim{display:block;margin-top:.45rem;color:var(--hl);font-size:1rem}
+.nav{display:none}
+.schild{--sg:var(--ge);display:grid;place-content:center;gap:.25rem;width:var(--sz);height:var(--sz);flex:none;border-radius:50%;background:var(--sg);color:var(--tx);text-align:center;text-decoration:none;padding:14%;border:.25rem solid var(--tx);box-shadow:inset 0 0 0 .3rem var(--sg),inset 0 0 0 .42rem var(--tx);font-size:clamp(.8rem,3vw,1rem);line-height:1.2}
+.schild:has([data-offen="nein"]){--sg:#E2DABF}
+.schild [data-status],.spiegel{font:800 1.2em/1.05 var(--d)}
+.s-tel{text-decoration:underline;text-underline-offset:2px}
+.schild-kopf{position:absolute;right:var(--pad);top:.75rem;transition:width .3s ease,height .3s ease,top .3s ease,padding .3s ease}
+.eng .kopf-in{min-height:3.75rem;padding-block:.4rem;align-items:center;padding-right:calc(var(--pad) + 11.5rem)}
+.eng .wm{font-size:1.25rem}
+.eng .wm span{display:inline}
+.eng .claim{display:none}
+.eng .schild-kopf{width:auto;height:auto;min-height:44px;max-width:11rem;top:.5rem;padding:.35rem .9rem;border-radius:999px;border-width:2px;box-shadow:none}
+.eng .schild-kopf>*{display:none}
+.eng .schild-kopf [data-status]{display:block;font-size:1rem;line-height:1.1}
+.hero{display:flex;flex-direction:column;max-width:1320px;margin-inline:auto}
+.h-info{padding:1.75rem var(--pad) 2.5rem}
+.h-info h1{font-size:clamp(2rem,1.4rem + 2.2vw,3.25rem)}
+.adr{margin-top:1.25rem;font-size:1.125rem}
+.zeit{margin-top:.25rem;font-size:1.125rem;font-variant-numeric:tabular-nums}
+.h-info .btn{display:none;margin-top:1.75rem}
+.mehr{display:flex;flex-wrap:wrap;gap:0 1.5rem;margin-top:.75rem}
+.mehr a{min-height:44px;display:inline-flex;align-items:center;font-weight:700}
+.mehr a:hover{text-decoration-thickness:3px;text-decoration-color:var(--ge)}
+.tag{background:var(--bg2);padding-block:clamp(3rem,6vw,5rem)}
+.tag-kopf{display:grid;gap:2rem;align-items:end}
+.tag-kopf p{margin-top:1rem;max-width:44ch;font-size:1.125rem}
+.kaffee{max-width:13rem;aspect-ratio:4/3}
+.achse{--p:0;position:relative;height:20.5rem;margin:2.5rem 0 2rem}
+.achse ol{list-style:none;margin:0;padding:0}
+.achse::before{content:"";position:absolute;left:5.5rem;top:0;bottom:0;width:2px;background:var(--tx)}
+.tick{position:absolute;left:0;width:4.5rem;text-align:right;top:calc(var(--t)*100%);transform:translateY(calc(var(--t)*-100%));font-size:.9375rem;line-height:1.3;font-variant-numeric:tabular-nums}
+.tick::before{content:"";position:absolute;right:-1rem;top:calc(var(--t)*100%);width:.6rem;height:2px;margin-top:-1px;background:var(--tx)}
+.zone{position:absolute;left:6.25rem;right:0;top:calc(var(--a)*100%);height:calc((var(--b) - var(--a))*100%);border-left:.45rem solid var(--an);padding-left:.75rem;font:700 1rem/1.2 var(--d)}
+.marker{position:absolute;left:0;right:0;top:calc(var(--p)*100%);height:0;transition:top .5s var(--ease)}
+.marker::before{content:"";position:absolute;left:calc(5.5rem + 1px);top:0;width:1.5rem;height:1.5rem;border-radius:50%;background:var(--ge);border:3px solid var(--tx);transform:translate(-50%,-50%)}
+.jetzt{position:absolute;left:auto;right:calc(100% - 4.5rem);top:0;transform:translateY(-50%);width:max-content;max-width:4.5rem;background:var(--ge);color:var(--tx);font:800 1rem/1.1 var(--d);padding:.35rem .45rem;text-align:right;font-variant-numeric:tabular-nums}
+.satz{font:700 1.25rem/1.3 var(--d)}
+.woche{display:grid;margin:1.25rem 0 0;border-top:1px solid var(--li)}
+.woche div{display:flex;justify-content:space-between;gap:1rem;padding:.6rem 0;border-bottom:1px solid var(--li)}
+.woche dd{margin:0;font-variant-numeric:tabular-nums}
+.heute{font-weight:700}
+.heute dt{text-decoration:underline;text-decoration-color:var(--ge);text-decoration-thickness:.3rem;text-underline-offset:.3rem}
+.heute dt::after{content:" · heute"}
+.teller{padding-block:var(--sek) clamp(3.5rem,7vw,6rem)}
+.teller-kopf{max-width:40rem;margin-bottom:2.5rem}
+.teller-kopf p{margin-top:1rem;font-size:1.125rem}
+.anat{display:flex;flex-direction:column}
+.f-main{position:relative}
+.f-main img{object-position:40% 60%}
+.f-det{width:52%;align-self:flex-end;margin-top:1.5rem}
+.pins{list-style:none;margin:0;padding:0;position:absolute;inset:0;pointer-events:none;color:var(--tx)}
+.pins li{position:absolute;left:0;right:0;top:var(--y);height:0}
+.pins i{position:absolute;z-index:1;left:var(--x);top:0;transform:translate(-50%,-50%);display:grid;place-content:center;width:1.75rem;height:1.75rem;border-radius:50%;background:var(--ge);color:var(--tx);border:2px solid var(--tx);font:800 .9375rem/1 var(--d);font-style:normal}
+.pins b{display:none}
+.legende{list-style:none;counter-reset:n;margin:.75rem 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 1rem}
+.legende li{counter-increment:n;display:flex;align-items:center;gap:.5rem;min-height:2.75rem;font-size:1rem;font-weight:700}
+.legende li::before{content:counter(n);flex:none;display:grid;place-content:center;width:1.75rem;height:1.75rem;border-radius:50%;background:var(--ge);border:2px solid var(--tx);font:800 .9375rem/1 var(--d)}
+.tafel{background:var(--an);color:var(--bg);padding-block:var(--sek)}
+.tafel h2{max-width:14ch}
+.tafel-in{display:grid;gap:2.5rem;margin-top:2.5rem}
+.gerichte,.dazu ul{list-style:none;margin:0;padding:0}
+.gerichte li{display:grid;grid-template-columns:1fr auto;gap:.3rem 1rem;padding-block:1.1rem;border-top:1px solid rgba(241,238,232,.22)}
+.gerichte h3{font-size:clamp(1.3rem,1rem + 1.2vw,1.9rem)}
+.gerichte p,.dazu p{color:var(--hl)}
+.gerichte p{grid-column:1}
+.stk{grid-row:1;grid-column:2;align-self:start;font:700 1rem/1.2 var(--d);color:var(--ge);border:2px solid var(--ge);padding:.2rem .55rem}
+.dazu h3{font-size:1.25rem;padding-top:1.1rem;border-top:1px solid rgba(241,238,232,.22)}
+.dazu li{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-bottom:1px solid rgba(241,238,232,.12);font-variant-numeric:tabular-nums}
+.dazu li:first-child{margin-top:.5rem}
+.dazu p{margin-top:1rem}
+.hinweis{margin-top:3rem;font:700 clamp(1.15rem,1rem + .8vw,1.5rem)/1.4 var(--d);max-width:34ch}
+.hinweis a{color:var(--ge)}
+.gal{padding-block:var(--sek)}
+.gal h2{margin-bottom:2rem;max-width:20ch}
+.raster{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;align-items:start}
+.g2{grid-column:1/-1;order:1}.g1{order:2}.g5{order:3}.g3{order:4}.g4{order:5;aspect-ratio:1}
+.ecke{padding-bottom:0}
+.weg{display:flex;justify-content:flex-start;margin-top:.5rem}
+.ecke-in{display:flex;flex-direction:column;gap:2rem}
+.e-text p{margin-top:1rem;max-width:46ch}
+.fakten{list-style:none;padding:0;margin:1.5rem 0}
+.fakten li{padding:.6rem 0;border-top:1px solid var(--li)}
+.fakten b{font-family:var(--d)}
+.karte{margin-top:2.5rem;aspect-ratio:4/3;background:var(--bg2);overflow:hidden}
+[data-karte]{width:100%;height:100%}
+.schluss{background:var(--an);color:var(--bg);padding-block:var(--sek)}
+.schluss-in{display:block}
+.s-fuss{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;margin-top:1.5rem}
+.schluss p{font-size:1.125rem;color:var(--hl)}
+.gross{display:block;margin-top:.5rem;font:700 clamp(2.25rem,10.5vw,4rem)/1.05 var(--d);letter-spacing:-.02em;font-variant-numeric:tabular-nums;text-decoration:none;color:var(--ge);white-space:nowrap}
+.gross:hover{text-decoration:underline}
+.schild-fuss{--sz:7.5rem;flex:none}
+.fuss{padding-block:3rem;font-size:1rem;color:var(--mu)}
+.fuss-in{display:grid;gap:2rem}
+.fuss strong{font-family:var(--d);color:var(--tx);text-transform:uppercase;letter-spacing:.03em}
+.fuss a{min-height:44px;display:inline-flex;align-items:center}
+.logo{margin:0;width:max-content;background:var(--an);padding:.75rem}
+.logo img{width:7.5rem;height:2.5rem;object-fit:contain}
+.logo figcaption{font-size:.875rem;color:var(--hl);margin-top:.4rem}
+.rechtliches p{margin-top:.5rem}
+.leiste{position:fixed;left:0;right:0;bottom:0;z-index:40;display:grid;grid-template-columns:1fr 1fr;background:var(--an);padding-bottom:env(safe-area-inset-bottom)}
+.leiste a{min-height:3.25rem;display:flex;align-items:center;justify-content:center;font:700 1rem var(--d);text-decoration:none;color:var(--bg)}
+.leiste a:first-child{background:var(--ge);color:var(--tx)}
+@media (min-width:820px){
+:root{--sz:10rem}
+body{padding-bottom:0}
+.leiste{display:none}
+.wm{font-size:clamp(2.4rem,5vw,4.75rem)}
+.wm span{display:inline}
+.eng .wm{font-size:1.6rem}
+.nav{display:flex;gap:1.5rem;margin-left:auto}
+.nav a{min-height:44px;display:inline-flex;align-items:center;font-weight:700;text-decoration:none}
+.nav a:hover{color:var(--ge)}
+.h-info .btn{display:inline-flex}
+.heute dt{text-decoration:none}
+.hero{flex-direction:row;padding-inline:var(--pad)}
+.h-foto{flex:0 0 64%}
+.h-info{flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(4rem,7vw,6rem) 0 1rem clamp(1.5rem,3vw,3rem)}
+.tag-kopf{grid-template-columns:repeat(12,1fr);column-gap:1rem;align-items:start}
+.tag-kopf>div{grid-column:1/9}
+.kaffee{grid-column:9/13;width:100%;max-width:none}
+.achse{height:8.5rem;margin:4rem 0 2.5rem}
+.achse::before{left:0;right:0;top:50%;bottom:auto;width:auto;height:2px}
+.tick{left:calc(var(--t)*100%);top:calc(50% + .9rem);width:auto;text-align:left;transform:translateX(calc(var(--t)*-100%))}
+.tick::before{right:auto;left:calc(var(--t)*100%);top:-.9rem;width:2px;height:.6rem;margin:0 0 0 -1px}
+.zone{left:calc(var(--a)*100%);right:auto;width:calc((var(--b) - var(--a))*100%);top:auto;bottom:calc(50% + .75rem);height:auto;border-left:0;border-top:.45rem solid var(--an);padding:.5rem 0 0}
+.marker{top:0;bottom:0;left:calc(var(--p)*100%);right:auto;width:0;height:auto;transition:left .5s var(--ease)}
+.marker::before{left:0;top:50%}
+.jetzt{left:0;right:auto;max-width:none;white-space:nowrap;text-align:left;top:auto;bottom:-.25rem;transform:translateX(calc(var(--p)*-100%));transition:transform .5s var(--ease)}
+.woche{grid-template-columns:repeat(7,1fr);gap:1rem;border:0}
+.woche div{flex-direction:column;gap:.1rem;border-bottom:0;border-top:2px solid var(--tx);padding-top:.6rem}
+.woche .heute{border-top:.4rem solid var(--ge);padding-top:.35rem}
+.heute dt::after{content:""}
+.anat{display:grid;grid-template-columns:repeat(12,1fr);column-gap:1rem;align-items:start}
+.anat{margin-bottom:5rem}
+.f-main{grid-column:2/10;grid-row:1}
+.f-det{position:relative;z-index:2;grid-column:9/13;grid-row:1;align-self:end;width:auto;margin:0 0 -5rem;border:.5rem solid var(--bg)}
+.legende{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);margin:0}
+.pins i{width:.875rem;height:.875rem;font-size:0}
+.pins li::after{content:"";position:absolute;top:0;left:-1.25rem;width:calc(var(--x) + 1.25rem);height:1px;background:currentColor}
+.pins .re::after{left:var(--x);width:calc(100% - var(--x) + 1.25rem)}
+.pins b{display:block;position:absolute;top:0;right:calc(100% + 1.6rem);transform:translateY(-50%);font:800 1.125rem/1 var(--d);white-space:nowrap}
+.pins .re b{right:auto;left:calc(100% + 1.6rem)}
+.tafel-in{grid-template-columns:7fr 4fr;gap:4rem}
+.raster{grid-template-columns:repeat(12,1fr);gap:1rem}
+.raster>*{order:0}
+.g1{grid-column:span 4}.g2{grid-column:span 8}.g3{grid-column:span 3;margin-top:3rem}.g4{grid-column:span 5;aspect-ratio:4/3}.g5{grid-column:span 4}
+.ecke-in{flex-direction:row;align-items:flex-start;gap:clamp(2rem,4vw,4rem)}
+.e-foto{flex:0 0 58%}
+.e-text{flex:1}
+.karte{aspect-ratio:21/9}
+.schluss-in{display:grid;grid-template-columns:1fr auto;column-gap:3rem;align-items:center}
+.s-fuss{display:contents}
+.s-fuss>p{margin-top:1rem}
+.schild-fuss{--sz:8.5rem;grid-column:2;grid-row:1/4}
+.gross{font-size:clamp(4rem,7.5vw,7rem)}
+.fuss-in{grid-template-columns:1fr auto;align-items:start}
+}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+.zone small{display:block;margin-top:.15rem;font:400 .875rem/1.3 var(--t);font-variant-numeric:tabular-nums}
+</style>
+<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}</style></head>
+<body id="top"><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für Adi&#x27;s Ćevapčići. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
+<header class="kopf">
+<div class="wrap kopf-in">
+<a class="marke" href="#top"><span class="wm"><span>Adi’s</span> <span>Ćevapčići</span></span><span class="claim">The Taste of Balkan</span></a>
+<nav class="nav" aria-label="Hauptnavigation"><a href="#zeiten">Zeiten</a><a href="#karte">Karte</a><a href="#anfahrt">Anfahrt</a></nav>
+<a class="schild schild-kopf" href="tel:+494023954224">
+<span data-status></span>
+<span class="s-tel">anrufen<span class="vh"> 040 23954224</span></span>
+<span class="vh">Anrufen: 040 23954224</span>
+</a>
+</div>
+</header>
+<main>
+<section class="hero">
+<figure class="bild r43 h-foto" data-foto>
+<img src="https://lh3.googleusercontent.com/grass-cs/AABkmLcVp5P_vF4rYpMg6wVVgbLNXjxCqXUud1UJdOXY8hJHUhixPu-AOlocyOuMGd7cEd3RUqO8uz8KhE_QXeVciw9H-cJGomRkuxcLHjSiMbxO7zat8FJI2vWVli_vaRDwM_jWERxceJeKPtI=s4800-w1000" referrerpolicy="no-referrer" width="1600" height="1200" fetchpriority="high" alt="Aufgeklapptes Fladenbrot mit gegrillten Ćevapčići, Zwiebeln, Ajvar und Kajmak">
+<a class="foto-nachweis" href="https://maps.google.com/maps/contrib/106816298367480221215" target="_blank" rel="noopener">Foto: Marina Paul (Marinas Wassergänse) · Google Maps</a>
+</figure>
+<div class="h-info">
+<h1>Ćevapčići &amp; Balkanküche<br> in Billstedt</h1>
+<p class="adr">Billstedter Hauptstraße 1<br>22111 Hamburg</p>
+<p class="zeit">täglich <b>06:30–23:00</b></p>
+<a class="btn btn-ge" href="tel:+494023954224">040 23954224 anrufen</a>
+<p class="mehr"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Billstedter+Hauptstra%C3%9Fe+1%2C+22111+Hamburg" target="_blank" rel="noopener">Route</a><a href="#karte">Was es gibt</a></p>
+</div>
+</section>
+<section class="tag" id="zeiten">
+<div class="wrap">
+<div class="tag-kopf">
+<div>
+<h2>Von 06:30 bis 23:00.</h2>
+<p>Ab 06:30 ist die Tür auf, um 23:00 geht das Licht im Pavillon aus. Dazwischen: erst Kaffee, dann Mittagstisch, dann Abendessen.</p>
+</div>
+<figure class="bild r11 kaffee">
+<img src="ki-morgenkaffee.webp" width="1024" height="1024" loading="lazy" alt="Kleine Tasse schwarzer Kaffee mit Würfelzucker auf dunkler Steintheke">
+<span class="ki-label">KI-Bild</span>
+</figure>
+</div>
+<div class="achse" role="img" aria-label="Tagesleiste von 06:30 bis 23:00 Uhr: Kaffee 06:30–11:00, Mittagstisch 11:30–15:00, Abendessen 17:00–23:00">
+<ol aria-hidden="true">
+<li class="tick" style="--t:0">06:30</li><li class="tick" style="--t:.1515">09:00</li><li class="tick" style="--t:.3333">12:00</li><li class="tick" style="--t:.5152">15:00</li><li class="tick" style="--t:.697">18:00</li><li class="tick" style="--t:.8788">21:00</li><li class="tick" style="--t:1">23:00</li>
+</ol>
+<div class="zone" style="--a:0;--b:.2727" aria-hidden="true">Kaffee<small>06:30–11:00</small></div>
+<div class="zone" style="--a:.303;--b:.5152" aria-hidden="true">Mittagstisch<small>11:30–15:00</small></div>
+<div class="zone" style="--a:.6364;--b:1" aria-hidden="true">Abendessen<small>17:00–23:00</small></div>
+<div class="marker" aria-hidden="true"><span class="jetzt"></span></div>
+</div>
+<p class="satz">Sieben Tage die Woche, gleiche Zeiten.</p>
+<dl class="woche">
+<div><dt>Montag</dt><dd>06:30–23:00</dd></div>
+<div><dt>Dienstag</dt><dd>06:30–23:00</dd></div>
+<div><dt>Mittwoch</dt><dd>06:30–23:00</dd></div>
+<div><dt>Donnerstag</dt><dd>06:30–23:00</dd></div>
+<div><dt>Freitag</dt><dd>06:30–23:00</dd></div>
+<div><dt>Samstag</dt><dd>06:30–23:00</dd></div>
+<div><dt>Sonntag</dt><dd>06:30–23:00</dd></div>
+</dl>
+</div>
+</section>
+<section class="teller" aria-labelledby="t-teller">
+<div class="wrap">
+<div class="teller-kopf">
+<h2 id="t-teller">Fünf Teile, ein Teller.</h2>
+<p>Das Fladenbrot kommt aufgeklappt: Ćevapčići vom Grill, dazu Kajmak, Ajvar und Zwiebeln.</p>
+</div>
+<div class="anat">
+<div class="f-main">
+<figure class="bild r43" data-foto>
+<img src="https://lh3.googleusercontent.com/grass-cs/AABkmLdQXLJhLM78kjK5P5UTcZDv8jey6B0LYC_kznPxO4GPiiwKDNrdYlt0PESUytxTkC20ItEpI2aiqnCEmuBtG6GfoHGRu8wlcrpes2u4lqZXKNkL66dg8hFJCcGZ0u9uA7JVIbs8fU8HdZk=s4800-w1800" referrerpolicy="no-referrer" width="1304" height="957" loading="lazy" alt="Ćevapčići im Fladenbrot mit Kajmak, Ajvar und Zwiebeln, daneben eine Limonade auf einem Holztisch">
+<a class="foto-nachweis" href="https://maps.google.com/maps/contrib/118251230829599982410" target="_blank" rel="noopener">Foto: peter5886 · Google Maps</a>
+</figure>
+<ol class="pins" aria-hidden="true"><li style="--x:14%;--y:48%"><i>1</i><b>Kajmak</b></li><li style="--x:15%;--y:68%"><i>2</i><b>Ajvar</b></li><li style="--x:30%;--y:58%"><i>3</i><b>Zwiebeln</b></li><li class="re" style="--x:55%;--y:35%"><i>4</i><b>Fladenbrot</b></li><li class="re" style="--x:70%;--y:55%"><i>5</i><b>Ćevapčići</b></li></ol>
+</div>
+<ol class="legende"><li>Kajmak</li><li>Ajvar</li><li>Zwiebeln</li><li>Fladenbrot</li><li>Ćevapčići</li></ol>
+<figure class="bild r43 f-det" data-foto>
+<img src="https://lh3.googleusercontent.com/grass-cs/AABkmLe1Qj9bmljDENsh-u6LdYi1Wj1pDGjqczO06P3BQim8wB_Zymnqjq6edbFvjS1lOasuzF5RGyGLvTry7AkHmBPcPMUijbi6f60j4WHImv45mtYiViTPX5bp3hT5jTQXouLRRWqFPnCaNGcA=s4800-w1000" referrerpolicy="no-referrer" width="1032" height="792" loading="lazy" alt="Nahaufnahme gegrillter Ćevapčići auf knusprigem Fladenbrot">
+<a class="foto-nachweis" href="https://maps.google.com/maps/contrib/118251230829599982410" target="_blank" rel="noopener">Foto: peter5886 · Google Maps</a>
+</figure>
+</div>
+</div>
+</section>
+<section class="tafel" id="karte">
+<div class="wrap">
+<h2>Was auf den Tisch kommt</h2>
+<div class="tafel-in">
+<ul class="gerichte">
+<li><h3>Ćevapčići</h3><span class="stk">10er</span><p>Vom Grill, am bekanntesten als 10er.</p></li>
+<li><h3>Ćevapčići im Fladenbrot</h3><p>Mit Kajmak, Ajvar und Zwiebeln.</p></li>
+<li><h3>Bohnensuppe</h3><p>Mit Fleisch, dazu Brot.</p></li>
+<li><h3>Börek mit Hackfleisch</h3><p>Blätterteig, gefüllt mit Hack.</p></li>
+</ul>
+<div class="dazu">
+<h3>Außerdem an der Theke</h3>
+<ul><li><span>Kaffee</span><span>ab 06:30</span></li><li><span>Desserts</span></li><li><span>Bier</span></li></ul>
+<p>Vor Ort essen, draußen sitzen oder mitnehmen.</p>
+</div>
+</div>
+<p class="hinweis">Die ganze Karte hängt im Laden – oder fragen Sie am Telefon: <a href="tel:+494023954224">040 23954224</a></p>
+</div>
+</section>
+<section class="gal" aria-labelledby="t-gal">
+<div class="wrap">
+<h2 id="t-gal">Börek, Bohnensuppe, Kajmak.</h2>
+<div class="raster">
+<figure class="bild r34 g1" data-foto>
+<img src="https://lh3.googleusercontent.com/grass-cs/AABkmLd4KQje4Tkxyu4JW3v1asuNIBVy_NEFuBV4yM7ObL6KUiwvtp-4c4wW-wn1oj3kt6IsZAAoWiubD8rU-u7DXnc4gs_SlgKblf3UFhFjypdzrXAD2vqzFAgrTO9LDl37uIS7zV2KsKMIEGER=s4800-w1000" referrerpolicy="no-referrer" width="1200" height="1600" loading="lazy" alt="Bohnensuppe mit Fleisch, Burek und Ćevapčići auf einem Holztisch">
+<a class="foto-nachweis" href="https://maps.google.com/maps/contrib/103340706946656559969" target="_blank" rel="noopener">Foto: Abdulkadir Koç · Google Maps</a>
+</figure>
+<figure class="bild r32 g2">
+<img src="ki-boerek.webp" width="1200" height="800" loading="lazy" alt="Aufgeschnittener Börek mit Hackfleischfüllung auf weißem Teller">
+<span class="ki-label">KI-Bild</span>
+</figure>
+<figure class="bild r11 g3">
+<img src="ki-kajmak-ajvar.webp" width="1024" height="1024" loading="lazy" alt="Kajmak, Ajvar und gehackte Zwiebeln auf einem weißen Teller">
+<span class="ki-label">KI-Bild</span>
+</figure>
+<figure class="bild r43 g4" data-foto>
+<img src="https://lh3.googleusercontent.com/grass-cs/AABkmLeo1e9y_LPt5Zxf8SG1Vsf2M_sNj_uybAHvmPJL9HXfEs3A1UM2G7V5vRhvU0RrXkI_W1v1fJa-4_K5lZGYYmaSqEijC8GyPsxaJ33AQh0XeFnN9ELSs1evyRVkKmHewZJ-Zv23XSyqUUj1=s4800-w1000" referrerpolicy="no-referrer" width="1600" height="1200" loading="lazy" alt="Gefülltes Fladenbrot mit Ćevapčići, Zwiebeln, Ajvar und Kajmak auf weißem Teller">
+<a class="foto-nachweis" href="https://maps.google.com/maps/contrib/106816298367480221215" target="_blank" rel="noopener">Foto: Marina Paul (Marinas Wassergänse) · Google Maps</a>
+</figure>
+<figure class="bild r34 g5">
+<img src="ki-bohnensuppe.webp" width="900" height="1200" loading="lazy" alt="Schale Bohnensuppe mit Fleischstücken und Fladenbrot, von oben">
+<span class="ki-label">KI-Bild</span>
+</figure>
+</div>
+</div>
+</section>
+<section class="ecke" id="anfahrt">
+<div class="wrap">
+<div class="ecke-in">
+<figure class="bild r169 e-foto" data-foto>
+<img src="https://lh3.googleusercontent.com/grass-cs/AABkmLeAT5Le55soR4By9mRje5wmiBNzv1NN8QXRVv_ToIkzEoqVUMbHvHQxHpHwhNxHYHyDcvX1jsRJQSA0ogrhceJyRWmd2qgXqlhJuidp6jOv1e9NQmZOO9nUA2fHtQTzBubn34p6wbsU2hOA=s4800-w1000" referrerpolicy="no-referrer" width="1600" height="900" loading="lazy" alt="Fassade von Adi’s Ćevapčići bei Tag mit weißem Schriftzug auf grauer Blende und Thujen in Kübeln">
+<a class="foto-nachweis" href="https://maps.google.com/maps/contrib/109039090533393789041" target="_blank" rel="noopener">Foto: Sanel Pasagic · Google Maps</a>
+</figure>
+<div class="e-text">
+<h2>Die Ecke mit dem gelben Schild</h2>
+<p>Billstedter Hauptstraße 1, 22111 Hamburg. Das Eckhaus mit dem gelben Rundschild, dem Glaspavillon und den Thujen davor.</p>
+<ul class="fakten">
+<li><b>Draußen sitzen:</b> Plätze vor dem Pavillon.</li>
+<li><b>Reservieren:</b> kurz anrufen, <a href="tel:+494023954224">040 23954224</a>.</li>
+<li><b>Mitnehmen:</b> geht auch.</li>
+</ul>
+<p class="weg"><a class="btn btn-an" href="https://www.google.com/maps/dir/?api=1&amp;destination=Billstedter+Hauptstra%C3%9Fe+1%2C+22111+Hamburg" target="_blank" rel="noopener">Route planen</a></p>
+</div>
+</div>
+<div class="karte"><div data-karte data-stil="mono" data-farbe="#F4C21B"></div></div>
+</div>
+</section>
+<section class="schluss" aria-labelledby="t-ruf">
+<div class="wrap schluss-in">
+<p id="t-ruf">Bestellen, reservieren, nachfragen:</p>
+<a class="gross" href="tel:+494023954224">040 23954224</a>
+<div class="s-fuss">
+<p>Täglich 06:30–23:00<br>Billstedter Hauptstraße 1</p>
+<div class="schild schild-fuss">
+<span class="spiegel"></span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="fuss">
+<div class="wrap fuss-in">
+<div>
+<p><strong>Adi’s Ćevapčići</strong></p>
+<p>Billstedter Hauptstraße 1, 22111 Hamburg<br><a href="tel:+494023954224">040 23954224</a></p>
+<div class="rechtliches"><p>Entwurf von Medialyte, 21147 Hamburg. Adresse und Öffnungszeiten: Google. Fotos: Google Maps, Urheber jeweils am Bild. Mit „KI-Bild“ markierte Bilder und das Logo sind KI-generierte Vorschläge.</p><p><a href="https://medialyte.de/impressum">Impressum</a> · <a href="https://medialyte.de/datenschutzerklaerung">Datenschutz</a></p></div>
+</div>
+<figure class="logo">
+<img src="logo.svg" width="360" height="120" loading="lazy" alt="Logo-Vorschlag: gelbes Rundschild mit Wortmarke Adi’s Ćevapčići">
+<figcaption>Logo-Vorschlag (KI)</figcaption>
+</figure>
+</div>
+</footer>
+<nav class="leiste" aria-label="Schnellzugriff">
+<a href="tel:+494023954224">Anrufen</a>
+<a href="https://www.google.com/maps/dir/?api=1&amp;destination=Billstedter+Hauptstra%C3%9Fe+1%2C+22111+Hamburg" target="_blank" rel="noopener">Route</a>
+</nav>
+<script>
+(()=>{
+const R=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const h=document.querySelector('.kopf');let e=0;
+const chk=()=>{const y=scrollY;if(!e&&y>160){e=1;h.classList.add('eng')}else if(e&&y<40){e=0;h.classList.remove('eng')}};
+addEventListener('scroll',chk,{passive:true});chk();
+const parts=new Intl.DateTimeFormat('de-DE',{timeZone:'Europe/Berlin',weekday:'long',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date());
+const g=t=>(parts.find(p=>p.type===t)||{}).value||'';
+const m=+g('hour')*60+ +g('minute'),wd=g('weekday');
+document.querySelectorAll('.woche div').forEach(d=>{if(d.firstElementChild.textContent===wd)d.classList.add('heute')});
+const a=document.querySelector('.achse'),j=a.querySelector('.jetzt'),auf=m>=390&&m<1380;
+const p=auf?(m-390)/990:(m<390?0:1);
+j.textContent=auf?'jetzt '+g('hour')+':'+g('minute'):'geschlossen · ab 06:30';
+const go=()=>a.style.setProperty('--p',p.toFixed(4));
+if(R||!('IntersectionObserver'in window))go();else{const io=new IntersectionObserver(es=>{if(es[0].isIntersecting){go();io.disconnect()}},{threshold:.5});io.observe(a)}
+const st=document.querySelector('[data-status]'),mi=document.querySelector('.spiegel');
+const cp=()=>{mi.textContent=st.textContent;if(st.dataset.offen)mi.dataset.offen=st.dataset.offen};
+new MutationObserver(cp).observe(st,{childList:true,characterData:true,subtree:true,attributes:true});cp();
+})();
+</script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>[data-karte]{width:100%;height:100%;min-height:260px}[data-karte] .leaflet-tile-pane{filter:var(--karte-filter)}
+[data-karte] .leaflet-control-attribution{font-size:10px}.karte-pin{position:relative;width:34px;height:34px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+box-shadow:0 6px 16px rgba(0,0,0,.35);border:3px solid #fff}.karte-pin i{position:absolute;inset:9px;border-radius:50%;background:#fff}</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>(function(){var C={"lat": 53.542446399999996, "lng": 10.0967398, "name": "Adi's \u0106evap\u010di\u0107i", "filter": {"hell": "grayscale(1) contrast(1.05) brightness(1.04)", "dunkel": "grayscale(1) invert(1) contrast(.88) brightness(.82)", "warm": "grayscale(1) sepia(.5) contrast(1.02) brightness(1.02)", "kuehl": "grayscale(1) sepia(.35) hue-rotate(175deg) saturate(.55) brightness(1.03)", "mono": "grayscale(1) contrast(1.2)"}};function draw(){if(!window.L)return;document.querySelectorAll('[data-karte]').forEach(function(el){
+if(el._map)return;var st=el.getAttribute('data-stil')||'hell',col=el.getAttribute('data-farbe')||'#c0392b';
+el.style.setProperty('--karte-filter',C.filter[st]||C.filter.hell);
+var m=L.map(el,{scrollWheelZoom:false,zoomControl:true,attributionControl:true}).setView([C.lat,C.lng],16);el._map=m;
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(m);
+var icon=L.divIcon({className:'',html:'<div class="karte-pin" style="background:'+col+'"><i></i></div>',iconSize:[34,34],iconAnchor:[17,34]});
+L.marker([C.lat,C.lng],{icon:icon,title:C.name,alt:C.name}).addTo(m);setTimeout(function(){m.invalidateSize()},300);});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',draw);else draw();window.addEventListener('load',draw);})();</script><script>(function(){
+var P=[[390, 1380], [1830, 2820], [3270, 4260], [4710, 5700], [6150, 7140], [7590, 8580], [9030, 10020]];
+function fmt(m){m=((m%1440)+1440)%1440;var h=Math.floor(m/60),mi=m%60;return (h<10?'0':'')+h+':'+(mi<10?'0':'')+mi;}
+function now(){var d=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Berlin'}));return d.getDay()*1440+d.getHours()*60+d.getMinutes();}
+function status(){if(!P.length)return null;var t=now(),W=10080;
+ for(var i=0;i<P.length;i++){var s=P[i][0],e=P[i][1];if((t>=s&&t<e)||(t+W>=s&&t+W<e))return {offen:true,text:'Jetzt geöffnet bis '+fmt(e)};}
+ var best=null;for(var j=0;j<P.length;j++){var d=(P[j][0]-t+W)%W;if(best===null||d<best.d)best={d:d,s:P[j][0]};}
+ var tag=Math.floor(t/1440),ot=Math.floor(best.s/1440)%7,names=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+ var when=best.d<1440&&ot===tag?'heute':(best.d<2880&&ot===(tag+1)%7?'morgen':names[ot]);
+ return {offen:false,text:'Geschlossen · öffnet '+when+' um '+fmt(best.s)};}
+function run(){var s=status();document.querySelectorAll('[data-status]').forEach(function(el){
+ if(!s){el.style.display='none';return;}el.textContent=s.text;el.setAttribute('data-offen',s.offen?'ja':'nein');});}
+document.querySelectorAll('[data-foto] img').forEach(function(img){
+ function hide(){var b=img.closest('[data-foto]');if(b)b.style.display='none';}
+ if(!img.getAttribute('src'))hide();else{img.addEventListener('error',hide);if(img.complete&&img.naturalWidth===0)hide();}});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();setInterval(run,60000);
+})();</script></body>
+</html>
