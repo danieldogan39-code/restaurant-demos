@@ -1,0 +1,709 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Menmō – Asiatische Fusionsküche am Mühlenkamp, Hamburg-Winterhude</title>
+<meta name="description" content="Menmō, Mühlenkamp 54 in Hamburg-Winterhude: asiatische Fusionsküche zum Teilen. Mo–Fr 12–15 und 17–24 Uhr, Sa/So 12–24 Uhr. Tisch reservieren: 040 18039727.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{
+  --grund:#17110F;--elf:#EFE7DC;--elf2:#D6D0C8;--grau:#4B5058;--kupfer:#D9643F;--leise:#B9AFA3;
+  --linie:rgba(239,231,220,.18);--rand:clamp(1rem,5vw,4rem);--max:1320px;--kopf:72px;
+  --display:"Sora",system-ui,sans-serif;--text:"Hanken Grotesk",system-ui,sans-serif;--akzent:"Fraunces",Georgia,serif;
+  --s1:.5rem;--s2:1rem;--s3:1.5rem;--s4:2rem;--s5:3rem;--s6:4rem;--sek:clamp(4rem,9vw,7.5rem);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{background:var(--grund);color:var(--elf);font:400 1.0625rem/1.65 var(--text);overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--kupfer);outline-offset:3px;border-radius:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+em{font-family:var(--akzent);font-style:italic;font-weight:400;letter-spacing:0}
+h1,h2,h3{font-family:var(--display);font-weight:300;line-height:1.08;hyphens:auto;overflow-wrap:break-word;letter-spacing:-.01em}
+section[id]{scroll-margin-top:calc(var(--kopf) + 8px)}
+.innen{max-width:var(--max);margin-inline:auto;padding-inline:var(--rand)}
+.raster{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(1rem,2vw,2rem)}
+.strich{display:block;width:3rem;height:2px;background:var(--kupfer);margin-bottom:var(--s3)}
+.bu{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.25rem 1rem;margin-top:.625rem;font-size:.875rem;line-height:1.45;color:var(--leise)}
+.foto-nachweis{color:var(--leise);text-underline-offset:.2em}
+.rahmen{overflow:hidden;position:relative;background:#241c19}
+.rahmen img{width:100%;height:100%;object-fit:cover}
+
+.kopf{position:sticky;top:0;z-index:50;height:var(--kopf);background:var(--grund);border-bottom:1px solid var(--grau)}
+.kopf .innen{height:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--s2)}
+.wortmarke{font-family:var(--display);font-weight:300;letter-spacing:.32em;text-decoration:none;font-size:1.125rem;display:inline-flex;align-items:center;min-height:44px;padding-top:.3em}
+.o{position:relative;display:inline-block}
+.makron{position:absolute;top:.02em;left:calc((100% - .32em)/2);width:.5em;height:max(.06em,2px);transform:translateX(-50%);background:var(--kupfer)}
+.kopf nav ul{display:flex;align-items:center;gap:clamp(1rem,2.5vw,2.25rem);list-style:none;padding:0}
+.kopf nav a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;font-size:.9375rem;background:linear-gradient(var(--kupfer),var(--kupfer)) 0 78%/0 1px no-repeat;transition:background-size .35s}
+.kopf nav a:hover{background-size:100% 1px}
+.kopf nav .kopf-anruf{background:var(--kupfer);color:var(--grund);padding:0 22px;border-radius:999px;font-weight:600}
+.kopf nav .kopf-anruf:hover{background:var(--elf)}
+
+.pill{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;gap:.75rem;min-height:52px;padding:10px 28px;border-radius:999px;background:var(--kupfer);color:var(--grund);font-weight:600;text-decoration:none;font-variant-numeric:tabular-nums;line-height:1.2}
+.pill.mit-bild{padding-left:10px}.pill{white-space:nowrap}
+.pill::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--elf);transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.7,0,.2,1)}
+.pill:hover::before,.pill:focus-visible::before{transform:scaleX(1)}
+.pill-bild{width:32px;height:32px;border-radius:50%;background:var(--grund);flex:none;overflow:hidden}
+.pill-bild img{width:100%;height:100%;object-fit:contain;transform:scale(1.25)}
+.textlink{display:inline-flex;align-items:center;gap:.5rem;min-height:44px;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.35em}
+.textlink .pfeil{display:inline-block;transition:transform .3s}
+.textlink:hover .pfeil{transform:translateX(5px)}
+
+.hero{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);min-height:calc(100svh - var(--kopf))}
+.panel{position:relative;background:var(--grau);display:flex;flex-direction:column;justify-content:space-between;gap:var(--s5);padding:clamp(2rem,4.5vw,4.5rem) clamp(1.25rem,3.5vw,3.5rem) clamp(1.75rem,3vw,3rem)}
+.marke{font-family:var(--display);font-weight:200;font-size:clamp(3rem,5.6vw,6rem);letter-spacing:.32em;line-height:1;overflow:hidden;padding:.22em 0 .08em;margin-right:-.32em}
+.marke-innen{display:block}
+.hero-titel{margin-top:var(--s5);font-family:var(--display);font-weight:300;font-size:clamp(1.75rem,2.6vw,2.75rem);line-height:1.18;max-width:18ch}
+.hero-titel > div{padding-block:.08em .16em;margin-block:-.08em -.16em}
+.hero-text{margin-top:var(--s3);max-width:42ch}
+.aktionen{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2) var(--s4);margin-top:var(--s4)}
+.tl{margin-top:auto;padding-top:var(--s5)}
+.tl-achse{position:relative;height:1px;background:rgba(239,231,220,.5)}
+.tl-seg{position:absolute;top:-1px;height:3px;left:calc(var(--a)*1%);width:calc(var(--b)*1%);background:var(--kupfer)}
+.tl-jetzt{display:none;position:absolute;top:50%;left:calc(var(--p,0)*1%);width:9px;height:9px;margin:-4.5px 0 0 -4.5px;border-radius:50%;background:var(--elf);box-shadow:0 0 0 3px var(--grau)}
+.tl-jetzt.an{display:block}
+.tl-skala{position:relative;height:1.4rem;margin-top:.4rem;font-size:.875rem;font-variant-numeric:tabular-nums;color:var(--elf2)}
+.tl-skala span{position:absolute;left:calc(var(--x)*1%);transform:translateX(-50%)}
+.tl-skala span:first-child{transform:none}.tl-skala span:last-child{transform:translateX(-100%)}
+.tl-status{margin-top:.5rem;font-weight:500;font-variant-numeric:tabular-nums}
+[data-status]::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:.55em;vertical-align:.1em;background:var(--elf2)}
+[data-status][data-offen="ja"]::before{background:var(--kupfer)}
+.tl-hinweis{font-size:.9375rem;color:var(--elf2);font-variant-numeric:tabular-nums}
+.flug{position:absolute;background:var(--kupfer);transform-origin:0 0;opacity:0;pointer-events:none;z-index:4}
+
+.buehne{position:relative;background:var(--grund);overflow:hidden}
+.buehne::before{content:"";position:absolute;left:58%;top:14%;bottom:14%;width:3px;background:var(--kupfer)}
+.hero-foto{position:absolute;inset:0;margin:0}
+.hero-foto .rahmen{position:absolute;inset:0}
+.hero-foto img{object-position:50% 55%}
+.hero-foto .foto-nachweis{position:absolute;right:12px;bottom:12px;z-index:3;background:var(--grund);color:var(--elf2);padding:6px 12px;border-radius:4px;font-size:.875rem;line-height:1.3}
+.verlauf{position:absolute;inset:0 auto 0 0;width:14%;z-index:2;background:linear-gradient(90deg,rgba(23,17,15,.85),rgba(23,17,15,0));pointer-events:none}
+.inset{position:absolute;left:clamp(1rem,2vw,1.5rem);bottom:clamp(1rem,2vw,1.5rem);z-index:3;width:200px;margin:0;background:var(--grund);padding:8px 8px 10px;border-radius:4px}
+.inset .rahmen{aspect-ratio:3/4;border-radius:2px}
+.inset figcaption{margin-top:.5rem;font-size:.875rem;line-height:1.4}
+.inset .foto-nachweis{display:block;margin-top:.15rem}
+
+.haltung{padding-block:var(--sek)}
+.haltung h2{grid-column:1/9;font-size:clamp(2.5rem,5.5vw,5rem)}
+.lede{grid-column:9/13;align-self:end;max-width:36ch}
+.lede p+p{margin-top:var(--s2)}
+.paar{margin-top:clamp(3rem,6vw,5rem);align-items:start}
+.f-gemuese{grid-column:1/6;position:relative;margin:0}
+.f-gemuese .rahmen{aspect-ratio:2740/3349;border-radius:999px 999px 6px 6px}
+.bluete{position:absolute;right:-16%;top:-7%;width:40%;z-index:2;pointer-events:none}
+.bluete img{width:100%;height:auto;aspect-ratio:3/4;object-fit:contain;filter:drop-shadow(0 22px 26px rgba(0,0,0,.55))}
+.f-erbsen{grid-column:8/13;margin:96px 0 0}
+.f-erbsen .rahmen{aspect-ratio:3/4;border-radius:6px}
+
+.gerichte{padding-block:var(--sek);border-top:1px solid var(--linie)}
+.ente-spalte{grid-column:1/6;position:relative}
+.ente{width:min(100%,520px);aspect-ratio:1;margin-top:var(--s4)}
+.ente img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 34px 40px rgba(0,0,0,.6))}
+.liste-spalte{grid-column:6/13}
+.gerichte h2{font-size:clamp(2.5rem,5vw,4.5rem);margin-bottom:var(--s4)}
+.gerichte-liste{list-style:none;padding:0;border-bottom:1px solid var(--linie)}
+.gericht{display:grid;grid-template-columns:2.5rem 1fr auto;gap:var(--s2);align-items:center;padding:1.35rem 0;border-top:1px solid var(--linie);cursor:default}
+.nr{font-size:.875rem;color:var(--kupfer);font-variant-numeric:tabular-nums;align-self:start;padding-top:.6rem}
+.name{display:block;overflow:hidden;padding-block:.08em .16em;margin-block:-.08em -.16em;font-family:var(--display);font-weight:300;font-size:clamp(1.5rem,2.4vw,2rem);line-height:1.15}
+.name > span{display:block;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.gericht:hover .name > span{transform:translateX(10px)}
+.detail{display:block;color:var(--leise);font-size:1rem;margin-top:.25rem}
+.thumb{display:none;width:56px;height:56px;border-radius:6px;overflow:hidden;background:var(--grau)}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.hinweis{margin-top:var(--s4);max-width:46ch}
+.hinweis a{color:var(--kupfer);font-weight:600;white-space:nowrap}
+.vorschau{position:fixed;left:0;top:0;z-index:40;width:240px;aspect-ratio:4/5;border-radius:6px;overflow:hidden;pointer-events:none;opacity:0;display:none}
+.vorschau img{width:100%;height:100%;object-fit:cover}
+
+.streifen{padding-block:var(--sek);overflow:hidden;border-top:1px solid var(--linie)}
+.streifen-spur{--h:min(60vh,540px);display:flex;align-items:flex-end;gap:clamp(1rem,2.5vw,2.5rem);padding-inline:var(--rand);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--grau) transparent;padding-bottom:var(--s2)}
+.streifen-intro{flex:none;width:min(24rem,80vw);align-self:center;scroll-snap-align:start}
+.streifen-intro h2{font-size:clamp(2.25rem,4.5vw,4rem);margin-bottom:var(--s3)}
+.streifen figure{flex:none;margin:0;width:min(calc(var(--h)*var(--s,1)*var(--r)),84vw);scroll-snap-align:start}
+.streifen .rahmen{aspect-ratio:var(--r);border-radius:6px}
+.streifen figure:nth-child(odd) .rahmen{border-radius:6px 6px 120px 6px}
+
+.zeiten{background:var(--grau);padding-block:var(--sek)}
+.zeiten h2{grid-column:1/9;font-size:clamp(1.85rem,3.6vw,3.25rem);line-height:1.15}
+.zeiten-seite{grid-column:9/13;align-self:end;display:flex;flex-direction:column;gap:var(--s2);align-items:flex-start}
+.fahrplan{list-style:none;padding:0;margin-top:var(--s6)}
+.fp-zeile,.fp-skala{display:grid;grid-template-columns:9rem 1fr 13rem;gap:var(--s3);align-items:center}
+.fp-zeile{padding-block:1.1rem;color:var(--elf2);border-bottom:1px solid rgba(239,231,220,.16)}
+.fp-zeile .tl-achse{background:rgba(239,231,220,.35)}
+.fp-tag{font-family:var(--display);font-weight:300;font-size:1.25rem}
+.fp-zeit{text-align:right;font-variant-numeric:tabular-nums}
+.fp-zeile.heute{color:var(--elf)}
+.fp-zeile.heute .fp-tag{font-weight:400}
+.fp-zeile.heute .fp-tag::after{content:"heute";margin-left:.6rem;font:600 .875rem var(--text);color:var(--grund);background:var(--elf);padding:2px 8px;border-radius:999px;vertical-align:.2em}
+.fp-zeile.heute .tl-seg{height:5px;top:-2px}
+.fp-zeile.heute .tl-achse{background:rgba(239,231,220,.6)}
+.merkmale{margin-top:var(--s5);max-width:70ch;color:var(--elf)}
+
+.lage{padding-block:var(--sek)}
+.f-eingang{grid-column:1/7;margin:0}
+.f-eingang .rahmen{aspect-ratio:3072/3377;border-radius:6px}
+.lage-text{grid-column:8/13;display:flex;flex-direction:column}
+.lage h2{font-size:clamp(2.5rem,5vw,4.5rem)}
+.plz{margin-top:.5rem;color:var(--leise)}
+.weg{margin-top:var(--s3);max-width:40ch}
+.lage .aktionen{margin-top:var(--s3)}
+.karte-rahmen{margin-top:var(--s4);aspect-ratio:4/3;border-radius:6px;overflow:hidden;border:1px solid var(--grau);background:#1f1816}
+.karte-rahmen [data-karte]{width:100%;height:100%}
+
+.abschluss{padding-block:var(--sek) var(--s6);border-top:1px solid var(--linie)}
+.f-lampe{margin:0}
+.f-lampe .rahmen{aspect-ratio:21/8;border-radius:6px}
+.f-lampe img{object-position:50% 60%}
+.frage{font-weight:200;font-size:clamp(2.75rem,9.5vw,9.5rem);line-height:1;letter-spacing:-.03em;margin-top:var(--s5)}
+.frage > div{padding-block:.06em .14em;margin-block:-.06em -.14em}
+.abschluss-aktion{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s4) var(--s5);margin-top:var(--s5)}
+.gross-knopf{width:clamp(9rem,15vw,12rem);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;padding:0;font-family:var(--display);font-weight:400;font-size:1.3rem}
+.nummer{font-family:var(--display);font-weight:300;font-size:clamp(1.5rem,3vw,2.25rem);text-decoration:none;font-variant-numeric:tabular-nums;min-height:44px;display:inline-flex;align-items:center}
+.nummer:hover{color:var(--kupfer)}
+
+.fuss{border-top:1px solid var(--grau);padding-block:var(--s5)}
+.fuss .raster > div{grid-column:span 4}
+.fuss h3{font-size:1rem;font-weight:400;color:var(--leise);margin-bottom:.5rem}
+.fuss p,.fuss li{font-size:1rem}
+.fuss ul{list-style:none;padding:0;font-variant-numeric:tabular-nums}
+.fuss .wortmarke{font-size:1.5rem}
+.rechtliches{margin-top:var(--s5);padding-top:var(--s3);border-top:1px solid var(--linie);font-size:.875rem;color:var(--leise)}
+.rechtliches p+p{margin-top:.25rem}
+.leiste{display:none}
+
+@media (pointer:fine) and (min-width:820px){.vorschau{display:block}}
+@media (max-width:819px),(pointer:coarse){.thumb.hat{display:block}}
+@media (max-width:1100px){
+  .kopf nav .nebenlink{display:none}
+}
+@media (max-width:819px){
+  body{font-size:1rem;padding-bottom:calc(80px + env(safe-area-inset-bottom))}
+  :root{--kopf:64px}
+  .raster{grid-template-columns:minmax(0,1fr)}
+  .raster > *{grid-column:1/-1 !important}
+  .hero{grid-template-columns:minmax(0,1fr);min-height:0}
+  .buehne{order:-1;height:62svh;min-height:360px}
+  .inset,.verlauf{display:none}
+  .hero-foto img{object-position:50% 50%}
+  .marke{font-size:15vw}
+  .hero-titel{margin-top:var(--s4);font-size:1.75rem}
+  .aktionen{flex-direction:column;align-items:stretch;gap:.75rem}
+  .aktionen .pill{justify-content:center;min-height:52px}
+  .route-knopf{justify-content:center;min-height:52px;border:1px solid var(--elf);border-radius:999px;text-decoration:none;padding:0 24px}
+  .lede{margin-top:var(--s3)}
+  .f-gemuese{width:86%}
+  .bluete{right:-12%;width:34%}
+  .f-erbsen{width:76%;margin:var(--s5) 0 0 auto}
+  .ente-spalte{order:2}
+  .ente{width:62%;margin:var(--s3) 0 0 auto}
+  .liste-spalte{order:1}
+  .zeiten-seite{margin-top:var(--s3)}
+  .fp-zeile{grid-template-columns:1fr auto;row-gap:.85rem}
+  .fp-zeile .tl-achse{grid-column:1/-1;grid-row:2}
+  .fp-skala{grid-template-columns:1fr}
+  .fp-skala > :not(.tl-skala){display:none}
+  .fp-zeit{font-size:.9375rem}
+  .lage-text{margin-top:var(--s4)}
+  .f-lampe .rahmen{aspect-ratio:16/10}
+  .abschluss-aktion{flex-direction:column;align-items:stretch;gap:var(--s2)}
+  .gross-knopf{width:100%;aspect-ratio:auto;min-height:56px;border-radius:999px}
+  .fuss .raster > div{margin-bottom:var(--s4)}
+  .leiste{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--grund);border-top:1px solid var(--grau);padding-bottom:env(safe-area-inset-bottom)}
+  .leiste a{min-height:48px;display:grid;place-items:center;text-decoration:none;font-weight:600;font-size:1rem}
+  .leiste a:first-child{background:var(--kupfer);color:var(--grund)}
+  .leiste a+a{border-left:1px solid var(--grau)}
+}
+@media (max-width:519px){
+  .kopf nav li:not(:last-child){display:none}
+}
+@media (prefers-reduced-motion:reduce){*,*::before{transition:none !important}}
+.strich{display:none}
+.foto-nachweis{color:#B8ADA2;font-size:max(.8125rem,13px)}
+.hero-foto .foto-nachweis{font-size:.8125rem}
+.panel-oben{display:flex;flex-direction:column}
+.hero-titel{font-size:clamp(1.9rem,2.9vw,3.1rem);margin-top:var(--s4)}
+.tl{margin-top:0;padding-top:var(--s4);border-top:1px solid rgba(239,231,220,.22)}
+.hero .tl-status{margin:0 0 var(--s3);font-size:1.25rem;line-height:1.3}
+.tl-achse{height:2px}
+.tl-seg{top:-2px;height:6px}
+.tl-jetzt{width:12px;height:12px;margin:-6px 0 0 -6px}
+.hero .tl-skala{margin-top:.6rem;font-size:.9375rem}
+.hero .tl-hinweis{margin-top:.25rem}
+.fp-zeile.heute .tl-seg{height:8px;top:-3px}
+.inset{left:24px;bottom:24px;width:220px}
+.inset .rahmen{aspect-ratio:768/844}
+.inset figcaption,.inset .foto-nachweis{font-size:.8125rem;color:rgba(239,231,220,.8)}
+.notiz{font-family:var(--akzent);font-style:italic;font-size:1.5rem;line-height:1.35;max-width:26ch;margin-top:var(--s4);color:var(--elf)}
+@media (min-width:820px){.f-erbsen{margin-top:48px}}
+.f-ente{margin:var(--s2) 0 0;width:min(100%,460px)}
+.f-ente .rahmen{aspect-ratio:690/913;border-radius:999px 999px 6px 6px}
+.gericht{grid-template-columns:3rem minmax(0,1fr) minmax(0,16rem) auto;align-items:baseline;column-gap:var(--s3);padding:24px 0}
+.nr{align-self:baseline;padding-top:0}
+.name{font-size:clamp(1.5rem,2.4vw,2.25rem)}
+.detail{margin-top:0;text-align:right;font-size:1rem;line-height:1.45;transition:color .3s}
+.gericht:hover .detail{color:var(--elf)}
+.thumb{align-self:center}
+.gross-knopf{width:auto;aspect-ratio:auto;border-radius:999px;min-height:72px;padding:0 clamp(2rem,4vw,3.5rem);font-size:clamp(1.25rem,2vw,1.6rem)}
+@media (max-width:1100px) and (min-width:820px){.hero{min-height:0}}
+@media (max-width:1179px){.pill .lang{display:none}}
+@media (min-width:1180px){.pill .kurz{display:none}}
+@media (max-width:899px){
+  .aktionen{flex-direction:column;align-items:stretch;gap:.75rem}
+  .aktionen .pill{justify-content:center;min-height:52px}
+  .route-knopf{justify-content:center;min-height:52px;border:1px solid var(--elf);border-radius:999px;text-decoration:none;padding:0 24px}
+}
+@media (max-width:819px){
+  body{padding-bottom:calc(56px + env(safe-area-inset-bottom))}
+  .buehne{height:42svh;min-height:240px}
+  .hero-foto img{object-position:50% 62%}
+  .panel{padding:var(--s3) var(--rand) var(--s4);gap:0}
+  .panel-oben,.hero .tl{display:contents}
+  .marke{font-size:12vw;order:0}
+  .hero-titel{order:1;margin-top:var(--s2);font-size:1.5rem;max-width:22ch}
+  .hero .tl-status{order:2;margin:var(--s2) 0 0;font-size:1.125rem}
+  .hero .aktionen{order:3;margin-top:var(--s3)}
+  .hero-text{order:4;margin-top:var(--s4)}
+  .hero .tl-achse{order:5;margin-top:var(--s4)}
+  .hero .tl-skala{order:6}
+  .hero .tl-hinweis{order:7}
+  .bluete{right:0;top:-4%;width:30%;max-width:34%}
+  .f-ente{width:70%;margin:var(--s4) 0 0 auto}
+  .gericht{grid-template-columns:2.25rem minmax(0,1fr) auto;row-gap:.35rem;padding:20px 0}
+  .gericht .detail{grid-column:2;grid-row:2;text-align:left}
+  .gericht .thumb{grid-column:3;grid-row:1/3}
+  .fuss{padding-bottom:var(--s4)}
+  .fuss .raster > div:last-child{margin-bottom:0}
+}
+h1,h2,h3{hyphens:manual;text-wrap:balance}
+section,section[id]{scroll-margin-top:96px}
+.nw{white-space:nowrap}
+.foto-nachweis{text-decoration:none}
+.foto-nachweis:hover,.foto-nachweis:focus-visible{text-decoration:underline}
+.hero{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+.panel{padding:clamp(1.5rem,3vw,3rem) clamp(1.25rem,3.5vw,3.5rem) 32px;gap:var(--s4)}
+.marke{font-size:clamp(3.5rem,7vw,7.5rem);letter-spacing:.2em;margin-right:-.2em;padding:.18em 0 .06em}
+.hero-titel{font-size:clamp(1.6rem,2.3vw,2.4rem);max-width:none;margin-top:var(--s3)}
+.hero-titel em{white-space:nowrap}
+.hero .tl{padding-top:var(--s3)}
+.hero .tl-status{font-size:.9375rem;margin:0 0 var(--s2);font-variant-numeric:tabular-nums}
+.inset{left:24px;bottom:24px;width:auto;padding:6px 6px 8px;border-radius:4px}
+.inset .rahmen{width:200px;height:140px;aspect-ratio:auto;border-radius:4px}
+.inset img{object-position:50% 40%}
+.inset figcaption{font-size:.8125rem;line-height:1.35;margin-top:.4rem;color:var(--elf);max-width:200px}
+.gericht{grid-template-columns:minmax(0,1fr) minmax(0,18rem) auto;column-gap:var(--s4);padding:22px 0}
+.name{overflow:visible;font-family:var(--display);font-weight:300;font-size:clamp(1.6rem,2.2vw,2rem);color:var(--elf)}
+.detail{color:rgba(239,231,220,.75);font-size:1rem}
+.gericht:hover .detail{color:var(--elf)}
+.f-ente .rahmen{aspect-ratio:4/5;border-radius:50% 50% 0 0/30% 30% 0 0}
+.f-ente img{object-position:40% 60%}
+.fahrplan{margin-top:var(--s5)}
+.fp-zeile{min-height:56px;padding-block:.5rem}
+.fp-tag{font-size:1.375rem}
+.fahrplan .tl-achse::before{content:"";position:absolute;left:0;right:0;top:-6px;height:13px;border-right:1px solid rgba(239,231,220,.3);background:repeating-linear-gradient(90deg,rgba(239,231,220,.3) 0 1px,transparent 1px calc(100%/12));pointer-events:none}
+.fp-zeile.heute .tl-seg{background:var(--elf)}
+.fahrplan .tl-jetzt{background:var(--kupfer);width:14px;height:14px;margin:-7px 0 0 -7px;box-shadow:0 0 0 3px var(--grau)}
+.fp-skala .tl-skala{height:1.6rem}
+@media (min-width:820px){.fp-zeile,.fp-skala{grid-template-columns:10rem 1fr 14rem}}
+.abschluss{padding-block:var(--sek);border-top:1px solid var(--linie)}
+.abschluss .innen{max-width:none;padding-inline:0}
+.abschluss-raster{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,36vw);align-items:center}
+.abschluss-text{grid-column:1/3;grid-row:1;position:relative;z-index:2;padding-left:max(var(--rand),calc((100vw - var(--max))/2 + var(--rand)));padding-right:calc(36vw - 80px)}
+.f-lampe{grid-column:2;grid-row:1;margin:0}
+.f-lampe .rahmen{aspect-ratio:4/5;border-radius:6px 0 0 6px}
+.f-lampe img{object-position:55% 60%}
+.frage{margin-top:0;font-size:clamp(2.75rem,7.5vw,8rem);color:var(--elf);text-align:right}
+.frage em{white-space:nowrap}
+.abschluss-aktion{justify-content:flex-end;text-align:right}
+.gross-knopf{display:inline-flex;place-items:initial}
+.gross-knopf.mit-bild{padding-left:12px}
+.gross-knopf .pill-bild{width:48px;height:48px}
+@media (min-width:820px) and (max-width:1023px){
+  .hero{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .haltung h2{grid-column:1/11}
+  .lede{grid-column:1/9;margin-top:var(--s4);max-width:60ch}
+  .zeiten h2{grid-column:1/11}
+  .zeiten-seite{grid-column:1/9;margin-top:var(--s3)}
+}
+@media (max-width:819px){
+  .hero{grid-template-columns:minmax(0,1fr)}
+  .panel{padding:var(--s3) var(--rand) var(--s4);gap:0}
+  .marke{font-size:13vw}
+  .hero-titel{font-size:1.5rem;margin-top:var(--s2)}
+  .hero .tl-status{margin:var(--s2) 0 0;font-size:1rem}
+  .gericht{grid-template-columns:minmax(0,1fr) auto;row-gap:.35rem;padding:18px 0}
+  .gericht .detail{grid-column:1;grid-row:2;text-align:left}
+  .gericht .thumb{grid-column:2;grid-row:1/3}
+  .fp-zeile{grid-template-columns:1fr auto;row-gap:.75rem;min-height:0;padding-block:1rem}
+  .fp-skala{grid-template-columns:1fr}
+  .abschluss{border-top:0;padding-block:var(--s5) var(--s4)}
+  .abschluss-raster{grid-template-columns:minmax(0,1fr)}
+  .abschluss-text{grid-column:1;grid-row:2;padding:var(--s4) var(--rand) 0}
+  .f-lampe{grid-column:1;grid-row:1;padding-inline:var(--rand)}
+  .f-lampe .rahmen{aspect-ratio:16/10;border-radius:6px}
+  .frage,.abschluss-aktion{text-align:left;justify-content:flex-start}
+  .gross-knopf{justify-content:center}
+}
+</style>
+<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}</style><!--agent-lib--><link rel="stylesheet" href="lib/lenis.css"><script src="lib/gsap.min.js"></script><script src="lib/ScrollTrigger.min.js"></script><script src="lib/SplitText.min.js"></script><script src="lib/lenis.min.js"></script><!--/agent-lib--></head>
+<body id="top"><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für Menmo. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
+
+<header class="kopf">
+  <div class="innen">
+    <a class="wortmarke" href="#top" aria-label="Menmō, zum Seitenanfang">MENM<span class="o">O<i class="makron"></i></span></a>
+    <nav aria-label="Hauptnavigation">
+      <ul>
+        <li><a class="nebenlink" href="#karte">Karte</a></li>
+        <li><a class="nebenlink" href="#zeiten">Zeiten</a></li>
+        <li><a class="nebenlink" href="#lage">Lage</a></li>
+        <li><a class="kopf-anruf" href="tel:+494018039727">Anrufen</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-label="Menmō am Mühlenkamp">
+    <div class="panel">
+      <div class="panel-oben">
+      <h1 class="marke"><span class="sr">Menmō</span><span class="marke-innen" aria-hidden="true">MENM<span class="o">O<i class="makron"></i></span></span></h1>
+      <p class="hero-titel">Asiatisch gedacht.<br>Am Mühlenkamp<br><em>bis Mitternacht.</em></p>
+      <p class="hero-text">Fusionsküche zum Teilen, mittags und abends. Mühlenkamp 54, <span class="nw">Hamburg-Winterhude.</span></p>
+      <div class="aktionen">
+        <a class="pill mit-bild" href="tel:+494018039727"><span class="pill-bild"><img src="ki-ente-frei.webp" alt="" width="64" height="64"></span><span><span class="lang">Tisch anrufen</span><span class="kurz">Anrufen</span> · 040 18039727</span></a>
+        <a class="textlink route-knopf" href="https://www.google.com/maps/dir/?api=1&amp;destination=M%C3%BChlenkamp%2054%2C%2022303%20Hamburg" target="_blank" rel="noopener">Route <span class="pfeil" aria-hidden="true">→</span></a>
+      </div>
+      </div>
+      <div class="tl">
+        <p class="tl-status"><span data-status></span></p>
+        <div class="tl-achse" aria-hidden="true">
+          <span class="tl-seg" style="--a:0;--b:25"></span>
+          <span class="tl-seg" style="--a:41.667;--b:58.333"></span>
+          <span class="tl-jetzt"></span>
+        </div>
+        <div class="tl-skala" aria-hidden="true"><span style="--x:0">12</span><span style="--x:25">15</span><span style="--x:41.667">17</span><span style="--x:100">24</span></div>
+        <p class="tl-hinweis">Mo–Fr 12–15 · 17–24 Uhr, Sa–So 12–24 Uhr</p>
+      </div>
+    </div>
+    <div class="buehne">
+      <figure class="hero-foto" data-foto>
+        <div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfbYIUJURKhGFhpvX4MshZwLZKxFQK2mpw-FxWaXtiBlK__aLJnr5xTLQZJKS5-DxrbaBMDZuixbKSaHM3kQ-TD4kkf8flmjWOrkuPk1nbEXB6YPlOErgU5RqevzVRtrLZrSEexFrQL3W2i=s4800-w1800" referrerpolicy="no-referrer" alt="Gedeckter Marmortisch im Menmō mit kleinen Vorspeisen, Tischlampe und Blumenvase" width="1600" height="1200" fetchpriority="high"></div>
+        <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/100525010912404645780" target="_blank" rel="noopener">Foto: Emelin · Google Maps</a>
+      </figure>
+      <span class="verlauf" aria-hidden="true"></span>
+      <figure class="inset" data-foto>
+        <div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLe29X0BbubtdgNh4JNGPxDcixSqFjS87AaYWHsWO2g86P0rPsp1gqBDoXOGdqzwtU7Ral4zEsC4NdKJjXwe0H9mn52e68XuA8dl0G1vyt8fVyPt2DImom8k7XV3YI0vGnxzevs1N-3e59Cm=s4800-w1000" referrerpolicy="no-referrer" alt="Eingang des Menmō: Schild über der Ecktür, graue Steintreppe und Olivenbaum im Kübel" width="768" height="844"></div>
+        <figcaption>Eingang an der Ecke, Treppe mit Olivenbaum</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="haltung" aria-labelledby="h-haltung">
+    <div class="innen">
+      <div class="raster">
+        <h2 id="h-haltung"><span class="strich" aria-hidden="true"></span>Wenige Teller. <em>Viel Arbeit</em> darin.</h2>
+        <div class="lede">
+          <p>Die Karte ist kurz. Die Gerichte kommen in die Mitte des Tisches und werden geteilt, mittags von 12 bis 15 Uhr, abends ab 17 Uhr bis Mitternacht.</p>
+          <p>Bestellen Sie mehrere kleine Teller. Der Service erklärt jeden davon, bevor Sie anfangen.</p>
+        </div>
+      </div>
+      <div class="raster paar">
+        <div class="f-gemuese">
+          <figure data-foto style="margin:0">
+            <div class="rahmen enthuellen"><img id="b-gemuese" src="https://lh3.googleusercontent.com/grass-cs/AABkmLfwpFNu3GcYruMUBlZJVHjzVDdJj-IjDJD-G-b0ZO5ENBi5d6v7X1jcGGd5mJyQxiVF0QU0nc58AT0BFgCRh0PCk2i51o_BnIer7B1AFlLKE5yhTfyxtPR9I17zOYdOeeWR9uR95FKuFjOq=s4800-w1000" referrerpolicy="no-referrer" alt="Gemüseteller mit Mini-Zucchini, Brokkoli und Zucchiniblüten in grüner Sauce" width="685" height="837" loading="lazy"></div>
+            <figcaption class="bu"><span>Mini-Zucchini, Brokkoli, Zucchiniblüte</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/108998060329367800036" target="_blank" rel="noopener">Foto: Artur Fischer · Google Maps</a></figcaption>
+          </figure>
+          <p class="notiz">Mini-Zucchini und Brokkoli in grüner Sauce, die Blüte im Ganzen obendrauf.</p>
+          <div class="bluete" data-tiefe="28" aria-hidden="true"><img src="ki-zucchiniblute-frei.webp" alt="" width="600" height="800" loading="lazy"></div>
+        </div>
+        <figure class="f-erbsen" data-foto>
+          <div class="rahmen enthuellen"><img id="b-erbsen" src="https://lh3.googleusercontent.com/grass-cs/AABkmLckcKnot60SRG0PJfXbCE1sV2crB_uWRTeRggLAfE7VMa3jZVCmUrmzSo04zyE2r9blFrCK2q0ESC1RUY_oyrfxQS-uuLVjYmS0T2XIzkGZN1K3K2Jh1dYdD1SAcSA4Cc5mpXe9rUlVD6-d=s4800-w1000" referrerpolicy="no-referrer" alt="Kaltes Gericht mit Erbsen, Kräutern und essbaren Blüten in einem strukturierten weißen Teller" width="768" height="1020" loading="lazy"></div>
+          <figcaption class="bu"><span>Kalt: Erbsen, Kräuter, Blüten</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/113450990156702787264" target="_blank" rel="noopener">Foto: Anna Alexandrovna · Google Maps</a></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="gerichte" id="karte" aria-labelledby="h-karte">
+    <div class="innen raster">
+      <div class="ente-spalte">
+        <figure class="f-ente" data-foto><div class="rahmen enthuellen"><img id="b-ente" src="https://lh3.googleusercontent.com/grass-cs/AABkmLcYLCcHqx_Y1um4n5ZlfMOpJHiq8EnU_5AFDk4F5vTBYDZJ8_qYelk0sd0STHhSC0Fi3jUw2L-oUfpHIBgssaGozyKduGXFPJnX7K_9mfATZoaHMowqgifhT-NoMFiqPl9tk569otB-l7mW=s4800-w1000" referrerpolicy="no-referrer" alt="Rosa gebratene Entenbrust mit Jus und Grünkohl" width="690" height="913" loading="lazy"></div><figcaption class="bu"><span>Entenbrust, Jus, Grünkohl</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/107178824212268305091" target="_blank" rel="noopener">Foto: Daniel Schuppmann · Google Maps</a></figcaption></figure>
+      </div>
+      <div class="liste-spalte">
+        <h2 id="h-karte">Auf den <em>Tisch</em></h2>
+        <ol class="gerichte-liste">
+          <li class="gericht" data-bild="b-ente"><span class="name"><span>Ente</span></span><span class="detail">Rosa gebraten, Jus, Grünkohl</span><span class="thumb"></span></li>
+          <li class="gericht" data-bild="b-erbsen"><span class="name"><span>Erbsen kalt</span></span><span class="detail">Erbsen, Kräuter, essbare Blüten</span><span class="thumb"></span></li>
+          <li class="gericht" data-bild="b-pilze"><span class="name"><span>Pilze</span></span><span class="detail">Zubereitung wechselt, bitte nachfragen</span><span class="thumb"></span></li>
+          <li class="gericht" data-bild="b-hamachi"><span class="name"><span>Hamachi</span></span><span class="detail">Gelbschwanzmakrele</span><span class="thumb"></span></li>
+          <li class="gericht" data-bild="b-gemuese"><span class="name"><span>Zucchiniblüte</span></span><span class="detail">Mini-Zucchini, Brokkoli, grüne Sauce</span><span class="thumb"></span></li>
+        </ol>
+        <p class="hinweis">Die aktuelle Karte erfahren Sie am Telefon oder am Tisch: <a href="tel:+494018039727">040 18039727</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="streifen" aria-labelledby="h-streifen">
+    <div class="streifen-spur">
+      <div class="streifen-intro">
+        <span class="strich" aria-hidden="true"></span>
+        <h2 id="h-streifen">Teller für die <em>Mitte.</em></h2>
+        <p>Mehrere kleine Teller bestellen, in die Mitte stellen, teilen. Manches kommt auf einem kleinen Holzkohlegrill direkt an den Tisch.</p>
+      </div>
+      <figure data-foto style="--r:.75;--s:1">
+        <div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLcNSq-xgIqRsY8IMKPfWQObaw068T-koroSrTe6aWzFyjX4jpkliLUSRFuiFhcKQ1L_umYW-z-lJTKPlwyoBm5lBM2gTaL6tEYGD4duaEJc_i_-XjYSA1t19RHgqiOZxGpG6Ey8CD42-1PA=s4800-w1000" referrerpolicy="no-referrer" alt="Tranchiertes Fleisch auf einem kleinen Holzkohlegrill am Tisch" width="900" height="1200" loading="lazy"></div>
+        <figcaption class="bu"><span>Am Tisch über Holzkohle</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/104690091759507469320" target="_blank" rel="noopener">Foto: Chris E. · Google Maps</a></figcaption>
+      </figure>
+      <figure style="--r:.75;--s:.78">
+        <div class="rahmen"><img id="b-pilze" src="ki-pilze-schale.webp" alt="Schale mit glasierten Pilzen in dunkler Brühe" width="900" height="1200" loading="lazy"></div>
+        <figcaption class="bu"><span>Pilze</span></figcaption>
+      </figure>
+      <figure data-foto style="--r:.75;--s:.92">
+        <div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfnLVp8PdydHdSycoX2yxNtN-neBqMEbxnbe7O-6cpY_1sKV3wscgfa-s8xVeY_iN4z0l9eRBj3s7c5btq6hSvwK0CZ_ZJ-0t0jkfoLTqkQSefL7e4vHCca2fsa9Xf5ebTpB2dJuI2dG7FM=s4800-w1000" referrerpolicy="no-referrer" alt="Karaage, gegrilltes Hähnchen, Salat und verschiedene Dips auf dem Tisch" width="900" height="1200" loading="lazy"></div>
+        <figcaption class="bu"><span>Karaage, Hähnchen vom Grill, Dips</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/117667306105895727429" target="_blank" rel="noopener">Foto: neha bhandekar · Google Maps</a></figcaption>
+      </figure>
+      <figure style="--r:1.5;--s:.72">
+        <div class="rahmen"><img id="b-hamachi" src="ki-hamachi-teller.webp" alt="Dünn geschnittener Hamachi auf hellem Keramikteller mit Kräuteröl" width="1200" height="800" loading="lazy"></div>
+        <figcaption class="bu"><span>Hamachi</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="zeiten" id="zeiten" aria-labelledby="h-zeiten">
+    <div class="innen">
+      <div class="raster">
+        <h2 id="h-zeiten"><span class="strich" aria-hidden="true"></span>Mittags von 12 bis 15 Uhr, abends ab 17 Uhr <em>bis Mitternacht.</em></h2>
+        <div class="zeiten-seite">
+          <p>Samstag und Sonntag durchgehend von 12 Uhr bis Mitternacht. Tische reservieren Sie am Telefon.</p>
+          <p class="tl-status"><span data-status></span></p>
+          <a class="pill" href="tel:+494018039727">Tisch reservieren</a>
+        </div>
+      </div>
+      <ol class="fahrplan" aria-label="Öffnungszeiten nach Wochentag">
+        <li class="fp-skala" aria-hidden="true"><span></span><div class="tl-skala"><span style="--x:0">12</span><span style="--x:25">15</span><span style="--x:41.667">17</span><span style="--x:75">21</span><span style="--x:100">24 Uhr</span></div><span></span></li>
+        <li class="fp-zeile" data-tag="0"><span class="fp-tag">Montag</span><div class="tl-achse" aria-hidden="true"><span class="tl-seg" style="--a:0;--b:25"></span><span class="tl-seg" style="--a:41.667;--b:58.333"></span><span class="tl-jetzt"></span></div><span class="fp-zeit">12:00–15:00 · 17:00–24:00</span></li>
+        <li class="fp-zeile" data-tag="1"><span class="fp-tag">Dienstag</span><div class="tl-achse" aria-hidden="true"><span class="tl-seg" style="--a:0;--b:25"></span><span class="tl-seg" style="--a:41.667;--b:58.333"></span><span class="tl-jetzt"></span></div><span class="fp-zeit">12:00–15:00 · 17:00–24:00</span></li>
+        <li class="fp-zeile" data-tag="2"><span class="fp-tag">Mittwoch</span><div class="tl-achse" aria-hidden="true"><span class="tl-seg" style="--a:0;--b:25"></span><span class="tl-seg" style="--a:41.667;--b:58.333"></span><span class="tl-jetzt"></span></div><span class="fp-zeit">12:00–15:00 · 17:00–24:00</span></li>
+        <li class="fp-zeile" data-tag="3"><span class="fp-tag">Donnerstag</span><div class="tl-achse" aria-hidden="true"><span class="tl-seg" style="--a:0;--b:25"></span><span class="tl-seg" style="--a:41.667;--b:58.333"></span><span class="tl-jetzt"></span></div><span class="fp-zeit">12:00–15:00 · 17:00–24:00</span></li>
+        <li class="fp-zeile" data-tag="4"><span class="fp-tag">Freitag</span><div class="tl-achse" aria-hidden="true"><span class="tl-seg" style="--a:0;--b:25"></span><span class="tl-seg" style="--a:41.667;--b:58.333"></span><span class="tl-jetzt"></span></div><span class="fp-zeit">12:00–15:00 · 17:00–24:00</span></li>
+        <li class="fp-zeile" data-tag="5"><span class="fp-tag">Samstag</span><div class="tl-achse" aria-hidden="true"><span class="tl-seg" style="--a:0;--b:100"></span><span class="tl-jetzt"></span></div><span class="fp-zeit">12:00–24:00</span></li>
+        <li class="fp-zeile" data-tag="6"><span class="fp-tag">Sonntag</span><div class="tl-achse" aria-hidden="true"><span class="tl-seg" style="--a:0;--b:100"></span><span class="tl-jetzt"></span></div><span class="fp-zeit">12:00–24:00</span></li>
+      </ol>
+      <p class="merkmale">Mittagstisch · Abendessen · Plätze draußen · Zum Mitnehmen · Tischreservierung · Vegetarische Gerichte · Wein und Bier · Kaffee und Desserts</p>
+    </div>
+  </section>
+
+  <section class="lage" id="lage" aria-labelledby="h-lage">
+    <div class="innen raster">
+      <figure class="f-eingang" data-foto>
+        <div class="rahmen enthuellen"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLe29X0BbubtdgNh4JNGPxDcixSqFjS87AaYWHsWO2g86P0rPsp1gqBDoXOGdqzwtU7Ral4zEsC4NdKJjXwe0H9mn52e68XuA8dl0G1vyt8fVyPt2DImom8k7XV3YI0vGnxzevs1N-3e59Cm=s4800-w1000" referrerpolicy="no-referrer" alt="Eingang des Menmō: Schild über der Ecktür, graue Steintreppe und Olivenbaum im Kübel" width="768" height="844" loading="lazy"></div>
+        <figcaption class="bu"><span>Eckhaus, Treppe mit Olivenbaum</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/103672553456934363843" target="_blank" rel="noopener">Foto: Florian Lust · Google Maps</a></figcaption>
+      </figure>
+      <div class="lage-text">
+        <span class="strich" aria-hidden="true"></span>
+        <h2 id="h-lage">Mühlenkamp 54</h2>
+        <p class="plz">22303 Hamburg-Winterhude</p>
+        <p class="weg">Eckhaus, Eingang über die kleine Treppe neben dem Olivenbaum, Terrasse an der Seite.</p>
+        <div class="aktionen">
+          <a class="pill" href="https://www.google.com/maps/dir/?api=1&amp;destination=M%C3%BChlenkamp%2054%2C%2022303%20Hamburg" target="_blank" rel="noopener">Route planen</a>
+          <a class="textlink" href="tel:+494018039727">040 18039727 <span class="pfeil" aria-hidden="true">→</span></a>
+        </div>
+        <div class="karte-rahmen"><div data-karte data-stil="dunkel" data-farbe="#D9643F"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="abschluss" aria-labelledby="h-frage">
+    <div class="innen">
+      <div class="abschluss-raster"><figure class="f-lampe">
+        <div class="rahmen enthuellen"><img src="ki-lampe-detail.webp" alt="Kleine Tischlampe wirft warmes Licht auf eine dunkle Holztischkante" width="1500" height="1000" loading="lazy"></div>
+      </figure>
+      <div class="abschluss-text"><h2 class="frage" id="h-frage">Ein Tisch für<br><em>heute Abend?</em></h2>
+      <div class="abschluss-aktion">
+        <a class="pill mit-bild gross-knopf" href="tel:+494018039727"><span class="pill-bild"><img src="ki-ente-frei.webp" alt="" width="64" height="64" loading="lazy"></span><span>Anrufen</span></a>
+        <div>
+          <a class="nummer" href="tel:+494018039727">040 18039727</a>
+          <p class="tl-hinweis" style="color:var(--leise)">Abends ab 17 Uhr, Sa und So ab 12 Uhr bis Mitternacht.</p>
+        </div>
+      </div>
+    </div>
+  </div></div></section>
+</main>
+
+<footer class="fuss">
+  <div class="innen">
+    <div class="raster">
+      <div>
+        <a class="wortmarke" href="#top" aria-label="Menmō, zum Seitenanfang">MENM<span class="o">O<i class="makron"></i></span></a>
+        <p style="margin-top:.75rem">Asiatische Fusionsküche<br>Mühlenkamp 54, 22303 Hamburg</p>
+      </div>
+      <div>
+        <h3>Öffnungszeiten</h3>
+        <ul><li>Mo–Fr 12:00–15:00 · 17:00–24:00</li><li>Sa–So 12:00–24:00</li></ul>
+      </div>
+      <div>
+        <h3>Kontakt</h3>
+        <p><a class="textlink" href="tel:+494018039727">040 18039727</a><br><a class="textlink" href="https://www.google.com/maps/dir/?api=1&amp;destination=M%C3%BChlenkamp%2054%2C%2022303%20Hamburg" target="_blank" rel="noopener">Route in Google Maps</a></p>
+      </div>
+    </div>
+    <div class="rechtliches"><p>Entwurf von Medialyte, 21147 Hamburg. Adresse und Öffnungszeiten: Google. Fotos: Google Maps, Urheber jeweils am Bild; Eingangsfoto im ersten Bildschirm: <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/103672553456934363843" target="_blank" rel="noopener">Florian Lust · Google Maps</a>. Einige Bilder und das Logo sind KI-generierte Vorschläge.</p><p><a href="https://medialyte.de/impressum" style="color:inherit;text-decoration:underline">Impressum</a> · <a href="https://medialyte.de/datenschutzerklaerung" style="color:inherit;text-decoration:underline">Datenschutz</a></p></div>
+  </div>
+</footer>
+
+<nav class="leiste" aria-label="Schnellzugriff">
+  <a href="tel:+494018039727">Anrufen</a>
+  <a href="https://www.google.com/maps/dir/?api=1&amp;destination=M%C3%BChlenkamp%2054%2C%2022303%20Hamburg" target="_blank" rel="noopener">Route</a>
+  <a href="#zeiten">Zeiten</a>
+</nav>
+
+<div class="vorschau" aria-hidden="true"><img alt="" width="240" height="300" referrerpolicy="no-referrer"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const $ = (s, c = document) => c.querySelector(s), $$ = (s, c = document) => [...c.querySelectorAll(s)];
+  const tage = ["Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag","Sonntag"];
+  let tag = 0, zeit = 12;
+  try {
+    const p = Object.fromEntries(new Intl.DateTimeFormat("de-DE", { timeZone: "Europe/Berlin", weekday: "long", hour: "numeric", minute: "numeric", hourCycle: "h23" }).formatToParts(new Date()).map(x => [x.type, x.value]));
+    tag = Math.max(0, tage.indexOf(p.weekday)); zeit = +p.hour + +p.minute / 60;
+  } catch (e) { const d = new Date(); tag = (d.getDay() + 6) % 7; zeit = d.getHours() + d.getMinutes() / 60; }
+  const pct = Math.max(0, Math.min(100, (zeit - 12) / 12 * 100));
+  if (tag > 4) $$(".hero .tl-seg").forEach((s, i) => i ? s.remove() : (s.style.setProperty("--a", 0), s.style.setProperty("--b", 100)));
+  const heute = $(`.fp-zeile[data-tag="${tag}"]`);
+  if (heute) { heute.classList.add("heute"); heute.setAttribute("aria-current", "date"); }
+  $$(".hero .tl-jetzt, .heute .tl-jetzt").forEach(j => { j.style.setProperty("--p", pct); j.classList.add("an"); });
+
+  const quelle = id => {
+    const i = document.getElementById(id); if (!i) return null;
+    const f = i.closest("[data-foto]");
+    if (f && (f.hidden || f.style.display === "none")) return null;
+    return i.currentSrc || i.src;
+  };
+  window.addEventListener("load", () => {
+    $$(".gericht").forEach(g => {
+      const s = quelle(g.dataset.bild), th = $(".thumb", g);
+      if (!s || !th) return;
+      const im = new Image(56, 56); im.alt = ""; im.referrerPolicy = "no-referrer"; im.src = s;
+      th.append(im); th.classList.add("hat");
+    });
+    if (window.ScrollTrigger) ScrollTrigger.refresh();
+  });
+
+  if (!window.gsap || !window.ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger, ...(window.SplitText ? [SplitText] : []));
+  const mm = gsap.matchMedia();
+  mm.add({ ok: "(prefers-reduced-motion: no-preference)", gross: "(min-width: 820px)", fein: "(pointer: fine)" }, ctx => {
+    const { ok, gross, fein } = ctx.conditions;
+    if (!ok) return;
+    const d = gross ? 1.2 : .8;
+
+    if (window.SplitText) {
+      SplitText.create(".hero-titel", { type: "lines", mask: "lines", autoSplit: true,
+        onSplit: s => gsap.from(s.lines, { yPercent: 110, duration: d, ease: "expo.out", stagger: .08, delay: .4 }) });
+      void ({ type: "lines", mask: "lines", autoSplit: true,
+        onSplit: null });
+    }
+
+    ctx.add("hero", () => {
+      const panel = $(".panel"), mak = $(".panel .makron"), achse = $(".hero .tl-achse");
+      const pr = panel.getBoundingClientRect(), mr = mak.getBoundingClientRect(), ar = achse.getBoundingClientRect();
+      const flug = document.createElement("i"); flug.className = "flug"; panel.append(flug);
+      gsap.set(flug, { left: mr.left - pr.left, top: mr.top - pr.top, width: mr.width, height: mr.height });
+      const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
+      tl.from(".hero-foto", { clipPath: gross ? "inset(0% 48% 0% 48%)" : "inset(0% 0% 100% 0%)", duration: d * 1.25, ease: "power3.inOut" }, 0)
+        .from(".panel .marke-innen", { yPercent: 115, duration: d }, .15)
+        .from(".hero-text, .panel .aktionen", { opacity: 0, y: 14, duration: .8, stagger: .1 }, .6)
+        .set(flug, { opacity: 1 }, d * .8)
+        .to(flug, { x: ar.left - mr.left, y: ar.top - mr.top - 1, scaleX: ar.width / mr.width, scaleY: 3 / mr.height, duration: d * .85, ease: "power3.inOut" }, d * .8)
+        .to(flug, { opacity: 0, duration: .25, ease: "none" })
+        .from(".hero .tl-seg", { clipPath: "inset(0% 100% 0% 0%)", duration: .7, stagger: .14, ease: "power2.out" }, "<-.1");
+      if ($(".hero .tl-jetzt.an")) tl.from(".hero .tl-jetzt.an", { scale: 0, duration: .45, ease: "back.out(3)" }, ">-.15");
+      tl.eventCallback("onComplete", () => flug.remove());
+    });
+    document.fonts.ready.then(() => ctx.hero && ctx.hero());
+
+    if (gross) gsap.fromTo(".hero-foto img", { scale: 1.12, yPercent: -3 }, { yPercent: 5, ease: "none",
+      scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+
+    gsap.utils.toArray("[data-tiefe]").forEach(el => gsap.to(el, { yPercent: -parseFloat(el.dataset.tiefe), ease: "none",
+      scrollTrigger: { trigger: el.closest("section"), start: "top bottom", end: "bottom top", scrub: true } }));
+
+    gsap.utils.toArray(".enthuellen").forEach(el => gsap.from(el, { clipPath: "inset(18% 18% 18% 18% round 24px)", duration: 1.1, ease: "power3.out",
+      scrollTrigger: { trigger: el, start: "top 85%" } }));
+
+    void (".gericht .name > span", { yPercent: 110, duration: .9, ease: "expo.out", stagger: .08,
+      scrollTrigger: { trigger: ".gerichte-liste", start: "top 85%" } });
+
+    const zeilen = $$(".fp-zeile"), folge = [...zeilen.filter(z => !z.classList.contains("heute")), ...zeilen.filter(z => z.classList.contains("heute"))];
+    const fp = gsap.timeline({ scrollTrigger: { trigger: ".fahrplan", start: "top 80%" } });
+    folge.forEach((z, i) => fp.from($$(".tl-seg", z), { clipPath: "inset(0% 100% 0% 0%)", duration: .6, ease: "power2.out", stagger: .08 }, i * .09));
+    if ($(".heute .tl-jetzt.an")) fp.from(".heute .tl-jetzt.an", { scale: 0, duration: .4, ease: "back.out(3)" });
+
+    if (gross) {
+      const band = $(".streifen-spur");
+      if (band) {
+        gsap.set(band, { overflowX: "visible" });
+        gsap.to(band, { x: () => -Math.max(0, band.scrollWidth - innerWidth), ease: "none",
+          scrollTrigger: { trigger: ".streifen", pin: true, scrub: 1, end: () => "+=" + band.scrollWidth, invalidateOnRefresh: true } });
+      }
+    }
+
+    if (gross && fein) {
+      const v = $(".vorschau"), vi = $("img", v);
+      gsap.set(v, { scale: .92 });
+      const xT = gsap.quickTo(v, "x", { duration: .5, ease: "power3" }), yT = gsap.quickTo(v, "y", { duration: .5, ease: "power3" });
+      const bewegen = e => { xT(e.clientX + 28); yT(e.clientY - 160); };
+      window.addEventListener("mousemove", bewegen);
+      $$(".gericht").forEach(g => {
+        g.addEventListener("mouseenter", () => { const s = quelle(g.dataset.bild); if (!s) return; vi.src = s; gsap.to(v, { opacity: 1, scale: 1, duration: .35 }); });
+        g.addEventListener("mouseleave", () => gsap.to(v, { opacity: 0, scale: .92, duration: .3 }));
+      });
+      const b = $(".gross-knopf"), bx = gsap.quickTo(b, "x", { duration: .6, ease: "power3" }), by = gsap.quickTo(b, "y", { duration: .6, ease: "power3" });
+      const zieh = e => { const r = b.getBoundingClientRect(); bx((e.clientX - r.left - r.width / 2) * .35); by((e.clientY - r.top - r.height / 2) * .35); };
+      const los = () => { bx(0); by(0); };
+      b.addEventListener("mousemove", zieh); b.addEventListener("mouseleave", los);
+      return () => { window.removeEventListener("mousemove", bewegen); b.removeEventListener("mousemove", zieh); b.removeEventListener("mouseleave", los); };
+    }
+  });
+
+  if (window.Lenis && matchMedia("(pointer: fine) and (prefers-reduced-motion: no-preference)").matches) {
+    const lenis = new Lenis({ autoRaf: false, anchors: { offset: -72 } });
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add(t => lenis.raf(t * 1000));
+    gsap.ticker.lagSmoothing(0);
+  }
+});
+</script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>[data-karte]{width:100%;height:100%;min-height:260px}[data-karte] .leaflet-tile-pane{filter:var(--karte-filter)}
+[data-karte] .leaflet-control-attribution{font-size:10px}.karte-pin{position:relative;width:34px;height:34px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+box-shadow:0 6px 16px rgba(0,0,0,.35);border:3px solid #fff}.karte-pin i{position:absolute;inset:9px;border-radius:50%;background:#fff}</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>(function(){var C={"lat": 53.583476999999995, "lng": 10.0101122, "name": "Menmo", "filter": {"hell": "grayscale(1) contrast(1.05) brightness(1.04)", "dunkel": "grayscale(1) invert(1) contrast(.88) brightness(.82)", "warm": "grayscale(1) sepia(.5) contrast(1.02) brightness(1.02)", "kuehl": "grayscale(1) sepia(.35) hue-rotate(175deg) saturate(.55) brightness(1.03)", "mono": "grayscale(1) contrast(1.2)"}};function draw(){if(!window.L)return;document.querySelectorAll('[data-karte]').forEach(function(el){
+if(el._map)return;var st=el.getAttribute('data-stil')||'hell',col=el.getAttribute('data-farbe')||'#c0392b';
+el.style.setProperty('--karte-filter',C.filter[st]||C.filter.hell);
+var m=L.map(el,{scrollWheelZoom:false,zoomControl:true,attributionControl:true}).setView([C.lat,C.lng],16);el._map=m;
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(m);
+var icon=L.divIcon({className:'',html:'<div class="karte-pin" style="background:'+col+'"><i></i></div>',iconSize:[34,34],iconAnchor:[17,34]});
+L.marker([C.lat,C.lng],{icon:icon,title:C.name,alt:C.name}).addTo(m);setTimeout(function(){m.invalidateSize()},300);});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',draw);else draw();window.addEventListener('load',draw);})();</script><script>(function(){
+var P=[[720, 1440], [2160, 2340], [2460, 2880], [3600, 3780], [3900, 4320], [5040, 5220], [5340, 5760], [6480, 6660], [6780, 7200], [7920, 8100], [8220, 8640], [9360, 10080]];
+function fmt(m){m=((m%1440)+1440)%1440;var h=Math.floor(m/60),mi=m%60;return (h<10?'0':'')+h+':'+(mi<10?'0':'')+mi;}
+function now(){var d=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Berlin'}));return d.getDay()*1440+d.getHours()*60+d.getMinutes();}
+function status(){if(!P.length)return null;var t=now(),W=10080;
+ for(var i=0;i<P.length;i++){var s=P[i][0],e=P[i][1];if((t>=s&&t<e)||(t+W>=s&&t+W<e))return {offen:true,text:'Jetzt geöffnet bis '+fmt(e)};}
+ var best=null;for(var j=0;j<P.length;j++){var d=(P[j][0]-t+W)%W;if(best===null||d<best.d)best={d:d,s:P[j][0]};}
+ var tag=Math.floor(t/1440),ot=Math.floor(best.s/1440)%7,names=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+ var when=best.d<1440&&ot===tag?'heute':(best.d<2880&&ot===(tag+1)%7?'morgen':names[ot]);
+ return {offen:false,text:'Geschlossen · öffnet '+when+' um '+fmt(best.s)};}
+function run(){var s=status();document.querySelectorAll('[data-status]').forEach(function(el){
+ if(!s){el.style.display='none';return;}el.textContent=s.text;el.setAttribute('data-offen',s.offen?'ja':'nein');});}
+document.querySelectorAll('[data-foto] img').forEach(function(img){
+ function hide(){var b=img.closest('[data-foto]');if(b)b.style.display='none';}
+ if(!img.getAttribute('src'))hide();else{img.addEventListener('error',hide);if(img.complete&&img.naturalWidth===0)hide();}});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();setInterval(run,60000);
+})();</script></body>
+</html>
