@@ -143,6 +143,11 @@ button, input { font: inherit; color: inherit; }
 .vpill button { border: 1px solid var(--edge); background: rgba(255,255,255,.05); color: var(--ink); border-radius: 999px; padding: .3rem .7rem; font-size: .75rem; cursor: pointer; }
 @media (max-width: 640px) { .vpill { bottom: calc(5rem + env(safe-area-inset-bottom)); } }
 
+[data-focus], .card, .demo { transition: box-shadow .45s var(--ease), border-color .45s; }
+.spot { box-shadow: 0 0 0 2px rgba(255,87,87,.95), 0 0 46px -6px rgba(255,87,87,.75) !important; border-color: rgba(255,87,87,.9) !important; position: relative; z-index: 2; animation: spotpulse 1.6s ease-in-out infinite; }
+.row.spot, .frei.spot { border-radius: 10px; }
+@keyframes spotpulse { 50% { box-shadow: 0 0 0 2px rgba(255,87,87,.6), 0 0 70px -4px rgba(255,87,87,.55) !important; } }
+
 /* ---------- Sperrbildschirm ---------- */
 .lock { position: fixed; inset: 0; display: grid; place-items: center; padding: 1.5rem; z-index: 10; transition: opacity .7s var(--ease), transform .9s var(--ease); }
 .lock.gone { opacity: 0; transform: scale(1.06); pointer-events: none; }
@@ -472,13 +477,13 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     </div>
   </header>
 
-  <section class="panel cost" id="cost" hidden aria-labelledby="cost-title">
+  <section class="panel cost" id="cost" hidden aria-labelledby="cost-title" data-focus="kosten">
     <div class="panel-head"><div><h2 id="cost-title">Kosten &amp; Verbrauch</h2><p class="sub" id="cost-sub">Letzte 30 Tage. Preise sind Schätzwerte aus config.yaml.</p></div></div>
     <div class="cost-grid">
       <div>
         <div class="cost-big" id="cost-big"></div>
         <div class="cost-tools" id="cost-tools"></div>
-        <div class="frei" id="cost-frei"></div>
+        <div class="frei" id="cost-frei" data-focus="gratis"></div>
       </div>
       <div style="overflow-x:auto"><table class="cost-table" id="cost-table"></table></div>
     </div>
@@ -497,7 +502,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   <section class="grid kpis" id="kpis" aria-label="Kennzahlen"></section>
 
   <section class="grid row2">
-    <article class="panel" style="--d:6" aria-labelledby="radar-title">
+    <article class="panel" style="--d:6" aria-labelledby="radar-title" data-focus="gebiete">
       <div class="panel-head"><div><h2 id="radar-title">Suchradar</h2><p class="sub">Alle Suchgebiete im Uhrzeigersinn. Der blinkende Punkt ist das Gebiet, in dem der Agent als Nächstes sucht.</p></div></div>
       <div class="radar-wrap">
         <div class="radar" id="radar"></div>
@@ -505,14 +510,14 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       </div>
       <div class="legend"><span><i style="background:#2A3F63"></i>noch nicht durchsucht</span><span><i style="background:#3D5F8F"></i>durchsucht, keine Treffer</span><span><i style="background:var(--cyan); box-shadow:0 0 8px var(--cyan)"></i>Restaurants ohne Website (größer = mehr)</span></div>
     </article>
-    <article class="panel" style="--d:7" aria-labelledby="flow-title">
+    <article class="panel" style="--d:7" aria-labelledby="flow-title" data-focus="pipeline">
       <h2 id="flow-title">Pipeline</h2><p class="sub">Vom ersten Treffer bis zur Demo, über alle bisherigen Läufe.</p>
       <div class="flow" id="flow"></div>
-      <div style="margin-top:1.5rem"><h2>Letzte Läufe</h2><p class="sub">Neue Demos pro Lauf</p><svg class="chart" id="chart" role="img" aria-label="Neue Demos pro Lauf"></svg></div>
+      <div style="margin-top:1.5rem" data-focus="laeufe"><h2>Letzte Läufe</h2><p class="sub">Neue Demos pro Lauf</p><svg class="chart" id="chart" role="img" aria-label="Neue Demos pro Lauf"></svg></div>
     </article>
   </section>
 
-  <section class="panel" style="--d:8" aria-labelledby="demos-title">
+  <section class="panel" style="--d:8" aria-labelledby="demos-title" data-focus="demos">
     <div class="panel-head">
       <div><h2 id="demos-title">Live-Demos</h2><p class="sub" id="demos-sub"></p></div>
       <div class="toolbar">
@@ -527,7 +532,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     <div class="demos" id="demos"></div>
   </section>
 
-  <section class="panel" style="--d:9" aria-labelledby="rank-title">
+  <section class="panel" style="--d:9" aria-labelledby="rank-title" data-focus="board">
     <div class="panel-head">
       <div><h2 id="rank-title">Restaurants</h2><p class="sub" id="rank-sub">Die besten 100 gescannten Restaurants ohne eigene Website. Zieh eine Karte in eine andere Spalte, um selbst zu entscheiden.</p></div>
       <div class="rank-tools">
@@ -539,15 +544,15 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     </div>
     <div class="board" id="board">
       <div class="col" data-col="offen"><header><h3><i style="background:#7BAFFF"></i>Kandidaten</h3><span class="cnt" id="cnt-offen"></span><p>Automatisch bewertet. Die besten 5 bekommen beim nächsten Lauf eine Website.</p></header><div class="drop" data-drop="offen"></div></div>
-      <div class="col" data-col="bauen"><header><h3><i style="background:#FF5757"></i>Website bauen</h3><span class="cnt" id="cnt-bauen"></span><p>Deine Auswahl. Wird zusätzlich und zuerst gebaut.</p><button class="btn btn-hot" type="button" id="build-now">Jetzt bauen</button></header><div class="drop" data-drop="bauen"></div></div>
+      <div class="col" data-col="bauen" data-focus="board_bauen"><header><h3><i style="background:#FF5757"></i>Website bauen</h3><span class="cnt" id="cnt-bauen"></span><p>Deine Auswahl. Wird zusätzlich und zuerst gebaut.</p><button class="btn btn-hot" type="button" id="build-now">Jetzt bauen</button></header><div class="drop" data-drop="bauen"></div></div>
       <div class="col" data-col="demo"><header><h3><i style="background:#4BE3A6"></i>Demo online</h3><span class="cnt" id="cnt-demo"></span><p>Hat schon eine Demo-Website.</p></header><div class="drop" data-drop="demo"></div></div>
-      <div class="col" data-col="nie"><header><h3><i style="background:#6E7AA6"></i>Aussortiert</h3><span class="cnt" id="cnt-nie"></span><p>Bekommt nie eine Website. Demos hier werden beim nächsten Lauf gelöscht.</p></header><div class="drop" data-drop="nie"></div></div>
+      <div class="col" data-col="nie" data-focus="board_aussortiert"><header><h3><i style="background:#6E7AA6"></i>Aussortiert</h3><span class="cnt" id="cnt-nie"></span><p>Bekommt nie eine Website. Demos hier werden beim nächsten Lauf gelöscht.</p></header><div class="drop" data-drop="nie"></div></div>
     </div>
     <div class="g-legend"><span><i style="background:#FF5757"></i>Bedarf: fehlende Website, Reservierung, Bestellung</span><span><i style="background:#7BAFFF"></i>Zugkraft: Bekanntheit, Sterne, Fotos</span><span><i style="background:#FFB547"></i>Budget: Preisniveau, Betriebsart</span><span><i style="background:#4BE3A6"></i>Basis: Öffnungszeiten, Angebot, Telefon</span><span>Stufe A ab 85, B ab 75, C darunter</span></div>
   </section>
 
   <section class="grid row4">
-    <article class="panel" style="--d:9" aria-labelledby="runs-title">
+    <article class="panel" style="--d:9" aria-labelledby="runs-title" data-focus="protokoll">
       <h2 id="runs-title">Protokoll</h2><p class="sub">Jeder Lauf des Agenten. Antippen zeigt das vollständige Protokoll.</p>
       <div class="runs" id="runs"></div>
     </article>
@@ -845,6 +850,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   var voiceOn = false, voiceRaf = 0;
   function stopVoice() {
     voiceOn = false; cancelAnimationFrame(voiceRaf);
+    document.querySelectorAll(".spot").forEach(function (e) { e.classList.remove("spot"); });
     if (introAudio) introAudio.pause(); if (window.speechSynthesis) speechSynthesis.cancel();
     $("#vpill").classList.remove("on");
   }
@@ -854,19 +860,54 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     for (var i = 0; i < parts.length; i++) { acc += parts[i].length; if (acc >= pos) return parts[i].trim(); }
     return parts[parts.length - 1].trim();
   }
+  var lastUserScroll = 0, curSeg = -1;
+  ["wheel", "touchmove", "keydown"].forEach(function (ev) { addEventListener(ev, function () { lastUserScroll = Date.now(); }, { passive: true }); });
+  function norm(t) { return String(t || "").toLowerCase().replace(/[^a-z0-9äöüß]+/g, " ").trim(); }
+  function spotTargets(seg) {
+    if (!seg || seg.fokus === "keiner") return [];
+    if (seg.fokus === "restaurant") {
+      var n = norm(seg.restaurant); if (!n) return [];
+      var hits = [].slice.call(document.querySelectorAll(".card, .demo")).filter(function (el) { var t = el.querySelector(".c-name, h3"); var m = norm(t && t.textContent); return m && (m.indexOf(n) >= 0 || n.indexOf(m) >= 0); });
+      return hits.length ? hits.slice(0, 2) : [].slice.call(document.querySelectorAll('[data-focus="board"]'));
+    }
+    if (seg.fokus.indexOf("kosten") === 0 || seg.fokus === "gratis") { var c = $("#cost"); if (c.hidden) { c.hidden = false; $("#cost-btn").setAttribute("aria-expanded", "true"); renderCost(DATA); } }
+    return [].slice.call(document.querySelectorAll('[data-focus="' + seg.fokus + '"]'));
+  }
+  function spotlight(seg) {
+    document.querySelectorAll(".spot").forEach(function (e) { e.classList.remove("spot"); });
+    var els = spotTargets(seg); if (!els.length) return;
+    els.forEach(function (e) { e.classList.add("spot"); });
+    var el = els[0], r = el.getBoundingClientRect();
+    if (!BOOTING && Date.now() - lastUserScroll > 4000 && (r.top < 70 || r.bottom > innerHeight - 70)) {
+      el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: r.height > innerHeight * .8 ? "start" : "center" });
+      if (el.classList.contains("card")) { var col = el.closest(".board"); if (col) el.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" }); }
+    }
+  }
+  function segmentAt(segs, t, f) {
+    var idx = 0;
+    for (var i = 0; i < segs.length; i++) { var st = segs[i].start != null && t != null ? segs[i].start <= t : segs[i].anteil <= f; if (st) idx = i; }
+    return idx;
+  }
   function startVoice(d, music) {
     if (voiceOn || !Sound.on) return;
     var text = (d.intro || {}).text || ""; if (!text) return;
     voiceOn = true; subtitles(text);
     var b = $("#boot"), pill = $("#vpill");
     function level(l) { b.style.setProperty("--lv", l.toFixed(3)); pill.style.setProperty("--lv", l.toFixed(3)); }
-    function progress(f) { subProgress(f); $("#vpill-text").textContent = sentenceAt(text, f); }
-    function ended() { progress(1); setTimeout(stopVoice, 400); }
+    var segs = (d.intro || {}).segmente || [];
+    curSeg = -1;
+    function progress(f, t) {
+      subProgress(f);
+      if (!segs.length) { $("#vpill-text").textContent = sentenceAt(text, f); return; }
+      var i = segmentAt(segs, t, f);
+      if (i !== curSeg) { curSeg = i; $("#vpill-text").textContent = segs[i].text; spotlight(segs[i]); }
+    }
+    function ended() { progress(1); setTimeout(function () { stopVoice(); spotlight(null); }, 400); }
     if (music) music.duck();
     if (introAudio) {
       var c = Sound.ctx(), an = null, data = null;
       try { var src = c.createMediaElementSource(introAudio); an = c.createAnalyser(); an.fftSize = 256; data = new Uint8Array(an.frequencyBinCount); src.connect(an); an.connect(c.destination); } catch (e) {}
-      introAudio.addEventListener("timeupdate", function () { if (introAudio.duration) progress(introAudio.currentTime / introAudio.duration); });
+      introAudio.addEventListener("timeupdate", function () { if (introAudio.duration) progress(introAudio.currentTime / introAudio.duration, introAudio.currentTime); });
       introAudio.addEventListener("ended", ended);
       introAudio.currentTime = 0;
       introAudio.play().catch(function () { stopVoice(); });
@@ -961,9 +1002,10 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       { k: "KI-Texte", v: sum("ki_texte"), hint: sum("ki_ersatztexte") ? sum("ki_ersatztexte") + " mit Standardtext" : "alle von Claude geschrieben", icon: "ai", s: series(function (r) { return r.ki_texte || 0; }) }
     ];
     var kp = $("#kpis"); kp.innerHTML = "";
+    var KF = ["demos", "geprueft", "ohne_website", "gebiete", "google", "ki"];
     kpis.forEach(function (o, i) {
       var p = sparkPath(o.s, 200, 34);
-      var el = h("article", { class: "panel kpi", style: "--d:" + i },
+      var el = h("article", { class: "panel kpi", style: "--d:" + i, "data-focus": KF[i] },
         '<div class="label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + ICON[o.icon] + "</svg>" + esc(o.k) + "</div>" +
         '<div class="value"><span class="n">0</span>' + (o.unit ? "<small>" + esc(o.unit) + "</small>" : "") + "</div>" +
         '<div class="hint">' + esc(o.hint) + "</div>" +
@@ -1243,21 +1285,47 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   }
   function api(path, opts) {
     var st = DATA.steuerung || {}; opts = opts || {};
-    return fetch("https://api.github.com/repos/" + st.repo + path, { method: opts.method || "GET", headers: { Authorization: "Bearer " + st.token, Accept: "application/vnd.github+json" }, body: opts.body ? JSON.stringify(opts.body) : undefined })
-      .then(function (r) { if (r.status === 404 && opts.allow404) return null; if (!r.ok) throw new Error(r.status); return r.status === 204 ? {} : r.json(); });
+    return fetch("https://api.github.com/repos/" + st.repo + path + (opts.method ? "" : (path.indexOf("?") < 0 ? "?" : "&") + "t=" + Date.now()), { method: opts.method || "GET", cache: "no-store", headers: { Authorization: "Bearer " + st.token, Accept: "application/vnd.github+json" }, body: opts.body ? JSON.stringify(opts.body) : undefined })
+      .then(function (r) { if (r.status === 404 && opts.allow404) return null; if (!r.ok) { var e = new Error(r.status); e.status = r.status; throw e; } return r.status === 204 ? {} : r.json(); });
   }
   function u8(str) { return btoa(unescape(encodeURIComponent(str))); }
   function fromU8(b) { return decodeURIComponent(escape(atob(b.replace(/\n/g, "")))); }
-  var saving = Promise.resolve();
+  var saving = Promise.resolve(), decSha = null, decRemote = null;
+  function writeFile(path, obj, message, sha) {
+    return api("/contents/" + path, { method: "PUT", body: { message: message, content: u8(JSON.stringify(obj, null, 2) + "\n"), sha: sha || undefined } });
+  }
+  function loadDecisions() {
+    return api("/contents/data/entscheidungen.json", { allow404: true }).then(function (f) {
+      decSha = f ? f.sha : null; decRemote = f ? JSON.parse(fromU8(f.content) || "{}") : {}; return decRemote;
+    });
+  }
   function persist(pid, entry) {
     saving = saving.then(function () {
-      return api("/contents/data/entscheidungen.json", { allow404: true }).then(function (f) {
-        var cur = f ? JSON.parse(fromU8(f.content) || "{}") : {};
-        if (entry) cur[pid] = entry; else delete cur[pid];
-        return api("/contents/data/entscheidungen.json", { method: "PUT", body: { message: "Cockpit: " + (entry ? entry.aktion : "zurück") + " · " + ((entry && entry.name) || pid), content: u8(JSON.stringify(cur, null, 2) + "\n"), sha: f ? f.sha : undefined } });
-      });
+      function attempt(retry) {
+        return (decRemote ? Promise.resolve(decRemote) : loadDecisions()).then(function (cur) {
+          cur = Object.assign({}, cur); if (entry) cur[pid] = entry; else delete cur[pid];
+          return writeFile("data/entscheidungen.json", cur, "Cockpit: " + (entry ? entry.aktion : "zurück") + " · " + ((entry && entry.name) || pid), decSha)
+            .then(function (res) { decSha = res && res.content ? res.content.sha : null; decRemote = cur; });
+        }).catch(function (e) {
+          if (retry && (e.status === 409 || e.status === 422)) { decRemote = null; return attempt(false); }
+          throw e;
+        });
+      }
+      return attempt(true);
     });
     return saving;
+  }
+  /* Läufe starten: erst direkt, sonst über eine Befehlsdatei (braucht nur Schreibrecht) */
+  function command(name, workflow, inputs) {
+    var st = DATA.steuerung || {};
+    return api("/actions/workflows/" + workflow + "/dispatches", { method: "POST", body: { ref: "main", inputs: inputs || undefined } })
+      .catch(function (e) {
+        if (e.status !== 403 && e.status !== 404 && e.status !== 422) throw e;
+        var path = "data/befehle/" + name + ".json";
+        return api("/contents/" + path, { allow404: true }).then(function (f) {
+          return writeFile(path, { befehl: name, zeit: new Date().toISOString() }, "Cockpit: " + name + " starten", f && f.sha);
+        });
+      });
   }
   function move(x, col) {
     var st = DATA.steuerung || {};
@@ -1279,7 +1347,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   $("#build-now").addEventListener("click", function () {
     var st = DATA.steuerung || {}; if (!st.token) { toast("Steuerung noch nicht eingerichtet: Es fehlt das Secret COCKPIT_GITHUB_TOKEN."); return; }
     var b = this; b.disabled = true;
-    saving.then(function () { return api("/actions/workflows/" + st.workflow + "/dispatches", { method: "POST", body: { ref: "main", inputs: { nur_manuell: "true" } } }); })
+    saving.then(function () { return command("bauen", st.workflow, { nur_manuell: "true" }); })
       .then(function () { Sound.play("start"); toast("Lauf gestartet. Das Cockpit zeigt ihn in ein bis zwei Minuten live."); })
       .catch(function (e) { Sound.play("error"); toast("Start fehlgeschlagen (" + e.message + ")."); })
       .then(function () { setTimeout(function () { b.disabled = false; }, 4000); });
@@ -1287,7 +1355,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   function syncDecisions(d) {
     DEC = Object.assign({}, d.entscheidungen || {});
     var st = d.steuerung || {}; if (!st.token) return;
-    api("/contents/data/entscheidungen.json", { allow404: true }).then(function (f) { if (f) { DEC = JSON.parse(fromU8(f.content) || "{}"); renderRanks(DATA); } }).catch(function () {});
+    loadDecisions().then(function (cur) { DEC = Object.assign({}, cur); renderRanks(DATA); }).catch(function () {});
   }
 
   /* ---------- Kosten & Verbrauch ---------- */
@@ -1322,7 +1390,8 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       "<div><b>" + (v.pro_demo_eur != null ? eur.format(v.pro_demo_eur) : "–") + "</b><br><span>pro gebauter Demo (" + (v.demos || 0) + ")</span></div>" +
       "<div><b>" + n0(v.laeufe) + "</b><br><span>Läufe</span></div>";
     var max = Math.max.apply(null, (v.tools || []).map(function (t) { return t.eur; }).concat([0.0001]));
-    $("#cost-tools").innerHTML = (v.tools || []).map(function (t) { return '<div class="row"><span>' + esc(TNAME[t.tool] || t.tool) + '</span><span class="bar"><b style="width:' + Math.max(2, Math.round(t.eur / max * 100)) + "%;background:" + (TCOL[t.tool] || "#7BAFFF") + '"></b></span><em>' + eur.format(t.eur) + "</em></div>"; }).join("") || '<p class="sub">Noch keine Verbrauchsdaten. Sie entstehen ab dem nächsten Lauf.</p>';
+    var TF = { anthropic: "kosten_claude", recraft: "kosten_recraft", google: "kosten_google", elevenlabs: "kosten_stimme", github: "kosten_github" };
+    $("#cost-tools").innerHTML = (v.tools || []).map(function (t) { return '<div class="row" data-focus="' + (TF[t.tool] || "") + '"><span>' + esc(TNAME[t.tool] || t.tool) + '</span><span class="bar"><b style="width:' + Math.max(2, Math.round(t.eur / max * 100)) + "%;background:" + (TCOL[t.tool] || "#7BAFFF") + '"></b></span><em>' + eur.format(t.eur) + "</em></div>"; }).join("") || '<p class="sub">Noch keine Verbrauchsdaten. Sie entstehen ab dem nächsten Lauf.</p>';
     var fr = v.freikontingente || {}, names = { google_suche: "Google-Suchen", google_details: "Google-Details", google_fotos: "Google-Fotos", github_minuten: "GitHub-Minuten" };
     $("#cost-frei").innerHTML = "<span>Gratiskontingente diesen Monat</span>" + Object.keys(names).map(function (k) { var a = fr[k] || [0, 1], pc = Math.min(100, Math.round(a[0] / a[1] * 100)); return "<div>" + names[k] + ": " + n0(a[0]) + " von " + n0(a[1]) + ' frei<div class="bar"><b class="' + (pc >= 100 ? "bad" : pc >= 75 ? "warn" : "") + '" style="width:' + pc + '%"></b></div></div>'; }).join("");
     $("#cost-table").innerHTML = "<tr><th>Tool · Zweck</th><th>Menge</th><th style=\"text-align:right\">Kosten</th></tr>" + (v.posten || []).map(function (p) { return '<tr><td><i class="tl" style="background:' + (TCOL[p.tool] || "#7BAFFF") + '"></i>' + esc(TNAME[p.tool] || p.tool) + "<br><small class=\"sub\">" + esc(p.zweck) + "</small></td><td>" + amount(p) + '</td><td class="n">' + eur.format(p.eur || 0) + "</td></tr>"; }).join("");
@@ -1339,7 +1408,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   $("#ai-run").addEventListener("click", function () {
     var st = DATA.steuerung || {}; if (!st.token) { toast("Steuerung nicht eingerichtet: Es fehlt das Secret COCKPIT_GITHUB_TOKEN."); return; }
     aiPending = new Date().toISOString(); renderCost(DATA); Sound.play("start");
-    api("/actions/workflows/analyse.yml/dispatches", { method: "POST", body: { ref: "main" } })
+    command("analyse", "analyse.yml")
       .then(function () { toast("KI-Analyse gestartet. Das Ergebnis erscheint hier automatisch."); pollSoon(); })
       .catch(function (e) { aiPending = null; renderCost(DATA); Sound.play("error"); toast("Start fehlgeschlagen (" + e.message + ")."); });
   });
