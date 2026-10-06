@@ -780,7 +780,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "7c0dc895e6";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "f9088aec47";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -1958,7 +1958,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   function n0(x) { return fmt.format(Math.round(x || 0)); }
   function amount(p) {
     if (p.tool === "anthropic") return n0(p.eingabe) + " ein / " + n0(p.ausgabe) + " aus · " + n0(p.aufrufe) + " Aufrufe";
-    if (p.tool === "recraft") return (p.bilder ? n0(p.bilder) + " Bilder" : "") + (p.vektoren ? " " + n0(p.vektoren) + " Logos" : "") + (p.fehler ? " · " + n0(p.fehler) + " fehlgeschlagen" : "");
+    if (p.tool === "recraft") return (p.bilder ? n0(p.bilder) + " Bilder" : "") + (p.vektoren ? " " + n0(p.vektoren) + " Logos" : "") + (p.freistellungen ? n0(p.freistellungen) + " Freisteller" : "") + (p.fehler ? " · " + n0(p.fehler) + " fehlgeschlagen" : "");
     if (p.tool === "google") return n0(p.suche) + " Suchen · " + n0(p.details) + " Details · " + n0(p.fotos) + " Fotos";
     if (p.tool === "elevenlabs") return n0(p.zeichen) + " Zeichen";
     if (p.tool === "github") return n0(p.minuten) + " Minuten";
