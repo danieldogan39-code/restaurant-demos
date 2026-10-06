@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zum Griechen – Griechische Küche im Wacholderweg, Hamburg-Fuhlsbüttel</title>
+<meta name="description" content="Zum Griechen, Wacholderweg 1–3, 22335 Hamburg: Mittagstisch, Abendessen auf der Terrasse, Gyros zum Mitnehmen. Dienstag bis Samstag 12–21 Uhr, Sonntag 12–20 Uhr, Montag Ruhetag. Telefon 040 38663487.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus:ital,wght@0,400;0,700;1,400&family=Hanken+Grotesk:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+:root{
+--wand:#F3EEE3;--pp:#EAE1CF;--bank:#2E2E33;--blau:#1E3F9A;--blau-t:#17327D;--stuck:#C2A774;--creme:#E2D5B9;--grau:#57534C;--linie:#D9CFBC;
+--disp:"Marcellus",Georgia,serif;--text:"Hanken Grotesk",system-ui,sans-serif;
+--rand:clamp(1rem,5vw,4rem);--gap:clamp(1rem,2.5vw,2rem);--abst:clamp(4rem,8vw,6rem)
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--wand);color:var(--bank);font:400 1.0625rem/1.6 var(--text);overflow-x:hidden}
+img{display:block;max-width:100%}
+h1,h2,h3,p,li{hyphens:manual;overflow-wrap:break-word}
+.nw{white-space:nowrap}
+h2{font:400 clamp(2rem,4.6vw,3.4rem)/1.05 var(--disp);margin:0 0 1.25rem}
+p{margin:0 0 1rem;max-width:62ch}
+a{color:var(--blau)}
+:focus-visible{outline:3px solid var(--blau);outline-offset:3px}
+.kopf :focus-visible,.dunkel :focus-visible,.fuss :focus-visible,.leiste :focus-visible{outline-color:var(--wand)}
+.wrap{max-width:1280px;margin-inline:auto;padding-inline:var(--rand)}
+.raster{display:grid;gap:var(--gap)}
+section{scroll-margin-top:calc(4rem + 7px + 16px)}
+.zahl{font-variant-numeric:tabular-nums}
+.knopf{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 1.25rem;background:var(--blau);color:var(--wand);font-weight:700;text-decoration:none;font-variant-numeric:tabular-nums}
+.knopf:hover{background:var(--blau-t)}
+.knopf.hell{background:var(--wand);color:var(--blau);min-height:44px}
+.knopf.hell:hover{background:#fff}
+.stuck{height:7px;background:linear-gradient(var(--stuck) 0 4px,var(--blau) 4px 6px,var(--stuck) 6px 7px)}
+
+.kopf{position:sticky;top:0;z-index:20;background:var(--blau);color:var(--wand)}
+.kopf .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:4rem}
+.marke{color:inherit;text-decoration:none;display:inline-block;line-height:48px;white-space:nowrap;justify-self:start}
+.marke small{font:400 .95rem/1 var(--disp);margin-right:.3em}
+.marke b{font:400 1.9rem/1 var(--disp)}
+.kopf nav,.kopf .knopf{display:none}
+.kopf nav ul{list-style:none;margin:0;padding:0;display:flex;gap:1.5rem}
+.kopf nav a{color:var(--wand);text-decoration:none;display:inline-flex;min-height:44px;align-items:center;border-bottom:2px solid transparent}
+.kopf nav a:hover{border-color:var(--stuck)}
+.rechts{display:flex;align-items:center;gap:1.25rem}
+[data-status]{display:inline-flex;align-items:center;gap:.5rem;font-size:.875rem;line-height:1.3;text-align:right}
+[data-status]:empty{display:none}
+[data-status]::before{content:"";flex:none;width:.65rem;height:.65rem;border:2px solid currentColor;border-radius:50%}
+[data-offen="ja"]::before{background:#3FAE5C;border-color:#3FAE5C}
+[data-offen="nein"]::before{background:#9C978D;border-color:#9C978D}
+
+.bild{position:relative;overflow:hidden;aspect-ratio:var(--ar,4/3);background:var(--pp)}
+.bild img{width:100%;height:100%;object-fit:cover}
+figure{margin:0}
+figcaption{margin-top:.6rem;font-size:.875rem;line-height:1.4;color:var(--grau)}
+figcaption span{display:block;color:var(--bank)}
+.foto-nachweis{color:#5a5246;font-size:.875rem}
+.ki-label{position:absolute;left:.5rem;top:.5rem;background:var(--wand);color:var(--bank);font:700 .875rem/1 var(--text);padding:.3rem .45rem}
+
+.hero{padding-block:clamp(1.5rem,4vw,3rem) var(--abst)}
+h1{font:400 clamp(3.25rem,9vw,6rem)/.9 var(--disp);color:var(--blau);margin:0 0 1.5rem;letter-spacing:-.01em}
+h1 span{display:block;font-size:.36em;line-height:1.3;color:var(--bank)}
+.hero-name{position:relative;z-index:2;white-space:nowrap}
+.hero-info{margin-top:1.5rem}
+.hero-info p{max-width:52ch}
+.ort{font-size:clamp(1.0625rem,1.6vw,1.25rem);margin-bottom:.5rem}
+.links{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:1.25rem}
+.links .knopf{min-height:48px;text-decoration:none}
+.links .zweit{background:transparent;color:var(--blau);box-shadow:inset 0 0 0 2px var(--blau)}
+.links .zweit:hover{background:var(--pp)}
+.links .nurdesk{display:none}
+.links a{display:inline-flex;align-items:center;min-height:44px;font-weight:700;text-decoration-thickness:2px;text-underline-offset:6px}
+.rahmen{border:4px solid var(--stuck);padding:clamp(12px,2.2vw,28px);background:var(--pp);margin:15px;box-shadow:0 0 0 8px var(--wand),0 0 0 9px var(--stuck),0 0 0 13px var(--wand),0 0 0 15px #CBB98F}
+.rahmen .bild{box-shadow:0 0 0 1px var(--stuck)}
+.hero-bild .bild{--ar:4/3}
+.hero-bild img{object-position:50% 40%;animation:blick .6s cubic-bezier(.2,.7,.2,1) both}
+@keyframes blick{from{transform:translateX(-4%) scale(1.09)}}
+.hero-bild figcaption{margin-top:1rem}
+
+.mittag-abend{padding-bottom:var(--abst)}
+.mittag-abend article{display:grid;gap:1.25rem;align-content:start}
+.mittag .bild{--ar:4/5}
+.abend .bild{--ar:3/2}
+.liste .spiess{margin-top:1.5rem;width:min(100%,200px)}
+.liste .spiess .bild{--ar:4/3}
+
+.grill{padding-bottom:var(--abst)}
+.grill .gross .bild{--ar:3/2}
+.grill .gross img{object-position:50% 58%}
+.gerichte{list-style:none;margin:0 0 1.5rem;padding:0}
+.gerichte li{font:400 clamp(1.35rem,2.3vw,1.7rem)/1.25 var(--disp);padding:.55rem 0;border-bottom:1px solid var(--linie)}
+.gerichte li span{display:block;font:400 1rem/1.4 var(--text);color:var(--grau);margin-top:.15rem}
+.hinweis{color:var(--grau)}
+.zitrone{width:min(11rem,50%);margin-top:1.5rem}
+.zitrone .bild{--ar:1/1}
+.paar{display:grid;gap:var(--gap)}
+.paar .bild{--ar:4/3}
+
+.zeiten{padding-bottom:var(--abst)}
+.woche{list-style:none;margin:1.5rem 0 0;padding:0}
+.woche li{display:grid;grid-template-columns:1fr auto;align-items:center;gap:.25rem 1rem;padding:.9rem .75rem;border-bottom:1px solid var(--linie);min-height:48px}
+.tag{font:400 1.3rem/1.2 var(--disp)}
+.tag em{font:700 .875rem/1 var(--text);font-style:normal;color:var(--blau);margin-left:.5rem;letter-spacing:.04em}
+.woche time,.woche .zeit{font-variant-numeric:tabular-nums}
+.woche .ruhe{background:var(--bank);color:var(--wand);border-color:var(--bank)}
+.woche .ruhe em{color:var(--creme)}
+.lauf{display:none;grid-column:1/-1;height:3px;background:var(--linie);margin-top:.4rem}
+.lauf i{display:block;height:100%;background:var(--blau);transform-origin:left;transform:scaleX(var(--anteil,0));transition:transform .4s ease-out}
+.heute{box-shadow:inset 4px 0 0 var(--blau)}
+.heute .tag{color:var(--blau)}
+.heute .lauf{display:block}
+
+.dunkel{background:var(--bank);color:var(--wand);overflow:hidden;padding-block:var(--abst)}
+.dunkel h2{color:var(--wand)}
+.riesig{display:inline-block;font:400 clamp(2.5rem,8vw,6rem)/1.1 var(--disp);color:var(--wand);white-space:nowrap;text-decoration:underline;text-decoration-color:var(--stuck);text-decoration-thickness:2px;text-underline-offset:.15em;margin:.5rem 0 1.25rem;font-variant-numeric:tabular-nums}
+.lead{font-size:clamp(1.2rem,2vw,1.5rem);font-weight:700}
+.pita{width:min(17rem,70%);margin:2rem 0 0 auto}
+.pita .bild{--ar:3/4}
+
+.lage{padding-block:var(--abst)}
+.karte{aspect-ratio:4/3;border:1px solid var(--linie);background:var(--pp)}
+.karte>div{width:100%;height:100%}
+address{font-style:normal;font-size:1.2rem;margin-bottom:1.25rem}
+.lage h2{font-size:clamp(2rem,3.6vw,3rem)}
+.lage h2 span{display:block;white-space:nowrap}
+.wacholder{width:min(10rem,45%);margin-top:2rem}
+.wacholder .bild{--ar:3/4}
+
+.fuss{background:var(--blau);color:var(--wand);padding-block:3rem}
+.fuss a{color:var(--wand)}
+.fuss .raster{align-items:start}
+.fuss p{font-size:1rem}
+.rechtliches{border-top:1px solid rgba(243,238,227,.35);padding-top:1rem}
+.rechtliches p{font-size:.875rem;max-width:none}
+.rechtliches a{display:inline-block;min-height:44px;line-height:44px}
+
+.leiste{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:1fr 1fr;background:var(--blau);padding-bottom:env(safe-area-inset-bottom);border-top:2px solid var(--stuck)}
+.leiste a{display:flex;align-items:center;justify-content:center;min-height:48px;color:var(--wand);font-weight:700;text-decoration:none}
+.leiste a+a{border-left:1px solid rgba(243,238,227,.4)}
+
+@media (min-width:820px){
+body{padding-bottom:0}
+.leiste{display:none}
+.kopf .knopf{display:inline-flex}
+.raster{grid-template-columns:repeat(12,minmax(0,1fr))}
+.hero-name,.hero-bild,.hero-info{grid-column:1/-1}
+.hero-bild .bild{--ar:16/9}
+.hero-info{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:1.5rem 2rem}
+.hero-info .links{margin-top:0}
+.links{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1.5rem}
+.links .knopf{padding:0 1.5rem}
+.links .nurdesk{display:inline-flex}
+.mittag,.abend{grid-column:1/-1}
+.grill .gross{grid-column:1/8;position:sticky;top:100px;align-self:start}
+.grill .liste{grid-column:8/13}
+.paar{grid-column:3/13;grid-template-columns:1fr 1fr;margin-top:var(--gap)}
+.zeiten .kopfzeile{grid-column:1/9}
+.zeiten .unten{grid-column:1/13}
+.dunkel .text{grid-column:1/-1;align-self:center}
+.pita{display:none}
+.karte{grid-column:1/8;aspect-ratio:auto;align-self:stretch;min-height:420px}
+.lage .text{grid-column:8/13}
+.fuss .marke{grid-column:1/4}
+.fuss .adr{grid-column:4/8}
+.fuss .zt{grid-column:8/13}
+.rechtliches{grid-column:1/13}
+}
+@media (min-width:900px){
+.mittag{grid-column:1/8;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:end;gap:var(--gap)}
+.abend{grid-column:8/13;margin-top:96px}
+.mittag h2{font-size:clamp(2.75rem,5.6vw,4.5rem)}
+.abend h2{font-size:clamp(1.75rem,3vw,2.4rem)}
+}
+@media (min-width:1024px){
+.hero .raster{align-items:end}
+.hero-name{grid-column:1/4;grid-row:1;margin:0 -8% 3.5rem 0;font-size:clamp(4rem,7vw,6rem)}
+.hero-bild{grid-column:4/13;grid-row:1}
+.hero-bild .bild{--ar:21/9}
+.hero-info{grid-column:1/13;grid-row:2;flex-wrap:nowrap;margin-top:.5rem}
+.hero-info p{margin-bottom:.25rem}
+.hero-info .links{flex:none}
+.dunkel .text{grid-column:1/9}
+.pita{display:block;grid-column:9/13;width:auto;margin:0}
+.woche{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}
+.woche li{grid-template-columns:1fr;align-items:start;align-content:start;padding:1.25rem .75rem 1.5rem;min-height:9.5rem;border-bottom:0;border-left:1px solid var(--linie)}
+.woche li:last-child{border-right:1px solid var(--linie)}
+.tag em{display:block;margin:.4rem 0 0}
+.woche .zeit{font-size:.95rem}
+.heute{box-shadow:inset 0 4px 0 var(--blau)}
+.lauf{margin-top:auto}
+}
+@media (min-width:1100px){.kopf nav{display:block}}
+@media (prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+*,*::before,*::after{animation:none!important;transition:none!important}
+}
+@media (max-width:819px){.fuss{padding-bottom:calc(3rem + 48px + env(safe-area-inset-bottom) + 24px)}}
+</style>
+<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}</style></head>
+<body><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für Zum Griechen. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
+
+<header class="kopf">
+<div class="wrap">
+<a class="marke" href="#start" aria-label="Zum Griechen, zum Seitenanfang"><small>Zum</small><b>Griechen</b></a>
+<nav aria-label="Hauptnavigation"><ul>
+<li><a href="#mittags">Mittags &amp; Abends</a></li>
+<li><a href="#grill">Vom Grill</a></li>
+<li><a href="#zeiten">Zeiten</a></li>
+<li><a href="#mitnehmen">Mitnehmen</a></li>
+<li><a href="#lage">Lage</a></li>
+</ul></nav>
+<div class="rechts">
+<span data-status aria-live="polite"></span>
+<a class="knopf hell" href="tel:+494038663487">040 38663487</a>
+</div>
+</div>
+<div class="stuck" aria-hidden="true"></div>
+</header>
+
+<main id="start">
+
+<section class="hero" aria-labelledby="titel">
+<div class="wrap raster">
+<h1 id="titel" class="hero-name"><span>Zum</span> Griechen</h1>
+<figure class="hero-bild" data-foto>
+<div class="rahmen"><div class="bild">
+<img src="https://lh3.googleusercontent.com/grass-cs/AABkmLdEPrIRIequwi8EhoPIXCFIGpOyY1pjng3BZ32dQBlfHo7_PSOUxhrHtJhXeZ7BN8O0HI4BZCTiWpmy1RWka8lWWvx1MKIYQUlgnI4vGkCFS9Lm24WZ5Taw2Xx19fytIMAwT-8=s4800-w1800" referrerpolicy="no-referrer" width="3648" height="2736" fetchpriority="high" alt="Gastraum von Zum Griechen: gepolsterte Sitzbank, gedeckte Tische und das große Akropolis-Wandbild unter blau beleuchteter Stuckdecke">
+</div></div>
+<figcaption><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/105691811266453118306" target="_blank" rel="noopener">Foto: Klaus Erichsen · Google Maps</a></figcaption>
+</figure>
+<div class="hero-info">
+<div>
+<p class="ort">Griechische Küche · <span class="nw">Wacholderweg 1–3</span> · <span class="nw">Hamburg-Fuhlsbüttel</span></p>
+<p>Mittagstisch, Abendessen, Terrasse und Gyros zum Mitnehmen. Dienstag bis Sonntag ab 12 Uhr, montags Ruhetag.</p>
+</div>
+<div class="links">
+<a class="knopf" href="tel:+494038663487">Anrufen</a>
+<a class="knopf zweit" href="https://www.google.com/maps/dir/?api=1&amp;destination=Wacholderweg+1-3%2C+22335+Hamburg" target="_blank" rel="noopener">Route</a>
+<a class="nurdesk" href="#grill">Gerichte</a>
+</div>
+</div>
+</div>
+</section>
+
+<section id="mittags" class="mittag-abend" aria-label="Mittags und abends">
+<div class="wrap raster">
+<article class="mittag">
+<figure data-foto>
+<div class="bild"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLeay8VpAdF4Sf9v_qivwpNSi2uW68uHUB7j3gY0jlJv337s0-tqfo8SChrKW7VKhw2FZrsn4XC6r70bTolH6KMtUczxsYW5LBvwOjw_P0zod1cvNlkNkAYrrapsps2sDcbXf1jxunSkcXM2=s4800-w1000" referrerpolicy="no-referrer" width="3072" height="4080" loading="lazy" alt="Gyrosteller mit Pommes, Salat und Tzatziki"></div>
+<figcaption><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/106013490731399990880" target="_blank" rel="noopener">Foto: Bernd P. · Google Maps</a></figcaption>
+</figure>
+<div>
+<h2>Mittags</h2>
+<p>Mittagstisch, Dienstag bis Sonntag ab 12 Uhr.</p>
+<p>Gyros, Pommes, Salat, Tzatziki. Was mittags auf den Tisch kommt, sagen wir Ihnen auch gern am Telefon.</p>
+</div>
+</article>
+<article class="abend">
+<figure data-foto>
+<div class="bild"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLeHzpY3uqjkzc3PtjnLpuFooLwYaWV33FXmPp69lk1lDYGnIkGJhw_Sipz24PP_eQo9MRB36j2SL7aq7PkxfF8_24o3u5cYD3wV-P-nTzSK76NhHeZcgX5sBaMtAY5xGSXJxfoykMBEPsYz=s4800-w1000" referrerpolicy="no-referrer" width="1290" height="1303" loading="lazy" alt="Gyros mit gegrillten Hähnchenspießen, Tzatziki und Pommes, daneben ein Weizenbier"></div>
+<figcaption><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/116668346018463581545" target="_blank" rel="noopener">Foto: G.Loehr · Google Maps</a></figcaption>
+</figure>
+<div>
+<h2>Abends</h2>
+<p>Drinnen auf der Bank oder draußen auf der Terrasse. Dazu Bier oder Wein, zum Schluss Kaffee und Dessert.</p>
+<p>Tisch reservieren unter <a class="zahl" href="tel:+494038663487">040 38663487</a>.</p>
+</div>
+</article>
+</div>
+</section>
+
+
+<section id="grill" class="grill" aria-labelledby="grill-titel">
+<div class="wrap raster">
+<figure class="gross" data-foto>
+<div class="bild"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLcATzNyW6ZtvqlpUR_AWsGteM-dTFylqhiMTtCQiEb9GeiJMV3YbwrLUegdBbx9fG82gi6LGWnRXephuLhI8_6e11U9MsmF4doiHodejubkLdlzKg_K0i-R5cvlaoLS7TdQmMhb=s4800-w1000" referrerpolicy="no-referrer" width="4032" height="2618" loading="lazy" alt="Fleischspieß mit Pommes, Salat, Zwiebeln, Zitrone und Tzatziki auf weißem Teller"></div>
+<figcaption><span>Fleischspieß mit Pommes und Salat</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/115299845254907491819" target="_blank" rel="noopener">Foto: P. Kahl · Google Maps</a></figcaption>
+</figure>
+<div class="liste">
+<h2 id="grill-titel">Vom Grill</h2>
+<ul class="gerichte">
+<li>Gyros<span>vom Drehspieß, mit Tzatziki</span></li>
+<li>Souvlaki<span>Spieße vom Grill</span></li>
+<li>Hähnchenspieße<span>gegrillt, mit Pommes</span></li>
+<li>Lamm<span>vom Grill</span></li>
+<li>Fleischspieß<span>mit Pommes und Salat</span></li>
+<li>Grillplatte<span>gemischt, für zwei Personen</span></li>
+<li>Pita<span>warmes Fladenbrot</span></li>
+<li>Tzatziki<span>Joghurt, Gurke, Knoblauch</span></li>
+</ul>
+<p class="hinweis">Die vollständige Karte liegt im Lokal aus. Fragen Sie gern telefonisch nach: <a class="zahl" href="tel:+494038663487">040 38663487</a>.</p>
+<figure class="spiess">
+<div class="bild"><img src="ki-spiesse-grill.webp" width="1500" height="1000" loading="lazy" alt="Fresko-Malerei: gegrillte Souvlaki-Spieße nebeneinander auf einer ovalen Platte, mit Zwiebelringen und Zitrone"><span class="ki-label">KI-Bild</span></div>
+</figure>
+</div>
+<div class="paar">
+<figure data-foto>
+<div class="bild"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLcbkaKJgTge6FRW3L-2eIMR7vRpPNU4pB--QiDS9xEkq1mwgXoWSsgQwUA5f79xZt0ZLOCO17yvzhtmmEDho3CFz-2O-r9AhSaZYMjFWSHlpwIkYnFWGEzpzXKXwkUa-CrgO9Sqcw=s4800-w1000" referrerpolicy="no-referrer" width="4624" height="3472" loading="lazy" alt="Überbackenes Gericht mit Käse und Soße, dazu Tzatziki und Pommes"></div>
+<figcaption><span>Überbacken, mit Tzatziki und Pommes</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/107247086430563385245" target="_blank" rel="noopener">Foto: Yoshida Munenori · Google Maps</a></figcaption>
+</figure>
+<figure data-foto>
+<div class="bild"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfNZU1do-NOTg-PeZmeAHGRERGNlLlXcmUl6rsFNRSDLJrzz4ZvsBzuVhxUduUMlc3G5s6Rxr1YL1jrYTTtXC4q8wXk9cgj-JxKf4soh-2H2c2eM91bgYt_ayfX9cTKsZD1CqQ=s4800-w1000" referrerpolicy="no-referrer" width="4032" height="3024" loading="lazy" alt="Frittierte Calamari mit Dip und Pommes, daneben ein Gyrosteller"></div>
+<figcaption><span>Calamari mit Dip, daneben Gyros</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/114505110557667334987" target="_blank" rel="noopener">Foto: Alexander Schellenberg · Google Maps</a></figcaption>
+</figure>
+</div>
+</div>
+</section>
+
+<section id="zeiten" class="zeiten" aria-labelledby="zeiten-titel">
+<div class="wrap raster">
+<div class="kopfzeile">
+<h2 id="zeiten-titel">Öffnungszeiten</h2>
+<p>Dienstag bis Samstag von 12 bis 21 Uhr, sonntags bis 20 Uhr. Montags bleibt die Küche kalt.</p>
+</div>
+<div class="unten">
+<div class="stuck" aria-hidden="true"></div>
+<ol class="woche">
+<li class="ruhe" data-tag="1"><span class="tag">Montag</span><span class="zeit">Ruhetag</span></li>
+<li data-tag="2" data-auf="12" data-zu="21"><span class="tag">Dienstag</span><span class="zeit"><time>12:00</time>–<time>21:00</time></span><span class="lauf" aria-hidden="true"><i></i></span></li>
+<li data-tag="3" data-auf="12" data-zu="21"><span class="tag">Mittwoch</span><span class="zeit"><time>12:00</time>–<time>21:00</time></span><span class="lauf" aria-hidden="true"><i></i></span></li>
+<li data-tag="4" data-auf="12" data-zu="21"><span class="tag">Donnerstag</span><span class="zeit"><time>12:00</time>–<time>21:00</time></span><span class="lauf" aria-hidden="true"><i></i></span></li>
+<li data-tag="5" data-auf="12" data-zu="21"><span class="tag">Freitag</span><span class="zeit"><time>12:00</time>–<time>21:00</time></span><span class="lauf" aria-hidden="true"><i></i></span></li>
+<li data-tag="6" data-auf="12" data-zu="21"><span class="tag">Samstag</span><span class="zeit"><time>12:00</time>–<time>21:00</time></span><span class="lauf" aria-hidden="true"><i></i></span></li>
+<li data-tag="0" data-auf="12" data-zu="20"><span class="tag">Sonntag</span><span class="zeit"><time>12:00</time>–<time>20:00</time></span><span class="lauf" aria-hidden="true"><i></i></span></li>
+</ol>
+</div>
+</div>
+</section>
+
+<section id="mitnehmen" class="dunkel" aria-labelledby="mit-titel">
+<div class="wrap raster">
+<div class="text">
+<h2 id="mit-titel">Zum Mitnehmen</h2>
+<a class="riesig" href="tel:+494038663487">040 38663487</a>
+<p class="lead">Anrufen, bestellen, abholen.</p>
+<p>Gyros zum Mitnehmen? Anrufen, kurz sagen, was es sein soll, und im Wacholderweg abholen. Das geht zu den Öffnungszeiten, Dienstag bis Sonntag ab 12 Uhr.</p>
+</div>
+<figure class="pita">
+<div class="bild"><img src="ki-pita-tzatziki.webp" width="768" height="1024" loading="lazy" alt="Fresko-Malerei: gefaltetes Pita-Brot neben einer Schale Tzatziki"><span class="ki-label">KI-Bild</span></div>
+</figure>
+</div>
+</section>
+
+<section id="lage" class="lage" aria-labelledby="lage-titel">
+<div class="wrap raster">
+<div class="karte"><div data-karte data-stil="warm" data-farbe="#1E3F9A"></div></div>
+<div class="text">
+<h2 id="lage-titel">Im <span>Wacholderweg</span></h2>
+<address>Zum Griechen<br>Wacholderweg 1–3<br>22335 Hamburg-Fuhlsbüttel</address>
+<p><a class="knopf" href="https://www.google.com/maps/dir/?api=1&amp;destination=Wacholderweg+1-3%2C+22335+Hamburg" target="_blank" rel="noopener">Route planen</a></p>
+<p>Draußen gibt es Plätze auf der Terrasse. Für die Grillplatte zu zweit oder größere Runden lieber vorher einen Tisch reservieren: <a class="zahl" href="tel:+494038663487">040 38663487</a>.</p>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer class="fuss">
+<div class="wrap raster">
+<a class="marke" href="#start" aria-label="Zum Griechen, zum Seitenanfang"><small>Zum</small><b>Griechen</b></a>
+<p class="adr">Wacholderweg 1–3<br>22335 Hamburg<br><a class="zahl" href="tel:+494038663487">040 38663487</a></p>
+<p class="zt zahl">Di–Sa 12:00–21:00<br>So 12:00–20:00<br>Mo Ruhetag</p>
+<div class="rechtliches"><p>Entwurf von Medialyte, 21147 Hamburg. Adresse und Öffnungszeiten: Google. Fotos: Google Maps, Urheber jeweils am Bild. Mit „KI-Bild“ markierte Bilder und das Logo sind KI-generierte Vorschläge.</p><p><a href="https://medialyte.de/impressum">Impressum</a> · <a href="https://medialyte.de/datenschutzerklaerung">Datenschutz</a></p></div>
+</div>
+</footer>
+
+<nav class="leiste" aria-label="Schnellzugriff">
+<a href="tel:+494038663487">Anrufen</a>
+<a href="https://www.google.com/maps/dir/?api=1&amp;destination=Wacholderweg+1-3%2C+22335+Hamburg" target="_blank" rel="noopener">Route</a>
+</nav>
+
+<script>
+(function(){
+var n=new Date(),d=n.getDay(),h=n.getHours()+n.getMinutes()/60;
+document.querySelectorAll('.woche li').forEach(function(li){
+if(+li.dataset.tag!==d)return;
+li.classList.add('heute');
+li.setAttribute('aria-current','date');
+li.querySelector('.tag').insertAdjacentHTML('beforeend','<em>heute</em>');
+var a=+li.dataset.auf,z=+li.dataset.zu,i=li.querySelector('.lauf i');
+if(!z||!i)return;
+var f=Math.min(1,Math.max(0,(h-a)/(z-a)));
+requestAnimationFrame(function(){requestAnimationFrame(function(){i.style.setProperty('--anteil',f)})});
+});
+var k=document.querySelector('.kopf');
+addEventListener('scroll',function(){k.classList.toggle('eng',scrollY>40)},{passive:true});
+})();
+</script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>[data-karte]{width:100%;height:100%;min-height:260px}[data-karte] .leaflet-tile-pane{filter:var(--karte-filter)}
+[data-karte] .leaflet-control-attribution{font-size:10px}.karte-pin{position:relative;width:34px;height:34px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+box-shadow:0 6px 16px rgba(0,0,0,.35);border:3px solid #fff}.karte-pin i{position:absolute;inset:9px;border-radius:50%;background:#fff}</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>(function(){var C={"lat": 53.630233999999994, "lng": 10.022865099999999, "name": "Zum Griechen", "filter": {"hell": "grayscale(1) contrast(1.05) brightness(1.04)", "dunkel": "grayscale(1) invert(1) contrast(.88) brightness(.82)", "warm": "grayscale(1) sepia(.5) contrast(1.02) brightness(1.02)", "kuehl": "grayscale(1) sepia(.35) hue-rotate(175deg) saturate(.55) brightness(1.03)", "mono": "grayscale(1) contrast(1.2)"}};function draw(){if(!window.L)return;document.querySelectorAll('[data-karte]').forEach(function(el){
+if(el._map)return;var st=el.getAttribute('data-stil')||'hell',col=el.getAttribute('data-farbe')||'#c0392b';
+el.style.setProperty('--karte-filter',C.filter[st]||C.filter.hell);
+var m=L.map(el,{scrollWheelZoom:false,zoomControl:true,attributionControl:true}).setView([C.lat,C.lng],16);el._map=m;
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(m);
+var icon=L.divIcon({className:'',html:'<div class="karte-pin" style="background:'+col+'"><i></i></div>',iconSize:[34,34],iconAnchor:[17,34]});
+L.marker([C.lat,C.lng],{icon:icon,title:C.name,alt:C.name}).addTo(m);setTimeout(function(){m.invalidateSize()},300);});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',draw);else draw();window.addEventListener('load',draw);})();</script><script>(function(){
+var P=[[720, 1200], [3600, 4140], [5040, 5580], [6480, 7020], [7920, 8460], [9360, 9900]];
+function fmt(m){m=((m%1440)+1440)%1440;var h=Math.floor(m/60),mi=m%60;return (h<10?'0':'')+h+':'+(mi<10?'0':'')+mi;}
+function now(){var d=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Berlin'}));return d.getDay()*1440+d.getHours()*60+d.getMinutes();}
+function status(){if(!P.length)return null;var t=now(),W=10080;
+ for(var i=0;i<P.length;i++){var s=P[i][0],e=P[i][1];if((t>=s&&t<e)||(t+W>=s&&t+W<e))return {offen:true,text:'Jetzt geöffnet bis '+fmt(e)};}
+ var best=null;for(var j=0;j<P.length;j++){var d=(P[j][0]-t+W)%W;if(best===null||d<best.d)best={d:d,s:P[j][0]};}
+ var tag=Math.floor(t/1440),ot=Math.floor(best.s/1440)%7,names=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+ var when=best.d<1440&&ot===tag?'heute':(best.d<2880&&ot===(tag+1)%7?'morgen':names[ot]);
+ return {offen:false,text:'Geschlossen · öffnet '+when+' um '+fmt(best.s)};}
+function run(){var s=status();document.querySelectorAll('[data-status]').forEach(function(el){
+ if(!s){el.style.display='none';return;}el.textContent=s.text;el.setAttribute('data-offen',s.offen?'ja':'nein');});}
+document.querySelectorAll('[data-foto] img').forEach(function(img){
+ function hide(){var b=img.closest('[data-foto]');if(b)b.style.display='none';}
+ if(!img.getAttribute('src'))hide();else{img.addEventListener('error',hide);if(img.complete&&img.naturalWidth===0)hide();}});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();setInterval(run,60000);
+})();</script></body>
+</html>
