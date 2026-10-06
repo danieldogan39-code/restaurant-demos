@@ -135,23 +135,41 @@ button, input { font: inherit; color: inherit; }
 .ai-wait i { width: .6rem; height: .6rem; border-radius: 50%; background: var(--coral); animation: blink 1s infinite; }
 @media (max-width: 900px) { .cost-grid { grid-template-columns: 1fr; } }
 
-.vpill { position: fixed; left: 50%; bottom: 1.2rem; transform: translate(-50%, 140%); z-index: 950; display: flex; align-items: center; gap: .7rem; padding: .5rem .55rem .5rem .9rem; border-radius: 999px; border: 1px solid var(--edge); background: rgba(14,25,42,.9); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 16px 40px -16px rgba(0,0,0,.9); transition: transform .5s var(--spring); max-width: calc(100vw - 1.5rem); }
-.vpill.on { transform: translate(-50%, 0); }
+.vpill { position: fixed; left: 50%; bottom: 1.2rem; transform: translate(-50%, 140%); z-index: 950; display: flex; align-items: center; gap: .7rem; padding: .5rem .55rem .5rem .9rem; border-radius: 999px; border: 1px solid var(--edge); background: rgba(14,25,42,.9); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 16px 40px -16px rgba(0,0,0,.9); transition: transform .5s var(--spring), opacity .35s, visibility .35s; max-width: calc(100vw - 1.5rem); opacity: 0; visibility: hidden; pointer-events: none; }
+.vpill.on { transform: translate(-50%, 0); opacity: 1; visibility: visible; pointer-events: auto; }
 .vpill .wave { display: flex; gap: 3px; align-items: center; height: 18px; }
 .vpill .wave i { width: 3px; border-radius: 2px; background: var(--coral); height: calc(4px + var(--lv, 0) * 14px * var(--k)); transition: height .08s; }
 .vpill span { font-size: .8rem; color: var(--ink2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 46vw; }
 .vpill button { border: 1px solid var(--edge); background: rgba(255,255,255,.05); color: var(--ink); border-radius: 999px; padding: .3rem .7rem; font-size: .75rem; cursor: pointer; }
-@media (max-width: 640px) { .vpill { bottom: calc(5rem + env(safe-area-inset-bottom)); } }
+@media (max-width: 640px) { .vpill { bottom: calc(5.6rem + env(safe-area-inset-bottom)); width: calc(100vw - 1.2rem); } .vpill span { max-width: none; flex: 1; } .cd-label { display: none; } }
 
 [data-focus], .card, .demo { transition: box-shadow .45s var(--ease), border-color .45s; }
 .spot { box-shadow: 0 0 0 2px rgba(255,87,87,.95), 0 0 46px -6px rgba(255,87,87,.75) !important; border-color: rgba(255,87,87,.9) !important; position: relative; z-index: 2; animation: spotpulse 1.6s ease-in-out infinite; }
 .row.spot, .frei.spot { border-radius: 10px; }
 @keyframes spotpulse { 50% { box-shadow: 0 0 0 2px rgba(255,87,87,.6), 0 0 70px -4px rgba(255,87,87,.55) !important; } }
 
+.cd-label { font-size: .7rem; color: var(--ink3); font-weight: 500; margin-right: .2rem; }
+#run-now.running { background: rgba(255,181,71,.12); color: #FFB547; border-color: rgba(255,181,71,.5); box-shadow: none; cursor: default; }
+#run-now.running svg { animation: blink 1.2s infinite; }
+#run-stop { border-color: rgba(255,87,87,.45); color: #FF8C8C; }
+
+.areas-box { margin-top: 1.2rem; border-top: 1px solid var(--edge); padding-top: 1rem; }
+.areas-box h3 { margin: 0; font-family: var(--display); font-weight: 400; font-size: 1.02rem; }
+.area-chips { display: flex; flex-wrap: wrap; gap: .45rem; margin: .7rem 0; }
+.area-chips .ac { display: inline-flex; align-items: center; gap: .45rem; padding: .35rem .4rem .35rem .75rem; border-radius: 999px; border: 1px solid rgba(255,87,87,.45); background: rgba(255,87,87,.08); font-size: .82rem; }
+.area-chips .ac button { border: 0; background: rgba(255,255,255,.08); color: var(--ink); width: 1.4rem; height: 1.4rem; border-radius: 50%; cursor: pointer; line-height: 1; }
+.area-chips .std { color: var(--ink3); font-size: .82rem; }
+.area-form { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: .5rem; }
+.area-form input, .area-form select { background: rgba(255,255,255,.03); color: var(--ink); border: 1px solid var(--edge); border-radius: 12px; padding: .6rem .75rem; font: inherit; font-size: .88rem; min-width: 0; }
+.area-form select option { background: #0E192A; }
+@media (max-width: 640px) { .area-form { grid-template-columns: 1fr 1fr; } .area-form input { grid-column: 1 / -1; } }
+
 /* ---------- Sperrbildschirm ---------- */
 .lock { position: fixed; inset: 0; display: grid; place-items: center; padding: 1.5rem; z-index: 10; transition: opacity .7s var(--ease), transform .9s var(--ease); }
 .lock.gone { opacity: 0; transform: scale(1.06); pointer-events: none; }
-.lock-card { width: min(26rem, 100%); text-align: center; }
+.lock { grid-template-columns: minmax(0, 1fr); overflow-y: auto; }
+.lock-card { width: 100%; max-width: 26rem; margin: 0 auto; text-align: center; }
+@media (max-width: 640px) { .lock { padding: 1.25rem 1rem; } .orb { width: 8.5rem; height: 8.5rem; margin-bottom: 1.6rem; } }
 .orb { width: 10rem; height: 10rem; margin: 0 auto 2rem; position: relative; }
 .orb i { position: absolute; inset: 0; border-radius: 50%; border: 1.5px solid var(--edge-hot); animation: orbit 6s linear infinite; }
 .orb i:nth-child(1) { border-color: transparent; border-top-color: var(--cyan); border-right-color: var(--cyan); }
@@ -427,6 +445,10 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   .board::-webkit-scrollbar { display: none; }
   .board > .col { flex: 0 0 86%; max-height: 72vh; scroll-snap-align: start; }
   .radar { max-width: 17rem; margin: 0 auto; }
+  .kpi { padding: .8rem .85rem; }
+  .kpi .spark { display: none; }
+  .kpi .value { font-size: 1.6rem; }
+  .kpi .hint { font-size: .72rem; }
   .kpis { gap: .6rem; }
   .cost-big b { font-size: 1.7rem; }
   .cost-tools .row { grid-template-columns: 6rem minmax(0, 1fr) 4rem; font-size: .8rem; }
@@ -468,8 +490,9 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       <div><h1>Cockpit</h1><small><b>Medialyte</b> · Website-Agent · <span id="stamp">Stand: –</span></small></div></div>
     <div class="top-actions">
       <span class="chip" id="health"><span class="led"></span><span id="health-text">Agent bereit</span></span>
-      <span class="chip" title="Nächster automatischer Wochenlauf"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="countdown" id="countdown"></span></span>
-      <a class="btn btn-hot" id="run-now" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Lauf starten</a>
+      <span class="chip" title="Der Agent startet jeden Montag um 7:47 Uhr automatisch einen Wochenlauf. Der Zähler zeigt die Zeit bis dahin."><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><small class="cd-label">Nächster Auto-Lauf</small><span class="countdown" id="countdown"></span></span>
+      <button class="btn btn-hot" id="run-now" type="button"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><span id="run-label">Lauf starten</span></button>
+      <button class="btn" id="run-stop" type="button" hidden><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>Abbrechen</button>
       <a class="btn" id="reports" target="_blank" rel="noopener">Berichte</a>
       <a class="btn" id="settings" target="_blank" rel="noopener">Einstellungen</a>
       <button class="btn" id="cost-btn" type="button" aria-expanded="false" aria-controls="cost"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Kosten</button>
@@ -509,6 +532,16 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
         <div class="radar-side" id="radar-side"></div>
       </div>
       <div class="legend"><span><i style="background:#2A3F63"></i>noch nicht durchsucht</span><span><i style="background:#3D5F8F"></i>durchsucht, keine Treffer</span><span><i style="background:var(--cyan); box-shadow:0 0 8px var(--cyan)"></i>Restaurants ohne Website (größer = mehr)</span></div>
+      <div class="areas-box">
+        <h3>Suchgebiet festlegen</h3>
+        <p class="sub" id="area-sub">Jeder Ort in Deutschland: ganze Stadt oder Umkreis. Gilt ab dem nächsten Lauf.</p>
+        <div class="area-chips" id="area-chips"></div>
+        <form class="area-form" id="area-form" autocomplete="off">
+          <input id="area-ort" type="text" placeholder="z. B. München, Köln-Ehrenfeld oder 21147 Hamburg" aria-label="Ort" required maxlength="80">
+          <select id="area-km" aria-label="Umkreis"><option value="0">Ganze Stadt</option><option value="3">3 km Umkreis</option><option value="5">5 km Umkreis</option><option value="10" selected>10 km Umkreis</option><option value="20">20 km Umkreis</option></select>
+          <button class="btn btn-hot" type="submit">Hinzufügen</button>
+        </form>
+      </div>
     </article>
     <article class="panel" style="--d:7" aria-labelledby="flow-title" data-focus="pipeline">
       <h2 id="flow-title">Pipeline</h2><p class="sub">Vom ersten Treffer bis zur Demo, über alle bisherigen Läufe.</p>
@@ -983,7 +1016,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     var runs = d.laeufe || [], real = runs.filter(function (r) { return !r.probe; });
     var used = real.length ? real : runs;
     $("#stamp").textContent = "Stand: " + dfmt.format(new Date(d.erstellt));
-    $("#run-now").href = d.links.wochenlauf; $("#reports").href = d.links.berichte; $("#settings").href = d.links.einstellungen;
+    $("#reports").href = d.links.berichte; $("#settings").href = d.links.einstellungen;
 
     // Zustand
     var last = used[used.length - 1], health = $("#health");
@@ -1031,11 +1064,13 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     renderFlow(d, checked, hits, used);
     renderChart(used);
     renderDemos(d);
-    if (!syncDecisions.done) { syncDecisions(d); syncDecisions.done = true; } else DEC = Object.assign({}, d.entscheidungen || {}, DEC);
+    if (!syncDecisions.done) { syncDecisions(d); syncAreas(); syncDecisions.done = true; } else renderAreas();
+    DEC = Object.assign({}, d.entscheidungen || {}, DEC);
     renderRanks(d);
     renderRuns(runs);
     renderCfg(d);
     renderLive(d);
+    runCheck();
     if (!$("#cost").hidden) renderCost(d);
     startCountdown(d.naechster_lauf);
   }
@@ -1360,7 +1395,8 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   }
   $("#build-now").addEventListener("click", function () {
     var st = DATA.steuerung || {}; if (!st.token) { toast("Steuerung noch nicht eingerichtet: Es fehlt das Secret COCKPIT_GITHUB_TOKEN."); return; }
-    var b = this; b.disabled = true;
+    if (guardRunning()) return;
+    var b = this; b.disabled = true; RUN.starting = Date.now(); runRender();
     saving.then(function () { return command("bauen", st.workflow, { nur_manuell: "true" }); })
       .then(function () { Sound.play("start"); toast("Lauf gestartet. Das Cockpit zeigt ihn in ein bis zwei Minuten live."); })
       .catch(function (e) { Sound.play("error"); toast("Start fehlgeschlagen (" + e.message + ")."); })
@@ -1430,6 +1466,83 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   if ("IntersectionObserver" in window) {
     var navIO = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) document.querySelectorAll("#mnav a").forEach(function (a) { a.classList.toggle("on", a.dataset.sec === e.target.id); }); }); }, { rootMargin: "-45% 0px -50% 0px" });
     ["kpis", "rank-title", "demos-title", "cost", "runs-title"].forEach(function (id) { var el = document.getElementById(id); if (el) navIO.observe(el); });
+  }
+
+  /* ---------- Lauf starten / abbrechen: immer nur ein Lauf ---------- */
+  var RUN = { active: null, starting: 0, timer: 0 };
+  function runCheck() {
+    var st = (DATA && DATA.steuerung) || {};
+    if (!st.token) { RUN.active = isLive(DATA) ? { status: "in_progress", run_started_at: (DATA.live || {}).start } : null; runRender(); return Promise.resolve(); }
+    return api("/actions/runs?per_page=15").then(function (r) {
+      var act = (r.workflow_runs || []).filter(function (x) { return x.name === "Wochenlauf" && ["queued", "in_progress", "waiting", "requested", "pending"].indexOf(x.status) >= 0; });
+      RUN.active = act[0] || null; if (RUN.active) RUN.starting = 0; runRender();
+    }).catch(function () { RUN.active = isLive(DATA) ? { status: "in_progress" } : null; runRender(); });
+  }
+  function runRender() {
+    var b = $("#run-now"), lab = $("#run-label"), stop = $("#run-stop"), a = RUN.active;
+    var starting = !a && RUN.starting && Date.now() - RUN.starting < 120000;
+    b.classList.toggle("running", !!(a || starting));
+    if (a) { var m = a.run_started_at ? Math.max(0, Math.round((Date.now() - new Date(a.run_started_at)) / 60000)) : null; lab.textContent = a.status === "queued" ? "Lauf wartet auf Start" : "Lauf läuft bereits" + (m != null ? " · " + m + " Min." : ""); }
+    else lab.textContent = starting ? "Lauf startet …" : "Lauf starten";
+    stop.hidden = !(a && a.id);
+  }
+  function guardRunning() {
+    if (RUN.active || (RUN.starting && Date.now() - RUN.starting < 120000)) { Sound.play("deny"); toast("Es läuft bereits ein Lauf. Du kannst ihn abbrechen oder warten, bis er fertig ist."); return true; }
+    return false;
+  }
+  $("#run-now").addEventListener("click", function () {
+    var st = (DATA && DATA.steuerung) || {};
+    if (!st.token) { toast("Steuerung nicht eingerichtet: Es fehlt das Secret COCKPIT_GITHUB_TOKEN."); return; }
+    runCheck().then(function () {
+      if (guardRunning()) return;
+      RUN.starting = Date.now(); runRender(); Sound.play("start");
+      command("lauf", st.workflow, { nur_manuell: "false" })
+        .then(function () { toast("Lauf gestartet. Er erscheint in ein bis zwei Minuten live im Cockpit."); setTimeout(runCheck, 15000); })
+        .catch(function (e) { RUN.starting = 0; runRender(); Sound.play("error"); toast("Start fehlgeschlagen (" + e.message + ")."); });
+    });
+  });
+  $("#run-stop").addEventListener("click", function () {
+    var a = RUN.active; if (!a || !a.id) return;
+    var b = this; b.disabled = true;
+    api("/actions/runs/" + a.id + "/cancel", { method: "POST" })
+      .then(function () { Sound.play("trash"); toast("Lauf wird abgebrochen. Fertig gebaute Demos bleiben erhalten."); setTimeout(runCheck, 8000); })
+      .catch(function (e) { Sound.play("error"); toast(e.status === 403 ? "Abbrechen braucht beim Token das Recht „Actions: Read and write“." : "Abbrechen fehlgeschlagen (" + e.message + ")."); })
+      .then(function () { setTimeout(function () { b.disabled = false; }, 3000); });
+  });
+  setInterval(function () { if (PW && !document.hidden) runCheck(); }, 20000);
+
+  /* ---------- Suchgebiet ---------- */
+  var AREAS = null;
+  function renderAreas() {
+    var list = AREAS || (DATA && DATA.suchgebiete) || [], box = $("#area-chips");
+    box.innerHTML = list.length ? list.map(function (a, i) { return '<span class="ac">' + esc(a.ort) + " · " + (a.umkreis_km ? a.umkreis_km + " km" : "ganze Stadt") + '<button type="button" data-del="' + i + '" aria-label="Entfernen">×</button></span>'; }).join("")
+      : '<span class="std">Standard: Hamburg und Umland (' + ((DATA && DATA.einstellungen.gebiete) || 0) + " Gebiete)</span>";
+  }
+  function saveAreas(list, msg) {
+    var st = (DATA && DATA.steuerung) || {};
+    if (!st.token) { toast("Steuerung nicht eingerichtet: Es fehlt das Secret COCKPIT_GITHUB_TOKEN."); return Promise.resolve(false); }
+    var prev = AREAS; AREAS = list; renderAreas();
+    return api("/contents/data/suchgebiete.json", { allow404: true })
+      .then(function (f) { return writeFile("data/suchgebiete.json", list, "Cockpit: Suchgebiet " + msg, f && f.sha); })
+      .then(function () { Sound.play("drop"); toast(list.length ? "Gespeichert. Der nächste Lauf sucht in: " + list.map(function (a) { return a.ort; }).join(", ") + "." : "Zurück zum Standard-Suchgebiet."); })
+      .catch(function (e) { AREAS = prev; renderAreas(); Sound.play("error"); toast("Speichern fehlgeschlagen (" + e.message + ")."); });
+  }
+  $("#area-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var ort = $("#area-ort").value.trim(); if (!ort) return;
+    var list = (AREAS || (DATA && DATA.suchgebiete) || []).slice();
+    if (list.some(function (a) { return a.ort.toLowerCase() === ort.toLowerCase(); })) { toast(ort + " ist schon eingetragen."); return; }
+    list.push({ ort: ort, umkreis_km: +$("#area-km").value });
+    saveAreas(list, "+ " + ort).then(function (ok) { if (ok !== false) $("#area-ort").value = ""; });
+  });
+  $("#area-chips").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-del]"); if (!b) return;
+    var list = (AREAS || (DATA && DATA.suchgebiete) || []).slice(), gone = list.splice(+b.dataset.del, 1)[0];
+    saveAreas(list, "- " + gone.ort);
+  });
+  function syncAreas() {
+    var st = (DATA && DATA.steuerung) || {}; renderAreas(); if (!st.token) return;
+    api("/contents/data/suchgebiete.json", { allow404: true }).then(function (f) { if (f) { AREAS = JSON.parse(fromU8(f.content) || "[]"); renderAreas(); } }).catch(function () {});
   }
 
   /* Protokoll */
