@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Ramen Restaurant · Ramen in Uhlenhorst, Papenhuder Str. 22</title>
+<meta name="description" content="Ramen, Okonomiyaki, Takoyaki, Karaage und Katsudon in Hamburg-Uhlenhorst. Papenhuder Str. 22, täglich ab 12 Uhr, sonntags ab 14 Uhr. Tisch per Telefon: 040 87973186.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--putz:#EDE3CF;--nuss:#2B1E14;--orange:#B23F16;--licht:#F7EBC9;--leinen:#A9A296;--creme:#FBF6EC;--mincho:"Zen Old Mincho",Georgia,serif;--text:"Hanken Grotesk",system-ui,sans-serif;--rand:clamp(1rem,5vw,4rem);--max:1320px;--kopf:64px;--linie:rgba(43,30,20,.22);--weich:cubic-bezier(.2,.7,.2,1)}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;overflow-x:clip;scroll-padding-top:calc(var(--kopf) + 16px)}
+body{margin:0;background:var(--putz);color:var(--nuss);font:400 1.0625rem/1.6 var(--text);overflow-x:clip;padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+img{display:block;max-width:100%}
+a{color:inherit}
+[hidden]{display:none!important}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+h1,h2,h3{font-family:var(--mincho);font-weight:700;margin:0;line-height:1.08;hyphens:auto;overflow-wrap:break-word}
+p{margin:0}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--rand)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.sprung{position:absolute;left:12px;top:-60px;z-index:99;background:var(--nuss);color:var(--creme);padding:12px 20px}
+.sprung:focus{top:12px}
+
+.kopf{position:sticky;top:0;z-index:50;background:var(--putz);border-bottom:1px solid rgba(43,30,20,.35)}
+.kopf .wrap{height:var(--kopf);display:flex;align-items:center;justify-content:space-between;gap:24px}
+.marke{display:flex;align-items:center;gap:12px;text-decoration:none;min-height:44px}
+.hanko{width:14px;height:14px;background:var(--orange);flex:none}
+.marke-text{display:flex;flex-direction:column;font-family:var(--mincho);font-weight:500;line-height:1.05}
+.marke-text small{font-size:.875rem}
+.marke-text span{font-size:1.15rem}
+.marke-text b{font-weight:700}
+.kopf ul{display:flex;align-items:center;gap:clamp(16px,2.4vw,32px);list-style:none;margin:0;padding:0}
+.kopf ul a:not(.knopf){display:inline-flex;align-items:center;min-height:44px;font-weight:500;text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 calc(100% - 10px)/0 1px no-repeat;transition:background-size .35s var(--weich)}
+.kopf ul a:not(.knopf):hover{background-size:100% 1px}
+
+.knopf{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:52px;padding:16px 28px;border:1px solid var(--orange);border-radius:4px;background:var(--orange);color:var(--creme);font:600 1rem/1.2 var(--text);text-decoration:none;transition:color .35s,border-color .35s}
+.knopf::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--nuss);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--weich)}
+.knopf:hover::before,.knopf:focus-visible::before{transform:scaleX(1)}
+.knopf:hover{border-color:var(--nuss);color:var(--creme)}
+.knopf .pfeil{transition:transform .35s var(--weich)}
+.knopf:hover .pfeil{transform:translateX(4px)}
+.knopf-kontur{background:transparent;color:var(--nuss);border-color:var(--nuss)}
+.kopf .knopf{min-height:44px;padding:10px 22px}
+
+.hero{display:flex;flex-direction:column}
+.hero-bild{position:relative;margin:0;height:50svh;min-height:300px;display:flex;flex-direction:column}
+.hero-bild img{flex:1 1 0;min-height:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.hero-bild .foto-nachweis{padding-inline:var(--rand)}
+.foto-nachweis{display:block;padding-top:8px;color:#5A4A3C;font:500 .875rem/1.4 var(--text);text-decoration:none}
+.foto-nachweis:hover{text-decoration:underline}
+.hero-flaeche{display:grid;grid-template-columns:1fr 40px;column-gap:14px;align-content:start;padding:28px var(--rand) 40px}
+.status{grid-column:1;display:flex;align-items:center;gap:10px;min-height:24px;margin-bottom:20px;font-size:.9375rem;font-weight:500}
+.quadrat{width:8px;height:8px;background:var(--orange);flex:none}
+.status:has([data-offen="nein"]) .quadrat{background:transparent;box-shadow:inset 0 0 0 1.5px var(--orange)}
+.hero-titel{grid-column:1;font-size:clamp(2.4rem,10.5vw,4.4rem);line-height:1.04;letter-spacing:-.01em;hyphens:manual;overflow-wrap:normal}
+.hero-titel>span{display:block}
+.hero-titel em{font-style:normal;color:var(--orange)}
+.hero-titel>div{padding-block:.08em .16em;margin-block:-.08em -.16em}
+.hero-satz{grid-column:1;margin-top:20px;max-width:40ch;font-size:1.125rem}
+.hero-marke{grid-column:2;grid-row:1/span 3;align-self:start;position:relative;writing-mode:vertical-rl;padding-left:14px;font:500 1rem/1 var(--mincho);letter-spacing:.04em;white-space:nowrap}
+.hero-marke .linie{position:absolute;left:0;top:0;bottom:0;width:1px;background:rgba(43,30,20,.25);transform-origin:top}
+.hero-aktionen{grid-column:1/-1;display:flex;flex-direction:column;gap:12px;margin-top:28px}
+.hero-aktionen .knopf{width:100%}
+.mini-uhr{grid-column:1/-1;margin-top:32px}
+.mini-balken{position:relative;height:12px;background:var(--nuss);border-radius:1px}
+.mini-fleck{position:absolute;top:2px;bottom:2px;left:var(--a);width:var(--b);background:var(--licht);clip-path:polygon(0 0,100% 0,calc(100% - 10px) 100%,0 100%)}
+.mini-strich{position:absolute;top:-6px;height:24px;width:2px;left:var(--p);margin-left:-1px;background:var(--orange)}
+.mini-skala{display:flex;justify-content:space-between;margin-top:8px;font-size:.875rem;font-variant-numeric:tabular-nums}
+
+.raum{padding-block:clamp(64px,10vw,128px)}
+.raum h2{font-size:clamp(2.2rem,6.2vw,5.6rem);max-width:14ch}
+.raum-raster{display:grid;gap:clamp(28px,4vw,48px)}
+.raum-text{display:grid;gap:16px;max-width:52ch;font-size:1.125rem}
+.rahmen{position:relative;margin:0}
+.rahmen img{width:100%;height:auto;object-fit:cover;border-radius:6px;background:#E2D6BE}
+.r45 img{aspect-ratio:4/5}.r32 img{aspect-ratio:3/2}.r11 img{aspect-ratio:1}
+.raum-hoch .foto-nachweis{text-align:right}
+.raum-quer{position:relative;z-index:2}
+
+.rolle{padding-block:clamp(56px,8vw,96px);border-block:1px solid var(--linie);overflow:hidden}
+.rolle-kopf{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 48px}
+.rolle h2{font-size:clamp(2rem,5vw,4.2rem)}
+.rolle-kopf p{max-width:44ch}
+.rolle-spur{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--rand);padding:clamp(32px,4vw,48px) var(--rand) 16px;scrollbar-width:thin;scrollbar-color:var(--leinen) transparent}
+.feld{position:relative;flex:0 0 min(78vw,340px);scroll-snap-align:start;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto 1fr;column-gap:18px;row-gap:16px;padding:6px 22px}
+.feld:last-child{border-right:1px solid rgba(43,30,20,.3)}
+.feld-linie{position:absolute;left:0;top:0;bottom:0;width:1px;background:rgba(43,30,20,.3);transform-origin:top}
+.feld-kopf{grid-row:1/-1;align-self:stretch;display:flex;flex-direction:column;align-items:center;gap:12px}
+.feld-name{writing-mode:vertical-rl;font-size:clamp(1.4rem,2vw,1.8rem);line-height:1.1;white-space:nowrap;hyphens:none;overflow-wrap:normal;transition:transform .35s var(--weich)}
+.feld-strich{width:2px;height:44px;background:var(--orange);transform:scaleY(0);transform-origin:top;transition:transform .45s var(--weich)}
+.feld:hover .feld-name{transform:translateY(-4px)}
+.feld:hover .feld-strich{transform:scaleY(1)}
+.feld-bild{grid-column:2;align-self:start}
+.frei{aspect-ratio:1;display:grid;place-items:center}
+.frei img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 18px 16px rgba(43,30,20,.28))}
+.leer{aspect-ratio:4/5;display:flex;align-items:flex-end;padding:20px;background:var(--licht);clip-path:polygon(0 0,100% 0,100% 100%,22% 100%);font:700 clamp(1.5rem,2.3vw,2.1rem)/1.15 var(--mincho);justify-content:flex-end;text-align:right}
+.feld-text{grid-column:2;font-size:1rem;line-height:1.5}
+.feld-ende .feld-text{display:grid;gap:16px;align-content:start;font-size:1.0625rem}
+.feld-ende strong{font:700 clamp(1.4rem,2vw,1.8rem)/1.2 var(--mincho)}
+
+.uhr{background:var(--nuss);color:var(--putz);padding-block:clamp(64px,10vw,128px)}
+.uhr-kopf{display:grid;gap:24px;margin-bottom:clamp(40px,6vw,72px)}
+.uhr h2{font-size:clamp(2.2rem,5.4vw,4.8rem);max-width:16ch}
+.uhr h2 em{font-style:normal;color:var(--licht)}
+.uhr-kopf p{max-width:42ch;font-size:1.125rem}
+.uhr-kopf a{text-underline-offset:5px;font-weight:600}
+.uhr-tabelle{list-style:none;margin:0;padding:0}
+.tag{display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px 24px;padding:14px 12px;border-top:1px solid rgba(169,162,150,.28)}
+.tag:last-child{border-bottom:1px solid rgba(169,162,150,.28)}
+.tag-zeit{text-align:right;font-variant-numeric:tabular-nums}
+.balken{grid-column:1/-1;position:relative;height:30px;background:repeating-linear-gradient(to right,rgba(169,162,150,.3) 0 1px,transparent 1px calc(100%/11));border-right:1px solid rgba(169,162,150,.3)}
+.fleck{position:absolute;top:4px;bottom:4px;left:var(--a);width:var(--b);background:var(--licht);clip-path:polygon(0 0,100% 0,calc(100% - 16px) 100%,0 100%);transform-origin:left}
+.jetzt{position:absolute;top:-8px;bottom:-8px;width:2px;left:var(--p);background:var(--orange);transform-origin:bottom}
+.tag.heute{background:rgba(247,235,201,.07)}
+.tag.heute .tag-name{font-weight:700;color:var(--licht)}
+.tag.heute .tag-name::after{content:" · heute";font-weight:500}
+.skala{border-top:0;padding-block:0 8px}
+.skala>span{display:none}
+.skala-zahlen{grid-column:1/-1;position:relative;height:22px;font-size:.875rem;font-variant-numeric:tabular-nums;color:var(--putz)}
+.skala-zahlen span{position:absolute;left:var(--a);transform:translateX(-50%)}
+.skala-zahlen span:first-child{transform:none}
+.skala-zahlen span:last-child{transform:translateX(-100%)}
+.skala-zahlen .neben{display:none}
+
+.okono{padding-block:clamp(64px,10vw,128px)}
+.okono .wrap{display:grid;gap:clamp(28px,5vw,64px);align-items:center}
+.okono-satz{font:700 clamp(1.9rem,4vw,3.6rem)/1.15 var(--mincho);hyphens:auto}
+.okono-satz em{font-style:normal;color:var(--orange)}
+.okono-text{margin-top:24px;max-width:44ch;font-size:1.125rem}
+
+.lage{padding-block:clamp(64px,9vw,112px);border-top:1px solid var(--linie)}
+.lage .wrap{display:grid;gap:clamp(48px,6vw,72px)}
+.karte-halter{position:relative;margin-bottom:56px;min-width:0;max-width:100%}
+.karte-rahmen{position:relative;aspect-ratio:4/3;max-width:100%;border-radius:6px;overflow:hidden;contain:paint;background:#E2D6BE;border:1px solid var(--linie)}
+.karte-rahmen [data-karte]{position:relative;width:100%;height:100%;max-width:100%;overflow:hidden}
+.lage-schale{position:absolute;right:-6px;bottom:-40px;width:110px;pointer-events:none}
+.lage-schale img{width:100%;height:auto;object-fit:contain;filter:drop-shadow(0 16px 14px rgba(43,30,20,.3))}
+.lage h2{font-size:clamp(2rem,4.6vw,3.8rem)}
+.lage-ort{margin-top:8px;font-size:1.125rem}
+.lage-weg{margin-top:24px;max-width:46ch;font-size:1.125rem;padding-left:16px;border-left:2px solid var(--orange)}
+.merkmale{list-style:none;margin:32px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;column-gap:24px}
+.merkmale li{padding:10px 0;border-top:1px solid var(--linie);font-size:1rem}
+.lage-aktionen{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;margin-top:32px}
+.textlink{display:inline-flex;align-items:center;min-height:44px;font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
+
+.schluss{background:var(--orange);color:var(--creme);padding-block:clamp(72px,12vw,160px)}
+.schluss h2{font-size:clamp(3rem,9vw,8.5rem);line-height:.98;max-width:9ch}
+.schluss-raster{display:grid;gap:clamp(40px,6vw,64px);align-items:end}
+.schluss-bild{margin:0;max-width:340px}
+.schluss-bild img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:62% 50%;border-radius:50% 50% 6px 6px/30% 30% 6px 6px;background:#8E3412}
+.schluss .foto-nachweis{color:var(--creme)}
+.schluss p{margin-top:28px;max-width:46ch;font-size:1.125rem}
+.tel-gross{display:inline-flex;align-items:center;gap:16px;min-height:64px;margin-top:40px;padding:20px 36px;border-radius:4px;background:var(--creme);color:var(--orange);font:700 clamp(1.4rem,4vw,2.6rem)/1.1 var(--mincho);text-decoration:none;transition:background .3s,color .3s}
+.tel-gross:hover{background:var(--nuss);color:var(--creme)}
+.tel-gross:focus-visible{outline-color:var(--creme)}
+
+.fuss{background:var(--nuss);color:var(--putz);padding-block:56px 40px;font-size:1rem}
+.fuss .wrap{display:grid;gap:32px}
+.fuss .marke-text span{font-size:1.4rem}
+.fuss-spalten{display:grid;gap:24px}
+.fuss h3{font:600 1rem/1.4 var(--text);margin-bottom:6px}
+.fuss a{text-underline-offset:4px}
+.rechtliches{border-top:1px solid rgba(237,227,207,.2);padding-top:24px;font-size:.9375rem}
+.rechtliches p+p{margin-top:8px}
+
+.leiste{position:fixed;left:0;right:0;bottom:0;z-index:60;display:grid;grid-template-columns:repeat(3,1fr);background:var(--nuss);border-top:1px solid rgba(237,227,207,.2);padding-bottom:env(safe-area-inset-bottom)}
+.leiste a{display:flex;align-items:center;justify-content:center;min-height:56px;color:var(--putz);font-weight:600;text-decoration:none}
+.leiste a:first-child{background:var(--orange);color:var(--creme)}
+.leiste a+a{border-left:1px solid rgba(237,227,207,.18)}
+
+@media (max-width:819px){
+ .kopf li:not(:last-child){display:none}
+}
+@media (min-width:820px){
+ body{padding-bottom:0}
+ .leiste{display:none}
+ .raum-raster{grid-template-columns:repeat(12,1fr);column-gap:clamp(16px,2vw,32px);row-gap:clamp(24px,3vw,40px);align-items:start}
+ .raum h2{grid-column:1/8;grid-row:1}
+ .raum-text{grid-column:2/7;grid-row:2}
+ .raum-hoch{grid-column:8/-1;grid-row:1/span 3}
+ .raum-quer{grid-column:3/10;grid-row:3;margin-top:clamp(16px,3vw,48px)}
+ .schluss-raster{grid-template-columns:repeat(12,1fr)}
+ .schluss-text{grid-column:1/9}
+ .schluss-bild{grid-column:9/-1;max-width:none}
+ .okono .wrap{grid-template-columns:repeat(12,1fr)}
+ .okono figure{grid-column:1/7}
+ .okono-inhalt{grid-column:7/-1}
+ .lage .wrap{grid-template-columns:repeat(12,1fr);align-items:start}
+ .karte-halter{grid-column:1/7}
+ .lage-info{grid-column:8/-1}
+ .lage-schale{width:clamp(130px,15vw,200px);right:-36px;bottom:-56px}
+ .uhr-kopf{grid-template-columns:7fr 5fr;align-items:end}
+ .tag{grid-template-columns:9rem 1fr 9rem;padding:16px 12px}
+ .balken{grid-column:2;grid-row:1}
+ .tag-zeit{grid-column:3}
+ .skala>span{display:block}
+ .skala-zahlen{grid-column:2}
+ .skala-zahlen .neben{display:inline}
+ .fuss .wrap{grid-template-columns:4fr 8fr}
+ .fuss-spalten{grid-template-columns:repeat(3,1fr)}
+ .rechtliches{grid-column:1/-1}
+}
+@media (min-width:1000px){
+ .hero{flex-direction:row;min-height:calc(100svh - var(--kopf))}
+ .hero-bild{flex:6 1 0;height:auto}
+ .hero-bild img{border-radius:0 6px 6px 0}
+ .hero-bild .foto-nachweis{padding:8px 12px 0}
+ .hero-flaeche{flex:6 1 0;grid-template-columns:1fr 72px;grid-template-rows:auto 1fr auto auto auto 1fr auto;column-gap:clamp(20px,2.5vw,40px);padding:clamp(28px,5vh,56px) clamp(20px,2.5vw,40px) clamp(28px,5vh,48px) clamp(28px,3.5vw,56px)}
+ .status{grid-row:1}
+ .hero-titel{grid-row:3;font-size:clamp(3.2rem,4.8vw,6.5rem)}
+ .hero-satz{grid-row:4}
+ .hero-aktionen{grid-row:5}
+ .mini-uhr{grid-row:7}
+ .hero-marke{grid-row:1/-1;font-size:22px;padding-left:24px}
+ .hero-aktionen{grid-column:1;flex-direction:row;flex-wrap:wrap;align-items:center;gap:12px 28px}
+ .hero-aktionen .knopf{width:auto}
+ .hero-aktionen .knopf-kontur{min-height:44px;padding:8px 0;border:0;border-radius:0;background:none;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
+ .hero-aktionen .knopf-kontur::before{display:none}
+ .hero-aktionen .knopf-kontur:hover{color:var(--orange)}
+ .mini-uhr{grid-column:1;margin-top:clamp(28px,5vh,48px)}
+ .feld{flex-basis:clamp(280px,24vw,340px)}
+ .rolle.gepinnt{height:calc(100svh - var(--kopf));min-height:560px;display:flex;flex-direction:column;justify-content:center;padding-block:32px}
+ .gepinnt .rolle-spur{overflow:visible;scroll-snap-type:none;will-change:transform}
+}
+@media (prefers-reduced-motion:reduce){
+ *{transition:none!important;scroll-behavior:auto!important}
+}
+.hero-titel em{font-size:1.15em;line-height:.9}
+.status{font-size:1rem}
+.status[data-offen="nein"] .quadrat{background:transparent;box-shadow:inset 0 0 0 1.5px var(--orange)}
+.mini-balken{height:14px;background:#D9CBB0}
+.mini-fleck{top:0;bottom:0;background:var(--licht);border-top:3px solid var(--nuss);clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%)}
+.mini-strich{top:-6px;height:26px;width:3px}
+.raum h2{font-size:clamp(2.2rem,5.2vw,4.8rem);max-width:none;hyphens:none}
+.raum-bilder{display:flex;align-items:start;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(var(--rand)*-1);padding-inline:var(--rand);scroll-padding-inline:var(--rand);scrollbar-width:none}
+.raum-bilder::-webkit-scrollbar{display:none}
+.raum-bilder figure{flex:0 0 82%;scroll-snap-align:start}
+.raum-notiz{max-width:30ch;padding-left:16px;border-left:2px solid var(--orange);font:500 1.25rem/1.45 var(--mincho)}
+.feld{min-width:280px;min-height:440px;grid-template-columns:56px minmax(0,1fr);column-gap:16px;padding:8px 22px}
+.feld-kopf{width:56px;min-height:0}
+.feld-name{font-size:clamp(1.4rem,2.4vw,2rem);line-height:1;flex:none;hyphens:none}
+.tag{min-height:56px;padding-block:8px}
+.tag.skala{min-height:0;padding-block:0 8px}
+.balken{height:12px}
+.fleck{top:0;bottom:0;clip-path:polygon(6% 0,100% 0,94% 100%,0 100%)}
+.tag.heute .tag-name{font:700 1.5rem/1.15 var(--mincho)}
+.tag.heute .tag-name::after{content:"heute";display:block;font:500 .875rem/1.3 var(--text);color:var(--putz)}
+.schluss{padding-block:clamp(64px,10vw,128px) clamp(56px,8vw,96px)}
+.schluss h2{font-size:clamp(3rem,9vw,9rem)}
+.schluss-bild img{aspect-ratio:4/5;border-radius:999px 999px 8px 8px}
+.nachweise a{color:inherit;text-decoration:underline}
+@media (max-width:999px){.hero-flaeche{padding-bottom:0}}
+@media (max-width:819px){.raum{padding-top:64px}.raum-notiz{margin-top:8px}.schluss-bild{max-width:280px}}
+@media (min-width:820px){
+ .raum{padding-bottom:96px}
+ .raum h2{grid-column:1/8;grid-row:1}
+ .raum-text{grid-column:1/7;grid-row:2}
+ .raum-bilder{display:contents}
+ .raum-hoch{grid-column:8/-1;grid-row:1/span 2}
+ .raum-quer{grid-column:5/12;grid-row:3;margin-top:-80px}
+ .raum-quer img{border:6px solid var(--putz);border-radius:12px}
+ .raum-notiz{grid-column:1/5;grid-row:3;align-self:end}
+ .tag{grid-template-columns:11rem 1fr 9rem}
+ .schluss-raster{align-items:center}
+ .schluss-text{grid-column:1/8}
+ .schluss-bild{grid-column:8/-1;max-width:none}
+ .schluss h2{font-size:clamp(4rem,9vw,9rem)}
+}
+@media (min-width:820px) and (max-width:1099px){
+ .karte-halter,.lage-info{grid-column:1/-1}
+ .karte-halter{max-width:720px}
+ .fuss .wrap{grid-template-columns:1fr}
+}
+</style>
+<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}</style><!--agent-lib--><link rel="stylesheet" href="lib/lenis.css"><script src="lib/gsap.min.js"></script><script src="lib/ScrollTrigger.min.js"></script><script src="lib/SplitText.min.js"></script><script src="lib/lenis.min.js"></script><!--/agent-lib--></head>
+<body><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für The Ramen Restaurant. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
+<a class="sprung" href="#inhalt">Zum Inhalt</a>
+
+<header class="kopf">
+ <div class="wrap">
+  <a class="marke" href="#inhalt" aria-label="The Ramen Restaurant, zum Anfang">
+   <span class="hanko" aria-hidden="true"></span>
+   <span class="marke-text"><small>The</small><span><b>Ramen</b> Restaurant</span></span>
+  </a>
+  <nav aria-label="Hauptnavigation">
+   <ul>
+    <li><a href="#karte">Karte</a></li>
+    <li><a href="#zeiten">Zeiten</a></li>
+    <li><a href="#lage">Lage</a></li>
+    <li><a class="knopf" href="tel:+494087973186">Anrufen</a></li>
+   </ul>
+  </nav>
+ </div>
+</header>
+
+<main id="inhalt">
+ <section class="hero" aria-label="The Ramen Restaurant in Uhlenhorst">
+  <figure class="hero-bild" data-foto>
+   <img src="https://lh3.googleusercontent.com/grass-cs/AABkmLf8H6l5JUZAFnGS6k1YozATTVmlyjYPC2l4ypgCckVtYBKGcg2VytoP0jCkx_mtwzmC6UK2EvC4sE82Ncn9g9_EbKCY_sCZSNWiKyow229ZxX66PmfXmGHfy_MKkbgolAWSBCGD42HV8Owe=s4800-w1800" referrerpolicy="no-referrer" width="4032" height="3024" fetchpriority="high" alt="Sonniger Gastraum mit niedrigen Holztischen, grauen Sitzkissen, drei Holzlaternen und großem Fenster">
+   </figure>
+  <div class="hero-flaeche">
+   <p class="status"><span class="quadrat" aria-hidden="true"></span><span data-status></span></p>
+   <h1 class="hero-titel"><span>Brühe, Nudeln</span><span>und <em>Sonne</em></span><span>auf dem Holz.</span></h1>
+   <p class="hero-satz">Ramen, Okonomiyaki, Takoyaki, Karaage und Katsudon in Uhlenhorst, Papenhuder Str.&nbsp;22.</p>
+   <div class="hero-marke" aria-hidden="true"><span class="linie"></span>The Ramen Restaurant</div>
+   <div class="hero-aktionen">
+    <a class="knopf" href="tel:+494087973186">040 87973186 anrufen</a>
+    <a class="knopf knopf-kontur" href="https://www.google.com/maps/dir/?api=1&amp;destination=The+Ramen+Restaurant+Papenhuder+Str.+22+22087+Hamburg" target="_blank" rel="noopener">Route planen <span class="pfeil" aria-hidden="true">→</span></a>
+   </div>
+   <div class="mini-uhr" role="img" aria-label="Heutige Öffnungszeit als heller Lichtfleck auf einem Balken von 12 bis 23 Uhr, mit Strich für die aktuelle Uhrzeit">
+    <div class="mini-balken"><span class="mini-fleck" style="--a:0%;--b:90.91%"></span><span class="mini-strich" hidden></span></div>
+    <div class="mini-skala"><span>12</span><span class="mini-jetzt"></span><span>23</span></div>
+   </div>
+  </div>
+ </section>
+
+ <section class="raum">
+  <div class="wrap raum-raster">
+   <h2>Niedrige Tische,<br>Kissen,<br>Fensterlicht.</h2>
+   <div class="raum-text">
+    <p>Ramen in mehreren Brühen, dazu Okonomiyaki, Takoyaki, Karaage und Katsudon.</p>
+    <p>Die Küche kocht durchgehend, täglich ab 12 Uhr, sonntags ab 14 Uhr.</p>
+   </div>
+   <div class="raum-bilder">
+    <figure class="rahmen r45 raum-hoch enthuellen" data-foto>
+     <img src="https://lh3.googleusercontent.com/grass-cs/AABkmLdQ8TsmQlXz0mttUTTbR-esJpdlUgrV4w028OctTPpuCHFr-R_17ckzMLSHd6raldG9b9HsR7HNp-1hhYcR41r-iI-1-322zWt4_GXOIkYP2V3Zunjmk0jqeL4CZsn0cnxAq-07YsYPKphG=s4800-w1000" referrerpolicy="no-referrer" width="3024" height="4032" loading="lazy" alt="Würzige Ramen mit Tofu und Lauch in einer Keramikschale, von oben im Sonnenlicht">
+    </figure>
+    <figure class="rahmen r32 raum-quer enthuellen" data-foto>
+     <img src="https://lh3.googleusercontent.com/grass-cs/AABkmLeaeZyuRvJR-qwq23GzrK9RiIBXjV4DeOIb8OHAUGnnhG5UkB4vgQg1AdhKTWR6PWmsVVxVRooFcypxLInFrPLSzhCiV2IuvCRssxBEo3DSIiHoC62oI9DPsj7JEyzdptTKnSRfNmTDA7Fr=s4800-w1000" referrerpolicy="no-referrer" width="4000" height="3000" loading="lazy" alt="Shoyu-Ramen mit Schweinebauch, Wakame und Nori auf einem Holztisch im Freien">
+    </figure>
+   </div>
+   <p class="raum-notiz">Alles gibt es auch zum Mitnehmen. Bei gutem Wetter sitzt man draußen.</p>
+  </div>
+ </section>
+ <template class="alt-raum">
+     <figure class="rahmen r32 raum-quer enthuellen" data-foto>
+      <img src="https://lh3.googleusercontent.com/grass-cs/AABkmLeaeZyuRvJR-qwq23GzrK9RiIBXjV4DeOIb8OHAUGnnhG5UkB4vgQg1AdhKTWR6PWmsVVxVRooFcypxLInFrPLSzhCiV2IuvCRssxBEo3DSIiHoC62oI9DPsj7JEyzdptTKnSRfNmTDA7Fr=s4800-w1000" referrerpolicy="no-referrer" width="4000" height="3000" loading="lazy" alt="Shoyu-Ramen mit Schweinebauch, Wakame und Nori auf einem Holztisch im Freien">
+      <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/103559111656312478410" target="_blank" rel="noopener">Foto: Michael Ortmann · Google Maps</a>
+     </figure>
+    <figure class="rahmen r45 raum-hoch enthuellen" data-foto>
+     <img src="https://lh3.googleusercontent.com/grass-cs/AABkmLdQ8TsmQlXz0mttUTTbR-esJpdlUgrV4w028OctTPpuCHFr-R_17ckzMLSHd6raldG9b9HsR7HNp-1hhYcR41r-iI-1-322zWt4_GXOIkYP2V3Zunjmk0jqeL4CZsn0cnxAq-07YsYPKphG=s4800-w1000" referrerpolicy="no-referrer" width="3024" height="4032" loading="lazy" alt="Würzige Ramen mit Tofu und Lauch in einer Keramikschale, von oben im Sonnenlicht">
+     </figure>
+ </template>
+
+ <section class="rolle" id="karte" aria-labelledby="karte-titel">
+  <div class="wrap rolle-kopf">
+   <h2 id="karte-titel">Die Karte, Feld für Feld.</h2>
+   <p>Eine Auswahl dessen, was aus der Küche kommt. Die vollständige Karte mit allen Preisen liegt im Lokal aus.</p>
+  </div>
+  <div class="rolle-spur" tabindex="0" aria-label="Gerichte, seitlich wischbar">
+   <article class="feld">
+    <span class="feld-linie" aria-hidden="true"></span>
+    <div class="feld-kopf"><h3 class="feld-name">Shoyu-Ramen</h3><span class="feld-strich" aria-hidden="true"></span></div>
+    <div class="feld-bild frei"><img src="ki-shoyu-ramen.webp" width="1024" height="1024" loading="lazy" alt="Schale Shoyu-Ramen mit Schweinebauch und Nori" data-tiefe="12"></div>
+    <p class="feld-text">Klare Sojabrühe mit Schweinebauch, Wakame und Nori.</p>
+   </article>
+   <article class="feld">
+    <span class="feld-linie" aria-hidden="true"></span>
+    <div class="feld-kopf"><h3 class="feld-name">Miso-Ramen</h3><span class="feld-strich" aria-hidden="true"></span></div>
+    <figure class="feld-bild rahmen r45" data-foto>
+     <img src="https://lh3.googleusercontent.com/grass-cs/AABkmLcGPcxXAG4gsQeecq4Yl9bFBPUFkZUr8AqXjMzdiDmSARgwvgkzZTjsWW56P1ktijfqbX2UtQZWkNoiAblkFA8EKbXK9Iyn_XGlA3qQPs5aTJPBPba29mskzRjCwn0E5EKLQp5c0Wvi03lx=s4800-w1000" referrerpolicy="no-referrer" width="3000" height="4000" loading="lazy" alt="Miso-Ramen mit Chashu, Mais, Hackfleisch und Zuckerschoten in gemusterter Schale">
+     
+    </figure>
+    <p class="feld-text">Mit Chashu, Mais, Hackfleisch und Zuckerschoten.</p>
+   </article>
+   <article class="feld">
+    <span class="feld-linie" aria-hidden="true"></span>
+    <div class="feld-kopf"><h3 class="feld-name">Takoyaki</h3><span class="feld-strich" aria-hidden="true"></span></div>
+    <div class="feld-bild frei"><img src="ki-takoyaki.webp" width="1024" height="1024" loading="lazy" alt="Teller mit Takoyaki, Sauce und Bonitoflocken" data-tiefe="20"></div>
+    <p class="feld-text">Die runden Teigbällchen aus Osaka, gut zum Teilen.</p>
+   </article>
+   <article class="feld">
+    <span class="feld-linie" aria-hidden="true"></span>
+    <div class="feld-kopf"><h3 class="feld-name">Karaage</h3><span class="feld-strich" aria-hidden="true"></span></div>
+    <figure class="feld-bild rahmen r45"><img src="ki-karaage.webp" width="1024" height="1280" loading="lazy" alt="Karaage in einer kleinen Keramikschale mit Zitronenspalte"></figure>
+    <p class="feld-text">Mariniertes, frittiertes Hähnchen nach japanischer Art.</p>
+   </article>
+   <article class="feld">
+    <span class="feld-linie" aria-hidden="true"></span>
+    <div class="feld-kopf"><h3 class="feld-name">Katsudon</h3><span class="feld-strich" aria-hidden="true"></span></div>
+    <figure class="feld-bild rahmen r45"><img src="ki-katsudon.webp" width="1024" height="1280" loading="lazy" alt="Katsudon: paniertes Schnitzel mit Ei und Zwiebeln auf Reis"></figure>
+    <p class="feld-text">Paniertes Schnitzel, mit Ei und Zwiebeln auf Reis.</p>
+   </article>
+   <article class="feld">
+    <span class="feld-linie" aria-hidden="true"></span>
+    <div class="feld-kopf"><h3 class="feld-name">Limonade</h3><span class="feld-strich" aria-hidden="true"></span></div>
+    <figure class="feld-bild rahmen r45"><img src="ki-limonade.webp" width="1024" height="1280" loading="lazy" alt="Glas Limonade mit Eis und Zitrusscheiben im Sonnenlicht"></figure>
+    <p class="feld-text">Hausgemacht. Dazu gibt es Kaffee, Bier und Wein.</p>
+   </article>
+   <article class="feld feld-ende">
+    <span class="feld-linie" aria-hidden="true"></span>
+    <div class="feld-kopf"><h3 class="feld-name">Ganze Karte</h3><span class="feld-strich" aria-hidden="true"></span></div>
+    <div class="feld-text">
+     <strong>Die ganze Karte liegt im Lokal aus.</strong>
+     <p>Telefonisch geben wir gern Auskunft, auch zu Desserts und vegetarischen Gerichten.</p>
+     <a class="knopf" href="tel:+494087973186">040 87973186</a>
+    </div>
+   </article>
+  </div>
+ </section>
+
+ <section class="uhr" id="zeiten" aria-labelledby="zeiten-titel">
+  <div class="wrap">
+   <div class="uhr-kopf">
+    <h2 id="zeiten-titel">Mittags ab 12. Freitags und samstags bis <em>23&nbsp;Uhr.</em></h2>
+    <p>Sonntags öffnen wir um 14 Uhr. Wer einen Tisch möchte, ruft kurz an: <a href="tel:+494087973186">040 87973186</a>.</p>
+   </div>
+   <ul class="uhr-tabelle">
+    <li class="tag skala" aria-hidden="true"><span></span><div class="skala-zahlen"><span style="--a:0%">12</span><span class="neben" style="--a:27.27%">15</span><span style="--a:54.55%">18</span><span class="neben" style="--a:81.82%">21</span><span style="--a:100%">23</span></div><span></span></li>
+    <li class="tag"><span class="tag-name">Montag</span><div class="balken" aria-hidden="true"><span class="fleck" style="--a:0%;--b:90.91%"></span><span class="jetzt" hidden></span></div><span class="tag-zeit">12:00 – 22:00</span></li>
+    <li class="tag"><span class="tag-name">Dienstag</span><div class="balken" aria-hidden="true"><span class="fleck" style="--a:0%;--b:90.91%"></span><span class="jetzt" hidden></span></div><span class="tag-zeit">12:00 – 22:00</span></li>
+    <li class="tag"><span class="tag-name">Mittwoch</span><div class="balken" aria-hidden="true"><span class="fleck" style="--a:0%;--b:90.91%"></span><span class="jetzt" hidden></span></div><span class="tag-zeit">12:00 – 22:00</span></li>
+    <li class="tag"><span class="tag-name">Donnerstag</span><div class="balken" aria-hidden="true"><span class="fleck" style="--a:0%;--b:90.91%"></span><span class="jetzt" hidden></span></div><span class="tag-zeit">12:00 – 22:00</span></li>
+    <li class="tag"><span class="tag-name">Freitag</span><div class="balken" aria-hidden="true"><span class="fleck" style="--a:0%;--b:100%"></span><span class="jetzt" hidden></span></div><span class="tag-zeit">12:00 – 23:00</span></li>
+    <li class="tag"><span class="tag-name">Samstag</span><div class="balken" aria-hidden="true"><span class="fleck" style="--a:0%;--b:100%"></span><span class="jetzt" hidden></span></div><span class="tag-zeit">12:00 – 23:00</span></li>
+    <li class="tag"><span class="tag-name">Sonntag</span><div class="balken" aria-hidden="true"><span class="fleck" style="--a:18.18%;--b:72.73%"></span><span class="jetzt" hidden></span></div><span class="tag-zeit">14:00 – 22:00</span></li>
+   </ul>
+  </div>
+ </section>
+
+ <section class="okono" aria-label="Okonomiyaki und Takoyaki">
+  <div class="wrap">
+   <figure class="rahmen r11 enthuellen" data-foto>
+    <img src="https://lh3.googleusercontent.com/grass-cs/AABkmLd1iaB2NpRMZspCC01Y5WoW9zBPgPWpOpPhtumejqj72MHr-curtSP1k_5lLVhaRmv80105E5lRWBmrL8ktMICHW9dYSLeSZWBUSDJjCp55hBzfw1jJermglKQLlWL4qxABysVtghf7Myw=s4800-w1000" referrerpolicy="no-referrer" width="3599" height="4800" loading="lazy" alt="Okonomiyaki mit Bonitoflocken, Mayonnaise und eingelegtem Ingwer auf weißem Teller">
+    </figure>
+   <div class="okono-inhalt">
+    <p class="okono-satz"><em>Okonomiyaki</em> und Takoyaki: Nicht nur Suppe kommt hier aus der Küche.</p>
+    <p class="okono-text">Dazu Karaage und Katsudon, und zum Schluss ein Dessert. Alles auch zum Mitnehmen.</p>
+   </div>
+  </div>
+ </section>
+
+ <section class="lage" id="lage" aria-labelledby="lage-titel">
+  <div class="wrap">
+   <div class="karte-halter">
+    <div class="karte-rahmen"><div data-karte data-stil="warm" data-farbe="#B23F16"></div></div>
+    <div class="lage-schale" aria-hidden="true"><img src="ki-shoyu-ramen.webp" width="1024" height="1024" loading="lazy" alt="" data-tiefe="20"></div>
+   </div>
+   <div class="lage-info">
+    <h2 id="lage-titel">Papenhuder Str.&nbsp;22</h2>
+    <p class="lage-ort">22087 Hamburg-Uhlenhorst</p>
+    <p class="lage-weg">In einer ruhigen Ecke von Uhlenhorst. Das große Fenster mit der weißen Beklebung ist der Eingang.</p>
+    <ul class="merkmale">
+     <li>Tischreservierung per Telefon</li>
+     <li>Zum Mitnehmen</li>
+     <li>Plätze draußen</li>
+     <li>Mittagstisch</li>
+     <li>Vegetarische Gerichte</li>
+     <li>Bier und Wein</li>
+     <li>Kaffee</li>
+     <li>Desserts</li>
+    </ul>
+    <div class="lage-aktionen">
+     <a class="knopf" href="https://www.google.com/maps/dir/?api=1&amp;destination=The+Ramen+Restaurant+Papenhuder+Str.+22+22087+Hamburg" target="_blank" rel="noopener">Route planen <span class="pfeil" aria-hidden="true">→</span></a>
+     <a class="knopf knopf-kontur" href="tel:+494087973186">040 87973186 anrufen</a>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <section class="schluss" aria-labelledby="schluss-titel">
+  <div class="wrap schluss-raster">
+   <div class="schluss-text">
+    <h2 id="schluss-titel">Tisch für heute Abend?</h2>
+    <p>Reservieren geht per Telefon. Montag bis Donnerstag bis 22 Uhr, Freitag und Samstag bis 23 Uhr, Sonntag von 14 bis 22 Uhr.</p>
+    <a class="tel-gross" href="tel:+494087973186">040 87973186 <span aria-hidden="true">→</span></a>
+   </div>
+   <figure class="schluss-bild" data-foto>
+    <img src="https://lh3.googleusercontent.com/grass-cs/AABkmLf8H6l5JUZAFnGS6k1YozATTVmlyjYPC2l4ypgCckVtYBKGcg2VytoP0jCkx_mtwzmC6UK2EvC4sE82Ncn9g9_EbKCY_sCZSNWiKyow229ZxX66PmfXmGHfy_MKkbgolAWSBCGD42HV8Owe=s4800-w1800" referrerpolicy="no-referrer" width="4032" height="3024" loading="lazy" alt="Fensterplatz im Gastraum mit niedrigen Holztischen und Laternen im Tageslicht">
+    </figure>
+  </div>
+ </section>
+</main>
+
+<footer class="fuss">
+ <div class="wrap">
+  <div class="marke-text"><small>The</small><span><b>Ramen</b> Restaurant</span></div>
+  <div class="fuss-spalten">
+   <div><h3>Adresse</h3><p>Papenhuder Str. 22<br>22087 Hamburg</p></div>
+   <div><h3>Telefon</h3><p><a href="tel:+494087973186">040 87973186</a></p></div>
+   <div><h3>Geöffnet</h3><p>Mo–Do 12–22 Uhr<br>Fr–Sa 12–23 Uhr<br>So 14–22 Uhr</p></div>
+  </div>
+  <div class="rechtliches"><p class="nachweise">Fotos via Google Maps: Gastraum: <a href="https://maps.google.com/maps/contrib/118412140998693328275" target="_blank" rel="noopener">Die Rose</a> · Shoyu-Ramen draußen: <a href="https://maps.google.com/maps/contrib/103559111656312478410" target="_blank" rel="noopener">Michael Ortmann</a> · Ramen mit Tofu und Okonomiyaki: <a href="https://maps.google.com/maps/contrib/116229574451946248260" target="_blank" rel="noopener">The Ramen Restaurant | Uhlenhorst</a> · Miso-Ramen: <a href="https://maps.google.com/maps/contrib/108926441880762854121" target="_blank" rel="noopener">C. Chuenchom</a></p><p>Entwurf von Medialyte, 21147 Hamburg. Adresse und Öffnungszeiten: Google. Fotos: Google Maps, Urheber jeweils am Bild. Einige Bilder und das Logo sind KI-generierte Vorschläge.</p><p><a href="https://medialyte.de/impressum" style="color:inherit;text-decoration:underline">Impressum</a> · <a href="https://medialyte.de/datenschutzerklaerung" style="color:inherit;text-decoration:underline">Datenschutz</a></p></div>
+ </div>
+</footer>
+
+<nav class="leiste" aria-label="Schnellzugriff">
+ <a href="tel:+494087973186">Anrufen</a>
+ <a href="https://www.google.com/maps/dir/?api=1&amp;destination=The+Ramen+Restaurant+Papenhuder+Str.+22+22087+Hamburg" target="_blank" rel="noopener">Route</a>
+ <a href="#zeiten">Zeiten</a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+ const jetzt = new Date(new Date().toLocaleString("en-US", { timeZone: "Europe/Berlin" }));
+ const idx = (jetzt.getDay() + 6) % 7;
+ const std = jetzt.getHours() + jetzt.getMinutes() / 60;
+ const p = Math.min(100, Math.max(0, (std - 12) / 11 * 100)) + "%";
+ const imBalken = std >= 12 && std <= 23;
+ const hhmm = String(jetzt.getHours()).padStart(2, "0") + ":" + String(jetzt.getMinutes()).padStart(2, "0");
+ const zeiten = [[12,22],[12,22],[12,22],[12,22],[12,23],[12,23],[14,22]];
+ const [auf, zu] = zeiten[idx];
+ const offen = std >= auf && std < zu;
+ const morgen = zeiten[(idx + 1) % 7][0];
+ const statusEl = document.querySelector(".status");
+ if (statusEl) statusEl.dataset.offen = offen ? "ja" : "nein";
+ const dsEl = document.querySelector("[data-status]");
+ if (dsEl && !dsEl.textContent.trim()) dsEl.textContent = offen ? "Jetzt geöffnet, bis " + zu + " Uhr" : (std < auf ? "Geschlossen · öffnet heute um " + auf + " Uhr" : "Geschlossen · morgen ab " + morgen + " Uhr");
+ const miniFleck = document.querySelector(".mini-fleck"), miniStrich = document.querySelector(".mini-strich");
+ miniFleck.style.setProperty("--a", ((auf - 12) / 11 * 100) + "%");
+ miniFleck.style.setProperty("--b", ((zu - auf) / 11 * 100) + "%");
+ const startP = v => ((v - 12) / 11 * 100) + "%";
+ document.querySelector(".mini-jetzt").textContent = offen ? "jetzt " + hhmm + " · bis " + zu + " Uhr" : (std < auf ? "öffnet um " + auf : "morgen ab " + morgen);
+ miniStrich.style.setProperty("--p", offen ? p : startP(std < auf ? auf : morgen));
+ miniStrich.hidden = false;
+ const tage = document.querySelectorAll(".uhr-tabelle .tag:not(.skala)");
+ const heute = tage[idx];
+ heute.classList.add("heute");
+ const strich = heute.querySelector(".jetzt");
+ if (imBalken) { strich.style.setProperty("--p", p); strich.hidden = false; }
+
+ if (!window.gsap || !window.ScrollTrigger) return;
+ gsap.registerPlugin(ScrollTrigger);
+ if (window.SplitText) gsap.registerPlugin(SplitText);
+ const mm = gsap.matchMedia();
+
+ mm.add("(min-width: 1000px) and (prefers-reduced-motion: no-preference)", () => {
+  const rolle = document.querySelector(".rolle"), spur = rolle.querySelector(".rolle-spur");
+  rolle.classList.add("gepinnt");
+  const weg = () => Math.max(0, spur.scrollWidth - document.documentElement.clientWidth);
+  gsap.to(spur, { x: () => -weg(), ease: "none", scrollTrigger: { trigger: rolle, start: "top 64px", end: () => "+=" + weg(), pin: true, scrub: 1, invalidateOnRefresh: true } });
+  return () => rolle.classList.remove("gepinnt");
+ });
+
+ mm.add("(prefers-reduced-motion: no-preference)", () => {
+  const breit = matchMedia("(min-width: 1000px)").matches;
+  if (window.SplitText) SplitText.create(".hero-titel", { type: "lines", mask: "lines", autoSplit: true,
+   onSplit: s => gsap.from(s.lines, { yPercent: 110, duration: 1, ease: "expo.out", stagger: 0.08, delay: 0.15 }) });
+  gsap.fromTo(".hero-bild", { clipPath: breit ? "inset(0% 0% 0% 100%)" : "inset(0% 0% 100% 0%)" },
+   { clipPath: "inset(0% 0% 0% 0%)", duration: 1.4, ease: "power3.inOut", clearProps: "clipPath" });
+  if (breit) gsap.from(".hero-marke .linie", { scaleY: 0, duration: 1.2, ease: "power2.out", delay: 0.4 });
+  gsap.from(".mini-fleck", { scaleX: 0, transformOrigin: "left center", duration: 1.1, ease: "power3.out", delay: 0.7 });
+  gsap.from(".mini-strich:not([hidden])", { scaleY: 0, duration: 0.5, ease: "power2.out", delay: 1.5 });
+
+  gsap.from(".feld-linie", { scaleY: 0, duration: breit ? 0.9 : 0.5, ease: "power2.out", stagger: 0.06,
+   scrollTrigger: { trigger: ".rolle-spur", start: "top 80%" } });
+
+  gsap.utils.toArray("[data-tiefe]").forEach(el => gsap.to(el, { yPercent: -parseFloat(el.dataset.tiefe), ease: "none",
+   scrollTrigger: { trigger: el.closest("section"), start: "top bottom", end: "bottom top", scrub: true } }));
+
+  gsap.utils.toArray(".enthuellen").forEach(el => gsap.fromTo(el, { clipPath: "inset(14% 14% 14% 14% round 24px)" },
+   { clipPath: "inset(0% 0% 0% 0% round 6px)", duration: 1.3, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 82%" } }));
+
+  const flecken = breit ? gsap.utils.toArray(".uhr-tabelle .fleck") : [heute.querySelector(".fleck")];
+  gsap.timeline({ scrollTrigger: { trigger: ".uhr-tabelle", start: "top 75%" } })
+   .from(flecken, { scaleX: 0, transformOrigin: "left center", duration: 0.9, ease: "power3.out", stagger: 0.08 })
+   .from(strich, { scaleY: 0, duration: 0.5, ease: "power2.out" });
+ });
+
+ mm.add("(pointer: fine) and (prefers-reduced-motion: no-preference)", () => {
+  const b = document.querySelector(".tel-gross");
+  const xTo = gsap.quickTo(b, "x", { duration: 0.5, ease: "power3" }), yTo = gsap.quickTo(b, "y", { duration: 0.5, ease: "power3" });
+  const bewegen = e => { const r = b.getBoundingClientRect(); xTo((e.clientX - r.left - r.width / 2) * 0.3); yTo((e.clientY - r.top - r.height / 2) * 0.4); };
+  const loslassen = () => { xTo(0); yTo(0); };
+  b.addEventListener("pointermove", bewegen); b.addEventListener("pointerleave", loslassen);
+  return () => { b.removeEventListener("pointermove", bewegen); b.removeEventListener("pointerleave", loslassen); };
+ });
+
+ if (window.Lenis && matchMedia("(pointer: fine) and (prefers-reduced-motion: no-preference)").matches) {
+  const lenis = new Lenis({ autoRaf: false });
+  lenis.on("scroll", ScrollTrigger.update);
+  gsap.ticker.add(t => lenis.raf(t * 1000));
+  gsap.ticker.lagSmoothing(0);
+ }
+ window.addEventListener("load", () => ScrollTrigger.refresh());
+});
+</script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>[data-karte]{width:100%;height:100%;min-height:260px}[data-karte] .leaflet-tile-pane{filter:var(--karte-filter)}
+[data-karte] .leaflet-control-attribution{font-size:10px}.karte-pin{position:relative;width:34px;height:34px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+box-shadow:0 6px 16px rgba(0,0,0,.35);border:3px solid #fff}.karte-pin i{position:absolute;inset:9px;border-radius:50%;background:#fff}</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>(function(){var C={"lat": 53.5663786, "lng": 10.0198211, "name": "The Ramen Restaurant", "filter": {"hell": "grayscale(1) contrast(1.05) brightness(1.04)", "dunkel": "grayscale(1) invert(1) contrast(.88) brightness(.82)", "warm": "grayscale(1) sepia(.5) contrast(1.02) brightness(1.02)", "kuehl": "grayscale(1) sepia(.35) hue-rotate(175deg) saturate(.55) brightness(1.03)", "mono": "grayscale(1) contrast(1.2)"}};function draw(){if(!window.L)return;document.querySelectorAll('[data-karte]').forEach(function(el){
+if(el._map)return;var st=el.getAttribute('data-stil')||'hell',col=el.getAttribute('data-farbe')||'#c0392b';
+el.style.setProperty('--karte-filter',C.filter[st]||C.filter.hell);
+var m=L.map(el,{scrollWheelZoom:false,zoomControl:true,attributionControl:true}).setView([C.lat,C.lng],16);el._map=m;
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(m);
+var icon=L.divIcon({className:'',html:'<div class="karte-pin" style="background:'+col+'"><i></i></div>',iconSize:[34,34],iconAnchor:[17,34]});
+L.marker([C.lat,C.lng],{icon:icon,title:C.name,alt:C.name}).addTo(m);setTimeout(function(){m.invalidateSize()},300);});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',draw);else draw();window.addEventListener('load',draw);})();</script><script>(function(){
+var P=[[840, 1320], [2160, 2760], [3600, 4200], [5040, 5640], [6480, 7080], [7920, 8580], [9360, 10020]];
+function fmt(m){m=((m%1440)+1440)%1440;var h=Math.floor(m/60),mi=m%60;return (h<10?'0':'')+h+':'+(mi<10?'0':'')+mi;}
+function now(){var d=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Berlin'}));return d.getDay()*1440+d.getHours()*60+d.getMinutes();}
+function status(){if(!P.length)return null;var t=now(),W=10080;
+ for(var i=0;i<P.length;i++){var s=P[i][0],e=P[i][1];if((t>=s&&t<e)||(t+W>=s&&t+W<e))return {offen:true,text:'Jetzt geöffnet bis '+fmt(e)};}
+ var best=null;for(var j=0;j<P.length;j++){var d=(P[j][0]-t+W)%W;if(best===null||d<best.d)best={d:d,s:P[j][0]};}
+ var tag=Math.floor(t/1440),ot=Math.floor(best.s/1440)%7,names=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+ var when=best.d<1440&&ot===tag?'heute':(best.d<2880&&ot===(tag+1)%7?'morgen':names[ot]);
+ return {offen:false,text:'Geschlossen · öffnet '+when+' um '+fmt(best.s)};}
+function run(){var s=status();document.querySelectorAll('[data-status]').forEach(function(el){
+ if(!s){el.style.display='none';return;}el.textContent=s.text;el.setAttribute('data-offen',s.offen?'ja':'nein');});}
+document.querySelectorAll('[data-foto] img').forEach(function(img){
+ function hide(){var b=img.closest('[data-foto]');if(b)b.style.display='none';}
+ if(!img.getAttribute('src'))hide();else{img.addEventListener('error',hide);if(img.complete&&img.naturalWidth===0)hide();}});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();setInterval(run,60000);
+})();</script></body>
+</html>
