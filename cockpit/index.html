@@ -593,6 +593,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       <a class="btn" id="reports" target="_blank" rel="noopener">Berichte</a>
       <a class="btn" id="settings" target="_blank" rel="noopener">Einstellungen</a>
       <button class="btn" id="cost-btn" type="button" aria-expanded="false" aria-controls="cost"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Kosten</button>
+      <button class="btn icon" id="mus" type="button" aria-pressed="true" title="Hintergrundmusik an/aus" aria-label="Hintergrundmusik an/aus"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></button>
       <button class="btn icon" id="snd" type="button" aria-pressed="true" title="Töne an/aus" aria-label="Töne an/aus"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H3v6h3l5 4z"/><path class="wave" d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg></button>
     </div>
   </header>
@@ -613,7 +614,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     </div>
   </section>
 
-  <section class="panel live" id="live" hidden aria-live="polite" aria-label="Laufender Wochenlauf">
+  <section class="panel live" id="live" hidden aria-live="polite" aria-label="Laufender Wochenlauf" data-focus="live">
     <div class="lhead"><span class="ldot" aria-hidden="true"></span><b>LIVE</b><span class="ph" id="lphase"></span><span class="pg" id="lprog"></span></div>
     <div class="lbar"><i id="lbar"></i></div>
     <pre class="lterm" id="lterm"></pre>
@@ -730,7 +731,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "3f9413d2e7";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "094e594028";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -766,6 +767,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       lock.classList.add("gone"); setTimeout(function () { lock.hidden = true; }, 800);
       GESTURE = !silent;
       if (!startBoot(data, !silent) && !silent) Sound.play("unlock");
+      if (reduce) { Music.load(data); document.addEventListener("click", function () { Music.start(3); }, { once: true }); }
       var app = $("#app"); app.hidden = false; requestAnimationFrame(function () { app.classList.add("on"); });
       render(data);
     }).catch(function (err) {
@@ -910,8 +912,8 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       for (var ch = 0; ch < 2; ch++) { var d = b.getChannelData(ch); for (var i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3.2); }
       var cv = c.createConvolver(); cv.buffer = b; return cv;
     }
-    function play() {
-      var c = Sound.ctx(); if (!c) return { stop: function () {} };
+    function play(withBed) {
+      var c = Sound.ctx(); if (!c) return { stop: function () {}, duck: function () {}, lift: function () {} };
       var t = c.currentTime + .05, nodes = [];
       var master = c.createGain(), comp = c.createDynamicsCompressor(), rv = reverb(c, 3.2), wet = c.createGain(), dry = c.createGain();
       master.gain.value = .9; wet.gain.value = .42; dry.gain.value = .8;
@@ -946,16 +948,51 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       });
       // Glanz
       [1318.51, 1760, 2217.46].forEach(function (f, i) { osc("sine", f, hit + .15 + i * .14, hit + 3.2 + i * .2, .03, .01, 2.6); });
-      // ruhiges Klangbett unter der Stimme, bis zum Ende
-      var bed = c.createGain(), bf = c.createBiquadFilter(); bf.type = "lowpass"; bf.frequency.value = 700; bed.gain.setValueAtTime(0.0001, hit + 3); bed.gain.exponentialRampToValueAtTime(.5, hit + 6);
-      bf.connect(bed); bed.connect(master);
-      [55, 110, 164.81, 220].forEach(function (f, i) { var o = c.createOscillator(), g = c.createGain(), lfo = c.createOscillator(), lg = c.createGain(); o.type = i ? "triangle" : "sine"; o.frequency.value = f; g.gain.value = [.12, .05, .035, .02][i]; lfo.frequency.value = .07 + i * .03; lg.gain.value = [.04, .02, .015, .01][i]; lfo.connect(lg); lg.connect(g.gain); o.connect(g); g.connect(bf); o.start(hit + 3); lfo.start(hit + 3); nodes.push(o, lfo); });
+      // Kino-Klangbett unter der ganzen Ansage (nur, wenn keine echte Hintergrundmusik da ist)
+      var bedCtl = withBed ? bed(c, master, hit + 3, nodes) : { lift: function () {} };
       return {
         duck: function () { pg.gain.setTargetAtTime(.45, c.currentTime, .3); },
-        stop: function () { master.gain.setTargetAtTime(0.0001, c.currentTime, .25); setTimeout(function () { nodes.forEach(function (n) { try { n.stop(); } catch (e) {} }); }, 1500); }
+        stop: function () { master.gain.setTargetAtTime(0.0001, c.currentTime, .6); setTimeout(function () { nodes.forEach(function (n) { try { n.stop(); } catch (e) {} }); }, 2600); },
+        lift: bedCtl.lift
       };
     }
-    return { play: play };
+    /* tiefer Drone, langsam atmendes Pad, Herzschlag-Puls und ein leiser Glanz: Spannung, ohne die Stimme zu stören */
+    function bed(c, dest, t0, nodes) {
+      var out = c.createGain(), bf = c.createBiquadFilter(), sw = c.createOscillator(), swg = c.createGain();
+      bf.type = "lowpass"; bf.frequency.value = 650; bf.Q.value = .7;
+      sw.frequency.value = .045; swg.gain.value = 380; sw.connect(swg); swg.connect(bf.frequency); sw.start(t0); nodes.push(sw);
+      out.gain.setValueAtTime(0.0001, t0); out.gain.exponentialRampToValueAtTime(.55, t0 + 3);
+      bf.connect(out); out.connect(dest);
+      [55, 82.41, 110, 164.81, 220].forEach(function (f, i) {
+        var o = c.createOscillator(), g = c.createGain(), lfo = c.createOscillator(), lg = c.createGain();
+        o.type = i ? "sawtooth" : "sine"; o.frequency.value = f; o.detune.value = i ? (i % 2 ? 6 : -6) : 0;
+        g.gain.value = [.16, .022, .03, .016, .01][i]; lfo.frequency.value = .05 + i * .021; lg.gain.value = [.05, .01, .012, .008, .005][i];
+        lfo.connect(lg); lg.connect(g.gain); o.connect(g); g.connect(bf); o.start(t0); lfo.start(t0); nodes.push(o, lfo);
+      });
+      // Herzschlag: zwei tiefe Schläge, alle 2,4 s
+      var pulse = c.createGain(); pulse.gain.value = .9; pulse.connect(dest);
+      for (var k = 0; k < 90; k++) {
+        [0, .28].forEach(function (off, j) {
+          var at = t0 + 4 + k * 2.4 + off, o = c.createOscillator(), g = c.createGain();
+          o.type = "sine"; o.frequency.setValueAtTime(j ? 52 : 58, at); o.frequency.exponentialRampToValueAtTime(34, at + .35);
+          g.gain.setValueAtTime(0.0001, at); g.gain.exponentialRampToValueAtTime(j ? .07 : .11, at + .012); g.gain.exponentialRampToValueAtTime(0.0001, at + .55);
+          o.connect(g); g.connect(pulse); o.start(at); o.stop(at + .6); nodes.push(o);
+        });
+      }
+      // leiser, hoher Glanz, der kommt und geht
+      var hi = c.createOscillator(), hg = c.createGain(), hl = c.createOscillator(), hlg = c.createGain();
+      hi.type = "sine"; hi.frequency.value = 1318.51; hg.gain.value = .006; hl.frequency.value = .09; hlg.gain.value = .006;
+      hl.connect(hlg); hlg.connect(hg.gain); hi.connect(hg); hg.connect(out); hi.start(t0 + 6); hl.start(t0 + 6); nodes.push(hi, hl);
+      return { lift: function () { var n = c.currentTime; out.gain.cancelScheduledValues(n); out.gain.setTargetAtTime(.8, n, 1.2); } };
+    }
+    function bedOnly() {
+      var c = Sound.ctx(); if (!c) return { stop: function () {}, duck: function () {}, lift: function () {} };
+      var nodes = [], master = c.createGain(), comp = c.createDynamicsCompressor(), rv = reverb(c, 3.2), wet = c.createGain();
+      master.gain.value = .9; wet.gain.value = .35; master.connect(comp); master.connect(rv); rv.connect(wet); wet.connect(comp); comp.connect(c.destination);
+      var t = c.currentTime + .05, ctl = bed(c, master, t, nodes);
+      return { duck: function () {}, lift: ctl.lift, stop: function () { master.gain.setTargetAtTime(0.0001, c.currentTime, .6); setTimeout(function () { nodes.forEach(function (n) { try { n.stop(); } catch (e) {} }); }, 2600); } };
+    }
+    return { play: play, bedOnly: bedOnly, reverb: reverb };
   })();
 
   var introAudio = null, introLoading = null;
@@ -990,8 +1027,11 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     go.hidden = true; runBoot(d); return true;
   }
   var voiceOn = false, voiceRaf = 0;
+  var MUSIC = null;
   function stopVoice() {
     voiceOn = false; cancelAnimationFrame(voiceRaf);
+    if (MUSIC) { MUSIC.stop(); MUSIC = null; }
+    Music.duck(false);
     var sb = $("#vpill-stop"); if (sb) { sb.dataset.mode = ""; sb.textContent = "Stopp"; }
     document.querySelectorAll(".spot").forEach(function (e) { e.classList.remove("spot"); });
     if (introAudio) introAudio.pause(); if (window.speechSynthesis) speechSynthesis.cancel();
@@ -1005,7 +1045,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     loadIntro(d).then(function () {
       if (voiceOn || BOOTING) return;
       var pill = $("#vpill"), b = $("#vpill-stop");
-      $("#vpill-text").textContent = "Neuer Lagebericht verfügbar"; b.textContent = "Anhören"; b.dataset.mode = "play";
+      $("#vpill-text").textContent = d.intro && d.intro.live ? "Neue Live-Ansage zum laufenden Lauf" : "Neuer Lagebericht verfügbar"; b.textContent = "Anhören"; b.dataset.mode = "play";
       pill.classList.add("on"); Sound.play("toast");
     });
   }
@@ -1042,6 +1082,63 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     for (var i = 0; i < segs.length; i++) { var st = segs[i].start != null && t != null ? segs[i].start <= t : segs[i].anteil <= f; if (st) idx = i; }
     return idx;
   }
+  /* ---------- Leichte Hintergrundmusik (ElevenLabs Music, nahtlos geloopt, unter der Stimme leiser) ---------- */
+  var Music = (function () {
+    var buf = null, loading = null, id = null, gain = null, on = true, want = false, playing = false, ducked = false, timer = 0, srcs = [];
+    var BASE = .2, DUCK = .075;
+    try { on = localStorage.getItem("cockpit-musik") !== "aus"; } catch (e) {}
+    function level() { return ducked ? DUCK : BASE; }
+    function load(d) {
+      var m = d && d.musik; if (!m || !m.id || !PW) return Promise.resolve(null);
+      if (loading && id === m.id) return loading;
+      id = m.id;
+      loading = fetch("musik.json?v=" + encodeURIComponent(m.id)).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(function (blob) { return decryptBytes(blob, PW); })
+        .then(function (ab) { var c = Sound.ctx(); if (!c) throw new Error("kein Audio"); return new Promise(function (res, rej) { c.decodeAudioData(ab, res, rej); }); })
+        .then(function (b) { buf = b; if (want) start(3); return b; })
+        .catch(function () { loading = null; return null; });
+      return loading;
+    }
+    function loop(at) {
+      var c = Sound.ctx(); if (!c || !buf || !playing) return;
+      var xf = Math.min(5, buf.duration / 5), end = at + buf.duration, s = c.createBufferSource(), g = c.createGain();
+      s.buffer = buf; s.connect(g); g.connect(gain);
+      g.gain.setValueAtTime(0.0001, at); g.gain.exponentialRampToValueAtTime(1, at + xf);
+      g.gain.setValueAtTime(1, end - xf); g.gain.exponentialRampToValueAtTime(0.0001, end);
+      s.start(at); s.stop(end + .05); srcs.push(s); s.onended = function () { srcs = srcs.filter(function (x) { return x !== s; }); };
+      clearTimeout(timer);
+      timer = setTimeout(function () { loop(end - xf); }, Math.max(0, (end - xf - c.currentTime - 2) * 1000));
+    }
+    function start(fade) {
+      want = true;
+      var c = Sound.ctx(); if (!on || !Sound.on || !c || !buf || playing || document.hidden) return;
+      if (!gain) { gain = c.createGain(); gain.gain.value = 0.0001; gain.connect(c.destination); }
+      playing = true; var n = c.currentTime;
+      gain.gain.cancelScheduledValues(n); gain.gain.setValueAtTime(Math.max(0.0001, gain.gain.value), n); gain.gain.exponentialRampToValueAtTime(level(), n + (fade || 3));
+      loop(n + .05);
+    }
+    function stop(fade, keepWish) {
+      if (!keepWish) want = false;
+      playing = false; clearTimeout(timer);
+      var c = Sound.ctx(); if (!c || !gain) return;
+      var n = c.currentTime, old = srcs; srcs = [];
+      gain.gain.cancelScheduledValues(n); gain.gain.setTargetAtTime(0.0001, n, (fade || 1) / 3);
+      setTimeout(function () { old.forEach(function (x) { try { x.stop(); } catch (e) {} }); }, (fade || 1) * 1000 + 300);
+    }
+    function duck(v) { ducked = v; var c = Sound.ctx(); if (c && gain && playing) gain.gain.setTargetAtTime(level(), c.currentTime, .5); }
+    function sync() { var b = $("#mus"); if (b) b.setAttribute("aria-pressed", on && Sound.on ? "true" : "false"); }
+    function toggle() {
+      on = !on; try { localStorage.setItem("cockpit-musik", on ? "an" : "aus"); } catch (e) {}
+      sync(); if (on) { want = true; start(2); } else stop(1);
+    }
+    document.addEventListener("visibilitychange", function () { if (document.hidden) { if (playing) stop(.4, true); } else if (want) start(2); });
+    sync();
+    return { load: load, start: start, stop: stop, duck: duck, toggle: toggle, sync: sync,
+             ready: function () { return !!buf && on && Sound.on; } };
+  })();
+  $("#mus").addEventListener("click", function () { Music.toggle(); });
+  $("#snd").addEventListener("click", function () { Music.sync(); if (Sound.on) Music.start(2); else Music.stop(.6, true); });
+
   function startVoice(d, music) {
     if (voiceOn || !Sound.on) return;
     var text = (d.intro || {}).text || ""; if (!text) return;
@@ -1054,13 +1151,28 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       subProgress(f);
       if (!segs.length) { $("#vpill-text").textContent = sentenceAt(text, f); return; }
       var i = segmentAt(segs, t, f);
-      if (i !== curSeg) { curSeg = i; $("#vpill-text").textContent = segs[i].text; spotlight(segs[i]); }
+      if (i !== curSeg) { if (curSeg >= 0 && segs[i].fokus && segs[i].fokus !== "keiner") Sound.play("hover"); curSeg = i; $("#vpill-text").textContent = segs[i].text; spotlight(segs[i]); }
     }
     function ended() { progress(1); setTimeout(function () { stopVoice(); spotlight(null); }, 400); }
-    if (music) music.duck();
+    Music.duck(true);
+    if (music) { music.duck(); MUSIC = music; }
+    else if (!MUSIC && !Music.ready()) { MUSIC = Intro.bedOnly(); }
     if (introAudio) {
       var c = Sound.ctx(), an = null, data = null;
-      try { var src = c.createMediaElementSource(introAudio); an = c.createAnalyser(); an.fftSize = 256; data = new Uint8Array(an.frequencyBinCount); src.connect(an); an.connect(c.destination); } catch (e) {}
+      try {
+        var src = introAudio._src || (introAudio._src = c.createMediaElementSource(introAudio));
+        src.disconnect();
+        an = c.createAnalyser(); an.fftSize = 256; data = new Uint8Array(an.frequencyBinCount);
+        // Kinostimme: Tiefen anheben, Präsenz, sanft verdichten, etwas Raum
+        var hp = c.createBiquadFilter(), low = c.createBiquadFilter(), pres = c.createBiquadFilter(), comp = c.createDynamicsCompressor(), gain = c.createGain(), rv = Intro.reverb(c, 1.7), wet = c.createGain();
+        hp.type = "highpass"; hp.frequency.value = 65;
+        low.type = "lowshelf"; low.frequency.value = 170; low.gain.value = 4.5;
+        pres.type = "peaking"; pres.frequency.value = 3300; pres.Q.value = .9; pres.gain.value = 2.5;
+        comp.threshold.value = -24; comp.knee.value = 8; comp.ratio.value = 3.5; comp.attack.value = .005; comp.release.value = .22;
+        gain.gain.value = 1.2; wet.gain.value = .13;
+        src.connect(hp); hp.connect(low); low.connect(pres); pres.connect(comp); comp.connect(gain);
+        gain.connect(c.destination); gain.connect(rv); rv.connect(wet); wet.connect(c.destination); gain.connect(an);
+      } catch (e) { try { introAudio._src && introAudio._src.connect(c.destination); } catch (e2) {} }
       introAudio.addEventListener("timeupdate", function () { if (introAudio.duration) progress(introAudio.currentTime / introAudio.duration, introAudio.currentTime); });
       introAudio.addEventListener("ended", ended);
       introAudio.currentTime = 0;
@@ -1077,21 +1189,26 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     speechSynthesis.cancel(); speechSynthesis.speak(u);
   }
   function runBoot(d) {
-    var b = $("#boot"), music = Sound.on ? Intro.play() : null, timers = [], done = false;
+    var b = $("#boot"), music = Sound.on ? Intro.play(!Music.ready()) : null, timers = [], done = false;
+    Music.load(d);
     stopVoice();
     var lines = ["Verbinde mit Website-Agent", "Entschlüssele Daten · AES-256", "Lade Rangliste · " + (d.rangliste || []).length + " Restaurants", "Prüfe " + (d.demos || []).length + " Demo-Websites", "Stimme bereit"];
     lines.forEach(function (l, i) { timers.push(setTimeout(function () { var el = h("div", null, esc(l) + ' <span class="ok">✓</span>'); $("#boot-lines").appendChild(el); while ($("#boot-lines").children.length > 4) $("#boot-lines").firstChild.remove(); if (!music) Sound.play("type"); }, 250 + i * 420)); });
     var t0 = performance.now();
     (function pct() { if (done) return; var p = Math.min(100, Math.round((performance.now() - t0) / 2400 * 100)); $("#boot-pct").textContent = p + " %"; if (p < 100) requestAnimationFrame(pct); })();
-    timers.push(setTimeout(function () { b.classList.add("hit"); $("#boot-lines").innerHTML = "<b>SYSTEME ONLINE</b>"; }, 2450));
+    timers.push(setTimeout(function () { b.classList.add("hit"); $("#boot-lines").innerHTML = "<b>SYSTEME ONLINE</b>"; Music.start(4); }, 2450));
     timers.push(setTimeout(function () { b.classList.add("talk"); (introLoading || Promise.resolve()).then(function () { startVoice(d, music); }); }, 2900));
     timers.push(setTimeout(finish, 6400));
     function finish() {
-      if (done) return; done = true; timers.forEach(clearTimeout);
+      if (done) return; done = true; timers.forEach(clearTimeout); Music.start(3);
       b.classList.add("gone"); b.setAttribute("aria-hidden", "true"); BOOTING = false;
-      if (music) music.stop();
+      // Klangbett läuft unter der Stimme weiter und endet mit ihr
+      if (music && !voiceOn && !introAudio && !(introLoading && Sound.on)) music.stop();
       // Stimme läuft im Dashboard weiter
-      (introLoading || Promise.resolve()).then(function () { startVoice(d, null); if (voiceOn) $("#vpill").classList.add("on"); });
+      (introLoading || Promise.resolve()).then(function () {
+        startVoice(d, music); if (voiceOn) $("#vpill").classList.add("on");
+        else if (music && MUSIC !== music) music.stop();
+      });
     }
     $("#boot-skip").onclick = function () { Sound.play("close"); finish(); };
     document.addEventListener("keydown", function esc1(e) { if (e.key === "Escape") { document.removeEventListener("keydown", esc1); finish(); } });
