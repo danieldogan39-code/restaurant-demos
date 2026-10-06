@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mekong · Asia Kitchen – Vietnamesische Küche am Engelbosteler Damm, Hannover</title>
+<meta name="description" content="Mekong Asia Kitchen am Engelbosteler Damm 42 in Hannover-Nord: vietnamesische Küche, Currys und Sushi. Täglich 11:30–21:00 Uhr. Vor Ort essen, abholen, liefern lassen. Telefon 0511 1698495.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;1,400&family=Figtree:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+:root{
+--creme:#F3E7CF;--creme2:#EADBBD;--dunkel:#2B2A28;--rot:#B3262B;--rot2:#8E1C20;--holz:#B98A55;
+--steg:6px;--rand:clamp(1rem,5vw,4rem);--max:1280px;
+--s1:clamp(3rem,7vw,6rem);--s2:clamp(2rem,4vw,3rem);
+--display:"Fraunces",Georgia,serif;--text:"Figtree",system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--creme);color:var(--dunkel);font:400 1.0625rem/1.6 var(--text);overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.05;margin:0;hyphens:none;-webkit-hyphens:none;word-break:keep-all;overflow-wrap:normal}
+h2{font-size:clamp(2rem,4.6vw,3.4rem);letter-spacing:-.01em;color:var(--rot)}
+h3{font-size:clamp(1.3rem,2.2vw,1.6rem)}
+p{margin:0}
+:focus-visible{outline:3px solid var(--dunkel);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:-999px;top:0;background:var(--dunkel);color:var(--creme);padding:12px 16px;z-index:99}
+.skip:focus{left:8px}
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--rand)}
+section{scroll-margin-top:80px}
+.knopf{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 24px;border:2px solid var(--rot);background:var(--rot);color:var(--creme);font-weight:700;text-decoration:none;border-radius:2px;transition:background .2s,border-color .2s}
+.knopf:hover{background:var(--rot2);border-color:var(--rot2)}
+.knopf.kontur{background:transparent;color:var(--dunkel);border-color:var(--dunkel)}
+.knopf.kontur:hover{background:var(--dunkel);color:var(--creme)}
+.kopf{position:sticky;top:0;z-index:50;background:var(--creme);border-bottom:1px solid var(--holz)}
+.kopf .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:24px}
+.marke{text-decoration:none;color:var(--rot);display:flex;flex-direction:column;line-height:1}
+.marke b{font:700 1.75rem/1 var(--display);letter-spacing:-.02em}
+.marke small{font:700 .875rem/1.2 var(--text);margin-top:2px}
+.kopf nav{display:flex;align-items:center;gap:8px}
+.kopf nav a:not(.knopf){display:none;min-height:44px;align-items:center;padding:0 12px;text-decoration:none;font-weight:700}
+.kopf nav a:not(.knopf):hover{text-decoration:underline;text-decoration-color:var(--rot);text-underline-offset:6px}
+.kopf .knopf{min-height:44px;padding:12px 22px}
+.held{padding-block:clamp(1.5rem,4vw,3.5rem) var(--s1);display:grid;gap:var(--s2)}
+.status{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-variant-numeric:tabular-nums}
+.status::before{content:"";width:12px;height:12px;border:2px solid var(--rot);background:var(--rot)}
+.status:has([data-offen="nein"])::before{background:transparent;border-color:var(--holz)}
+.held h1{font-size:clamp(3rem,7vw,6.5rem);white-space:nowrap;color:var(--rot);letter-spacing:-.03em;margin:16px 0 4px}
+.held h1 small{display:block;font:700 clamp(1rem,1.6vw,1.25rem)/1.2 var(--text);letter-spacing:0;margin-top:8px}
+.lead{font:400 clamp(1.25rem,2vw,1.5rem)/1.35 var(--display);margin:24px 0 16px;max-width:30ch}
+.held .info{max-width:44ch}
+.aktionen{display:flex;flex-direction:column;gap:12px;margin-top:32px}
+.gitter{display:grid;gap:var(--steg);padding:var(--steg);background:var(--holz)}
+.bild{position:relative;margin:0;overflow:hidden;background:var(--creme2)}
+.bild img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.nachweise{margin:12px 0 0;font-size:.9375rem;line-height:1.6;color:#4A4540}
+.nachweise a{color:#4A4540;text-decoration:underline;text-underline-offset:3px}
+.nachweise a:hover{color:var(--rot2)}
+.wand{grid-template-columns:1fr 1fr;grid-template-areas:"a a" "b d" "c d"}
+.f-a{grid-area:a;aspect-ratio:4/3}.f-b{grid-area:b;aspect-ratio:1}.f-c{grid-area:c;aspect-ratio:1}.f-d{grid-area:d;min-height:200px}
+.zeiten{background:var(--dunkel);color:var(--creme);padding-block:clamp(48px,6vw,64px)}
+.zeiten .wrap{display:grid;gap:var(--s2);align-items:center}
+.zeiten h2{color:var(--creme)}
+.zeiten p{font:400 clamp(1.25rem,2vw,1.5rem)/1.35 var(--display);margin-top:16px;max-width:22ch}
+.woche{list-style:none;margin:0;padding:10px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;background:var(--holz);min-width:0}
+.woche li{min-width:0;display:flex;flex-direction:column;gap:8px;background:var(--dunkel);padding:14px 14px 12px;min-height:116px;font-variant-numeric:tabular-nums}
+.woche li:last-child{grid-column:span 2}
+.woche abbr{text-decoration:none;font:700 1.375rem/1 var(--display)}
+.woche .uhr{margin-top:auto;font-weight:700;font-size:1rem;line-height:1.3;white-space:nowrap}
+.woche .hz{font-weight:700;font-size:.9375rem;line-height:1.3;visibility:hidden}
+.woche .heute{background:var(--rot)}
+.woche .heute .hz{visibility:visible}
+.karte{padding-block:var(--s1)}
+.karte .wrap{display:grid;gap:var(--s2);align-items:start}
+.hinweis{margin:16px 0 0;padding:12px 16px;border-left:var(--steg) solid var(--holz);background:var(--creme2);font-weight:700;max-width:52ch}
+.hinweis a{color:var(--rot)}
+.kat{margin-top:40px}
+.kat h3{padding-bottom:8px;border-bottom:2px solid var(--holz)}
+.kat ul{list-style:none;margin:0;padding:0}
+.kat li{display:grid;grid-template-columns:auto minmax(24px,1fr) auto;grid-template-areas:"n l p" "d d d";column-gap:12px;row-gap:4px;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(185,138,85,.5)}
+.kat li b{grid-area:n;font-weight:700;font-size:1.125rem}
+.kat .lin{grid-area:l;align-self:center;height:0;border-bottom:2px solid var(--holz)}
+.kat .preis{grid-area:p;font-size:.9375rem;font-weight:700;color:#4A453D;text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.kat .bes{grid-area:d;max-width:60ch;color:#4A453D}
+.ausserdem{margin-top:32px;max-width:52ch}
+.teller{grid-template-columns:1fr}
+.t-e{aspect-ratio:16/10}.t-s{aspect-ratio:4/5}
+.wege{background:var(--creme2);padding-block:var(--s1)}
+.wege .wrap{display:grid;gap:var(--s2);align-items:center}
+.wege .gitter .bild{aspect-ratio:3/4}
+.zeile{padding:24px 0;border-bottom:2px solid var(--holz);display:grid;gap:8px}
+.zeile:first-of-type{border-top:2px solid var(--holz);margin-top:24px}
+.zeile p{max-width:52ch}
+.zeile a{font-weight:700;color:var(--rot);text-underline-offset:4px;font-variant-numeric:tabular-nums;min-height:44px;display:inline-flex;align-items:center}
+.raum{padding-block:var(--s1)}
+.raum .wrap{display:grid;gap:var(--s2);align-items:center}
+.raum p{font:400 clamp(1.25rem,2vw,1.5rem)/1.45 var(--display);max-width:40ch}
+.fakten{list-style:none;padding:0;margin:32px 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(10rem,1fr));gap:8px}
+.fakten li{display:flex;align-items:center;min-height:56px;padding:12px 16px;border:2px solid var(--holz);border-radius:0;font-weight:700;font-size:1rem}
+.anfahrt{padding-bottom:var(--s1)}
+.anfahrt .wrap{display:grid;gap:var(--s2);align-items:center}
+.kartenrahmen{aspect-ratio:4/3;border:var(--steg) solid var(--holz);background:var(--creme2);overflow:hidden;max-width:100%;min-width:0}
+.kartenrahmen [data-karte]{width:100%;height:100%}
+.adresse{font:700 clamp(1.35rem,2.4vw,1.5rem)/1.25 var(--display);font-style:normal;margin:20px 0 16px}
+.anfahrt p{max-width:42ch}
+.anfahrt .aktionen{margin-top:28px}
+.schluss{background:var(--rot);color:var(--creme);padding-block:var(--s1)}
+.schluss p{font:400 clamp(1.15rem,2vw,1.4rem)/1.35 var(--display)}
+.schluss .nummer{display:inline-block;font:700 clamp(2.4rem,9vw,6.5rem)/1.05 var(--display);letter-spacing:-.02em;text-decoration:none;margin:12px 0 20px;font-variant-numeric:tabular-nums;border-bottom:var(--steg) solid var(--holz);padding-bottom:8px}
+.schluss .nummer:hover{border-color:var(--creme)}
+.schluss :focus-visible{outline-color:var(--creme)}
+.schluss .klein{font:700 1rem/1.5 var(--text);font-variant-numeric:tabular-nums}
+.fuss{background:var(--dunkel);color:var(--creme);padding-block:var(--s2);font-size:.9375rem}
+.fuss .wrap{display:grid;gap:24px}
+.fuss .marke{color:var(--creme)}
+.fuss :focus-visible{outline-color:var(--creme)}
+.rechtliches p{margin-top:8px;max-width:70ch}
+.rechtliches a{display:inline-block;min-height:44px;line-height:44px}
+.leiste{position:fixed;left:0;right:0;bottom:0;z-index:60;display:grid;grid-template-columns:1.3fr 1fr 1fr;background:var(--creme);border-top:2px solid var(--holz);padding-bottom:env(safe-area-inset-bottom)}
+.leiste a{display:flex;align-items:center;justify-content:center;min-height:52px;font-weight:700;text-decoration:none}
+.leiste a+a{border-left:1px solid var(--holz)}
+.leiste a:first-child{background:var(--rot);color:var(--creme)}
+@media (max-width:819px){
+body{padding-bottom:calc(56px + env(safe-area-inset-bottom))}
+.aktionen .knopf{width:100%}
+}
+@media (min-width:820px){
+.kopf nav a:not(.knopf){display:inline-flex}
+.leiste{display:none}
+.aktionen{flex-direction:row;flex-wrap:wrap}
+.held{grid-template-columns:repeat(12,1fr);align-items:stretch}
+.held .text{grid-column:1/6;align-self:start;padding-top:0}
+.bildspalte{grid-column:6/13;display:flex;flex-direction:column;min-width:0}
+.wand{flex:1;grid-template-columns:1.25fr 1fr .7fr;grid-template-rows:auto minmax(260px,1fr);grid-template-areas:"a a a" "b c d"}
+.f-a{aspect-ratio:16/9}.f-b,.f-c,.f-d{aspect-ratio:auto;min-height:260px}
+.zeiten .wrap>div{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 32px}
+.zeiten p{margin-top:0}
+.zeile{grid-template-columns:9rem 1fr;column-gap:24px}
+.zeile p,.zeile a{grid-column:2}
+.band .bild{aspect-ratio:3/1}
+.karte .wrap{grid-template-columns:repeat(12,1fr)}
+.karte .liste{grid-column:1/8}
+.tellerspalte{grid-column:8/13;min-width:0;position:sticky;top:88px;align-self:start}
+.wege .wrap{grid-template-columns:repeat(12,1fr)}
+.wege .gitter{grid-column:1/6;min-width:0}
+.wege .text{grid-column:7/13;min-width:0}
+.raum .wrap{grid-template-columns:repeat(12,1fr)}
+.raum .wrap{align-items:baseline}
+.raum h2{grid-column:1/5}
+.raum .text{grid-column:5/12}
+.fuss .wrap{grid-template-columns:1fr 2fr;align-items:start}
+}
+@media (prefers-reduced-motion:reduce){
+*,*::before,*::after{animation:none!important;transition:none!important}
+html{scroll-behavior:auto}
+}
+@media (min-width:600px){
+.woche{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media (min-width:1100px){
+.woche{grid-template-columns:repeat(7,minmax(0,1fr))}
+.woche li:last-child{grid-column:auto}
+.woche li{min-height:132px;padding:16px 12px 14px}
+}
+@media (min-width:820px) and (max-width:1099px){
+.kartenrahmen{aspect-ratio:16/9}
+}
+@media (min-width:1100px){
+.anfahrt .wrap{grid-template-columns:repeat(12,1fr)}
+.kartenrahmen{grid-column:1/8}
+.anfahrt .text{grid-column:8/13;padding-left:16px}
+}
+@media (max-width:819px){
+.nachweise{line-height:1.7}
+}
+.wege h2{font-size:clamp(1.75rem,3.5vw,2.75rem);overflow-wrap:anywhere;hyphens:auto;-webkit-hyphens:auto}
+@media (min-width:99999px){
+.woche{display:grid}
+}
+</style>
+<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}</style></head>
+<body><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für Mekong. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="kopf">
+<div class="wrap">
+<a class="marke" href="#inhalt" aria-label="Mekong Asia Kitchen, zum Seitenanfang"><b>Mekong</b><small>Asia Kitchen</small></a>
+<nav aria-label="Hauptnavigation">
+<a href="#karte">Karte</a><a href="#zeiten">Zeiten</a><a href="#anfahrt">Anfahrt</a>
+<a class="knopf" href="tel:+495111698495">Anrufen</a>
+</nav>
+</div>
+</header>
+<main id="inhalt">
+<section class="held wrap" aria-labelledby="titel">
+<div class="text">
+<p class="status"><span data-status>Täglich 11:30–21:00 Uhr</span></p>
+<h1 id="titel">Mekong<small>Asia Kitchen · Hannover-Nord</small></h1>
+<p class="lead">Vietnamesische Küche, Currys und Sushi am Engelbosteler Damm in der Nordstadt.</p>
+<p class="info">Mittagstisch ab 11:30 Uhr, Abendessen bis 21:00 Uhr. Zum Mitnehmen oder mit Lieferservice, Tische auf Reservierung.</p>
+<div class="aktionen">
+<a class="knopf" href="tel:+495111698495">0511 1698495 anrufen</a>
+<a class="knopf kontur" href="#karte">Zur Karte</a>
+</div>
+</div>
+<div class="bildspalte">
+<div class="gitter wand">
+<figure class="bild f-a" data-foto><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmPXxTygUCxmchp_FNwKiS31knhShfl0kLWlmH614fPQOiIXI2cv2ELreSKv8HZ5fLLDCDAIEYeJuOCWYokTp6tBnQXmWCXG6YiWXn2IJwfG7pTVb-5eeYXqvvBr84waYhWtQSsePg=s4800-w1000" referrerpolicy="no-referrer" width="4032" height="3024" fetchpriority="high" alt="Gastraum des Mekong mit Holzgitter an Wand und Decke, Holztischen, geflochtenen Hängelampen und Aquarium"></figure>
+<figure class="bild f-b" data-foto><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmM31rdmh9Wr-rGu_UdW4V4CW0mtBSAgfX6P4evFJq3haUc0HO2ToFKWDVlldApMkA0fB3extFNyOU8dAOxa3h8M7QAuMbmygRgmTUQnZY4R46wdOaLqrLrdbTG3QG2FIXMyrrw=s4800-w1800" referrerpolicy="no-referrer" width="4624" height="3472" alt="Große Sushi-Platte mit Maki, Nigiri und Inside-Out-Rollen, mit Saucen garniert"></figure>
+<figure class="bild f-c" data-foto><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmN3EU9F2vDGndnbactgIx53JgYtQ9gD7rPxPJDeM_eHIuxlwyJzdfw-AvoAz7ocfodJWFDpER2WOo8C4X8wyud87RqI7j9Ko4cVQGaelFzIWMlnPuuiMA2CZ_uocVDVDXjmhnb6=s4800-w1000" referrerpolicy="no-referrer" width="4000" height="3000" alt="Gelbes Curry mit Hähnchen, Gemüse und Champignons, dazu Jasminreis"></figure>
+<figure class="bild f-d" data-foto><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmPlsVStvsrRwVQRFcwahZ-akBXqtnPjLNVAoYAQM88hH59NwIRek9_mqUthBknlFd2PUtp_pik6ghqGQXRdAYUpYeU6H2JsPMc_gx_gajrsD18upBnfIW_e0IY68vKCRXD6Or8BVFy1WYc=s4800-w1000" referrerpolicy="no-referrer" width="1848" height="4000" alt="Gebratene Garnelen mit Brokkoli, Bohnen und Pilzen in würziger Sauce, dazu Reis"></figure>
+</div>
+<p class="nachweise">Fotos (Google Maps): <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/116592942452650838926" target="_blank" rel="noopener">V K</a> (Gastraum), <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/112201784193212465658" target="_blank" rel="noopener">Laurentiu Budean</a> (Sushi), <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/112191340486106610021" target="_blank" rel="noopener">Lea G.</a> (Curry), <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/114033020025940560861" target="_blank" rel="noopener">Marina Makolkina</a> (Garnelen)</p>
+</div>
+</section>
+
+<section class="zeiten" id="zeiten" aria-labelledby="zeiten-titel">
+<div class="wrap">
+<div>
+<h2 id="zeiten-titel">Öffnungszeiten</h2>
+<p>Jeden Tag von 11:30 bis 21:00 Uhr, auch sonntags.</p>
+</div>
+<ol class="woche">
+<li><abbr title="Montag">Mo</abbr><span class="uhr">11:30–21:00</span><span class="hz">heute</span></li>
+<li><abbr title="Dienstag">Di</abbr><span class="uhr">11:30–21:00</span><span class="hz">heute</span></li>
+<li><abbr title="Mittwoch">Mi</abbr><span class="uhr">11:30–21:00</span><span class="hz">heute</span></li>
+<li><abbr title="Donnerstag">Do</abbr><span class="uhr">11:30–21:00</span><span class="hz">heute</span></li>
+<li><abbr title="Freitag">Fr</abbr><span class="uhr">11:30–21:00</span><span class="hz">heute</span></li>
+<li><abbr title="Samstag">Sa</abbr><span class="uhr">11:30–21:00</span><span class="hz">heute</span></li>
+<li><abbr title="Sonntag">So</abbr><span class="uhr">11:30–21:00</span><span class="hz">heute</span></li>
+</ol>
+</div>
+</section>
+
+<section class="karte" id="karte" aria-labelledby="karte-titel">
+<div class="wrap">
+<div class="liste">
+<h2 id="karte-titel">Aus der Küche</h2>
+<p class="hinweis">Aktuelle Karte und Preise vor Ort oder telefonisch unter <a href="tel:+495111698495">0511 1698495</a>.</p>
+<div class="kat"><h3>Suppe und Vorspeise</h3><ul>
+<li><b>Klare Suppe</b><span class="lin" aria-hidden="true"></span><span class="preis">Preis vor Ort</span><span class="bes">mit Gemüse und Hähnchen</span></li>
+<li><b>Frühlingsrolle</b><span class="lin" aria-hidden="true"></span><span class="preis">Preis vor Ort</span><span class="bes">mit Dip</span></li>
+</ul></div>
+<div class="kat"><h3>Curry und Wok</h3><ul>
+<li><b>Gelbes Curry</b><span class="lin" aria-hidden="true"></span><span class="preis">Preis vor Ort</span><span class="bes">Hähnchen, Gemüse, Champignons, Jasminreis</span></li>
+<li><b>Gebratene Garnelen</b><span class="lin" aria-hidden="true"></span><span class="preis">Preis vor Ort</span><span class="bes">Brokkoli, Bohnen, Pilze, Reis</span></li>
+</ul></div>
+<div class="kat"><h3>Ente</h3><ul>
+<li><b>Ente</b><span class="lin" aria-hidden="true"></span><span class="preis">Preis vor Ort</span><span class="bes">mit Sahnesoße</span></li>
+<li><b>Gebratene Ente</b><span class="lin" aria-hidden="true"></span><span class="preis">Preis vor Ort</span><span class="bes">Reis, Sprossen, dunkle Soße</span></li>
+</ul></div>
+<div class="kat"><h3>Sushi</h3><ul>
+<li><b>Sushi-Platte</b><span class="lin" aria-hidden="true"></span><span class="preis">Preis vor Ort</span><span class="bes">Maki, Nigiri, Inside-Out-Rollen</span></li>
+</ul></div>
+<p class="ausserdem">Außerdem vegetarische Gerichte, Desserts, Kaffee, Bier und Wein.</p>
+</div>
+<div class="tellerspalte">
+<div class="gitter teller">
+<figure class="bild t-e" data-foto><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmNH-1zBHmnKbYknN1I3cWABd-Z5g2NO7JhrN9JV478lfFrnhU_GqTEMB-CZC43g03JO9jTjOdnfKnZjjqvgbIWgyeTZRMHwVZlB6wfMGBcuX7jaUYrJJ52MlKXv2XaaT6j-NHnZ9aB9lV2h=s4800-w1000" referrerpolicy="no-referrer" width="4080" height="2296" loading="lazy" alt="Gebratene Ente mit Reis, Sprossen und dunkler Sauce auf Keramikteller"></figure>
+<figure class="bild t-s" data-foto><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmMR-Ng87yNpKZE_vzz3ApfoagH_uzuUXi8bgfGEQP-zpd6jSEU_SSdS9rqMkagnQOhc4xwtvTltdlVlz4KuygrW8JF9BUR_1PQqbnR4l2HXEAY5tTcFST9lkQNNCEk0q5YIzT-5yGiPEe0=s4800-w1000" referrerpolicy="no-referrer" width="1848" height="4000" loading="lazy" alt="Klare Suppe mit Gemüse und Hähnchen, dahinter eine Frühlingsrolle mit Dip"></figure>
+</div>
+<p class="nachweise">Fotos (Google Maps): <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/111134007219435969599" target="_blank" rel="noopener">Marco Paletta</a> (Ente), <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/114033020025940560861" target="_blank" rel="noopener">Marina Makolkina</a> (Suppe)</p>
+</div>
+</div>
+</section>
+
+<section class="wege" aria-labelledby="wege-titel">
+<div class="wrap">
+<div class="gitter"><figure class="bild"><img src="ki-zitronengras-chili.webp" width="900" height="1200" loading="lazy" alt="Zitronengras, rote Chilis, Knoblauch, Galgant und Kaffirlimettenblätter auf hellem Holzbrett"></figure></div>
+<div class="text">
+<h2 id="wege-titel">Hier essen, mitnehmen, liefern lassen</h2>
+<div class="zeile"><h3>Vor Ort</h3><p>Mittags schnell, abends in Ruhe. Tische lassen sich telefonisch reservieren.</p><a href="tel:+495111698495">Tisch reservieren: 0511 1698495</a></div>
+<div class="zeile"><h3>Zum Mitnehmen</h3><p>Anrufen, bestellen, am Engelbosteler Damm 42 abholen.</p><a href="tel:+495111698495">Bestellen: 0511 1698495</a></div>
+<div class="zeile"><h3>Lieferservice</h3><p>Wir liefern auch. Bestellung und Liefergebiet am Telefon.</p><a href="tel:+495111698495">Liefern lassen: 0511 1698495</a></div>
+</div>
+</div>
+</section>
+
+<section class="raum" aria-labelledby="raum-titel">
+<div class="wrap">
+<h2 id="raum-titel">Der Raum</h2>
+<div class="text">
+<p>Helle Holzgitter an Wand und Decke, geflochtene Lampen über den Tischen, das große Aquarium auf dem Fliesensockel. Am Fenster Orchideen. Draußen unter der blau-weißen Markise stehen Holzbänke.</p>
+<ul class="fakten"><li>Mittagstisch</li><li>Abendessen</li><li>Vegetarisch</li><li>Kaffee &amp; Desserts</li><li>Bier &amp; Wein</li></ul>
+</div>
+</div>
+</section>
+
+<section class="anfahrt" id="anfahrt" aria-labelledby="anfahrt-titel">
+<div class="wrap">
+<div class="kartenrahmen"><div data-karte data-stil="warm" data-farbe="#B3262B"></div></div>
+<div class="text">
+<h2 id="anfahrt-titel">Anfahrt</h2>
+<address class="adresse">Engelbosteler Damm 42<br>30167 Hannover</address>
+<p>In der Nordstadt, direkt am Engelbosteler Damm. Unter der blau-weißen Markise mit dem cremefarbenen Schild.</p>
+<div class="aktionen">
+<a class="knopf" href="https://www.google.com/maps/dir/?api=1&amp;destination=Mekong+Engelbosteler+Damm+42+30167+Hannover" target="_blank" rel="noopener">Route planen</a>
+<a class="knopf kontur" href="tel:+495111698495">Anrufen</a>
+</div>
+</div>
+</div>
+</section>
+
+<section class="schluss" aria-label="Anrufen">
+<div class="wrap">
+<p>Bestellen, abholen, Tisch reservieren:</p>
+<a class="nummer" href="tel:+495111698495">0511 1698495</a>
+<p class="klein">Täglich 11:30–21:00 Uhr · Engelbosteler Damm 42, Hannover-Nord</p>
+</div>
+</section>
+</main>
+
+<footer class="fuss">
+<div class="wrap">
+<div><span class="marke"><b>Mekong</b><small>Asia Kitchen</small></span></div>
+<div>
+<p>Engelbosteler Damm 42, 30167 Hannover · <a href="tel:+495111698495">0511 1698495</a></p>
+<div class="rechtliches"><p>Entwurf von Medialyte, 21147 Hamburg. Adresse und Öffnungszeiten: Google. Fotos: Google Maps, Urheber jeweils am Bild. Einige Bilder und das Logo sind KI-generierte Vorschläge.</p><p><a href="https://medialyte.de/impressum" style="color:inherit;text-decoration:underline">Impressum</a> · <a href="https://medialyte.de/datenschutzerklaerung" style="color:inherit;text-decoration:underline">Datenschutz</a></p></div>
+</div>
+</div>
+</footer>
+
+<nav class="leiste" aria-label="Schnellzugriff">
+<a href="tel:+495111698495">Anrufen</a>
+<a href="https://www.google.com/maps/dir/?api=1&amp;destination=Mekong+Engelbosteler+Damm+42+30167+Hannover" target="_blank" rel="noopener">Route</a>
+<a href="#zeiten">Zeiten</a>
+</nav>
+
+<script>
+(function(){
+var t=document.querySelectorAll('.woche li')[(new Date().getDay()+6)%7];
+if(t){t.classList.add('heute');t.setAttribute('aria-current','date');}
+})();
+</script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>[data-karte]{width:100%;height:100%;min-height:260px}[data-karte] .leaflet-tile-pane{filter:var(--karte-filter)}
+[data-karte] .leaflet-control-attribution{font-size:10px}.karte-pin{position:relative;width:34px;height:34px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+box-shadow:0 6px 16px rgba(0,0,0,.35);border:3px solid #fff}.karte-pin i{position:absolute;inset:9px;border-radius:50%;background:#fff}</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>(function(){var C={"lat": 52.3852836, "lng": 9.7247949, "name": "Mekong", "filter": {"hell": "grayscale(1) contrast(1.05) brightness(1.04)", "dunkel": "grayscale(1) invert(1) contrast(.88) brightness(.82)", "warm": "grayscale(1) sepia(.5) contrast(1.02) brightness(1.02)", "kuehl": "grayscale(1) sepia(.35) hue-rotate(175deg) saturate(.55) brightness(1.03)", "mono": "grayscale(1) contrast(1.2)"}};function draw(){if(!window.L)return;document.querySelectorAll('[data-karte]').forEach(function(el){
+if(el._map)return;var st=el.getAttribute('data-stil')||'hell',col=el.getAttribute('data-farbe')||'#c0392b';
+el.style.setProperty('--karte-filter',C.filter[st]||C.filter.hell);
+var m=L.map(el,{scrollWheelZoom:false,zoomControl:true,attributionControl:true}).setView([C.lat,C.lng],16);el._map=m;
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(m);
+var icon=L.divIcon({className:'',html:'<div class="karte-pin" style="background:'+col+'"><i></i></div>',iconSize:[34,34],iconAnchor:[17,34]});
+L.marker([C.lat,C.lng],{icon:icon,title:C.name,alt:C.name}).addTo(m);setTimeout(function(){m.invalidateSize()},300);});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',draw);else draw();window.addEventListener('load',draw);})();</script><script>(function(){
+var P=[[690, 1260], [2130, 2700], [3570, 4140], [5010, 5580], [6450, 7020], [7890, 8460], [9330, 9900]];
+function fmt(m){m=((m%1440)+1440)%1440;var h=Math.floor(m/60),mi=m%60;return (h<10?'0':'')+h+':'+(mi<10?'0':'')+mi;}
+function now(){var d=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Berlin'}));return d.getDay()*1440+d.getHours()*60+d.getMinutes();}
+function status(){if(!P.length)return null;var t=now(),W=10080;
+ for(var i=0;i<P.length;i++){var s=P[i][0],e=P[i][1];if((t>=s&&t<e)||(t+W>=s&&t+W<e))return {offen:true,text:'Jetzt geöffnet bis '+fmt(e)};}
+ var best=null;for(var j=0;j<P.length;j++){var d=(P[j][0]-t+W)%W;if(best===null||d<best.d)best={d:d,s:P[j][0]};}
+ var tag=Math.floor(t/1440),ot=Math.floor(best.s/1440)%7,names=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+ var when=best.d<1440&&ot===tag?'heute':(best.d<2880&&ot===(tag+1)%7?'morgen':names[ot]);
+ return {offen:false,text:'Geschlossen · öffnet '+when+' um '+fmt(best.s)};}
+function run(){var s=status();document.querySelectorAll('[data-status]').forEach(function(el){
+ if(!s){el.style.display='none';return;}el.textContent=s.text;el.setAttribute('data-offen',s.offen?'ja':'nein');});}
+document.querySelectorAll('[data-foto] img').forEach(function(img){
+ function hide(){var b=img.closest('[data-foto]');if(b)b.style.display='none';}
+ if(!img.getAttribute('src'))hide();else{img.addEventListener('error',hide);if(img.complete&&img.naturalWidth===0)hide();}});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();setInterval(run,60000);
+})();</script></body>
+</html>

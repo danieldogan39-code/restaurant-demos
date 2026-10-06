@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Platia – Taverne am Klagesmarkt, Hannover</title>
+<meta name="description" content="Platia, griechische Taverne Am Klagesmarkt 10 in Hannover. Grill, Vorspeisen, Fisch und Terrasse. Mo–Fr 17–23 Uhr, Sa und So 12–23 Uhr. Telefon 0511 7635444.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;1,400&family=Figtree:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+:root{
+--creme:#F2ECDF;--schwarz:#1D1B18;--schild:#E6D6AE;--rot:#A6251C;--rot-d:#861D16;--gruen:#2E4A3B;--grau:#58544C;--balken:#8C877D;
+--fd:"Fraunces",Georgia,serif;--ft:"Figtree",system-ui,sans-serif;
+--rand:clamp(1rem,5vw,4rem);--max:1280px;--kopf:64px;
+--s1:.5rem;--s2:1rem;--s3:1.5rem;--s4:2rem;--s5:3rem;--s6:clamp(3rem,8vw,6rem);
+--pinsel:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 100' preserveAspectRatio='none'%3E%3Cpath d='M14 10C60 4 120 9 180 6S300 3 384 8L392 16L386 24L399 31L390 40L397 50L388 58L398 68L389 77L394 88C330 97 250 92 190 95S70 97 10 91L16 82L2 74L12 65L4 55L13 46L1 36L11 27L5 18Z'/%3E%3Cpath d='M0 22L22 20L20 25L2 26ZM378 80L400 79L399 84L380 85Z'/%3E%3C/svg%3E");
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--creme);color:var(--schwarz);font:400 1.0625rem/1.6 var(--ft);overflow-x:hidden}
+img{display:block;max-width:100%}
+h1,h2,h3,p,ul,figure{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gruen);outline-offset:3px}
+.dunkel :focus-visible,.leiste :focus-visible,footer :focus-visible{outline-color:var(--schild)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--rand)}
+section{scroll-margin-top:calc(var(--kopf) + 8px)}
+h2{font:700 clamp(2rem,4.5vw,3.5rem)/1.05 var(--fd);letter-spacing:-.01em;hyphens:auto}
+.kopf{position:sticky;top:0;z-index:1000;height:var(--kopf);background:var(--creme);border-bottom:1px solid var(--schwarz)}
+.kopf .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--s3)}
+.marke{font:700 1.75rem/1 var(--fd);text-decoration:none;letter-spacing:-.01em}
+.marke{flex:none}
+.kopf nav{display:flex;flex-wrap:nowrap;white-space:nowrap;flex:none;align-items:center;gap:24px}
+.kopf nav a:not(.btn){display:none;text-decoration:none;font-weight:700;padding:.75rem 0}
+.kopf nav a:not(.btn):hover{text-decoration:underline;text-underline-offset:4px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:48px;padding:.75rem 1.5rem;border:2px solid var(--schwarz);font:700 1rem/1.2 var(--ft);text-decoration:none;color:var(--schwarz);background:transparent;transition:background .2s,color .2s}
+.btn-rot{background:var(--rot);border-color:var(--rot);color:var(--creme)}
+.btn-rot:hover{background:var(--rot-d);border-color:var(--rot-d)}
+.btn-linie:hover{background:var(--schwarz);color:var(--creme)}
+.kopf .btn{min-height:44px;padding:12px 20px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.kopf .lang{display:none}
+.schild{position:relative;display:inline-block;isolation:isolate;padding:.2em .6em .25em;margin:.25em .6em;color:var(--schild);background-color:var(--schwarz);font-family:var(--fd);line-height:1.1}
+.schild::before{content:"";position:absolute;inset:-.25em -.6em;z-index:-1;background:var(--schwarz);-webkit-mask:var(--pinsel) center/100% 100% no-repeat;mask:var(--pinsel) center/100% 100% no-repeat}
+.tag{display:inline-block;background:var(--schwarz);color:var(--creme);font:700 .9375rem/1.2 var(--ft);padding:.45rem .8rem}
+[data-foto]{position:relative}
+.rahmen{position:relative;overflow:hidden;background:#DCD3C1}
+.rahmen img{width:100%;height:100%;object-fit:cover}
+.foto-nachweis{font-size:.875rem;line-height:1.4;color:var(--grau);text-decoration:underline;text-underline-offset:2px}
+.hero figure{position:relative}
+.hero figcaption{position:absolute;right:0;bottom:0;z-index:1;padding:.3rem .6rem;background:var(--creme)}
+.hero{display:grid;grid-template-columns:1fr;border-bottom:1px solid var(--schwarz)}
+.hero .rahmen{aspect-ratio:4/3}
+.hero .rahmen img{object-position:center 30%}
+.hero-text{padding:var(--s4) var(--rand) var(--s5);display:grid;gap:var(--s3)}
+.hero-a{display:flex;flex-direction:column;align-items:flex-start}
+.hero .schild{font-size:clamp(1.25rem,2.4vw,1.75rem);letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+.hero h1{font:700 clamp(4.5rem,24vw,7rem)/.9 var(--fd);letter-spacing:-.02em;margin:.12em 0 .18em -.04em}
+.status-zeile{margin-top:var(--s3);display:flex;flex-wrap:wrap;gap:.25rem var(--s2);align-items:center;font-variant-numeric:tabular-nums}
+[data-status]{display:inline-flex;align-items:center;gap:.5rem;font-weight:700}
+[data-status]::before{content:"";width:.7rem;height:.7rem;border-radius:50%;background:var(--rot);flex:none}
+[data-status][data-offen="nein"]::before{background:transparent;border:2px solid var(--rot)}
+[data-status]:empty::before{display:none}
+.status-zeile .zeiten{color:var(--grau)}
+.hero-text p.intro{margin-top:0;max-width:34em}
+.hero-text .adr{margin-top:var(--s1);color:var(--grau)}
+.knoepfe{margin-top:var(--s3);display:flex;flex-direction:column;gap:.75rem;width:100%}
+.platz{background:var(--schwarz);color:var(--schild)}
+.platz .wrap{display:grid;gap:var(--s4);padding-top:var(--s6);padding-bottom:var(--s6)}
+.platz blockquote{margin:0;font:400 clamp(1.875rem,7vw,4.75rem)/1.08 var(--fd);letter-spacing:-.015em;hyphens:manual;-webkit-hyphens:manual;overflow-wrap:normal}
+.platz blockquote em{font-style:italic}
+.platz p{margin-top:var(--s3);max-width:36em;color:var(--creme)}
+
+.teller{padding:var(--s6) 0}
+.teller-kopf{display:grid;gap:var(--s2);margin-bottom:var(--s4)}
+.teller-kopf p{max-width:38em}
+.raster{display:grid;gap:var(--s4)}
+.spalte{display:grid;gap:var(--s4);align-content:start}
+figure.bild figcaption{margin-top:.6rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:.25rem var(--s2);font-size:1rem}
+.f34{aspect-ratio:3/4}.f43{aspect-ratio:4/3}.f169{aspect-ratio:16/9}
+.bestellt{grid-column:1/-1;border-top:2px solid var(--schwarz);padding-top:var(--s3);display:grid;grid-template-columns:1fr;gap:var(--s2)}
+.bestellt h3{font:700 clamp(1.5rem,2.6vw,2rem)/1.15 var(--fd)}
+.bestellt ul{list-style:none;padding:0;margin-top:0}
+.bestellt li{padding:.6rem 0;border-bottom:1px solid #CFC6B3;font-size:1.0625rem}
+.bestellt .rahmen{aspect-ratio:1;max-width:11rem;background:var(--creme)}
+.hinweis{margin-top:var(--s2);font-style:italic}
+.zeiten-ab{background:#E9E1D0;padding:var(--s6) 0;border-top:1px solid var(--schwarz);border-bottom:1px solid var(--schwarz)}
+.zeiten-ab .wrap>p{margin-top:var(--s2);max-width:38em}
+.leiste-zeit{margin-top:var(--s5);font-variant-numeric:tabular-nums}
+.achse,.tag-zeile{display:grid;grid-template-columns:1fr auto;gap:.4rem var(--s2);align-items:center}
+.achse{display:none}
+.tag-zeile{padding:var(--s2) 0;border-bottom:1px solid #C9BFAB}
+.tag-zeile .tagname{display:flex;align-items:center;gap:.75rem;font-weight:700;min-height:2.25rem}
+.tag-zeile .heute-schild{display:none;font-size:1rem;font-weight:700}
+.tag-zeile.heute .heute-schild{display:inline-block}
+.tag-zeile time,.tag-zeile .uhr{text-align:right;white-space:nowrap}
+.spur{grid-column:1/-1;position:relative;height:14px;background:repeating-linear-gradient(90deg,#CFC6B3 0 1px,transparent 1px calc(100%/11))}
+.balken{position:absolute;top:0;bottom:0;left:calc(var(--von)/11*100%);width:calc((var(--bis) - var(--von))/11*100%);background:var(--balken)}
+.heute .balken{background:var(--rot);transform-origin:left}
+.heute.wachse .balken{animation:wachse .4s cubic-bezier(.2,.7,.3,1)}
+.mit-jetzt .spur::after{content:"";position:absolute;top:-6px;bottom:-6px;left:var(--jetzt);width:3px;background:var(--schwarz)}
+@keyframes wachse{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.lage{padding:var(--s6) 0}
+.lage .wrap{display:grid;gap:var(--s4)}
+.karte-rahmen{position:relative;z-index:0;isolation:isolate;aspect-ratio:4/3;border:1px solid var(--schwarz);overflow:hidden;background:#E3DBCA}
+.karte-rahmen [data-karte]{width:100%;height:100%}
+.lage-text{display:flex;flex-direction:column;gap:24px;align-items:flex-start}
+.lage-text p{max-width:36em}
+.lage address{font-style:normal;font-size:1.25rem;line-height:1.5;margin:0}
+.lage .tel{font:700 1.5rem/1.2 var(--fd);text-decoration:none;font-variant-numeric:tabular-nums;display:inline-block;padding:.4rem 0}
+.lage .tel:hover{text-decoration:underline}
+.lage .fass{flex:none;width:120px;aspect-ratio:3/4;background:var(--creme)}
+.lage-zeile{display:flex;gap:var(--s3);align-items:flex-start;justify-content:space-between;width:100%;max-width:30rem}
+.schluss{padding:var(--s6) 0;border-top:1px solid var(--schwarz)}
+.schluss .wrap{display:grid;gap:var(--s4);align-items:center}
+.schluss .schild{font-size:clamp(1.75rem,8vw,5.5rem);font-weight:700;padding:.15em .4em .2em}
+.schluss .schild a{text-decoration:none;color:var(--schild);font-variant-numeric:tabular-nums;white-space:nowrap}
+.schluss .schild a:hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.12em}
+.schluss p{margin-top:var(--s3);font:400 clamp(1.25rem,2.4vw,1.75rem)/1.3 var(--fd)}
+
+footer{background:var(--schwarz);color:var(--schild);padding:var(--s5) 0;font-size:.9375rem}
+footer .wrap{display:grid;gap:var(--s3)}
+footer .marke{font-size:2rem;color:var(--schild)}
+.rechtliches p+p{margin-top:.5rem}
+.leiste{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:1.2fr 1fr 1fr;background:var(--schwarz);padding-bottom:env(safe-area-inset-bottom);border-top:1px solid var(--schild)}
+.leiste a{min-height:48px;display:flex;align-items:center;justify-content:center;color:var(--schild);font-weight:700;text-decoration:none;border-left:1px solid #4A463F}
+.leiste a:first-child{background:var(--rot);color:var(--creme);border-left:0}
+body{padding-bottom:calc(48px + env(safe-area-inset-bottom))}
+@media (min-width:480px){.knoepfe{flex-direction:row;flex-wrap:wrap;width:auto}}
+@media (min-width:820px){
+body{padding-bottom:0}
+.leiste{display:none}
+
+.hero .rahmen{aspect-ratio:16/9}
+.hero-text{padding:var(--s5) var(--rand);grid-template-columns:1fr 1fr;gap:var(--s4);align-items:end}
+.hero h1{font-size:clamp(4rem,9vw,9rem)}
+.platz .wrap{grid-template-columns:repeat(12,1fr)}
+.platz .satz{grid-column:1/9}.platz-info{grid-column:9/13;align-self:end}
+.teller-kopf{grid-template-columns:5fr 7fr;align-items:end}
+.raster{grid-template-columns:repeat(12,1fr);align-items:stretch}
+.spalte.links{grid-column:1/6}.spalte.rechts{grid-column:6/13}
+.spalte.links{display:flex}.spalte.links figure{display:flex;flex-direction:column;width:100%}.spalte.links .rahmen{flex:1;aspect-ratio:auto;min-height:24rem}
+.meer{grid-column:1/9}.meer-text{grid-column:9/13;align-self:end}
+.achse{display:grid;grid-template-columns:11rem 1fr 9rem;margin-bottom:.25rem;color:var(--grau);font-size:.9375rem}
+.achse .skala{position:relative;height:1.4em}
+.achse .skala span{position:absolute;transform:translateX(-50%)}
+.achse .skala span:first-child{transform:none}.achse .skala span:last-child{transform:translateX(-100%)}
+.tag-zeile{grid-template-columns:11rem 1fr 9rem}
+.spur{grid-column:auto;grid-row:1}
+.tag-zeile .tagname{grid-column:1}.tag-zeile .uhr{grid-column:3;grid-row:1}
+.karte-rahmen{aspect-ratio:16/9}
+
+footer .wrap{grid-template-columns:4fr 8fr;align-items:end}
+}
+@media (min-width:1024px){.kopf nav a:not(.btn){display:inline-block}.kopf .lang{display:inline}.kopf .kurz{display:none}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+.platz-info{margin:0;border-top:1px solid var(--schild)}
+.platz-info div{display:grid;gap:.15rem;padding:var(--s2) 0;border-bottom:1px solid #4A463F}
+.platz-info dt{font-weight:700;color:var(--schild)}
+.platz-info dd{margin:0;color:var(--creme)}
+.spalte.rechts .bestellt{grid-column:auto;grid-template-columns:1fr;gap:var(--s2);padding-top:var(--s3)}
+.meer-text{display:flex;flex-direction:column;align-items:flex-start;gap:var(--s3)}
+.meer-text .hinweis{margin:0;font:italic 400 clamp(1.25rem,2vw,1.5rem)/1.35 var(--fd);max-width:22em}
+.lage .tel,.lage address{white-space:nowrap}
+.lage .fass{background:transparent}.lage .fass img{mix-blend-mode:multiply}
+.tag-zeile.heute .tagname,.tag-zeile.heute .uhr{color:var(--rot)}
+.tag-zeile.heute .heute-schild{color:var(--schild)}
+.schluss{background:var(--schild)}
+.schluss-side{display:grid;gap:var(--s3);align-content:end;justify-items:start}
+.schluss-info{margin:0;width:100%;font-variant-numeric:tabular-nums;border-top:2px solid var(--schwarz)}
+.schluss-info div{display:grid;grid-template-columns:auto 1fr;gap:var(--s2);padding:.6rem 0;border-bottom:1px solid #B9AA86}
+.schluss-info dt{font-weight:700}
+.schluss-info dd{margin:0;text-align:right}
+@media (min-width:1100px){
+.hero{grid-template-columns:7fr 5fr;align-items:stretch}
+.hero figure{height:100%}
+.hero .rahmen{aspect-ratio:auto;height:100%;min-height:36rem}
+.hero-text{grid-template-columns:1fr;padding:var(--s5) var(--rand) var(--s5) clamp(1.5rem,4vw,4rem);align-content:center}
+.lage .wrap{grid-template-columns:7fr 5fr;align-items:start}
+.karte-rahmen{aspect-ratio:4/3}
+.schluss .wrap{grid-template-columns:repeat(12,1fr);align-items:end}
+.schluss-nr{grid-column:1/9}.schluss-side{grid-column:9/13}
+.schluss .schild{font-size:clamp(1.75rem,6vw,5rem)}
+}
+</style>
+<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}</style></head>
+<body><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für Platia. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
+<header class="kopf">
+<div class="wrap">
+<a class="marke" href="#start" aria-label="Platia, zum Seitenanfang">Platia</a>
+<nav aria-label="Hauptnavigation">
+<a href="#speisen">Speisen</a>
+<a href="#zeiten">Zeiten</a>
+<a href="#lage">Lage</a>
+<a class="btn btn-rot" href="tel:+495117635444"><span class="kurz">Anrufen</span><span class="lang">0511 7635444</span></a>
+</nav>
+</div>
+</header>
+
+<main id="start">
+<section class="hero" aria-label="Platia, Taverne am Klagesmarkt">
+<figure data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmOh9Qn9dbTnmAfOb8-nIVaRL31R0pBif1m8vldyAFpD_7hZFzmJCe4enPLc0DUUBTz9q3U6UtKXP1CZ5rz23H2ceifhjIEfSaA-hRUQjcDhYqbLPMDRQovS5EjFv96NTK092CRK=s4800-w1000" referrerpolicy="no-referrer" width="3000" height="4000" fetchpriority="high" alt="Fassade der Taverne Platia mit den schwarzen Taverne-Schildern und dem Platia-Schriftzug über dem Eingang"></div>
+<figcaption><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/109976555241821566209" target="_blank" rel="noopener">Foto: Ирина Мухачева · Google Maps</a></figcaption>
+</figure>
+<div class="hero-text">
+<div class="hero-a">
+<span class="schild">Taverne</span>
+<h1>Platia</h1>
+<span class="tag">Der etwas andere Grieche</span>
+<p class="status-zeile"><span data-status></span><span class="zeiten">Mo–Fr 17–23 · Sa, So 12–23 Uhr</span></p>
+</div>
+<div class="hero-b">
+<p class="intro">Gyros, Souvlaki, Lammkoteletts und Leber vom Grill. Dazu Vorspeisen, Fisch und Meeresfrüchte. Bei gutem Wetter sitzen Sie draußen auf der Terrasse am Klagesmarkt.</p>
+<p class="adr">Am Klagesmarkt 10, 30159 Hannover</p>
+<div class="knoepfe">
+<a class="btn btn-rot" href="tel:+495117635444">Anrufen</a>
+<a class="btn btn-linie" href="#speisen">Was es gibt</a>
+</div>
+</div>
+</div>
+</section>
+
+<section class="platz dunkel" aria-label="Der Platz">
+<div class="wrap">
+<blockquote class="satz">Platia heißt Platz.<br><em>Unserer</em> ist der Klagesmarkt.</blockquote>
+<dl class="platz-info"><div><dt>Draußen</dt><dd>Holztische und Korbstühle unter schwarzen Schirmen und Bäumen</dd></div><div><dt>Am Eingang</dt><dd>Alte Weinfässer</dd></div><div><dt>Drinnen</dt><dd>Karierte Decken auf den Tischen</dd></div></dl>
+</div>
+</section>
+
+<section class="teller" id="speisen" aria-labelledby="h-speisen">
+<div class="wrap">
+<div class="teller-kopf">
+<h2 id="h-speisen">Große Teller, vom Grill und aus dem Meer.</h2>
+<p>Die Leber kommt vom Grill, das Filet mit Metaxasoße. Vorweg gibt es kalte und warme Vorspeisen, hinterher Kaffee und Nachtisch. Dazu Wein und Bier.</p>
+</div>
+<div class="raster">
+<div class="spalte links">
+<figure class="bild" data-foto>
+<div class="rahmen f34"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmNUyPgJk4oNOH-XI8BHpHqEeg-k8uHEjn-pW68PW2HCGj5DxUlhB7GU4wsDxple_r8dcLLqAVMvEUN8p2N05OdApFTC3S2aWAiTem8hIijRDKhbh1TPuPgCNGC9HCkiw_TA2QVY=s4800-w1000" referrerpolicy="no-referrer" width="3000" height="4000" loading="lazy" alt="Vorspeisenplatte mit Tzatziki, Dolmades, Zucchini, Bifteki und Gigantes"></div>
+<figcaption><span>Vorspeisenplatte: Tzatziki, Dolmades, Zucchini, Bifteki, Gigantes</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/116681752821129802442" target="_blank" rel="noopener">Foto: Rose Petal · Google Maps</a></figcaption>
+</figure>
+</div>
+<div class="spalte rechts">
+<figure class="bild" data-foto>
+<div class="rahmen f43"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmPMCoBuIzoUEr25FRPSpA_tuhHYKyyC54B4aFVW6U5sVBxnW1ZDksxoRKio6J06orlxdFu1HISU02iYEkzrus_WUqfLpBsOEoyRuzFc6yZnTeg1leYbGBiTIeaNPpAneTnlb3IOSgSaduFj=s4800-w1800" referrerpolicy="no-referrer" width="4000" height="3000" loading="lazy" alt="Grillteller im Platia mit Gyros, Souvlaki, Pommes frites, Reis und Ajvar"></div>
+<figcaption><span>Grillteller: Gyros, Souvlaki, Pommes frites, Reis, Ajvar</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/118368664697129294610" target="_blank" rel="noopener">Foto: Lukas · Google Maps</a></figcaption>
+</figure>
+<div class="bestellt">
+<h3>Was Gäste hier bestellen</h3>
+<div>
+<ul>
+<li>Filet mit Metaxasoße und Butterreis</li>
+<li>Bauernteller</li>
+<li>Leber vom Grill</li>
+<li>Gyros</li>
+<li>Grillteller mit Gyros und Souvlaki</li>
+</ul>
+</div>
+</div>
+</div>
+<figure class="bild meer" data-foto>
+<div class="rahmen f169"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmMQmyihZxFdFIcO3ONPsKGZ2mVc8aQd-1cFRMNPrROam0WGc0dYkC7U8tPbYfdYUDIewSmDWsGJDhS9Zr2P3oa7IwnXZD_65QkQJAsa7JJL7b5e0oOSBZVUaJP_Dm8uZ0SEbiZMgA=s4800-w1000" referrerpolicy="no-referrer" width="4624" height="3472" loading="lazy" alt="Meeresfrüchteplatte mit Garnelen, Calamari, Fisch, Reis und Gemüse"></div>
+<figcaption><span>Meeresfrüchteplatte: Garnelen, Calamari, Fisch, Reis, Gemüse</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/112041327879729248864" target="_blank" rel="noopener">Foto: HAYATO · Google Maps</a></figcaption>
+</figure>
+<div class="meer-text">
+<p class="hinweis">Die ganze Karte liegt im Lokal, am Telefon sagen wir gern, was es heute gibt. Alles auch zum Mitnehmen.</p>
+<a class="btn btn-rot" href="tel:+495117635444">Anrufen und fragen</a>
+</div>
+</div>
+</div>
+</section>
+
+<section class="zeiten-ab" id="zeiten" aria-labelledby="h-zeiten">
+<div class="wrap">
+<h2 id="h-zeiten">Wann der Platz offen ist</h2>
+<p>Unter der Woche ab 17 Uhr, am Wochenende schon mittags – draußen, solange es das Wetter will. Küche bis zum Abend, Schluss ist um 23 Uhr.</p>
+<div class="leiste-zeit">
+<div class="achse" aria-hidden="true"><span></span><div class="skala"><span style="left:0">12</span><span style="left:27.27%">15</span><span style="left:45.45%">17</span><span style="left:72.73%">20</span><span style="left:100%">23 Uhr</span></div><span></span></div>
+<div class="tag-zeile" style="--von:5;--bis:11"><span class="tagname">Montag <span class="schild heute-schild">Heute</span></span><span class="spur"><span class="balken"></span></span><span class="uhr">17:00 – 23:00</span></div>
+<div class="tag-zeile" style="--von:5;--bis:11"><span class="tagname">Dienstag <span class="schild heute-schild">Heute</span></span><span class="spur"><span class="balken"></span></span><span class="uhr">17:00 – 23:00</span></div>
+<div class="tag-zeile" style="--von:5;--bis:11"><span class="tagname">Mittwoch <span class="schild heute-schild">Heute</span></span><span class="spur"><span class="balken"></span></span><span class="uhr">17:00 – 23:00</span></div>
+<div class="tag-zeile" style="--von:5;--bis:11"><span class="tagname">Donnerstag <span class="schild heute-schild">Heute</span></span><span class="spur"><span class="balken"></span></span><span class="uhr">17:00 – 23:00</span></div>
+<div class="tag-zeile" style="--von:5;--bis:11"><span class="tagname">Freitag <span class="schild heute-schild">Heute</span></span><span class="spur"><span class="balken"></span></span><span class="uhr">17:00 – 23:00</span></div>
+<div class="tag-zeile" style="--von:0;--bis:11"><span class="tagname">Samstag <span class="schild heute-schild">Heute</span></span><span class="spur"><span class="balken"></span></span><span class="uhr">12:00 – 23:00</span></div>
+<div class="tag-zeile" style="--von:0;--bis:11"><span class="tagname">Sonntag <span class="schild heute-schild">Heute</span></span><span class="spur"><span class="balken"></span></span><span class="uhr">12:00 – 23:00</span></div>
+</div>
+</div>
+</section>
+
+<section class="lage" id="lage" aria-labelledby="h-lage">
+<div class="wrap">
+<div class="karte-rahmen"><div data-karte data-stil="warm" data-farbe="#A6251C"></div></div>
+<div class="lage-text">
+<h2 id="h-lage">Am Klagesmarkt</h2>
+<div class="lage-zeile">
+<div>
+<address>Restaurant Platia<br>Am Klagesmarkt 10<br>30159 Hannover</address>
+<a class="tel" href="tel:+495117635444">0511 7635444</a>
+</div>
+<div class="rahmen fass"><img src="ki-weinfass-graeser.webp" width="600" height="800" loading="lazy" alt="Illustration: altes Weinfass mit Pampasgras"></div>
+</div>
+<p>Plätze draußen auf der Terrasse und drinnen. Tische reservieren Sie am besten telefonisch, auch für draußen. Essen zum Mitnehmen bestellen Sie unter derselben Nummer.</p>
+<a class="btn btn-rot" href="https://www.google.com/maps/dir/?api=1&amp;destination=Am+Klagesmarkt+10,+30159+Hannover" target="_blank" rel="noopener">Route planen</a>
+</div>
+</div>
+</section>
+
+<section class="schluss" aria-label="Tisch reservieren">
+<div class="wrap">
+<div class="schluss-nr">
+<span class="schild"><a href="tel:+495117635444">0511 7635444</a></span>
+<p>Tisch reservieren, auch für draußen. Essen zum Mitnehmen unter derselben Nummer.</p>
+</div>
+<div class="schluss-side">
+<dl class="schluss-info"><div><dt>Mo–Fr</dt><dd>17–23 Uhr</dd></div><div><dt>Sa, So</dt><dd>12–23 Uhr</dd></div><div><dt>Adresse</dt><dd>Am Klagesmarkt 10<br>30159 Hannover</dd></div></dl>
+<a class="btn btn-linie" href="https://www.google.com/maps/dir/?api=1&amp;destination=Am+Klagesmarkt+10,+30159+Hannover" target="_blank" rel="noopener">Route zum Klagesmarkt</a>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="wrap">
+<div>
+<span class="marke">Platia</span>
+<p>Am Klagesmarkt 10, 30159 Hannover<br>Mo–Fr 17–23 Uhr · Sa, So 12–23 Uhr</p>
+</div>
+<div class="rechtliches"><p>Entwurf von Medialyte, 21147 Hamburg. Adresse und Öffnungszeiten: Google. Fotos: Google Maps, Urheber jeweils am Bild. Einige Bilder und das Logo sind KI-generierte Vorschläge.</p><p><a href="https://medialyte.de/impressum" style="color:inherit;text-decoration:underline">Impressum</a> · <a href="https://medialyte.de/datenschutzerklaerung" style="color:inherit;text-decoration:underline">Datenschutz</a></p></div>
+</div>
+</footer>
+
+<nav class="leiste" aria-label="Schnellzugriff">
+<a href="tel:+495117635444">Anrufen</a>
+<a href="https://www.google.com/maps/dir/?api=1&amp;destination=Am+Klagesmarkt+10,+30159+Hannover" target="_blank" rel="noopener">Route</a>
+<a href="#zeiten">Zeiten</a>
+</nav>
+
+<script>
+(()=>{
+const n=new Date(),r=document.querySelectorAll('.tag-zeile')[(n.getDay()+6)%7];
+if(!r)return;
+r.classList.add('heute');
+const t=n.getHours()+n.getMinutes()/60,von=parseFloat(r.style.getPropertyValue('--von'))+12;
+if(t>=von&&t<=23){r.style.setProperty('--jetzt',(t-12)/11*100+'%');r.classList.add('mit-jetzt')}
+if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver'in window))return;
+const io=new IntersectionObserver(e=>{if(e[0].isIntersecting){r.classList.add('wachse');io.disconnect()}},{threshold:.8});
+io.observe(r);
+})();
+</script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>[data-karte]{width:100%;height:100%;min-height:260px}[data-karte] .leaflet-tile-pane{filter:var(--karte-filter)}
+[data-karte] .leaflet-control-attribution{font-size:10px}.karte-pin{position:relative;width:34px;height:34px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+box-shadow:0 6px 16px rgba(0,0,0,.35);border:3px solid #fff}.karte-pin i{position:absolute;inset:9px;border-radius:50%;background:#fff}</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>(function(){var C={"lat": 52.380827, "lng": 9.7280125, "name": "Platia", "filter": {"hell": "grayscale(1) contrast(1.05) brightness(1.04)", "dunkel": "grayscale(1) invert(1) contrast(.88) brightness(.82)", "warm": "grayscale(1) sepia(.5) contrast(1.02) brightness(1.02)", "kuehl": "grayscale(1) sepia(.35) hue-rotate(175deg) saturate(.55) brightness(1.03)", "mono": "grayscale(1) contrast(1.2)"}};function draw(){if(!window.L)return;document.querySelectorAll('[data-karte]').forEach(function(el){
+if(el._map)return;var st=el.getAttribute('data-stil')||'hell',col=el.getAttribute('data-farbe')||'#c0392b';
+el.style.setProperty('--karte-filter',C.filter[st]||C.filter.hell);
+var m=L.map(el,{scrollWheelZoom:false,zoomControl:true,attributionControl:true}).setView([C.lat,C.lng],16);el._map=m;
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(m);
+var icon=L.divIcon({className:'',html:'<div class="karte-pin" style="background:'+col+'"><i></i></div>',iconSize:[34,34],iconAnchor:[17,34]});
+L.marker([C.lat,C.lng],{icon:icon,title:C.name,alt:C.name}).addTo(m);setTimeout(function(){m.invalidateSize()},300);});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',draw);else draw();window.addEventListener('load',draw);})();</script><script>(function(){
+var P=[[720, 1380], [2460, 2820], [3900, 4260], [5340, 5700], [6780, 7140], [8220, 8580], [9360, 10020]];
+function fmt(m){m=((m%1440)+1440)%1440;var h=Math.floor(m/60),mi=m%60;return (h<10?'0':'')+h+':'+(mi<10?'0':'')+mi;}
+function now(){var d=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Berlin'}));return d.getDay()*1440+d.getHours()*60+d.getMinutes();}
+function status(){if(!P.length)return null;var t=now(),W=10080;
+ for(var i=0;i<P.length;i++){var s=P[i][0],e=P[i][1];if((t>=s&&t<e)||(t+W>=s&&t+W<e))return {offen:true,text:'Jetzt geöffnet bis '+fmt(e)};}
+ var best=null;for(var j=0;j<P.length;j++){var d=(P[j][0]-t+W)%W;if(best===null||d<best.d)best={d:d,s:P[j][0]};}
+ var tag=Math.floor(t/1440),ot=Math.floor(best.s/1440)%7,names=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+ var when=best.d<1440&&ot===tag?'heute':(best.d<2880&&ot===(tag+1)%7?'morgen':names[ot]);
+ return {offen:false,text:'Geschlossen · öffnet '+when+' um '+fmt(best.s)};}
+function run(){var s=status();document.querySelectorAll('[data-status]').forEach(function(el){
+ if(!s){el.style.display='none';return;}el.textContent=s.text;el.setAttribute('data-offen',s.offen?'ja':'nein');});}
+document.querySelectorAll('[data-foto] img').forEach(function(img){
+ function hide(){var b=img.closest('[data-foto]');if(b)b.style.display='none';}
+ if(!img.getAttribute('src'))hide();else{img.addEventListener('error',hide);if(img.complete&&img.naturalWidth===0)hide();}});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();setInterval(run,60000);
+})();</script></body>
+</html>
