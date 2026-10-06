@@ -449,6 +449,29 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
 .demo .acts .btn.regen:disabled { opacity: .45; cursor: not-allowed; transform: none; }
 .demo .acts .btn.regen[aria-expanded="true"] { border-color: rgba(255,87,87,.6); background: rgba(255,87,87,.08); }
 .demo .acts .btn.icon { flex: 0 0 auto; padding: .45rem .6rem; }
+.demo .acts .btn.del { color: var(--ink3); }
+.demo .acts .btn.del:hover, .demo .acts .btn.del:focus-visible { color: #FF8C8C; border-color: rgba(255,87,87,.6); background: rgba(255,87,87,.08); }
+.demo.deleting { opacity: .5; filter: grayscale(.85); }
+.demo.deleting .rating, .demo.deleting .regen-slot { display: none; }
+.demo .del-note { flex: 1; display: flex; align-items: center; gap: .5rem; padding: .45rem 0; font-size: .84rem; color: #FF8C8C; }
+.demo .del-note::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: currentColor; animation: blink 1.2s infinite; }
+.modal { position: fixed; inset: 0; z-index: 9400; display: grid; place-items: center; padding: 1rem; background: rgba(4, 9, 18, .72); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.modal[hidden] { display: none; }
+.modal-card { width: 100%; max-width: 27rem; background: var(--panel-solid); border: 1px solid rgba(255,87,87,.35); border-radius: 18px; padding: 1.35rem 1.35rem 1.15rem; box-shadow: 0 30px 80px -30px rgba(0,0,0,.95), 0 0 0 1px rgba(255,255,255,.03) inset; animation: modalin .28s var(--spring); }
+@keyframes modalin { from { opacity: 0; transform: translateY(14px) scale(.97); } }
+.modal-card .mstep { display: flex; align-items: center; gap: .5rem; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink3); }
+.modal-card .mstep i { width: 1.6rem; height: .25rem; border-radius: 99px; background: var(--edge); }
+.modal-card .mstep i.on { background: var(--coral); }
+.modal-card h3 { margin: .6rem 0 .45rem; font-size: 1.22rem; line-height: 1.3; }
+.modal-card p { margin: 0 0 .65rem; color: var(--ink2); font-size: .9rem; line-height: 1.55; }
+.modal-card ul { margin: 0 0 .4rem; padding-left: 1.1rem; color: var(--ink2); font-size: .86rem; line-height: 1.55; }
+.modal-card b.nm { color: var(--ink); }
+.modal-card input { width: 100%; margin-top: .2rem; padding: .7rem .85rem; border-radius: 11px; border: 1px solid var(--edge); background: rgba(0,0,0,.25); color: var(--ink); font: inherit; font-size: 1rem; }
+.modal-card input:focus { outline: none; border-color: rgba(255,87,87,.7); box-shadow: 0 0 0 3px rgba(255,87,87,.18); }
+.modal-acts { display: flex; gap: .5rem; justify-content: flex-end; margin-top: 1.05rem; flex-wrap: wrap; }
+.btn.danger { background: rgba(255,87,87,.16); border-color: rgba(255,87,87,.65); color: #FFC2C2; }
+.btn.danger:hover { background: rgba(255,87,87,.26); border-color: #FF5757; }
+.btn.danger:disabled { opacity: .38; cursor: not-allowed; transform: none; }
 .regen-slot:not(:empty) { padding: 0 1rem 1rem; }
 .demo .acts .regen .sm { display: none; }
 .rnote { font-size: .78rem; color: var(--ink2); border-radius: 10px; padding: .5rem .65rem; background: rgba(255,255,255,.035); border: 1px solid var(--edge); overflow-wrap: anywhere; }
@@ -689,7 +712,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       <div class="col" data-col="offen"><header><h3><i style="background:#7BAFFF"></i>Kandidaten</h3><span class="cnt" id="cnt-offen"></span><p>Automatisch bewertet. Die besten 5 bekommen beim nächsten Lauf eine Website.</p></header><div class="drop" data-drop="offen"></div></div>
       <div class="col" data-col="bauen" data-focus="board_bauen"><header><h3><i style="background:#FF5757"></i>Website bauen</h3><span class="cnt" id="cnt-bauen"></span><p>Deine Auswahl. Wird zusätzlich und zuerst gebaut.</p><button class="btn btn-hot" type="button" id="build-now">Jetzt bauen</button></header><div class="drop" data-drop="bauen"></div></div>
       <div class="col" data-col="demo"><header><h3><i style="background:#4BE3A6"></i>Demo online</h3><span class="cnt" id="cnt-demo"></span><p>Hat schon eine Demo-Website.</p></header><div class="drop" data-drop="demo"></div></div>
-      <div class="col" data-col="nie" data-focus="board_aussortiert"><header><h3><i style="background:#6E7AA6"></i>Aussortiert</h3><span class="cnt" id="cnt-nie"></span><p>Bekommt nie eine Website. Demos hier werden beim nächsten Lauf gelöscht.</p></header><div class="drop" data-drop="nie"></div></div>
+      <div class="col" data-col="nie" data-focus="board_aussortiert"><header><h3><i style="background:#6E7AA6"></i>Aussortiert</h3><span class="cnt" id="cnt-nie"></span><p>Bekommt nie eine Website. Eine Demo, die du hierher ziehst, wird nach zwei Bestätigungen sofort gelöscht.</p></header><div class="drop" data-drop="nie"></div></div>
     </div>
     <div class="g-legend"><span><i style="background:#FF5757"></i>Bedarf: fehlende Website, Reservierung, Bestellung</span><span><i style="background:#7BAFFF"></i>Zugkraft: Bekanntheit, Sterne, Fotos</span><span><i style="background:#FFB547"></i>Budget: Preisniveau, Betriebsart</span><span><i style="background:#4BE3A6"></i>Basis: Öffnungszeiten, Angebot, Telefon</span><span>Stufe A ab 85, B ab 75, C darunter</span></div>
   </section>
@@ -710,6 +733,28 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
 
 <div class="tip" id="tip" role="tooltip"></div>
 <div class="toast" id="toast" role="status"></div>
+<div class="modal" id="delm" hidden role="dialog" aria-modal="true" aria-labelledby="delm-t1">
+  <div class="modal-card">
+    <div data-step="1">
+      <div class="mstep"><i class="on"></i><i></i><span>Bestätigung 1 von 2</span></div>
+      <h3 id="delm-t1">Demo von <b class="nm" id="delm-name"></b> löschen?</h3>
+      <ul>
+        <li>Die Seite ist danach nicht mehr erreichbar, auch nicht über bereits verschickte Links.</li>
+        <li>Bauinfos und ältere Versionen dieser Demo werden mitgelöscht.</li>
+        <li>Das Restaurant wandert zu „Aussortiert“ und wird nicht wieder vorgeschlagen.</li>
+      </ul>
+      <p>Deine Bewertungen und das daraus Gelernte bleiben erhalten.</p>
+      <div class="modal-acts"><button class="btn" type="button" data-x id="delm-cancel1">Abbrechen</button><button class="btn danger" type="button" data-next>Weiter</button></div>
+    </div>
+    <div data-step="2" hidden>
+      <div class="mstep"><i class="on"></i><i class="on"></i><span>Bestätigung 2 von 2</span></div>
+      <h3 id="delm-t2">Endgültig löschen?</h3>
+      <p>Das lässt sich nicht rückgängig machen. Zum Bestätigen tippe <b class="nm">löschen</b> ein.</p>
+      <input id="delm-in" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="löschen" aria-label="Zum Bestätigen löschen eintippen">
+      <div class="modal-acts"><button class="btn" type="button" data-x>Abbrechen</button><button class="btn danger" type="button" id="delm-go" disabled>Demo endgültig löschen</button></div>
+    </div>
+  </div>
+</div>
 <div class="vpill" id="vpill" role="status" aria-live="off"><div class="wave" aria-hidden="true"><i style="--k:.6"></i><i style="--k:1"></i><i style="--k:.8"></i><i style="--k:1.2"></i><i style="--k:.7"></i></div><span id="vpill-text">Lagebericht</span><button type="button" id="vpill-stop">Stopp</button></div>
 <nav class="mnav" id="mnav" aria-label="Bereiche">
   <a href="#kpis" data-sec="kpis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>Übersicht</a>
@@ -735,7 +780,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "66f94fbf91";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "7c0dc895e6";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -1441,7 +1486,8 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
         '<div class="tags">' + (x.punkte != null ? '<span class="tag score">' + x.punkte + "/100 Eignung</span>" : "") + '<span class="tag">' + esc(why) + "</span>" + (x.design === "einzeln" ? '<span class="tag">Einzelstück' + (x.note ? " · Note " + x.note + "/10" : "") + "</span>" : x.theme ? '<span class="tag">' + esc(x.theme) + "</span>" : "") + (x.entfernung_km != null ? '<span class="tag">' + String(x.entfernung_km).replace(".", ",") + " km</span>" : "") + (x.bewertung ? '<span class="tag">' + String(x.bewertung).replace(".", ",") + " ★ · " + fmt.format(x.anzahl || 0) + "</span>" : "") + (x.status === "behalten" ? '<span class="tag keep">behalten</span>' : "") + (x.welt_label && x.welt !== "unbestimmt" ? '<span class="tag welt" title="Stilwelt: lernt nur aus Demos derselben Küche">' + esc(x.welt_label) + "</span>" : "") + "</div>" +
         '<div class="rating"></div>' +
         '' + (x.kategorien && x.kategorien.length ? '<details class="why"><summary>Warum ausgewählt?</summary>' + x.kategorien.map(function (k) { return '<div class="cat"><span>' + esc(k.name) + '</span><span class="bar2"><b style="width:' + Math.round(k.punkte / k.max * 100) + '%"></b></span><span class="pt">' + String(k.punkte).replace(".", ",") + "/" + k.max + '</span><small>' + esc(k.warum) + "</small></div>"; }).join("") + "</details>" : "") +
-        '<div class="acts"><a class="btn" href="' + esc(x.url) + '" target="_blank" rel="noopener">Öffnen</a><button class="btn regen" type="button" data-regen title="Neu generieren">' + REGEN + '<span class="lg">Neu generieren</span><span class="sm">Neu</span></button><button class="btn icon copy" type="button" data-copy="' + esc(x.url) + '" title="Link kopieren" aria-label="Link kopieren"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg></button></div><div class="regen-slot"></div>');
+        '<div class="acts"><a class="btn" href="' + esc(x.url) + '" target="_blank" rel="noopener">Öffnen</a><button class="btn regen" type="button" data-regen title="Neu generieren">' + REGEN + '<span class="lg">Neu generieren</span><span class="sm">Neu</span></button><button class="btn icon copy" type="button" data-copy="' + esc(x.url) + '" title="Link kopieren" aria-label="Link kopieren"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg></button><button class="btn icon del" type="button" data-del title="Demo löschen" aria-label="Demo ' + esc(x.name) + ' löschen">' + TRASH + '</button></div><div class="regen-slot"></div>');
+      if (isDeleting(x)) { card.classList.add("deleting"); $(".acts", card).innerHTML = '<span class="del-note">Wird gelöscht …</span>'; }
       box.appendChild(card);
       card._x = x; paintRate(card);
       var f = $("iframe", card); f.addEventListener("load", function () { if (f.src) { f.classList.add("ready"); $(".screen", card).classList.add("loaded"); } });
@@ -1491,7 +1537,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   function cardHTML(x) {
     var t = x.stufe || tierOf(x.punkte || 0), g = groupsOf(x), km = x.entfernung_km == null ? "" : " · " + String(x.entfernung_km).replace(".", ",") + " km";
     var cats = {}; (x.kategorien || []).forEach(function (k) { var n = k.gruppe || "Weitere"; (cats[n] = cats[n] || []).push(k); });
-    var badge = (DEC[x.place_id] || {}).aktion === "bauen" && x.col === "bauen" ? buildBadge(x) : x.col === "nie" && x.isDemo ? '<span class="c-badge hot">Demo wird entfernt</span>' : x.note ? '<span class="c-badge">Einzelstück · Note ' + x.note + "/10</span>" : "";
+    var badge = (DEC[x.place_id] || {}).aktion === "bauen" && x.col === "bauen" ? buildBadge(x) : x.col === "nie" && x.isDemo ? '<span class="c-badge work">Demo wird gelöscht</span>' : x.note ? '<span class="c-badge">Einzelstück · Note ' + x.note + "/10</span>" : "";
     return '<div class="c-top"><span class="tier ' + t + '" title="Stufe ' + t + '">' + t + '</span><b class="c-name" title="' + esc(x.name) + '">' + esc(x.name) + '</b><span class="c-score">' + (x.punkte || "–") + "<small>/100</small></span></div>" +
       '<div class="c-meta">' + esc([x.kueche, x.ort].filter(Boolean).join(" · ")) + km + "</div>" +
       (g.length ? '<div class="c-groups">' + g.map(function (k) { return '<span title="' + esc(k.name) + ": " + String(k.punkte).replace(".", ",") + " von " + String(k.max).replace(".", ",") + '">' + esc(k.name) + '<i><b style="width:' + (k.max ? Math.round(k.punkte / k.max * 100) : 0) + "%;background:" + (GCOL[k.name] || "#7BAFFF") + '"></b></i></span>'; }).join("") + "</div>" : "") + badge +
@@ -1649,6 +1695,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   function move(x, col) {
     var st = DATA.steuerung || {};
     if (!st.token) { Sound.play("deny"); toast("Steuerung noch nicht eingerichtet: Es fehlt das Secret COCKPIT_GITHUB_TOKEN."); return; }
+    if (col === "nie" && x.isDemo && !(DEC[x.place_id] && DEC[x.place_id].aktion === "nie")) { openDelete(x); return; }
     var prev = DEC[x.place_id] ? Object.assign({}, DEC[x.place_id]) : null;
     var action = col === "offen" ? "offen" : col;
     var entry = { aktion: action, name: x.name, kueche: x.kueche, ort: x.ort, punkte: x.punkte, zeit: new Date().toISOString() };
@@ -1657,7 +1704,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     var el = document.querySelector('.card[data-pid="' + x.place_id + '"]'); if (el) el.classList.add("flash");
     Sound.play(col === "bauen" ? "drop" : col === "nie" ? "trash" : "tick");
     persist(x.place_id, entry).then(function () {
-      toast(col === "bauen" ? x.name + " bekommt beim nächsten Lauf eine Website." : col === "nie" ? x.name + (x.isDemo ? ": Demo wird beim nächsten Lauf gelöscht." : " wird nie gebaut.") : x.name + " ist wieder ein normaler Kandidat.", function () { if (prev) DEC[x.place_id] = prev; else delete DEC[x.place_id]; renderRanks(DATA); persist(x.place_id, prev); Sound.play("close"); });
+      toast(col === "bauen" ? x.name + " bekommt beim nächsten Lauf eine Website." : col === "nie" ? x.name + " wird nie gebaut." : x.name + " ist wieder ein normaler Kandidat.", function () { if (prev) DEC[x.place_id] = prev; else delete DEC[x.place_id]; renderRanks(DATA); persist(x.place_id, prev); Sound.play("close"); });
     }).catch(function (err) {
       if (prev) DEC[x.place_id] = prev; else delete DEC[x.place_id]; renderRanks(DATA);
       Sound.play("error"); toast("Speichern hat nicht geklappt (" + err.message + "). Prüfe den Schlüssel COCKPIT_GITHUB_TOKEN.");
@@ -1818,6 +1865,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     var card = e.target.closest(".demo"); if (!card || !card._x) return;
     var t = e.target.closest("[data-rate]");
     if (t) { rate(card, +t.getAttribute("data-rate")); return; }
+    if (e.target.closest("[data-del]")) { openDelete(card._x); return; }
     if (e.target.closest("[data-regen]")) { if (!ctl()) return; card._regen = true; paintRate(card); Sound.play("open"); var ta = $(".regen-box textarea", card); if (ta) ta.focus({ preventScroll: true }); return; }
     if (e.target.closest("[data-cancel]")) { card._regen = false; card._wish = ""; paintRate(card); Sound.play("close"); return; }
     t = e.target.closest("[data-mode]");
@@ -1962,6 +2010,42 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   if ("IntersectionObserver" in window) {
     var navIO = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) document.querySelectorAll("#mnav a").forEach(function (a) { a.classList.toggle("on", a.dataset.sec === e.target.id); }); }); }, { rootMargin: "-45% 0px -50% 0px" });
     ["kpis", "rank-title", "demos-title", "cost", "runs-title"].forEach(function (id) { var el = document.getElementById(id); if (el) navIO.observe(el); });
+  }
+
+  /* ---------- Demo löschen: zwei Bestätigungen, dann sofort offline ---------- */
+  var TRASH = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/></svg>';
+  var delTarget = null, delReturn = null;
+  function isDeleting(x) { var d = typeof DEC === "object" && DEC && DEC[x.place_id]; return !!(d && d.aktion === "nie"); }
+  function delStep(n) { document.querySelectorAll("#delm [data-step]").forEach(function (el) { el.hidden = +el.dataset.step !== n; }); $("#delm").setAttribute("aria-labelledby", "delm-t" + n); }
+  function openDelete(x) {
+    if (!x || !ctl() || isDeleting(x)) return;
+    delTarget = x; delReturn = document.activeElement;
+    $("#delm-name").textContent = x.name; $("#delm-in").value = ""; $("#delm-go").disabled = true;
+    delStep(1); $("#delm").hidden = false; Sound.play("open");
+    setTimeout(function () { $("#delm-cancel1").focus(); }, 30);  // Abbrechen ist vorausgewählt: Enter löscht nie aus Versehen
+  }
+  function closeDelete(silent) {
+    $("#delm").hidden = true; delTarget = null; if (!silent) Sound.play("close");
+    if (delReturn && delReturn.focus) try { delReturn.focus({ preventScroll: true }); } catch (e) {}
+  }
+  $("#delm").addEventListener("click", function (e) {
+    if (e.target === this || e.target.closest("[data-x]")) { closeDelete(); return; }
+    if (e.target.closest("[data-next]")) { delStep(2); Sound.play("tick"); setTimeout(function () { $("#delm-in").focus(); }, 30); return; }
+    if (e.target.closest("#delm-go") && !$("#delm-go").disabled) { var x = delTarget; closeDelete(true); deleteDemo(x); }
+  });
+  $("#delm-in").addEventListener("input", function () { $("#delm-go").disabled = this.value.trim().toLowerCase() !== "löschen"; });
+  $("#delm-in").addEventListener("keydown", function (e) { if (e.key === "Enter" && !$("#delm-go").disabled) { e.preventDefault(); $("#delm-go").click(); } });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !$("#delm").hidden) closeDelete(); });
+  function deleteDemo(x) {
+    var prev = DEC[x.place_id] ? Object.assign({}, DEC[x.place_id]) : null;
+    var entry = { aktion: "nie", name: x.name, kueche: x.kueche, ort: x.ort, punkte: x.punkte, zeit: new Date().toISOString(), demo_loeschen: x.slug || true };
+    DEC[x.place_id] = entry; renderDemos(DATA); renderRanks(DATA); Sound.play("trash");
+    persist(x.place_id, entry).then(function () {
+      toast(x.name + (runBusy() ? ": wird gelöscht, sobald der laufende Lauf fertig ist." : ": wird gelöscht. In etwa einer Minute ist die Seite offline."));
+    }).catch(function (err) {
+      if (prev) DEC[x.place_id] = prev; else delete DEC[x.place_id]; renderDemos(DATA); renderRanks(DATA);
+      Sound.play("error"); toast("Löschen hat nicht geklappt (" + err.message + "). Die Demo ist noch online.");
+    });
   }
 
   /* ---------- Lauf starten / abbrechen: immer nur ein Lauf ---------- */
