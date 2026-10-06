@@ -731,7 +731,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "d1bfcc5474";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "6c908a735d";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -2033,7 +2033,8 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       "<dt>Mindestbewertung</dt><dd>" + String(e.mindestbewertung).replace(".", ",") + " ★, " + e.mindestanzahl + " Bewertungen</dd>" +
       "<dt>Demos löschen nach</dt><dd>" + e.loeschen_nach + " Tagen</dd>" +
       "<dt>Briefversand</dt><dd>" + (e.briefe_aktiv ? (e.briefmodus === "live" ? "an" : "an (Testmodus)") : "aus") + "</dd>" +
-      "<dt>KI-Modell</dt><dd>" + esc(e.modell) + "</dd></dl>";
+      "<dt>KI-Modell</dt><dd>" + esc(e.modell) + "</dd>" +
+      (e.demo_adresse && e.demo_adresse.name ? "<dt>Demo-Adresse</dt><dd>" + esc(e.demo_adresse.name) + " · " + ({ aktiv: "aktiv", zertifikat: "Zertifikat wird ausgestellt", dns_fehlt: "DNS-Eintrag fehlt noch", aus: "aus" }[e.demo_adresse.status] || "wird geprüft") + "</dd>" : "") + "</dl>";
   }
 
   /* Countdown */
