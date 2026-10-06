@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Food Lounge Bergedorf – Ciao Bella | Ruff's Burger, Bergedorfer Str. 135</title>
+<meta name="description" content="Pizza, Pasta und Burger unter einem Dach: Ciao Bella und Ruff's Burger in der Food Lounge Bergedorf, Bergedorfer Str. 135, Hamburg. Täglich 12–21 Uhr. Vor Ort, zum Mitnehmen, Lieferung. Telefon 040 72699777.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend+Exa:ital,wght@0,400;0,700;1,400&family=Familjen+Grotesk:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+:root{--papier:#F6F4EE;--bogen:#FCFBF7;--schiefer:#22323A;--profilhell:#3A4C55;--klinker:#A4472E;--blech:#8C9294;--grau:#58646A;--gruen:#2E8A55;--profil:6px;--d:"Lexend Exa",system-ui,sans-serif;--t:"Familjen Grotesk",system-ui,sans-serif;--rand:clamp(1rem,4vw,3rem);--luft:clamp(3rem,7vw,6rem)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--papier);color:var(--schiefer);font:400 clamp(1rem,.95rem + .25vw,1.125rem)/1.55 var(--t);overflow-x:hidden;hyphens:auto;-webkit-hyphens:auto}
+img{display:block;width:100%;height:100%;object-fit:cover}
+h1,h2,h3{font-family:var(--d);font-weight:700;line-height:1.05;margin:0;letter-spacing:-.02em;hyphens:manual}
+p{margin:0 0 1em;max-width:58ch}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--klinker);outline-offset:3px}
+.knopf{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 1.25rem;white-space:nowrap;background:var(--klinker);color:var(--papier);font:700 .95rem var(--d);text-decoration:none;letter-spacing:-.01em;border:0}
+.knopf:hover{background:#8a3a25}
+.knopf.leer{background:transparent;color:var(--schiefer);box-shadow:inset 0 0 0 2px var(--schiefer)}
+.knopf.leer:hover{background:var(--schiefer);color:var(--papier)}
+.strichzeichen{color:var(--klinker);font-weight:400;padding:0 .35em}
+[data-foto]{position:relative;margin:0;overflow:visible;background:#d9d8d2}
+.foto-nachweis{position:absolute;left:0;top:100%;z-index:4;color:#4a555c;font:400 .875rem/1.35 var(--t);padding:.4rem 0 0;text-decoration:none;max-width:100%}
+.foto-nachweis:hover{text-decoration:underline}
+
+.leiste{position:sticky;top:0;z-index:20;background:var(--schiefer);color:var(--papier)}
+.leiste-in{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:52px;padding:0 var(--rand);font-size:.9rem}
+.leiste-marke{font:700 .9rem var(--d);text-decoration:none;white-space:nowrap}
+.leiste-rechts{display:none;gap:.5rem}
+.leiste .knopf{min-height:44px;font-size:.875rem;padding:0 1rem}
+.leiste .knopf.leer{color:var(--papier);box-shadow:inset 0 0 0 2px var(--papier)}
+.leiste .knopf.leer:hover{background:var(--papier);color:var(--schiefer)}
+[data-status]{display:inline-flex;align-items:center;gap:.45em;white-space:nowrap}
+[data-status]::before{content:"";width:.55em;height:.55em;background:var(--blech)}
+[data-status][data-offen="ja"]{font-weight:700}
+[data-status][data-offen="ja"]::before{background:var(--papier)}
+[data-status][data-offen="nein"]::before{background:var(--klinker)}
+
+.fenster{display:grid;grid-template-columns:1fr}
+.scheibe{position:relative;display:flex;flex-direction:column;min-height:calc(100svh - 52px - 72px);background:#1f2d36;overflow:hidden}
+.fenster-bild{position:relative;flex:1 1 auto;min-height:42svh}
+.fenster-bild img{position:absolute;inset:0;object-position:60% 30%}
+
+.raster{position:absolute;inset:0;z-index:3;display:grid;grid-template-columns:5fr 3fr 2fr 2fr;pointer-events:none}
+.raster i{border-left:var(--profil) solid #1f2d36}
+.raster i:first-child{border-left:0}
+.raster::before{content:"";position:absolute;left:0;right:0;top:16%;height:var(--profil);background:#1f2d36}
+.marke{position:relative;z-index:1;margin:0;padding:clamp(1rem,2.5vw,1.75rem) var(--rand) clamp(1.25rem,3.5vw,2.75rem);background:#1f2d36;color:var(--papier);font-size:clamp(2.5rem,11vw,180px);line-height:.9;letter-spacing:-.04em}
+.marke span{display:block}
+.bogen{background:var(--bogen);color:var(--schiefer);padding:clamp(1.25rem,3vw,1.75rem);border-top:var(--profil) solid var(--klinker);font-size:.98rem}
+.bogen strong{display:block;font:700 1.05rem/1.3 var(--d);margin-bottom:.35rem}
+.bogen ul{list-style:none;margin:1rem 0 0;padding:1rem 0 0;border-top:1px solid var(--blech);display:flex;flex-wrap:wrap;gap:.2rem 0}
+.bogen li:not(:last-child)::after{content:"|";color:var(--klinker);padding:0 .45em}
+.bogen p{margin:0 0 .6rem}
+
+.theken{padding:var(--luft) var(--rand) 0}
+.theken>h2{font-size:clamp(1.6rem,4.2vw,3.4rem);max-width:18ch;margin-bottom:clamp(2rem,5vw,4rem)}
+.split{display:flex;flex-direction:column;gap:2.5rem}
+.strich{background:var(--klinker);height:8px}
+.theke h3{font-size:clamp(1.7rem,3.6vw,3rem);margin-bottom:.4rem}
+.theke .zeile{color:var(--grau);margin-bottom:1.5rem}
+
+.folie{list-style:none;margin:1.5rem 0;padding:var(--profil);display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:var(--profil);background:var(--schiefer);font:400 clamp(1.1rem,1.8vw,1.45rem)/1.25 var(--d);letter-spacing:-.02em}
+.folie li{padding:1rem 1.1rem;background:var(--bogen)}
+
+.f4{aspect-ratio:4/3;margin-bottom:2.25rem}
+.f2{aspect-ratio:3/4;width:min(100%,520px);margin-left:auto;margin-bottom:2.25rem}
+.hinweis{font-size:.92rem;color:var(--grau)}
+
+.tablett{display:flex;flex-direction:column;gap:2.5rem;padding:var(--luft) var(--rand);background:var(--bogen)}
+.f3{aspect-ratio:3/4;margin-inline:calc(-1*var(--rand))}
+.f3 img{object-position:50% 55%}
+.tablett h2{font-size:clamp(1.8rem,4.4vw,3.6rem);margin-bottom:1.2rem}
+.blech{padding:10px;background:var(--blech);aspect-ratio:4/3;margin-top:2rem;margin-bottom:2rem}
+.blech img{height:100%}
+
+.limo{border-block:var(--profil) solid var(--schiefer);padding:clamp(2rem,5vw,3.5rem) var(--rand);display:flex;flex-direction:column;gap:1rem}
+.limo h2{font-size:clamp(1.5rem,3.6vw,2.8rem)}
+.limo p{margin:0;font:400 clamp(1.05rem,2vw,1.5rem)/1.4 var(--d);letter-spacing:-.02em}
+
+.bestellen{padding:var(--luft) var(--rand)}
+.bestellen>h2{font-size:clamp(1.6rem,4.2vw,3.4rem);margin-bottom:clamp(1.5rem,4vw,3rem);max-width:20ch}
+.scheiben{display:grid;grid-template-columns:1fr;gap:var(--profil);background:var(--schiefer);padding:var(--profil)}
+.scheiben>div{background:var(--papier);padding:clamp(1.25rem,3vw,2.25rem);display:flex;flex-direction:column;align-items:flex-start;min-width:0}
+.scheiben h3{font-size:clamp(1.3rem,2.4vw,2rem);margin-bottom:.8rem}
+.scheiben .knopf{margin-top:auto}
+.scheiben p{flex:0 0 auto}
+.scheiben .gross{background:var(--klinker);color:var(--papier)}
+.scheiben .gross .knopf{background:var(--papier);color:var(--klinker)}
+.scheiben .gross .knopf:hover{background:var(--schiefer);color:var(--papier)}
+
+.zeiten{position:relative;overflow:hidden;background:var(--schiefer);color:var(--papier);padding:clamp(4rem,10vw,8rem) var(--rand) clamp(2.5rem,6vw,4rem)}
+.zeiten .raster i{border-color:var(--profilhell)}
+.zeiten .raster::before{display:none}
+.zeiten h2{position:relative;z-index:1;font-size:clamp(2.4rem,10vw,7rem);letter-spacing:-.03em;line-height:1}
+.zeiten h2 span{display:block}
+.zeiten p{position:relative;z-index:3;margin:clamp(2rem,4vw,3rem) 0 0;background:var(--schiefer);display:inline-block;padding-right:1rem}
+.zeiten a{color:var(--papier);font-weight:700}
+
+.anfahrt{display:grid;grid-template-columns:1fr;gap:var(--profil);background:var(--schiefer);padding:var(--profil);margin:var(--luft) var(--rand)}
+.anfahrt>*{background:var(--papier);min-width:0}
+.anfahrt-text{padding:clamp(1.25rem,3vw,2.25rem)}
+.anfahrt>.karte{order:3;display:flex;flex-direction:column;justify-content:space-between;gap:1.5rem;min-height:9rem;padding:clamp(1.25rem,3vw,2.25rem);background:var(--klinker);color:var(--papier);text-decoration:none;font:700 clamp(1.3rem,2.4vw,2rem)/1.1 var(--d);letter-spacing:-.02em}
+.anfahrt>.karte:hover{background:#8a3a25}
+.karte small{font:400 .95rem/1.4 var(--t);letter-spacing:0}
+.f5{margin:0;display:flex;flex-direction:column;background:var(--papier)}
+.f5 img{flex:1 1 auto;min-height:0;aspect-ratio:4/3;height:auto}
+.f5 .foto-nachweis{position:static;padding:.5rem .75rem}
+.anfahrt h2{font-size:clamp(1.6rem,3vw,2.8rem);margin-bottom:.4rem}
+.anfahrt .ort{font:400 clamp(1.1rem,2vw,1.5rem) var(--d);margin-bottom:1.5rem}
+.knoepfe{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
+
+.fuss{background:var(--klinker);color:var(--papier);padding:clamp(2.5rem,6vw,4rem) var(--rand) 2rem}
+.fuss-marke{font:700 clamp(1.4rem,3.4vw,2.6rem)/1.05 var(--d);letter-spacing:-.03em;margin-bottom:.5rem}
+.fuss-raster{display:grid;grid-template-columns:1fr;margin-bottom:2.5rem;border-top:var(--profil) solid var(--schiefer)}.fuss-raster>div{padding:1rem 0}.fuss-reihe{display:flex;flex-direction:column;align-items:flex-start;gap:.15rem;border-top:var(--profil) solid var(--schiefer)}.fuss-reihe>*{font:700 1.05rem/1.35 var(--d);letter-spacing:-.02em}.fuss-reihe>a,.fuss-reihe>span:last-child{white-space:nowrap}.fuss-raster p{margin:0}
+.fuss .strichzeichen{color:var(--papier)}
+.fuss a{min-height:44px;display:inline-flex;align-items:center}
+.rechtliches{font-size:.875rem}
+.rechtliches p{margin:0 0 .3rem}
+
+.daumen{position:fixed;left:0;right:0;bottom:0;z-index:20;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--profil);background:var(--schiefer);padding-top:var(--profil);padding-bottom:env(safe-area-inset-bottom)}
+.daumen a{min-height:56px;display:flex;align-items:center;justify-content:center;background:var(--papier);font:700 .9rem var(--d);text-decoration:none}
+.daumen a:first-child{background:var(--klinker);color:var(--papier)}
+body{padding-bottom:calc(72px + env(safe-area-inset-bottom))}
+
+@media (min-width:820px){
+ body{padding-bottom:0}
+ .daumen{display:none}
+ .leiste-rechts{display:flex}
+ .leiste-in{display:grid;grid-template-columns:1fr auto 1fr}
+ .leiste-rechts{justify-self:end}
+ .fenster{grid-template-columns:5fr 3fr 2fr 2fr}
+ .scheibe{grid-column:1/-1;grid-row:1;min-height:calc(100svh - 52px)}
+ .marke{font-size:clamp(64px,8.4vw,170px)}
+ .marke span:nth-child(-n+2){display:inline}
+ .fenster>.foto-nachweis{grid-row:2}
+ .zeiten h2{font-size:clamp(4rem,8.4vw,10rem)}
+ .zeiten h2 span{display:inline}
+ .bogen{grid-column:3/5;grid-row:1;align-self:start;z-index:4;margin:calc(16% + 1.5rem) var(--rand) 0 var(--profil);margin-top:clamp(6rem,11vw,10rem)}
+ .split{flex-direction:row;gap:0;align-items:flex-start}
+ .theke{flex:1 1 0;min-width:0;transition:flex-grow .4s cubic-bezier(.3,.7,.2,1)}
+ .t-l{padding-right:clamp(1.5rem,4vw,3.5rem)}
+ .t-r{padding-left:clamp(1.5rem,4vw,3.5rem)}
+ .strich{flex:0 0 8px;height:auto;align-self:stretch}
+ .split[data-fokus="l"] .t-l,.split[data-fokus="r"] .t-r{flex-grow:1.22}
+ .f2{position:relative;z-index:5;margin-bottom:-120px}
+ .tablett{flex-direction:row;align-items:flex-start;gap:clamp(2rem,5vw,5rem);padding-top:var(--luft)}
+ .f3{flex:0 0 50%;margin:0 0 0 calc(-1*var(--rand))}
+ .tablett-rechts{flex:1;min-width:0;padding-top:calc(150px - var(--luft))}
+ .limo{flex-direction:row;align-items:baseline;justify-content:space-between;gap:2rem}
+ .scheiben{grid-template-columns:4fr 3fr 5fr}
+ .anfahrt{grid-template-columns:5fr 3fr 2fr 2fr}
+ .f5{grid-column:1/2;grid-row:1/3}
+ .anfahrt-text{grid-column:2/5;grid-row:1}
+ .anfahrt>.karte{grid-column:2/5;grid-row:2}
+}
+@media (min-width:1200px){
+ .bogen{grid-column:4/5;margin-right:0}
+ .scheiben{grid-template-columns:4fr 2fr 6fr}
+}
+@media (prefers-reduced-motion:no-preference){
+ .marke{animation:folie .72s steps(3,jump-none) .25s both}
+}
+@keyframes folie{from{clip-path:inset(0 66% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@media (prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ .theke{transition:none}
+ .marke{animation:none}
+}
+[id]{scroll-margin-top:64px}
+.unsichtbar{position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+.folie small{display:block;font:400 .95rem/1.4 var(--t);color:var(--grau);letter-spacing:0;margin-top:.25rem}
+.f3{margin-bottom:2.25rem}
+.f3 .foto-nachweis{left:var(--rand)}
+.fenster>.foto-nachweis{position:static;display:block;grid-column:1/-1;padding:.5rem var(--rand) 0}
+.fuss-raster a{color:var(--papier)}
+@media (max-width:1023px){.leiste-marke{display:none}}
+@media (min-width:820px){.fuss-raster{grid-template-columns:5fr 7fr}.fuss-reihe{border-top:0;border-left:var(--profil) solid var(--schiefer);padding:1rem 0 1rem 1.5rem}}
+@media (min-width:1200px){.fuss-reihe{flex-direction:row;flex-wrap:wrap;align-items:center;gap:0 2.5rem}}
+</style>
+<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}</style></head>
+<body><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für Food Lounge Bergedorf. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
+
+<header class="leiste">
+ <div class="leiste-in">
+  <span data-status></span>
+  <a class="leiste-marke" href="#theken">Ciao Bella<span class="strichzeichen">|</span>Ruff's Burger</a>
+  <div class="leiste-rechts">
+   <a class="knopf leer" href="#bestellen">Reservieren</a>
+   <a class="knopf" href="tel:+494072699777">040 72699777</a>
+  </div>
+ </div>
+</header>
+
+<main>
+ <section class="fenster" aria-labelledby="titel">
+  <div class="scheibe">
+   <div class="fenster-bild" data-foto>
+    <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmPjrMK9JdfeOxxX3FfYlcpRsYkffa6lnBBOZHej2nfRQoWe6Oi55SjTl8X2DWcT9Jt2kbOQJMUq5pdAIDmvrUbES5DN8KErNJzvsFzQCoxvLrCd0a5wwUisCcZ2_sTv8PLE-drD=s4800-w1800" referrerpolicy="no-referrer" width="1600" height="1200" fetchpriority="high" alt="Glasfront der Food Lounge Bergedorf mit den Schriftzügen Ciao Bella und Ruff's Burger bei Sonnenschein">
+   </div>
+   <h1 class="marke" id="titel"><span>Food</span> <span>Lounge</span> <span>Bergedorf</span></h1>
+   <div class="raster" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  </div>
+  <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/114570488234749848784" target="_blank" rel="noopener">Foto: Food Lounge Bergedorf (Ruff&#x27;s Burger/Ciao Bella) · Google Maps</a>
+  <aside class="bogen" aria-label="Kurzinfo">
+   <strong>Bergedorfer Str. 135</strong>
+   <p>21029 Hamburg</p>
+   <p>Jeden Tag 12–21 Uhr</p>
+   <ul><li>Vor Ort</li><li>Mitnehmen</li><li>Liefern</li><li>Draußen</li></ul>
+  </aside>
+ </section>
+
+ <section class="theken" id="theken" aria-labelledby="theken-titel">
+  <h2 id="theken-titel">Zwei Theken, ein Gastraum.</h2>
+  <div class="split">
+   <div class="theke t-l" data-seite="l">
+    <h3><span class="ciao">Ciao Bella</span></h3>
+    <p class="zeile">Pizza, Pasta, Salat.</p>
+    <figure class="f4" data-foto>
+     <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmOxZhSks4ULyPfJXJgUleGdQCXH-upqSfHdkK3bYK1QKxUSQ13yB46mMkOtHRZO1kNVVtjDVXZxBUnckt85wpchf_4yyQ7AHjaNzTshDsp63DIVXKCSyLyaFT4XzNiY1dtqeg-Kbw4oMEM=s4800-w1000" referrerpolicy="no-referrer" width="1200" height="900" loading="lazy" alt="Pizza mit Salami, Schinken, Pilzen und Artischocken auf einem Holztisch">
+     <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/105765425833928185104" target="_blank" rel="noopener">Foto: Andreea Ioana Frunza · Google Maps</a>
+    </figure>
+    <ul class="folie">
+     <li>Pizza<small>Zum Beispiel mit Salami, Schinken, Pilzen und Artischocken</small></li>
+     <li>Pasta<small>Nudeln aus der offenen Küche</small></li>
+     <li>Caesar Salat<small>Römersalat, Croûtons, Parmesan, Dressing</small></li>
+     <li>Vegetarisch<small>Pizza, Pasta und Salat ohne Fleisch</small></li>
+    </ul>
+   </div>
+   <div class="strich" aria-hidden="true"></div>
+   <div class="theke t-r" data-seite="r">
+    <h3>Ruff's Burger</h3>
+    <p class="zeile">Burger, Pommes, BBQ.</p>
+    <ul class="folie">
+     <li>Pulled-Pork-Burger<small>Pulled Pork, Coleslaw, Salat</small></li>
+     <li>Chicken Burger<small>Hähnchen statt Rind</small></li>
+     <li>Trüffelburger</li>
+    </ul>
+    <figure class="f2" data-foto>
+     <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmMNCfsT3zc4K6QprxvPvHf3uuXSCRT6WQf89JzzkE4XdHs-l7paH4wVAWXUhQFuFvlOaGIkJZfsgLHaU0gIA4dEnAVOlDzFSUKqlpCqsWLG_2kQV4uWGEo_oaixAMmQi-8vBpqHgg=s4800-w1000" referrerpolicy="no-referrer" width="900" height="1200" loading="lazy" alt="Pulled-Pork-Burger mit Coleslaw und Salat im Burgerpapier">
+     <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/114570488234749848784" target="_blank" rel="noopener">Foto: Food Lounge Bergedorf (Ruff&#x27;s Burger/Ciao Bella) · Google Maps</a>
+    </figure>
+   </div>
+  </div>
+ </section>
+
+ <section class="tablett" aria-labelledby="tablett-titel">
+  <figure class="f3" data-foto>
+   <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmO4EuRn77hhcxY1_tOOEqlt8ct8CVFMXOkG0pcrSfNV6GGYTZcee1q8TFZorn0S90Y6a_AzsfM_Lh42snc8gt7BGj1ElvSnL29Zq4trTlgAY_Ul11nP9y9z4np9aLkTnVKcev3au7w-y0o=s4800-w1000" referrerpolicy="no-referrer" width="900" height="1200" loading="lazy" alt="BBQ-Platte mit Rippchen, Chicken Wings und Brot, dazu Cheese-Fries und Rotkohlsalat">
+   <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/102497673419898396126" target="_blank" rel="noopener">Foto: Tom Merkel · Google Maps</a>
+  </figure>
+  <div class="tablett-rechts">
+   <h2 id="tablett-titel">Das Tablett</h2>
+   <p>Die BBQ-Platte kommt mit Rippchen und Chicken Wings. Daneben, was auf jedes Blech passt:</p>
+   <ul class="folie">
+    <li>Cheese-Fries mit Bacon</li>
+    <li>Trüffelpommes</li>
+    <li>Pommes</li>
+    <li>Rotkohlsalat</li>
+   </ul>
+   <p class="hinweis">Die vollständige Karte mit Preisen liegt vor Ort aus. Fragen zur Karte: <a href="tel:+494072699777">040 72699777</a></p>
+   <figure class="blech" data-foto>
+    <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmP9oHwWqT6zg8ErEO4VIEIshR9qzXO9xjAAevOCJoWYHkVZ2o5IC8CSSJEKLGAXdBJozs0abqecEeQIy4K_n52LOY2stQJVaYhQ3jiMt6P8y0UHZ82HrVSpaEkFcKwLFfp7N-Yd_ATrHS8=s4800-w1000" referrerpolicy="no-referrer" width="1200" height="900" loading="lazy" alt="Burger mit Süßkartoffelpommes und Dip auf einem Tablett">
+    <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/107228774449228980558" target="_blank" rel="noopener">Foto: max R · Google Maps</a>
+   </figure>
+  </div>
+ </section>
+
+ <section class="limo" aria-labelledby="limo-titel">
+  <h2 id="limo-titel">Limo machen wir selbst.</h2>
+  <p>Dazu Bier<span class="strichzeichen">|</span>Wein<span class="strichzeichen">|</span>Kaffee<span class="strichzeichen">|</span>Desserts</p>
+ </section>
+
+ <section class="bestellen" id="bestellen" aria-labelledby="bestellen-titel">
+  <h2 id="bestellen-titel">Hier essen, mitnehmen oder liefern lassen.</h2>
+  <div class="scheiben">
+   <div>
+    <h3>Mitnehmen</h3>
+    <p>Anrufen, bestellen, abholen. Alles von beiden Theken, auf Wunsch zusammen in einer Tüte.</p>
+    <a class="knopf" href="tel:+494072699777">Bestellen: 040 72699777</a>
+   </div>
+   <div>
+    <h3>Liefern</h3>
+    <p>Lieferservice gibt es. Liefergebiet am Telefon.</p>
+    <a class="knopf leer" href="tel:+494072699777">Nachfragen</a>
+   </div>
+   <div class="gross">
+    <h3>Tisch reservieren</h3>
+    <p>Holztische drinnen mit Blick in die offene Küche, Plätze draußen an der Bergedorfer Straße. Mittags wie abends.</p>
+    <a class="knopf" href="tel:+494072699777">Tisch anfragen: 040 72699777</a>
+   </div>
+  </div>
+ </section>
+
+ <section class="zeiten" id="zeiten" aria-labelledby="zeiten-titel">
+  <div class="raster" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <h2 id="zeiten-titel" aria-label="Montag bis Sonntag, 12 bis 21 Uhr"><span>Mo–So </span><span>12–21 Uhr</span></h2>
+  <p>Jeden Tag von 12 bis 21 Uhr. Mitnehmen geht auch, anrufen reicht: <a href="tel:+494072699777">040 72699777</a></p>
+ </section>
+
+ <section class="anfahrt" id="anfahrt" aria-labelledby="anfahrt-titel">
+  <a class="karte" href="https://www.openstreetmap.org/search?query=Bergedorfer%20Str.%20135%2C%2021029%20Hamburg" target="_blank" rel="noopener"><span>Auf der Karte ansehen</span><small>OpenStreetMap · Bergedorfer Str. 135, 21029 Hamburg-Bergedorf</small></a>
+  <figure class="f5" data-foto>
+   <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmN3860UPJTeWp8V8d9YRqNnoe_ntH8FaUHaiToRvXcRrF6oETQPmOzQI5EaRfad3ACeU8OESqcOi5vrZK2Esgmeg6JSh5LzOGyQhLL8A37KzJmmUDoSfaqWJhultJUeEXYgvexkG6Lm-6NS=s4800-w1000" referrerpolicy="no-referrer" width="1200" height="904" loading="lazy" alt="Gastraum mit Holztischen und der offenen Küche von Ruff's Burger und Ciao Bella">
+   <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/107488974940995387831" target="_blank" rel="noopener">Foto: Julian · Google Maps</a>
+  </figure>
+  <div class="anfahrt-text">
+   <h2 id="anfahrt-titel">Bergedorfer Str. 135</h2>
+   <p class="ort">21029 Hamburg</p>
+   <p>Hinter der langen Glasfront: zwei Theken, ein Gastraum, Plätze draußen.</p>
+   <div class="knoepfe">
+    <a class="knopf" href="https://www.google.com/maps/dir/?api=1&amp;destination=Bergedorfer+Str.+135,+21029+Hamburg" target="_blank" rel="noopener">Route planen</a>
+    <a class="knopf leer" href="tel:+494072699777">040 72699777</a>
+   </div>
+  </div>
+ </section>
+</main>
+
+<footer class="fuss">
+ <div class="fuss-raster"><div><p class="fuss-marke">Food Lounge Bergedorf</p>
+ <p>Ciao Bella<span class="strichzeichen">|</span>Ruff's Burger</p></div>
+ <div class="fuss-reihe">
+  <span>Bergedorfer Str. 135, 21029 Hamburg</span>
+  <a href="tel:+494072699777">040 72699777</a>
+  <span>Mo–So 12–21 Uhr</span>
+ </div>
+ </div><div class="rechtliches"><p>Entwurf von Medialyte, 21147 Hamburg. Adresse und Öffnungszeiten: Google. Fotos: Google Maps, Urheber jeweils am Bild.</p><p><a href="https://medialyte.de/impressum">Impressum</a> · <a href="https://medialyte.de/datenschutzerklaerung">Datenschutz</a></p></div>
+</footer>
+
+<nav class="daumen" aria-label="Schnellzugriff">
+ <a href="tel:+494072699777">Anrufen</a>
+ <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Bergedorfer+Str.+135,+21029+Hamburg" target="_blank" rel="noopener">Route</a>
+ <a href="#theken">Karte</a>
+</nav>
+
+<script>
+(()=>{const s=document.querySelector('.split'),m=matchMedia('(prefers-reduced-motion: reduce)');
+s.querySelectorAll('.theke').forEach(t=>{
+t.addEventListener('pointerenter',()=>{if(!m.matches)s.dataset.fokus=t.dataset.seite});
+t.addEventListener('pointerleave',()=>{delete s.dataset.fokus});
+});})();
+</script>
+<div style="padding:16px;font:12px/1.5 system-ui,sans-serif;background:#111;color:#ddd">Fotos: <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/114570488234749848784" target="_blank" rel="noopener">Foto: Food Lounge Bergedorf (Ruff&#x27;s Burger/Ciao Bella) · Google Maps</a>, <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/114570488234749848784" target="_blank" rel="noopener">Foto: Food Lounge Bergedorf (Ruff&#x27;s Burger/Ciao Bella) · Google Maps</a></div><script>(function(){
+var P=[[720, 1260], [2160, 2700], [3600, 4140], [5040, 5580], [6480, 7020], [7920, 8460], [9360, 9900]];
+function fmt(m){m=((m%1440)+1440)%1440;var h=Math.floor(m/60),mi=m%60;return (h<10?'0':'')+h+':'+(mi<10?'0':'')+mi;}
+function now(){var d=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Berlin'}));return d.getDay()*1440+d.getHours()*60+d.getMinutes();}
+function status(){if(!P.length)return null;var t=now(),W=10080;
+ for(var i=0;i<P.length;i++){var s=P[i][0],e=P[i][1];if((t>=s&&t<e)||(t+W>=s&&t+W<e))return {offen:true,text:'Jetzt geöffnet bis '+fmt(e)};}
+ var best=null;for(var j=0;j<P.length;j++){var d=(P[j][0]-t+W)%W;if(best===null||d<best.d)best={d:d,s:P[j][0]};}
+ var tag=Math.floor(t/1440),ot=Math.floor(best.s/1440)%7,names=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+ var when=best.d<1440&&ot===tag?'heute':(best.d<2880&&ot===(tag+1)%7?'morgen':names[ot]);
+ return {offen:false,text:'Geschlossen · öffnet '+when+' um '+fmt(best.s)};}
+function run(){var s=status();document.querySelectorAll('[data-status]').forEach(function(el){
+ if(!s){el.style.display='none';return;}el.textContent=s.text;el.setAttribute('data-offen',s.offen?'ja':'nein');});}
+document.querySelectorAll('[data-foto] img').forEach(function(img){
+ function hide(){var b=img.closest('[data-foto]');if(b)b.style.display='none';}
+ if(!img.getAttribute('src'))hide();else{img.addEventListener('error',hide);if(img.complete&&img.naturalWidth===0)hide();}});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();setInterval(run,60000);
+})();</script></body>
+</html>
