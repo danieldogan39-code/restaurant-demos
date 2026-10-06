@@ -4,27 +4,28 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow, noarchive">
-<meta name="theme-color" content="#0F1A31">
-<title>Testburger Werk – Hamburgerrestaurant in Hamburg</title>
-<meta name="description" content="Testburger Werk: Hamburgerrestaurant in Schanzenstraße 99, Hamburg. Öffnungszeiten, Anfahrt und Kontakt.">
-<meta property="og:title" content="Testburger Werk – Hamburgerrestaurant in Hamburg">
-<meta property="og:description" content="Testburger Werk: Hamburgerrestaurant in Schanzenstraße 99, Hamburg. Öffnungszeiten, Anfahrt und Kontakt.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23F5C518'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' text-anchor='middle' fill='%2313203B'%3ET%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#F8EDE4">
+<title>Café Beispiel – Café in Hamburg</title>
+<meta name="description" content="Café Beispiel: Café in Lüneburger Straße 12, Hamburg. Öffnungszeiten, Anfahrt und Kontakt.">
+<meta property="og:title" content="Café Beispiel – Café in Hamburg">
+<meta property="og:description" content="Café Beispiel: Café in Lüneburger Straße 12, Hamburg. Öffnungszeiten, Anfahrt und Kontakt.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23C96F4A'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' text-anchor='middle' fill='%23111111'%3EC%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&amp;family=Nunito:wght@400;600;700&amp;family=Caveat:wght@600&amp;display=swap">
 <style>
 :root {
-  --bg: #EDECE8; --surface: #FFFFFF; --ink: #13203B; --muted: #4A5468;
-  --accent: #F5C518; --accent-ink: #13203B; --accent2: #3D6BFF;
-  --line: #D3D2CC;
-  --hero-bg: #0F1A31; --hero-ink: #F4F3EE; --hero-muted: #AEB6C8;
-  --blob1: #F5C518; --blob2: #3D6BFF; --blob3: #FF6B5A;
-  --display: &#39;Archivo&#39;, system-ui, sans-serif; --body: &#39;Archivo&#39;, system-ui, sans-serif;
-  --dw: 850; --ds: 68%; --dt: -0.01em;
-  --dcase: uppercase; --dstyle: normal;
-  --radius: 6px; --btn-radius: 6px;
-  --name-scale: 0.900;
+  --bg: #FBF4EC; --surface: #FEFBF8; --ink: #32241B; --muted: #7E736A;
+  --accent: #C96F4A; --accent-ink: #111111; --accent2: #729486;
+  --line: #DBD3CB;
+  --hero-bg: #F8EDE4; --hero-ink: #32241B; --hero-muted: #786D64;
+  --blob1: #C96F4A; --blob2: #7FA595; --blob3: #A48A70;
+  --raw1: #C96F4A; --raw2: #7FA595; --dark: #3B2A20; --light: #FBF4EC;
+  --display: &#39;Young Serif&#39;, Georgia, serif; --body: &#39;Nunito&#39;, system-ui, sans-serif;
+  --dw: 400; --ds: normal; --dt: -0.01em;
+  --dcase: none; --dstyle: normal;
+  --radius: 20px; --btn-radius: 999px;
+  --name-scale: 1.000;
   --ease: cubic-bezier(.2,.75,.15,1);
   --spring: cubic-bezier(.34,1.56,.64,1);
 }
@@ -127,7 +128,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .theme-mediterran .marquee, .theme-hanseatisch .marquee { border-block: 0; }
 .marquee-track { display: flex; width: max-content; will-change: transform; }
 .marquee-track span { font-size: clamp(1.15rem, 2.4vw, 1.6rem); padding-inline: 1.25rem; white-space: nowrap; display: inline-flex; align-items: center; gap: 2.5rem; }
-.marquee-track span::after { content: "✦"; font-family: var(--body); font-size: .8em; opacity: .7; }
+.marquee-track span::after { content: "☕"; font-family: var(--body); font-size: .8em; opacity: .7; }
 
 /* ---------- Abschnitte ---------- */
 section.block { padding: clamp(4rem, 10vw, 8rem) 0; position: relative; }
@@ -340,13 +341,51 @@ footer nav { display: flex; gap: 1.25rem; }
   .photo { clip-path: none; }
   .about-text .word { opacity: 1; }
 }
+.hero.no-photo [class$="-grid"] { grid-template-columns: minmax(0, 1fr); max-width: 64rem; }
+.hero.no-photo .iz-grid { grid-template-columns: auto minmax(0, 1fr); }
+/* ===== Welt: Kaffeehaus – Milchkaffee, Dampf, Polaroids zum Verschieben, Handschrift ===== */
+.welt-kaffeehaus .hand { font-family: "Caveat", cursive; font-weight: 600; }
+.welt-kaffeehaus .hero { background: radial-gradient(80% 60% at 20% 20%, #fff, var(--hero-bg) 70%); }
+.welt-kaffeehaus .nav:not(.solid) { color: var(--ink); }
+.kh-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3rem; align-items: center; }
+.cup { width: 4.8rem; height: 4.8rem; color: var(--raw1); margin-bottom: .5rem; overflow: visible; }
+.cup .steam path { stroke-dasharray: 40; animation: steam 3s ease-in-out infinite; opacity: 0; }
+.cup .steam path:nth-child(2) { animation-delay: .6s; } .cup .steam path:nth-child(3) { animation-delay: 1.2s; }
+@keyframes steam { 0% { stroke-dashoffset: 40; opacity: 0; transform: translateY(6px); } 40% { opacity: .9; } 100% { stroke-dashoffset: -40; opacity: 0; transform: translateY(-10px); } }
+.kh-gruss { font-size: 2rem; color: var(--raw1); margin: 0 0 .2rem; transform: rotate(-2deg); }
+.welt-kaffeehaus .hero h1 { color: var(--ink); font-size: calc(clamp(3rem, 9vw, 7rem) * var(--name-scale)); line-height: .95; }
+.welt-kaffeehaus .status { background: #fff; color: var(--ink); border-color: var(--line); }
+.welt-kaffeehaus .btn-ghost { color: var(--ink); }
+.polas { position: relative; height: 34rem; }
+.pola { position: absolute; width: 15rem; background: #fff; padding: .7rem .7rem 2.6rem; box-shadow: 0 18px 40px -16px rgba(60, 40, 20, .45); cursor: grab; touch-action: none; transform: rotate(var(--r)); animation: polaIn .9s var(--spring) both; animation-delay: calc(.5s + var(--i) * .18s); }
+.pola:active { cursor: grabbing; }
+.pola img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; pointer-events: none; }
+.pola::before { content: ""; position: absolute; top: -12px; left: 50%; width: 5.5rem; height: 1.6rem; margin-left: -2.75rem; background: color-mix(in srgb, var(--raw2) 55%, transparent); transform: rotate(-4deg); }
+.pola figcaption { position: absolute; left: 0; right: 0; bottom: .5rem; text-align: center; font-family: "Caveat", cursive; font-size: 1.3rem; color: #555; }
+.pola .credit { top: 1rem; bottom: auto; left: 1rem; }
+@keyframes polaIn { from { opacity: 0; transform: translateY(-80px) rotate(calc(var(--r) * -2)); } }
+.drag-note { position: absolute; right: 0; bottom: -1rem; font-family: "Caveat", cursive; font-size: 1.3rem; color: var(--muted); }
+.welt-kaffeehaus .marquee { background: var(--raw2); color: #fff; border-block: 0; }
+.welt-kaffeehaus .marquee-track span { font-family: "Caveat", cursive; font-size: 1.8rem; text-transform: none; }
+.welt-kaffeehaus .marquee-track span::after { content: "♥"; font-size: .7em; }
+.welt-kaffeehaus .card { border: 0; background: #fff; box-shadow: 0 14px 30px -18px rgba(60, 40, 20, .4); }
+.welt-kaffeehaus .card h3 { font-family: var(--display); font-weight: 400; }
+.welt-kaffeehaus .card .icon { background: color-mix(in srgb, var(--raw2) 30%, #fff); color: var(--ink); }
+.welt-kaffeehaus .menu-wrap { background: #fff; color: var(--ink); --hero-ink: var(--ink); --hero-muted: var(--muted); box-shadow: 0 30px 60px -40px rgba(60, 40, 20, .5); }
+.welt-kaffeehaus .menu-wrap .kicker { color: var(--raw1); }
+.welt-kaffeehaus .tab { color: var(--muted); }
+.welt-kaffeehaus .dish { border-bottom-color: var(--line); }
+.welt-kaffeehaus .dish .d-price { color: var(--raw1); }
+.welt-kaffeehaus .finale { background: var(--raw1); }
+.welt-kaffeehaus .finale .big { font-family: "Caveat", cursive; }
+@media (max-width: 860px) { .kh-grid { grid-template-columns: 1fr; } .polas { height: 26rem; } .pola { width: 11rem; } }
 </style>
 </head>
-<body class="theme-urban">
+<body class="theme-kaffeehaus welt-kaffeehaus custom">
 
 <div class="demo-bar" id="demo-bar" role="note">
   <div class="wrap">
-    <span>Unverbindlicher Entwurf von Medialyte für Testburger Werk. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht.</span>
+    <span>Unverbindlicher Entwurf von Medialyte für Café Beispiel. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht.</span>
     <span>Gefällt Ihnen der Entwurf? <a href="tel:01709647532">0170 9647532</a>
       <button type="button" aria-label="Hinweis ausblenden" data-close-bar>×</button></span>
   </div>
@@ -356,13 +395,13 @@ footer nav { display: flex; gap: 1.25rem; }
 
 <header class="nav has-bar" id="nav">
   <div class="wrap">
-    <a class="brand display" href="#top"><span>Testburger Werk</span></a>
+    <a class="brand display" href="#top"><span>Café Beispiel</span></a>
     <nav class="nav-links" aria-label="Hauptnavigation">
       <a href="#ueber-uns">Über uns</a>
       <a href="#speisekarte">Speisekarte</a>
       <a href="#zeiten">Öffnungszeiten</a>
       <a href="#anfahrt">Anfahrt</a>
-<a class="btn btn-primary btn-small magnetic" href="tel:0402223334">Anrufen</a>    </nav>
+<a class="btn btn-primary btn-small magnetic" href="tel:04012345678">Anrufen</a>    </nav>
     <button class="burger" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="overlay"><span></span><span></span></button>
   </div>
 </header>
@@ -373,47 +412,42 @@ footer nav { display: flex; gap: 1.25rem; }
     <a class="display" style="--i:1" href="#speisekarte">Speisekarte</a>
     <a class="display" style="--i:2" href="#zeiten">Öffnungszeiten</a>
     <a class="display" style="--i:3" href="#anfahrt">Anfahrt</a>
-<a class="display" style="--i:4" href="tel:0402223334">Anrufen</a>  </nav>
+<a class="display" style="--i:4" href="tel:04012345678">Anrufen</a>  </nav>
 </div>
 
 <main id="top">
-  <section class="hero v-typo" aria-labelledby="name">
-    <div class="aurora" aria-hidden="true"><div class="blob"><i></i></div><div class="blob"><i></i></div><div class="blob"><i></i></div></div>
-    <div class="grain" aria-hidden="true"></div>
-    <div class="wrap hero-inner">
+  <section class="hero no-photo" aria-labelledby="name">
+    <div class="wrap kh-grid">
       <div>
+        <svg class="cup" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><g class="steam"><path d="M22 18c-4-5 4-7 0-12"/><path d="M32 18c-4-5 4-7 0-12"/><path d="M42 18c-4-5 4-7 0-12"/></g><path d="M12 26h40v12a16 16 0 0 1-16 16h-8a16 16 0 0 1-16-16z"/><path d="M52 30h4a6 6 0 0 1 0 12h-5"/><path d="M8 60h48"/></svg>
         <div class="status" id="status" hidden><span class="dot"></span><span id="status-text"></span></div>
-        <h1 class="display" id="name" aria-label="Testburger Werk"><span class="w" aria-hidden="true"><span class="ch" style="--i:0">T</span><span class="ch" style="--i:1">e</span><span class="ch" style="--i:2">s</span><span class="ch" style="--i:3">t</span><span class="ch" style="--i:4">b</span><span class="ch" style="--i:5">u</span><span class="ch" style="--i:6">r</span><span class="ch" style="--i:7">g</span><span class="ch" style="--i:8">e</span><span class="ch" style="--i:9">r</span></span> <span class="w" aria-hidden="true"><span class="ch" style="--i:10">W</span><span class="ch" style="--i:11">e</span><span class="ch" style="--i:12">r</span><span class="ch" style="--i:13">k</span></span></h1>
-        <p class="slogan">Hamburgerrestaurant in Hamburg</p>
-        <p class="lead">Schön, dass Sie da sind. Bei Testburger Werk in Schanzenstraße 99 sind Sie herzlich willkommen.</p>
+<p class="kh-gruss hand">Schön, dass du da bist</p>        <h1 class="display" id="name" aria-label="Café Beispiel"><span class="w" aria-hidden="true"><span class="ch" style="--i:0">C</span><span class="ch" style="--i:1">a</span><span class="ch" style="--i:2">f</span><span class="ch" style="--i:3">é</span></span> <span class="w" aria-hidden="true"><span class="ch" style="--i:4">B</span><span class="ch" style="--i:5">e</span><span class="ch" style="--i:6">i</span><span class="ch" style="--i:7">s</span><span class="ch" style="--i:8">p</span><span class="ch" style="--i:9">i</span><span class="ch" style="--i:10">e</span><span class="ch" style="--i:11">l</span></span></h1>
+        <p class="slogan">Café in Hamburg</p>
+        <p class="lead">Schön, dass Sie da sind. Bei Café Beispiel in Lüneburger Straße 12 sind Sie herzlich willkommen.</p>
         <div class="actions">
-<a class="btn btn-primary magnetic" href="tel:0402223334"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>040 2223334</a>          <a class="btn btn-ghost magnetic" href="#speisekarte">Zur Speisekarte</a>
-        </div>
+<a class="btn btn-primary magnetic" href="tel:04012345678"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>040 12345678</a>  <a class="btn btn-ghost magnetic" href="#speisekarte">Zur Speisekarte</a>
+</div>
       </div>
-<div class="badge" aria-hidden="true">
-        <svg viewBox="0 0 120 120"><defs><path id="circle" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs>
-          <text><textPath href="#circle" textLength="286" lengthAdjust="spacing">HAMBURGERRESTAURANT • HAMBURG • </textPath></text></svg>
-<span class="glyph">✦</span>      </div>    </div>
-    <a class="scroll-cue" href="#ueber-uns" aria-label="Weiter nach unten"></a>
+    </div>
   </section>
 
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track" id="marquee">
-<span class="display">Hamburgerrestaurant</span><span class="display">in Hamburg</span><span class="display">Vor Ort essen</span><span class="display">Zum Mitnehmen</span><span class="display">Lieferservice</span><span class="display">Vegetarische Gerichte</span><span class="display">Hamburgerrestaurant</span><span class="display">in Hamburg</span><span class="display">Vor Ort essen</span><span class="display">Zum Mitnehmen</span><span class="display">Lieferservice</span><span class="display">Vegetarische Gerichte</span><span class="display">Hamburgerrestaurant</span><span class="display">in Hamburg</span><span class="display">Vor Ort essen</span><span class="display">Zum Mitnehmen</span><span class="display">Lieferservice</span><span class="display">Vegetarische Gerichte</span><span class="display">Hamburgerrestaurant</span><span class="display">in Hamburg</span><span class="display">Vor Ort essen</span><span class="display">Zum Mitnehmen</span><span class="display">Lieferservice</span><span class="display">Vegetarische Gerichte</span>    </div>
+<span class="display">Café</span><span class="display">in Hamburg</span><span class="display">Vor Ort essen</span><span class="display">Zum Mitnehmen</span><span class="display">Plätze draußen</span><span class="display">Tischreservierung möglich</span><span class="display">Wein</span><span class="display">Café</span><span class="display">in Hamburg</span><span class="display">Vor Ort essen</span><span class="display">Zum Mitnehmen</span><span class="display">Plätze draußen</span><span class="display">Tischreservierung möglich</span><span class="display">Wein</span><span class="display">Café</span><span class="display">in Hamburg</span><span class="display">Vor Ort essen</span><span class="display">Zum Mitnehmen</span><span class="display">Plätze draußen</span><span class="display">Tischreservierung möglich</span><span class="display">Wein</span><span class="display">Café</span><span class="display">in Hamburg</span><span class="display">Vor Ort essen</span><span class="display">Zum Mitnehmen</span><span class="display">Plätze draußen</span><span class="display">Tischreservierung möglich</span><span class="display">Wein</span>    </div>
   </div>
 
   <section class="block" id="ueber-uns">
     <div class="wrap about">
       <div class="about-text">
         <div class="kicker reveal">Über uns</div>
-<p class="scrub">Testburger Werk ist Ihr Ort für Hamburgerrestaurant in Hamburg. Kommen Sie vorbei, wir freuen uns auf Sie.</p>      </div>
+<p class="scrub">Café Beispiel ist Ihr Ort für Café in Hamburg. Kommen Sie vorbei, wir freuen uns auf Sie.</p>      </div>
 <div class="photo reveal-clip"><span><b>Ihr Foto</b>Hier zeigen wir Ihren Gastraum, Ihr Team oder Ihr Lieblingsgericht.</span></div>    </div>
   </section>
 
   <section class="block" id="erlebnis" style="padding-top: 0">
     <div class="wrap">
       <div class="kicker reveal">Was Sie erwartet</div>
-      <h2 class="h2 display reveal" style="--d:1">Hamburgerrestaurant in Hamburg</h2>
+      <h2 class="h2 display reveal" style="--d:1">Café in Hamburg</h2>
       <div class="cards">
         <article class="card reveal tilt" style="--d:1">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M8 4l1 4M16 4l-1 4M4 13h16M6 13a6 6 0 0 0 12 0M9 20h6"/></svg></div>
@@ -427,8 +461,8 @@ footer nav { display: flex; gap: 1.25rem; }
         </article>
         <article class="card reveal tilt" style="--d:3">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></div>
-          <h3>Lieferservice</h3>
-          <p>Wir bringen Ihr Essen auch zu Ihnen nach Hause.</p>
+          <h3>Plätze draußen</h3>
+          <p>Bei gutem Wetter sitzen Sie bei uns draußen.</p>
         </article>
       </div>
       <div class="gallery" id="gallery" tabindex="0" aria-label="Platz für Fotos, seitlich scrollbar">
@@ -471,7 +505,7 @@ footer nav { display: flex; gap: 1.25rem; }
           <div class="axis" aria-hidden="true"><span></span><div><span>0</span><span>6</span><span>12</span><span>18</span><span>24 Uhr</span></div></div>
         </div>
         <ul class="hours-list reveal" style="--d:2">
-<li data-day="0"><span>Montag</span><span>11:00 – 23:00</span></li><li data-day="1"><span>Dienstag</span><span>11:00 – 23:00</span></li><li data-day="2"><span>Mittwoch</span><span>11:00 – 23:00</span></li><li data-day="3"><span>Donnerstag</span><span>11:00 – 23:00</span></li><li data-day="4"><span>Freitag</span><span>11:00 – 01:00</span></li><li data-day="5"><span>Samstag</span><span>11:00 – 01:00</span></li><li data-day="6"><span>Sonntag</span><span>12:00 – 22:00</span></li>        </ul>
+<li data-day="0"><span>Montag</span><span>Ruhetag</span></li><li data-day="1"><span>Dienstag</span><span>11:30 – 14:30, 17:30 – 22:00</span></li><li data-day="2"><span>Mittwoch</span><span>11:30 – 14:30, 17:30 – 22:00</span></li><li data-day="3"><span>Donnerstag</span><span>11:30 – 14:30, 17:30 – 22:00</span></li><li data-day="4"><span>Freitag</span><span>11:30 – 23:00</span></li><li data-day="5"><span>Samstag</span><span>12:00 – 23:00</span></li><li data-day="6"><span>Sonntag</span><span>12:00 – 21:00</span></li>        </ul>
       </div>
     </div>
   </section>
@@ -480,14 +514,14 @@ footer nav { display: flex; gap: 1.25rem; }
     <div class="wrap visit">
       <div>
         <div class="kicker reveal">Anfahrt &amp; Kontakt</div>
-        <p class="address display reveal" style="--d:1">Schanzenstraße 99<br>20357 Hamburg</p>
+        <p class="address display reveal" style="--d:1">Lüneburger Straße 12<br>21073 Hamburg</p>
         <div class="contact-rows reveal" style="--d:2">
-<a href="tel:0402223334"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>040 2223334</a>          <button type="button" data-copy="Schanzenstraße 99, 20357 Hamburg"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></span>Adresse kopieren</button>
+<a href="tel:04012345678"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>040 12345678</a>          <button type="button" data-copy="Lüneburger Straße 12, 21073 Hamburg"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></span>Adresse kopieren</button>
           <button type="button" data-share><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg></span>Seite teilen</button>
         </div>
-        <div class="actions reveal" style="--d:3"><a class="btn btn-primary magnetic" href="https://www.google.com/maps/search/?api=1&amp;query=Testburger+Werk%2C+Schanzenstra%C3%9Fe+99%2C+20357+Hamburg" target="_blank" rel="noopener">Route planen</a></div>
+        <div class="actions reveal" style="--d:3"><a class="btn btn-primary magnetic" href="https://www.google.com/maps/search/?api=1&amp;query=Caf%C3%A9+Beispiel%2C+L%C3%BCneburger+Stra%C3%9Fe+12%2C+21073+Hamburg" target="_blank" rel="noopener">Route planen</a></div>
       </div>
-      <div class="map reveal" style="--d:2" id="map" data-lat="53.564" data-lng="9.962">
+      <div class="map reveal" style="--d:2" id="map" data-lat="53.4605" data-lng="9.983">
         <div class="map-art" aria-hidden="true"></div>
         <div class="pin-shadow" aria-hidden="true"></div>
         <svg class="pin" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7.5 7.5 0 0 0-7.5 7.5C4.5 15.3 12 22 12 22s7.5-6.7 7.5-12.5A7.5 7.5 0 0 0 12 2zm0 10.2a2.7 2.7 0 1 1 0-5.4 2.7 2.7 0 0 1 0 5.4z"/></svg>
@@ -500,7 +534,7 @@ footer nav { display: flex; gap: 1.25rem; }
     <div class="wrap">
       <p class="big display reveal">Wir freuen uns auf Sie.</p>
       <div class="actions reveal" style="--d:1">
-<a class="btn btn-primary magnetic" href="tel:0402223334">Jetzt anrufen</a>        <a class="btn btn-ghost magnetic" href="https://www.google.com/maps/search/?api=1&amp;query=Testburger+Werk%2C+Schanzenstra%C3%9Fe+99%2C+20357+Hamburg" target="_blank" rel="noopener">Route planen</a>
+<a class="btn btn-primary magnetic" href="tel:04012345678">Jetzt anrufen</a>        <a class="btn btn-ghost magnetic" href="https://www.google.com/maps/search/?api=1&amp;query=Caf%C3%A9+Beispiel%2C+L%C3%BCneburger+Stra%C3%9Fe+12%2C+21073+Hamburg" target="_blank" rel="noopener">Route planen</a>
       </div>
     </div>
   </section>
@@ -514,7 +548,7 @@ footer nav { display: flex; gap: 1.25rem; }
 </footer>
 
 <nav class="dock" id="dock" aria-label="Schnellzugriff">
-<a href="tel:0402223334"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Anrufen</a>  <a href="https://www.google.com/maps/search/?api=1&amp;query=Testburger+Werk%2C+Schanzenstra%C3%9Fe+99%2C+20357+Hamburg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>Route</a>
+<a href="tel:04012345678"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Anrufen</a>  <a href="https://www.google.com/maps/search/?api=1&amp;query=Caf%C3%A9+Beispiel%2C+L%C3%BCneburger+Stra%C3%9Fe+12%2C+21073+Hamburg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>Route</a>
   <a href="#zeiten"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Zeiten</a>
 </nav>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -525,7 +559,7 @@ footer nav { display: flex; gap: 1.25rem; }
   <button class="lb-btn lb-next" type="button" aria-label="Nächstes Bild">›</button>
 </div>
 
-<script type="application/json" id="data">{"galerie": [], "kategorien": ["Vorspeisen", "Hauptgerichte", "Desserts", "Getr\u00e4nke"], "menu": [], "perioden": [[720, 1320], [2100, 2820], [3540, 4260], [4980, 5700], [6420, 7140], [7860, 8700], [9300, 10140]]}</script>
+<script type="application/json" id="data">{"galerie": [], "kategorien": ["Vorspeisen", "Hauptgerichte", "Desserts", "Getr\u00e4nke"], "menu": [], "perioden": [[720, 1260], [3570, 3750], [3930, 4200], [5010, 5190], [5370, 5640], [6450, 6630], [6810, 7080], [7890, 8580], [9360, 10020]]}</script>
 <script>
 (function () {
   "use strict";
@@ -540,6 +574,7 @@ footer nav { display: flex; gap: 1.25rem; }
   function hm(min) { min = ((min % 1440) + 1440) % 1440; var h = Math.floor(min / 60), m = min % 60; return (h < 10 ? "0" : "") + h + ":" + (m < 10 ? "0" : "") + m; }
   function weekNow() { var d = new Date(); return d.getDay() * 1440 + d.getHours() * 60 + d.getMinutes(); }
 
+  window.DEMO = { data: data, reduce: reduce, fine: fine };
   /* ---- Entwurfs-Hinweis & Navigation ---- */
   var bar = $("#demo-bar"), nav = $("#nav");
   function barHeight() { document.documentElement.style.setProperty("--bar-h", (bar && !bar.hidden ? bar.offsetHeight : 0) + "px"); }
@@ -593,12 +628,12 @@ footer nav { display: flex; gap: 1.25rem; }
     var when = dayDiff === 0 ? "heute" : dayDiff === 1 ? "morgen" : "am " + DAYS[Math.floor(best / 1440) % 7];
     return { cls: best - now <= 60 ? "soon" : "closed", text: "Geschlossen, öffnet " + when + " um " + hm(best) + " Uhr" };
   }
-  function paintStatus() { var st = status(), el = $("#status"); if (!st) return; el.hidden = false; el.className = "status " + st.cls; $("#status-text").textContent = st.text; }
+  function paintStatus() { var st = status(), el = $("#status"); if (!st || !el) return; el.hidden = false; el.className = "status " + st.cls; $("#status-text").textContent = st.text; }
   paintStatus(); setInterval(paintStatus, 30000);
 
   /* ---- Wochen-Zeitleiste ---- */
   var week = $("#week"), order = [1, 2, 3, 4, 5, 6, 0], todayIdx = new Date().getDay();
-  order.forEach(function (gd, row) {
+  if (week) order.forEach(function (gd, row) {
     var start = gd * 1440, end = start + 1440, segs = [];
     periods.forEach(function (p) { [0, -WEEK, WEEK].forEach(function (sh) { var s = Math.max(p[0] + sh, start), e = Math.min(p[1] + sh, end); if (e > s) segs.push([s - start, e - start]); }); });
     var el = document.createElement("div"); el.className = "day" + (gd === todayIdx ? " today" : "");
@@ -623,6 +658,7 @@ footer nav { display: flex; gap: 1.25rem; }
   var tabs = $$(".tab"), pill = $(".tab-pill"), panel = $("#panel");
   var widths = [[62, 48], [44, 70], [70, 40], [52, 64], [38, 55]];
   function select(tab) {
+    if (!pill || !panel) return;
     tabs.forEach(function (t) { t.setAttribute("aria-selected", t === tab); });
     pill.style.width = tab.offsetWidth + "px"; pill.style.height = tab.offsetHeight + "px";
     pill.style.transform = "translate(" + tab.offsetLeft + "px," + tab.offsetTop + "px)";
@@ -670,6 +706,7 @@ footer nav { display: flex; gap: 1.25rem; }
   });
   function scrub() {
     if (!words.length) return;
+    if (!$(".about-text")) return;
     var box = $(".about-text").getBoundingClientRect(), vh = innerHeight;
     var prog = Math.min(1, Math.max(0, (vh * 0.85 - box.top) / (box.height + vh * 0.35)));
     var lit = Math.round(prog * words.length);
@@ -689,12 +726,12 @@ footer nav { display: flex; gap: 1.25rem; }
     track.style.transform = "translate3d(" + x + "px,0,0)";
     requestAnimationFrame(loop);
   }
-  if (!reduce) requestAnimationFrame(loop);
+  if (track && !reduce) requestAnimationFrame(loop);
 
   /* ---- Hero: Farbwolken folgen der Maus ---- */
   if (fine && !reduce) {
     var blobs = $$(".hero .blob");
-    $(".hero").addEventListener("pointermove", function (e) {
+    if ($(".hero")) $(".hero").addEventListener("pointermove", function (e) {
       var r = this.getBoundingClientRect(), dx = (e.clientX - r.left) / r.width - 0.5, dy = (e.clientY - r.top) / r.height - 0.5;
       blobs.forEach(function (b, i) { var k = (i + 1) * 40; b.style.setProperty("--px", dx * k + "px"); b.style.setProperty("--py", dy * k + "px"); });
     });
@@ -762,6 +799,19 @@ footer nav { display: flex; gap: 1.25rem; }
     f.src = "https://www.openstreetmap.org/export/embed.html?bbox=" + (lng - d) + "%2C" + (lat - d * 0.6) + "%2C" + (lng + d) + "%2C" + (lat + d * 0.6) + "&layer=mapnik&marker=" + lat + "%2C" + lng;
     f.addEventListener("load", function () { m.classList.add("loaded"); });
     m.appendChild(f); lm.closest(".map-cta").remove();
+  });
+})();
+</script>
+<script>
+/* Polaroids lassen sich mit Maus oder Finger verschieben */
+(function () {
+  var box = document.getElementById("polas"); if (!box) return;
+  var z = 10;
+  box.querySelectorAll(".pola").forEach(function (p) {
+    var sx, sy, ox, oy, on = false;
+    p.addEventListener("pointerdown", function (e) { if (e.target.closest("a")) return; on = true; p.setPointerCapture(e.pointerId); sx = e.clientX; sy = e.clientY; ox = p.offsetLeft; oy = p.offsetTop; p.style.zIndex = ++z; p.style.animation = "none"; });
+    p.addEventListener("pointermove", function (e) { if (!on) return; p.style.left = ox + e.clientX - sx + "px"; p.style.top = oy + e.clientY - sy + "px"; });
+    p.addEventListener("pointerup", function () { on = false; });
   });
 })();
 </script>

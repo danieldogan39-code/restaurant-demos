@@ -4,26 +4,27 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow, noarchive">
-<meta name="theme-color" content="#0E1F35">
-<title>Fischhus Probe – Fischrestaurant in Hamburg</title>
-<meta name="description" content="Fischhus Probe: Fischrestaurant in Elbchaussee 400, Hamburg. Öffnungszeiten, Anfahrt und Kontakt.">
-<meta property="og:title" content="Fischhus Probe – Fischrestaurant in Hamburg">
-<meta property="og:description" content="Fischhus Probe: Fischrestaurant in Elbchaussee 400, Hamburg. Öffnungszeiten, Anfahrt und Kontakt.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23A12F28'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' text-anchor='middle' fill='%23FFFFFF'%3EF%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#1E2B22">
+<title>Gasthof zum Beispiel – Deutsches Restaurant in Hamburg</title>
+<meta name="description" content="Gasthof zum Beispiel: Deutsches Restaurant in Lüneburger Straße 12, Hamburg. Öffnungszeiten, Anfahrt und Kontakt.">
+<meta property="og:title" content="Gasthof zum Beispiel – Deutsches Restaurant in Hamburg">
+<meta property="og:description" content="Gasthof zum Beispiel: Deutsches Restaurant in Lüneburger Straße 12, Hamburg. Öffnungszeiten, Anfahrt und Kontakt.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%238C3B21'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' text-anchor='middle' fill='%23FFFFFF'%3EG%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,500;1,6..72,600&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+SC:wght@700;800&amp;family=Alegreya+Sans:wght@400;500;700&amp;display=swap">
 <style>
 :root {
-  --bg: #F3F6F9; --surface: #FFFFFF; --ink: #10233B; --muted: #4E5F73;
-  --accent: #A12F28; --accent-ink: #FFFFFF; --accent2: #2C7A8C;
-  --line: #D2DBE4;
-  --hero-bg: #0E1F35; --hero-ink: #F1F5F9; --hero-muted: #B4C2D2;
-  --blob1: #2C7A8C; --blob2: #A12F28; --blob3: #4F6D8F;
-  --display: &#39;Newsreader&#39;, Georgia, serif; --body: &#39;Public Sans&#39;, system-ui, sans-serif;
-  --dw: 600; --ds: normal; --dt: -0.02em;
-  --dcase: none; --dstyle: italic;
-  --radius: 10px; --btn-radius: 8px;
+  --bg: #F3EFE6; --surface: #FBF9F6; --ink: #1A251D; --muted: #6C7269;
+  --accent: #8C3B21; --accent-ink: #FFFFFF; --accent2: #C8A24A;
+  --line: #D0CFC6;
+  --hero-bg: #1E2B22; --hero-ink: #FAF9F5; --hero-muted: #B4B7B1;
+  --blob1: #8C3B21; --blob2: #C8A24A; --blob3: #AA6E36;
+  --raw1: #8C3B21; --raw2: #C8A24A; --dark: #1E2B22; --light: #F3EFE6;
+  --display: &#39;Alegreya SC&#39;, Georgia, serif; --body: &#39;Alegreya Sans&#39;, system-ui, sans-serif;
+  --dw: 800; --ds: normal; --dt: 0.01em;
+  --dcase: none; --dstyle: normal;
+  --radius: 6px; --btn-radius: 6px;
   --name-scale: 1.000;
   --ease: cubic-bezier(.2,.75,.15,1);
   --spring: cubic-bezier(.34,1.56,.64,1);
@@ -127,7 +128,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .theme-mediterran .marquee, .theme-hanseatisch .marquee { border-block: 0; }
 .marquee-track { display: flex; width: max-content; will-change: transform; }
 .marquee-track span { font-size: clamp(1.15rem, 2.4vw, 1.6rem); padding-inline: 1.25rem; white-space: nowrap; display: inline-flex; align-items: center; gap: 2.5rem; }
-.marquee-track span::after { content: "⚓"; font-family: var(--body); font-size: .8em; opacity: .7; }
+.marquee-track span::after { content: "❧"; font-family: var(--body); font-size: .8em; opacity: .7; }
 
 /* ---------- Abschnitte ---------- */
 section.block { padding: clamp(4rem, 10vw, 8rem) 0; position: relative; }
@@ -340,13 +341,49 @@ footer nav { display: flex; gap: 1.25rem; }
   .photo { clip-path: none; }
   .about-text .word { opacity: 1; }
 }
+.hero.no-photo [class$="-grid"] { grid-template-columns: minmax(0, 1fr); max-width: 64rem; }
+.hero.no-photo .iz-grid { grid-template-columns: auto minmax(0, 1fr); }
+/* ===== Welt: Gasthaus – Waldgrün, Holz, Messing, schwingendes Wirtshausschild ===== */
+.welt-gasthaus .hero { background: repeating-linear-gradient(90deg, rgba(255,255,255,.018) 0 2px, transparent 2px 9px), radial-gradient(90% 70% at 50% 0%, color-mix(in srgb, var(--raw2) 18%, var(--hero-bg)), var(--hero-bg) 70%); text-align: center; padding-top: 6rem; }
+.signpost { position: relative; width: min(36rem, 92vw); margin: 0 auto 2.2rem; }
+.bracket { width: 100%; height: 3.4rem; color: var(--raw2); }
+.sign { position: relative; margin: -.3rem auto 0; width: 88%; padding: 2.2rem 1.8rem 2rem; background: repeating-linear-gradient(0deg, #5a3b22 0 7px, #4e321c 7px 9px, #61412a 9px 16px); border: 6px solid var(--raw2); border-radius: 8px; box-shadow: 0 30px 50px -20px rgba(0,0,0,.6), inset 0 0 0 3px #2c1a0c; transform-origin: 50% -2.6rem; animation: swing 4s ease-in-out .3s; }
+.sign::before, .sign::after { content: ""; position: absolute; top: -2.7rem; width: 2px; height: 2.6rem; background: var(--raw2); }
+.sign::before { left: 18%; } .sign::after { right: 18%; }
+@keyframes swing { 0% { transform: rotate(9deg); } 20% { transform: rotate(-7deg); } 40% { transform: rotate(5deg); } 60% { transform: rotate(-3deg); } 80% { transform: rotate(1.5deg); } 100% { transform: none; } }
+.sign:hover { animation: swing 3s ease-in-out; }
+.welt-gasthaus .hero h1 { margin: 0; color: #F6E7C1; font-size: calc(clamp(2.6rem, 7.5vw, 5.6rem) * var(--name-scale)); line-height: 1; text-shadow: 0 2px 0 #2c1a0c; }
+.welt-gasthaus .hero h1 .ch:hover { color: var(--raw2); }
+.sign .seit { display: block; margin-top: .6rem; color: var(--raw2); letter-spacing: .3em; text-transform: uppercase; font-size: .8rem; }
+.welt-gasthaus .hero .lead { margin-inline: auto; }
+.welt-gasthaus .hero .actions { justify-content: center; }
+.welt-gasthaus .status { margin-inline: auto; }
+.frame { width: min(40rem, 90vw); margin: 3rem auto 0; padding: 10px; background: linear-gradient(135deg, #8c6d2e, var(--raw2), #7a5a22, #d8b768); box-shadow: 0 30px 60px -30px #000; position: relative; }
+.frame .inner { aspect-ratio: 16/10; overflow: hidden; border: 3px solid #2c1a0c; }
+.frame img { width: 100%; height: 100%; object-fit: cover; }
+.welt-gasthaus .marquee { background: var(--raw1); color: #F6E7C1; border-block: 3px double var(--raw2); }
+.welt-gasthaus .marquee-track span::after { content: "❧"; }
+.welt-gasthaus .card { border: 1px solid var(--line); border-radius: 4px; text-align: center; }
+.welt-gasthaus .card .icon { margin-inline: auto; background: var(--hero-bg); color: var(--raw2); }
+.welt-gasthaus .card h3 { font-family: var(--display); }
+/* Gedruckte Wirtshauskarte */
+.wirtskarte { background: var(--light); border: 1px solid var(--line); max-width: 52rem; margin: 0 auto; padding: clamp(2rem, 5vw, 4rem); text-align: center; box-shadow: 0 30px 60px -40px rgba(0,0,0,.5); }
+.wirtskarte h2 { font-family: var(--display); font-size: clamp(2.2rem, 5vw, 3.4rem); margin: 0; color: var(--raw1); }
+.orn { color: var(--raw2); font-size: 1.6rem; margin: .5rem 0 1.6rem; }
+.wk-sec { margin-bottom: 2rem; }
+.wk-sec h3 { font-family: var(--display); font-size: 1.3rem; letter-spacing: .08em; margin: 0 0 .8rem; color: var(--ink); }
+.wk-it { display: grid; grid-template-columns: 1fr auto; gap: 1rem; text-align: left; padding: .4rem 0; border-bottom: 1px dotted var(--line); max-width: 36rem; margin: 0 auto; }
+.wk-it small { display: block; color: var(--muted); }
+.wk-it b { font-weight: 700; color: var(--raw1); white-space: nowrap; }
+.wk-it .ph { height: .75rem; width: var(--w); background: var(--line); border-radius: 3px; }
+.welt-gasthaus .finale { background: var(--hero-bg); }
 </style>
 </head>
-<body class="theme-hanseatisch">
+<body class="theme-gasthaus welt-gasthaus custom">
 
 <div class="demo-bar" id="demo-bar" role="note">
   <div class="wrap">
-    <span>Unverbindlicher Entwurf von Medialyte für Fischhus Probe. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht.</span>
+    <span>Unverbindlicher Entwurf von Medialyte für Gasthof zum Beispiel. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht.</span>
     <span>Gefällt Ihnen der Entwurf? <a href="tel:01709647532">0170 9647532</a>
       <button type="button" aria-label="Hinweis ausblenden" data-close-bar>×</button></span>
   </div>
@@ -356,13 +393,13 @@ footer nav { display: flex; gap: 1.25rem; }
 
 <header class="nav has-bar" id="nav">
   <div class="wrap">
-    <a class="brand display" href="#top"><span>Fischhus Probe</span></a>
+    <a class="brand display" href="#top"><span>Gasthof zum Beispiel</span></a>
     <nav class="nav-links" aria-label="Hauptnavigation">
       <a href="#ueber-uns">Über uns</a>
       <a href="#speisekarte">Speisekarte</a>
       <a href="#zeiten">Öffnungszeiten</a>
       <a href="#anfahrt">Anfahrt</a>
-<a class="btn btn-primary btn-small magnetic" href="tel:0408889990">Anrufen</a>    </nav>
+<a class="btn btn-primary btn-small magnetic" href="tel:04012345678">Anrufen</a>    </nav>
     <button class="burger" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="overlay"><span></span><span></span></button>
   </div>
 </header>
@@ -373,47 +410,42 @@ footer nav { display: flex; gap: 1.25rem; }
     <a class="display" style="--i:1" href="#speisekarte">Speisekarte</a>
     <a class="display" style="--i:2" href="#zeiten">Öffnungszeiten</a>
     <a class="display" style="--i:3" href="#anfahrt">Anfahrt</a>
-<a class="display" style="--i:4" href="tel:0408889990">Anrufen</a>  </nav>
+<a class="display" style="--i:4" href="tel:04012345678">Anrufen</a>  </nav>
 </div>
 
 <main id="top">
-  <section class="hero v-typo" aria-labelledby="name">
-    <div class="aurora" aria-hidden="true"><div class="blob"><i></i></div><div class="blob"><i></i></div><div class="blob"><i></i></div></div>
-    <div class="grain" aria-hidden="true"></div>
-    <div class="wrap hero-inner">
-      <div>
-        <div class="status" id="status" hidden><span class="dot"></span><span id="status-text"></span></div>
-        <h1 class="display" id="name" aria-label="Fischhus Probe"><span class="w" aria-hidden="true"><span class="ch" style="--i:0">F</span><span class="ch" style="--i:1">i</span><span class="ch" style="--i:2">s</span><span class="ch" style="--i:3">c</span><span class="ch" style="--i:4">h</span><span class="ch" style="--i:5">h</span><span class="ch" style="--i:6">u</span><span class="ch" style="--i:7">s</span></span> <span class="w" aria-hidden="true"><span class="ch" style="--i:8">P</span><span class="ch" style="--i:9">r</span><span class="ch" style="--i:10">o</span><span class="ch" style="--i:11">b</span><span class="ch" style="--i:12">e</span></span></h1>
-        <p class="slogan">Fischrestaurant in Hamburg</p>
-        <p class="lead">Schön, dass Sie da sind. Bei Fischhus Probe in Elbchaussee 400 sind Sie herzlich willkommen.</p>
-        <div class="actions">
-<a class="btn btn-primary magnetic" href="tel:0408889990"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>040 8889990</a>          <a class="btn btn-ghost magnetic" href="#speisekarte">Zur Speisekarte</a>
-        </div>
+  <section class="hero no-photo" aria-labelledby="name">
+    <div class="wrap">
+      <div class="signpost">
+        <svg class="bracket" viewBox="0 0 600 56" fill="none" stroke="currentColor" stroke-width="5" aria-hidden="true"><path d="M10 10 H590"/><path d="M30 10 C 60 50, 120 50, 150 10M450 10 C 480 50, 540 50, 570 10"/><circle cx="300" cy="10" r="8" fill="currentColor"/></svg>
+        <div class="sign"><h1 class="display" id="name" aria-label="Gasthof zum Beispiel"><span class="w" aria-hidden="true"><span class="ch" style="--i:0">G</span><span class="ch" style="--i:1">a</span><span class="ch" style="--i:2">s</span><span class="ch" style="--i:3">t</span><span class="ch" style="--i:4">h</span><span class="ch" style="--i:5">o</span><span class="ch" style="--i:6">f</span></span> <span class="w" aria-hidden="true"><span class="ch" style="--i:7">z</span><span class="ch" style="--i:8">u</span><span class="ch" style="--i:9">m</span></span> <span class="w" aria-hidden="true"><span class="ch" style="--i:10">B</span><span class="ch" style="--i:11">e</span><span class="ch" style="--i:12">i</span><span class="ch" style="--i:13">s</span><span class="ch" style="--i:14">p</span><span class="ch" style="--i:15">i</span><span class="ch" style="--i:16">e</span><span class="ch" style="--i:17">l</span></span></h1><span class="seit">Deutsches Restaurant · Hamburg</span></div>
       </div>
-<div class="badge" aria-hidden="true">
-        <svg viewBox="0 0 120 120"><defs><path id="circle" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs>
-          <text><textPath href="#circle" textLength="286" lengthAdjust="spacing">FISCHRESTAURANT • HAMBURG • </textPath></text></svg>
-<span class="glyph">⚓</span>      </div>    </div>
-    <a class="scroll-cue" href="#ueber-uns" aria-label="Weiter nach unten"></a>
+      <div class="status" id="status" hidden><span class="dot"></span><span id="status-text"></span></div>
+      <p class="slogan">Deutsches Restaurant in Hamburg</p>
+      <p class="lead">Schön, dass Sie da sind. Bei Gasthof zum Beispiel in Lüneburger Straße 12 sind Sie herzlich willkommen.</p>
+      <div class="actions">
+<a class="btn btn-primary magnetic" href="tel:04012345678"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>040 12345678</a>  <a class="btn btn-ghost magnetic" href="#speisekarte">Zur Speisekarte</a>
+</div>
+    </div>
   </section>
 
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track" id="marquee">
-<span class="display">Fischrestaurant</span><span class="display">in Hamburg</span><span class="display">Vor Ort essen</span><span class="display">Plätze draußen</span><span class="display">Tischreservierung möglich</span><span class="display">Mittagstisch</span><span class="display">Bier</span><span class="display">Fischrestaurant</span><span class="display">in Hamburg</span><span class="display">Vor Ort essen</span><span class="display">Plätze draußen</span><span class="display">Tischreservierung möglich</span><span class="display">Mittagstisch</span><span class="display">Bier</span><span class="display">Fischrestaurant</span><span class="display">in Hamburg</span><span class="display">Vor Ort essen</span><span class="display">Plätze draußen</span><span class="display">Tischreservierung möglich</span><span class="display">Mittagstisch</span><span class="display">Bier</span><span class="display">Fischrestaurant</span><span class="display">in Hamburg</span><span class="display">Vor Ort essen</span><span class="display">Plätze draußen</span><span class="display">Tischreservierung möglich</span><span class="display">Mittagstisch</span><span class="display">Bier</span>    </div>
+<span class="display">Deutsches Restaurant</span><span class="display">in Hamburg</span><span class="display">Vor Ort essen</span><span class="display">Zum Mitnehmen</span><span class="display">Plätze draußen</span><span class="display">Tischreservierung möglich</span><span class="display">Wein</span><span class="display">Deutsches Restaurant</span><span class="display">in Hamburg</span><span class="display">Vor Ort essen</span><span class="display">Zum Mitnehmen</span><span class="display">Plätze draußen</span><span class="display">Tischreservierung möglich</span><span class="display">Wein</span><span class="display">Deutsches Restaurant</span><span class="display">in Hamburg</span><span class="display">Vor Ort essen</span><span class="display">Zum Mitnehmen</span><span class="display">Plätze draußen</span><span class="display">Tischreservierung möglich</span><span class="display">Wein</span><span class="display">Deutsches Restaurant</span><span class="display">in Hamburg</span><span class="display">Vor Ort essen</span><span class="display">Zum Mitnehmen</span><span class="display">Plätze draußen</span><span class="display">Tischreservierung möglich</span><span class="display">Wein</span>    </div>
   </div>
 
   <section class="block" id="ueber-uns">
     <div class="wrap about">
       <div class="about-text">
         <div class="kicker reveal">Über uns</div>
-<p class="scrub">Fischhus Probe ist Ihr Ort für Fischrestaurant in Hamburg. Kommen Sie vorbei, wir freuen uns auf Sie.</p>      </div>
+<p class="scrub">Gasthof zum Beispiel ist Ihr Ort für Deutsches Restaurant in Hamburg. Kommen Sie vorbei, wir freuen uns auf Sie.</p>      </div>
 <div class="photo reveal-clip"><span><b>Ihr Foto</b>Hier zeigen wir Ihren Gastraum, Ihr Team oder Ihr Lieblingsgericht.</span></div>    </div>
   </section>
 
   <section class="block" id="erlebnis" style="padding-top: 0">
     <div class="wrap">
       <div class="kicker reveal">Was Sie erwartet</div>
-      <h2 class="h2 display reveal" style="--d:1">Fischrestaurant in Hamburg</h2>
+      <h2 class="h2 display reveal" style="--d:1">Deutsches Restaurant in Hamburg</h2>
       <div class="cards">
         <article class="card reveal tilt" style="--d:1">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M8 4l1 4M16 4l-1 4M4 13h16M6 13a6 6 0 0 0 12 0M9 20h6"/></svg></div>
@@ -422,13 +454,13 @@ footer nav { display: flex; gap: 1.25rem; }
         </article>
         <article class="card reveal tilt" style="--d:2">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-          <h3>Plätze draußen</h3>
-          <p>Bei gutem Wetter sitzen Sie bei uns draußen.</p>
+          <h3>Zum Mitnehmen</h3>
+          <p>Keine Zeit zum Bleiben? Wir packen Ihnen alles zum Mitnehmen ein.</p>
         </article>
         <article class="card reveal tilt" style="--d:3">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></div>
-          <h3>Tischreservierung möglich</h3>
-          <p>Rufen Sie kurz an, dann halten wir Ihnen einen Tisch frei.</p>
+          <h3>Plätze draußen</h3>
+          <p>Bei gutem Wetter sitzen Sie bei uns draußen.</p>
         </article>
       </div>
       <div class="gallery" id="gallery" tabindex="0" aria-label="Platz für Fotos, seitlich scrollbar">
@@ -444,20 +476,13 @@ footer nav { display: flex; gap: 1.25rem; }
     </div>
   </section>
 
-  <section class="block" id="speisekarte" style="padding-top: 0">
+  <section class="block" id="speisekarte">
     <div class="wrap">
-      <div class="menu-wrap reveal">
-        <div class="kicker">Speisekarte</div>
-        <h2 class="h2 display">Unsere Karte</h2>
-        <div class="tabs" role="tablist" aria-label="Kategorien">
-          <span class="tab-pill" aria-hidden="true"></span>
-          <button class="tab" role="tab" type="button" id="tab-1" aria-controls="panel" aria-selected="true" data-cat="Vorspeisen">Vorspeisen</button>
-          <button class="tab" role="tab" type="button" id="tab-2" aria-controls="panel" aria-selected="false" data-cat="Hauptgerichte">Hauptgerichte</button>
-          <button class="tab" role="tab" type="button" id="tab-3" aria-controls="panel" aria-selected="false" data-cat="Desserts">Desserts</button>
-          <button class="tab" role="tab" type="button" id="tab-4" aria-controls="panel" aria-selected="false" data-cat="Getränke">Getränke</button>
-        </div>
-        <div class="panel" id="panel" role="tabpanel" aria-live="polite"></div>
-<p class="menu-note">In der fertigen Website stehen hier Ihre Gerichte mit Beschreibung und Preis. Sie können die Karte jederzeit selbst ändern.</p>      </div>
+      <div class="wirtskarte reveal">
+        <h2>Speisekarte</h2>
+        <div class="orn" aria-hidden="true">❦ ❧ ❦</div>
+<div class="wk-sec"><h3>Vorspeisen</h3><div class="wk-it"><span class="ph" style="--w:55%"></span><b>–,–</b></div><div class="wk-it"><span class="ph" style="--w:70%"></span><b>–,–</b></div></div><div class="wk-sec"><h3>Hauptgerichte</h3><div class="wk-it"><span class="ph" style="--w:55%"></span><b>–,–</b></div><div class="wk-it"><span class="ph" style="--w:70%"></span><b>–,–</b></div></div><div class="wk-sec"><h3>Desserts</h3><div class="wk-it"><span class="ph" style="--w:55%"></span><b>–,–</b></div><div class="wk-it"><span class="ph" style="--w:70%"></span><b>–,–</b></div></div><div class="wk-sec"><h3>Getränke</h3><div class="wk-it"><span class="ph" style="--w:55%"></span><b>–,–</b></div><div class="wk-it"><span class="ph" style="--w:70%"></span><b>–,–</b></div></div>        <p class="menu-note" style="margin-inline:auto">Hier steht später Ihre Karte, die Sie selbst pflegen.</p>
+      </div>
     </div>
   </section>
 
@@ -480,14 +505,14 @@ footer nav { display: flex; gap: 1.25rem; }
     <div class="wrap visit">
       <div>
         <div class="kicker reveal">Anfahrt &amp; Kontakt</div>
-        <p class="address display reveal" style="--d:1">Elbchaussee 400<br>22609 Hamburg</p>
+        <p class="address display reveal" style="--d:1">Lüneburger Straße 12<br>21073 Hamburg</p>
         <div class="contact-rows reveal" style="--d:2">
-<a href="tel:0408889990"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>040 8889990</a>          <button type="button" data-copy="Elbchaussee 400, 22609 Hamburg"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></span>Adresse kopieren</button>
+<a href="tel:04012345678"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>040 12345678</a>          <button type="button" data-copy="Lüneburger Straße 12, 21073 Hamburg"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></span>Adresse kopieren</button>
           <button type="button" data-share><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg></span>Seite teilen</button>
         </div>
-        <div class="actions reveal" style="--d:3"><a class="btn btn-primary magnetic" href="https://www.google.com/maps/search/?api=1&amp;query=Fischhus+Probe%2C+Elbchaussee+400%2C+22609+Hamburg" target="_blank" rel="noopener">Route planen</a></div>
+        <div class="actions reveal" style="--d:3"><a class="btn btn-primary magnetic" href="https://www.google.com/maps/search/?api=1&amp;query=Gasthof+zum+Beispiel%2C+L%C3%BCneburger+Stra%C3%9Fe+12%2C+21073+Hamburg" target="_blank" rel="noopener">Route planen</a></div>
       </div>
-      <div class="map reveal" style="--d:2" id="map" data-lat="53.548" data-lng="9.846">
+      <div class="map reveal" style="--d:2" id="map" data-lat="53.4605" data-lng="9.983">
         <div class="map-art" aria-hidden="true"></div>
         <div class="pin-shadow" aria-hidden="true"></div>
         <svg class="pin" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7.5 7.5 0 0 0-7.5 7.5C4.5 15.3 12 22 12 22s7.5-6.7 7.5-12.5A7.5 7.5 0 0 0 12 2zm0 10.2a2.7 2.7 0 1 1 0-5.4 2.7 2.7 0 0 1 0 5.4z"/></svg>
@@ -500,7 +525,7 @@ footer nav { display: flex; gap: 1.25rem; }
     <div class="wrap">
       <p class="big display reveal">Wir freuen uns auf Sie.</p>
       <div class="actions reveal" style="--d:1">
-<a class="btn btn-primary magnetic" href="tel:0408889990">Jetzt anrufen</a>        <a class="btn btn-ghost magnetic" href="https://www.google.com/maps/search/?api=1&amp;query=Fischhus+Probe%2C+Elbchaussee+400%2C+22609+Hamburg" target="_blank" rel="noopener">Route planen</a>
+<a class="btn btn-primary magnetic" href="tel:04012345678">Jetzt anrufen</a>        <a class="btn btn-ghost magnetic" href="https://www.google.com/maps/search/?api=1&amp;query=Gasthof+zum+Beispiel%2C+L%C3%BCneburger+Stra%C3%9Fe+12%2C+21073+Hamburg" target="_blank" rel="noopener">Route planen</a>
       </div>
     </div>
   </section>
@@ -514,7 +539,7 @@ footer nav { display: flex; gap: 1.25rem; }
 </footer>
 
 <nav class="dock" id="dock" aria-label="Schnellzugriff">
-<a href="tel:0408889990"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Anrufen</a>  <a href="https://www.google.com/maps/search/?api=1&amp;query=Fischhus+Probe%2C+Elbchaussee+400%2C+22609+Hamburg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>Route</a>
+<a href="tel:04012345678"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Anrufen</a>  <a href="https://www.google.com/maps/search/?api=1&amp;query=Gasthof+zum+Beispiel%2C+L%C3%BCneburger+Stra%C3%9Fe+12%2C+21073+Hamburg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>Route</a>
   <a href="#zeiten"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Zeiten</a>
 </nav>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -540,6 +565,7 @@ footer nav { display: flex; gap: 1.25rem; }
   function hm(min) { min = ((min % 1440) + 1440) % 1440; var h = Math.floor(min / 60), m = min % 60; return (h < 10 ? "0" : "") + h + ":" + (m < 10 ? "0" : "") + m; }
   function weekNow() { var d = new Date(); return d.getDay() * 1440 + d.getHours() * 60 + d.getMinutes(); }
 
+  window.DEMO = { data: data, reduce: reduce, fine: fine };
   /* ---- Entwurfs-Hinweis & Navigation ---- */
   var bar = $("#demo-bar"), nav = $("#nav");
   function barHeight() { document.documentElement.style.setProperty("--bar-h", (bar && !bar.hidden ? bar.offsetHeight : 0) + "px"); }
@@ -593,12 +619,12 @@ footer nav { display: flex; gap: 1.25rem; }
     var when = dayDiff === 0 ? "heute" : dayDiff === 1 ? "morgen" : "am " + DAYS[Math.floor(best / 1440) % 7];
     return { cls: best - now <= 60 ? "soon" : "closed", text: "Geschlossen, öffnet " + when + " um " + hm(best) + " Uhr" };
   }
-  function paintStatus() { var st = status(), el = $("#status"); if (!st) return; el.hidden = false; el.className = "status " + st.cls; $("#status-text").textContent = st.text; }
+  function paintStatus() { var st = status(), el = $("#status"); if (!st || !el) return; el.hidden = false; el.className = "status " + st.cls; $("#status-text").textContent = st.text; }
   paintStatus(); setInterval(paintStatus, 30000);
 
   /* ---- Wochen-Zeitleiste ---- */
   var week = $("#week"), order = [1, 2, 3, 4, 5, 6, 0], todayIdx = new Date().getDay();
-  order.forEach(function (gd, row) {
+  if (week) order.forEach(function (gd, row) {
     var start = gd * 1440, end = start + 1440, segs = [];
     periods.forEach(function (p) { [0, -WEEK, WEEK].forEach(function (sh) { var s = Math.max(p[0] + sh, start), e = Math.min(p[1] + sh, end); if (e > s) segs.push([s - start, e - start]); }); });
     var el = document.createElement("div"); el.className = "day" + (gd === todayIdx ? " today" : "");
@@ -623,6 +649,7 @@ footer nav { display: flex; gap: 1.25rem; }
   var tabs = $$(".tab"), pill = $(".tab-pill"), panel = $("#panel");
   var widths = [[62, 48], [44, 70], [70, 40], [52, 64], [38, 55]];
   function select(tab) {
+    if (!pill || !panel) return;
     tabs.forEach(function (t) { t.setAttribute("aria-selected", t === tab); });
     pill.style.width = tab.offsetWidth + "px"; pill.style.height = tab.offsetHeight + "px";
     pill.style.transform = "translate(" + tab.offsetLeft + "px," + tab.offsetTop + "px)";
@@ -670,6 +697,7 @@ footer nav { display: flex; gap: 1.25rem; }
   });
   function scrub() {
     if (!words.length) return;
+    if (!$(".about-text")) return;
     var box = $(".about-text").getBoundingClientRect(), vh = innerHeight;
     var prog = Math.min(1, Math.max(0, (vh * 0.85 - box.top) / (box.height + vh * 0.35)));
     var lit = Math.round(prog * words.length);
@@ -689,12 +717,12 @@ footer nav { display: flex; gap: 1.25rem; }
     track.style.transform = "translate3d(" + x + "px,0,0)";
     requestAnimationFrame(loop);
   }
-  if (!reduce) requestAnimationFrame(loop);
+  if (track && !reduce) requestAnimationFrame(loop);
 
   /* ---- Hero: Farbwolken folgen der Maus ---- */
   if (fine && !reduce) {
     var blobs = $$(".hero .blob");
-    $(".hero").addEventListener("pointermove", function (e) {
+    if ($(".hero")) $(".hero").addEventListener("pointermove", function (e) {
       var r = this.getBoundingClientRect(), dx = (e.clientX - r.left) / r.width - 0.5, dy = (e.clientY - r.top) / r.height - 0.5;
       blobs.forEach(function (b, i) { var k = (i + 1) * 40; b.style.setProperty("--px", dx * k + "px"); b.style.setProperty("--py", dy * k + "px"); });
     });
