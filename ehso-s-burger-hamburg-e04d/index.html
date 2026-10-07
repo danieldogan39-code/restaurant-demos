@@ -838,7 +838,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 .fenster-an{height:calc(100svh - var(--szene-kopf,0px));overflow:hidden;padding:0!important}
 .fenster-an [data-fenster]{position:absolute;inset:0;margin:0;z-index:1}
 .fenster-an [data-fenster] img,.fenster-an [data-fenster] video{width:100%;height:100%;object-fit:cover;display:block}
-.fenster-an [data-fenster-titel]{position:absolute;inset:0;display:grid;place-items:center;align-content:center;z-index:0;margin:0;pointer-events:none}
+.fenster-an [data-fenster-titel]{position:absolute;inset:0;display:grid;justify-items:center;align-content:start;padding-top:clamp(.5rem,4vh,2.5rem);text-align:center;z-index:0;margin:0;pointer-events:none}
 .fenster-an [data-fenster-text]{position:absolute;z-index:2;left:clamp(1rem,5vw,4rem);right:clamp(1rem,5vw,4rem);bottom:calc(var(--szene-unten,0px) + clamp(1.5rem,6vh,4rem))}
 .kapitel-an{height:calc(100svh - var(--szene-kopf,0px));overflow:hidden}
 .kapitel-an [data-kapitel]{position:absolute;inset:0;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(1.5rem,4vw,4rem);align-items:center;padding:clamp(1.5rem,6vh,4rem) clamp(1rem,5vw,4rem)}
@@ -910,6 +910,15 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     setTimeout(function () { if (!done) { done = true; cb(); } }, 6000);
   }
   var pending = 0;
+  /* gepinnte Abschnitte füllen den sichtbaren Bereich: zu kurze Abschnitte bekommen oben und unten gleich viel Luft */
+  var fills = [];
+  function fill(sec) {
+    if (!sec._pad) { var cs = getComputedStyle(sec); sec._pad = [parseFloat(cs.paddingTop) || 0, parseFloat(cs.paddingBottom) || 0]; fills.push(sec); }
+    sec.style.paddingTop = sec._pad[0] + "px"; sec.style.paddingBottom = sec._pad[1] + "px";
+    var extra = sichtbar() - sec.offsetHeight;
+    if (extra > 0) { sec.style.paddingTop = sec._pad[0] + extra / 2 + "px"; sec.style.paddingBottom = sec._pad[1] + extra / 2 + "px"; }
+  }
+  function unfill(sec) { if (sec._pad) { sec.style.paddingTop = ""; sec.style.paddingBottom = ""; } }
   function refreshSoon() { if (motion && pending <= 0) { ST.sort(); ST.refresh(); } }
 
   /* ---------------------------------------------------------------- zerlegt */
@@ -1047,6 +1056,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     mm.add("(min-width: 900px) and " + MOTION, function () {
       var C = {};
       function calc() {
+        fill(sec);
         var p = pos(mitte), w = mitte.offsetWidth, h = mitte.offsetHeight, V = innerHeight - kopf();
         C.s = Math.max(1, Math.min(innerWidth * 0.94 / w, V * 0.9 / h));
         C.x = innerWidth / 2 - (sec.getBoundingClientRect().left + p.x + w / 2);
@@ -1064,6 +1074,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       });
       var txt = q("[data-raster-text]", sec);
       if (txt) tl.fromTo(txt, { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.3 }, 0.7);
+      return function () { unfill(sec); };
     });
     mm.add("(max-width: 899px) and " + MOTION, function () {
       G.from([mitte].concat(tiles), { clipPath: "inset(14% 14% 14% 14% round 14px)", duration: 1, ease: "power3.out", stagger: 0.12,
@@ -1121,10 +1132,13 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     if (!spur || !motion) return;
     mm.add(MOTION, function () {
       sec.classList.add("horizontal-an");
+      fill(sec);
+      var refill = function () { fill(sec); };
+      ST.addEventListener("refreshInit", refill);
       var weg = function () { return Math.max(0, spur.scrollWidth - sec.clientWidth + (parseFloat(getComputedStyle(sec).paddingLeft) || 0)); };
       G.to(spur, { x: function () { return -weg(); }, ease: "none", scrollTrigger: { trigger: sec, start: start,
         end: function () { return "+=" + weg(); }, pin: true, scrub: 0.8, anticipatePin: 1, invalidateOnRefresh: true } });
-      return function () { sec.classList.remove("horizontal-an"); };
+      return function () { sec.classList.remove("horizontal-an"); ST.removeEventListener("refreshInit", refill); unfill(sec); };
     });
   }
 
