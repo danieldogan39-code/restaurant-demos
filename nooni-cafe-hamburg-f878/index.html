@@ -405,8 +405,71 @@ h1,h2,h3{hyphens:manual;-webkit-hyphens:manual;overflow-wrap:normal;text-wrap:ba
 .erfolg-teller .teller-mitte{padding:8%}
 .erfolg-zeile{font:400 clamp(1.15rem,3.2vw,1.5rem)/1.15 var(--disp);color:var(--tanne);text-wrap:balance}
 .erfolg>p,.res-demo-hinweis{font-size:14px;color:var(--tanne);text-align:left;margin:0;max-width:42ch}
+
+/* Reservierung in drei Schritten */
+.res-box form{display:flex;flex-direction:column}
+.res-fortschritt{list-style:none;display:flex;align-items:center;gap:.6rem;margin:0 0 var(--s3);padding:0}
+.res-punkt{display:flex;align-items:center;gap:.6rem;flex:1 1 auto;min-width:0;font:700 .9375rem/1.2 var(--text);color:var(--tanne);opacity:.5;transition:opacity .3s}
+.res-punkt:last-child{flex:none}
+.res-punkt:not(:last-child)::after{content:"";flex:1;min-width:1rem;height:2px;border-radius:2px;background:var(--tanne);opacity:.25}
+.res-punkt.res-jetzt,.res-punkt.res-erledigt{opacity:1}
+.res-punkt.res-erledigt{cursor:pointer}
+.res-punkt.res-erledigt:hover .res-titel{text-decoration:underline;text-underline-offset:3px}
+.res-nr{display:grid;place-items:center;width:40px;height:40px;flex:none;border-radius:50%;border:2px solid var(--tanne);background:var(--papier);font:400 1.1rem/1 var(--disp);transition:background .3s,color .3s,border-color .3s}
+.res-jetzt .res-nr{background:var(--pfirsich);border-color:var(--pfirsich)}
+.res-erledigt .res-nr{background:var(--tanne);color:var(--creme);font-size:0}
+.res-erledigt .res-nr::before{content:"✓";font:700 1.05rem/1 var(--text)}
+.res-titel{white-space:nowrap}
+.res-jetzt .res-titel{font:400 1.3rem/1 var(--disp)}
+.res-zusammenfassung{align-self:flex-start;display:inline-flex;align-items:center;gap:.55rem;margin:0 0 var(--s3);padding:.5rem 1.05rem;border-radius:999px;background:var(--mulde);font-weight:700;font-size:.9375rem;font-variant-numeric:tabular-nums}
+.res-zusammenfassung::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--salbei);flex:none}
+.res-schritt{display:flex;flex-direction:column;min-height:420px}
+.gruppe{border:0;margin:0 0 var(--s3);padding:0;min-width:0}
+.gruppe legend{font:700 .8125rem/1 var(--text);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.8rem;padding:0;color:var(--tanne)}
+[data-zeiten]{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:.6rem}
+[data-zeiten]:has(.res-zeitgruppe){display:block}
+.res-zeitgruppe{margin-bottom:.9rem}
+.res-zeitgruppe:last-child{margin-bottom:0}
+.res-tageszeit{font:italic 400 1.0625rem/1.2 var(--akz);margin-bottom:.45rem}
+.res-zeitreihe{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:.6rem}
+[data-personen]{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.6rem;max-width:420px}
+[data-personen] .res-hinweis{grid-column:1/-1}
+[data-zeiten] .res-option,[data-personen] .res-option{display:flex}
+[data-zeiten] .res-label,[data-personen] .res-label{flex:1;padding-inline:.5rem}
+[data-personen] .res-label{min-height:64px;font:400 1.5rem/1 var(--disp)}
+.res-schritt .felder{margin-bottom:var(--s2)}
+.res-schritt [data-reservierung-fehler]{margin:var(--s1) 0 0}
+.res-schritt-fehler{color:var(--blau);font-weight:700;margin-top:var(--s2)}
+.res-schritt-fehler:empty{display:none}
+.res-nav{display:flex;align-items:center;gap:.75rem;margin-top:auto;padding-top:var(--s3)}
+.res-zurueck{font:700 1rem/1.2 var(--text);min-height:56px;padding:.8rem 1.4rem;border-radius:999px;border:2px solid var(--tanne);background:transparent;color:var(--tanne);cursor:pointer;transition:background .25s,color .25s}
+.res-zurueck::before{content:"← "}
+.res-zurueck:hover{background:var(--tanne);color:var(--creme)}
+.res-weiter{font:700 1.0625rem/1.2 var(--text);min-height:56px;padding:.9rem 2rem;border-radius:999px;border:0;background:var(--tanne);color:var(--creme);cursor:pointer;transition:background .3s}
+.res-weiter::after{content:" →"}
+.res-weiter:hover{background:var(--blau)}
+.res-weiter,.res-nav [type="submit"]{margin-left:auto;min-width:230px}
+.res-box .res-nav button[type="submit"]{width:auto}
+@media (max-width:819px){.res-schritt{min-height:0}
+/* die wischbare Tag-Reihe darf das Raster nicht verbreitern (vorher lief der Abschnitt rechts aus dem Bild) */
+.reservieren .wrap{grid-template-columns:minmax(0,1fr)}.res-intro,.res-box,.res-box form,.gruppe{min-width:0}}
+@media (max-width:560px){
+.res-fortschritt{gap:.45rem}
+.res-punkt:not(.res-jetzt) .res-titel{display:none}
+.res-nr{width:36px;height:36px}
+.res-jetzt .res-titel{font-size:1.15rem}
+[data-tage]{scrollbar-width:none;margin-inline:-.25rem}
+[data-tage]::-webkit-scrollbar{display:none}
+[data-zeiten],.res-zeitreihe,[data-personen]{grid-template-columns:repeat(4,minmax(0,1fr));gap:.5rem}
+[data-zeiten] .res-label{padding-inline:.2rem;font-size:1rem}
+[data-personen] .res-label{min-height:56px;font-size:1.3rem}
+.res-nav{gap:.6rem}
+.res-zurueck{padding-inline:1.05rem}
+.res-weiter,.res-nav [type="submit"]{flex:1;min-width:0;padding-inline:1rem}
+.res-box .res-nav button[type="submit"]{width:auto}
+}
 </style>
-<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}[data-reservierung] [hidden]{display:none!important}</style><!--agent-lib--><link rel="stylesheet" href="lib/lenis.css"><script src="lib/gsap.min.js"></script><script src="lib/ScrollTrigger.min.js"></script><script src="lib/SplitText.min.js"></script><script src="lib/lenis.min.js"></script><!--/agent-lib--></head>
+<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}[data-reservierung] [hidden],form[data-reservierung][hidden],[data-reservierung-erfolg][hidden]{display:none!important}:where(.res-fortschritt){list-style:none;display:flex;gap:.75rem;padding:0;margin:0 0 1rem}:where(.res-punkt){display:flex;align-items:center;gap:.45rem;flex:1;opacity:.5}:where(.res-punkt.res-jetzt,.res-punkt.res-erledigt){opacity:1}:where(.res-punkt.res-erledigt){cursor:pointer}:where(.res-nr){display:inline-grid;place-items:center;width:1.7em;height:1.7em;border-radius:50%;border:1px solid currentColor;font-size:.85em;flex:none}:where(.res-zusammenfassung){margin:0 0 1rem;font-size:.92em;opacity:.8}:where(.res-nav){display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin-top:1.25rem}:where(.res-nav .res-weiter,.res-nav [type=submit]){margin-left:auto}:where(.res-nav button){min-height:44px}:where(.res-zeitgruppe){margin:0 0 .75rem}:where(.res-zeitreihe){display:flex;flex-wrap:wrap;gap:.5rem}:where(.res-tageszeit){margin:0 0 .35rem;font-size:.78em;letter-spacing:.08em;text-transform:uppercase;opacity:.7}@media (max-width:560px){:where(.res-punkt:not(.res-jetzt) .res-titel){display:none}:where(.res-punkt:not(.res-jetzt)){flex:none}:where(.res-zeitreihe){display:grid;grid-template-columns:repeat(4,1fr)}:where(.res-nav button){min-height:48px}:where(.res-nav .res-weiter,.res-nav [type=submit]){flex:1}[data-reservierung] input:not([type=radio]):not([type=checkbox]),[data-reservierung] textarea,[data-reservierung] select{font-size:max(16px,1em)!important}}</style><!--agent-lib--><link rel="stylesheet" href="lib/lenis.css"><script src="lib/gsap.min.js"></script><script src="lib/ScrollTrigger.min.js"></script><script src="lib/SplitText.min.js"></script><script src="lib/lenis.min.js"></script><!--/agent-lib--></head>
 <body><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für Nooni Café. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
 <symbol id="teller" viewBox="-100 -100 200 200"><circle r="86" fill="none" stroke="#FBF5EA" stroke-width="27"/><circle r="99" fill="none" stroke="#2F5230" stroke-opacity=".2"/><circle r="73" fill="none" stroke="#2F5230" stroke-opacity=".15"/><g fill="#1F2F6B"><circle cx="88" r="1.8" transform="rotate(4)"/><circle cx="81" r="1.1" transform="rotate(15)"/><circle cx="93" r="1.4" transform="rotate(27)"/><circle cx="85" r="2.1" transform="rotate(38)"/><circle cx="79" r=".9" transform="rotate(47)"/><circle cx="91" r="1.3" transform="rotate(58)"/><circle cx="84" r="1.7" transform="rotate(70)"/><circle cx="95" r="1" transform="rotate(82)"/><circle cx="80" r="1.5" transform="rotate(91)"/><circle cx="88" r="2" transform="rotate(103)"/><circle cx="93" r="1.1" transform="rotate(114)"/><circle cx="82" r="1.4" transform="rotate(126)"/><circle cx="89" r=".9" transform="rotate(137)"/><circle cx="96" r="1.6" transform="rotate(149)"/><circle cx="84" r="2.2" transform="rotate(160)"/><circle cx="78" r="1" transform="rotate(171)"/><circle cx="90" r="1.3" transform="rotate(183)"/><circle cx="86" r="1.8" transform="rotate(194)"/><circle cx="95" r="1.1" transform="rotate(206)"/><circle cx="81" r="1.5" transform="rotate(217)"/><circle cx="88" r="2" transform="rotate(229)"/><circle cx="93" r=".9" transform="rotate(240)"/><circle cx="84" r="1.4" transform="rotate(252)"/><circle cx="79" r="1.2" transform="rotate(263)"/><circle cx="91" r="1.9" transform="rotate(275)"/><circle cx="86" r="1" transform="rotate(286)"/><circle cx="95" r="1.3" transform="rotate(298)"/><circle cx="82" r="1.7" transform="rotate(309)"/><circle cx="89" r="1.1" transform="rotate(321)"/><circle cx="94" r="2.1" transform="rotate(332)"/><circle cx="80" r="1.2" transform="rotate(344)"/><circle cx="87" r="1.5" transform="rotate(355)"/></g></symbol>
@@ -548,9 +611,14 @@ h1,h2,h3{hyphens:manual;-webkit-hyphens:manual;overflow-wrap:normal;text-wrap:ba
 </div>
 <div class="res-box">
 <form data-reservierung novalidate>
-<fieldset class="schritt"><legend><span>1</span>Tag</legend><div data-tage></div></fieldset>
-<fieldset class="schritt"><legend><span>2</span>Uhrzeit</legend><div data-zeiten></div></fieldset>
-<fieldset class="schritt"><legend><span>3</span>Personen</legend><div data-personen></div></fieldset>
+<div class="res-schritt" data-schritt="1" data-titel="Wann?">
+<fieldset class="gruppe"><legend>Tag</legend><div data-tage></div></fieldset>
+<fieldset class="gruppe"><legend>Uhrzeit</legend><div data-zeiten></div></fieldset>
+</div>
+<div class="res-schritt" data-schritt="2" data-titel="Wie viele?">
+<fieldset class="gruppe"><legend>Personen</legend><div data-personen></div></fieldset>
+</div>
+<div class="res-schritt" data-schritt="3" data-titel="Ihre Angaben">
 <div class="felder">
 <div class="feld"><label for="r-name">Name</label><input id="r-name" name="name" autocomplete="name" required></div>
 <div class="feld"><label for="r-tel">Telefon</label><input id="r-tel" name="telefon" type="tel" autocomplete="tel" required></div>
@@ -560,6 +628,7 @@ h1,h2,h3{hyphens:manual;-webkit-hyphens:manual;overflow-wrap:normal;text-wrap:ba
 <label class="einwilligung"><input type="checkbox" name="einwilligung" required><span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Reservierung verwendet werden. <a href="https://medialyte.de/datenschutzerklaerung" target="_blank" rel="noopener">Datenschutz</a></span></label>
 <p data-reservierung-fehler role="alert"></p>
 <button type="submit" class="knopf knopf-tanne">Tisch anfragen <span class="pfeil" aria-hidden="true">→</span></button>
+</div>
 </form>
 <div class="erfolg" data-reservierung-erfolg hidden>
 <h3>Danke, <span data-wert="name"></span>!</h3>
@@ -773,7 +842,16 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       boxZeiten.innerHTML = "";
       var x = days.filter(function (y) { return iso(y.d) === dateIso; })[0];
       if (!x) { boxZeiten.appendChild(el("p", { "class": "res-hinweis" }, "Bitte zuerst einen Tag wählen.")); return; }
-      x.slots.forEach(function (m) { boxZeiten.appendChild(option("uhrzeit", hm(m), hm(m))); });
+      if (x.slots.length <= 8) { x.slots.forEach(function (m) { boxZeiten.appendChild(option("uhrzeit", hm(m), hm(m))); }); return; }
+      var parts = [["Morgens", 0, 660], ["Mittags", 660, 870], ["Nachmittags", 870, 1020], ["Abends", 1020, 1440]];
+      parts.forEach(function (pt) {
+        var mins = x.slots.filter(function (m) { return m >= pt[1] && m < pt[2]; });
+        if (!mins.length) return;
+        var g = el("div", { "class": "res-zeitgruppe" }), row = el("div", { "class": "res-zeitreihe" });
+        g.appendChild(el("p", { "class": "res-tageszeit" }, pt[0]));
+        mins.forEach(function (m) { row.appendChild(option("uhrzeit", hm(m), hm(m))); });
+        g.appendChild(row); boxZeiten.appendChild(g);
+      });
     }
     function renderPersons() {
       boxPers.innerHTML = "";
@@ -791,12 +869,143 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       style: "position:absolute;left:-9999px;width:1px;height:1px;opacity:0" });
     form.appendChild(trap);
     var errBox = form.querySelector("[data-reservierung-fehler]");
-    if (!errBox) { errBox = el("p", { "class": "res-fehler" }); form.insertBefore(errBox, form.querySelector('[type="submit"]') || null); }
+    if (!errBox) { errBox = el("p", { "class": "res-fehler" }); var sb0 = form.querySelector('[type="submit"]'); if (sb0) sb0.parentNode.insertBefore(errBox, sb0); else form.appendChild(errBox); }
     errBox.setAttribute("role", "alert"); errBox.setAttribute("aria-live", "polite");
     var ok = form.querySelector("[data-reservierung-erfolg]");
+    if (!ok) { // gestaltete Bestätigung direkt neben dem Formular (gleicher Abschnitt) wird ebenfalls genutzt
+      var area = form.closest("section, [id]") || form.parentNode;
+      ok = area ? area.querySelector("[data-reservierung-erfolg]") : null;
+      if (ok && (ok._resForm || ok.closest("form[data-reservierung]"))) ok = null;
+    }
+    var outside = !!ok && !form.contains(ok);
+    if (ok) ok._resForm = form;
     if (!ok) { ok = el("div", { "class": "res-erfolg", tabindex: "-1" }, "<p><strong>Danke!<\/strong> Ihre Anfrage für <span data-wert=\"datum\"><\/span> um <span data-wert=\"uhrzeit\"><\/span> Uhr (<span data-wert=\"personen\"><\/span>) ist eingegangen.<\/p>"); ok.setAttribute("data-reservierung-erfolg", ""); form.appendChild(ok); }
     ok.hidden = true; ok.setAttribute("tabindex", "-1");
     form.noValidate = true;
+    [["name", "name", "text"], ["telefon", "tel", "tel"], ["email", "email", "email"]].forEach(function (x) {
+      var f = form.querySelector('[name="' + x[0] + '"]'); if (!f || f.tagName !== "INPUT") return;
+      if (!f.getAttribute("autocomplete")) f.setAttribute("autocomplete", x[1]);
+      if (x[2] !== "text") { f.type = x[2]; f.setAttribute("inputmode", x[2]); }
+      if (!f.getAttribute("enterkeyhint")) f.setAttribute("enterkeyhint", "next");
+    });
+    function headerOffset() {
+      var h = 16;
+      document.querySelectorAll("header, nav, [data-kopf]").forEach(function (n) {
+        var cs = getComputedStyle(n), r = n.getBoundingClientRect();
+        if ((cs.position === "fixed" || cs.position === "sticky") && r.top <= 1 && r.height < innerHeight / 3) h = Math.max(h, r.bottom + 12);
+      });
+      return h;
+    }
+    /* gewählten Chip in einer wischbaren Reihe sichtbar machen, ohne die Seite zu verschieben */
+    function revealX(input) {
+      var lab = input && (input.closest(".res-option") || input);
+      for (var n = lab && lab.parentNode; n && n !== form; n = n.parentNode) {
+        var ox = getComputedStyle(n).overflowX;
+        if (ox === "auto" || ox === "scroll") {
+          var r = lab.getBoundingClientRect(), b = n.getBoundingClientRect();
+          if (r.left < b.left || r.right > b.right) n.scrollLeft += r.left - b.left - (b.width - r.width) / 2;
+          return;
+        }
+      }
+    }
+
+    /* Mehrschritt: <div data-schritt="1|2|3" data-titel="…"> – immer nur ein Schritt sichtbar */
+    var steps = Array.prototype.slice.call(form.querySelectorAll("[data-schritt]")), cur = 0;
+    var multi = steps.length >= 2, prog = null, sum = null, live = null;
+    var still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function stepTitle(st, i) { var h = st.getAttribute("data-titel") || ((st.querySelector("h2,h3,h4,legend") || {}).textContent || ""); return h.trim() || ["Wann?", "Wie viele?", "Ihre Angaben"][i] || "Schritt " + (i + 1); }
+    function summaryText() {
+      var bits = [];
+      if (val("datum")) { var d = new Date(val("datum") + "T12:00:00"); bits.push(TAGE[d.getDay()] + " " + pad(d.getDate()) + "." + pad(d.getMonth() + 1) + "."); }
+      if (val("uhrzeit")) bits.push(val("uhrzeit") + " Uhr");
+      if (val("personen")) bits.push(val("personen") + (val("personen") === "1" ? " Person" : " Personen"));
+      return bits.join(" · ");
+    }
+    function stepOk(i, mark_) {
+      var st = steps[i], need = [];
+      if (st.querySelector("[data-tage]") && !val("datum")) need.push([boxTage, "Bitte einen Tag wählen."]);
+      if (st.querySelector("[data-zeiten]") && !val("uhrzeit")) need.push([boxZeiten, "Bitte eine Uhrzeit wählen."]);
+      if (st.querySelector("[data-personen]") && !val("personen")) need.push([boxPers, "Bitte die Anzahl der Personen wählen."]);
+      var hint = st.querySelector(".res-schritt-fehler");
+      if (mark_ && hint) hint.textContent = need.map(function (n) { return n[1]; }).join(" ");
+      need.forEach(function (n) { if (mark_) mark(n[0], true); });
+      return !need.length;
+    }
+    function show(i, dir) {
+      cur = Math.max(0, Math.min(steps.length - 1, i));
+      steps.forEach(function (st, k) { st.hidden = k !== cur; st.classList.toggle("res-aktiv", k === cur); });
+      if (prog) Array.prototype.forEach.call(prog.children, function (li, k) {
+        li.classList.toggle("res-erledigt", k < cur); li.classList.toggle("res-jetzt", k === cur);
+        if (k === cur) li.setAttribute("aria-current", "step"); else li.removeAttribute("aria-current");
+      });
+      if (sum) { var t = summaryText(); sum.textContent = cur > 0 ? t : ""; sum.hidden = cur === 0 || !t; }
+      if (live) live.textContent = "Schritt " + (cur + 1) + " von " + steps.length + ": " + stepTitle(steps[cur], cur);
+      var st = steps[cur];
+      if (dir && !still && st.animate) st.animate([{ opacity: 0, transform: "translateX(" + (dir > 0 ? 18 : -18) + "px)" }, { opacity: 1, transform: "none" }],
+        { duration: 280, easing: "cubic-bezier(.2,.7,.2,1)" });
+      if (dir) {
+        var f = st.querySelector("input:checked") || st;
+        if (f === st && !st.hasAttribute("tabindex")) { st.setAttribute("tabindex", "-1"); st.style.outline = "none"; }
+        try { f.focus({ preventScroll: true }); } catch (e) {}
+        revealX(st.querySelector("[data-tage] input:checked"));
+        var off = headerOffset(), top = form.getBoundingClientRect().top;
+        if (top < off - 2 || top > innerHeight * 0.6) scrollTo({ top: scrollY + top - off, behavior: still ? "auto" : "smooth" });
+      }
+    }
+    function next() { if (stepOk(cur, true)) show(cur + 1, 1); }
+    if (multi) {
+      prog = form.querySelector("[data-fortschritt]");
+      if (!prog) { prog = el("ol", { "class": "res-fortschritt" }); prog.setAttribute("data-fortschritt", ""); form.insertBefore(prog, form.firstChild); }
+      prog.innerHTML = "";
+      steps.forEach(function (st, i) {
+        var li = el("li", { "class": "res-punkt" }, "<span class=\"res-nr\">" + (i + 1) + "<\/span><span class=\"res-titel\">" + stepTitle(st, i) + "<\/span>");
+        li.addEventListener("click", function () { if (i < cur) show(i, -1); });
+        prog.appendChild(li);
+      });
+      sum = form.querySelector("[data-zusammenfassung]");
+      if (!sum) { sum = el("p", { "class": "res-zusammenfassung" }); prog.parentNode.insertBefore(sum, prog.nextSibling); }
+      live = el("p", { "class": "res-ansage", "aria-live": "polite", style: "position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)" });
+      form.appendChild(live);
+      var sbx = form.querySelector('[type="submit"]');
+      if (sbx && !steps.some(function (st) { return st.contains(sbx); })) steps[steps.length - 1].appendChild(sbx);
+      steps.forEach(function (st, i) {
+        if (!st.querySelector(".res-schritt-fehler") && i < steps.length - 1) st.appendChild(el("p", { "class": "res-schritt-fehler", role: "alert" }));
+        var back = st.querySelector("[data-zurueck]"), fwd = st.querySelector("[data-weiter]");
+        if (!back && !fwd && (i > 0 || i < steps.length - 1)) {
+          var nav = el("div", { "class": "res-nav" });
+          if (i > 0) { back = el("button", { type: "button", "class": "res-zurueck" }, "Zurück"); back.setAttribute("data-zurueck", ""); nav.appendChild(back); }
+          if (i < steps.length - 1) { fwd = el("button", { type: "button", "class": "res-weiter" }, "Weiter"); fwd.setAttribute("data-weiter", ""); nav.appendChild(fwd); }
+          var sb = st.querySelector('[type="submit"]');
+          if (sb && sb.parentNode) { sb.parentNode.insertBefore(nav, sb); nav.appendChild(sb); } else st.appendChild(nav);
+        }
+      });
+      form.addEventListener("click", function (e) {
+        if (e.target.closest("[data-weiter]")) { e.preventDefault(); next(); }
+        else if (e.target.closest("[data-zurueck]")) { e.preventDefault(); show(cur - 1, -1); }
+      });
+      form.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" || e.target.tagName === "TEXTAREA" || e.target.closest("[data-zurueck]")) return;
+        if (cur < steps.length - 1) { e.preventDefault(); next(); return; }
+        if (e.target.tagName !== "INPUT" || /^(radio|checkbox|submit|button)$/.test(e.target.type)) return;
+        var texts = Array.prototype.slice.call(steps[cur].querySelectorAll("input:not([type=radio]):not([type=checkbox]):not([type=hidden]):not([name=botcheck]), textarea"));
+        var later = texts.slice(texts.indexOf(e.target) + 1).filter(function (t) { return !String(t.value || "").trim(); })[0];
+        if (later) { e.preventDefault(); later.focus(); }
+      });
+      // Nach der Wahl von Uhrzeit bzw. Personen per Tippen/Klick geht es von selbst weiter (Pfeiltasten nicht)
+      var lastPointer = -1e9, lastKey = -1e9;
+      form.addEventListener("pointerdown", function () { lastPointer = performance.now(); });
+      form.addEventListener("keydown", function () { lastKey = performance.now(); }, true);
+      form.addEventListener("change", function (e) {
+        var n = e.target.name, st = steps[cur], at = cur;
+        var t = performance.now(); if (t - lastPointer > 1500 || t - lastKey < 400) return;
+        if ((n === "uhrzeit" && st.querySelector("[data-zeiten]") && !st.querySelector("[data-personen]")) ||
+            (n === "personen" && st.querySelector("[data-personen]") && cur < steps.length - 1)) {
+          var hint = st.querySelector(".res-schritt-fehler"); if (hint) hint.textContent = "";
+          setTimeout(function () { if (cur === at && stepOk(cur, false)) show(cur + 1, 1); }, 320);
+        }
+      });
+      show(0, 0);
+    }
 
     function field(n) { return form.querySelector('[name="' + n + '"]'); }
     function val(n) {
@@ -817,6 +1026,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       if (field("email") && val("email")) need(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val("email")), field("email"), "Die E-Mail-Adresse sieht unvollständig aus.");
       if (field("einwilligung")) need(val("einwilligung") === true, field("einwilligung"), "Bitte der Verarbeitung Ihrer Angaben zustimmen.");
       errBox.textContent = errs.join(" ");
+      if (firstBad && multi) { var k = steps.findIndex(function (st) { return st.contains(firstBad); }); if (k >= 0 && k !== cur) { show(k, -1); stepOk(k, true); } }
       if (firstBad) { var f = firstBad.matches && firstBad.matches("input,textarea,select") ? firstBad : firstBad.querySelector("input:not(:disabled)"); if (f) f.focus(); }
       return !errs.length;
     }
@@ -835,16 +1045,27 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         ok.appendChild(el("p", { "class": "res-demo-hinweis" }, "Entwurf: Diese Anfrage wurde nicht übermittelt. In der fertigen Website geht sie sofort an " +
           CFG.name + "." + (CFG.tel ? " Für eine echte Reservierung bitte <a href=\"tel:" + CFG.tel + "\">anrufen<\/a>." : "")));
       }
-      Array.prototype.forEach.call(form.children, function (c) { if (c !== ok && c !== trap) { c.setAttribute("data-res-vorher", c.hidden ? "1" : "0"); c.hidden = true; } });
+      if (outside) { form.setAttribute("data-res-vorher", form.hidden ? "1" : "0"); form.hidden = true; }
+      for (var n = ok; !outside && n && n !== form; n = n.parentNode) {
+        var sib = n;
+        Array.prototype.forEach.call(n.parentNode.children, function (c) { if (c !== sib && c !== trap && !c.hasAttribute("data-res-vorher")) { c.setAttribute("data-res-vorher", c.hidden ? "1" : "0"); c.hidden = true; } });
+        if (n.parentNode !== form && n.parentNode.hidden) { n.parentNode.setAttribute("data-res-offen", ""); n.parentNode.hidden = false; }
+      }
       ok.hidden = false; form.setAttribute("data-status", "gesendet");
       try { ok.focus({ preventScroll: true }); } catch (e) { ok.focus(); }
-      var top = form.getBoundingClientRect().top + scrollY - 100; if (top < scrollY) scrollTo({ top: top, behavior: "smooth" });
+      var off = headerOffset(), top = (outside ? ok : form).getBoundingClientRect().top;
+      if (top < off - 2) scrollTo({ top: scrollY + top - off, behavior: still ? "auto" : "smooth" });
     }
-    form.addEventListener("click", function (e) {
+    function again(e) {
       if (!e.target.closest("[data-reservierung-neu]")) return;
       e.preventDefault(); ok.hidden = true; form.removeAttribute("data-status");
-      Array.prototype.forEach.call(form.children, function (c) { if (c !== ok && c !== trap) c.hidden = c.getAttribute("data-res-vorher") === "1"; });
-    });
+      if (outside) { form.hidden = form.getAttribute("data-res-vorher") === "1"; form.removeAttribute("data-res-vorher"); }
+      form.querySelectorAll("[data-res-vorher]").forEach(function (c) { c.hidden = c.getAttribute("data-res-vorher") === "1"; c.removeAttribute("data-res-vorher"); });
+      form.querySelectorAll("[data-res-offen]").forEach(function (c) { c.hidden = true; c.removeAttribute("data-res-offen"); });
+      if (multi) show(0, -1);
+    }
+    form.addEventListener("click", again);
+    if (outside) ok.addEventListener("click", again);
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (trap.value) return;
