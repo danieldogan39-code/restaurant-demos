@@ -378,6 +378,14 @@ form[data-reservierung]{display:flex;flex-direction:column}
 @media (hover:hover){.res-weiter:hover{background:var(--rot-tief)}}
 .res-nav .knopf.senden{margin-left:auto}
 .res-schritt [data-reservierung-fehler]{min-height:0;margin:10px 0 0}
+
+/* Google-Bewertung */.hero-marken{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
+.bewertung{text-decoration:none;font-variant-numeric:tabular-nums}
+.bewertung .bew-zahl{font-weight:700}
+
+.bewertung{display:inline-flex;align-items:center;gap:.5rem;min-height:40px;padding:8px 16px;border:1px solid var(--blau);border-radius:999px;font-size:.9375rem;line-height:1.3;color:var(--blau);transition:background .3s}
+.bewertung .bew-stern{color:var(--rot)}
+.bewertung:hover{background:var(--creme2)}
 </style>
 <meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}[data-reservierung] [hidden],form[data-reservierung][hidden],[data-reservierung-erfolg][hidden]{display:none!important}:where(.res-fortschritt){list-style:none;display:flex;gap:.75rem;padding:0;margin:0 0 1rem}:where(.res-punkt){display:flex;align-items:center;gap:.45rem;flex:1;opacity:.5}:where(.res-punkt.res-jetzt,.res-punkt.res-erledigt){opacity:1}:where(.res-punkt.res-erledigt){cursor:pointer}:where(.res-nr){display:inline-grid;place-items:center;width:1.7em;height:1.7em;border-radius:50%;border:1px solid currentColor;font-size:.85em;flex:none}:where(.res-zusammenfassung){margin:0 0 1rem;font-size:.92em;opacity:.8}:where(.res-nav){display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin-top:1.25rem}:where(.res-nav .res-weiter,.res-nav [type=submit]){margin-left:auto}:where(.res-nav button){min-height:44px}:where(.res-zeitgruppe){margin:0 0 .75rem}:where(.res-zeitreihe){display:flex;flex-wrap:wrap;gap:.5rem}:where(.res-tageszeit){margin:0 0 .35rem;font-size:.78em;letter-spacing:.08em;text-transform:uppercase;opacity:.7}@media (max-width:560px){:where(.res-punkt:not(.res-jetzt) .res-titel){display:none}:where(.res-punkt:not(.res-jetzt)){flex:none}:where(.res-zeitreihe){display:grid;grid-template-columns:repeat(4,1fr)}:where(.res-nav button){min-height:48px}:where(.res-nav .res-weiter,.res-nav [type=submit]){flex:1}[data-reservierung] input:not([type=radio]):not([type=checkbox]),[data-reservierung] textarea,[data-reservierung] select{font-size:max(16px,1em)!important}}</style><!--agent-lib--><link rel="stylesheet" href="lib/lenis.css"><script src="lib/gsap.min.js"></script><script src="lib/ScrollTrigger.min.js"></script><script src="lib/SplitText.min.js"></script><script src="lib/lenis.min.js"></script><!--/agent-lib--></head>
 <body><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für Umami Kimchi. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
@@ -399,7 +407,7 @@ form[data-reservierung]{display:flex;flex-direction:column}
 <main id="inhalt">
   <section class="hero" id="top" aria-label="Umami Kimchi">
     <div class="hero-text">
-      <p class="status"><span data-status></span></p>
+      <div class="hero-marken"><p class="status"><span data-status></span></p><a class="bewertung" href="https://www.google.com/maps/search/?api=1&query=Umami+Kimchi&query_place_id=ChIJT50hAwCPsUcRnhO9v82Uru8" target="_blank" rel="noopener" data-bewertung aria-label="4,9 von 5 Sternen bei 291 Google-Bewertungen"><span class="bew-stern" aria-hidden="true">★</span><span class="bew-zahl">4,9</span><span class="bew-text">291 Bewertungen auf Google</span></a></div>
       <h1 class="hero-titel">
         <span class="hero-name v">Umami Kimchi</span>
         <span class="zug-box"><span class="zug v" data-fit data-ziel="125" data-ziel-mobil="112">Nudeln</span><span class="hausgemacht">hausgemacht.</span></span>
@@ -837,7 +845,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<style>[data-karte]{width:100%;height:100%;min-height:260px}[data-karte] .leaflet-tile-pane{filter:var(--karte-filter)}
+<style>[data-karte]{width:100%;height:100%;min-height:260px;position:relative;z-index:0;isolation:isolate}[data-karte] .leaflet-tile-pane{filter:var(--karte-filter)}
 [data-karte] .leaflet-control-attribution{font-size:10px}.karte-pin{position:relative;width:34px;height:34px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
 box-shadow:0 6px 16px rgba(0,0,0,.35);border:3px solid #fff}.karte-pin i{position:absolute;inset:9px;border-radius:50%;background:#fff}</style>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -946,9 +954,17 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       if (!x) { boxZeiten.appendChild(el("p", { "class": "res-hinweis" }, "Bitte zuerst einen Tag wählen.")); return; }
       if (x.slots.length <= 8) { x.slots.forEach(function (m) { boxZeiten.appendChild(option("uhrzeit", hm(m), hm(m))); }); return; }
       var parts = [["Morgens", 0, 660], ["Mittags", 660, 870], ["Nachmittags", 870, 1020], ["Abends", 1020, 1440]];
-      parts.forEach(function (pt) {
-        var mins = x.slots.filter(function (m) { return m >= pt[1] && m < pt[2]; });
-        if (!mins.length) return;
+      // eine einzelne Uhrzeit bekommt keine eigene Gruppe, sie wandert in die nächste (bzw. vorige)
+      var groups = parts.map(function (pt) { return [pt[0], x.slots.filter(function (m) { return m >= pt[1] && m < pt[2]; })]; })
+        .filter(function (g) { return g[1].length; });
+      for (var gi = 0; gi < groups.length && groups.length > 1; gi++) {
+        if (groups[gi][1].length > 1) continue;
+        var to = gi + 1 < groups.length ? gi + 1 : gi - 1;
+        groups[to][1] = to > gi ? groups[gi][1].concat(groups[to][1]) : groups[to][1].concat(groups[gi][1]);
+        groups.splice(gi, 1); gi--;
+      }
+      groups.forEach(function (gr) {
+        var pt = [gr[0]], mins = gr[1];
         var g = el("div", { "class": "res-zeitgruppe" }), row = el("div", { "class": "res-zeitreihe" });
         g.appendChild(el("p", { "class": "res-tageszeit" }, pt[0]));
         mins.forEach(function (m) { row.appendChild(option("uhrzeit", hm(m), hm(m))); });
