@@ -302,8 +302,68 @@ button{font:inherit}
 @media (max-width:1024px){.hero-bild-wrap{margin-right:0}.hero-bild{min-height:0;border-radius:6px}}
 @media (min-width:820px) and (max-width:1024px){.hero{grid-template-columns:minmax(0,1fr);min-height:0;align-items:start;padding-block:48px 64px;row-gap:2rem}.hero-text,.hero-bild-wrap{grid-column:1}.hero-bild-wrap{order:-1;width:100%}.hero-bild{height:auto;aspect-ratio:16/9}.einschub{display:none}}
 @media (max-width:819px){.status{margin-bottom:12px}.wortmarke{font-size:12vw}.hero-titel{margin-top:24px}.ab-klein{width:50%;margin:-18% 0 0 auto}}
+
+/* Reservierung in drei Schritten (Fortschritt, Zusammenfassung, Weiter/Zurück) */
+form[data-reservierung]{display:flex;flex-direction:column}
+.res-fortschritt{list-style:none;display:flex;align-items:center;gap:.6rem;padding:0}
+.res-punkt{display:flex;align-items:center;gap:.55rem;flex:1 1 auto;min-width:0;opacity:.45;transition:opacity .3s}
+.res-punkt:last-child{flex:none}
+.res-punkt:not(:last-child)::after{content:"";flex:1;min-width:1rem}
+.res-punkt.res-jetzt,.res-punkt.res-erledigt{opacity:1}
+.res-punkt.res-erledigt{cursor:pointer}
+.res-nr{display:inline-grid;place-items:center;flex:none;border-radius:50%;font-variant-numeric:tabular-nums;transition:background .3s,color .3s}
+.res-erledigt .res-nr{font-size:0}
+.res-erledigt .res-nr::before{content:"✓";font-size:.95rem}
+.res-titel{white-space:nowrap}
+.res-zusammenfassung{align-self:flex-start;font-weight:700;font-variant-numeric:tabular-nums}
+.res-schritt{display:flex;flex-direction:column;min-height:390px}
+[data-zeiten]:has(.res-zeitgruppe){display:block}
+.res-zeitgruppe{margin-bottom:.9rem}
+.res-zeitgruppe:last-child{margin-bottom:0}
+.res-zeitreihe{display:flex;flex-wrap:wrap;gap:.55rem}
+.res-schritt-fehler{font-weight:700;margin-top:.75rem}
+.res-schritt-fehler:empty{display:none}
+.res-nav{display:flex;align-items:center;gap:.75rem;margin-top:auto;padding-top:1.5rem}
+.res-zurueck,.res-weiter{cursor:pointer;min-height:54px}
+.res-zurueck::before{content:"← "}
+.res-weiter::after{content:" →"}
+.res-weiter,.res-nav [type="submit"]{margin-left:auto}
+@media (min-width:820px){[data-personen] .res-label{min-width:62px;min-height:62px;font-size:1.2rem}}
+@media (max-width:819px){
+.res-schritt{min-height:0}
+[data-zeiten]:has(.res-zeitgruppe){overflow:visible}
+[data-zeiten]:not(:has(.res-zeitgruppe)),.res-zeitreihe,[data-personen]{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:.45rem;overflow:visible;flex-wrap:wrap}
+[data-zeiten] .res-option,[data-personen] .res-option{display:flex}
+[data-zeiten] .res-label,[data-personen] .res-label{flex:1;min-width:0;padding-inline:.2rem}
+[data-personen] .res-hinweis{grid-column:1/-1}
+.res-punkt:not(.res-jetzt) .res-titel{display:none}
+.res-punkt:not(.res-jetzt){flex:1 1 auto}
+.res-nav{gap:.6rem}
+.res-weiter,.res-nav [type="submit"]{flex:1;min-width:0;width:auto!important;padding-inline:1rem}
+}
+
+.res-fortschritt{margin:0 0 1.25rem}
+.res-punkt{font-weight:700;font-size:.9375rem;color:var(--sw)}
+.res-punkt:not(:last-child)::after{border-top:2px dashed var(--sw);opacity:.5}
+.res-nr{width:32px;height:32px;border:2px solid var(--sw);font-size:.875rem;font-weight:700}
+.res-jetzt .res-nr{background:var(--or);box-shadow:2px 2px 0 var(--sw)}
+.res-erledigt .res-nr{background:var(--sw);color:var(--cr)}
+.res-jetzt .res-titel{font:400 1.3rem/1 var(--fd)}
+.res-zusammenfassung{margin:0 0 1.25rem;padding:.45rem .9rem;border:2px dashed var(--sw);border-radius:6px;background:var(--hell);font-size:.9375rem}
+.gruppe legend .schritt{display:none}
+.res-tageszeit{font-weight:700;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.4rem;opacity:.7}
+.res-schritt-fehler{color:var(--rot)}
+.res-zurueck{padding:0 1.25rem;border:2px solid var(--sw);border-radius:999px;background:transparent;color:var(--sw);font:700 1rem var(--ft)}
+@media (hover:hover){.res-zurueck:hover{background:#EAD4A8}}
+.res-weiter{padding:0 2rem;border:0;border-radius:999px;background:var(--sw);color:var(--cr);font:700 1.0625rem var(--ft);transition:background .3s,color .3s}
+@media (hover:hover){.res-weiter:hover{background:var(--or);color:var(--sw)}}
+.res-fuss .res-nav{flex:1 1 100%;padding-top:0}
+@media (max-width:819px){.res-fuss .knopf{width:auto}.res-jetzt .res-titel{font-size:1.15rem}
+.bon dl{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bon dl div:nth-child(3){grid-column:1/-1;flex-direction:row;justify-content:space-between;align-items:baseline;border-left:0;border-top:1px solid var(--li)}
+.bon dl div:nth-child(3) dd{text-align:right}}
 </style>
-<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}[data-reservierung] [hidden]{display:none!important}</style><!--agent-lib--><link rel="stylesheet" href="lib/lenis.css"><script src="lib/gsap.min.js"></script><script src="lib/ScrollTrigger.min.js"></script><script src="lib/SplitText.min.js"></script><script src="lib/lenis.min.js"></script><!--/agent-lib--></head>
+<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}[data-reservierung] [hidden],form[data-reservierung][hidden],[data-reservierung-erfolg][hidden]{display:none!important}:where(.res-fortschritt){list-style:none;display:flex;gap:.75rem;padding:0;margin:0 0 1rem}:where(.res-punkt){display:flex;align-items:center;gap:.45rem;flex:1;opacity:.5}:where(.res-punkt.res-jetzt,.res-punkt.res-erledigt){opacity:1}:where(.res-punkt.res-erledigt){cursor:pointer}:where(.res-nr){display:inline-grid;place-items:center;width:1.7em;height:1.7em;border-radius:50%;border:1px solid currentColor;font-size:.85em;flex:none}:where(.res-zusammenfassung){margin:0 0 1rem;font-size:.92em;opacity:.8}:where(.res-nav){display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin-top:1.25rem}:where(.res-nav .res-weiter,.res-nav [type=submit]){margin-left:auto}:where(.res-nav button){min-height:44px}:where(.res-zeitgruppe){margin:0 0 .75rem}:where(.res-zeitreihe){display:flex;flex-wrap:wrap;gap:.5rem}:where(.res-tageszeit){margin:0 0 .35rem;font-size:.78em;letter-spacing:.08em;text-transform:uppercase;opacity:.7}@media (max-width:560px){:where(.res-punkt:not(.res-jetzt) .res-titel){display:none}:where(.res-punkt:not(.res-jetzt)){flex:none}:where(.res-zeitreihe){display:grid;grid-template-columns:repeat(4,1fr)}:where(.res-nav button){min-height:48px}:where(.res-nav .res-weiter,.res-nav [type=submit]){flex:1}[data-reservierung] input:not([type=radio]):not([type=checkbox]),[data-reservierung] textarea,[data-reservierung] select{font-size:max(16px,1em)!important}}</style><!--agent-lib--><link rel="stylesheet" href="lib/lenis.css"><script src="lib/gsap.min.js"></script><script src="lib/ScrollTrigger.min.js"></script><script src="lib/SplitText.min.js"></script><script src="lib/lenis.min.js"></script><!--/agent-lib--></head>
 <body><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für Ehso&#x27;s Burger. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
 <header class="kopf">
   <div class="kopf-in wrap">
@@ -464,9 +524,14 @@ button{font:inherit}
       <h2 class="h2" id="res-titel">Tisch an der Bornheide</h2>
       <p>Tag, Uhrzeit, wie viele ihr seid. Wir rufen dich zur Bestätigung zurück.</p>
       <form data-reservierung>
-        <fieldset class="gruppe"><legend><span class="schritt">1</span>Tag</legend><div class="chips" data-tage></div></fieldset>
-        <fieldset class="gruppe"><legend><span class="schritt">2</span>Uhrzeit</legend><div class="chips" data-zeiten></div></fieldset>
-        <fieldset class="gruppe"><legend><span class="schritt">3</span>Personen</legend><div class="chips" data-personen></div></fieldset>
+          <div class="res-schritt" data-schritt="1" data-titel="Wann?">
+          <fieldset class="gruppe"><legend><span class="schritt">1</span>Tag</legend><div class="chips" data-tage></div></fieldset>
+          <fieldset class="gruppe"><legend><span class="schritt">2</span>Uhrzeit</legend><div class="chips" data-zeiten></div></fieldset>
+          </div>
+          <div class="res-schritt" data-schritt="2" data-titel="Wie viele?">
+          <fieldset class="gruppe"><legend><span class="schritt">3</span>Personen</legend><div class="chips" data-personen></div></fieldset>
+          </div>
+          <div class="res-schritt" data-schritt="3" data-titel="Deine Angaben">
         <div class="felder">
           <div class="feld"><label for="r-name">Name</label><input id="r-name" name="name" type="text" autocomplete="name" required></div>
           <div class="feld"><label for="r-tel">Telefon</label><input id="r-tel" name="telefon" type="tel" autocomplete="tel" required></div>
@@ -476,7 +541,8 @@ button{font:inherit}
         <label class="einwilligung"><input type="checkbox" name="einwilligung" required><span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Reservierung verwendet werden. <a href="https://medialyte.de/datenschutzerklaerung" target="_blank" rel="noopener">Datenschutz</a></span></label>
         <p data-reservierung-fehler role="alert"></p>
         <div class="res-fuss"><button type="submit" class="knopf dunkel">Tisch anfragen</button><span>Eilig? <a href="tel:+494076487272" class="nr">040 76 48 72 72</a></span></div>
-      </form>
+          </div>
+        </form>
       <div data-reservierung-erfolg hidden>
         <div class="bon">
           <div class="bon-kopf">Ehso’s Burger · Bornheide 47b</div>
@@ -733,7 +799,16 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       boxZeiten.innerHTML = "";
       var x = days.filter(function (y) { return iso(y.d) === dateIso; })[0];
       if (!x) { boxZeiten.appendChild(el("p", { "class": "res-hinweis" }, "Bitte zuerst einen Tag wählen.")); return; }
-      x.slots.forEach(function (m) { boxZeiten.appendChild(option("uhrzeit", hm(m), hm(m))); });
+      if (x.slots.length <= 8) { x.slots.forEach(function (m) { boxZeiten.appendChild(option("uhrzeit", hm(m), hm(m))); }); return; }
+      var parts = [["Morgens", 0, 660], ["Mittags", 660, 870], ["Nachmittags", 870, 1020], ["Abends", 1020, 1440]];
+      parts.forEach(function (pt) {
+        var mins = x.slots.filter(function (m) { return m >= pt[1] && m < pt[2]; });
+        if (!mins.length) return;
+        var g = el("div", { "class": "res-zeitgruppe" }), row = el("div", { "class": "res-zeitreihe" });
+        g.appendChild(el("p", { "class": "res-tageszeit" }, pt[0]));
+        mins.forEach(function (m) { row.appendChild(option("uhrzeit", hm(m), hm(m))); });
+        g.appendChild(row); boxZeiten.appendChild(g);
+      });
     }
     function renderPersons() {
       boxPers.innerHTML = "";
@@ -751,12 +826,143 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       style: "position:absolute;left:-9999px;width:1px;height:1px;opacity:0" });
     form.appendChild(trap);
     var errBox = form.querySelector("[data-reservierung-fehler]");
-    if (!errBox) { errBox = el("p", { "class": "res-fehler" }); form.insertBefore(errBox, form.querySelector('[type="submit"]') || null); }
+    if (!errBox) { errBox = el("p", { "class": "res-fehler" }); var sb0 = form.querySelector('[type="submit"]'); if (sb0) sb0.parentNode.insertBefore(errBox, sb0); else form.appendChild(errBox); }
     errBox.setAttribute("role", "alert"); errBox.setAttribute("aria-live", "polite");
     var ok = form.querySelector("[data-reservierung-erfolg]");
+    if (!ok) { // gestaltete Bestätigung direkt neben dem Formular (gleicher Abschnitt) wird ebenfalls genutzt
+      var area = form.closest("section, [id]") || form.parentNode;
+      ok = area ? area.querySelector("[data-reservierung-erfolg]") : null;
+      if (ok && (ok._resForm || ok.closest("form[data-reservierung]"))) ok = null;
+    }
+    var outside = !!ok && !form.contains(ok);
+    if (ok) ok._resForm = form;
     if (!ok) { ok = el("div", { "class": "res-erfolg", tabindex: "-1" }, "<p><strong>Danke!<\/strong> Ihre Anfrage für <span data-wert=\"datum\"><\/span> um <span data-wert=\"uhrzeit\"><\/span> Uhr (<span data-wert=\"personen\"><\/span>) ist eingegangen.<\/p>"); ok.setAttribute("data-reservierung-erfolg", ""); form.appendChild(ok); }
     ok.hidden = true; ok.setAttribute("tabindex", "-1");
     form.noValidate = true;
+    [["name", "name", "text"], ["telefon", "tel", "tel"], ["email", "email", "email"]].forEach(function (x) {
+      var f = form.querySelector('[name="' + x[0] + '"]'); if (!f || f.tagName !== "INPUT") return;
+      if (!f.getAttribute("autocomplete")) f.setAttribute("autocomplete", x[1]);
+      if (x[2] !== "text") { f.type = x[2]; f.setAttribute("inputmode", x[2]); }
+      if (!f.getAttribute("enterkeyhint")) f.setAttribute("enterkeyhint", "next");
+    });
+    function headerOffset() {
+      var h = 16;
+      document.querySelectorAll("header, nav, [data-kopf]").forEach(function (n) {
+        var cs = getComputedStyle(n), r = n.getBoundingClientRect();
+        if ((cs.position === "fixed" || cs.position === "sticky") && r.top <= 1 && r.height < innerHeight / 3) h = Math.max(h, r.bottom + 12);
+      });
+      return h;
+    }
+    /* gewählten Chip in einer wischbaren Reihe sichtbar machen, ohne die Seite zu verschieben */
+    function revealX(input) {
+      var lab = input && (input.closest(".res-option") || input);
+      for (var n = lab && lab.parentNode; n && n !== form; n = n.parentNode) {
+        var ox = getComputedStyle(n).overflowX;
+        if (ox === "auto" || ox === "scroll") {
+          var r = lab.getBoundingClientRect(), b = n.getBoundingClientRect();
+          if (r.left < b.left || r.right > b.right) n.scrollLeft += r.left - b.left - (b.width - r.width) / 2;
+          return;
+        }
+      }
+    }
+
+    /* Mehrschritt: <div data-schritt="1|2|3" data-titel="…"> – immer nur ein Schritt sichtbar */
+    var steps = Array.prototype.slice.call(form.querySelectorAll("[data-schritt]")), cur = 0;
+    var multi = steps.length >= 2, prog = null, sum = null, live = null;
+    var still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function stepTitle(st, i) { var h = st.getAttribute("data-titel") || ((st.querySelector("h2,h3,h4,legend") || {}).textContent || ""); return h.trim() || ["Wann?", "Wie viele?", "Ihre Angaben"][i] || "Schritt " + (i + 1); }
+    function summaryText() {
+      var bits = [];
+      if (val("datum")) { var d = new Date(val("datum") + "T12:00:00"); bits.push(TAGE[d.getDay()] + " " + pad(d.getDate()) + "." + pad(d.getMonth() + 1) + "."); }
+      if (val("uhrzeit")) bits.push(val("uhrzeit") + " Uhr");
+      if (val("personen")) bits.push(val("personen") + (val("personen") === "1" ? " Person" : " Personen"));
+      return bits.join(" · ");
+    }
+    function stepOk(i, mark_) {
+      var st = steps[i], need = [];
+      if (st.querySelector("[data-tage]") && !val("datum")) need.push([boxTage, "Bitte einen Tag wählen."]);
+      if (st.querySelector("[data-zeiten]") && !val("uhrzeit")) need.push([boxZeiten, "Bitte eine Uhrzeit wählen."]);
+      if (st.querySelector("[data-personen]") && !val("personen")) need.push([boxPers, "Bitte die Anzahl der Personen wählen."]);
+      var hint = st.querySelector(".res-schritt-fehler");
+      if (mark_ && hint) hint.textContent = need.map(function (n) { return n[1]; }).join(" ");
+      need.forEach(function (n) { if (mark_) mark(n[0], true); });
+      return !need.length;
+    }
+    function show(i, dir) {
+      cur = Math.max(0, Math.min(steps.length - 1, i));
+      steps.forEach(function (st, k) { st.hidden = k !== cur; st.classList.toggle("res-aktiv", k === cur); });
+      if (prog) Array.prototype.forEach.call(prog.children, function (li, k) {
+        li.classList.toggle("res-erledigt", k < cur); li.classList.toggle("res-jetzt", k === cur);
+        if (k === cur) li.setAttribute("aria-current", "step"); else li.removeAttribute("aria-current");
+      });
+      if (sum) { var t = summaryText(); sum.textContent = cur > 0 ? t : ""; sum.hidden = cur === 0 || !t; }
+      if (live) live.textContent = "Schritt " + (cur + 1) + " von " + steps.length + ": " + stepTitle(steps[cur], cur);
+      var st = steps[cur];
+      if (dir && !still && st.animate) st.animate([{ opacity: 0, transform: "translateX(" + (dir > 0 ? 18 : -18) + "px)" }, { opacity: 1, transform: "none" }],
+        { duration: 280, easing: "cubic-bezier(.2,.7,.2,1)" });
+      if (dir) {
+        var f = st.querySelector("input:checked") || st;
+        if (f === st && !st.hasAttribute("tabindex")) { st.setAttribute("tabindex", "-1"); st.style.outline = "none"; }
+        try { f.focus({ preventScroll: true }); } catch (e) {}
+        revealX(st.querySelector("[data-tage] input:checked"));
+        var off = headerOffset(), top = form.getBoundingClientRect().top;
+        if (top < off - 2 || top > innerHeight * 0.6) scrollTo({ top: scrollY + top - off, behavior: still ? "auto" : "smooth" });
+      }
+    }
+    function next() { if (stepOk(cur, true)) show(cur + 1, 1); }
+    if (multi) {
+      prog = form.querySelector("[data-fortschritt]");
+      if (!prog) { prog = el("ol", { "class": "res-fortschritt" }); prog.setAttribute("data-fortschritt", ""); form.insertBefore(prog, form.firstChild); }
+      prog.innerHTML = "";
+      steps.forEach(function (st, i) {
+        var li = el("li", { "class": "res-punkt" }, "<span class=\"res-nr\">" + (i + 1) + "<\/span><span class=\"res-titel\">" + stepTitle(st, i) + "<\/span>");
+        li.addEventListener("click", function () { if (i < cur) show(i, -1); });
+        prog.appendChild(li);
+      });
+      sum = form.querySelector("[data-zusammenfassung]");
+      if (!sum) { sum = el("p", { "class": "res-zusammenfassung" }); prog.parentNode.insertBefore(sum, prog.nextSibling); }
+      live = el("p", { "class": "res-ansage", "aria-live": "polite", style: "position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)" });
+      form.appendChild(live);
+      var sbx = form.querySelector('[type="submit"]');
+      if (sbx && !steps.some(function (st) { return st.contains(sbx); })) steps[steps.length - 1].appendChild(sbx);
+      steps.forEach(function (st, i) {
+        if (!st.querySelector(".res-schritt-fehler") && i < steps.length - 1) st.appendChild(el("p", { "class": "res-schritt-fehler", role: "alert" }));
+        var back = st.querySelector("[data-zurueck]"), fwd = st.querySelector("[data-weiter]");
+        if (!back && !fwd && (i > 0 || i < steps.length - 1)) {
+          var nav = el("div", { "class": "res-nav" });
+          if (i > 0) { back = el("button", { type: "button", "class": "res-zurueck" }, "Zurück"); back.setAttribute("data-zurueck", ""); nav.appendChild(back); }
+          if (i < steps.length - 1) { fwd = el("button", { type: "button", "class": "res-weiter" }, "Weiter"); fwd.setAttribute("data-weiter", ""); nav.appendChild(fwd); }
+          var sb = st.querySelector('[type="submit"]');
+          if (sb && sb.parentNode) { sb.parentNode.insertBefore(nav, sb); nav.appendChild(sb); } else st.appendChild(nav);
+        }
+      });
+      form.addEventListener("click", function (e) {
+        if (e.target.closest("[data-weiter]")) { e.preventDefault(); next(); }
+        else if (e.target.closest("[data-zurueck]")) { e.preventDefault(); show(cur - 1, -1); }
+      });
+      form.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" || e.target.tagName === "TEXTAREA" || e.target.closest("[data-zurueck]")) return;
+        if (cur < steps.length - 1) { e.preventDefault(); next(); return; }
+        if (e.target.tagName !== "INPUT" || /^(radio|checkbox|submit|button)$/.test(e.target.type)) return;
+        var texts = Array.prototype.slice.call(steps[cur].querySelectorAll("input:not([type=radio]):not([type=checkbox]):not([type=hidden]):not([name=botcheck]), textarea"));
+        var later = texts.slice(texts.indexOf(e.target) + 1).filter(function (t) { return !String(t.value || "").trim(); })[0];
+        if (later) { e.preventDefault(); later.focus(); }
+      });
+      // Nach der Wahl von Uhrzeit bzw. Personen per Tippen/Klick geht es von selbst weiter (Pfeiltasten nicht)
+      var lastPointer = -1e9, lastKey = -1e9;
+      form.addEventListener("pointerdown", function () { lastPointer = performance.now(); });
+      form.addEventListener("keydown", function () { lastKey = performance.now(); }, true);
+      form.addEventListener("change", function (e) {
+        var n = e.target.name, st = steps[cur], at = cur;
+        var t = performance.now(); if (t - lastPointer > 1500 || t - lastKey < 400) return;
+        if ((n === "uhrzeit" && st.querySelector("[data-zeiten]") && !st.querySelector("[data-personen]")) ||
+            (n === "personen" && st.querySelector("[data-personen]") && cur < steps.length - 1)) {
+          var hint = st.querySelector(".res-schritt-fehler"); if (hint) hint.textContent = "";
+          setTimeout(function () { if (cur === at && stepOk(cur, false)) show(cur + 1, 1); }, 320);
+        }
+      });
+      show(0, 0);
+    }
 
     function field(n) { return form.querySelector('[name="' + n + '"]'); }
     function val(n) {
@@ -777,6 +983,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       if (field("email") && val("email")) need(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val("email")), field("email"), "Die E-Mail-Adresse sieht unvollständig aus.");
       if (field("einwilligung")) need(val("einwilligung") === true, field("einwilligung"), "Bitte der Verarbeitung Ihrer Angaben zustimmen.");
       errBox.textContent = errs.join(" ");
+      if (firstBad && multi) { var k = steps.findIndex(function (st) { return st.contains(firstBad); }); if (k >= 0 && k !== cur) { show(k, -1); stepOk(k, true); } }
       if (firstBad) { var f = firstBad.matches && firstBad.matches("input,textarea,select") ? firstBad : firstBad.querySelector("input:not(:disabled)"); if (f) f.focus(); }
       return !errs.length;
     }
@@ -795,16 +1002,27 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         ok.appendChild(el("p", { "class": "res-demo-hinweis" }, "Entwurf: Diese Anfrage wurde nicht übermittelt. In der fertigen Website geht sie sofort an " +
           CFG.name + "." + (CFG.tel ? " Für eine echte Reservierung bitte <a href=\"tel:" + CFG.tel + "\">anrufen<\/a>." : "")));
       }
-      Array.prototype.forEach.call(form.children, function (c) { if (c !== ok && c !== trap) { c.setAttribute("data-res-vorher", c.hidden ? "1" : "0"); c.hidden = true; } });
+      if (outside) { form.setAttribute("data-res-vorher", form.hidden ? "1" : "0"); form.hidden = true; }
+      for (var n = ok; !outside && n && n !== form; n = n.parentNode) {
+        var sib = n;
+        Array.prototype.forEach.call(n.parentNode.children, function (c) { if (c !== sib && c !== trap && !c.hasAttribute("data-res-vorher")) { c.setAttribute("data-res-vorher", c.hidden ? "1" : "0"); c.hidden = true; } });
+        if (n.parentNode !== form && n.parentNode.hidden) { n.parentNode.setAttribute("data-res-offen", ""); n.parentNode.hidden = false; }
+      }
       ok.hidden = false; form.setAttribute("data-status", "gesendet");
       try { ok.focus({ preventScroll: true }); } catch (e) { ok.focus(); }
-      var top = form.getBoundingClientRect().top + scrollY - 100; if (top < scrollY) scrollTo({ top: top, behavior: "smooth" });
+      var off = headerOffset(), top = (outside ? ok : form).getBoundingClientRect().top;
+      if (top < off - 2) scrollTo({ top: scrollY + top - off, behavior: still ? "auto" : "smooth" });
     }
-    form.addEventListener("click", function (e) {
+    function again(e) {
       if (!e.target.closest("[data-reservierung-neu]")) return;
       e.preventDefault(); ok.hidden = true; form.removeAttribute("data-status");
-      Array.prototype.forEach.call(form.children, function (c) { if (c !== ok && c !== trap) c.hidden = c.getAttribute("data-res-vorher") === "1"; });
-    });
+      if (outside) { form.hidden = form.getAttribute("data-res-vorher") === "1"; form.removeAttribute("data-res-vorher"); }
+      form.querySelectorAll("[data-res-vorher]").forEach(function (c) { c.hidden = c.getAttribute("data-res-vorher") === "1"; c.removeAttribute("data-res-vorher"); });
+      form.querySelectorAll("[data-res-offen]").forEach(function (c) { c.hidden = true; c.removeAttribute("data-res-offen"); });
+      if (multi) show(0, -1);
+    }
+    form.addEventListener("click", again);
+    if (outside) ok.addEventListener("click", again);
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (trap.value) return;
