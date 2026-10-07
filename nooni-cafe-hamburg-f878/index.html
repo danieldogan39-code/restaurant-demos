@@ -1,0 +1,874 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nooni Café – Bake &amp; Breakfast in Hamburg-Altona</title>
+<meta name="description" content="Nooni Café in der Großen Brunnenstraße 55, Hamburg-Altona: Frühstück, Brunch, Brot, Kaffee und Mittagstisch – täglich 9 bis 17 Uhr. Tisch reservieren oder anrufen: 040 41628306.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{
+--creme:#FBF5EA;--papier:#FFFCF5;--mulde:#F3EAD8;--salbei:#527545;--tanne:#2F5230;--pfirsich:#F2A88E;--blau:#1F2F6B;
+--disp:"Caprasimo",Georgia,serif;--text:"Figtree",system-ui,sans-serif;--akz:"Fraunces",Georgia,serif;
+--kopf:72px;--rand:clamp(1rem,5vw,4rem);--max:1320px;--r:28px;
+--s1:.5rem;--s2:1rem;--s3:1.5rem;--s4:2rem;--s5:3rem;--s6:clamp(3rem,7vw,6rem);--s7:clamp(4rem,10vw,8rem);
+--schatten:0 18px 40px -18px rgba(47,82,48,.35);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:calc(var(--kopf) + 1rem);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--creme);color:var(--tanne);font:400 1.0625rem/1.6 var(--text);overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--disp);font-weight:400;line-height:1.02;margin:0;hyphens:auto;overflow-wrap:break-word}
+em.akz{font-family:var(--akz);font-style:italic;font-weight:400}
+p{margin:0}
+:focus-visible{outline:3px solid var(--blau);outline-offset:3px;border-radius:6px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--rand)}
+.foto-nachweis{font-size:.8125rem;color:var(--tanne);text-decoration:underline;text-underline-offset:2px}
+.rahmen{overflow:hidden;position:relative;background:var(--mulde)}
+.rahmen img{width:100%;height:100%;object-fit:cover}
+.frei{object-fit:contain;filter:drop-shadow(-14px 18px 14px rgba(47,82,48,.28));pointer-events:none}
+.strich{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.strich path{stroke-dasharray:1;stroke-dashoffset:0}
+
+.knopf{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:48px;padding:.9rem 2rem;border-radius:999px;font:700 1rem/1.2 var(--text);text-decoration:none;border:2px solid transparent;position:relative;overflow:hidden;isolation:isolate;transition:color .3s,border-color .3s}
+.knopf::before{content:"";position:absolute;inset:0;z-index:-1;transform:translateY(101%);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.knopf .pfeil{transition:transform .3s}
+.knopf:hover .pfeil{transform:translateX(4px)}
+.knopf-tanne{background:var(--tanne);color:var(--creme)}
+.knopf-tanne::before{background:var(--blau)}
+.knopf-creme{background:var(--creme);color:var(--tanne);padding:18px 32px}
+.knopf-creme::before{background:var(--pfirsich)}
+.knopf-outline{border-color:var(--creme);color:var(--creme)}
+.knopf-outline::before{background:var(--creme)}
+.knopf-outline:hover{color:var(--tanne)}
+.knopf:hover::before{transform:none}
+.link{font-weight:700;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px;min-height:44px;display:inline-flex;align-items:center}
+.link:hover{text-decoration-thickness:3px}
+
+.kopf{position:sticky;top:0;z-index:50;height:var(--kopf);background:var(--creme);border-bottom:1px solid rgba(47,82,48,.15)}
+.kopf-in{height:100%;display:flex;align-items:center;gap:var(--s4);max-width:var(--max);margin-inline:auto;padding-inline:var(--rand)}
+.marke{display:flex;align-items:baseline;gap:.5rem;text-decoration:none;margin-right:auto;min-height:44px;align-items:center}
+.marke svg{width:26px;height:34px;color:var(--tanne)}
+.marke-name{font:400 1.75rem/1 var(--disp);color:var(--tanne)}
+.marke-zusatz{font-size:.875rem;font-weight:600;letter-spacing:.04em;align-self:flex-end;padding-bottom:.55rem}
+.kopf nav ul{display:flex;gap:var(--s4);list-style:none;margin:0;padding:0}
+.kopf nav a{text-decoration:none;font-weight:600;min-height:44px;display:flex;align-items:center;background:linear-gradient(var(--blau),var(--blau)) left 78%/0 2px no-repeat;transition:background-size .3s}
+.kopf nav a:hover{background-size:100% 2px}
+.kopf .knopf{padding:.7rem 1.5rem;min-height:44px}
+.kopf-tel{display:none}
+
+.hero{position:relative;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:3rem;max-width:var(--max);margin-inline:auto;padding:clamp(1.5rem,3vw,2.5rem) var(--rand) 5rem;min-height:calc(100svh - var(--kopf))}
+.hero-bildseite{grid-column:1/7;align-self:center;position:relative}
+.hero-foto{margin:0}
+.hero-foto .rahmen{width:min(100%,calc((100svh - var(--kopf) - 9rem)*.8));aspect-ratio:4/5;border-radius:var(--r)}
+.hero-foto .rahmen img{object-position:center 35%}
+.hero-foto figcaption{margin-top:.75rem;font-size:.875rem;display:flex;flex-direction:column;gap:.1rem;padding-right:130px}
+.frei-melone{position:absolute;width:110px;height:110px;top:-34px;left:-26px;rotate:-14deg;z-index:2}
+.frei-tasse{position:absolute;width:180px;height:180px;right:-150px;bottom:-1.5rem;z-index:3;filter:drop-shadow(-22px 22px 16px rgba(47,82,48,.3))}
+.frei-orange{position:absolute;width:90px;height:90px;right:calc(var(--rand) + 1.5rem);bottom:-.5rem;filter:blur(2px) drop-shadow(-10px 12px 10px rgba(47,82,48,.25))}
+.hero-schild{grid-column:7/13;background:var(--salbei);color:var(--creme);border-radius:var(--r);padding:48px 48px 8rem;container-type:inline-size;display:flex;flex-direction:column;justify-content:center;position:relative}
+.blase{align-self:flex-start;position:relative;background:var(--creme);color:var(--tanne);font-weight:700;font-size:1rem;padding:.55rem 1.1rem;border-radius:18px;rotate:-4deg;margin-bottom:1.25rem;font-variant-numeric:tabular-nums}
+.blase::after{content:"";position:absolute;left:26px;bottom:-9px;width:18px;height:18px;background:inherit;clip-path:polygon(0 0,100% 0,15% 100%)}
+[data-status]:empty::before{content:"Täglich 9–17 Uhr geöffnet"}
+.hero-name{font-size:clamp(3.5rem,25cqi,12.5rem);line-height:.92;white-space:nowrap;letter-spacing:-.01em;margin-bottom:1.25rem}
+.hero-titel{font:400 clamp(1.75rem,4.3cqi,2.4rem)/1.12 var(--disp);max-width:16ch;margin-bottom:1rem}
+.hero-titel>div{padding-block:.08em .16em;margin-block:-.08em -.16em}
+.hero-titel em{font-family:var(--akz);font-style:italic;font-weight:400}
+.hero-info{font-size:1.125rem;max-width:40ch;margin-bottom:1.75rem}
+.hero-aktionen{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1.5rem}
+.hero-aktionen .nr{font-variant-numeric:tabular-nums}
+.route-pfeil{width:64px;height:34px;color:var(--creme);margin-left:-.75rem}
+.hero-hand{position:absolute;right:32px;bottom:14px;width:84px;height:112px;color:var(--creme)}
+.nur-mobil{display:none}
+
+.angebot{padding-block:var(--s7)}
+.angebot .wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:2rem;align-items:start}
+.angebot-text{grid-column:1/6}
+.angebot h2{font-size:clamp(2.5rem,5vw,4.5rem);margin-bottom:var(--s3)}
+.angebot h2 em{color:var(--blau)}
+.angebot-text>p{max-width:46ch;font-size:1.125rem;margin-bottom:var(--s4)}
+.infoliste{margin:0;border-top:2px solid var(--tanne)}
+.infoliste div{display:flex;justify-content:space-between;gap:1rem;padding:.8rem 0;border-bottom:1px solid rgba(47,82,48,.25)}
+.infoliste dt{font-weight:700}
+.infoliste dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}
+.angebot-bild{grid-column:7/13;position:relative;padding-bottom:4rem}
+.teller-fig{margin:0}
+.teller{position:relative;aspect-ratio:1;border-radius:50%;box-shadow:-18px 26px 40px -14px rgba(47,82,48,.32)}
+.teller-ring{position:absolute;inset:0;width:100%;height:100%}
+.teller-mitte{position:absolute;inset:13.5%;border-radius:50%;overflow:hidden;background:var(--mulde);display:grid;place-items:center}
+.teller-mitte img{width:100%;height:100%;object-fit:cover}
+.teller-gross{width:min(520px,86%);margin-left:auto}
+.teller-gross figcaption{text-align:right;margin-top:.75rem}
+.klein-fig{position:absolute;left:0;bottom:0;width:38%;margin:0;rotate:-3deg}
+.klein-fig .rahmen{aspect-ratio:4/5;border-radius:24px;border:6px solid var(--papier);box-shadow:var(--schatten)}
+.klein-fig figcaption{font-size:.875rem;margin-top:.5rem;display:flex;flex-direction:column}
+
+.karte-abschnitt{padding-block:var(--s7);background:var(--creme) repeating-linear-gradient(90deg,rgba(47,82,48,.08) 0 1px,transparent 1px 16px);border-block:1px solid rgba(47,82,48,.15)}
+.karte-kopf{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:var(--s3);margin-bottom:var(--s5)}
+.karte-kopf h2{font-size:clamp(2.3rem,5vw,4.2rem);max-width:14ch}
+.reiter{display:flex;gap:.6rem;background:var(--papier);padding:.4rem;border-radius:999px;border:2px solid var(--tanne)}
+.reiter button{font:700 1rem var(--text);min-height:48px;padding:.6rem 1.4rem;border-radius:999px;border:0;background:transparent;color:var(--tanne);cursor:pointer;transition:background .3s,color .3s}
+.reiter button[aria-selected="true"]{background:var(--tanne);color:var(--creme)}
+.karten{display:flex;gap:1.25rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:1.5rem .5rem 2rem;margin-inline:-.5rem;scrollbar-width:thin}
+.karte{flex:0 0 clamp(200px,17vw,230px);scroll-snap-align:center;background:var(--papier);border-radius:24px;padding:1.1rem 1.1rem 1.4rem;box-shadow:var(--schatten);border:1px solid rgba(47,82,48,.12);transition:rotate .35s,translate .35s,box-shadow .35s}
+.karte:nth-child(odd){rotate:-3deg}
+.karte:nth-child(even){rotate:2deg;translate:0 10px}
+.karte .teller{margin-bottom:1rem;box-shadow:-8px 12px 20px -10px rgba(47,82,48,.35)}
+.karte .teller-mitte .frei{width:118%;height:118%;max-width:none;filter:drop-shadow(-6px 8px 6px rgba(47,82,48,.3))}
+.leer{font:italic 400 1.15rem/1.1 var(--akz);color:var(--blau);text-align:center;padding:.5rem}
+.karte h3{font-size:1.35rem;margin-bottom:.35rem}
+.karte p{font-size:1rem;line-height:1.45}
+.karte-hinweis{margin-top:var(--s3);font-weight:600;max-width:60ch}
+.karte-hinweis a{color:var(--blau)}
+
+.theke{background:var(--salbei);color:var(--creme);padding-block:var(--s7)}
+.theke .wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:2rem;align-items:end}
+.theke-text{grid-column:1/6;position:relative}
+.theke h2{font-size:clamp(2.4rem,5vw,4.4rem);margin-bottom:var(--s3)}
+.theke-satz{font-size:1.125rem;margin-bottom:var(--s4);max-width:36ch}
+.tage{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:0 2rem;font-variant-numeric:tabular-nums}
+.tage div{display:flex;justify-content:space-between;padding:.45rem 0;border-bottom:1px solid rgba(251,245,234,.35);font-size:1rem}
+.tage dd{margin:0}
+.theke-hand{width:90px;height:120px;color:var(--creme);margin-top:var(--s4)}
+.rippen{grid-column:7/13;display:grid;grid-template-columns:repeat(8,1fr);gap:clamp(.35rem,1vw,.75rem);height:clamp(260px,34vw,400px);padding-top:3.5rem;list-style:none;margin:0}
+.rippe{position:relative;background:var(--creme);color:var(--tanne);border-radius:999px 999px 10px 10px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding-bottom:.9rem;font-weight:700;font-size:clamp(.9375rem,1.4vw,1.15rem);font-variant-numeric:tabular-nums;transition:background .5s}
+.rippe small{font-size:.8125rem;font-weight:600}
+.rippe.jetzt{background:var(--pfirsich)}
+.jetzt-marke{position:absolute;bottom:100%;left:50%;width:max-content;display:flex;align-items:flex-end;gap:2px;font:italic 400 1.15rem var(--akz);color:var(--creme);margin-bottom:.25rem}
+.jetzt-marke svg{width:30px;height:34px}
+
+.streifen{padding-block:var(--s7) var(--s6);overflow:hidden}
+.streifen-kopf{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:2rem;margin-bottom:var(--s4)}
+.streifen-kopf h2{grid-column:1/7;font-size:clamp(2.4rem,5vw,4.4rem)}
+.streifen-kopf p{grid-column:8/13;align-self:end;font-size:1.125rem;max-width:40ch}
+.streifen-spur{display:flex;align-items:center;gap:clamp(1.25rem,3vw,2.5rem);overflow-x:auto;scroll-snap-type:x mandatory;padding:2rem var(--rand) 2.5rem;scrollbar-width:thin}
+.streifen.gepinnt .streifen-spur{overflow:visible;width:max-content}
+.polaroid{flex:0 0 auto;width:clamp(230px,24vw,310px);margin:0;background:var(--papier);padding:12px 12px 14px;border-radius:6px;box-shadow:0 22px 40px -22px rgba(47,82,48,.5),0 1px 0 rgba(47,82,48,.1);scroll-snap-align:center}
+.polaroid:nth-child(odd){rotate:-2.5deg}
+.polaroid:nth-child(even){rotate:2deg;translate:0 18px}
+.polaroid .rahmen{aspect-ratio:3/4;border-radius:3px}
+.polaroid.quer{width:clamp(290px,36vw,460px)}
+.polaroid.quer .rahmen{aspect-ratio:4/3}
+.polaroid.quad .rahmen{aspect-ratio:1;background:var(--mulde)}
+.polaroid.quad .frei{width:100%;height:100%;padding:12%}
+.polaroid figcaption{padding-top:.6rem;display:flex;flex-direction:column;gap:.1rem}
+.polaroid figcaption span{font:italic 400 1.05rem var(--akz)}
+
+.reservieren{background:var(--pfirsich);padding-block:var(--s7)}
+.reservieren .wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:2rem;align-items:start}
+.res-intro{grid-column:1/5;position:sticky;top:calc(var(--kopf) + 2rem)}
+.res-intro h2{font-size:clamp(2.4rem,5vw,4.4rem);margin-bottom:var(--s3)}
+.res-intro h2 em{color:var(--blau)}
+.res-intro p{font-size:1.125rem;max-width:34ch;margin-bottom:var(--s2)}
+.res-intro a{font-weight:700}
+.res-box{grid-column:6/13;background:var(--creme);border-radius:var(--r);padding:clamp(1.25rem,4vw,3rem);box-shadow:0 30px 60px -30px rgba(47,82,48,.45)}
+.schritt{border:0;margin:0 0 var(--s4);padding:0;min-width:0}
+.schritt legend{display:flex;align-items:center;gap:.75rem;font:400 1.5rem var(--disp);margin-bottom:var(--s2);padding:0}
+.schritt legend span{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--pfirsich);font-size:1.25rem;flex:none}
+[data-tage],[data-zeiten],[data-personen]{display:flex;gap:.6rem;padding:.25rem;border-radius:18px}
+[data-tage]{overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:.75rem;scrollbar-width:thin}
+[data-zeiten],[data-personen]{flex-wrap:wrap}
+[aria-invalid="true"]:is([data-tage],[data-zeiten],[data-personen]){outline:2px dashed var(--blau);outline-offset:4px}
+.res-option{position:relative;flex:0 0 auto;scroll-snap-align:start;display:inline-flex}
+.res-radio{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
+.res-label{min-height:48px;min-width:48px;padding:.55rem 1.15rem;border:2px solid var(--tanne);border-radius:999px;background:var(--papier);color:var(--tanne);display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.15;transition:background .25s,color .25s,translate .25s}
+.res-label small{font-size:.8125rem;font-weight:600}
+.res-option:hover .res-label{translate:0 -2px}
+.res-radio:checked+.res-label{background:var(--tanne);color:var(--creme)}
+.res-radio:focus-visible+.res-label{outline:3px solid var(--blau);outline-offset:3px}
+.res-hinweis{color:var(--blau);font-weight:700;font-size:.9375rem;margin-top:.4rem}
+.res-demo-hinweis{background:var(--mulde);border-radius:14px;padding:.75rem 1rem;font-size:.9375rem;margin-top:var(--s2)}
+.felder{display:grid;grid-template-columns:1fr 1fr;gap:var(--s2) var(--s3);margin-bottom:var(--s3)}
+.feld{display:flex;flex-direction:column;gap:.35rem}
+.feld.voll{grid-column:1/-1}
+.feld label{font-weight:700}
+.feld label small{font-weight:500}
+.feld input,.feld textarea{font:400 1rem var(--text);color:var(--tanne);background:var(--papier);border:2px solid var(--tanne);border-radius:14px;min-height:48px;padding:.7rem 1rem;width:100%}
+.feld textarea{min-height:96px;resize:vertical}
+.feld input[aria-invalid="true"],.feld textarea[aria-invalid="true"]{border:3px solid var(--blau);background:#fff}
+.einwilligung{display:flex;gap:.75rem;align-items:flex-start;margin-bottom:var(--s3);font-size:1rem}
+.einwilligung input{width:24px;height:24px;flex:none;margin-top:.15rem;accent-color:var(--tanne)}
+.einwilligung input[aria-invalid="true"]{outline:2px dashed var(--blau);outline-offset:3px}
+.einwilligung a{color:var(--blau);font-weight:700}
+[data-reservierung-fehler]{color:var(--blau);font-weight:700;margin-bottom:var(--s2)}
+[data-reservierung-fehler]:empty{display:none}
+.res-box button[type="submit"]{border:0;cursor:pointer;width:100%;font-size:1.125rem;min-height:56px}
+.erfolg{text-align:center;display:grid;justify-items:center;gap:var(--s3)}
+.erfolg[hidden]{display:none}
+.erfolg h3{font-size:clamp(2rem,4vw,3rem)}
+.erfolg-teller{position:relative;width:min(380px,100%)}
+.erfolg-teller .teller-mitte{background:var(--papier);padding:12%;flex-direction:column;display:flex;justify-content:center;align-items:center;gap:.25rem;text-align:center;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.35}
+.erfolg-teller strong{font:400 1.2rem var(--disp)}
+.erfolg-teller .strich{position:absolute;width:76px;height:100px;right:-40px;bottom:-8px;color:var(--tanne)}
+.erfolg button{font:700 1rem var(--text);min-height:48px;padding:.8rem 1.8rem;border-radius:999px;border:2px solid var(--tanne);background:transparent;color:var(--tanne);cursor:pointer}
+.erfolg button:hover{background:var(--tanne);color:var(--creme)}
+
+.lage{padding-block:var(--s7)}
+.lage .wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:2rem;align-items:start}
+.lage-text{grid-column:1/6}
+.lage h2{font-size:clamp(2.4rem,5vw,4.4rem);margin-bottom:var(--s3)}
+.lage address{font-style:normal;font-size:1.25rem;font-weight:700;margin-bottom:var(--s2)}
+.lage-text>p{max-width:42ch;font-size:1.125rem;margin-bottom:var(--s3)}
+.lage-reihe{display:flex;gap:var(--s3);align-items:flex-start;flex-wrap:wrap}
+.fassade{margin:0;width:min(220px,46%);rotate:2deg}
+.fassade .rahmen{aspect-ratio:3/4;border-radius:24px;border:6px solid var(--papier);box-shadow:var(--schatten)}
+.fassade .rahmen img{object-position:center 30%}
+.fassade figcaption{font-size:.875rem;margin-top:.5rem;display:flex;flex-direction:column}
+.lage-aktionen{display:flex;flex-direction:column;gap:.75rem;align-items:flex-start}
+.lage-aktionen .tel{font-variant-numeric:tabular-nums}
+.karte-rahmen{grid-column:7/13;aspect-ratio:4/3.4;border-radius:var(--r);overflow:hidden;border:2px solid var(--tanne);background:var(--mulde)}
+.karte-rahmen [data-karte]{width:100%;height:100%}
+
+.fuss{background:var(--salbei);color:var(--creme);padding-block:var(--s6) var(--s4)}
+.fuss .wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:2rem;row-gap:var(--s4)}
+.fuss-marke{grid-column:1/6;display:flex;align-items:flex-end;gap:1rem}
+.fuss-marke b{font:400 clamp(4rem,10vw,7.5rem)/.9 var(--disp);white-space:nowrap}
+.fuss-marke svg{width:70px;height:94px;color:var(--creme);flex:none}
+.fuss-spalte{grid-column:span 3;font-size:1rem}
+.fuss-spalte h3{font:700 1rem var(--text);margin-bottom:.5rem}
+.fuss-spalte a{display:inline-flex;min-height:44px;align-items:center;font-weight:700}
+.rechtliches{grid-column:1/-1;border-top:1px solid rgba(251,245,234,.4);padding-top:var(--s3);font-size:.875rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem 2rem}
+.rechtliches p{max-width:70ch}
+.rechtliches a{min-height:44px;display:inline-flex;align-items:center}
+
+.leiste{display:none}
+
+@media (hover:hover) and (pointer:fine){
+.karte:hover{rotate:0deg;translate:0 -10px;box-shadow:0 30px 50px -22px rgba(47,82,48,.5)}
+}
+@media (min-width:1100px){.karten{overflow:visible;justify-content:center;flex-wrap:nowrap}.karte{margin-inline:-6px}}
+@media (max-width:1099px){.hero-aktionen .route-pfeil{display:none}}
+@media (max-width:899px){
+.hero{grid-template-columns:1fr;padding:0;min-height:0}
+.hero-bildseite,.hero-schild{grid-column:1/-1}
+.hero-bildseite{--fh:min(38svh,calc((100vw - 2rem)*.75));padding:1rem 1rem .75rem}
+.hero-foto .rahmen{width:100%;aspect-ratio:auto;height:var(--fh);border-radius:24px}
+.hero-foto figcaption{padding-right:110px;font-size:.8125rem}
+.frei-melone,.frei-orange,.hero-hand{display:none}
+.frei-tasse{width:110px;height:110px;right:1.25rem;bottom:auto;top:calc(1rem + var(--fh) - 62px)}
+.hero-schild{border-radius:var(--r) var(--r) 0 0;padding:2rem var(--rand) 3rem}
+.blase{font-size:.9375rem}
+.hero-name{font-size:min(22vw,7.5rem)}
+.hero-info{font-size:1rem}
+.hero-aktionen{flex-direction:column;align-items:stretch;gap:.75rem}
+.hero-aktionen .knopf{width:100%}
+.hero-aktionen .link{align-self:flex-start}
+.nur-mobil{display:inline-flex}.nur-desk{display:none}
+}
+@media (max-width:819px){
+.kopf nav,.kopf-res{display:none}
+.kopf-tel{display:inline-flex}
+body{padding-bottom:calc(60px + env(safe-area-inset-bottom))}
+.leiste{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--tanne);padding-bottom:env(safe-area-inset-bottom);border-top:2px solid var(--creme)}
+.leiste a{min-height:56px;display:flex;align-items:center;justify-content:center;color:var(--creme);font-weight:700;text-decoration:none}
+.leiste a+a{border-left:1px solid rgba(251,245,234,.35)}
+.angebot .wrap,.theke .wrap,.reservieren .wrap,.lage .wrap,.fuss .wrap,.streifen-kopf{grid-template-columns:1fr}
+.angebot-text,.angebot-bild,.theke-text,.rippen,.res-intro,.res-box,.lage-text,.karte-rahmen,.fuss-marke,.fuss-spalte,.streifen-kopf h2,.streifen-kopf p{grid-column:1/-1}
+.angebot-bild{margin-top:var(--s5);padding-bottom:0}
+.teller-gross{width:100%}
+.klein-fig{position:relative;width:62%;margin:var(--s3) 0 0 8%}
+.infoliste{margin-top:var(--s4)}
+.angebot-text{display:flex;flex-direction:column}
+.rippen{margin-top:var(--s4);height:240px}
+.rippe small{display:none}
+.theke-hand{display:none}
+.streifen-kopf p{margin-top:var(--s2)}
+.res-intro{position:static;margin-bottom:var(--s4)}
+.felder{grid-template-columns:1fr}
+.karte-rahmen{margin-top:var(--s4)}
+.karte{flex-basis:72vw;max-width:280px}
+.erfolg-teller .strich{right:-10px;width:56px}
+}
+@media (max-width:420px){.marke-zusatz{display:none}.tage{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+/* Überarbeitung nach Kritik */
+html,body{overflow-x:clip}
+h1,h2,h3{hyphens:manual;-webkit-hyphens:manual;overflow-wrap:normal;text-wrap:balance}
+:root{--s6:clamp(3rem,6vw,4rem);--s7:clamp(4rem,8vw,6rem)}
+.kopf{z-index:1000}
+.leiste{z-index:1000}
+.hero{padding-bottom:var(--s5)}
+.hero-schild{padding:48px;justify-content:space-between;gap:var(--s4)}
+.hero-titel{font-size:clamp(1.75rem,7.6cqi,2.8rem);line-height:1.1;max-width:none}
+.hero-info{margin-bottom:0}
+.hero-unten{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--s3)}
+.hero-hand{position:static;flex:none}
+.angebot .wrap{align-items:center}
+.angebot-text{grid-column:1/7}
+.angebot h2{font-size:clamp(2.25rem,4.4vw,4rem)}
+.angebot-bild{grid-column:8/13;padding-bottom:var(--s5)}
+.klein-fig,.fassade,.polaroid:nth-child(odd),.polaroid:nth-child(even){rotate:0deg}
+.polaroid:nth-child(even){translate:0 24px}
+.foto-nachweis{font-size:.8125rem}
+.karten{gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--rand);padding:1.5rem var(--rand) 2rem;margin-inline:calc(var(--rand)*-1)}
+.karten[hidden]{display:none}
+.karte,.karte:nth-child(odd),.karte:nth-child(even){flex:0 0 min(72vw,250px);max-width:none;margin:0;rotate:0deg;translate:none;scroll-snap-align:start;position:relative}
+.karte .teller-mitte .frei{width:100%;height:100%;padding:6%;object-fit:contain}
+.karte .foto-nachweis{display:inline-block;margin-top:.5rem}
+@media (min-width:1100px){
+.karten{overflow:visible;justify-content:center;margin-inline:0;padding:2.5rem 0 3.5rem}
+.karten .karte{flex:0 0 240px}
+.karten .karte+.karte{margin-left:-40px}
+.karten .karte:nth-child(1){rotate:-6deg;translate:0 22px}
+.karten .karte:nth-child(2){rotate:-3deg;translate:0 6px}
+.karten .karte:nth-child(3){rotate:0deg;translate:0 -4px;z-index:1}
+.karten .karte:nth-child(4){rotate:3deg;translate:0 6px}
+.karten .karte:nth-child(5){rotate:6deg;translate:0 22px}
+#panel-tasse .karte:nth-child(1){rotate:-5deg;translate:0 12px}
+#panel-tasse .karte:nth-child(2){rotate:0deg;translate:0 -4px;z-index:1}
+#panel-tasse .karte:nth-child(3){rotate:5deg;translate:0 12px}
+}
+@media (hover:hover) and (pointer:fine){#karte .karten .karte:hover{rotate:0deg;translate:0 -14px;z-index:3;box-shadow:0 30px 50px -22px rgba(47,82,48,.5)}}
+.res-foto{margin:var(--s4) 0 0}
+.res-foto .rahmen{aspect-ratio:4/3;border-radius:var(--r)}
+.res-foto figcaption{margin-top:.5rem;font-size:.875rem;display:flex;flex-direction:column;gap:.1rem}
+.res-option,.res-label{min-height:48px}
+.erfolg:focus,.erfolg:focus-visible,[data-reservierung-erfolg]:focus{outline:none}
+.erfolg-teller{width:min(320px,100%)}
+.erfolg-teller .teller-mitte{padding:7%;gap:.35rem}
+.erfolg-zeile{font:400 clamp(1rem,2vw,1.3rem)/1.2 var(--disp);font-variant-numeric:tabular-nums;color:var(--tanne)}
+.res-demo-hinweis{background:none;border:0;border-radius:0;padding:0;font-size:.875rem;max-width:42ch;margin:var(--s2) auto 0;text-align:center}
+.lage .wrap{align-items:stretch}
+.lage-text{grid-column:1/6}
+.lage .tel{font-variant-numeric:tabular-nums}
+.fassade{margin:var(--s4) 0 0;width:min(100%,340px)}
+.karte-rahmen{grid-column:6/13;position:relative;z-index:0;isolation:isolate;aspect-ratio:auto;min-height:560px}
+.karte-rahmen [data-karte]{position:absolute;inset:0;width:auto;height:auto}
+.karte-route{position:absolute;left:1rem;bottom:1rem;z-index:500;box-shadow:var(--schatten)}
+@media (min-width:820px) and (max-width:1099px){.fuss .wrap{grid-template-columns:1fr 1fr}.fuss-marke{grid-column:1/-1}.fuss-spalte{grid-column:auto}}
+@media (max-width:899px){
+.hero{padding:0}
+.hero-schild{padding:1.5rem var(--rand) 2.5rem;gap:1rem}
+.hero-unten{display:block}
+.hero-bildseite{--fh:min(30svh,calc((100vw - 2rem)*.75))}
+}
+@media (max-width:819px){
+.angebot-text,.angebot-bild,.lage-text,.karte-rahmen{grid-column:1/-1}
+.angebot-bild{padding-bottom:0}
+.theke h2{font-size:clamp(2rem,9vw,2.75rem)}
+.karte-rahmen{aspect-ratio:4/3;min-height:0}
+.res-foto{display:none}
+.polaroid:nth-child(even){translate:none}
+}
+@media (max-width:480px){.erfolg-teller{width:min(280px,100%)}}
+/* Runde 3: Kritik Art Director */
+.foto-nachweis{font-size:13px;color:rgba(47,82,48,.85);overflow-wrap:anywhere}
+.hero-foto figcaption,.klein-fig figcaption,.fassade figcaption,.res-foto figcaption,.polaroid figcaption{flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:.15rem 1rem}
+.karte .foto-nachweis{display:block;margin-top:.6rem}
+.route-pfeil{display:none}
+.frei-orange{display:none}
+.hero-aktionen{position:relative;z-index:4;padding-left:0}
+.hero-name{font-size:clamp(4rem,29cqi,14rem)}
+@media (min-width:900px){
+.hero-foto figcaption{padding-right:0}
+.frei-tasse{right:auto;left:-44px;bottom:3.75rem;width:150px;height:150px}
+.frei-melone{top:-44px;left:-48px;width:120px;height:120px;rotate:-10deg;filter:drop-shadow(-12px 16px 14px rgba(47,82,48,.28))}
+}
+.karte,.karte:nth-child(odd),.karte:nth-child(even){padding:1.25rem 1.5rem 1.5rem}
+@media (min-width:1100px){
+.karten .karte{flex:0 0 250px}
+.karten .karte+.karte{margin-left:-12px}
+.karten .karte:nth-child(1){rotate:-3deg;translate:0 14px}
+.karten .karte:nth-child(2){rotate:-1deg;translate:0 2px;z-index:auto}
+.karten .karte:nth-child(3){rotate:1deg;translate:0 2px;z-index:auto}
+.karten .karte:nth-child(4){rotate:3deg;translate:0 14px}
+#panel-tasse .karte:nth-child(1){rotate:-3deg;translate:0 10px}
+#panel-tasse .karte:nth-child(2){rotate:0deg;translate:0 -4px;z-index:auto}
+#panel-tasse .karte:nth-child(3){rotate:3deg;translate:0 10px}
+}
+@media (min-width:820px){
+.angebot .wrap{align-items:start}
+.angebot-bild{padding-bottom:4rem}
+.teller-gross{width:min(560px,115%);margin-left:auto;margin-right:-3rem}
+.klein-fig{left:-40px;bottom:-40px;width:40%;z-index:2}
+.lage-text{grid-column:8/13;grid-row:1}
+.karte-rahmen{grid-column:1/8;grid-row:1}
+}
+@media (max-width:899px){
+.hero-bildseite{--fh:min(26svh,calc((100vw - 2rem)*.75))}
+.hero-foto figcaption span{display:none}
+.hero-schild{padding:1.25rem var(--rand) calc(44px + env(safe-area-inset-bottom) + 24px);gap:.75rem}
+.blase{margin-bottom:.5rem}
+.hero-name{font-size:20vw;margin-bottom:.5rem}
+.hero-titel{font-size:1.5rem;margin-bottom:.5rem}
+.hero-info{font-size:1rem}
+}
+@media (max-width:819px){
+.teller-gross figcaption{text-align:left;max-width:50%}
+.klein-fig{position:relative;left:auto;bottom:auto;width:48%;margin:-5.5rem 0 0 auto;z-index:2}
+}
+.res-box:has(.erfolg:not([hidden])){background:transparent;box-shadow:none;padding-inline:0}
+.erfolg{color:var(--tanne);text-align:left;justify-items:start}
+.erfolg-teller{width:min(340px,100%)}
+.erfolg-teller .teller-mitte{padding:8%}
+.erfolg-zeile{font:400 clamp(1.15rem,3.2vw,1.5rem)/1.15 var(--disp);color:var(--tanne);text-wrap:balance}
+.erfolg>p,.res-demo-hinweis{font-size:14px;color:var(--tanne);text-align:left;margin:0;max-width:42ch}
+</style>
+<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}[data-reservierung] [hidden]{display:none!important}</style><!--agent-lib--><link rel="stylesheet" href="lib/lenis.css"><script src="lib/gsap.min.js"></script><script src="lib/ScrollTrigger.min.js"></script><script src="lib/SplitText.min.js"></script><script src="lib/lenis.min.js"></script><!--/agent-lib--></head>
+<body><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für Nooni Café. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="teller" viewBox="-100 -100 200 200"><circle r="86" fill="none" stroke="#FBF5EA" stroke-width="27"/><circle r="99" fill="none" stroke="#2F5230" stroke-opacity=".2"/><circle r="73" fill="none" stroke="#2F5230" stroke-opacity=".15"/><g fill="#1F2F6B"><circle cx="88" r="1.8" transform="rotate(4)"/><circle cx="81" r="1.1" transform="rotate(15)"/><circle cx="93" r="1.4" transform="rotate(27)"/><circle cx="85" r="2.1" transform="rotate(38)"/><circle cx="79" r=".9" transform="rotate(47)"/><circle cx="91" r="1.3" transform="rotate(58)"/><circle cx="84" r="1.7" transform="rotate(70)"/><circle cx="95" r="1" transform="rotate(82)"/><circle cx="80" r="1.5" transform="rotate(91)"/><circle cx="88" r="2" transform="rotate(103)"/><circle cx="93" r="1.1" transform="rotate(114)"/><circle cx="82" r="1.4" transform="rotate(126)"/><circle cx="89" r=".9" transform="rotate(137)"/><circle cx="96" r="1.6" transform="rotate(149)"/><circle cx="84" r="2.2" transform="rotate(160)"/><circle cx="78" r="1" transform="rotate(171)"/><circle cx="90" r="1.3" transform="rotate(183)"/><circle cx="86" r="1.8" transform="rotate(194)"/><circle cx="95" r="1.1" transform="rotate(206)"/><circle cx="81" r="1.5" transform="rotate(217)"/><circle cx="88" r="2" transform="rotate(229)"/><circle cx="93" r=".9" transform="rotate(240)"/><circle cx="84" r="1.4" transform="rotate(252)"/><circle cx="79" r="1.2" transform="rotate(263)"/><circle cx="91" r="1.9" transform="rotate(275)"/><circle cx="86" r="1" transform="rotate(286)"/><circle cx="95" r="1.3" transform="rotate(298)"/><circle cx="82" r="1.7" transform="rotate(309)"/><circle cx="89" r="1.1" transform="rotate(321)"/><circle cx="94" r="2.1" transform="rotate(332)"/><circle cx="80" r="1.2" transform="rotate(344)"/><circle cx="87" r="1.5" transform="rotate(355)"/></g></symbol>
+<symbol id="hand" viewBox="0 0 120 160"><path class="hp" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M38 22c-5-7 5-10 0-17M56 22c-5-7 5-10 0-17M28 34h56v50c0 12-9 20-20 20H48c-11 0-20-8-20-20zM84 46c18 0 18 28 0 28M28 52c-9 0-11 11-1 11h12M28 66c-9 0-11 11-1 11h14M29 80c-8 0-10 11 0 11h12M33 50c4-8 14-8 17-1M20 98c-6 18-8 38-6 60M50 104c3 18 5 36 4 56"/></symbol>
+</svg>
+
+<header class="kopf">
+<div class="kopf-in">
+<a class="marke" href="#top" aria-label="Nooni Café, zum Seitenanfang"><svg aria-hidden="true"><use href="#hand"/></svg><span class="marke-name">Nooni</span><span class="marke-zusatz">Café</span></a>
+<nav aria-label="Hauptnavigation"><ul><li><a href="#angebot">Angebot</a></li><li><a href="#karte">Karte</a></li><li><a href="#zeiten">Zeiten</a></li><li><a href="#lage">Lage</a></li></ul></nav>
+<a class="knopf knopf-tanne kopf-res" href="#reservieren">Reservieren</a>
+<a class="knopf knopf-tanne kopf-tel" href="tel:+494041628306">Anrufen</a>
+</div>
+</header>
+
+<main id="top">
+<section class="hero" aria-labelledby="hero-name">
+<div class="hero-bildseite">
+<figure class="hero-foto" data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmPI1jnkZvJUMNvT2CTLz0h93KGDQYmeEey8ZALfTrgaVq3KElYxP01GQ4TEQcN3PBVmNb3_9HOUQKK8eDYLwhVCW6SBFYYbPSkKJXbux_9KEdpMquhGlUYaQezcNE74QYi9V8tULKn00wA=s4800-w1152" referrerpolicy="no-referrer" width="1152" height="2048" fetchpriority="high" alt="Frühstückstisch von oben: Burrata-Brot, Omelett-Teller, Obst und Cappuccino in gelber Tasse"></div>
+<figcaption><span>Frühstück bei Nooni, von oben fotografiert.</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/103067951305633001448" target="_blank" rel="noopener">Foto: Nooni Café - Bake &amp; Breakfast · Google Maps</a></figcaption>
+</figure>
+<img class="frei frei-melone" src="ki-wassermelone.webp" width="800" height="800" alt="" data-tiefe="30">
+<img class="frei frei-tasse" src="ki-cappuccino-gelb.webp" width="800" height="800" alt="" data-tiefe="12">
+</div>
+<div class="hero-schild">
+<p class="blase"><span data-status></span></p>
+<div class="hero-mitte">
+<h1 class="hero-name" id="hero-name">Nooni<span class="vh"> Café – Bake &amp; Breakfast</span></h1>
+<p class="hero-titel">Jeden Tag <em>Frühstück</em>,<br>Brot &amp;&nbsp;Kaffee</p>
+<p class="hero-info">Bake &amp; Breakfast in Altona · Große Brunnenstraße 55 · täglich 9–17&nbsp;Uhr.</p>
+</div>
+<div class="hero-unten">
+<div class="hero-aktionen">
+<a class="knopf knopf-creme magnet" href="tel:+494041628306">Anrufen <span class="nr">040 41628306</span></a>
+<a class="knopf knopf-outline nur-mobil" href="#reservieren">Tisch reservieren</a>
+<span style="display:inline-flex;align-items:center"><a class="link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Gro%C3%9Fe+Brunnenstra%C3%9Fe+55%2C+22763+Hamburg" target="_blank" rel="noopener">Route planen</a><svg class="strich route-pfeil" viewBox="0 0 64 34" aria-hidden="true"><path pathLength="1" d="M62 26C46 32 26 30 10 12M8 24 9 10l13 2"/></svg></span>
+<a class="link nur-desk" href="#reservieren">Tisch reservieren</a>
+</div>
+<svg class="hero-hand strich" viewBox="0 0 120 160" aria-hidden="true"><path pathLength="1" style="stroke-width:3" d="M38 22c-5-7 5-10 0-17M56 22c-5-7 5-10 0-17M28 34h56v50c0 12-9 20-20 20H48c-11 0-20-8-20-20zM84 46c18 0 18 28 0 28M28 52c-9 0-11 11-1 11h12M28 66c-9 0-11 11-1 11h14M29 80c-8 0-10 11 0 11h12M33 50c4-8 14-8 17-1M20 98c-6 18-8 38-6 60M50 104c3 18 5 36 4 56"/></svg>
+</div>
+</div>
+<img class="frei frei-orange" src="ki-orange-halb.webp" width="800" height="800" alt="" data-tiefe="40" onerror="this.remove()">
+</section>
+
+<section class="angebot" id="angebot" aria-labelledby="angebot-titel">
+<div class="wrap">
+<div class="angebot-text">
+<h2 id="angebot-titel">Brot mit Kruste, Teller mit <em class="akz">Sprenkeln</em>.</h2>
+<p>Frühstück und Brunch gibt es den ganzen Tag, bis 17 Uhr – auch sonntags. Mittags kommt ein Mittagstisch dazu, vieles davon vegetarisch. Kaffee und Desserts gehen jederzeit, alles auch zum Mitnehmen.</p>
+<dl class="infoliste">
+<div><dt>Geöffnet</dt><dd>täglich 9–17 Uhr</dd></div>
+<div><dt>Küche</dt><dd>Frühstück, Mittagstisch, Desserts</dd></div>
+<div><dt>Vegetarisch</dt><dd>ja, viele Gerichte</dd></div>
+<div><dt>Zum Mitnehmen</dt><dd>ja</dd></div>
+<div><dt>Reservierung</dt><dd>telefonisch oder <a href="#reservieren">online</a></dd></div>
+</dl>
+</div>
+<div class="angebot-bild">
+<figure class="teller-fig teller-gross" data-foto>
+<div class="teller"><svg class="teller-ring" aria-hidden="true"><use href="#teller"/></svg><div class="teller-mitte"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmOTBlFeKe1z4PG4aKY062g99MaTpmrJzxYKHPw52LWm2Lc0sUrQSIOSbeIAy9H4lOXKpHTmx1HdACiq5f9JLpdSFUOyWDETIaSddorFejHYQokOr8KLaFzd21HiUfpgzV5Unf3oY4B-VOEe=s4800-w1000" referrerpolicy="no-referrer" width="3600" height="4800" loading="lazy" alt="Brot mit Burrata, Tomaten und Rucola, daneben Wassermelone und Bagel"></div></div>
+<figcaption><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/106908791440776851834" target="_blank" rel="noopener">Foto: Tara Nabizadeh · Google Maps</a></figcaption>
+</figure>
+<figure class="klein-fig" data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmPXNpQ-YjLiIQVzxWbpPX74SYiwfJR5cwp96e-I_M3X76v99ePfFrB-RDIutdaDxOWuuXJWGGcMvMukLxVtQ0lFefmYpyrZerB0fXgk5SMVbRteq2ZIkLhGRtX-RgiHiCByarqg2cea8HCv=s4800-w1000" referrerpolicy="no-referrer" width="3600" height="4800" loading="lazy" alt="Omelett-Brot mit Tomaten und Schnittlauch, dahinter ein Kaffee"></div>
+<figcaption><span>Omelett auf Brot, Tomate, Schnittlauch.</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/106993154161236303212" target="_blank" rel="noopener">Foto: Daniel Schmidt · Google Maps</a></figcaption>
+</figure>
+</div>
+</div>
+</section>
+
+<section class="karte-abschnitt" id="karte" aria-labelledby="karte-titel">
+<div class="wrap">
+<div class="karte-kopf">
+<h2 id="karte-titel">Was man bei Nooni bestellt</h2>
+<div class="reiter" role="tablist" aria-label="Gerichte oder Getränke">
+<button type="button" role="tab" id="tab-teller" aria-controls="panel-teller" aria-selected="true">Auf den Teller</button>
+<button type="button" role="tab" id="tab-tasse" aria-controls="panel-tasse" aria-selected="false">In die Tasse</button>
+</div>
+</div>
+<div id="panel-teller" role="tabpanel" aria-labelledby="tab-teller" class="karten">
+
+<article class="karte"><div class="teller"><svg class="teller-ring" aria-hidden="true"><use href="#teller"/></svg><div class="teller-mitte"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmPXNpQ-YjLiIQVzxWbpPX74SYiwfJR5cwp96e-I_M3X76v99ePfFrB-RDIutdaDxOWuuXJWGGcMvMukLxVtQ0lFefmYpyrZerB0fXgk5SMVbRteq2ZIkLhGRtX-RgiHiCByarqg2cea8HCv=s4800-w1000" referrerpolicy="no-referrer" width="3600" height="4800" loading="lazy" alt="Omelett auf Brot mit Tomaten und Schnittlauch"></div></div><h3>Omelett-Brot</h3><p>Auf Brot, mit Tomaten und Schnittlauch.</p><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/106993154161236303212" target="_blank" rel="noopener">Foto: Daniel Schmidt · Google Maps</a></article>
+<article class="karte"><div class="teller"><svg class="teller-ring" aria-hidden="true"><use href="#teller"/></svg><div class="teller-mitte"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmOTBlFeKe1z4PG4aKY062g99MaTpmrJzxYKHPw52LWm2Lc0sUrQSIOSbeIAy9H4lOXKpHTmx1HdACiq5f9JLpdSFUOyWDETIaSddorFejHYQokOr8KLaFzd21HiUfpgzV5Unf3oY4B-VOEe=s4800-w1000" referrerpolicy="no-referrer" width="3600" height="4800" loading="lazy" alt="Burrata-Brot mit Tomaten und Rucola"></div></div><h3>Burrata-Brot</h3><p>Mit Tomaten, Rucola und Balsamico.</p><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/106908791440776851834" target="_blank" rel="noopener">Foto: Tara Nabizadeh · Google Maps</a></article>
+<article class="karte"><div class="teller"><svg class="teller-ring" aria-hidden="true"><use href="#teller"/></svg><div class="teller-mitte"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmPDWbQyXx7QQqQkEjG8wOGXLROjs4aFcrx8TU8KJyAeL8kV0jRLzJDxO9mwGwh2cQ6Bcs-rKW2PgJnILqi15JTpUEizUuxZjyOytZiGPdqqgtJ877fiIBrRACNgrK2SF6bj6vnt8TEsiw3-=s4800-w1000" referrerpolicy="no-referrer" width="3600" height="4800" loading="lazy" alt="Frühstücksteller mit Waffeln, Rührei und Salat"></div></div><h3>Großes Frühstück</h3><p>Waffeln, Rührei, Salat und ein Granola-Becher.</p><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/101437811988157965821" target="_blank" rel="noopener">Foto: Tala Forootan · Google Maps</a></article>
+<article class="karte"><div class="teller"><svg class="teller-ring" aria-hidden="true"><use href="#teller"/></svg><div class="teller-mitte"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmMAQk5SDl9eimwTRXD_c1x7xyP4hMRI0dy66ygye_a-qObbpd_O5X1pQNnSHIt0Q6OB7TcBTkjsphl7h7L20ywm20PSU_yBbF7Alpx_il3bUzEaHyIZYgkUlrLtm1AQSo9x01mE3EXjaYZN=s4800-w1000" referrerpolicy="no-referrer" width="3072" height="4080" loading="lazy" alt="Frische Waffel mit Puderzucker auf gesprenkeltem Teller"></div></div><h3>Waffeln</h3><p>Frisch aus dem Eisen, mit Puderzucker.</p><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/102252404833146328818" target="_blank" rel="noopener">Foto: Florian Hermsdorf · Google Maps</a></article>
+</div>
+<div id="panel-tasse" role="tabpanel" aria-labelledby="tab-tasse" class="karten">
+<article class="karte"><div class="teller"><svg class="teller-ring" aria-hidden="true"><use href="#teller"/></svg><div class="teller-mitte"><img src="ki-iced-coffee.webp" width="800" height="1067" loading="lazy" alt="Iced Coffee mit Milch und Eiswürfeln"></div></div><h3>Iced Coffee</h3><p>Kaffee, Milch und viel Eis.</p></article>
+<article class="karte"><div class="teller"><svg class="teller-ring" aria-hidden="true"><use href="#teller"/></svg><div class="teller-mitte"><img class="frei" src="ki-cappuccino-gelb.webp" width="800" height="800" loading="lazy" alt="Cappuccino in gelber Tasse"></div></div><h3>Cappuccino</h3><p>In der gelben Tasse.</p></article>
+<article class="karte"><div class="teller"><svg class="teller-ring" aria-hidden="true"><use href="#teller"/></svg><div class="teller-mitte"><img src="ki-ingwertee.webp" width="800" height="1067" loading="lazy" alt="Glas Ingwertee mit Ingwerscheiben und Minze"></div></div><h3>Frischer Ingwertee</h3><p>Mit dicken Scheiben frischem Ingwer.</p></article>
+</div>
+<p class="karte-hinweis">Außerdem auf der Karte: Eggs Benedict, Eggs Florentine mit Spinat, Bagel nach Tageskarte, Chai Latte, Matcha und frisch gepresster Orangensaft. Preise und Tageskarte hängen am Tresen – oder kurz anrufen: <a href="tel:+494041628306">040 41628306</a>.</p>
+</div>
+</section>
+
+<section class="theke" id="zeiten" aria-labelledby="zeiten-titel">
+<div class="wrap">
+<div class="theke-text">
+<h2 id="zeiten-titel">Montag bis Sonntag. Immer 9 bis 17.</h2>
+<p class="theke-satz" data-theke-satz>Jeden Tag ab 9 Uhr Kaffee, Brot und Eier – bis 17 Uhr, auch sonntags.</p>
+<dl class="tage">
+<div><dt>Montag</dt><dd>09:00–17:00</dd></div><div><dt>Dienstag</dt><dd>09:00–17:00</dd></div>
+<div><dt>Mittwoch</dt><dd>09:00–17:00</dd></div><div><dt>Donnerstag</dt><dd>09:00–17:00</dd></div>
+<div><dt>Freitag</dt><dd>09:00–17:00</dd></div><div><dt>Samstag</dt><dd>09:00–17:00</dd></div>
+<div><dt>Sonntag</dt><dd>09:00–17:00</dd></div>
+</dl>
+<svg class="theke-hand strich" viewBox="0 0 120 160" aria-hidden="true"><path pathLength="1" style="stroke-width:3" d="M38 22c-5-7 5-10 0-17M56 22c-5-7 5-10 0-17M28 34h56v50c0 12-9 20-20 20H48c-11 0-20-8-20-20zM84 46c18 0 18 28 0 28M28 52c-9 0-11 11-1 11h12M28 66c-9 0-11 11-1 11h14M29 80c-8 0-10 11 0 11h12M33 50c4-8 14-8 17-1M20 98c-6 18-8 38-6 60M50 104c3 18 5 36 4 56"/></svg>
+</div>
+<ol class="rippen" aria-label="Öffnungsstunden von 9 bis 17 Uhr">
+<li class="rippe" data-h="9">09<small>Uhr</small></li><li class="rippe" data-h="10">10<small>Uhr</small></li><li class="rippe" data-h="11">11<small>Uhr</small></li><li class="rippe" data-h="12">12<small>Uhr</small></li><li class="rippe" data-h="13">13<small>Uhr</small></li><li class="rippe" data-h="14">14<small>Uhr</small></li><li class="rippe" data-h="15">15<small>Uhr</small></li><li class="rippe" data-h="16">16<small>Uhr</small></li>
+</ol>
+<span class="jetzt-marke" hidden aria-hidden="true"><svg class="strich" viewBox="0 0 30 34"><path pathLength="1" d="M4 4c14 2 22 12 20 26M17 24l7 7 5-9"/></svg>jetzt</span>
+</div>
+</section>
+
+<section class="streifen" aria-labelledby="streifen-titel">
+<div class="wrap streifen-kopf">
+<h2 id="streifen-titel">Kleine Tischrunde</h2>
+<p>Draußen stehen die grünen Klapptische, drinnen die gelben Hocker an der Theke. Wo möchtest du sitzen?</p>
+</div>
+<div class="streifen-spur">
+<figure class="polaroid quer" data-foto><div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmPq1VVTdlCi7GYruXmK9zQLHo6tDfKgUSfPPMgy4QoWjdSloaJgJocN542CGbQsJG0WBTjjWTru_5pra9OWegmdmaicMkHwzGGjYrUXrEkyTvgtbcJNGVR5ddOq9NDnR69hfzEFAW1NeN8=s4800-w1000" referrerpolicy="no-referrer" width="1600" height="1204" loading="lazy" alt="Heller Gastraum mit pastellgrüner, geriffelter Theke und Pflanzen"></div><figcaption><span>Die grüne Theke.</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/103070497598871168645" target="_blank" rel="noopener">Foto: Rob · Google Maps</a></figcaption></figure>
+<figure class="polaroid" data-foto><div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmMAQk5SDl9eimwTRXD_c1x7xyP4hMRI0dy66ygye_a-qObbpd_O5X1pQNnSHIt0Q6OB7TcBTkjsphl7h7L20ywm20PSU_yBbF7Alpx_il3bUzEaHyIZYgkUlrLtm1AQSo9x01mE3EXjaYZN=s4800-w1000" referrerpolicy="no-referrer" width="3072" height="4080" loading="lazy" alt="Frische Waffel mit Puderzucker auf gesprenkeltem Teller"></div><figcaption><span>Waffel auf Sprenkelteller.</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/102252404833146328818" target="_blank" rel="noopener">Foto: Florian Hermsdorf · Google Maps</a></figcaption></figure>
+<figure class="polaroid quad"><div class="rahmen"><img class="frei" src="ki-wassermelone.webp" width="800" height="800" loading="lazy" alt="Ein Stück Wassermelone"></div><figcaption><span>Melone zum Brot.</span></figcaption></figure>
+<figure class="polaroid" data-foto><div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmPDWbQyXx7QQqQkEjG8wOGXLROjs4aFcrx8TU8KJyAeL8kV0jRLzJDxO9mwGwh2cQ6Bcs-rKW2PgJnILqi15JTpUEizUuxZjyOytZiGPdqqgtJ877fiIBrRACNgrK2SF6bj6vnt8TEsiw3-=s4800-w1000" referrerpolicy="no-referrer" width="3600" height="4800" loading="lazy" alt="Frühstücksteller mit Waffeln, Rührei, Salat und einem Granola-Becher"></div><figcaption><span>Großes Frühstück.</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/101437811988157965821" target="_blank" rel="noopener">Foto: Tala Forootan · Google Maps</a></figcaption></figure>
+<figure class="polaroid"><div class="rahmen"><img src="ki-iced-coffee.webp" width="800" height="1067" loading="lazy" alt="Iced Coffee im hohen Glas"></div><figcaption><span>Iced Coffee für den Gehweg.</span></figcaption></figure>
+<figure class="polaroid"><div class="rahmen"><img src="ki-ingwertee.webp" width="800" height="1067" loading="lazy" alt="Frischer Ingwertee im Glas"></div><figcaption><span>Frischer Ingwertee.</span></figcaption></figure>
+</div>
+</section>
+
+<section class="reservieren" id="reservieren" aria-labelledby="res-titel">
+<div class="wrap">
+<div class="res-intro">
+<h2 id="res-titel">Ein Tisch, <em class="akz">s'il vous plaît</em>.</h2>
+<p>Tag, Uhrzeit, wie viele ihr seid – drei Klicks. Wir rufen kurz zurück und bestätigen den Tisch.</p>
+<p>Lieber direkt? <a href="tel:+494041628306">040 41628306</a></p>
+<figure class="res-foto" data-foto><div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmPq1VVTdlCi7GYruXmK9zQLHo6tDfKgUSfPPMgy4QoWjdSloaJgJocN542CGbQsJG0WBTjjWTru_5pra9OWegmdmaicMkHwzGGjYrUXrEkyTvgtbcJNGVR5ddOq9NDnR69hfzEFAW1NeN8=s4800-w1000" referrerpolicy="no-referrer" width="1600" height="1204" loading="lazy" alt="Heller Gastraum mit pastellgrüner, geriffelter Theke"></div><figcaption><span>Drinnen an der grünen Theke oder draußen an den Klapptischen.</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/103070497598871168645" target="_blank" rel="noopener">Foto: Rob · Google Maps</a></figcaption></figure>
+</div>
+<div class="res-box">
+<form data-reservierung novalidate>
+<fieldset class="schritt"><legend><span>1</span>Tag</legend><div data-tage></div></fieldset>
+<fieldset class="schritt"><legend><span>2</span>Uhrzeit</legend><div data-zeiten></div></fieldset>
+<fieldset class="schritt"><legend><span>3</span>Personen</legend><div data-personen></div></fieldset>
+<div class="felder">
+<div class="feld"><label for="r-name">Name</label><input id="r-name" name="name" autocomplete="name" required></div>
+<div class="feld"><label for="r-tel">Telefon</label><input id="r-tel" name="telefon" type="tel" autocomplete="tel" required></div>
+<div class="feld voll"><label for="r-mail">E-Mail <small>(optional)</small></label><input id="r-mail" name="email" type="email" autocomplete="email"></div>
+<div class="feld voll"><label for="r-msg">Nachricht <small>(optional, z. B. Kinderstuhl oder lieber draußen)</small></label><textarea id="r-msg" name="nachricht"></textarea></div>
+</div>
+<label class="einwilligung"><input type="checkbox" name="einwilligung" required><span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Reservierung verwendet werden. <a href="https://medialyte.de/datenschutzerklaerung" target="_blank" rel="noopener">Datenschutz</a></span></label>
+<p data-reservierung-fehler role="alert"></p>
+<button type="submit" class="knopf knopf-tanne">Tisch anfragen <span class="pfeil" aria-hidden="true">→</span></button>
+</form>
+<div class="erfolg" data-reservierung-erfolg hidden>
+<h3>Danke, <span data-wert="name"></span>!</h3>
+<div class="erfolg-teller">
+<div class="teller"><svg class="teller-ring" aria-hidden="true"><use href="#teller"/></svg><div class="teller-mitte"><span class="erfolg-zeile" data-wert="datum"></span><span class="erfolg-zeile"><span data-wert="uhrzeit"></span> Uhr</span><span class="erfolg-zeile">für <span data-wert="personen"></span></span></div></div>
+<svg class="strich" viewBox="0 0 120 160" aria-hidden="true"><path pathLength="1" style="stroke-width:3" d="M38 22c-5-7 5-10 0-17M56 22c-5-7 5-10 0-17M28 34h56v50c0 12-9 20-20 20H48c-11 0-20-8-20-20zM84 46c18 0 18 28 0 28M28 52c-9 0-11 11-1 11h12M28 66c-9 0-11 11-1 11h14M29 80c-8 0-10 11 0 11h12M33 50c4-8 14-8 17-1M20 98c-6 18-8 38-6 60M50 104c3 18 5 36 4 56"/></svg>
+</div>
+<p>Wir rufen kurz an und bestätigen den Tisch.</p>
+<button type="button" data-reservierung-neu>Neue Anfrage</button>
+</div>
+</div>
+</div>
+</section>
+
+<section class="lage" id="lage" aria-labelledby="lage-titel">
+<div class="wrap">
+<div class="lage-text">
+<h2 id="lage-titel">Grünes Schild, Klapptische davor.</h2>
+<address>Große Brunnenstraße 55<br>22763 Hamburg-Altona</address>
+<p>Das salbeigrüne Schild hängt über der Glastür, davor stehen die Klapptische auf dem Gehweg. Hineinkommen, an der Theke bestellen – oder am Tisch.</p>
+<a class="link tel" href="tel:+494041628306">040 41628306</a>
+<figure class="fassade" data-foto><div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmNOzBtrlcLFiyfcMRuO4R0xWgLO9ntKLzRgVAg55DGW4hAzuBxomaqgChP1SmMdoZqSG2Rk4w1S86zWtGiGC5Vk-0UPbZC7Zcl_5IxxGuDX-o4TCWyW6h-wDD6Nl1FDTRTqu2RGvoLCLDs=s4800-w1000" referrerpolicy="no-referrer" width="3600" height="4800" loading="lazy" alt="Außenansicht des Nooni Café mit grünem Schild und Tischen auf dem Gehweg"></div><figcaption><span>So sieht der Eingang aus.</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/103067951305633001448" target="_blank" rel="noopener">Foto: Nooni Café - Bake &amp; Breakfast · Google Maps</a></figcaption></figure>
+</div>
+<div class="karte-rahmen"><div data-karte data-stil="hell" data-farbe="#2F5230"></div><a class="knopf knopf-tanne karte-route" href="https://www.google.com/maps/dir/?api=1&amp;destination=Gro%C3%9Fe+Brunnenstra%C3%9Fe+55%2C+22763+Hamburg" target="_blank" rel="noopener">Route planen <span class="pfeil" aria-hidden="true">→</span></a></div>
+</div>
+</section>
+</main>
+
+<footer class="fuss">
+<div class="wrap">
+<div class="fuss-marke"><b>Nooni</b><svg aria-hidden="true"><use href="#hand"/></svg></div>
+<div class="fuss-spalte"><h3>Adresse</h3><p>Nooni Café – Bake &amp; Breakfast<br>Große Brunnenstraße 55<br>22763 Hamburg</p><a href="tel:+494041628306">040 41628306</a></div>
+<div class="fuss-spalte"><h3>Öffnungszeiten</h3><p>Montag bis Sonntag<br>09:00–17:00 Uhr</p><a href="#reservieren">Tisch reservieren</a></div>
+<div class="rechtliches"><p>Entwurf von Medialyte, 21147 Hamburg. Adresse und Öffnungszeiten: Google. Fotos: Google Maps, Urheber jeweils am Bild. Einige Bilder und das Logo sind KI-generierte Vorschläge.</p><p><a href="https://medialyte.de/impressum" style="color:inherit;text-decoration:underline">Impressum</a> · <a href="https://medialyte.de/datenschutzerklaerung" style="color:inherit;text-decoration:underline">Datenschutz</a></p></div>
+</div>
+</footer>
+
+<nav class="leiste" aria-label="Schnellzugriff">
+<a href="tel:+494041628306">Anrufen</a>
+<a href="https://www.google.com/maps/dir/?api=1&amp;destination=Gro%C3%9Fe+Brunnenstra%C3%9Fe+55%2C+22763+Hamburg" target="_blank" rel="noopener">Route</a>
+<a href="#zeiten">Zeiten</a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+const ruhig=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const tabs=[...document.querySelectorAll('[role="tab"]')];
+const zeige=(t,anim)=>{tabs.forEach(x=>{const an=x===t;x.setAttribute("aria-selected",an);x.tabIndex=an?0:-1;const p=document.getElementById(x.getAttribute("aria-controls"));p.hidden=!an;if(an&&anim&&!ruhig&&window.gsap)gsap.fromTo(p,{opacity:0},{opacity:1,duration:.45,ease:"power2.out"});});if(window.ScrollTrigger)ScrollTrigger.refresh();};
+tabs.forEach((t,i)=>{t.addEventListener("click",()=>zeige(t,true));t.addEventListener("keydown",e=>{if(e.key!=="ArrowRight"&&e.key!=="ArrowLeft")return;const n=tabs[(i+(e.key==="ArrowRight"?1:tabs.length-1))%tabs.length];n.focus();zeige(n,true);});});
+if(tabs.length)zeige(tabs[0],false);
+
+const h=parseInt(new Intl.DateTimeFormat("de-DE",{timeZone:"Europe/Berlin",hour:"numeric",hourCycle:"h23"}).format(new Date()),10);
+const satz=document.querySelector("[data-theke-satz]");
+const marke=document.querySelector(".jetzt-marke");
+const rippe=document.querySelector('.rippe[data-h="'+h+'"]');
+if(rippe){rippe.classList.add("jetzt");rippe.appendChild(marke);marke.hidden=false;satz.textContent="Gerade läuft die Stunde ab "+h+" Uhr – die Theke ist besetzt.";}
+else{satz.textContent="Gerade zu – ab 9 Uhr wieder Kaffee.";}
+
+if(!window.gsap)return;
+gsap.registerPlugin(ScrollTrigger,SplitText);
+const mm=gsap.matchMedia();
+const zeichne=(el,d,extra)=>el&&gsap.from(el,Object.assign({strokeDashoffset:1,duration:d,ease:"power2.inOut"},extra||{}));
+
+mm.add("(prefers-reduced-motion: no-preference)",()=>{
+const mobil=innerWidth<900,d=mobil?.8:1.2;
+gsap.from(".hero-name",{clipPath:"inset(-10% 100% -10% 0)",duration:1.1,ease:"expo.out",clearProps:"clipPath"});
+SplitText.create(".hero-titel",{type:"lines",mask:"lines",autoSplit:true,onSplit:s=>gsap.from(s.lines,{yPercent:110,duration:1,ease:"expo.out",stagger:.08,delay:.25})});
+gsap.from(".frei-tasse",{scale:.3,opacity:0,duration:.8,ease:"back.out(1.7)",delay:.5});
+if(!mobil)gsap.from([".frei-melone",".frei-orange"],{scale:.3,opacity:0,duration:.7,ease:"back.out(1.7)",stagger:.18,delay:.75});
+zeichne(".hero-hand path",d,{delay:.6});
+zeichne(".route-pfeil path",.7,{delay:1.2});
+gsap.utils.toArray(".teller-ring").forEach(r=>gsap.to(r,{rotate:25,ease:"none",scrollTrigger:{trigger:r.closest("section"),start:"top bottom",end:"bottom top",scrub:true}}));
+const tl=gsap.timeline({scrollTrigger:{trigger:".rippen",start:"top 75%"}});
+tl.from(".rippe",{scaleY:0,transformOrigin:"50% 100%",duration:.7,ease:"back.out(1.3)",stagger:mobil?.05:.09});
+if(rippe)tl.from(".jetzt-marke",{scale:0,transformOrigin:"0% 100%",duration:.5,ease:"back.out(2)"});
+zeichne(".theke-hand path",d,{scrollTrigger:{trigger:".theke-hand",start:"top 85%"}});
+gsap.from(".klein-fig",{clipPath:"inset(18% 18% 18% 18% round 24px)",duration:1.1,ease:"power3.out",scrollTrigger:{trigger:".klein-fig",start:"top 85%"}});
+const erfolg=document.querySelector("[data-reservierung-erfolg]");
+if(erfolg){const mo=new MutationObserver(()=>{if(erfolg.hidden)return;gsap.from(erfolg.querySelector(".teller"),{scale:.5,opacity:0,duration:.8,ease:"back.out(1.7)"});zeichne(erfolg.querySelector(".strich path"),d,{delay:.3});});mo.observe(erfolg,{attributes:true,attributeFilter:["hidden"]});return()=>mo.disconnect();}
+});
+
+mm.add("(min-width: 900px) and (prefers-reduced-motion: no-preference)",()=>{
+gsap.utils.toArray(".hero [data-tiefe]").forEach(el=>gsap.to(el,{yPercent:-parseFloat(el.dataset.tiefe),ease:"none",scrollTrigger:{trigger:".hero",start:"top top",end:"bottom top",scrub:true}}));
+const st=document.querySelector(".streifen"),band=document.querySelector(".streifen-spur");
+if(st&&band){st.classList.add("gepinnt");
+gsap.to(band,{x:()=>-Math.max(0,band.scrollWidth-innerWidth),ease:"none",scrollTrigger:{trigger:st,pin:true,scrub:1,end:()=>"+="+band.scrollWidth,invalidateOnRefresh:true}});
+return()=>st.classList.remove("gepinnt");}
+});
+
+mm.add("(pointer: fine) and (min-width: 900px) and (prefers-reduced-motion: no-preference)",()=>{
+const k=document.querySelector(".magnet");if(!k)return;
+const x=gsap.quickTo(k,"x",{duration:.4,ease:"power3"}),y=gsap.quickTo(k,"y",{duration:.4,ease:"power3"});
+const mv=e=>{const r=k.getBoundingClientRect();x((e.clientX-r.left-r.width/2)*.25);y((e.clientY-r.top-r.height/2)*.35);};
+const out=()=>{x(0);y(0);};
+k.addEventListener("mousemove",mv);k.addEventListener("mouseleave",out);
+return()=>{k.removeEventListener("mousemove",mv);k.removeEventListener("mouseleave",out);};
+});
+
+if(window.Lenis&&matchMedia("(pointer: fine) and (prefers-reduced-motion: no-preference)").matches){
+const lenis=new Lenis({autoRaf:false});
+lenis.on("scroll",ScrollTrigger.update);
+gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+}
+});
+</script>
+<div style="padding:16px;font:12px/1.5 system-ui,sans-serif;background:#111;color:#ddd">Fotos: <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/103067951305633001448" target="_blank" rel="noopener">Foto: Nooni Café - Bake &amp; Breakfast · Google Maps</a>, <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/103067951305633001448" target="_blank" rel="noopener">Foto: Nooni Café - Bake &amp; Breakfast · Google Maps</a></div><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>[data-karte]{width:100%;height:100%;min-height:260px}[data-karte] .leaflet-tile-pane{filter:var(--karte-filter)}
+[data-karte] .leaflet-control-attribution{font-size:10px}.karte-pin{position:relative;width:34px;height:34px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+box-shadow:0 6px 16px rgba(0,0,0,.35);border:3px solid #fff}.karte-pin i{position:absolute;inset:9px;border-radius:50%;background:#fff}</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>(function(){var C={"lat": 53.5518066, "lng": 9.9253395, "name": "Nooni Caf\u00e9", "filter": {"hell": "grayscale(1) contrast(1.05) brightness(1.04)", "dunkel": "grayscale(1) invert(1) contrast(.88) brightness(.82)", "warm": "grayscale(1) sepia(.5) contrast(1.02) brightness(1.02)", "kuehl": "grayscale(1) sepia(.35) hue-rotate(175deg) saturate(.55) brightness(1.03)", "mono": "grayscale(1) contrast(1.2)"}};function draw(){if(!window.L)return;document.querySelectorAll('[data-karte]').forEach(function(el){
+if(el._map)return;var st=el.getAttribute('data-stil')||'hell',col=el.getAttribute('data-farbe')||'#c0392b';
+el.style.setProperty('--karte-filter',C.filter[st]||C.filter.hell);
+var m=L.map(el,{scrollWheelZoom:false,zoomControl:true,attributionControl:true}).setView([C.lat,C.lng],16);el._map=m;
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(m);
+var icon=L.divIcon({className:'',html:'<div class="karte-pin" style="background:'+col+'"><i></i></div>',iconSize:[34,34],iconAnchor:[17,34]});
+L.marker([C.lat,C.lng],{icon:icon,title:C.name,alt:C.name}).addTo(m);setTimeout(function(){m.invalidateSize()},300);});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',draw);else draw();window.addEventListener('load',draw);})();</script><script>(function(){
+var P=[[540, 1020], [1980, 2460], [3420, 3900], [4860, 5340], [6300, 6780], [7740, 8220], [9180, 9660]];
+function fmt(m){m=((m%1440)+1440)%1440;var h=Math.floor(m/60),mi=m%60;return (h<10?'0':'')+h+':'+(mi<10?'0':'')+mi;}
+function now(){var d=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Berlin'}));return d.getDay()*1440+d.getHours()*60+d.getMinutes();}
+function status(){if(!P.length)return null;var t=now(),W=10080;
+ for(var i=0;i<P.length;i++){var s=P[i][0],e=P[i][1];if((t>=s&&t<e)||(t+W>=s&&t+W<e))return {offen:true,text:'Jetzt geöffnet bis '+fmt(e)};}
+ var best=null;for(var j=0;j<P.length;j++){var d=(P[j][0]-t+W)%W;if(best===null||d<best.d)best={d:d,s:P[j][0]};}
+ var tag=Math.floor(t/1440),ot=Math.floor(best.s/1440)%7,names=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+ var when=best.d<1440&&ot===tag?'heute':(best.d<2880&&ot===(tag+1)%7?'morgen':names[ot]);
+ return {offen:false,text:'Geschlossen · öffnet '+when+' um '+fmt(best.s)};}
+function run(){var s=status();document.querySelectorAll('[data-status]').forEach(function(el){
+ if(!s){el.style.display='none';return;}el.textContent=s.text;el.setAttribute('data-offen',s.offen?'ja':'nein');});}
+document.querySelectorAll('[data-foto] img').forEach(function(img){
+ function hide(){var b=img.closest('[data-foto]');if(b)b.style.display='none';}
+ if(!img.getAttribute('src'))hide();else{img.addEventListener('error',hide);if(img.complete&&img.naturalWidth===0)hide();}});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();setInterval(run,60000);
+})();</script><!--agent-res--><script>(function () {
+  /* Reservierung: Tage und Uhrzeiten aus den echten Öffnungszeiten, Personen, Prüfung, Bestätigung.
+     Gestaltung kommt von der Seite, die Logik kommt von hier. CFG und P setzt der Agent ein. */
+  var CFG = {"modus": "demo", "ziel": "", "extra": {}, "slot": 30, "vorlauf": 60, "letzte": 60, "max": 8, "tage": 21, "name": "Nooni Café", "tel": "04041628306", "telText": "040 41628306"}, P = [[540, 1020], [1980, 2460], [3420, 3900], [4860, 5340], [6300, 6780], [7740, 8220], [9180, 9660]], W = 10080;
+  var TAGE = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"], LANG = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
+  var MON = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+  function berlin() { return new Date(new Date().toLocaleString("en-US", { timeZone: "Europe/Berlin" })); }
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function hm(m) { return pad(Math.floor(m / 60)) + ":" + pad(m % 60); }
+  function iso(d) { return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()); }
+  function el(tag, attrs, html) { var e = document.createElement(tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (html != null) e.innerHTML = html; return e; }
+
+  /* Uhrzeiten eines Kalendertags (Minuten ab 00:00), aus den Wochen-Intervallen P */
+  function slots(day, isToday, nowMin) {
+    var out = [], start = day.getDay() * 1440, step = CFG.slot, last = CFG.letzte;
+    var periods = P.length ? P : [[0, W]];
+    for (var i = 0; i < periods.length; i++) {
+      for (var shift = -W; shift <= W; shift += W) {
+        var s = periods[i][0] + shift, e = periods[i][1] + shift;
+        var from = Math.max(s, start), to = Math.min(e - last, start + 1440 - 1);
+        if (!P.length) { from = start + 11 * 60; to = start + 21 * 60 + 30; }
+        if (to < from && e > start && s < start + 1440 && e - s <= last + step && s >= start) to = from;
+        for (var t = Math.ceil(from / step) * step; t <= to; t += step) {
+          var m = t - start;
+          if (m < 5 * 60 && P.length) continue;              // keine Plätze nach Mitternacht
+          if (isToday && m < nowMin + CFG.vorlauf) continue;  // heute nur mit Vorlauf
+          if (out.indexOf(m) < 0) out.push(m);
+        }
+      }
+    }
+    return out.sort(function (a, b) { return a - b; });
+  }
+
+  function init(form) {
+    if (form._res) return; form._res = true;
+    var now = berlin(), nowMin = now.getHours() * 60 + now.getMinutes();
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var days = [];
+    for (var i = 0; i < CFG.tage; i++) {
+      var d = new Date(today); d.setDate(today.getDate() + i);
+      var s = slots(d, i === 0, nowMin);
+      if (s.length) days.push({ d: d, slots: s, i: i });
+    }
+    var boxTage = form.querySelector("[data-tage]"), boxZeiten = form.querySelector("[data-zeiten]"), boxPers = form.querySelector("[data-personen]");
+    var first = form.querySelector("input, textarea, select, button");
+    function ensure(box, attr, label) {
+      if (box) return box;
+      var wrap = el("fieldset", { "class": "res-gruppe" }, "<legend>" + label + "<\/legend>");
+      var b = el("div", {}); b.setAttribute(attr, ""); wrap.appendChild(b);
+      form.insertBefore(wrap, first && first.parentNode === form ? first : form.firstChild);
+      return b;
+    }
+    boxTage = ensure(boxTage, "data-tage", "Tag");
+    boxZeiten = ensure(boxZeiten, "data-zeiten", "Uhrzeit");
+    boxPers = ensure(boxPers, "data-personen", "Personen");
+    [boxTage, boxZeiten, boxPers].forEach(function (b) { b.setAttribute("role", "radiogroup"); });
+    boxTage.setAttribute("aria-label", "Tag wählen"); boxZeiten.setAttribute("aria-label", "Uhrzeit wählen");
+    boxPers.setAttribute("aria-label", "Anzahl Personen");
+    var uid = "res" + Math.random().toString(36).slice(2, 7);
+
+    function option(name, value, inner, title) {
+      var id = uid + "-" + name + "-" + String(value).replace(/[^a-z0-9]/gi, "");
+      var l = el("label", { "class": "res-option", "for": id, title: title || "" });
+      l.appendChild(el("input", { type: "radio", name: name, value: value, id: id, "class": "res-radio" }));
+      l.appendChild(el("span", { "class": "res-label" }, inner));
+      return l;
+    }
+    function renderDays() {
+      boxTage.innerHTML = "";
+      if (!days.length) { boxTage.appendChild(el("p", { "class": "res-hinweis" }, "In den nächsten Wochen sind online keine Zeiten frei. Bitte rufen Sie an.")); return; }
+      days.forEach(function (x) {
+        var top = x.i === 0 ? "Heute" : x.i === 1 ? "Morgen" : TAGE[x.d.getDay()];
+        boxTage.appendChild(option("datum", iso(x.d), "<b>" + top + "<\/b><small>" + pad(x.d.getDate()) + "." + pad(x.d.getMonth() + 1) + ".<\/small>",
+          LANG[x.d.getDay()] + ", " + x.d.getDate() + ". " + MON[x.d.getMonth()]));
+      });
+    }
+    function renderTimes(dateIso) {
+      boxZeiten.innerHTML = "";
+      var x = days.filter(function (y) { return iso(y.d) === dateIso; })[0];
+      if (!x) { boxZeiten.appendChild(el("p", { "class": "res-hinweis" }, "Bitte zuerst einen Tag wählen.")); return; }
+      x.slots.forEach(function (m) { boxZeiten.appendChild(option("uhrzeit", hm(m), hm(m))); });
+    }
+    function renderPersons() {
+      boxPers.innerHTML = "";
+      for (var n = 1; n <= CFG.max; n++) boxPers.appendChild(option("personen", n, String(n), n + (n === 1 ? " Person" : " Personen")));
+      if (CFG.tel) boxPers.appendChild(el("p", { "class": "res-hinweis" }, "Mehr als " + CFG.max + "? <a href=\"tel:" + CFG.tel + "\">Bitte anrufen<\/a>."));
+    }
+    renderDays(); renderPersons();
+    var firstDay = boxTage.querySelector("input");
+    if (firstDay) { firstDay.checked = true; renderTimes(firstDay.value); } else renderTimes("");
+    var two = boxPers.querySelector('input[value="2"]'); if (two) two.checked = true;
+    boxTage.addEventListener("change", function (e) { if (e.target.name === "datum") { renderTimes(e.target.value); clearError(boxZeiten); } });
+
+    /* Spam-Falle und Felder für den späteren Versand */
+    var trap = el("input", { type: "text", name: "botcheck", tabindex: "-1", autocomplete: "off", "aria-hidden": "true",
+      style: "position:absolute;left:-9999px;width:1px;height:1px;opacity:0" });
+    form.appendChild(trap);
+    var errBox = form.querySelector("[data-reservierung-fehler]");
+    if (!errBox) { errBox = el("p", { "class": "res-fehler" }); form.insertBefore(errBox, form.querySelector('[type="submit"]') || null); }
+    errBox.setAttribute("role", "alert"); errBox.setAttribute("aria-live", "polite");
+    var ok = form.querySelector("[data-reservierung-erfolg]");
+    if (!ok) { ok = el("div", { "class": "res-erfolg", tabindex: "-1" }, "<p><strong>Danke!<\/strong> Ihre Anfrage für <span data-wert=\"datum\"><\/span> um <span data-wert=\"uhrzeit\"><\/span> Uhr (<span data-wert=\"personen\"><\/span>) ist eingegangen.<\/p>"); ok.setAttribute("data-reservierung-erfolg", ""); form.appendChild(ok); }
+    ok.hidden = true; ok.setAttribute("tabindex", "-1");
+    form.noValidate = true;
+
+    function field(n) { return form.querySelector('[name="' + n + '"]'); }
+    function val(n) {
+      var f = field(n); if (!f) return "";
+      if (f.type === "radio") { var c = form.querySelector('[name="' + n + '"]:checked'); return c ? c.value : ""; }
+      return f.type === "checkbox" ? f.checked : String(f.value || "").trim();
+    }
+    function mark(target, bad) { if (!target) return; target.setAttribute("aria-invalid", bad ? "true" : "false"); }
+    function clearError(t) { mark(t, false); }
+    function check() {
+      var errs = [], firstBad = null;
+      function need(cond, target, msg) { mark(target, !cond); if (!cond) { errs.push(msg); firstBad = firstBad || target; } }
+      need(!!val("datum"), boxTage, "Bitte einen Tag wählen.");
+      need(!!val("uhrzeit"), boxZeiten, "Bitte eine Uhrzeit wählen.");
+      need(!!val("personen"), boxPers, "Bitte die Anzahl der Personen wählen.");
+      if (field("name")) need(val("name").length >= 2, field("name"), "Bitte Ihren Namen angeben.");
+      if (field("telefon")) need(val("telefon").replace(/\D/g, "").length >= 6, field("telefon"), "Bitte eine Telefonnummer für Rückfragen angeben.");
+      if (field("email") && val("email")) need(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val("email")), field("email"), "Die E-Mail-Adresse sieht unvollständig aus.");
+      if (field("einwilligung")) need(val("einwilligung") === true, field("einwilligung"), "Bitte der Verarbeitung Ihrer Angaben zustimmen.");
+      errBox.textContent = errs.join(" ");
+      if (firstBad) { var f = firstBad.matches && firstBad.matches("input,textarea,select") ? firstBad : firstBad.querySelector("input:not(:disabled)"); if (f) f.focus(); }
+      return !errs.length;
+    }
+    ["name", "telefon", "email", "einwilligung"].forEach(function (n) { var f = field(n); if (f) f.addEventListener("input", function () { if (f.getAttribute("aria-invalid") === "true") mark(f, false); }); });
+    boxZeiten.addEventListener("change", function () { mark(boxZeiten, false); });
+    boxPers.addEventListener("change", function () { mark(boxPers, false); });
+
+    function readable() {
+      var d = new Date(val("datum") + "T12:00:00"), p = +val("personen");
+      return { datum: LANG[d.getDay()] + ", " + d.getDate() + ". " + MON[d.getMonth()], uhrzeit: val("uhrzeit"), personen: p + (p === 1 ? " Person" : " Personen"), name: val("name") };
+    }
+    function showSuccess() {
+      var r = readable();
+      ok.querySelectorAll("[data-wert]").forEach(function (s) { var k = s.getAttribute("data-wert"); if (r[k] != null) s.textContent = r[k]; });
+      if (CFG.modus === "demo" && !ok.querySelector(".res-demo-hinweis")) {
+        ok.appendChild(el("p", { "class": "res-demo-hinweis" }, "Entwurf: Diese Anfrage wurde nicht übermittelt. In der fertigen Website geht sie sofort an " +
+          CFG.name + "." + (CFG.tel ? " Für eine echte Reservierung bitte <a href=\"tel:" + CFG.tel + "\">anrufen<\/a>." : "")));
+      }
+      Array.prototype.forEach.call(form.children, function (c) { if (c !== ok && c !== trap) { c.setAttribute("data-res-vorher", c.hidden ? "1" : "0"); c.hidden = true; } });
+      ok.hidden = false; form.setAttribute("data-status", "gesendet");
+      try { ok.focus({ preventScroll: true }); } catch (e) { ok.focus(); }
+      var top = form.getBoundingClientRect().top + scrollY - 100; if (top < scrollY) scrollTo({ top: top, behavior: "smooth" });
+    }
+    form.addEventListener("click", function (e) {
+      if (!e.target.closest("[data-reservierung-neu]")) return;
+      e.preventDefault(); ok.hidden = true; form.removeAttribute("data-status");
+      Array.prototype.forEach.call(form.children, function (c) { if (c !== ok && c !== trap) c.hidden = c.getAttribute("data-res-vorher") === "1"; });
+    });
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (trap.value) return;
+      if (!check()) return;
+      var btn = form.querySelector('[type="submit"]'), label = btn ? btn.innerHTML : "";
+      if (btn) { btn.disabled = true; btn.setAttribute("aria-busy", "true"); }
+      form.setAttribute("data-status", "sendet");
+      function done(success) {
+        if (btn) { btn.disabled = false; btn.removeAttribute("aria-busy"); btn.innerHTML = label; }
+        if (success) showSuccess();
+        else { form.removeAttribute("data-status"); errBox.innerHTML = "Das hat leider nicht geklappt." + (CFG.tel ? " Bitte rufen Sie an: <a href=\"tel:" + CFG.tel + "\">" + CFG.telText + "<\/a>." : ""); }
+      }
+      if (CFG.modus !== "live" || !CFG.ziel) { setTimeout(function () { done(true); }, 650); return; }
+      var r = readable(), fd = new FormData(form);
+      fd.set("datum", r.datum + " (" + val("datum") + ")");
+      fd.set("subject", "Reservierungsanfrage " + r.datum + ", " + r.uhrzeit + " Uhr, " + r.personen);
+      fd.set("restaurant", CFG.name);
+      for (var k in (CFG.extra || {})) fd.set(k, CFG.extra[k]);
+      fetch(CFG.ziel, { method: "POST", body: fd, headers: { Accept: "application/json" } })
+        .then(function (res) { done(res.ok); }).catch(function () { done(false); });
+    });
+  }
+  function run() { document.querySelectorAll("form[data-reservierung]").forEach(init); }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run); else run();
+})();
+</script><!--/agent-res--></body>
+</html>
