@@ -1,0 +1,1488 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>China-Restaurant Ho · Frohmestraße 7, Hamburg-Schnelsen</title>
+<meta name="description" content="China-Restaurant Ho in Hamburg-Schnelsen: chinesische und malaysische Gerichte, täglich 12–15 Uhr und 17:30–21 Uhr, auch zum Mitnehmen. Frohmestraße 7, Telefon 040 5504454.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{
+--papier:#F2ECDF;--papier-hell:#FAF6EC;--tusche:#1D1A1C;--leise:#4A4547;--rot:#B3282D;--wein:#5E1626;--wein-tief:#4A101D;--blau:#1E3A8A;
+--disp:"Fraunces",Georgia,serif;--text:"Work Sans",system-ui,sans-serif;
+--rand:clamp(1rem,5vw,4rem);--max:1280px;--kopf:72px;--r:20px;
+--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:32px;--s7:48px;--s8:64px;--s9:96px;--s10:128px;
+--struktur:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .11 0 0 0 0 .1 0 0 0 0 .1 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--kopf) + 16px)}
+body{margin:0;background:var(--papier) var(--struktur);color:var(--tusche);font:400 1.0625rem/1.6 var(--text);overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.02;margin:0;letter-spacing:-.01em;hyphens:manual;overflow-wrap:normal}
+p{margin:0}
+:focus-visible{outline:3px solid var(--blau);outline-offset:3px;border-radius:4px}
+.wein :focus-visible,.schluss :focus-visible,.fuss :focus-visible{outline-color:var(--papier)}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.foto-nachweis{font:400 .8125rem/1.35 var(--text);color:inherit;text-decoration:underline;text-underline-offset:2px}
+.wolke{display:block;aspect-ratio:1;background:var(--blau);clip-path:url(#wolke);padding:5.5%}
+.wolke img{width:100%;height:100%;object-fit:cover;clip-path:url(#wolke)}
+.punkt{display:inline-block;width:.26em;height:.26em;background:var(--blau);clip-path:url(#wolke);margin-left:.06em;vertical-align:.05em}
+.ho{color:var(--rot)}
+
+.kopf{position:sticky;top:0;z-index:50;height:var(--kopf);background:var(--papier);border-bottom:1px solid var(--tusche)}
+.kopf-in{max-width:var(--max);height:100%;margin:auto;padding:0 var(--rand);display:flex;align-items:center;gap:var(--s5)}
+.marke{font:700 1.45rem/1 var(--disp);text-decoration:none;white-space:nowrap;margin-right:auto}
+.marke em{font-weight:400}
+.kopf nav{display:flex;align-items:center;gap:var(--s5)}
+.kopf nav a{text-decoration:none;font-weight:500;font-size:.95rem;padding:12px 2px;background:linear-gradient(var(--rot),var(--rot)) 0 calc(100% - 8px)/0 2px no-repeat;transition:background-size .3s}
+.kopf nav a:hover{background-size:100% 2px}
+.knopf{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:14px 28px;border-radius:10px;font:600 1rem/1.1 var(--text);text-decoration:none;border:0;cursor:pointer;position:relative;overflow:hidden;isolation:isolate;background:var(--rot);color:var(--papier)}
+.knopf::before{content:"";position:absolute;inset:0;background:var(--wein);transform:translateX(-101%);transition:transform .45s cubic-bezier(.7,0,.2,1);z-index:-1}
+.knopf:hover::before{transform:none}
+.knopf .pfeil{transition:transform .3s}
+.knopf:hover .pfeil{transform:translateX(4px)}
+.knopf svg{width:18px;height:18px;flex:none}
+.kopf .knopf{min-height:44px;padding:10px 20px;font-size:.95rem}
+.kurz{display:none}
+
+.hero{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);min-height:calc(100svh - var(--kopf))}
+.hero-papier{position:relative;isolation:isolate;padding:var(--s6) var(--s7) var(--s9) max(var(--rand),calc((100vw - var(--max))/2 + var(--rand)));display:flex;flex-direction:column;justify-content:center;gap:var(--s5)}
+.hero-papier::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(29,26,28,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(29,26,28,.06) 1px,transparent 1px);background-size:100% 132px,25% 100%;background-position:0 -1px,-1px 0}
+.status{display:flex;align-items:center;flex-wrap:wrap;gap:var(--s2) var(--s4);font-size:.95rem;font-weight:500}
+.status-punkt{width:15px;height:15px;background:var(--blau);clip-path:url(#wolke);flex:none}
+.status:has([data-offen="nein"]) .status-punkt{background:var(--rot)}
+.status span.st{display:inline-flex;align-items:center;gap:var(--s2)}
+.status a{font-weight:600;text-underline-offset:3px;padding:10px 0}
+.hero-titel{font-size:clamp(2.2rem,4vw,4.4rem);font-weight:800;white-space:nowrap;line-height:1.05}
+.hero-titel em,.zs-titel em{font-weight:400;font-style:italic}
+.hero-titel>div,.hero-aussage>div{padding-block:.08em .16em;margin-block:-.08em -.16em}
+.hero-aussage{font:400 clamp(1.7rem,3vw,2.9rem)/1.1 var(--disp);max-width:16ch}
+.hero-aussage em,.akzent{color:var(--rot);font-style:italic}
+.hero-text{max-width:46ch;font-size:1.125rem;color:var(--leise)}
+.aktionen{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s4) var(--s6);margin-top:var(--s2)}
+.knopf-ruf{font-size:1.06rem;padding:16px 28px}
+.leise-link{font-weight:600;text-underline-offset:5px;text-decoration-thickness:1.5px;padding:12px 0;min-height:44px;display:inline-flex;align-items:center}
+.leise-link:hover{color:var(--rot)}
+.mini{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:var(--s3);max-width:520px;margin-top:var(--s4);font-size:.85rem;font-variant-numeric:tabular-nums}
+.mini b{font-weight:600}
+.spur-zeit{position:relative;height:12px;border-radius:6px;background:rgba(29,26,28,.1)}
+.balken{position:absolute;top:0;bottom:0;border-radius:6px;background:var(--tusche)}
+.b1{left:9.09%;width:27.27%}.b2{left:59.09%;width:31.82%}
+.jetzt{position:absolute;top:-5px;bottom:-5px;width:3px;margin-left:-1.5px;background:var(--blau);border-radius:2px;box-shadow:0 0 0 1.5px var(--papier)}
+.jetzt[hidden]{display:none}
+
+.hero-tisch{background:var(--wein);display:grid;place-items:center;padding:var(--s8) var(--s6) var(--s7) var(--s9);color:var(--papier)}
+.hero-stapel{--w:min(400px,100%,calc((100svh - 300px)*.8));position:relative;width:var(--w);padding-bottom:var(--s5)}
+.hero-foto{margin:0}
+.rahmen{position:relative;aspect-ratio:4/5;transform:rotate(1.5deg);border-radius:var(--r);box-shadow:0 18px 30px rgba(20,4,8,.35)}
+.rahmen img{width:100%;height:100%;object-fit:cover;border-radius:var(--r)}
+.streifen{position:absolute;width:96px;height:28px;background:rgba(242,236,223,.62);z-index:2}
+.s1{top:-10px;left:-22px;transform:rotate(-32deg)}
+.s2{bottom:-8px;right:-24px;transform:rotate(-28deg)}
+.hero-foto figcaption{padding:var(--s5) 0 0 calc(var(--w)*.38);font-size:.8125rem;line-height:1.4;display:grid;gap:4px}
+.hero-rund{position:absolute;margin:0;width:200px;left:-80px;top:calc(var(--w)*1.25 - 130px);filter:drop-shadow(0 10px 10px rgba(20,4,8,.4));text-align:center;z-index:3}
+.hero-rund .foto-nachweis{display:block;margin-top:6px;filter:none;color:var(--papier)}
+.siegel{position:absolute;z-index:4;display:grid;place-content:center;justify-items:center;width:132px;aspect-ratio:1;border-radius:50%;background:var(--rot);color:var(--papier);text-decoration:none;text-align:center;transform:rotate(-8deg);box-shadow:inset 0 0 0 5px var(--rot),inset 0 0 0 6.5px rgba(242,236,223,.8)}
+.hero-tisch .siegel{top:-46px;right:-50px}
+.siegel small{font:600 .8125rem/1 var(--text);letter-spacing:.04em;margin-top:4px}
+.bew-stern{font-size:1.1em}
+.siegel .bew-zahl{font:800 2.1rem/1 var(--disp);display:block}
+.siegel .bew-stern{display:block;line-height:1}
+.siegel .bew-text{display:none}
+.siegel-klein{display:none}
+
+.band{position:relative;height:34px;z-index:2}
+.band::before{content:"";position:absolute;inset:0 0 13px;background:linear-gradient(var(--blau) 0 7px,var(--papier) 7px 8.5px,var(--blau) 8.5px)}
+.band::after{content:"";position:absolute;left:0;right:0;bottom:0;height:14px;background:radial-gradient(circle at 50% 0,var(--blau) 13px,transparent 13.6px) 0 0/28px 14px repeat-x}
+.band.auf-wein{background:var(--wein)}
+
+.wrap{max-width:var(--max);margin:auto;padding:0 var(--rand)}
+.abschnitt{padding:clamp(4rem,9vw,8rem) 0}
+.zs{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--s7) var(--s5);align-items:center}
+.zs-text{grid-column:1/7;display:grid;gap:var(--s5)}
+.zs-titel{font-size:clamp(2.6rem,6.2vw,5.4rem);font-weight:700}
+.zs-text>p{max-width:52ch;color:var(--leise)}
+.liste{margin:var(--s3) 0 0;display:grid}
+.liste div{display:flex;justify-content:space-between;gap:var(--s4);padding:13px 0;border-top:1px solid rgba(29,26,28,.28)}
+.liste div:last-child{border-bottom:1px solid rgba(29,26,28,.28)}
+.liste dt{color:var(--leise)}
+.liste dd{margin:0;font-weight:600;text-align:right;font-variant-numeric:tabular-nums}
+.liste a{text-underline-offset:3px}
+.zs-bild{grid-column:8/13;position:relative}
+.zs-foto{margin:0}
+.zs-foto .r{aspect-ratio:4/5;border-radius:var(--r);overflow:hidden}
+.zs-foto img{width:100%;height:100%;object-fit:cover}
+.zs-foto figcaption{text-align:right;margin-top:var(--s2);padding-left:45%}
+.zs-frei{position:absolute;left:-12%;bottom:-6%;width:44%;height:auto;filter:drop-shadow(0 12px 14px rgba(29,26,28,.32))}
+
+.fenster{background:var(--papier) var(--struktur);text-align:center;padding:var(--s9) var(--rand) var(--s8)}
+.fenster [data-fenster-titel]{font-size:clamp(3rem,13vw,12rem);font-weight:800;line-height:.9;white-space:nowrap}
+.fenster [data-fenster-titel] em{font-weight:400;color:var(--rot)}
+.fenster figure{margin:0 auto;border-radius:50%;overflow:hidden;aspect-ratio:1;width:min(320px,70vw)}
+.fenster figure img{width:100%;height:100%;object-fit:cover}
+.fenster figure .foto-nachweis{position:absolute;right:12px;bottom:12px;background:var(--papier);color:var(--tusche);padding:4px 10px;border-radius:6px}
+[data-fenster-text]{max-width:520px;margin:var(--s5) auto 0;background:var(--papier);color:var(--tusche);padding:var(--s5) var(--s6);border-radius:14px;text-align:left;font-size:1.06rem;box-shadow:0 10px 30px rgba(20,4,8,.25)}
+[data-fenster-text] a{font-weight:600;white-space:nowrap}
+
+.wein{background:var(--wein);color:var(--papier)}
+.zeiten{border-radius:32px 32px 0 0;padding:clamp(4rem,8vw,7rem) 0}
+.z-kopf{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:var(--s5) var(--s7);align-items:end;margin-bottom:var(--s7)}
+.z-kopf h2{font-size:clamp(2.4rem,5.4vw,4.6rem)}
+.z-kopf p{max-width:44ch}
+.wein .status{color:var(--papier)}
+.wein .status-punkt{background:var(--papier)}
+.fahrplan{display:grid;gap:4px;font-variant-numeric:tabular-nums}
+.fp-achse,.fp-zeile{display:grid;grid-template-columns:8.5rem minmax(0,1fr) 12rem;align-items:center;gap:var(--s5)}
+.fp-achse{font-size:.8125rem;opacity:.85;padding-bottom:var(--s2)}
+.fp-achse .ticks{position:relative;height:1.2em}
+.fp-achse .ticks span{position:absolute;transform:translateX(-50%)}
+.fp-zeile{padding:12px 0;border-top:1px solid rgba(242,236,223,.22)}
+.fp-tag{font:600 1.15rem/1.2 var(--disp)}
+.fp-heute{display:none;font:600 .8125rem/1 var(--text);background:var(--papier);color:var(--wein);padding:4px 8px;border-radius:4px;margin-left:8px;vertical-align:2px}
+.heute .fp-heute{display:inline-block}
+.heute{background:rgba(242,236,223,.08)}
+.fp-zeile .spur-zeit{height:22px;background:rgba(242,236,223,.12)}
+.fp-zeile .balken{background:var(--papier)}
+.fp-zeile .jetzt{display:none}
+.heute .jetzt:not([hidden]){display:block}
+.fp-text{text-align:right;font-size:.95rem}
+
+.karte{background:var(--papier) var(--struktur);padding:clamp(4rem,8vw,7rem) 0 var(--s8)}
+.k-kopf{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:var(--s4) var(--s7);margin-bottom:var(--s6)}
+.k-kopf h2{font-size:clamp(2.6rem,6vw,5rem)}
+.k-kopf p{max-width:40ch;color:var(--leise)}
+[data-spur]{display:flex;gap:var(--s5);overflow-x:auto;scroll-snap-type:x mandatory;padding:var(--s4) var(--rand) var(--s6);scrollbar-width:none}
+[data-spur]::-webkit-scrollbar{display:none}
+.feld{flex:0 0 clamp(270px,26vw,340px);scroll-snap-align:start;position:relative;background:var(--papier-hell);border:1px solid var(--tusche);outline:1px solid rgba(29,26,28,.3);outline-offset:-8px;padding:var(--s6) var(--s5) var(--s5);display:flex;flex-direction:column;gap:var(--s3);transition:transform .4s cubic-bezier(.3,.7,.3,1),box-shadow .4s}
+.feld:hover{transform:rotate(-2deg) translateY(-6px);box-shadow:0 18px 28px rgba(29,26,28,.18)}
+.feld-siegel{position:absolute;top:18px;right:18px;min-width:52px;height:52px;padding:0 8px;display:grid;place-items:center;background:var(--rot);color:var(--papier);font:700 1.05rem/1 var(--disp);border-radius:6px;transform:rotate(-6deg);box-shadow:inset 0 0 0 3px var(--rot),inset 0 0 0 4.5px rgba(242,236,223,.75);z-index:2}
+.feld-bild{aspect-ratio:1;display:grid;place-items:center;margin:0 6%}
+.feld-bild img.frei{width:92%;height:auto;object-fit:contain;filter:drop-shadow(0 10px 12px rgba(29,26,28,.28))}
+.teller{margin:0;display:grid;justify-items:center;gap:6px;width:88%}
+.teller .wolke{width:100%;filter:drop-shadow(0 8px 10px rgba(29,26,28,.22))}
+.feld h3{font-size:clamp(1.5rem,2.2vw,1.9rem);font-weight:700;margin-top:var(--s2)}
+.feld p{color:var(--leise);font-size:1rem}
+.hinweis{padding:0 var(--rand);max-width:var(--max);margin:var(--s2) auto 0;font-weight:500}
+.hinweis a{font-weight:700;white-space:nowrap}
+
+.lage{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--s7) var(--s5);align-items:center}
+.karte-rahmen{grid-column:1/7;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;border:1px solid var(--tusche)}
+.karte-rahmen [data-karte]{width:100%;height:100%}
+.lage-text{grid-column:8/13;display:grid;gap:var(--s4)}
+.lage-text h2{font-size:clamp(2.6rem,5.6vw,4.8rem)}
+.lage-text .ort{font:400 italic clamp(1.3rem,2vw,1.7rem)/1.2 var(--disp)}
+.lage-text p{color:var(--leise);max-width:42ch}
+
+.raster{background:var(--wein);color:var(--papier);padding:clamp(4rem,8vw,7rem) var(--rand) var(--s9)}
+.r-kopf{max-width:var(--max);margin:0 auto var(--s6);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:var(--s4)}
+.r-kopf h2{font-size:clamp(2.6rem,6vw,5rem)}
+.r-gitter{max-width:var(--max);margin:auto;display:grid;grid-template-columns:1fr 1fr 2fr 1fr 1fr;gap:var(--s4);align-items:start}
+.kachel{margin:0;display:flex;flex-direction:column;border-radius:16px;overflow:hidden;background:var(--papier);color:var(--tusche)}
+.kachel .kb{flex:1;min-height:0;aspect-ratio:3/4;overflow:hidden}
+.kachel[data-mitte] .kb{aspect-ratio:3/2}
+.kachel img{width:100%;height:100%;object-fit:cover}
+.kachel figcaption{padding:10px 12px 12px;font-size:.875rem;line-height:1.35;display:grid;gap:2px}
+.kachel figcaption b{font:600 1rem/1.2 var(--disp)}
+[data-raster-text]{position:absolute;left:16px;bottom:72px;max-width:min(400px,calc(100% - 32px));background:var(--papier);color:var(--tusche);padding:12px 18px;border-radius:3px;transform:rotate(-1deg);box-shadow:0 8px 18px rgba(20,4,8,.3);font-size:1rem}
+[data-raster-text] h3{font-size:1.3rem;margin-bottom:4px}
+
+.res{padding:clamp(4rem,8vw,7rem) 0 var(--s10)}
+.res-gitter{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--s7);align-items:start}
+.res-intro{display:grid;gap:var(--s5);position:sticky;top:calc(var(--kopf) + 40px)}
+.res-intro h2{font-size:clamp(2.6rem,5.6vw,4.8rem)}
+.res-intro h2 em{font-weight:400;color:var(--papier)}
+.res-intro a{font-weight:600;text-underline-offset:3px}
+.bew-link{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;width:max-content;max-width:100%;padding:12px 18px;border:1.5px solid var(--papier);border-radius:999px;text-decoration:none;min-height:48px}
+.bew-link .bew-zahl{font:700 1.3rem/1 var(--disp)}
+.bew-link .bew-text{font-size:.9rem}
+.zettel{position:relative;max-width:640px;width:100%;min-width:0;justify-self:end;background:var(--papier) var(--struktur);color:var(--tusche);border-radius:6px;padding:var(--s7) clamp(1.25rem,4vw,2.75rem) var(--s6);box-shadow:0 18px 36px rgba(20,4,8,.3);background-image:linear-gradient(rgba(29,26,28,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(29,26,28,.05) 1px,transparent 1px);background-size:100% 44px,25% 100%;scroll-margin-top:calc(var(--kopf) + 16px)}
+
+.textur{position:absolute;inset:0;border-radius:6px;overflow:hidden;pointer-events:none}
+.textur img{width:100%;height:100%;object-fit:cover;opacity:.12;mix-blend-mode:multiply}
+form[data-reservierung]{position:relative;min-height:0;display:flex;flex-direction:column;min-width:0}
+[data-schritt]{min-width:0;border:0;padding:0;margin:0}
+[data-schritt] h3{font-size:clamp(1.7rem,3vw,2.2rem);margin:var(--s4) 0 var(--s5)}
+.gruppe-label{display:block;font-weight:600;font-size:.95rem;margin:var(--s5) 0 var(--s3)}
+.res-fortschritt{list-style:none;margin:0;padding:0 0 var(--s4);display:flex;align-items:center;gap:var(--s3);border-bottom:1px solid rgba(29,26,28,.25)}
+.res-punkt{display:flex;align-items:center;gap:var(--s2);font-size:.9rem;font-weight:500;color:var(--tusche);opacity:.72}
+.res-punkt+.res-punkt::before{content:"";width:clamp(12px,3vw,32px);height:1px;background:var(--tusche);opacity:.4;margin-right:var(--s2)}
+.res-nr{width:32px;height:32px;display:grid;place-items:center;border:1.5px solid var(--tusche);border-radius:5px;font:700 .95rem/1 var(--disp);color:var(--tusche);flex:none}
+.res-jetzt{color:var(--tusche);font-weight:600;opacity:1}
+.res-jetzt .res-nr{border:2px solid var(--rot);color:var(--rot)}
+.res-erledigt .res-nr{background:var(--rot);border-color:var(--rot);color:var(--papier);transform:rotate(-4deg)}
+.res-zusammenfassung{font:400 italic 1.15rem/1.3 var(--disp);margin-top:var(--s3);min-height:1.5em}
+.res-option{position:relative;display:block;min-width:0}
+.res-radio{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.res-label{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:48px;padding:8px 6px;border:1.5px solid var(--tusche);border-radius:12px;background:var(--papier-hell);font-weight:600;font-variant-numeric:tabular-nums;cursor:pointer;text-align:center;transition:transform .12s,background .2s,border-color .2s;user-select:none}
+.res-label b{font:700 1rem/1.1 var(--disp)}
+.res-label small{font-size:.8125rem;font-weight:500}
+.res-option:hover .res-label{border-color:var(--rot)}
+.res-option:active .res-label{transform:scale(.96)}
+.res-radio:checked+.res-label{background:var(--blau);border-color:var(--blau);color:var(--papier)}
+.res-radio:focus-visible+.res-label{outline:3px solid var(--blau);outline-offset:3px}
+[aria-invalid="true"] .res-label{border-color:var(--rot);border-style:dashed}
+[data-tage]{display:flex;gap:var(--s2);overflow-x:auto;scroll-snap-type:x mandatory;min-width:0;padding-bottom:var(--s2);scrollbar-width:thin}
+[data-tage] .res-label{min-height:64px}
+[data-zeiten]{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:var(--s2);min-width:0}
+.res-zeitgruppe{grid-column:1/-1;min-width:0}
+.res-tageszeit{font:400 italic 1rem/1.2 var(--disp);margin:var(--s3) 0 var(--s2)}
+.res-zeitreihe{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:var(--s2)}
+[data-personen]{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s2)}
+.res-hinweis,.res-demo-hinweis{font-size:.875rem;color:var(--leise);margin-top:var(--s3)}
+.felder{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s4) var(--s5)}
+.feldbox{display:grid;gap:6px;min-width:0}
+.feldbox.breit{grid-column:1/-1}
+.feldbox label{font-weight:600;font-size:.95rem}
+.feldbox label small{font-weight:400;color:var(--leise)}
+.feldbox input,.feldbox textarea{width:100%;min-height:48px;font:400 1rem/1.4 var(--text);color:var(--tusche);background:rgba(250,246,236,.75);border:0;border-bottom:2px solid var(--tusche);border-radius:6px 6px 0 0;padding:12px}
+.feldbox textarea{resize:vertical;min-height:84px}
+.feldbox input:focus-visible,.feldbox textarea:focus-visible{outline:3px solid var(--blau);outline-offset:2px}
+[aria-invalid="true"]:is(input,textarea){border-bottom-color:var(--rot);background:rgba(179,40,45,.07)}
+.einwilligung{display:flex;gap:var(--s3);align-items:flex-start;margin-top:var(--s5);padding:var(--s3);border-radius:10px;cursor:pointer;font-size:.95rem}
+.einwilligung input{width:24px;height:24px;flex:none;accent-color:var(--blau);margin:2px 0 0}
+.einwilligung a{font-weight:600}
+.einwilligung:has([aria-invalid="true"]){background:rgba(179,40,45,.08)}
+[data-reservierung-fehler],.res-schritt-fehler{color:var(--rot);font-weight:500;font-size:.95rem;margin-top:var(--s3)}
+[data-reservierung-fehler]:empty,.res-schritt-fehler:empty{display:none}
+.res-nav{display:flex;align-items:center;justify-content:space-between;gap:var(--s3);margin-top:var(--s6);padding-top:var(--s4)}
+.res-zurueck{min-height:48px;padding:12px 16px;background:none;border:0;font:500 1rem var(--text);color:var(--tusche);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.res-weiter{margin-left:auto;min-height:52px;padding:14px 32px;border:0;border-radius:10px;background:var(--rot);color:var(--papier);font:600 1.05rem var(--text);cursor:pointer;transition:background .25s}
+.res-weiter:hover{background:var(--wein)}
+.stempel{margin-left:auto;min-height:56px;padding:14px 30px;border:0;border-radius:6px;background:var(--rot);color:var(--papier);font:700 1.2rem/1 var(--disp);cursor:pointer;transform:rotate(-2deg);box-shadow:inset 0 0 0 4px var(--rot),inset 0 0 0 5.5px rgba(242,236,223,.8),0 6px 0 var(--wein);transition:transform .12s,box-shadow .12s}
+.stempel:hover{transform:rotate(-2deg) translateY(-1px)}
+.stempel:active{transform:rotate(-2deg) translateY(5px) scale(.97);box-shadow:inset 0 0 0 4px var(--rot),inset 0 0 0 5.5px rgba(242,236,223,.8),0 1px 0 var(--wein)}
+[data-reservierung-erfolg]{text-align:center;padding:var(--s6) 0;display:grid;justify-items:center;gap:var(--s4)}
+[data-reservierung-erfolg][hidden]{display:none}
+.notiert{font:800 clamp(2.4rem,7vw,3.6rem)/1 var(--disp);color:var(--rot);border:4px solid var(--rot);padding:12px 28px;border-radius:10px;transform:rotate(-7deg);box-shadow:inset 0 0 0 4px var(--papier),inset 0 0 0 6px var(--rot)}
+[data-reservierung-erfolg] h3{font-size:1.7rem;margin-top:var(--s3)}
+.zf{font:400 italic 1.2rem/1.5 var(--disp)}
+[data-reservierung-neu]{min-height:48px;padding:12px 24px;border:1.5px solid var(--tusche);border-radius:10px;background:none;font:600 1rem var(--text);cursor:pointer}
+
+.schluss{background:var(--rot);color:var(--papier);border-radius:32px 32px 0 0;padding:clamp(4rem,9vw,8rem) 0}
+.schluss-in{display:grid;grid-template-columns:minmax(0,1fr) 260px;column-gap:64px;row-gap:var(--s6);align-items:end}
+.schluss h2{font:400 italic clamp(1.6rem,3vw,2.4rem)/1.1 var(--disp);margin-bottom:var(--s4)}
+.gross-tel{display:inline-block;max-width:100%;font:800 clamp(3rem,7.5vw,7.5rem)/.95 var(--disp);white-space:nowrap;text-decoration:none;font-variant-numeric:tabular-nums;border-bottom:4px solid transparent;transition:border-color .3s}
+.gross-tel:hover{border-color:var(--papier)}
+.schluss dl{margin:0;font-variant-numeric:tabular-nums;display:grid;gap:6px;min-width:220px}
+.schluss dt{font-weight:600}
+.schluss dd{margin:0 0 var(--s3)}
+.fuss{background:var(--tusche);color:var(--papier);padding:var(--s8) 0 var(--s7);font-size:.875rem}
+.fuss-in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--s5)}
+.fuss .marke{color:var(--papier);margin:0}
+.rechtliches{max-width:60ch;display:grid;gap:var(--s2);opacity:.92}
+.leiste{display:none}
+
+@media (max-width:899px){
+.hero{grid-template-columns:minmax(0,1fr);min-height:0}
+.hero-tisch{order:-1;padding:var(--s5) var(--rand) var(--s4)}
+.hero-stapel{--w:100%;padding-bottom:0}
+.rahmen{aspect-ratio:16/10;transform:none;width:min(100%,calc(34svh*1.6));max-height:34svh;margin:0 auto}
+.streifen{width:64px;height:20px}
+.s1{left:-12px;top:-6px}.s2{right:-12px;bottom:-6px}
+.hero-rund{display:none}
+.hero-foto figcaption{padding:var(--s3) 0 0;min-height:0}
+.hero-tisch .siegel{display:none}
+.siegel-klein{display:grid;position:static;width:84px;margin-left:auto;transform:rotate(-8deg)}
+.siegel-klein .bew-zahl{font-size:1.45rem}
+.siegel-klein small{font-size:.8125rem}
+.hero-papier{padding:var(--s5) var(--rand) var(--s7);gap:var(--s4)}
+.hero-papier::before{background-size:100% 110px,50% 100%}
+.status{flex-wrap:nowrap;align-items:center}
+.status-text{display:grid;gap:2px}
+.hero-titel{font-size:clamp(1.6rem,7.6vw,3.4rem)}
+.hero-aussage{font-size:1.7rem}
+.aktionen{flex-direction:column;align-items:stretch;gap:var(--s3)}
+.aktionen .knopf,.aktionen .leise-link{min-height:52px;width:100%;justify-content:center}
+.aktionen .leise-link{border:1.5px solid var(--tusche);border-radius:10px;text-decoration:none}
+}
+@media (max-width:819px){
+.kopf nav a:not(.knopf){display:none}
+.lang{display:none}
+.kurz{display:inline}
+.zs,.lage{grid-template-columns:minmax(0,1fr)}
+.zs-text,.zs-bild,.karte-rahmen,.lage-text{grid-column:1/-1}
+.zs-bild{margin:0 0 var(--s6) 8%}
+.zs-frei{width:40%;left:-10%;bottom:-8%}
+.z-kopf,.res-gitter,.schluss-in{grid-template-columns:minmax(0,1fr)}
+.fp-achse{display:none}
+.fp-zeile{grid-template-columns:minmax(0,1fr) auto;gap:var(--s2) var(--s4)}
+.fp-zeile .spur-zeit{grid-column:1/-1;grid-row:2}
+.r-gitter{grid-template-columns:repeat(2,minmax(0,1fr))}
+.kachel[data-mitte]{grid-column:1/-1;grid-row:2}
+.kachel[data-mitte] .kb{aspect-ratio:16/10}
+.res-intro{position:static}
+.zettel{justify-self:stretch;transform:none}
+.leiste{display:grid;grid-template-columns:1.3fr 1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--tusche);padding:8px 8px calc(8px + env(safe-area-inset-bottom));gap:8px}
+.leiste a{display:flex;align-items:center;justify-content:center;gap:6px;min-height:48px;border-radius:8px;color:var(--papier);text-decoration:none;font-weight:600;font-size:.95rem;border:1px solid rgba(242,236,223,.35)}
+.leiste a:first-child{background:var(--rot);border-color:var(--rot)}
+.fuss{padding-bottom:calc(var(--s9) + env(safe-area-inset-bottom))}
+}
+@media (max-width:560px){
+.zettel{margin:0 -6px;padding:var(--s6) 18px var(--s5)}
+form[data-reservierung]{min-height:0}
+.res-fortschritt{gap:6px}
+.res-punkt .res-titel{display:none}
+.res-punkt.res-jetzt .res-titel{display:inline}
+.res-punkt+.res-punkt::before{width:12px;margin-right:2px}
+[data-tage]{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-right:-18px;padding-right:18px}
+[data-tage]::-webkit-scrollbar{display:none}
+[data-tage] .res-option{flex:0 0 calc((100% - 24px)/3.4);scroll-snap-align:start}
+[data-zeiten],.res-zeitreihe,[data-personen]{grid-template-columns:repeat(4,minmax(0,1fr))}
+.res-tageszeit{font-size:.9rem}
+.felder{grid-template-columns:minmax(0,1fr)}
+.einwilligung{padding:var(--s4) var(--s3);min-height:56px}
+.res-nav{gap:var(--s2)}
+.res-zurueck{padding:12px 8px;flex:none}
+.res-nav{flex-direction:column-reverse;align-items:stretch}
+.res-weiter,.stempel{width:100%;margin-left:0;min-height:52px;padding:14px 16px}
+.res-zurueck{align-self:center}
+.fenster [data-fenster-titel]{font-size:clamp(2.6rem,14vw,5rem)}
+}
+.tel-kurz{display:none}
+.nav-tel{white-space:nowrap}
+.band{width:100%;left:0;right:0}
+.kachel[data-mitte]{position:relative}
+.kachel[data-mitte] .kb{flex:1 1 auto}
+.res-erledigt{opacity:1}
+[data-tage] .res-option{flex:0 0 92px;scroll-snap-align:start}
+[data-tage] .res-option:nth-child(n+15){display:none}
+.stempel{display:block;width:100%;margin:var(--s5) 0 0;transform:none}
+.stempel:hover{transform:translateY(-1px)}
+.stempel:active{transform:translateY(5px) scale(.98)}
+.suppe{padding:clamp(4rem,8vw,7rem) 0}
+.suppe-in{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--s7) var(--s5);align-items:center}
+.suppe-foto{grid-column:2/7;margin:0;display:grid;justify-items:center;gap:var(--s3)}
+.suppe-foto .wolke{width:min(440px,100%)}
+.suppe-text{grid-column:8/13;display:grid;gap:var(--s5)}
+.suppe-text h2{font-size:clamp(2.8rem,7vw,6rem);font-weight:800}
+.suppe-text h2 em{font-weight:400;color:var(--rot)}
+.suppe-text p{max-width:44ch;color:var(--leise)}
+.suppe-text a{font-weight:600;text-underline-offset:3px;color:var(--tusche)}
+@media (max-width:1023px){.tel-lang,.k-lang{display:none}.tel-kurz,.kopf .kurz{display:inline}.kopf nav{gap:var(--s4)}.kopf nav a[href="#lage"]{display:none}.kopf nav a.nav-tel{display:inline-flex;align-items:center;min-height:44px;padding:10px 18px;border:1.5px solid var(--tusche);border-radius:999px;background:none}}
+@media (max-width:999px){.schluss-in{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:819px){.kopf nav a.nav-tel{display:none}.marke{font-size:1.2rem}.suppe-in{grid-template-columns:minmax(0,1fr)}.suppe-foto,.suppe-text{grid-column:1/-1}.suppe-foto .wolke{width:min(320px,80%)}.res{padding-bottom:calc(96px + env(safe-area-inset-bottom))}[data-raster-text]{position:static;transform:none;max-width:none;border-radius:0;box-shadow:none}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}[data-reservierung] [hidden],form[data-reservierung][hidden],[data-reservierung-erfolg][hidden]{display:none!important}:where(img){height:auto}:where([data-bewertung]){display:inline-flex;align-items:baseline;gap:.35em;flex-wrap:wrap}:where(.bew-stern){color:#E3A21A}:where(.bew-zahl){font-weight:700;font-variant-numeric:tabular-nums}:where(.res-fortschritt){list-style:none;display:flex;gap:.75rem;padding:0;margin:0 0 1rem}:where(.res-punkt){display:flex;align-items:center;gap:.45rem;flex:1;opacity:.5}:where(.res-punkt.res-jetzt,.res-punkt.res-erledigt){opacity:1}:where(.res-punkt.res-erledigt){cursor:pointer}:where(.res-nr){display:inline-grid;place-items:center;width:1.7em;height:1.7em;border-radius:50%;border:1px solid currentColor;font-size:.85em;flex:none}:where(.res-zusammenfassung){margin:0 0 1rem;font-size:.92em;opacity:.8}:where(.res-nav){display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin-top:1.25rem}:where(.res-nav .res-weiter,.res-nav [type=submit]){margin-left:auto}:where(.res-nav button){min-height:44px}:where(.res-zeitgruppe){margin:0 0 .75rem}:where(.res-zeitreihe){display:flex;flex-wrap:wrap;gap:.5rem}:where(.res-tageszeit){margin:0 0 .35rem;font-size:.78em;letter-spacing:.08em;text-transform:uppercase;opacity:.7}@media (max-width:560px){:where(.res-punkt:not(.res-jetzt) .res-titel){display:none}:where(.res-punkt:not(.res-jetzt)){flex:none}:where(.res-zeitreihe){display:grid;grid-template-columns:repeat(4,1fr)}:where(.res-nav button){min-height:48px}:where(.res-nav .res-weiter,.res-nav [type=submit]){flex:1}[data-reservierung] input:not([type=radio]):not([type=checkbox]),[data-reservierung] textarea,[data-reservierung] select{font-size:max(16px,1em)!important}}</style><!--agent-lib--><link rel="stylesheet" href="lib/lenis.css"><script src="lib/gsap.min.js"></script><script src="lib/ScrollTrigger.min.js"></script><script src="lib/SplitText.min.js"></script><script src="lib/lenis.min.js"></script><!--/agent-lib--></head>
+<body><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für China-Restaurant Ho. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><clipPath id="wolke" clipPathUnits="objectBoundingBox"><path d="M.89 .5A.102 .102 0 0 1 .838 .695A.102 .102 0 0 1 .695 .838A.102 .102 0 0 1 .5 .89A.102 .102 0 0 1 .305 .838A.102 .102 0 0 1 .162 .695A.102 .102 0 0 1 .11 .5A.102 .102 0 0 1 .162 .305A.102 .102 0 0 1 .305 .162A.102 .102 0 0 1 .5 .11A.102 .102 0 0 1 .695 .162A.102 .102 0 0 1 .838 .305A.102 .102 0 0 1 .89 .5Z"/></clipPath></svg>
+
+<header class="kopf">
+<div class="kopf-in">
+<a class="marke" href="#start" aria-label="China-Restaurant Ho, zum Seitenanfang"><em>china</em> Restaurant <span class="ho">Ho</span><i class="punkt"></i></a>
+<nav aria-label="Hauptnavigation">
+<a href="#gerichte">Gerichte</a>
+<a href="#zeiten">Zeiten</a>
+<a href="#lage">Lage</a>
+<a class="nav-tel" href="tel:+49405504454"><span class="tel-lang">040 5504454</span><span class="tel-kurz">Anrufen</span></a>
+<a class="knopf" href="#reservieren"><span class="k-lang">Tisch reservieren</span><span class="kurz">Reservieren</span></a>
+</nav>
+</div>
+</header>
+
+<main id="start">
+<section class="hero" aria-labelledby="titel">
+<div class="hero-papier">
+<div class="status">
+<span class="status-text">
+<span class="st"><i class="status-punkt" aria-hidden="true"></i><span data-status>Täglich 12–15 und 17:30–21 Uhr</span></span>
+<a href="#reservieren">Tisch reservieren →</a>
+</span>
+<a class="siegel siegel-klein" href="https://www.google.com/maps/search/?api=1&query=China-Restaurant+Ho+Schnelsen+GmbH&query_place_id=ChIJqShyAqyHsUcRflu6q9I4wqs" target="_blank" rel="noopener" aria-label="Google-Bewertungen ansehen"><span data-bewertung="kurz" aria-label="4,6 von 5 Sternen bei 876 Google-Bewertungen"><span class="bew-stern" aria-hidden="true">★</span><span class="bew-zahl">4,6</span></span><small>Google</small></a>
+</div>
+<h1 class="hero-titel" id="titel"><em>China</em>-Restaurant <span class="ho">Ho</span><i class="punkt" aria-hidden="true"></i></h1>
+<p class="hero-aussage">Gedeckt wird täglich – <em>zweimal</em>.</p>
+<p class="hero-text">Chinesische und malaysische Gerichte an der Frohmestraße 7 in Schnelsen. Jeden Tag 12–15 Uhr und 17:30–21 Uhr, auch zum Mitnehmen.</p>
+<div class="aktionen">
+<a class="knopf knopf-ruf magnet" href="tel:+49405504454"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h3l2 5-2.5 1.5a11 11 0 0 0 7 7L16 14l5 2v3a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>Anrufen 040 5504454</a>
+<a class="leise-link" href="https://www.google.com/maps/dir/?api=1&destination=Frohmestra%C3%9Fe+7,+22457+Hamburg" target="_blank" rel="noopener">Route zur Frohmestraße 7 →</a>
+</div>
+<div class="mini" aria-label="Heutige Öffnungszeiten">
+<b>Heute</b>
+<div class="spur-zeit" aria-hidden="true"><span class="balken b1"></span><span class="balken b2"></span><span class="jetzt" data-jetzt hidden></span></div>
+<span>12–15 · 17:30–21</span>
+</div>
+</div>
+<div class="hero-tisch">
+<div class="hero-stapel">
+<figure class="hero-foto" data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmOwZSzc25eVUr6uaxCvXjnNn8tlDQHFB9_3VBnyAxH8F1jCE00W7CdDzHZ3W8FnvTI7J1GHqLAo3d8wv0o_uKLbdPgbensV-5fw3htN3AgLQHQ0ptPjP8cdejofK8DHbUNhbViFIg=s4800-w1000" referrerpolicy="no-referrer" alt="Gebratene Reisnudeln mit Hähnchen und Gemüse auf einem blau-weißen Porzellanteller" width="900" height="1200" fetchpriority="high"><span class="streifen s1" aria-hidden="true"></span><span class="streifen s2" aria-hidden="true"></span></div>
+<figcaption><span>Gebratene Reisnudeln mit Hähnchen und Gemüse, auf dem blau-weißen Teller vom Ho</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/104138341454261055376" target="_blank" rel="noopener">Foto: Eun Ay Ari · Google Maps</a></figcaption>
+</figure>
+<figure class="hero-rund" data-foto>
+<span class="wolke"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmOKuLd_aE5xkwLGNf_nsBdSQoxnkpDOtIIlzejzo7bMnNaQhWgo3vv0dq0PrpXBU12AwGMRmE_j-CGGk4qLgzg608gRhCNM3nzDW6SkKQRWJnZ5w8qXkDmVoO66QPbozGvBls3WaiWnMNWp=s4800-w1800" referrerpolicy="no-referrer" alt="Gebratenes Rindfleisch mit Zwiebeln in dunkler Soße" width="1600" height="901"></span>
+<a class="foto-nachweis" href="https://maps.google.com/maps/contrib/113052873037873384019" target="_blank" rel="noopener">Foto: Martin Westendorff · Google Maps</a>
+</figure>
+<a class="siegel" href="https://www.google.com/maps/search/?api=1&query=China-Restaurant+Ho+Schnelsen+GmbH&query_place_id=ChIJqShyAqyHsUcRflu6q9I4wqs" target="_blank" rel="noopener" aria-label="Google-Bewertungen ansehen"><span data-bewertung="kurz" aria-label="4,6 von 5 Sternen bei 876 Google-Bewertungen"><span class="bew-stern" aria-hidden="true">★</span><span class="bew-zahl">4,6</span></span><small>Google</small></a>
+</div>
+</div>
+</section>
+
+<div class="band" aria-hidden="true"></div>
+
+<section class="abschnitt" aria-labelledby="schichten">
+<div class="wrap zs">
+<div class="zs-text">
+<h2 class="zs-titel" id="schichten">Mittags <em>Ente</em>, abends <span class="ho">M1</span>.</h2>
+<p>Auf der Karte stehen chinesische und malaysische Gerichte, auch vegetarische. Mittags gibt es Mittagstisch, abends wird in Ruhe gegessen – drinnen, draußen oder zum Mitnehmen.</p>
+<dl class="liste">
+<div><dt>Mittag</dt><dd>12:00–15:00</dd></div>
+<div><dt>Abend</dt><dd>17:30–21:00</dd></div>
+<div><dt>Tage</dt><dd>täglich, auch sonntags</dd></div>
+<div><dt>Draußen sitzen</dt><dd>ja</dd></div>
+<div><dt>Zum Mitnehmen</dt><dd>ja</dd></div>
+<div><dt>Telefon</dt><dd><a href="tel:+49405504454">040 5504454</a></dd></div>
+</dl>
+</div>
+<div class="zs-bild">
+<figure class="zs-foto" data-foto>
+<div class="r"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmMZ9gH1aBtOg_T_bCtRhH41YXbCPcYoXN27l6JEMTWT75_iniBHeaXZqXICdqvgdxrMuJRwOC79vwpNho0ZADD8Hxuebb12LlEs3X85AlrnyNxlaZ4QNh5it0ZbelNVUFKLPLiQcAbMuM4=s4800-w1000" referrerpolicy="no-referrer" alt="Hähnchen mit Bambussprossen und Pilzen auf Reis, dahinter eine Reisschale" width="904" height="1200" loading="lazy"></div>
+<figcaption><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/117352319423761640147" target="_blank" rel="noopener">Foto: Andre · Google Maps</a></figcaption>
+</figure>
+<img class="zs-frei" src="ki-wantan-suppe.webp" alt="Wan-Tan-Suppe in einer blau-weißen Porzellanschale" width="800" height="800" loading="lazy" data-tiefe="22">
+</div>
+</div>
+</section>
+
+<section class="suppe" aria-labelledby="suppe-titel">
+<div class="wrap suppe-in">
+<figure class="suppe-foto" data-foto>
+<span class="wolke"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmOwo8f4G_pZgapzzqDS8pAkdBBAnt5YyxscbDJTb4S5XnSk95XjqL8if74CaAVfWN8_VIGDMWRnINwq5Y--lkmZpD97p5IXQTjC3HHjXUYD_ezqsRy0hli-u5ZOP1jNOFuYXVPu=s4800-w1000" referrerpolicy="no-referrer" alt="Wan-Tan-Suppe in weißer Schale mit Porzellanlöffel" width="900" height="1200" loading="lazy"></span>
+<figcaption><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/106307496973406552541" target="_blank" rel="noopener">Foto: Nelo Baptista · Google Maps</a></figcaption>
+</figure>
+<div class="suppe-text">
+<h2 id="suppe-titel">Erst die <em>Suppe</em>.</h2>
+<p>Wan-Tan in der weißen Schale, dazu der Porzellanlöffel – so fängt das Essen im Ho mittags wie abends an. Im Gastraum liegen weinrote Decken unter Glas, dazu Aquarium und Schiffsmodell.</p>
+<p>Tisch reservieren: <a href="tel:+49405504454">040 5504454</a> oder <a href="#reservieren">online anfragen</a>.</p>
+</div>
+</div>
+</section>
+
+<div class="band" aria-hidden="true"></div>
+
+<section class="zeiten wein" id="zeiten" data-schieben aria-labelledby="zeiten-titel">
+<div class="wrap">
+<div class="z-kopf">
+<h2 id="zeiten-titel">Zweimal gedeckt, sieben Tage.</h2>
+<div>
+<p>Mittagstisch von 12 bis 15 Uhr, Abendessen von 17:30 bis 21 Uhr. Auch sonntags. Die blaue Linie zeigt, wie spät es gerade ist.</p>
+<p class="status" style="margin-top:16px"><span class="st"><i class="status-punkt" aria-hidden="true"></i><span data-status></span></span></p>
+</div>
+</div>
+<div class="fahrplan" role="list">
+<div class="fp-achse" aria-hidden="true"><span></span><div class="ticks"><span style="left:9.09%">12</span><span style="left:36.36%">15</span><span style="left:59.09%">17:30</span><span style="left:90.91%">21</span></div><span></span></div>
+<div class="fp-zeile" data-tag="1" role="listitem"><span class="fp-tag">Montag<span class="fp-heute">heute</span></span><div class="spur-zeit" aria-hidden="true"><span class="balken b1"></span><span class="balken b2"></span><span class="jetzt" data-jetzt hidden></span></div><span class="fp-text">12:00–15:00 · 17:30–21:00</span></div>
+<div class="fp-zeile" data-tag="2" role="listitem"><span class="fp-tag">Dienstag<span class="fp-heute">heute</span></span><div class="spur-zeit" aria-hidden="true"><span class="balken b1"></span><span class="balken b2"></span><span class="jetzt" data-jetzt hidden></span></div><span class="fp-text">12:00–15:00 · 17:30–21:00</span></div>
+<div class="fp-zeile" data-tag="3" role="listitem"><span class="fp-tag">Mittwoch<span class="fp-heute">heute</span></span><div class="spur-zeit" aria-hidden="true"><span class="balken b1"></span><span class="balken b2"></span><span class="jetzt" data-jetzt hidden></span></div><span class="fp-text">12:00–15:00 · 17:30–21:00</span></div>
+<div class="fp-zeile" data-tag="4" role="listitem"><span class="fp-tag">Donnerstag<span class="fp-heute">heute</span></span><div class="spur-zeit" aria-hidden="true"><span class="balken b1"></span><span class="balken b2"></span><span class="jetzt" data-jetzt hidden></span></div><span class="fp-text">12:00–15:00 · 17:30–21:00</span></div>
+<div class="fp-zeile" data-tag="5" role="listitem"><span class="fp-tag">Freitag<span class="fp-heute">heute</span></span><div class="spur-zeit" aria-hidden="true"><span class="balken b1"></span><span class="balken b2"></span><span class="jetzt" data-jetzt hidden></span></div><span class="fp-text">12:00–15:00 · 17:30–21:00</span></div>
+<div class="fp-zeile" data-tag="6" role="listitem"><span class="fp-tag">Samstag<span class="fp-heute">heute</span></span><div class="spur-zeit" aria-hidden="true"><span class="balken b1"></span><span class="balken b2"></span><span class="jetzt" data-jetzt hidden></span></div><span class="fp-text">12:00–15:00 · 17:30–21:00</span></div>
+<div class="fp-zeile" data-tag="7" role="listitem"><span class="fp-tag">Sonntag<span class="fp-heute">heute</span></span><div class="spur-zeit" aria-hidden="true"><span class="balken b1"></span><span class="balken b2"></span><span class="jetzt" data-jetzt hidden></span></div><span class="fp-text">12:00–15:00 · 17:30–21:00</span></div>
+</div>
+</div>
+</section>
+
+<section class="karte" id="gerichte" data-szene="horizontal" aria-labelledby="gerichte-titel">
+<div class="wrap k-kopf">
+<h2 id="gerichte-titel">Vom <em style="font-weight:400">Tischset</em></h2>
+<p>Sieben Gerichte, die man im Ho kennt. Bestellen am Tisch oder zum Mitnehmen unter 040 5504454.</p>
+</div>
+<div data-spur>
+<article class="feld"><span class="feld-siegel" aria-hidden="true">Ho</span><div class="feld-bild"><img class="frei" src="ki-wantan-suppe.webp" alt="Wan-Tan-Suppe in blau-weißer Schale" width="800" height="800" loading="lazy" data-tiefe="14"></div><h3>Wan-Tan-Suppe</h3><p>Die Suppe vorneweg, mittags wie abends.</p></article>
+<article class="feld"><span class="feld-siegel">M1</span><div class="feld-bild"><img class="frei" src="ki-knoblauch-chili.webp" alt="Knoblauchknolle, Knoblauchzehen und eine rote Chili" width="800" height="800" loading="lazy" data-tiefe="30"></div><h3>Schweinefleisch auf malaysische Art</h3><p>Mit Knoblauch, scharf.</p></article>
+<article class="feld"><span class="feld-siegel">Mittag</span><div class="feld-bild"><img class="frei" src="ki-knusprige-ente.webp" alt="Knusprige Ente in Scheiben mit dunkler Soße auf blau-weißem Teller" width="800" height="800" loading="lazy" data-tiefe="18"></div><h3>Knusprige Ente</h3><p>Vom Mittagstisch.</p></article>
+<article class="feld"><span class="feld-siegel" aria-hidden="true">Ho</span><div class="feld-bild"><figure class="teller" data-foto><span class="wolke"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmOKuLd_aE5xkwLGNf_nsBdSQoxnkpDOtIIlzejzo7bMnNaQhWgo3vv0dq0PrpXBU12AwGMRmE_j-CGGk4qLgzg608gRhCNM3nzDW6SkKQRWJnZ5w8qXkDmVoO66QPbozGvBls3WaiWnMNWp=s4800-w1800" referrerpolicy="no-referrer" alt="Gebratenes Rindfleisch mit Zwiebeln" width="1600" height="901" loading="lazy"></span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/113052873037873384019" target="_blank" rel="noopener">Foto: Martin Westendorff · Google Maps</a></figure></div><h3>Gebratenes Rindfleisch</h3><p>Mit Zwiebeln.</p></article>
+<article class="feld"><span class="feld-siegel" aria-hidden="true">Ho</span><div class="feld-bild"><figure class="teller" data-foto><span class="wolke"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmOwZSzc25eVUr6uaxCvXjnNn8tlDQHFB9_3VBnyAxH8F1jCE00W7CdDzHZ3W8FnvTI7J1GHqLAo3d8wv0o_uKLbdPgbensV-5fw3htN3AgLQHQ0ptPjP8cdejofK8DHbUNhbViFIg=s4800-w1000" referrerpolicy="no-referrer" alt="Gebratene Reisnudeln mit Hähnchen und Gemüse" width="900" height="1200" loading="lazy"></span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/104138341454261055376" target="_blank" rel="noopener">Foto: Eun Ay Ari · Google Maps</a></figure></div><h3>Gebratene Reisnudeln</h3><p>Mit Hähnchen und Gemüse.</p></article>
+<article class="feld"><span class="feld-siegel" aria-hidden="true">Ho</span><div class="feld-bild"><figure class="teller" data-foto><span class="wolke"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmMZ9gH1aBtOg_T_bCtRhH41YXbCPcYoXN27l6JEMTWT75_iniBHeaXZqXICdqvgdxrMuJRwOC79vwpNho0ZADD8Hxuebb12LlEs3X85AlrnyNxlaZ4QNh5it0ZbelNVUFKLPLiQcAbMuM4=s4800-w1000" referrerpolicy="no-referrer" alt="Hähnchen mit Bambussprossen und Pilzen auf Reis" width="904" height="1200" loading="lazy"></span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/117352319423761640147" target="_blank" rel="noopener">Foto: Andre · Google Maps</a></figure></div><h3>Hähnchen mit Bambus&shy;sprossen</h3><p>Und Pilzen, auf Reis.</p></article>
+<article class="feld"><span class="feld-siegel" aria-hidden="true">Ho</span><div class="feld-bild"><figure class="teller" data-foto><span class="wolke"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmMo9ElkglI8uIkYROZJz88mCfwg6dYxXeSUAtZSV6asEaCtcHMlGJSHi8NdAX08HAe0DLxxbUFK_c4Bf_7RAXScn3xg5IaIz6Ih09-UIHOrfTtHewCNccT6yg5Yb4OFBuM1AcaaVw=s4800-w1000" referrerpolicy="no-referrer" alt="Gebackene Banane mit Vanilleeis" width="900" height="1200" loading="lazy"></span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/106307496973406552541" target="_blank" rel="noopener">Foto: Nelo Baptista · Google Maps</a></figure></div><h3>Gebackene Banane</h3><p>Mit Vanilleeis.</p></article>
+</div>
+<p class="hinweis">Die vollständige Karte gibt es im Lokal und am Telefon: <a href="tel:+49405504454">040 5504454</a>.</p>
+</section>
+
+<div class="band" aria-hidden="true"></div>
+
+<section class="abschnitt" id="lage" aria-labelledby="lage-titel">
+<div class="wrap lage">
+<div class="karte-rahmen"><div data-karte data-stil="warm" data-farbe="#B3282D"></div></div>
+<div class="lage-text">
+<h2 id="lage-titel">Frohmestraße 7</h2>
+<p class="ort">22457 Hamburg-Schnelsen</p>
+<p>Eckhaus mit rundem Flachdach und roter Markise, Eingang an der Ecke unter dem roten Schild »china Restaurant Schnelsen«.</p>
+<div class="aktionen">
+<a class="knopf" href="https://www.google.com/maps/dir/?api=1&destination=Frohmestra%C3%9Fe+7,+22457+Hamburg" target="_blank" rel="noopener">Route planen <span class="pfeil" aria-hidden="true">→</span></a>
+<a class="leise-link" href="tel:+49405504454">040 5504454</a>
+</div>
+</div>
+</div>
+</section>
+
+<div class="band" aria-hidden="true"></div>
+<section class="raster" data-szene="raster-zoom" aria-labelledby="tisch-titel">
+<div class="r-kopf">
+<h2 id="tisch-titel">Auf dem Tisch</h2>
+<p>Von Gästen fotografiert, so wie es kommt.</p>
+</div>
+<div class="r-gitter">
+<figure class="kachel" data-foto><div class="kb"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmOwZSzc25eVUr6uaxCvXjnNn8tlDQHFB9_3VBnyAxH8F1jCE00W7CdDzHZ3W8FnvTI7J1GHqLAo3d8wv0o_uKLbdPgbensV-5fw3htN3AgLQHQ0ptPjP8cdejofK8DHbUNhbViFIg=s4800-w1000" referrerpolicy="no-referrer" alt="Gebratene Reisnudeln mit Hähnchen und Gemüse" width="900" height="1200" loading="lazy"></div><figcaption><b>Reisnudeln</b><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/104138341454261055376" target="_blank" rel="noopener">Foto: Eun Ay Ari · Google Maps</a></figcaption></figure>
+<figure class="kachel" data-foto><div class="kb"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmMZ9gH1aBtOg_T_bCtRhH41YXbCPcYoXN27l6JEMTWT75_iniBHeaXZqXICdqvgdxrMuJRwOC79vwpNho0ZADD8Hxuebb12LlEs3X85AlrnyNxlaZ4QNh5it0ZbelNVUFKLPLiQcAbMuM4=s4800-w1000" referrerpolicy="no-referrer" alt="Hähnchen mit Bambussprossen und Pilzen auf Reis" width="904" height="1200" loading="lazy"></div><figcaption><b>Bambus-Hähnchen</b><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/117352319423761640147" target="_blank" rel="noopener">Foto: Andre · Google Maps</a></figcaption></figure>
+<figure class="kachel" data-foto data-mitte><div class="kb"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmOKuLd_aE5xkwLGNf_nsBdSQoxnkpDOtIIlzejzo7bMnNaQhWgo3vv0dq0PrpXBU12AwGMRmE_j-CGGk4qLgzg608gRhCNM3nzDW6SkKQRWJnZ5w8qXkDmVoO66QPbozGvBls3WaiWnMNWp=s4800-w1800" referrerpolicy="no-referrer" alt="Gebratenes Rindfleisch mit Zwiebeln in dunkler Soße auf blau-weißem Teller" width="1600" height="901" loading="lazy"></div><figcaption><b>Rindfleisch mit Zwiebeln</b><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/113052873037873384019" target="_blank" rel="noopener">Foto: Martin Westendorff · Google Maps</a></figcaption>
+<div data-raster-text><h3>So nah am Teller</h3><p>Rindfleisch mit Zwiebeln auf blau-weißem Porzellan. Bestellen am Tisch oder zum Mitnehmen: <a href="tel:+49405504454">040 5504454</a>.</p></div>
+</figure>
+<figure class="kachel" data-foto><div class="kb"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmMo9ElkglI8uIkYROZJz88mCfwg6dYxXeSUAtZSV6asEaCtcHMlGJSHi8NdAX08HAe0DLxxbUFK_c4Bf_7RAXScn3xg5IaIz6Ih09-UIHOrfTtHewCNccT6yg5Yb4OFBuM1AcaaVw=s4800-w1000" referrerpolicy="no-referrer" alt="Gebackene Banane mit Vanilleeis in grüner Keramikschale" width="900" height="1200" loading="lazy"></div><figcaption><b>Gebackene Banane</b><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/106307496973406552541" target="_blank" rel="noopener">Foto: Nelo Baptista · Google Maps</a></figcaption></figure>
+<figure class="kachel" data-foto><div class="kb"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmPz8UhD9S7W3Ta9J4WlfmBDwh6T2pY-Kr7VGf-pgR4SyXtTt_cv1DUMMqSO61h3WNCDZ5maIyXYQ6DCJFxu0hkl05qb_8mGAsmH4wmaHxOK6PDb6_bFl_f95EBAQul7MEV826nYtqvYMJE=s4800-w1000" referrerpolicy="no-referrer" alt="Scharf-saure Suppe mit Kräutern in weißer Tasse" width="756" height="1344" loading="lazy"></div><figcaption><b>Scharf-saure Suppe</b><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/109791969743193720460" target="_blank" rel="noopener">Foto: Krause Valentino · Google Maps</a></figcaption></figure>
+</div>
+</section>
+
+<div class="band auf-wein" aria-hidden="true"></div>
+
+<section class="res wein" id="reservieren" aria-labelledby="res-titel">
+<div class="wrap res-gitter">
+<div class="res-intro">
+<h2 id="res-titel">Einen Tisch <em>decken</em> lassen</h2>
+<p>Anfrage in drei kurzen Schritten: Tag und Uhrzeit, Personen, Ihre Angaben. Wer es eilig hat, ruft an: <a href="tel:+49405504454">040 5504454</a>.</p>
+<a class="bew-link" href="https://www.google.com/maps/search/?api=1&query=China-Restaurant+Ho+Schnelsen+GmbH&query_place_id=ChIJqShyAqyHsUcRflu6q9I4wqs" target="_blank" rel="noopener"><span data-bewertung aria-label="4,6 von 5 Sternen bei 876 Google-Bewertungen"><span class="bew-stern" aria-hidden="true">★</span><span class="bew-zahl">4,6</span><span class="bew-text">876 Bewertungen auf Google</span></span></a>
+</div>
+<div class="zettel">
+<form data-reservierung novalidate>
+<div data-schritt="1" data-titel="Wann?">
+<h3>Wann?</h3>
+<span class="gruppe-label" id="l-tag">Tag</span>
+<div data-tage aria-labelledby="l-tag"></div>
+<span class="gruppe-label" id="l-zeit">Uhrzeit</span>
+<div data-zeiten aria-labelledby="l-zeit"></div>
+</div>
+<div data-schritt="2" data-titel="Wie viele?">
+<h3>Wie viele?</h3>
+<span class="gruppe-label" id="l-pers">Personen</span>
+<div data-personen aria-labelledby="l-pers"></div>
+</div>
+<div data-schritt="3" data-titel="Ihre Angaben">
+<h3>Ihre Angaben</h3>
+<div class="felder">
+<div class="feldbox"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+<div class="feldbox"><label for="f-tel">Telefon</label><input id="f-tel" name="telefon" type="tel" autocomplete="tel" required></div>
+<div class="feldbox breit"><label for="f-mail">E-Mail <small>(optional)</small></label><input id="f-mail" name="email" type="email" autocomplete="email"></div>
+<div class="feldbox breit"><label for="f-msg">Nachricht <small>(optional)</small></label><textarea id="f-msg" name="nachricht" rows="2"></textarea></div>
+</div>
+<label class="einwilligung"><input type="checkbox" name="einwilligung" required><span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Reservierung verwendet werden. <a href="https://medialyte.de/datenschutzerklaerung" target="_blank" rel="noopener">Datenschutz</a></span></label>
+<p data-reservierung-fehler></p>
+<button type="submit" class="stempel">Tisch stempeln</button>
+</div>
+<div data-reservierung-erfolg hidden>
+<span class="notiert">Notiert</span>
+<h3>Ihre Anfrage liegt auf dem Tisch.</h3>
+<p class="zf"><span data-wert="datum"></span> · <span data-wert="uhrzeit"></span> · <span data-wert="personen"></span><br>auf den Namen <span data-wert="name"></span></p>
+<p>Bei Fragen: <a href="tel:+49405504454">040 5504454</a></p>
+<button type="button" data-reservierung-neu>Neue Anfrage</button>
+</div>
+</form>
+</div>
+</div>
+</section>
+
+<section class="schluss" data-schieben aria-labelledby="schluss-titel">
+<div class="wrap schluss-in">
+<div>
+<h2 id="schluss-titel">Hunger um halb sechs?</h2>
+<a class="gross-tel magnet" href="tel:+49405504454" aria-label="Anrufen: 040 5504454">040 5504454</a>
+</div>
+<dl>
+<dt>Täglich</dt><dd>12:00–15:00<br>17:30–21:00</dd>
+<dt>Adresse</dt><dd>Frohmestraße 7<br>22457 Hamburg</dd>
+</dl>
+</div>
+</section>
+</main>
+
+<footer class="fuss">
+<div class="wrap fuss-in">
+<a class="marke" href="#start"><em>china</em> Restaurant <span class="ho" style="color:var(--papier)">Ho</span><i class="punkt"></i></a>
+<div class="rechtliches"><p>Entwurf von Medialyte, 21147 Hamburg. Adresse und Öffnungszeiten: Google. Fotos: Google Maps, Urheber jeweils am Bild. Einige Bilder und das Logo sind KI-generierte Vorschläge.</p><p><a href="https://medialyte.de/impressum" style="color:inherit;text-decoration:underline">Impressum</a> · <a href="https://medialyte.de/datenschutzerklaerung" style="color:inherit;text-decoration:underline">Datenschutz</a></p></div>
+</div>
+</footer>
+
+<nav class="leiste" aria-label="Schnellzugriff">
+<a href="tel:+49405504454">Anrufen</a>
+<a href="https://www.google.com/maps/dir/?api=1&destination=Frohmestra%C3%9Fe+7,+22457+Hamburg" target="_blank" rel="noopener">Route</a>
+<a href="#zeiten">Zeiten</a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+const teile=new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Berlin",weekday:"short",hour:"2-digit",minute:"2-digit",hour12:false}).formatToParts(new Date());
+const w=t=>(teile.find(x=>x.type===t)||{}).value;
+const tag=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"].indexOf(w("weekday"))+1;
+const pos=((+w("hour")%24)*60+(+w("minute"))-660)/660*100;
+const zeile=document.querySelector('.fp-zeile[data-tag="'+tag+'"]');
+if(zeile)zeile.classList.add("heute");
+document.querySelectorAll("[data-jetzt]").forEach(el=>{if(pos>=0&&pos<=100){el.style.left=pos+"%";el.hidden=false}});
+if(!window.gsap)return;
+gsap.registerPlugin(ScrollTrigger,SplitText);
+const mm=gsap.matchMedia();
+mm.add({gross:"(min-width:900px)",bewegt:"(prefers-reduced-motion: no-preference)"},ctx=>{
+const{gross,bewegt}=ctx.conditions;
+if(!bewegt)return;
+const tl=gsap.timeline({defaults:{ease:"power3.out"}});
+tl.from(".hero-foto .rahmen",{scale:1.08,rotation:gross?4:0,opacity:0,duration:gross?.9:.6})
+.from(".streifen",{scaleX:0,duration:.35,stagger:.12},"-=.25")
+.from(".hero-rund",{scale:.6,opacity:0,duration:.6,ease:"back.out(1.7)"},"-=.2")
+.from(gross?".hero-tisch .siegel":".siegel-klein",{scale:1.4,opacity:0,duration:.45,ease:"back.out(3)"},"+=.5");
+SplitText.create(".hero-titel, .hero-aussage",{type:"lines",mask:"lines",autoSplit:true,onSplit:s=>gsap.from(s.lines,{yPercent:110,duration:1,ease:"expo.out",stagger:.1,delay:.45})});
+
+const siegel=document.querySelector(gross?".hero-tisch .siegel":".siegel-klein");
+if(siegel){
+const dreh=gsap.quickTo(siegel,"rotation",{duration:.6,ease:"power2.out"});
+ScrollTrigger.create({onUpdate:s=>dreh(-8+gsap.utils.clamp(-10,10,s.getVelocity()/160))});
+ScrollTrigger.addEventListener("scrollEnd",()=>dreh(-8));
+}
+if(gross&&matchMedia("(pointer: fine)").matches){
+document.querySelectorAll(".magnet").forEach(k=>{
+const x=gsap.quickTo(k,"x",{duration:.4,ease:"power3"}),y=gsap.quickTo(k,"y",{duration:.4,ease:"power3"});
+k.addEventListener("mousemove",e=>{const r=k.getBoundingClientRect();x((e.clientX-r.left-r.width/2)*.25);y((e.clientY-r.top-r.height/2)*.35)});
+k.addEventListener("mouseleave",()=>{x(0);y(0)});
+});
+}
+});
+if(window.Lenis&&matchMedia("(pointer: fine) and (prefers-reduced-motion: no-preference)").matches){
+const lenis=new Lenis({autoRaf:false});
+lenis.on("scroll",ScrollTrigger.update);
+gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+}
+});
+</script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>[data-karte]{width:100%;height:100%;min-height:260px;position:relative;z-index:0;isolation:isolate}[data-karte] .leaflet-tile-pane{filter:var(--karte-filter)}
+[data-karte] .leaflet-control-attribution{font-size:10px}.karte-pin{position:relative;width:34px;height:34px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+box-shadow:0 6px 16px rgba(0,0,0,.35);border:3px solid #fff}.karte-pin i{position:absolute;inset:9px;border-radius:50%;background:#fff}</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>(function(){var C={"lat": 53.63576930000001, "lng": 9.9186138, "name": "China-Restaurant Ho", "filter": {"hell": "grayscale(1) contrast(1.05) brightness(1.04)", "dunkel": "grayscale(1) invert(1) contrast(.88) brightness(.82)", "warm": "grayscale(1) sepia(.5) contrast(1.02) brightness(1.02)", "kuehl": "grayscale(1) sepia(.35) hue-rotate(175deg) saturate(.55) brightness(1.03)", "mono": "grayscale(1) contrast(1.2)"}};function draw(){if(!window.L)return;document.querySelectorAll('[data-karte]').forEach(function(el){
+if(el._map)return;var st=el.getAttribute('data-stil')||'hell',col=el.getAttribute('data-farbe')||'#c0392b';
+el.style.setProperty('--karte-filter',C.filter[st]||C.filter.hell);
+var m=L.map(el,{scrollWheelZoom:false,zoomControl:true,attributionControl:true}).setView([C.lat,C.lng],16);el._map=m;
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(m);
+var icon=L.divIcon({className:'',html:'<div class="karte-pin" style="background:'+col+'"><i></i></div>',iconSize:[34,34],iconAnchor:[17,34]});
+L.marker([C.lat,C.lng],{icon:icon,title:C.name,alt:C.name}).addTo(m);setTimeout(function(){m.invalidateSize()},300);});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',draw);else draw();window.addEventListener('load',draw);})();</script><script>(function(){
+var P=[[720, 900], [1050, 1260], [2160, 2340], [2490, 2700], [3600, 3780], [3930, 4140], [5040, 5220], [5370, 5580], [6480, 6660], [6810, 7020], [7920, 8100], [8250, 8460], [9360, 9540], [9690, 9900]];
+function fmt(m){m=((m%1440)+1440)%1440;var h=Math.floor(m/60),mi=m%60;return (h<10?'0':'')+h+':'+(mi<10?'0':'')+mi;}
+function now(){var d=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Berlin'}));return d.getDay()*1440+d.getHours()*60+d.getMinutes();}
+function status(){if(!P.length)return null;var t=now(),W=10080;
+ for(var i=0;i<P.length;i++){var s=P[i][0],e=P[i][1];if((t>=s&&t<e)||(t+W>=s&&t+W<e))return {offen:true,text:'Jetzt geöffnet bis '+fmt(e)};}
+ var best=null;for(var j=0;j<P.length;j++){var d=(P[j][0]-t+W)%W;if(best===null||d<best.d)best={d:d,s:P[j][0]};}
+ var tag=Math.floor(t/1440),ot=Math.floor(best.s/1440)%7,names=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+ var when=best.d<1440&&ot===tag?'heute':(best.d<2880&&ot===(tag+1)%7?'morgen':names[ot]);
+ return {offen:false,text:'Geschlossen · öffnet '+when+' um '+fmt(best.s)};}
+function run(){var s=status();document.querySelectorAll('[data-status]').forEach(function(el){
+ if(!s){el.style.display='none';return;}el.textContent=s.text;el.setAttribute('data-offen',s.offen?'ja':'nein');});}
+document.querySelectorAll('[data-foto] img').forEach(function(img){
+ function hide(){var b=img.closest('[data-foto]');if(b)b.style.display='none';}
+ if(!img.getAttribute('src'))hide();else{img.addEventListener('error',hide);if(img.complete&&img.naturalWidth===0)hide();}});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();setInterval(run,60000);
+})();</script><!--agent-res--><script>(function () {
+  /* Reservierung: Tage und Uhrzeiten aus den echten Öffnungszeiten, Personen, Prüfung, Bestätigung.
+     Gestaltung kommt von der Seite, die Logik kommt von hier. CFG und P setzt der Agent ein. */
+  var CFG = {"modus": "demo", "ziel": "", "extra": {}, "slot": 30, "vorlauf": 60, "letzte": 60, "max": 8, "tage": 21, "name": "China-Restaurant Ho", "tel": "0405504454", "telText": "040 5504454"}, P = [[720, 900], [1050, 1260], [2160, 2340], [2490, 2700], [3600, 3780], [3930, 4140], [5040, 5220], [5370, 5580], [6480, 6660], [6810, 7020], [7920, 8100], [8250, 8460], [9360, 9540], [9690, 9900]], W = 10080;
+  var TAGE = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"], LANG = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
+  var MON = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+  function berlin() { return new Date(new Date().toLocaleString("en-US", { timeZone: "Europe/Berlin" })); }
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function hm(m) { return pad(Math.floor(m / 60)) + ":" + pad(m % 60); }
+  function iso(d) { return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()); }
+  function el(tag, attrs, html) { var e = document.createElement(tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (html != null) e.innerHTML = html; return e; }
+
+  /* Uhrzeiten eines Kalendertags (Minuten ab 00:00), aus den Wochen-Intervallen P */
+  function slots(day, isToday, nowMin) {
+    var out = [], start = day.getDay() * 1440, step = CFG.slot, last = CFG.letzte;
+    var periods = P.length ? P : [[0, W]];
+    for (var i = 0; i < periods.length; i++) {
+      for (var shift = -W; shift <= W; shift += W) {
+        var s = periods[i][0] + shift, e = periods[i][1] + shift;
+        var from = Math.max(s, start), to = Math.min(e - last, start + 1440 - 1);
+        if (!P.length) { from = start + 11 * 60; to = start + 21 * 60 + 30; }
+        if (to < from && e > start && s < start + 1440 && e - s <= last + step && s >= start) to = from;
+        for (var t = Math.ceil(from / step) * step; t <= to; t += step) {
+          var m = t - start;
+          if (m < 5 * 60 && P.length) continue;              // keine Plätze nach Mitternacht
+          if (isToday && m < nowMin + CFG.vorlauf) continue;  // heute nur mit Vorlauf
+          if (out.indexOf(m) < 0) out.push(m);
+        }
+      }
+    }
+    return out.sort(function (a, b) { return a - b; });
+  }
+
+  function init(form) {
+    if (form._res) return; form._res = true;
+    var now = berlin(), nowMin = now.getHours() * 60 + now.getMinutes();
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var days = [];
+    for (var i = 0; i < CFG.tage; i++) {
+      var d = new Date(today); d.setDate(today.getDate() + i);
+      var s = slots(d, i === 0, nowMin);
+      if (s.length) days.push({ d: d, slots: s, i: i });
+    }
+    var boxTage = form.querySelector("[data-tage]"), boxZeiten = form.querySelector("[data-zeiten]"), boxPers = form.querySelector("[data-personen]");
+    var first = form.querySelector("input, textarea, select, button");
+    function ensure(box, attr, label) {
+      if (box) return box;
+      var wrap = el("fieldset", { "class": "res-gruppe" }, "<legend>" + label + "<\/legend>");
+      var b = el("div", {}); b.setAttribute(attr, ""); wrap.appendChild(b);
+      form.insertBefore(wrap, first && first.parentNode === form ? first : form.firstChild);
+      return b;
+    }
+    boxTage = ensure(boxTage, "data-tage", "Tag");
+    boxZeiten = ensure(boxZeiten, "data-zeiten", "Uhrzeit");
+    boxPers = ensure(boxPers, "data-personen", "Personen");
+    [boxTage, boxZeiten, boxPers].forEach(function (b) { b.setAttribute("role", "radiogroup"); });
+    boxTage.setAttribute("aria-label", "Tag wählen"); boxZeiten.setAttribute("aria-label", "Uhrzeit wählen");
+    boxPers.setAttribute("aria-label", "Anzahl Personen");
+    var uid = "res" + Math.random().toString(36).slice(2, 7);
+
+    function option(name, value, inner, title) {
+      var id = uid + "-" + name + "-" + String(value).replace(/[^a-z0-9]/gi, "");
+      var l = el("label", { "class": "res-option", "for": id, title: title || "" });
+      l.appendChild(el("input", { type: "radio", name: name, value: value, id: id, "class": "res-radio" }));
+      l.appendChild(el("span", { "class": "res-label" }, inner));
+      return l;
+    }
+    function renderDays() {
+      boxTage.innerHTML = "";
+      if (!days.length) { boxTage.appendChild(el("p", { "class": "res-hinweis" }, "In den nächsten Wochen sind online keine Zeiten frei. Bitte rufen Sie an.")); return; }
+      days.forEach(function (x) {
+        var top = x.i === 0 ? "Heute" : x.i === 1 ? "Morgen" : TAGE[x.d.getDay()];
+        boxTage.appendChild(option("datum", iso(x.d), "<b>" + top + "<\/b><small>" + pad(x.d.getDate()) + "." + pad(x.d.getMonth() + 1) + ".<\/small>",
+          LANG[x.d.getDay()] + ", " + x.d.getDate() + ". " + MON[x.d.getMonth()]));
+      });
+    }
+    function renderTimes(dateIso) {
+      boxZeiten.innerHTML = "";
+      var x = days.filter(function (y) { return iso(y.d) === dateIso; })[0];
+      if (!x) { boxZeiten.appendChild(el("p", { "class": "res-hinweis" }, "Bitte zuerst einen Tag wählen.")); return; }
+      if (x.slots.length <= 8) { x.slots.forEach(function (m) { boxZeiten.appendChild(option("uhrzeit", hm(m), hm(m))); }); return; }
+      var parts = [["Morgens", 0, 660], ["Mittags", 660, 870], ["Nachmittags", 870, 1020], ["Abends", 1020, 1440]];
+      // eine einzelne Uhrzeit bekommt keine eigene Gruppe, sie wandert in die nächste (bzw. vorige)
+      var groups = parts.map(function (pt) { return [pt[0], x.slots.filter(function (m) { return m >= pt[1] && m < pt[2]; })]; })
+        .filter(function (g) { return g[1].length; });
+      for (var gi = 0; gi < groups.length && groups.length > 1; gi++) {
+        if (groups[gi][1].length > 1) continue;
+        var to = gi + 1 < groups.length ? gi + 1 : gi - 1;
+        groups[to][1] = to > gi ? groups[gi][1].concat(groups[to][1]) : groups[to][1].concat(groups[gi][1]);
+        groups.splice(gi, 1); gi--;
+      }
+      groups.forEach(function (gr) {
+        var pt = [gr[0]], mins = gr[1];
+        var g = el("div", { "class": "res-zeitgruppe" }), row = el("div", { "class": "res-zeitreihe" });
+        g.appendChild(el("p", { "class": "res-tageszeit" }, pt[0]));
+        mins.forEach(function (m) { row.appendChild(option("uhrzeit", hm(m), hm(m))); });
+        g.appendChild(row); boxZeiten.appendChild(g);
+      });
+    }
+    function renderPersons() {
+      boxPers.innerHTML = "";
+      for (var n = 1; n <= CFG.max; n++) boxPers.appendChild(option("personen", n, String(n), n + (n === 1 ? " Person" : " Personen")));
+      if (CFG.tel) boxPers.appendChild(el("p", { "class": "res-hinweis" }, "Mehr als " + CFG.max + "? <a href=\"tel:" + CFG.tel + "\">Bitte anrufen<\/a>."));
+    }
+    renderDays(); renderPersons();
+    var firstDay = boxTage.querySelector("input");
+    if (firstDay) { firstDay.checked = true; renderTimes(firstDay.value); } else renderTimes("");
+    var two = boxPers.querySelector('input[value="2"]'); if (two) two.checked = true;
+    boxTage.addEventListener("change", function (e) { if (e.target.name === "datum") { renderTimes(e.target.value); clearError(boxZeiten); } });
+
+    /* Spam-Falle und Felder für den späteren Versand */
+    var trap = el("input", { type: "text", name: "botcheck", tabindex: "-1", autocomplete: "off", "aria-hidden": "true",
+      style: "position:absolute;left:-9999px;width:1px;height:1px;opacity:0" });
+    form.appendChild(trap);
+    var errBox = form.querySelector("[data-reservierung-fehler]");
+    if (!errBox) { errBox = el("p", { "class": "res-fehler" }); var sb0 = form.querySelector('[type="submit"]'); if (sb0) sb0.parentNode.insertBefore(errBox, sb0); else form.appendChild(errBox); }
+    errBox.setAttribute("role", "alert"); errBox.setAttribute("aria-live", "polite");
+    var ok = form.querySelector("[data-reservierung-erfolg]");
+    if (!ok) { // gestaltete Bestätigung direkt neben dem Formular (gleicher Abschnitt) wird ebenfalls genutzt
+      var area = form.closest("section, [id]") || form.parentNode;
+      ok = area ? area.querySelector("[data-reservierung-erfolg]") : null;
+      if (ok && (ok._resForm || ok.closest("form[data-reservierung]"))) ok = null;
+    }
+    var outside = !!ok && !form.contains(ok);
+    if (ok) ok._resForm = form;
+    if (!ok) { ok = el("div", { "class": "res-erfolg", tabindex: "-1" }, "<p><strong>Danke!<\/strong> Ihre Anfrage für <span data-wert=\"datum\"><\/span> um <span data-wert=\"uhrzeit\"><\/span> Uhr (<span data-wert=\"personen\"><\/span>) ist eingegangen.<\/p>"); ok.setAttribute("data-reservierung-erfolg", ""); form.appendChild(ok); }
+    ok.hidden = true; ok.setAttribute("tabindex", "-1");
+    form.noValidate = true;
+    [["name", "name", "text"], ["telefon", "tel", "tel"], ["email", "email", "email"]].forEach(function (x) {
+      var f = form.querySelector('[name="' + x[0] + '"]'); if (!f || f.tagName !== "INPUT") return;
+      if (!f.getAttribute("autocomplete")) f.setAttribute("autocomplete", x[1]);
+      if (x[2] !== "text") { f.type = x[2]; f.setAttribute("inputmode", x[2]); }
+      if (!f.getAttribute("enterkeyhint")) f.setAttribute("enterkeyhint", "next");
+    });
+    function headerOffset() {
+      var h = 16;
+      document.querySelectorAll("header, nav, [data-kopf]").forEach(function (n) {
+        var cs = getComputedStyle(n), r = n.getBoundingClientRect();
+        if ((cs.position === "fixed" || cs.position === "sticky") && r.top <= 1 && r.height < innerHeight / 3) h = Math.max(h, r.bottom + 12);
+      });
+      return h;
+    }
+    /* gewählten Chip in einer wischbaren Reihe sichtbar machen, ohne die Seite zu verschieben */
+    function revealX(input) {
+      var lab = input && (input.closest(".res-option") || input);
+      for (var n = lab && lab.parentNode; n && n !== form; n = n.parentNode) {
+        var ox = getComputedStyle(n).overflowX;
+        if (ox === "auto" || ox === "scroll") {
+          var r = lab.getBoundingClientRect(), b = n.getBoundingClientRect();
+          if (r.left < b.left || r.right > b.right) n.scrollLeft += r.left - b.left - (b.width - r.width) / 2;
+          return;
+        }
+      }
+    }
+
+    /* Mehrschritt: <div data-schritt="1|2|3" data-titel="…"> – immer nur ein Schritt sichtbar */
+    var steps = Array.prototype.slice.call(form.querySelectorAll("[data-schritt]")), cur = 0;
+    var multi = steps.length >= 2, prog = null, sum = null, live = null;
+    var still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function stepTitle(st, i) { var h = st.getAttribute("data-titel") || ((st.querySelector("h2,h3,h4,legend") || {}).textContent || ""); return h.trim() || ["Wann?", "Wie viele?", "Ihre Angaben"][i] || "Schritt " + (i + 1); }
+    function summaryText() {
+      var bits = [];
+      if (val("datum")) { var d = new Date(val("datum") + "T12:00:00"); bits.push(TAGE[d.getDay()] + " " + pad(d.getDate()) + "." + pad(d.getMonth() + 1) + "."); }
+      if (val("uhrzeit")) bits.push(val("uhrzeit") + " Uhr");
+      if (val("personen")) bits.push(val("personen") + (val("personen") === "1" ? " Person" : " Personen"));
+      return bits.join(" · ");
+    }
+    function stepOk(i, mark_) {
+      var st = steps[i], need = [];
+      if (st.querySelector("[data-tage]") && !val("datum")) need.push([boxTage, "Bitte einen Tag wählen."]);
+      if (st.querySelector("[data-zeiten]") && !val("uhrzeit")) need.push([boxZeiten, "Bitte eine Uhrzeit wählen."]);
+      if (st.querySelector("[data-personen]") && !val("personen")) need.push([boxPers, "Bitte die Anzahl der Personen wählen."]);
+      var hint = st.querySelector(".res-schritt-fehler");
+      if (mark_ && hint) hint.textContent = need.map(function (n) { return n[1]; }).join(" ");
+      need.forEach(function (n) { if (mark_) mark(n[0], true); });
+      return !need.length;
+    }
+    function show(i, dir) {
+      cur = Math.max(0, Math.min(steps.length - 1, i));
+      steps.forEach(function (st, k) { st.hidden = k !== cur; st.classList.toggle("res-aktiv", k === cur); });
+      if (prog) Array.prototype.forEach.call(prog.children, function (li, k) {
+        li.classList.toggle("res-erledigt", k < cur); li.classList.toggle("res-jetzt", k === cur);
+        if (k === cur) li.setAttribute("aria-current", "step"); else li.removeAttribute("aria-current");
+      });
+      if (sum) { var t = summaryText(); sum.textContent = cur > 0 ? t : ""; sum.hidden = cur === 0 || !t; }
+      if (live) live.textContent = "Schritt " + (cur + 1) + " von " + steps.length + ": " + stepTitle(steps[cur], cur);
+      var st = steps[cur];
+      if (dir && !still && st.animate) st.animate([{ opacity: 0, transform: "translateX(" + (dir > 0 ? 18 : -18) + "px)" }, { opacity: 1, transform: "none" }],
+        { duration: 280, easing: "cubic-bezier(.2,.7,.2,1)" });
+      if (dir) {
+        var f = st.querySelector("input:checked") || st;
+        if (f === st && !st.hasAttribute("tabindex")) { st.setAttribute("tabindex", "-1"); st.style.outline = "none"; }
+        try { f.focus({ preventScroll: true }); } catch (e) {}
+        revealX(st.querySelector("[data-tage] input:checked"));
+        var off = headerOffset(), top = form.getBoundingClientRect().top;
+        if (top < off - 2 || top > innerHeight * 0.6) scrollTo({ top: scrollY + top - off, behavior: still ? "auto" : "smooth" });
+      }
+    }
+    function next() { if (stepOk(cur, true)) show(cur + 1, 1); }
+    if (multi) {
+      prog = form.querySelector("[data-fortschritt]");
+      if (!prog) { prog = el("ol", { "class": "res-fortschritt" }); prog.setAttribute("data-fortschritt", ""); form.insertBefore(prog, form.firstChild); }
+      prog.innerHTML = "";
+      steps.forEach(function (st, i) {
+        var li = el("li", { "class": "res-punkt" }, "<span class=\"res-nr\">" + (i + 1) + "<\/span><span class=\"res-titel\">" + stepTitle(st, i) + "<\/span>");
+        li.addEventListener("click", function () { if (i < cur) show(i, -1); });
+        prog.appendChild(li);
+      });
+      sum = form.querySelector("[data-zusammenfassung]");
+      if (!sum) { sum = el("p", { "class": "res-zusammenfassung" }); prog.parentNode.insertBefore(sum, prog.nextSibling); }
+      live = el("p", { "class": "res-ansage", "aria-live": "polite", style: "position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)" });
+      form.appendChild(live);
+      var sbx = form.querySelector('[type="submit"]');
+      if (sbx && !steps.some(function (st) { return st.contains(sbx); })) steps[steps.length - 1].appendChild(sbx);
+      steps.forEach(function (st, i) {
+        if (!st.querySelector(".res-schritt-fehler") && i < steps.length - 1) st.appendChild(el("p", { "class": "res-schritt-fehler", role: "alert" }));
+        var back = st.querySelector("[data-zurueck]"), fwd = st.querySelector("[data-weiter]");
+        if (!back && !fwd && (i > 0 || i < steps.length - 1)) {
+          var nav = el("div", { "class": "res-nav" });
+          if (i > 0) { back = el("button", { type: "button", "class": "res-zurueck" }, "Zurück"); back.setAttribute("data-zurueck", ""); nav.appendChild(back); }
+          if (i < steps.length - 1) { fwd = el("button", { type: "button", "class": "res-weiter" }, "Weiter"); fwd.setAttribute("data-weiter", ""); nav.appendChild(fwd); }
+          var sb = st.querySelector('[type="submit"]');
+          if (sb && sb.parentNode) { sb.parentNode.insertBefore(nav, sb); nav.appendChild(sb); } else st.appendChild(nav);
+        }
+      });
+      form.addEventListener("click", function (e) {
+        if (e.target.closest("[data-weiter]")) { e.preventDefault(); next(); }
+        else if (e.target.closest("[data-zurueck]")) { e.preventDefault(); show(cur - 1, -1); }
+      });
+      form.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" || e.target.tagName === "TEXTAREA" || e.target.closest("[data-zurueck]")) return;
+        if (cur < steps.length - 1) { e.preventDefault(); next(); return; }
+        if (e.target.tagName !== "INPUT" || /^(radio|checkbox|submit|button)$/.test(e.target.type)) return;
+        var texts = Array.prototype.slice.call(steps[cur].querySelectorAll("input:not([type=radio]):not([type=checkbox]):not([type=hidden]):not([name=botcheck]), textarea"));
+        var later = texts.slice(texts.indexOf(e.target) + 1).filter(function (t) { return !String(t.value || "").trim(); })[0];
+        if (later) { e.preventDefault(); later.focus(); }
+      });
+      // Nach der Wahl von Uhrzeit bzw. Personen per Tippen/Klick geht es von selbst weiter (Pfeiltasten nicht)
+      var lastPointer = -1e9, lastKey = -1e9;
+      form.addEventListener("pointerdown", function () { lastPointer = performance.now(); });
+      form.addEventListener("keydown", function () { lastKey = performance.now(); }, true);
+      form.addEventListener("change", function (e) {
+        var n = e.target.name, st = steps[cur], at = cur;
+        var t = performance.now(); if (t - lastPointer > 1500 || t - lastKey < 400) return;
+        if ((n === "uhrzeit" && st.querySelector("[data-zeiten]") && !st.querySelector("[data-personen]")) ||
+            (n === "personen" && st.querySelector("[data-personen]") && cur < steps.length - 1)) {
+          var hint = st.querySelector(".res-schritt-fehler"); if (hint) hint.textContent = "";
+          setTimeout(function () { if (cur === at && stepOk(cur, false)) show(cur + 1, 1); }, 320);
+        }
+      });
+      show(0, 0);
+    }
+
+    function field(n) { return form.querySelector('[name="' + n + '"]'); }
+    function val(n) {
+      var f = field(n); if (!f) return "";
+      if (f.type === "radio") { var c = form.querySelector('[name="' + n + '"]:checked'); return c ? c.value : ""; }
+      return f.type === "checkbox" ? f.checked : String(f.value || "").trim();
+    }
+    function mark(target, bad) { if (!target) return; target.setAttribute("aria-invalid", bad ? "true" : "false"); }
+    function clearError(t) { mark(t, false); }
+    function check() {
+      var errs = [], firstBad = null;
+      function need(cond, target, msg) { mark(target, !cond); if (!cond) { errs.push(msg); firstBad = firstBad || target; } }
+      need(!!val("datum"), boxTage, "Bitte einen Tag wählen.");
+      need(!!val("uhrzeit"), boxZeiten, "Bitte eine Uhrzeit wählen.");
+      need(!!val("personen"), boxPers, "Bitte die Anzahl der Personen wählen.");
+      if (field("name")) need(val("name").length >= 2, field("name"), "Bitte Ihren Namen angeben.");
+      if (field("telefon")) need(val("telefon").replace(/\D/g, "").length >= 6, field("telefon"), "Bitte eine Telefonnummer für Rückfragen angeben.");
+      if (field("email") && val("email")) need(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val("email")), field("email"), "Die E-Mail-Adresse sieht unvollständig aus.");
+      if (field("einwilligung")) need(val("einwilligung") === true, field("einwilligung"), "Bitte der Verarbeitung Ihrer Angaben zustimmen.");
+      errBox.textContent = errs.join(" ");
+      if (firstBad && multi) { var k = steps.findIndex(function (st) { return st.contains(firstBad); }); if (k >= 0 && k !== cur) { show(k, -1); stepOk(k, true); } }
+      if (firstBad) { var f = firstBad.matches && firstBad.matches("input,textarea,select") ? firstBad : firstBad.querySelector("input:not(:disabled)"); if (f) f.focus(); }
+      return !errs.length;
+    }
+    ["name", "telefon", "email", "einwilligung"].forEach(function (n) { var f = field(n); if (f) f.addEventListener("input", function () { if (f.getAttribute("aria-invalid") === "true") mark(f, false); }); });
+    boxZeiten.addEventListener("change", function () { mark(boxZeiten, false); });
+    boxPers.addEventListener("change", function () { mark(boxPers, false); });
+
+    function readable() {
+      var d = new Date(val("datum") + "T12:00:00"), p = +val("personen");
+      return { datum: LANG[d.getDay()] + ", " + d.getDate() + ". " + MON[d.getMonth()], uhrzeit: val("uhrzeit"), personen: p + (p === 1 ? " Person" : " Personen"), name: val("name") };
+    }
+    function showSuccess() {
+      var r = readable();
+      ok.querySelectorAll("[data-wert]").forEach(function (s) { var k = s.getAttribute("data-wert"); if (r[k] != null) s.textContent = r[k]; });
+      if (CFG.modus === "demo" && !ok.querySelector(".res-demo-hinweis")) {
+        ok.appendChild(el("p", { "class": "res-demo-hinweis" }, "Entwurf: Diese Anfrage wurde nicht übermittelt. In der fertigen Website geht sie sofort an " +
+          CFG.name + "." + (CFG.tel ? " Für eine echte Reservierung bitte <a href=\"tel:" + CFG.tel + "\">anrufen<\/a>." : "")));
+      }
+      if (outside) { form.setAttribute("data-res-vorher", form.hidden ? "1" : "0"); form.hidden = true; }
+      for (var n = ok; !outside && n && n !== form; n = n.parentNode) {
+        var sib = n;
+        Array.prototype.forEach.call(n.parentNode.children, function (c) { if (c !== sib && c !== trap && !c.hasAttribute("data-res-vorher")) { c.setAttribute("data-res-vorher", c.hidden ? "1" : "0"); c.hidden = true; } });
+        if (n.parentNode !== form && n.parentNode.hidden) { n.parentNode.setAttribute("data-res-offen", ""); n.parentNode.hidden = false; }
+      }
+      ok.hidden = false; form.setAttribute("data-status", "gesendet");
+      try { ok.focus({ preventScroll: true }); } catch (e) { ok.focus(); }
+      var off = headerOffset(), top = (outside ? ok : form).getBoundingClientRect().top;
+      if (top < off - 2) scrollTo({ top: scrollY + top - off, behavior: still ? "auto" : "smooth" });
+    }
+    function again(e) {
+      if (!e.target.closest("[data-reservierung-neu]")) return;
+      e.preventDefault(); ok.hidden = true; form.removeAttribute("data-status");
+      if (outside) { form.hidden = form.getAttribute("data-res-vorher") === "1"; form.removeAttribute("data-res-vorher"); }
+      form.querySelectorAll("[data-res-vorher]").forEach(function (c) { c.hidden = c.getAttribute("data-res-vorher") === "1"; c.removeAttribute("data-res-vorher"); });
+      form.querySelectorAll("[data-res-offen]").forEach(function (c) { c.hidden = true; c.removeAttribute("data-res-offen"); });
+      if (multi) show(0, -1);
+    }
+    form.addEventListener("click", again);
+    if (outside) ok.addEventListener("click", again);
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (trap.value) return;
+      if (!check()) return;
+      var btn = form.querySelector('[type="submit"]'), label = btn ? btn.innerHTML : "";
+      if (btn) { btn.disabled = true; btn.setAttribute("aria-busy", "true"); }
+      form.setAttribute("data-status", "sendet");
+      function done(success) {
+        if (btn) { btn.disabled = false; btn.removeAttribute("aria-busy"); btn.innerHTML = label; }
+        if (success) showSuccess();
+        else { form.removeAttribute("data-status"); errBox.innerHTML = "Das hat leider nicht geklappt." + (CFG.tel ? " Bitte rufen Sie an: <a href=\"tel:" + CFG.tel + "\">" + CFG.telText + "<\/a>." : ""); }
+      }
+      if (CFG.modus !== "live" || !CFG.ziel) { setTimeout(function () { done(true); }, 650); return; }
+      var r = readable(), fd = new FormData(form);
+      fd.set("datum", r.datum + " (" + val("datum") + ")");
+      fd.set("subject", "Reservierungsanfrage " + r.datum + ", " + r.uhrzeit + " Uhr, " + r.personen);
+      fd.set("restaurant", CFG.name);
+      for (var k in (CFG.extra || {})) fd.set(k, CFG.extra[k]);
+      fetch(CFG.ziel, { method: "POST", body: fd, headers: { Accept: "application/json" } })
+        .then(function (res) { done(res.ok); }).catch(function () { done(false); });
+    });
+  }
+  function run() { document.querySelectorAll("form[data-reservierung]").forEach(init); }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run); else run();
+})();
+</script><!--/agent-res--><!--agent-szenen--><style id="agent-szenen">[data-szene]{position:relative;isolation:isolate}[data-szene="raster-zoom"]{overflow:clip}.szene-nachweis{background:rgba(255,255,255,.9);color:#1a1a1a;border-radius:6px;padding:.15em .5em;width:fit-content}
+.zerlegt-an [data-zerlegt-buehne]{position:relative}.zerlegt-an [data-ebene]{will-change:transform}
+.zerlegt-strich{display:block;height:0;border-top:1.5px solid currentColor;pointer-events:none}
+.zerlegt-strich::before{content:"";position:absolute;top:-4.75px;width:8px;height:8px;border-radius:50%;background:currentColor}
+.zerlegt-strich.rechts::before{left:-4px}.zerlegt-strich.links::before{right:-4px}
+.fenster-an [data-fenster-titel]{display:grid;justify-items:center;align-content:start;padding-top:clamp(.5rem,4vh,2.5rem);text-align:center;pointer-events:none}
+:where(.kapitel-an [data-kapitel]){display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(1.5rem,4vw,4rem);align-items:center;padding:clamp(1rem,4vh,3rem) clamp(1rem,5vw,4rem);box-sizing:border-box}
+:where(.kapitel-an [data-kapitel-bild]){margin:0;overflow:hidden}
+:where(.kapitel-an [data-kapitel-bild] img){width:100%;height:100%;object-fit:cover;display:block}
+@media (max-width:819px){:where(.kapitel-an [data-kapitel]){grid-template-columns:minmax(0,1fr);align-content:start;gap:1rem}}
+.horizontal-an{overflow:hidden}.horizontal-an [data-spur]{overflow:visible!important;flex-wrap:nowrap!important;width:max-content;scroll-snap-type:none!important}
+</style><script>(function () {
+  "use strict";
+  /* Immersive Szenen des Agenten. Die Seite liefert Markup und Gestaltung, der Agent die Bewegung:
+       data-szene="zerlegt"     Gericht öffnet sich beim Scrollen Schicht für Schicht, Linien + Beschriftungen
+       data-szene="raster-zoom" Mittelkachel wächst gepinnt, Seitenkacheln gleiten nach außen
+       data-szene="fenster"     Bild wächst aus einem kleinen Fenster zum Vollbild
+       data-szene="kapitel"     gepinnte Kapitel: Bild wischt herein, Text wechselt
+       data-szene="horizontal"  Streifen läuft beim Scrollen seitlich (gepinnt)
+       data-szene="lesen"       Text leuchtet Wort für Wort mit dem Scrollen auf
+       data-schieben            Abschnitt schiebt sich über den vorigen
+       data-tiefe="10…40"       Parallax in mehreren Geschwindigkeiten (+ Maus-Tiefe auf dem Desktop)
+     Ohne Bewegung (prefers-reduced-motion oder ohne GSAP) bleibt alles ruhig und vollständig sichtbar. */
+  var D = document, root = D.documentElement;
+  function qa(s, r) { return Array.prototype.slice.call((r || D).querySelectorAll(s)); }
+  function q(s, r) { return (r || D).querySelector(s); }
+  var G = window.gsap, ST = window.ScrollTrigger;
+  var still = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+  var motion = !!(G && ST) && !still;
+  var MOTION = "(prefers-reduced-motion: no-preference)";
+  if (G && ST) { G.registerPlugin(ST); if (window.SplitText) G.registerPlugin(window.SplitText); ST.config({ ignoreMobileResize: true }); }
+  var mm = motion ? G.matchMedia() : null;
+
+  /* feste Kopfzeile oben und feste Leisten unten (Handy) */
+  function edges() {
+    var top = 0, bottom = 0, vh = innerHeight;
+    qa("body > *, body > * > *, header, nav, [data-kopf]").forEach(function (n) {
+      if (n.offsetWidth < innerWidth * 0.5) return;
+      var cs = getComputedStyle(n);
+      if (cs.position !== "fixed" && cs.position !== "sticky") return;
+      if (cs.visibility === "hidden" || cs.display === "none" || +cs.opacity === 0) return;
+      var r = n.getBoundingClientRect();
+      if (r.height <= 0 || r.height > vh / 3) return;
+      if (cs.position === "sticky") { // klebt beim Scrollen oben (z. B. unter der Hinweisleiste des Agenten)
+        var t = parseFloat(cs.top), par = n.parentElement;
+        if (!isNaN(t) && t < vh / 3 && par && par.offsetHeight > vh * 2) top = Math.max(top, t + r.height);
+        return;
+      }
+      if (r.top <= 1 && r.bottom > 0) top = Math.max(top, r.bottom);
+      else if (cs.position === "fixed" && r.bottom >= vh - 1) bottom = Math.max(bottom, vh - r.top);
+    });
+    return { top: Math.round(top), bottom: Math.round(bottom) };
+  }
+  var E = { top: 0, bottom: 0 };
+  function measureEdges() {
+    E = edges();
+    root.style.setProperty("--szene-kopf", E.top + "px");
+    root.style.setProperty("--szene-unten", E.bottom + "px");
+  }
+  measureEdges();
+  function kopf() { return E.top; }
+  function start() { return "top " + kopf(); }
+  function sichtbar() { measureEdges(); return innerHeight - E.top - E.bottom; }
+  function loaded(imgs, cb) {
+    var left = imgs.length, done = false;
+    function one() { if (--left <= 0 && !done) { done = true; cb(); } }
+    if (!left) return cb();
+    imgs.forEach(function (i) {
+      i.loading = "eager";
+      if (i.complete && i.naturalWidth) one();
+      else { i.addEventListener("load", one, { once: true }); i.addEventListener("error", one, { once: true }); }
+    });
+    setTimeout(function () { if (!done) { done = true; cb(); } }, 6000);
+  }
+  var pending = 0;
+  function styler() {
+    var saved = [];
+    function put(el, props) {
+      if (!el) return;
+      if (!saved.some(function (x) { return x[0] === el; })) saved.push([el, el.getAttribute("style")]);
+      for (var k in props) el.style.setProperty(k, props[k], "important");
+    }
+    function undo() {
+      saved.forEach(function (x) { if (x[1] == null) x[0].removeAttribute("style"); else x[0].setAttribute("style", x[1]); });
+      saved = [];
+    }
+    return { put: put, undo: undo };
+  }
+  function kinder(box, ausser) { // direkte Kinder, die keine der genannten Elemente sind oder enthalten
+    return Array.prototype.slice.call(box.children).filter(function (c) {
+      return !ausser.some(function (a) { return a && (c === a || c.contains(a)); }) && getComputedStyle(c).position !== "absolute";
+    });
+  }
+  /* gepinnte Abschnitte füllen den sichtbaren Bereich: zu kurze Abschnitte bekommen oben und unten gleich viel Luft */
+  var fills = [];
+  function fill(sec) {
+    if (!sec._pad) { var cs = getComputedStyle(sec); sec._pad = [parseFloat(cs.paddingTop) || 0, parseFloat(cs.paddingBottom) || 0]; fills.push(sec); }
+    sec.style.paddingTop = sec._pad[0] + "px"; sec.style.paddingBottom = sec._pad[1] + "px";
+    var extra = sichtbar() - sec.offsetHeight;
+    if (extra > 0) { sec.style.paddingTop = sec._pad[0] + extra / 2 + "px"; sec.style.paddingBottom = sec._pad[1] + extra / 2 + "px"; }
+  }
+  function unfill(sec) { if (sec._pad) { sec.style.paddingTop = ""; sec.style.paddingBottom = ""; } }
+  function refreshSoon() { if (motion && pending <= 0) { ST.sort(); ST.refresh(); } }
+
+  /* ---------------------------------------------------------------- zerlegt */
+  function zerlegt(sec) {
+    var buehne = q("[data-zerlegt-buehne]", sec);
+    if (!buehne) return;
+    var figs = qa("[data-ebene]", buehne).sort(function (a, b) { return (+a.getAttribute("data-ebene")) - (+b.getAttribute("data-ebene")); });
+    if (figs.length < 2) return;
+    var imgs = figs.map(function (f) { return q("img", f); }).filter(Boolean);
+    var caps = figs.map(function (f) { return q("figcaption, [data-ebene-text]", f); });
+    var lines = figs.map(function (f, i) {
+      if (!caps[i]) return null;
+      var s = q(".zerlegt-strich", f);
+      if (!s) { s = D.createElement("i"); s.className = "zerlegt-strich"; s.setAttribute("aria-hidden", "true"); f.appendChild(s); }
+      return s;
+    });
+    sec.classList.add("zerlegt-an");
+    var P = { asm: [], exp: [], w: 0, seite: [], shift: 0, s0: 1 };
+    function ratio(img) { return img && img.naturalWidth ? img.naturalHeight / img.naturalWidth : 0.35; }
+    function inhalt(img) {
+      var v = (img && img.getAttribute("data-inhalt") || "").split(",").map(parseFloat);
+      return v.length === 2 && v[0] >= 0 && v[1] <= 1 && v[1] > v[0] ? v : [0.08, 0.92];
+    }
+    function layout() {
+      measureEdges();
+      var vw = innerWidth, mobil = vw < 820, n = figs.length;
+      buehne.style.position = "relative"; buehne.style.width = "100%";
+      // Höhe so, dass der gepinnte Abschnitt genau in den sichtbaren Bereich passt (Kopf- und Fußleisten abgezogen)
+      var V = Math.max(320, sichtbar());
+      buehne.style.height = V + "px";
+      // Höhe der Bühne = sichtbarer Bereich minus alles, was im gepinnten Abschnitt über bzw. unter ihr liegt
+      var st = getComputedStyle(sec), oben = 0, n0 = buehne;
+      while (n0 && n0 !== sec) { oben += n0.offsetTop; n0 = n0.offsetParent; if (n0 && !sec.contains(n0) && n0 !== sec) { oben = buehne.getBoundingClientRect().top - sec.getBoundingClientRect().top; break; } }
+      var H = Math.max(240, Math.min(V, V - oben - (parseFloat(st.paddingBottom) || 0)));
+      if (!motion) H = Math.min(V, Math.max(H, 420));
+      buehne.style.height = H + "px";
+      var Wb = buehne.clientWidth, R = figs.map(function (f, i) { return ratio(q("img", f)); });
+      var sumR = R.reduce(function (a, b) { return a + b; }, 0), gap = mobil ? 0.075 : 0.1;
+      var w = Math.min(mobil ? Wb * 0.6 : Math.min(Wb * 0.56, 560), (H * 0.95) / (sumR + (n - 1) * gap));
+      var line = mobil ? 18 : Math.max(36, Math.min(90, Wb * 0.06)), minLabel = mobil ? 92 : 140;
+      var wechsel = !mobil && (Wb - w) / 2 - line - 12 >= minLabel, left, labelW;
+      if (wechsel) { left = (Wb - w) / 2; labelW = Math.min(260, (Wb - w) / 2 - line - 12); }
+      else {
+        // Beschriftungen rechts: Platz bis zum Rand der Bühne und nie über den Bildschirm hinaus
+        var edge = Math.min(Wb, innerWidth - 8 - buehne.getBoundingClientRect().left);
+        left = mobil ? 0 : Math.max(0, Math.min(24, edge - w - line - 10 - minLabel));
+        var room = function (x) { return edge - left - x - line - 10; };
+        if (room(w) < minLabel) w = Math.max(Wb * 0.38, w - (minLabel - room(w)));
+        labelW = Math.max(60, Math.min(240, room(w)));
+      }
+      var h = R.map(function (r) { return r * w; }), g = gap * w;
+      var o = h.map(function (x, i) { return i < n - 1 ? Math.min(x, h[i + 1]) * 0.3 : 0; });
+      var Texp = h.reduce(function (a, b) { return a + b; }, 0) + (n - 1) * g;
+      var Tasm = h.reduce(function (a, b) { return a + b; }, 0) - o.reduce(function (a, b) { return a + b; }, 0);
+      var ye = (H - Texp) / 2, ya = (H - Tasm) / 2;
+      P.w = w;
+      // zusammengesetzt steht das Gericht mittig und etwas größer, beim Öffnen rückt es an seinen Platz
+      P.shift = wechsel ? 0 : Math.max(0, (Wb - w) / 2 - left);
+      P.s0 = Math.max(1, Math.min(1.3, (H * 0.9) / Tasm, (Wb * 0.92) / w));
+      figs.forEach(function (f, i) {
+        P.exp[i] = ye; P.asm[i] = ya; ye += h[i] + g; ya += h[i] - o[i];
+        var rechts = !wechsel || i % 2 === 0;
+        P.seite[i] = rechts ? 1 : -1;
+        f.style.cssText += ";position:absolute;top:0;left:" + left + "px;width:" + w + "px;margin:0;z-index:" + (n - i + 1);
+        var img = q("img", f);
+        if (img) img.style.cssText += ";display:block;width:100%;height:auto;max-width:none";
+        var c = caps[i], s = lines[i];
+        if (!c) return;
+        var span = inhalt(img), mid = h[i] / 2;
+        var x0 = rechts ? (span[1] - 0.07) * w : (span[0] + 0.07) * w, x1 = rechts ? w + line : -line;
+        s.className = "zerlegt-strich " + (rechts ? "rechts" : "links");
+        s.style.cssText = "position:absolute;top:" + mid + "px;left:" + Math.min(x0, x1) + "px;width:" + Math.abs(x1 - x0) + "px;" +
+          "transform-origin:" + (rechts ? "0 50%" : "100% 50%");
+        c.style.cssText += ";position:absolute;margin:0;width:" + labelW + "px;" +
+          (rechts ? "left:" + (w + line + 10) + "px;right:auto;text-align:left" : "left:" + (-line - 10 - labelW) + "px;right:auto;text-align:right");
+        c.style.top = "0px";
+        c.style.top = (mid - c.offsetHeight / 2) + "px";
+      });
+      if (!motion) figs.forEach(function (f, i) { f.style.transform = "translateY(" + P.exp[i] + "px)"; });
+    }
+    pending++;
+    loaded(imgs, function () {
+      pending--;
+      layout();
+      if (!motion) { addEventListener("resize", layout); return; }
+      ST.addEventListener("refreshInit", layout);
+      mm.add(MOTION, function () {
+        var n = figs.length, mobil = innerWidth < 820;
+        var tl = G.timeline({ defaults: { ease: "none" }, scrollTrigger: {
+          trigger: sec, start: start, end: function () { return "+=" + Math.round(innerHeight * (mobil ? 0.5 : 0.62) * (n + 1)); },
+          pin: true, scrub: 0.7, anticipatePin: 1, invalidateOnRefresh: true } });
+        figs.forEach(function (f, i) {
+          tl.fromTo(f, { y: function () { return P.asm[i]; }, x: function () { return P.shift; } },
+            { y: function () { return P.exp[i]; }, x: function () { return P.seite[i] * -P.w * 0.02 * (i % 2 ? 1 : -1); }, ease: "power2.inOut", duration: 1 }, i * 0.06);
+          var img = q("img", f);
+          if (img) tl.fromTo(img, { rotation: 0 }, { rotation: (i % 2 ? -1 : 1) * (1.2 + (i % 3) * 0.8), ease: "power2.inOut", duration: 1 }, i * 0.06);
+        });
+        figs.forEach(function (f, i) {
+          var t = 0.42 + i * (0.55 / n);
+          if (lines[i]) tl.fromTo(lines[i], { scaleX: 0 }, { scaleX: 1, duration: 0.22, ease: "power2.out" }, t);
+          if (caps[i]) tl.fromTo(caps[i], { autoAlpha: 0, x: function () { return P.seite[i] * 14; } }, { autoAlpha: 1, x: 0, duration: 0.22 }, t + 0.06);
+        });
+        tl.fromTo(buehne, { scale: function () { return P.s0; } }, { scale: 1, ease: "power2.inOut", duration: 0.9, transformOrigin: "50% 50%" }, 0);
+        qa("[data-tiefe]", sec).forEach(function (el) {
+          tl.fromTo(el, { yPercent: 0 }, { yPercent: -(parseFloat(el.getAttribute("data-tiefe")) || 20) * 1.5, duration: 1.4 }, 0);
+        });
+        tl.to({}, { duration: 0.3 });
+        // Maus-Tiefe: die Schichten folgen dem Zeiger unterschiedlich stark
+        var off = null;
+        if (matchMedia("(pointer: fine)").matches && innerWidth >= 900) {
+          var qs = imgs.map(function (img, i) { return [G.quickTo(img, "x", { duration: 0.6, ease: "power3" }), G.quickTo(img, "y", { duration: 0.6, ease: "power3" }), 4 + i * 2.5]; });
+          var mv = function (e) { var r = sec.getBoundingClientRect(), dx = (e.clientX - r.left) / r.width - 0.5, dy = (e.clientY - r.top) / r.height - 0.5;
+            qs.forEach(function (z) { z[0](dx * z[2] * 2); z[1](dy * z[2]); }); };
+          var lv = function () { qs.forEach(function (z) { z[0](0); z[1](0); }); };
+          sec.addEventListener("mousemove", mv); sec.addEventListener("mouseleave", lv);
+          off = function () { sec.removeEventListener("mousemove", mv); sec.removeEventListener("mouseleave", lv); };
+        }
+        return function () { if (off) off(); };
+      });
+      refreshSoon();
+    });
+  }
+
+  /* ---------------------------------------------------------------- raster-zoom */
+  function rasterZoom(sec) {
+    var mitte = q("[data-mitte]", sec) || q(".mitte", sec);
+    if (!mitte || !motion) return;
+    var tiles = Array.prototype.slice.call(mitte.parentNode.children).filter(function (c) { return c !== mitte; });
+    sec.style.position = sec.style.position || "relative";
+    function pos(el) {
+      var x = 0, y = 0, n = el;
+      while (n && n !== sec) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; if (n && !sec.contains(n)) break; }
+      return { x: x, y: y };
+    }
+    mm.add("(min-width: 900px) and " + MOTION, function () {
+      var C = {};
+      function calc() {
+        fill(sec);
+        var p = pos(mitte), w = mitte.offsetWidth, h = mitte.offsetHeight, V = innerHeight - kopf();
+        C.s = Math.max(1, Math.min(innerWidth * 0.94 / w, V * 0.9 / h));
+        C.x = innerWidth / 2 - (sec.getBoundingClientRect().left + p.x + w / 2);
+        C.y = V / 2 - (p.y + h / 2);
+      }
+      calc();
+      var tl = G.timeline({ scrollTrigger: { trigger: sec, start: start, end: "+=130%", pin: true, scrub: 1, anticipatePin: 1,
+        invalidateOnRefresh: true, onRefreshInit: calc } });
+      tl.to(mitte, { scale: function () { return C.s; }, x: function () { return C.x; }, y: function () { return C.y; }, ease: "power1.inOut", zIndex: 5 }, 0);
+      var img = q("img", mitte);
+      if (img) tl.fromTo(img, { scale: 1.18 }, { scale: 1, ease: "none" }, 0);
+      tiles.forEach(function (t) {
+        var links = t.offsetLeft + t.offsetWidth / 2 < mitte.offsetLeft + mitte.offsetWidth / 2;
+        tl.to(t, { xPercent: links ? -125 : 125, autoAlpha: 0, ease: "power1.in" }, 0);
+      });
+      var txt = q("[data-raster-text]", sec);
+      if (txt) tl.fromTo(txt, { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.3 }, 0.7);
+      // alles andere im Abschnitt (Überschrift, Text) weicht, bevor die Kachel es erreicht; Bildnachweise bleiben sichtbar
+      var S = styler(), weg = [], pfad = [];
+      for (var n = mitte.parentNode; n && n !== sec; n = n.parentNode) pfad.push(n);
+      [sec].concat(pfad).forEach(function (box) {
+        Array.prototype.slice.call(box.children).forEach(function (c) {
+          if (c === mitte || c.contains(mitte) || pfad.indexOf(c) >= 0 || tiles.indexOf(c) >= 0 || c === txt || (txt && c.contains(txt))) return;
+          if (c.matches(".foto-nachweis") || q(".foto-nachweis", c)) { S.put(c, { position: "relative", "z-index": "8" }); c.classList.add("szene-nachweis"); }
+          else weg.push(c);
+        });
+      });
+      if (weg.length) tl.to(weg, { autoAlpha: 0, y: -20, duration: 0.25, ease: "power1.in" }, 0);
+      return function () { unfill(sec); S.undo(); qa(".szene-nachweis", sec).forEach(function (c) { c.classList.remove("szene-nachweis"); }); };
+    });
+    mm.add("(max-width: 899px) and " + MOTION, function () {
+      G.from([mitte].concat(tiles), { clipPath: "inset(14% 14% 14% 14% round 14px)", duration: 1, ease: "power3.out", stagger: 0.12,
+        scrollTrigger: { trigger: sec, start: "top 80%" } });
+    });
+  }
+
+  /* ---------------------------------------------------------------- fenster */
+  function fenster(sec) {
+    var fig = q("[data-fenster]", sec);
+    if (!fig || !motion) return;
+    mm.add(MOTION, function () {
+      sec.classList.add("fenster-an");
+      var S = styler(), mobil = innerWidth < 820, media = q("img, video", fig);
+      var titel = q("[data-fenster-titel]", sec), txt = q("[data-fenster-text]", sec);
+      var rest = kinder(sec, [fig, titel, txt]);  // weitere Inhalte gehören zur Titel-Ebene und weichen mit ihm
+      S.put(sec, { position: "relative", overflow: "hidden", "padding-top": "0px", "padding-bottom": "0px", "min-height": "0px", "max-height": "none" });
+      S.put(fig, { position: "absolute", top: "0px", left: "0px", right: "0px", bottom: "0px", width: "100%", height: "100%",
+        "max-width": "none", "max-height": "none", margin: "0px", "aspect-ratio": "auto", "z-index": "1" });
+      if (media) S.put(media, { width: "100%", height: "100%", "max-width": "none", "max-height": "none", "object-fit": "cover",
+        "aspect-ratio": "auto", display: "block", position: "static" });
+      if (titel) S.put(titel, { position: "absolute", top: "0px", left: "0px", right: "0px", margin: "0px", "z-index": "0" });
+      if (txt) S.put(txt, { position: "absolute", "z-index": "2", top: "auto", margin: "0px" });
+      rest.forEach(function (r) { S.put(r, { position: "relative", "z-index": "0" }); });
+      var C = {};
+      function geo() {
+        var H = sichtbar(), w = sec.clientWidth;
+        sec.style.setProperty("height", H + "px", "important");
+        var oben = H * 0.12;
+        if (titel) oben = Math.max(oben, titel.offsetTop + titel.offsetHeight + 18);
+        rest.forEach(function (r) { oben = Math.max(oben, r.offsetTop + r.offsetHeight + 18); });
+        var unten = Math.max(H * 0.1, E.bottom ? 12 : 0), hoehe = Math.max(H * 0.28, H - oben - unten);
+        var breite = Math.min(w * (mobil ? 0.84 : 0.42), hoehe * (mobil ? 1.1 : 1.5));
+        hoehe = Math.min(hoehe, breite * (mobil ? 1.25 : 0.9));
+        var seite = Math.max(0, (w - breite) / 2), u = Math.max(0, H - oben - hoehe);
+        C.start = "inset(" + oben + "px " + seite + "px " + u + "px " + seite + "px round 28px)";
+        if (txt) { var rand = Math.max(16, w * 0.05); txt.style.setProperty("left", rand + "px", "important");
+          txt.style.setProperty("right", rand + "px", "important");
+          txt.style.setProperty("bottom", (Math.max(24, H * 0.06)) + "px", "important"); }
+      }
+      geo();
+      ST.addEventListener("refreshInit", geo);
+      var tl = G.timeline({ scrollTrigger: { trigger: sec, start: start, end: function () { return "+=" + Math.round(innerHeight * (mobil ? 1.1 : 1.5)); },
+        pin: true, scrub: 0.8, anticipatePin: 1, invalidateOnRefresh: true } });
+      tl.fromTo(fig, { clipPath: function () { return C.start; } },
+        { clipPath: "inset(0px 0px 0px 0px round 0px)", ease: "power2.inOut", duration: 1 }, 0);
+      if (media) tl.fromTo(media, { scale: 1.3 }, { scale: 1, ease: "power2.out", duration: 1 }, 0);
+      var weich = (titel ? [titel] : []).concat(rest);
+      if (weich.length) tl.fromTo(weich, { scale: 1, autoAlpha: 1 }, { scale: 0.9, autoAlpha: 0, duration: 0.4 }, 0.15);
+      if (txt) tl.fromTo(txt, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.3 }, 0.78);
+      tl.to({}, { duration: 0.25 });
+      return function () { ST.removeEventListener("refreshInit", geo); S.undo(); sec.classList.remove("fenster-an"); };
+    });
+  }
+
+  /* ---------------------------------------------------------------- kapitel */
+  function kapitel(sec) {
+    var ks = qa("[data-kapitel]", sec);
+    if (ks.length < 2 || !motion) return;
+    var box = ks[0].parentNode;
+    if (ks.some(function (k) { return k.parentNode !== box; })) return;
+    mm.add(MOTION, function () {
+      sec.classList.add("kapitel-an");
+      var S = styler(), n = ks.length;
+      // was vor den Kapiteln steht (Überschrift), bleibt sichtbar darüber; was danach steht, ruht während der Szene
+      var vor = [], nach = [];
+      kinder(box, ks).forEach(function (c) { (c.compareDocumentPosition(ks[0]) & 4 ? vor : nach).push(c); });
+      S.put(sec, { position: "relative", overflow: "hidden", "min-height": "0px", "max-height": "none" });
+      if (box !== sec) S.put(box, { position: "relative", "min-height": "0px", "max-height": "none" });
+      nach.forEach(function (c) { S.put(c, { display: "none" }); });
+      function geo() {
+        var H = sichtbar(), cs = getComputedStyle(sec), pb = parseFloat(cs.paddingBottom) || 0;
+        sec.style.setProperty("height", H + "px", "important");
+        var boxH = H - pb - (parseFloat(cs.paddingTop) || 0), top = box === sec ? (parseFloat(cs.paddingTop) || 0) : 0;
+        if (box !== sec) {
+          box.style.setProperty("height", "1px", "important");
+          boxH = Math.max(280, H - pb - (box.getBoundingClientRect().top - sec.getBoundingClientRect().top));
+          box.style.setProperty("height", boxH + "px", "important");
+        }
+        vor.forEach(function (v) { top = Math.max(top, v.offsetTop + v.offsetHeight + 16); });
+        var h = Math.max(240, (box === sec ? H - pb : boxH) - top);
+        ks.forEach(function (k, i) {
+          S.put(k, { position: "absolute", left: "0px", right: "0px", bottom: "auto", "margin-top": "0px", "margin-bottom": "0px",
+            width: "auto", "z-index": String(i + 1) });
+          k.style.setProperty("top", top + "px", "important");
+          k.style.setProperty("height", h + "px", "important");
+          // passt ein Kapitel nicht in die Bühne (Handy), wird sein Bild niedriger statt dass etwas überlappt
+          var bild = q("[data-kapitel-bild]", k), img = bild && q("img", bild);
+          if (!bild) return;
+          ["height", "aspect-ratio", "max-height"].forEach(function (pr) { if (bild._fit) bild.style.removeProperty(pr); });
+          var over = k.scrollHeight - h;
+          if (over > 2) {
+            bild._fit = true;
+            S.put(bild, { height: Math.max(110, bild.offsetHeight - over - 6) + "px", "aspect-ratio": "auto", "max-height": "none" });
+            if (img) S.put(img, { width: "100%", height: "100%", "object-fit": "cover" });
+          }
+        });
+      }
+      geo();
+      ST.addEventListener("refreshInit", geo);
+      var aktiv = function (self) { var at = Math.round(self.progress * (n - 1));  // nur das sichtbare Kapitel ist anklickbar
+        ks.forEach(function (k, i) { k.style.pointerEvents = i === at ? "" : "none"; }); };
+      aktiv({ progress: 0 });
+      var tl = G.timeline({ scrollTrigger: { trigger: sec, start: start, end: function () { return "+=" + Math.round(innerHeight * 0.85 * n); },
+        pin: true, scrub: 0.6, anticipatePin: 1, invalidateOnRefresh: true, onUpdate: aktiv, onRefresh: aktiv,
+        snap: { snapTo: 1 / (n - 1), duration: { min: 0.2, max: 0.6 }, delay: 0.08, ease: "power1.inOut" } } });
+      ks.forEach(function (k, i) {
+        if (!i) return;
+        var bild = q("[data-kapitel-bild]", k), img = bild && q("img", bild), text = q("[data-kapitel-text]", k);
+        var vorText = q("[data-kapitel-text]", ks[i - 1]), vorImg = q("[data-kapitel-bild] img", ks[i - 1]), t = i - 1;
+        if (bild) tl.fromTo(bild, { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1, ease: "power2.inOut" }, t);
+        if (img) tl.fromTo(img, { scale: 1.25, yPercent: 6 }, { scale: 1, yPercent: 0, duration: 1, ease: "power2.out" }, t);
+        if (vorImg) tl.to(vorImg, { scale: 1.08, duration: 1 }, t);
+        if (vorText) tl.to(vorText, { autoAlpha: 0, y: -40, duration: 0.4 }, t);
+        if (text) tl.fromTo(text, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.45 }, t + 0.45);
+      });
+      return function () { ST.removeEventListener("refreshInit", geo); S.undo(); sec.classList.remove("kapitel-an");
+        ks.forEach(function (k) { k.style.pointerEvents = ""; }); };
+    });
+  }
+
+  /* ---------------------------------------------------------------- horizontal */
+  function horizontal(sec) {
+    var spur = q("[data-spur]", sec);
+    if (!spur || !motion) return;
+    mm.add(MOTION, function () {
+      sec.classList.add("horizontal-an");
+      fill(sec);
+      var refill = function () { fill(sec); };
+      ST.addEventListener("refreshInit", refill);
+      var weg = function () { return Math.max(0, spur.scrollWidth - sec.clientWidth + (parseFloat(getComputedStyle(sec).paddingLeft) || 0)); };
+      G.to(spur, { x: function () { return -weg(); }, ease: "none", scrollTrigger: { trigger: sec, start: start,
+        end: function () { return "+=" + weg(); }, pin: true, scrub: 0.8, anticipatePin: 1, invalidateOnRefresh: true } });
+      return function () { sec.classList.remove("horizontal-an"); ST.removeEventListener("refreshInit", refill); unfill(sec); };
+    });
+  }
+
+  /* ---------------------------------------------------------------- lesen */
+  function lesen(el) {
+    if (!motion || !window.SplitText) return;
+    mm.add(MOTION, function () {
+      var s = window.SplitText.create(el, { type: "words" });
+      G.fromTo(s.words, { opacity: 0.16 }, { opacity: 1, stagger: 0.1, ease: "none",
+        scrollTrigger: { trigger: el, start: "top 82%", end: "bottom 42%", scrub: true } });
+      return function () { s.revert(); };
+    });
+  }
+
+  /* ---------------------------------------------------------------- schieben, tiefe */
+  function schieben(el) {
+    if (!motion) return;
+    mm.add(MOTION, function () {
+      G.from(el, { y: innerWidth < 820 ? 48 : 96, ease: "none", scrollTrigger: { trigger: el, start: "top bottom", end: "top 50%", scrub: true } });
+    });
+  }
+  function tiefe() {
+    if (!motion) return;
+    var els = qa("[data-tiefe]").filter(function (el) { return !el.closest('[data-szene="zerlegt"]'); });
+    if (!els.length) return;
+    mm.add(MOTION, function () {
+      els.forEach(function (el) {
+        G.to(el, { yPercent: -(parseFloat(el.getAttribute("data-tiefe")) || 20), ease: "none",
+          scrollTrigger: { trigger: el.closest("section, header, footer") || el, start: "top bottom", end: "bottom top", scrub: true } });
+      });
+    });
+    mm.add("(pointer: fine) and (min-width: 900px) and " + MOTION, function () {
+      var offs = [];
+      qa("section, header").forEach(function (s) {
+        var mine = els.filter(function (el) { return el.closest("section, header") === s; });
+        if (!mine.length) return;
+        var qs = mine.map(function (el) { var t = parseFloat(el.getAttribute("data-tiefe")) || 20;
+          return [G.quickTo(el, "x", { duration: 0.8, ease: "power3" }), G.quickTo(el, "y", { duration: 0.8, ease: "power3" }), t * 0.6]; });
+        var mv = function (e) { var r = s.getBoundingClientRect(), dx = (e.clientX - r.left) / r.width - 0.5, dy = (e.clientY - r.top) / r.height - 0.5;
+          qs.forEach(function (z) { z[0](-dx * z[2]); z[1](-dy * z[2]); }); };
+        s.addEventListener("mousemove", mv);
+        offs.push(function () { s.removeEventListener("mousemove", mv); });
+      });
+      return function () { offs.forEach(function (f) { f(); }); };
+    });
+  }
+
+  function run() {
+    qa('[data-szene="zerlegt"]').forEach(zerlegt);
+    qa('[data-szene="raster-zoom"]').forEach(rasterZoom);
+    qa('[data-szene="fenster"]').forEach(fenster);
+    qa('[data-szene="kapitel"]').forEach(kapitel);
+    qa('[data-szene="horizontal"]').forEach(horizontal);
+    qa('[data-szene="lesen"]').forEach(lesen);
+    qa("[data-schieben]").forEach(schieben);
+    tiefe();
+    refreshSoon();
+    if (motion) {
+      ST.addEventListener("refreshInit", measureEdges);
+      addEventListener("load", function () { ST.sort(); ST.refresh(); });
+    }
+    root.classList.add(motion ? "szenen-bewegt" : "szenen-ruhig");
+  }
+  if (D.readyState === "loading") D.addEventListener("DOMContentLoaded", run); else run();
+})();
+</script><!--/agent-szenen--></body>
+</html>
