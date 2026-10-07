@@ -1,0 +1,851 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ehso's Burger · Bornheide 47b, Hamburg-Osdorf · Burger, Croque, Wraps</title>
+<meta name="description" content="Ehso's Burger an der Bornheide 47b in Hamburg-Osdorf: Burger, Croque, Wraps, Finger Food, Salate und Crepes. Mo–Fr ab 15 Uhr, Sa & So ab 13 Uhr, Fr & Sa bis 2 Uhr. Telefon 040 76 48 72 72.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--sw:#13100E;--cr:#F4E3C1;--or:#E8962E;--br:#7A4320;--kf:#1F1A17;--li:#3A2A1F;--gr:#7DBE4A;--c2:#D8C6A3;--hell:#FBF3E2;--rot:#8A2410;--kopf:72px;--leiste:0px;--rand:clamp(1rem,5vw,4rem);--max:1320px;--fd:"Shrikhand",Georgia,serif;--ft:"Figtree",system-ui,sans-serif;--sek:clamp(4rem,8vw,6rem)}
+@media (max-width:819px){:root{--kopf:60px;--leiste:calc(56px + env(safe-area-inset-bottom))}}
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%;overflow-x:clip;scroll-padding-top:calc(var(--kopf) + 64px)}
+body{background:var(--sw);color:var(--cr);font:400 1.0625rem/1.6 var(--ft);overflow-x:clip;padding-bottom:var(--leiste)}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit}
+[hidden]{display:none!important}
+:focus-visible{outline:3px solid var(--or);outline-offset:3px;border-radius:4px}
+.wrap{width:min(calc(100% - 2*var(--rand)),var(--max));margin-inline:auto}
+.h2{font:400 clamp(2rem,4.2vw,3.6rem)/1.08 var(--fd);hyphens:manual;overflow-wrap:normal;text-wrap:balance}
+.lead{color:var(--c2);max-width:52ch}
+.nr{font-variant-numeric:tabular-nums;white-space:nowrap}
+.knopf{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:56px;padding:18px 32px;border-radius:999px;background:var(--or);color:var(--sw);font-weight:700;text-decoration:none;overflow:hidden;isolation:isolate;border:0;cursor:pointer;transition:color .3s}
+.knopf::before{content:"";position:absolute;inset:0;background:var(--cr);transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.7,0,.2,1);z-index:-1}
+.knopf:hover::before{transform:scaleX(1)}
+.knopf.dunkel{background:var(--sw);color:var(--cr)}
+.knopf.dunkel::before{background:var(--or)}
+.knopf.dunkel:hover{color:var(--sw)}
+.pfeil-link{display:inline-flex;align-items:center;gap:.45em;min-height:44px;font-weight:600;text-decoration:underline;text-underline-offset:.28em;text-decoration-thickness:1px}
+.pfeil-link span{display:inline-block;transition:transform .3s}
+.pfeil-link:hover span{transform:translateX(6px)}
+.rahmen{position:relative;display:flex;flex-direction:column;overflow:hidden;border-radius:6px;background:var(--kf)}
+.rahmen img{flex:1 1 0;min-height:0;width:100%;height:auto;object-fit:cover}
+.schild-rahmen::before{content:"";position:absolute;top:0;left:0;right:0;height:14px;background:#000;border-bottom:1px solid rgba(244,227,193,.6);z-index:2}
+.foto-nachweis{display:inline-block;font-size:.8125rem;line-height:1.4;color:var(--c2);text-decoration:underline;text-underline-offset:.2em}
+.nachweis-ecke{position:static;flex:none;background:var(--kf);padding:6px 12px;line-height:1.3}
+.mini{position:relative;display:inline-flex;flex-direction:column;justify-content:flex-end;gap:.035em;width:.95em;height:.8em;margin:0 .14em 0 .12em;vertical-align:-.1em}
+.mini i{display:block;flex:none}
+.mini .bt{height:.3em;border-radius:.45em .45em .05em .05em;background:#D08A3A}
+.mini .ch{height:.06em;background:#F2B233}
+.mini .pa{height:.13em;background:var(--br);border-radius:.06em}
+.mini .sa{height:.07em;margin-inline:-.04em;background:var(--gr);border-radius:.04em}
+.mini .bb{height:.1em;background:#D08A3A;border-radius:.03em .03em .08em .08em}
+.mini img{position:absolute;left:0;top:50%;width:100%;height:auto;margin-top:-.5em}
+.mini img:nth-child(1){transform:translateY(-.3em);z-index:6}
+.mini img:nth-child(2){transform:translateY(-.18em);z-index:5}
+.mini img:nth-child(3){transform:translateY(-.07em);z-index:4}
+.mini img:nth-child(4){transform:translateY(.04em);z-index:3}
+.mini img:nth-child(5){transform:translateY(.15em);z-index:2}
+.mini img:nth-child(6){transform:translateY(.26em);z-index:1}
+
+.kopf{position:sticky;top:0;z-index:1000;background:var(--sw);border-bottom:1px solid var(--li)}
+.kopf-in{height:var(--kopf);display:flex;align-items:center;gap:clamp(1rem,2.4vw,2.25rem)}
+.kopf-marke{font:400 clamp(1.25rem,1.7vw,1.5rem)/1 var(--fd);text-decoration:none;margin-right:auto;white-space:nowrap;padding-block:10px}
+.kopf nav{display:flex;gap:clamp(1rem,2vw,1.75rem)}
+.kopf nav a{display:inline-flex;align-items:center;min-height:44px;font-weight:600;text-decoration:none;background:linear-gradient(var(--or),var(--or)) 0 85%/0 2px no-repeat;transition:background-size .3s}
+.kopf nav a:hover{background-size:100% 2px}
+.kopf-nr{font-weight:700;text-decoration:none}
+.pill{min-height:44px;padding:12px 24px}
+@media (max-width:1120px){.kopf-nr{display:none}}
+@media (max-width:819px){.kopf nav{display:none}.pill{padding:10px 22px}}
+
+.hero{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(1.5rem,3vw,3rem);min-height:calc(100svh - var(--kopf));align-items:center;padding-block:clamp(2rem,5vh,4rem)}
+.hero-text{grid-column:1/7;min-width:0}
+.status{display:flex;align-items:center;margin-bottom:1.25rem;font-weight:600;font-size:.9375rem}
+[data-status]{display:inline-flex;align-items:center;gap:.6em}
+[data-status]::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--gr);flex:none}
+[data-status][data-offen="nein"]::before{background:transparent;box-shadow:inset 0 0 0 2px var(--c2)}
+.wortmarke{position:relative;isolation:isolate;display:block;width:max-content;white-space:nowrap;font:400 clamp(2.6rem,5.4vw,6rem)/1.05 var(--fd);padding:.06em .14em .2em 0;margin:-.06em 0 0}
+.wortmarke.maske{overflow:hidden}
+.wm-wort{position:relative;display:inline-block}
+.wm-wort::before{content:attr(data-t);position:absolute;left:.035em;top:.035em;color:var(--br);z-index:-1;opacity:var(--k,1);pointer-events:none}
+.kategorien{display:flex;flex-wrap:wrap;align-items:center;gap:.4em .75em;margin:.5rem 0 clamp(1.5rem,3.5vh,2.5rem);font-weight:700;font-size:.9375rem;letter-spacing:.12em;text-transform:uppercase}
+.kategorien i{width:6px;height:6px;border-radius:50%;background:var(--or)}
+.hero-titel{font:400 clamp(2rem,3.4vw,3.25rem)/1.14 var(--fd);max-width:16ch}
+.hero-titel>div{padding-block:.08em .16em;margin-block:-.08em -.16em}
+.hero-titel em,.akzent{font-style:normal;color:var(--or)}
+.hero-satz{max-width:46ch;color:var(--c2);font-size:1.125rem;margin:1.25rem 0 2rem}
+.hero-aktion{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1.75rem}
+.hero-bild-wrap{grid-column:7/13;position:relative;isolation:isolate;display:flex;align-self:stretch;min-width:0;margin-right:calc(-1*var(--rand))}
+.hero-bild-wrap::before{content:"";position:absolute;inset:-8% 0 -8% -30%;background:radial-gradient(closest-side,#6A3D1C,rgba(90,52,24,.5) 50%,rgba(19,16,14,0));z-index:-1}
+.hero-bild{width:100%;height:calc(100svh - var(--kopf) - 2*clamp(2rem,5vh,4rem));min-height:480px;border-radius:6px 0 0 6px}
+.hero-bild img{object-position:50% 45%}
+.bu{position:static;flex:none;display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 12px;background:var(--kf);padding:10px 14px;font-size:.875rem;line-height:1.45}
+.bu p{color:var(--cr)}
+.einschub{position:absolute;z-index:3;left:-2.5vw;bottom:clamp(3rem,8vh,5rem);display:grid;grid-template-columns:120px minmax(0,1fr);gap:12px;align-items:center;width:min(330px,62%);margin:0;padding:10px;background:var(--sw);border:1px solid var(--li);border-radius:6px;box-shadow:0 18px 30px rgba(0,0,0,.45)}
+.einschub .bildbox{aspect-ratio:16/9;overflow:hidden;border:2px solid var(--cr);border-radius:4px}
+.einschub img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.einschub figcaption{font-size:.875rem;line-height:1.45}
+@media (max-width:819px){
+.hero{grid-template-columns:minmax(0,1fr);min-height:0;padding-block:1.25rem calc(var(--leiste) + 24px);row-gap:1.5rem}
+.hero-text,.hero-bild-wrap{grid-column:1}
+.hero-bild-wrap{order:-1;width:100%;justify-self:stretch}
+.hero-bild{aspect-ratio:auto;height:clamp(220px,34svh,320px)}
+.einschub{display:none}
+.wortmarke{font-size:9.6vw}
+.kategorien{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;white-space:nowrap;padding-bottom:4px}
+.kategorien span{scroll-snap-align:start}
+.kategorien i{flex:none}
+.hero-titel{font-size:8.5vw}
+.hero-satz{font-size:1rem}
+.hero-aktion .knopf,.hero-aktion .route{width:100%}
+.hero-aktion .route{justify-content:center;min-height:56px;border:2px solid var(--cr);border-radius:999px;text-decoration:none}
+}
+
+.schildband{display:flex;align-items:center;height:64px;overflow:hidden;background:#000;border-block:1px solid var(--li)}
+.band-spur{display:flex;flex:none;animation:lauf 38s linear infinite}
+.band-spur span{display:inline-flex;align-items:center;gap:2rem;padding-right:2rem;font:700 1rem/1 var(--ft);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+.band-spur span::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--or)}
+.schildband:hover .band-spur,.schildband:active .band-spur{animation-play-state:paused}
+@keyframes lauf{to{transform:translateX(-50%)}}
+@media (max-width:819px){.band-spur{animation-duration:60s}}
+
+.angebot{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(1.5rem,3vw,3rem);row-gap:3rem;align-items:start;padding-block:var(--sek)}
+.angebot-text{grid-column:1/6}
+.angebot-text .lead{margin:1.5rem 0 2rem}
+.info{border-bottom:1px solid var(--li)}
+.info div{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.8rem 0;border-top:1px solid var(--li)}
+.info dt{color:var(--c2)}
+.info dd{font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.angebot-bilder{grid-column:7/13;position:relative}
+.ab-gross{width:100%;aspect-ratio:1}
+.ab-klein{position:relative;z-index:2;width:45%;aspect-ratio:1;margin:-22% 0 0 -8%;outline:4px solid var(--sw)}
+.ab-klein .nachweis-ecke{left:0;right:auto;border-radius:0 6px 0 0}
+@media (max-width:819px){.angebot-text,.angebot-bilder{grid-column:1/-1}.ab-gross{width:100%}.ab-klein{width:52%;margin:-24% 0 0 auto}}
+
+.zerlegt{position:relative;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:start;gap:2rem;padding:var(--sek) var(--rand);overflow-x:clip;background:radial-gradient(circle at 64% 55%,#3A2414,#13100E 60%)}
+.z-kopf{max-width:30rem}
+.z-kopf .h2{font-size:clamp(2rem,3.6vw,3.5rem)}
+.z-kopf p{color:var(--c2);margin-top:1rem}
+.zerlegt-ende{margin-top:1.5rem;font-weight:700;font-size:1.125rem}
+.zerlegt-ende a{color:var(--or);text-underline-offset:.25em}
+.zerlegt-buehne{--b:min(360px,28vw);--spalt:24px;--lw:clamp(40px,5vw,110px);--lab:clamp(110px,13vw,210px);justify-self:center;display:flex;flex-direction:column;align-items:center;width:var(--b)}
+.zerlegt-ebene{position:relative;width:var(--b);height:calc(var(--b)*.28)}
+.zerlegt-ebene+.zerlegt-ebene{margin-top:var(--spalt)}
+.zerlegt-ebene img{position:absolute;left:0;top:50%;width:100%;height:auto;aspect-ratio:1;margin-top:calc(var(--b)*-.5);clip-path:inset(25% 0 25% 0);filter:drop-shadow(0 10px 12px rgba(0,0,0,.5))}
+.zerlegt-linie{position:absolute;top:50%;width:var(--lw);height:12px;margin-top:-6px;overflow:visible;fill:none;stroke:var(--cr);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.zerlegt-label{position:absolute;top:0;bottom:0;display:flex;align-items:center;gap:.5em;width:var(--lab);font:600 1.0625rem/1.25 var(--ft);hyphens:auto;overflow-wrap:break-word}
+.zerlegt-label b{color:var(--or);font-size:.8125rem;font-variant-numeric:tabular-nums}
+.zerlegt-ebene:nth-child(odd) .zerlegt-linie{left:84%}
+.zerlegt-ebene:nth-child(odd) .zerlegt-label{left:calc(84% + var(--lw) + 10px)}
+.zerlegt-ebene:nth-child(even) .zerlegt-linie{right:84%;transform:scaleX(-1)}
+.zerlegt-ebene:nth-child(even) .zerlegt-label{right:calc(84% + var(--lw) + 10px);justify-content:flex-end;text-align:right;flex-direction:row-reverse}
+@media (max-width:819px){
+.zerlegt{grid-template-columns:minmax(0,1fr);align-content:center;gap:1.25rem;background:radial-gradient(ellipse 80% 45% at 50% 58%,#3A2414 0%,rgba(58,36,20,.5) 45%,var(--sw) 80%)}
+.z-kopf .h2{font-size:7.5vw}
+.z-kopf p{font-size:1rem;margin-top:.5rem}
+.zerlegt-buehne{--b:min(44vw,220px);--spalt:14px;--lw:20px;--lab:calc(25vw - 8px)}
+.zerlegt-label{font-size:.9375rem;gap:.35em}
+.zerlegt-label b{font-size:.8125rem}
+.zerlegt-ende{margin-top:0}
+}
+
+.karte-sek{padding-block:var(--sek)}
+.karte-sek .kopfzeile{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:1rem 3rem;margin-bottom:2rem}
+.reiter{position:sticky;top:var(--kopf);z-index:40;background:#000;border-block:1px solid var(--li);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.reiter::-webkit-scrollbar{display:none}
+.reiter-in{display:flex;justify-content:center;gap:.25rem;min-width:max-content;margin-inline:auto;padding-inline:var(--rand)}
+.reiter button{display:inline-flex;align-items:center;gap:.7em;min-height:56px;padding:0 1rem;background:none;border:0;color:var(--cr);font-weight:700;font-size:.9375rem;font-size:1rem;cursor:pointer;scroll-snap-align:start;box-shadow:inset 0 -3px 0 transparent;transition:box-shadow .3s}
+.reiter button::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--li);transition:background .3s,transform .3s}
+.reiter button:hover::before{transform:scale(1.4)}
+.reiter button[aria-selected="true"]{box-shadow:inset 0 -3px 0 var(--or)}
+.reiter button[aria-selected="true"]::before{background:var(--or)}
+.panel{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);align-items:stretch;margin-top:2rem;background:var(--kf);border-radius:10px;overflow:hidden}
+.panel-text{align-self:center;padding:clamp(1.5rem,4vw,4rem)}
+.panel h3{font:400 clamp(2.5rem,6vw,5.25rem)/1.05 var(--fd);margin-bottom:1rem;hyphens:auto;overflow-wrap:break-word}
+.panel p{color:var(--c2);max-width:40ch}
+.panel-bild{aspect-ratio:1;border-radius:0}
+.panel-bild.hoch{aspect-ratio:3/4}
+.panel-bild img{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.panel:hover .panel-bild img{transform:rotate(-1.5deg) scale(1.04)}
+.panel-typo{position:relative;display:grid;place-items:center;min-height:clamp(260px,32vw,440px);padding:2rem;background:var(--cr);color:var(--sw);font:400 clamp(2.75rem,7vw,6.25rem)/1 var(--fd);overflow:hidden}
+.panel-typo span{display:inline-block;padding-bottom:.1em;background:linear-gradient(var(--or),var(--or)) 0 92%/100% .14em no-repeat;transition:transform .5s}
+.panel:hover .panel-typo span{transform:rotate(-3deg)}
+.karte-hinweis{margin-top:1.5rem;font-weight:600}
+.karte-hinweis a{color:var(--or);text-underline-offset:.25em}
+@media (max-width:819px){.reiter-in{justify-content:flex-start}.panel{grid-template-columns:minmax(0,1fr)}.panel-typo{min-height:200px}}
+
+.zeiten{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(2rem,5vw,5rem);align-items:start;padding-block:var(--sek)}
+.zeiten .lead{margin-top:1.5rem}
+.zeiten .status{margin-top:1.5rem}
+.zeit-box{position:relative;padding-top:2.25rem}
+.reihe-raster{display:grid;grid-template-columns:3rem minmax(0,1fr) 7.5rem;align-items:center;gap:1rem}
+.achse{position:absolute;top:0;left:0;right:0;font-size:.8125rem;color:var(--c2);font-variant-numeric:tabular-nums}
+.achse-spur{position:relative;height:1.5rem}
+.achse-spur span{position:absolute;transform:translateX(-50%)}
+.achse-spur span:first-child{transform:none}
+.achse-spur span:last-child{transform:translateX(-100%)}
+.zeitleiste{list-style:none;padding:0;border-top:1px solid var(--li)}
+.tag-reihe{min-height:52px;border-bottom:1px solid var(--li)}
+.tag-name{font-weight:700}
+.spur{position:relative;height:20px;background:#000;border-radius:4px;box-shadow:inset 0 0 0 1px var(--li)}
+.balken{position:absolute;top:4px;bottom:4px;left:calc(var(--a)/13*100%);width:calc((var(--e) - var(--a))/13*100%);background:var(--cr);border-radius:3px}
+.tag-zeit{text-align:right;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.heute .tag-name,.heute .tag-zeit{color:var(--or)}
+.heute .balken{background:var(--or)}
+.jetzt{position:absolute;top:1.6rem;bottom:0;width:2px;margin-left:-1px;background:var(--or);z-index:2;pointer-events:none}
+.jetzt span{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);background:var(--or);color:var(--sw);font-size:.8125rem;font-weight:700;padding:1px 8px;border-radius:999px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.zeit-box .achse,.zeit-box .reihe-raster{min-width:0}
+@media (max-width:819px){
+.zeiten{grid-template-columns:minmax(0,1fr)}
+.reihe-raster{grid-template-columns:minmax(0,1fr) auto;row-gap:.5rem}
+.tag-reihe{padding-block:.6rem}
+.tag-reihe .spur{grid-column:1/-1;order:3}
+.achse.reihe-raster{grid-template-columns:minmax(0,1fr)}
+.achse .leer{display:none}
+}
+
+.res-sek{padding:var(--sek) var(--rand);background:radial-gradient(ellipse 60% 55% at 50% 50%,#3A2414 0%,rgba(58,36,20,.45) 50%,var(--sw) 78%)}
+.res-karte{max-width:880px;margin-inline:auto;background:var(--cr);color:var(--sw);border-radius:10px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.45)}
+.res-leiste{display:flex;align-items:center;gap:.75rem;padding:.7rem clamp(1.25rem,5vw,3.5rem);background:var(--sw);color:var(--cr);border-bottom:1px solid rgba(244,227,193,.6);font:400 1.125rem/1 var(--fd)}
+.res-leiste .mini{font-size:1.75rem;margin:0}
+.res-leiste small{margin-left:auto;font:600 .875rem var(--ft)}
+.res-inhalt{padding:clamp(1.5rem,5vw,3.5rem)}
+.res-inhalt>p{margin:1rem 0 2rem;max-width:52ch}
+.gruppe{border:0;padding:0;margin:0 0 1.75rem;min-width:0}
+.gruppe legend{display:flex;align-items:center;gap:.6rem;padding:0;margin-bottom:.75rem;font-weight:700}
+.schritt{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--sw);color:var(--cr);font-size:.875rem;font-variant-numeric:tabular-nums}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.res-option{position:relative;flex:0 0 auto;scroll-snap-align:start}
+.res-radio{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
+.res-label{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:48px;min-width:52px;padding:.45rem 1rem;border:2px solid var(--sw);border-radius:10px;font-weight:600;line-height:1.2;font-variant-numeric:tabular-nums;cursor:pointer;transition:background .2s,box-shadow .2s,transform .2s}
+.res-label b{font-size:.9375rem}
+.res-label small{font-size:.8125rem;font-weight:500}
+.res-option:hover .res-label{background:#EAD4A8}
+.res-radio:checked+.res-label{background:var(--or);color:var(--sw);box-shadow:3px 3px 0 var(--sw);transform:translate(-1px,-1px)}
+.res-radio:focus-visible+.res-label{outline:3px solid var(--sw);outline-offset:3px}
+[data-tage][aria-invalid="true"] .res-label,[data-zeiten][aria-invalid="true"] .res-label,[data-personen][aria-invalid="true"] .res-label{border-color:var(--rot);border-style:dashed}
+.res-hinweis{color:var(--rot);font-weight:600;font-size:.9375rem;margin-top:.5rem}
+.res-demo-hinweis{font-size:.9375rem;background:#EAD4A8;padding:.75rem 1rem;border-radius:8px;margin-bottom:1.5rem}
+.felder{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem 1.25rem}
+.feld.voll{grid-column:1/-1}
+.feld label{display:block;font-weight:700;font-size:.9375rem;margin-bottom:.35rem}
+.feld label small{font-weight:500}
+.feld input,.feld textarea{width:100%;min-height:52px;padding:.75rem 1rem;border:2px solid var(--sw);border-radius:8px;background:var(--hell);color:var(--sw);font:inherit}
+.feld textarea{min-height:110px;resize:vertical}
+.feld input:focus-visible,.feld textarea:focus-visible{outline:3px solid var(--or);outline-offset:2px}
+.res-karte :focus-visible{outline-color:var(--sw)}
+.res-karte [aria-invalid="true"]:is(input,textarea){border-color:var(--rot);background:#FCEBE2}
+.einwilligung{display:flex;gap:.75rem;align-items:flex-start;margin:1.5rem 0 1rem;font-size:.9375rem;cursor:pointer}
+.einwilligung input{flex:none;width:24px;height:24px;margin-top:1px;accent-color:var(--sw)}
+.einwilligung a{font-weight:700}
+[data-reservierung-fehler]{color:var(--rot);font-weight:600}
+[data-reservierung-fehler]:not(:empty){margin-bottom:1rem}
+.res-fuss{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.5rem}
+.res-fuss a{font-weight:700}
+.bon{max-width:440px;margin:1rem auto;background:var(--hell);border:2px solid var(--sw);border-radius:4px;font-variant-numeric:tabular-nums}
+.bon-kopf{display:flex;align-items:center;gap:.6rem;padding:.6rem 1rem;background:var(--sw);color:var(--cr);font:400 1rem/1 var(--fd)}
+.bon-kopf .mini{font-size:1.5rem;margin:0}
+.bon-inhalt{padding:1.5rem}
+.bon h3{font:400 clamp(1.75rem,4vw,2.25rem)/1.1 var(--fd);margin-bottom:1rem}
+.bon dl div{display:flex;justify-content:space-between;gap:1rem;padding:.5rem 0;border-bottom:1px dashed var(--sw)}
+.bon dd{font-weight:700;text-align:right}
+.bon p{margin:1.25rem 0}
+@media (max-width:819px){
+.felder{grid-template-columns:minmax(0,1fr)}
+[data-tage],[data-zeiten]{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x proximity;padding:4px 4px 10px;margin-inline:-4px}
+.res-sek{padding-inline:.75rem}
+.res-fuss .knopf{width:100%}
+}
+
+.lage{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(2rem,4vw,4rem);align-items:start;padding-block:var(--sek)}
+.karte-rahmen{position:relative;isolation:isolate;z-index:0;aspect-ratio:4/3;border-radius:10px;overflow:hidden;border:1px solid var(--li);background:var(--kf)}
+[data-karte]{width:100%;height:100%}
+.lage-text .h2{font-size:clamp(2.25rem,4.4vw,3.75rem)}
+.lage-text .ort{font-weight:700;font-size:1.125rem;margin:.5rem 0 1.25rem}
+.lage-text .lead{margin-bottom:1.5rem}
+.lage-aktion{display:flex;flex-wrap:wrap;gap:.75rem 1.5rem;align-items:center;margin-bottom:2rem}
+.fassade{aspect-ratio:16/9}
+.fassade img{object-position:50% 30%}
+@media (max-width:819px){.lage{grid-template-columns:minmax(0,1fr)}.lage-text{order:-1}.lage-aktion .knopf{width:100%}}
+
+.schluss{position:relative;background:#000;border-bottom:1px solid var(--li);padding-block:calc(14px + clamp(3rem,6vw,5rem)) clamp(3rem,6vw,5rem)}
+.schluss::before{content:"";position:absolute;top:0;left:0;right:0;height:14px;background:#000;border-bottom:1px solid rgba(244,227,193,.6)}
+.schluss-in{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:1.5rem 3rem}
+.schluss p{color:var(--c2);font-size:1.125rem}
+.schluss .schluss-kat{color:var(--cr);font-weight:600}
+.gross-nr{display:inline-flex;align-items:center;margin:.75rem 0 1rem;font:400 clamp(2.2rem,7vw,7rem)/1.1 var(--fd);text-decoration:none;font-variant-numeric:tabular-nums;white-space:nowrap;transition:color .3s}
+@media (max-width:819px){.schluss-in{grid-template-columns:minmax(0,1fr)}.schluss-in .knopf{width:100%}.gross-nr{font-size:8.4vw}}
+.gross-nr:hover{color:var(--or)}
+.fuss{padding-block:2.5rem;color:var(--c2);font-size:.9375rem}
+.fuss .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.5rem}
+.fuss strong{font:400 1.25rem var(--fd);color:var(--cr)}
+.rechtliches p{font-size:.875rem;margin-bottom:.4rem;max-width:62ch}
+.unterleiste{display:none}
+@media (max-width:819px){
+.unterleiste{position:fixed;left:0;right:0;bottom:0;z-index:70;display:grid;grid-template-columns:repeat(3,1fr);background:var(--sw);border-top:1px solid var(--li);padding-bottom:env(safe-area-inset-bottom)}
+.unterleiste a{display:flex;align-items:center;justify-content:center;min-height:56px;font-weight:700;text-decoration:none;border-left:1px solid var(--li)}
+.unterleiste a:first-child{background:var(--or);color:var(--sw);border:0}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+.z-kopf{position:sticky;top:calc(var(--kopf) + 3rem);align-self:start}
+.hero-aktion .knopf{white-space:nowrap}
+.res-karte .res-hinweis{font-size:1rem}
+.schildband{contain:paint}
+@media (max-width:819px){.z-kopf{position:static}.hero-aktion .knopf{font-size:1rem;padding:16px 20px}}
+.zerlegt-label{z-index:10;opacity:1}
+.zerlegt-ebene[data-ebene="1"] img{transform:rotate(90deg);clip-path:inset(0 22% 0 22%)}
+.ab-gross .nachweis-ecke{order:-1;padding-top:20px}
+.wm-wort::before{left:.05em;top:.05em}
+.kategorien{margin:.75rem 0 0}
+.hero-titel{margin-top:32px}
+.bon dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:var(--sw);color:var(--cr);border-radius:4px;overflow:hidden}
+.bon dl div{flex-direction:column;justify-content:flex-start;gap:.25rem;padding:.75rem;border:0;border-left:1px solid var(--li)}
+.bon dl div:first-child{border-left:0}
+.bon dl div:last-child{grid-column:1/-1;flex-direction:row;justify-content:space-between;border-left:0;border-top:1px solid var(--li)}
+.bon dt{font-size:.8125rem;color:var(--c2)}
+.bon dl div:not(:last-child) dd{font:400 1.0625rem/1.15 var(--fd);text-align:left}
+@media (min-width:820px){.wortmarke{font-size:clamp(3.5rem,7.5vw,8rem)}.hero-titel{font-size:clamp(1.75rem,2.8vw,2.75rem)}}
+@media (max-width:1024px){.hero-bild-wrap{margin-right:0}.hero-bild{min-height:0;border-radius:6px}}
+@media (min-width:820px) and (max-width:1024px){.hero{grid-template-columns:minmax(0,1fr);min-height:0;align-items:start;padding-block:48px 64px;row-gap:2rem}.hero-text,.hero-bild-wrap{grid-column:1}.hero-bild-wrap{order:-1;width:100%}.hero-bild{height:auto;aspect-ratio:16/9}.einschub{display:none}}
+@media (max-width:819px){.status{margin-bottom:12px}.wortmarke{font-size:12vw}.hero-titel{margin-top:24px}.ab-klein{width:50%;margin:-18% 0 0 auto}}
+</style>
+<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}[data-reservierung] [hidden]{display:none!important}</style><!--agent-lib--><link rel="stylesheet" href="lib/lenis.css"><script src="lib/gsap.min.js"></script><script src="lib/ScrollTrigger.min.js"></script><script src="lib/SplitText.min.js"></script><script src="lib/lenis.min.js"></script><!--/agent-lib--></head>
+<body><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für Ehso&#x27;s Burger. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
+<header class="kopf">
+  <div class="kopf-in wrap">
+    <a class="kopf-marke" href="#top">Ehso’s Burger</a>
+    <nav aria-label="Hauptnavigation"><a href="#karte">Karte</a><a href="#zeiten">Zeiten</a><a href="#reservieren">Reservieren</a></nav>
+    <a class="kopf-nr nr" href="tel:+494076487272">040 76 48 72 72</a>
+    <a class="knopf pill" href="tel:+494076487272">Anrufen</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero wrap" aria-label="Ehso’s Burger an der Bornheide">
+  <div class="hero-text">
+    <p class="status"><span data-status>Mo–Fr ab 15 Uhr · Sa &amp; So ab 13 Uhr</span></p>
+    <h1 class="wortmarke" aria-label="Ehso’s Burger"><span class="wm-wort" data-t="Ehso’s" style="--k:1">Ehso’s</span><span class="mini" aria-hidden="true"><i class="bt"></i><i class="ch"></i><i class="pa"></i><i class="sa"></i><i class="bb"></i></span><span class="wm-wort" data-t="Burger" style="--k:1">Burger</span></h1>
+        <p class="kategorien"><span>Burger</span><i aria-hidden="true"></i><span>Croque</span><i aria-hidden="true"></i><span>Wraps</span><i aria-hidden="true"></i><span>Finger Food</span><i aria-hidden="true"></i><span>Salate</span><i aria-hidden="true"></i><span>Crepes</span></p>
+    <p class="hero-titel">Mal sehen, was dazwischen <em>steckt.</em></p>
+    <p class="hero-satz">Burger, Croque, Wraps, Finger Food, Salate und Crepes an der Bornheide 47b in Osdorf. Mo–Fr ab 15 Uhr, Sa &amp; So ab 13 Uhr, Freitag und Samstag bis 2 Uhr nachts. Vor Ort, zum Mitnehmen oder geliefert.</p>
+    <div class="hero-aktion">
+      <a class="knopf magnet" href="tel:+494076487272">Anrufen · <span class="nr">040 76 48 72 72</span></a>
+      <a class="pfeil-link route" href="https://www.google.com/maps/dir/?api=1&amp;destination=Bornheide+47b,+22549+Hamburg" target="_blank" rel="noopener">Route zur Bornheide 47b <span aria-hidden="true">→</span></a>
+      <a class="pfeil-link" href="#reservieren">Tisch reservieren <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+  <div class="hero-bild-wrap">
+    <figure class="hero-bild rahmen schild-rahmen" data-foto>
+      <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmMzqrPqfC83hi9jISl2pgiIrjE_lY2M-I_ZgEFvbnE9AqZ1M9N5dYHYp_ooplwDQLGo2KYh1BIuYRv73emDs0sump8rejueiW1t6Bo4j7S_SMdo67blJkrHWtFhm2ymPVGJ1f9wPs2MyrZO=s4800-w1000" referrerpolicy="no-referrer" alt="Burger mit Rindfleisch-Patty, Cheddar, gebratenen Champignons und Salat auf dunklem Grund" width="800" height="800" fetchpriority="high">
+      <figcaption class="bu"><p>Rindfleisch-Patty, Cheddar, gebratene Champignons, Salat</p><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/104555915852554770550" target="_blank" rel="noopener">Foto: Ehso`s Burger · Google Maps</a></figcaption>
+    </figure>
+    <figure class="einschub" data-foto>
+      <div class="bildbox"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmO7pKkPjS_bxRwUy8BNRelf0X0-YwhX93H9Ly4mN5Izbf4Gx7WGjrH7eggZkDtB8K_OlwYV9IoTEF-TYHc6kP4WSwhWO2a77Uiwa4ElUuMZclIJ3XW1xPcS8ybZbkPwJknUUGJhL7mVA5jZ=s4800-w1800" referrerpolicy="no-referrer" alt="Ladenzeile an der Bornheide mit dem schwarzen Schild von Ehso’s Burger" width="480" height="268"></div>
+      <figcaption>So findest du uns: schwarzes Schild, Bornheide 47b<br><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/104555915852554770550" target="_blank" rel="noopener">Foto: Ehso`s Burger · Google Maps</a></figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="schildband" aria-hidden="true">
+  <div class="band-spur"><span>Burger</span><span>Croque</span><span>Wraps</span><span>Finger Food</span><span>Salate</span><span>Crepes</span><span>Bornheide 47b</span><span>Burger</span><span>Croque</span><span>Wraps</span><span>Finger Food</span><span>Salate</span><span>Crepes</span><span>Bornheide 47b</span></div>
+</div>
+
+<section class="angebot wrap" aria-labelledby="angebot-titel">
+  <div class="angebot-text">
+    <h2 class="h2" id="angebot-titel">Sechs Sachen stehen auf dem Schild. <span class="akzent">Alle</span> gibt’s drinnen.</h2>
+    <p class="lead">Burger mit saftigem Patty und Soße, Croque im Baguette, Wraps mit Hackfleisch und Jalapeños. Dazu Finger Food, Salate, Crepes und Desserts, ab nachmittags bis spät.</p>
+    <dl class="info">
+      <div><dt>Vor Ort essen</dt><dd>ja</dd></div>
+      <div><dt>Zum Mitnehmen</dt><dd>ja</dd></div>
+      <div><dt>Lieferung</dt><dd>ja</dd></div>
+      <div><dt>Abholen</dt><dd>15 % Rabatt, laut Schaufenster</dd></div>
+      <div><dt>Freitag &amp; Samstag</dt><dd>bis 02:00</dd></div>
+      <div><dt>Telefon</dt><dd><a href="tel:+494076487272" class="nr">040 76 48 72 72</a></dd></div>
+    </dl>
+  </div>
+  <div class="angebot-bilder">
+    <figure class="ab-gross rahmen schild-rahmen enthuellen" data-foto>
+      <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmMc_kpz_fFnE2WeENLoIxar69VLaK1qJ93R9QcrQFAPz0oxGJtQjNryxc408rCUpnxK46vTZ7otprHPmosGhfSK8ItNovCvXIPfrzqcHC0blacF0Mh-lCO9y10d2PjzY9QmEXTcyS1EPEZb=s4800-w1000" referrerpolicy="no-referrer" alt="Halbierter Wrap mit Hackfleisch, Gemüse und Jalapeños" width="800" height="800" loading="lazy">
+      <figcaption class="nachweis-ecke"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/104555915852554770550" target="_blank" rel="noopener">Foto: Ehso`s Burger · Google Maps</a></figcaption>
+    </figure>
+    <figure class="ab-klein rahmen schild-rahmen enthuellen" data-foto>
+      <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmN2pW__kjKKIkxGV6Z8_gLy3Tg5btN4eEk4A4Ex-7GXtfwNrJW4GrU_wqnfktM0zcGmZ6_-2kCvhqCQfO4n46Q9hPf-AczStQz8KjRDPfVgK-sbMCn66dhzAF7t2cIh7vVWnmRafxY_mkvK=s4800-w1000" referrerpolicy="no-referrer" alt="Baguette mit Hähnchen, Tomaten, roten Zwiebeln und Salat" width="600" height="600" loading="lazy">
+      <figcaption class="nachweis-ecke"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/104555915852554770550" target="_blank" rel="noopener">Foto: Ehso`s Burger · Google Maps</a></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="zerlegt" id="burger" aria-labelledby="z-titel">
+  <div class="z-kopf">
+    <h2 class="h2" id="z-titel">Was zwischen Ehso’s und Burger <span class="akzent">steckt.</span></h2>
+    <p>Der Champignon-Cheddar-Burger, Schicht für Schicht.</p>
+    <p class="zerlegt-ende">Bestellen: <a href="tel:+494076487272" class="nr">040 76 48 72 72</a></p>
+  </div>
+  <div class="zerlegt-buehne offen">
+    <div class="zerlegt-ebene" data-ebene="1" style="z-index:6"><img src="ki-ebene-brot-oben.webp" alt="Obere Brötchenhälfte" width="600" height="600" loading="lazy"><svg class="zerlegt-linie" viewBox="0 0 120 12" preserveAspectRatio="none" aria-hidden="true"><path d="M118 6H4M10 1L4 6l6 5"/></svg><span class="zerlegt-label"><b>01</b>Brötchen</span></div>
+    <div class="zerlegt-ebene" data-ebene="2" style="z-index:5"><img src="ki-ebene-champignons.webp" alt="Gebratene Champignons" width="600" height="600" loading="lazy"><svg class="zerlegt-linie" viewBox="0 0 120 12" preserveAspectRatio="none" aria-hidden="true"><path d="M118 6H4M10 1L4 6l6 5"/></svg><span class="zerlegt-label"><b>02</b>Gebratene Champignons</span></div>
+    <div class="zerlegt-ebene" data-ebene="3" style="z-index:4"><img src="ki-ebene-cheddar.webp" alt="Scheibe Cheddar" width="600" height="600" loading="lazy"><svg class="zerlegt-linie" viewBox="0 0 120 12" preserveAspectRatio="none" aria-hidden="true"><path d="M118 6H4M10 1L4 6l6 5"/></svg><span class="zerlegt-label"><b>03</b>Cheddar</span></div>
+    <div class="zerlegt-ebene" data-ebene="4" style="z-index:3"><img src="ki-ebene-patty.webp" alt="Rindfleisch-Patty" width="600" height="600" loading="lazy"><svg class="zerlegt-linie" viewBox="0 0 120 12" preserveAspectRatio="none" aria-hidden="true"><path d="M118 6H4M10 1L4 6l6 5"/></svg><span class="zerlegt-label"><b>04</b>Rindfleisch-Patty</span></div>
+    <div class="zerlegt-ebene" data-ebene="5" style="z-index:2"><img src="ki-ebene-salat.webp" alt="Salatblätter" width="600" height="600" loading="lazy"><svg class="zerlegt-linie" viewBox="0 0 120 12" preserveAspectRatio="none" aria-hidden="true"><path d="M118 6H4M10 1L4 6l6 5"/></svg><span class="zerlegt-label"><b>05</b>Salat</span></div>
+    <div class="zerlegt-ebene" data-ebene="6" style="z-index:1"><img src="ki-ebene-brot-unten.webp" alt="Untere Brötchenhälfte" width="600" height="600" loading="lazy"><svg class="zerlegt-linie" viewBox="0 0 120 12" preserveAspectRatio="none" aria-hidden="true"><path d="M118 6H4M10 1L4 6l6 5"/></svg><span class="zerlegt-label"><b>06</b>Brötchen</span></div>
+  </div>
+</section>
+
+<section class="karte-sek" id="karte" aria-labelledby="karte-titel">
+  <div class="wrap kopfzeile">
+    <h2 class="h2" id="karte-titel">Die Karte, so wie sie auf dem Schild steht.</h2>
+    <p class="lead">Tippe dich durch. Preise und alle Sorten gibt’s im Laden oder am Telefon.</p>
+  </div>
+  <div class="reiter"><div class="reiter-in" role="tablist" aria-label="Kategorien">
+    <button role="tab" id="t-burger" aria-controls="p-burger" aria-selected="true">Burger</button>
+    <button role="tab" id="t-croque" aria-controls="p-croque" aria-selected="false">Croque</button>
+    <button role="tab" id="t-wraps" aria-controls="p-wraps" aria-selected="false">Wraps</button>
+    <button role="tab" id="t-finger" aria-controls="p-finger" aria-selected="false">Finger Food</button>
+    <button role="tab" id="t-salate" aria-controls="p-salate" aria-selected="false">Salate</button>
+    <button role="tab" id="t-crepes" aria-controls="p-crepes" aria-selected="false">Crepes</button>
+  </div></div>
+  <div class="wrap">
+    <article class="panel" id="p-burger" role="tabpanel" aria-labelledby="t-burger">
+      <div class="panel-text"><h3>Burger</h3><p>Rindfleisch-Patty, Cheddar, gebratene Champignons und Salat im Brötchen. Dazu Pommes, Nuggets und Dips aufs Tablett.</p></div>
+      <figure class="panel-bild hoch rahmen" data-foto>
+        <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmPkSYQBVxjmkK9UQjnTxqk-uCnwY3NMbGF3P3RvJ4UnTjA4dL2jYSXeFNnz4RuuOcV-Rrq48Ax3BxzjAJoO4GNw6PAf3uyZ6piMcmk8C_5tcgcxoRWlmRvAP9XPV9RD86-XGNkOAdRLSJMK=s4800-w1000" referrerpolicy="no-referrer" alt="Tablett mit Burgern, Pommes, Nuggets und Dips" width="600" height="800" loading="lazy">
+        <figcaption class="nachweis-ecke"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/115397285725197020451" target="_blank" rel="noopener">Foto: Abdulwalyy Chaouki · Google Maps</a></figcaption>
+      </figure>
+    </article>
+    <article class="panel" id="p-croque" role="tabpanel" aria-labelledby="t-croque">
+      <div class="panel-text"><h3>Croque</h3><p>Croque im Baguette, zum Beispiel mit Salami und Käse. Oder als Baguette mit Hähnchen, Tomaten, roten Zwiebeln und Salat.</p></div>
+      <figure class="panel-bild rahmen" data-foto>
+        <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmO92woECaTUq50IB-rISQDM49Fs8UO8YuunTVCJKVJkdF0HNE0gl9y78jWxdGWLYS-_KnwzvR5rew1XGVsrX1TvI6ZvsL0JHwziOorRjP5PhC0gm27PlIe2Pw8gea3FMm2D6Qq9yoOYbmY=s4800-w1000" referrerpolicy="no-referrer" alt="Baguette mit Salami und Käse auf einer Schieferplatte" width="700" height="700" loading="lazy">
+        <figcaption class="nachweis-ecke"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/104555915852554770550" target="_blank" rel="noopener">Foto: Ehso`s Burger · Google Maps</a></figcaption>
+      </figure>
+    </article>
+    <article class="panel" id="p-wraps" role="tabpanel" aria-labelledby="t-wraps">
+      <div class="panel-text"><h3>Wraps</h3><p>Wrap mit Hackfleisch, Gemüse und Jalapeños, halbiert serviert. Für den Hunger zwischendurch oder auf die Hand.</p></div>
+      <div class="panel-typo" aria-hidden="true"><span>Wraps</span></div>
+    </article>
+    <article class="panel" id="p-finger" role="tabpanel" aria-labelledby="t-finger">
+      <div class="panel-text"><h3>Finger Food</h3><p>Panierte Mozzarella-Sticks, Nuggets und Pommes, mit Dips. Zum Teilen oder als Beilage zum Burger.</p></div>
+      <figure class="panel-bild rahmen" data-foto>
+        <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmOOjTWyw4-8EE5ZXyj-aVf9oTZCfctu3ogwVZNRvXnj5h1vOHdqn-R9ubXsdbvyZvBpx9ghTz267EtUcAqZ29No0l9jOI3aGMHKZ3q7TcnPrpdrQ6IUbJ2GoEJ3VWQPMYoxL6PTjb0joOys=s4800-w1000" referrerpolicy="no-referrer" alt="Panierte Mozzarella-Sticks in einer Pappbox" width="700" height="700" loading="lazy">
+        <figcaption class="nachweis-ecke"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/104555915852554770550" target="_blank" rel="noopener">Foto: Ehso`s Burger · Google Maps</a></figcaption>
+      </figure>
+    </article>
+    <article class="panel" id="p-salate" role="tabpanel" aria-labelledby="t-salate">
+      <div class="panel-text"><h3>Salate</h3><p>Salate stehen fest auf dem Schild. Welche es gerade gibt, sagen wir dir am Telefon.</p></div>
+      <div class="panel-typo" aria-hidden="true"><span>Salate</span></div>
+    </article>
+    <article class="panel" id="p-crepes" role="tabpanel" aria-labelledby="t-crepes">
+      <div class="panel-text"><h3>Crepes</h3><p>Crepes und Desserts für danach. Die Sorten stehen auf der Karte im Laden.</p></div>
+      <div class="panel-typo" aria-hidden="true"><span>Crepes</span></div>
+    </article>
+    <p class="karte-hinweis">Ganze Karte und Preise: im Laden oder am Telefon, <a href="tel:+494076487272" class="nr">040 76 48 72 72</a>.</p>
+  </div>
+</section>
+
+<section class="zeiten wrap" id="zeiten" aria-labelledby="zeiten-titel">
+  <div>
+    <h2 class="h2" id="zeiten-titel">Schild an, <span class="akzent">Schild aus.</span></h2>
+    <p class="lead">Unter der Woche ab 15 Uhr, am Wochenende ab 13 Uhr. Freitag und Samstag bleibt das Schild bis 2 Uhr an. Freitag nach der Schicht noch Hunger? Passt.</p>
+    <p class="status"><span data-status>Mo–Fr ab 15 Uhr · Sa &amp; So ab 13 Uhr</span></p>
+  </div>
+  <div class="zeit-box">
+    <div class="achse reihe-raster" aria-hidden="true"><span class="leer"></span><div class="achse-spur"><span style="left:0">13:00</span><span style="left:15.38%">15:00</span><span style="left:38.46%">18:00</span><span style="left:61.54%">21:00</span><span style="left:84.62%">00:00</span><span style="left:100%">02:00</span></div><span class="leer"></span></div>
+    <ol class="zeitleiste" aria-label="Öffnungszeiten">
+      <li class="tag-reihe reihe-raster" data-tag="1"><span class="tag-name"><abbr title="Montag">Mo</abbr></span><span class="spur" aria-hidden="true"><span class="balken" style="--a:2;--e:11"></span></span><span class="tag-zeit">15:00–00:00</span></li>
+      <li class="tag-reihe reihe-raster" data-tag="2"><span class="tag-name"><abbr title="Dienstag">Di</abbr></span><span class="spur" aria-hidden="true"><span class="balken" style="--a:2;--e:11"></span></span><span class="tag-zeit">15:00–00:00</span></li>
+      <li class="tag-reihe reihe-raster" data-tag="3"><span class="tag-name"><abbr title="Mittwoch">Mi</abbr></span><span class="spur" aria-hidden="true"><span class="balken" style="--a:2;--e:11"></span></span><span class="tag-zeit">15:00–00:00</span></li>
+      <li class="tag-reihe reihe-raster" data-tag="4"><span class="tag-name"><abbr title="Donnerstag">Do</abbr></span><span class="spur" aria-hidden="true"><span class="balken" style="--a:2;--e:11"></span></span><span class="tag-zeit">15:00–00:00</span></li>
+      <li class="tag-reihe reihe-raster" data-tag="5"><span class="tag-name"><abbr title="Freitag">Fr</abbr></span><span class="spur" aria-hidden="true"><span class="balken" style="--a:2;--e:13"></span></span><span class="tag-zeit">15:00–02:00</span></li>
+      <li class="tag-reihe reihe-raster" data-tag="6"><span class="tag-name"><abbr title="Samstag">Sa</abbr></span><span class="spur" aria-hidden="true"><span class="balken" style="--a:0;--e:13"></span></span><span class="tag-zeit">13:00–02:00</span></li>
+      <li class="tag-reihe reihe-raster" data-tag="7"><span class="tag-name"><abbr title="Sonntag">So</abbr></span><span class="spur" aria-hidden="true"><span class="balken" style="--a:0;--e:11"></span></span><span class="tag-zeit">13:00–00:00</span></li>
+    </ol>
+    <div class="jetzt" hidden aria-hidden="true"><span>jetzt</span></div>
+  </div>
+</section>
+
+<section class="res-sek" id="reservieren" aria-labelledby="res-titel">
+  <div class="res-karte">
+    <div class="res-leiste">Ehso’s Burger<small>Bornheide 47b</small></div>
+    <div class="res-inhalt">
+      <h2 class="h2" id="res-titel">Tisch an der Bornheide</h2>
+      <p>Tag, Uhrzeit, wie viele ihr seid. Wir rufen dich zur Bestätigung zurück.</p>
+      <form data-reservierung>
+        <fieldset class="gruppe"><legend><span class="schritt">1</span>Tag</legend><div class="chips" data-tage></div></fieldset>
+        <fieldset class="gruppe"><legend><span class="schritt">2</span>Uhrzeit</legend><div class="chips" data-zeiten></div></fieldset>
+        <fieldset class="gruppe"><legend><span class="schritt">3</span>Personen</legend><div class="chips" data-personen></div></fieldset>
+        <div class="felder">
+          <div class="feld"><label for="r-name">Name</label><input id="r-name" name="name" type="text" autocomplete="name" required></div>
+          <div class="feld"><label for="r-tel">Telefon</label><input id="r-tel" name="telefon" type="tel" autocomplete="tel" required></div>
+          <div class="feld voll"><label for="r-mail">E-Mail <small>(optional)</small></label><input id="r-mail" name="email" type="email" autocomplete="email"></div>
+          <div class="feld voll"><label for="r-nachricht">Nachricht <small>(optional)</small></label><textarea id="r-nachricht" name="nachricht" rows="3"></textarea></div>
+        </div>
+        <label class="einwilligung"><input type="checkbox" name="einwilligung" required><span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Reservierung verwendet werden. <a href="https://medialyte.de/datenschutzerklaerung" target="_blank" rel="noopener">Datenschutz</a></span></label>
+        <p data-reservierung-fehler role="alert"></p>
+        <div class="res-fuss"><button type="submit" class="knopf dunkel">Tisch anfragen</button><span>Eilig? <a href="tel:+494076487272" class="nr">040 76 48 72 72</a></span></div>
+      </form>
+      <div data-reservierung-erfolg hidden>
+        <div class="bon">
+          <div class="bon-kopf">Ehso’s Burger · Bornheide 47b</div>
+          <div class="bon-inhalt">
+            <h3>Danke! Deine Anfrage ist da.</h3>
+            <dl>
+              <div><dt>Tag</dt><dd><span data-wert="datum"></span></dd></div>
+              <div><dt>Uhrzeit</dt><dd><span data-wert="uhrzeit"></span></dd></div>
+              <div><dt>Personen</dt><dd><span data-wert="personen"></span></dd></div>
+              <div><dt>Name</dt><dd><span data-wert="name"></span></dd></div>
+            </dl>
+            <p>Wir rufen dich zur Bestätigung an. Eilig? <a href="tel:+494076487272" class="nr">040 76 48 72 72</a></p>
+            <button type="button" class="knopf dunkel" data-reservierung-neu>Neue Anfrage</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lage wrap" id="lage" aria-labelledby="lage-titel">
+  <div class="karte-rahmen"><div data-karte data-stil="dunkel" data-farbe="#E8962E"></div></div>
+  <div class="lage-text">
+    <h2 class="h2" id="lage-titel">Bornheide 47b</h2>
+    <p class="ort">22549 Hamburg-Osdorf</p>
+    <p class="lead">In der Ladenzeile an der Bornheide: schwarzes Schild mit dem Burger zwischen den Wörtern, Eingang mittig unter dem Schild. Selbst abholen lohnt sich, steht so auch im Schaufenster.</p>
+    <div class="lage-aktion">
+      <a class="knopf" href="https://www.google.com/maps/dir/?api=1&amp;destination=Bornheide+47b,+22549+Hamburg" target="_blank" rel="noopener">Route planen</a>
+      <a class="pfeil-link" href="tel:+494076487272">Anrufen <span aria-hidden="true">→</span></a>
+    </div>
+    <figure class="fassade rahmen schild-rahmen enthuellen" data-foto>
+      <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmO7pKkPjS_bxRwUy8BNRelf0X0-YwhX93H9Ly4mN5Izbf4Gx7WGjrH7eggZkDtB8K_OlwYV9IoTEF-TYHc6kP4WSwhWO2a77Uiwa4ElUuMZclIJ3XW1xPcS8ybZbkPwJknUUGJhL7mVA5jZ=s4800-w1800" referrerpolicy="no-referrer" alt="Außenansicht von Ehso’s Burger mit beleuchtetem Schild und Schaufenster" width="800" height="447" loading="lazy">
+      <figcaption class="nachweis-ecke"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/104555915852554770550" target="_blank" rel="noopener">Foto: Ehso`s Burger · Google Maps</a></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="schluss" aria-label="Anrufen und bestellen">
+  <div class="wrap schluss-in">
+    <div>
+      <p>Anrufen, bestellen, selbst abholen. Abholer sparen laut Schaufenster 15 %.</p>
+      <a class="gross-nr" href="tel:+494076487272" aria-label="040 76 48 72 72 anrufen"><span>040 76 48 72 72</span></a>
+      <p class="schluss-kat">Burger, Croque, Wraps, Finger Food, Salate, Crepes · Bornheide 47b, Osdorf</p>
+    </div>
+    <a class="knopf magnet" href="tel:+494076487272">Anrufen &amp; bestellen</a>
+  </div>
+</section>
+</main>
+
+<footer class="fuss">
+  <div class="wrap">
+    <div><strong>Ehso’s Burger</strong><p>Bornheide 47b · 22549 Hamburg<br><a href="tel:+494076487272" class="nr">040 76 48 72 72</a></p></div>
+    <div class="rechtliches"><p>Entwurf von Medialyte, 21147 Hamburg. Adresse und Öffnungszeiten: Google. Fotos: Google Maps, Urheber jeweils am Bild. Einige Bilder und das Logo sind KI-generierte Vorschläge.</p><p><a href="https://medialyte.de/impressum" style="color:inherit;text-decoration:underline">Impressum</a> · <a href="https://medialyte.de/datenschutzerklaerung" style="color:inherit;text-decoration:underline">Datenschutz</a></p></div>
+  </div>
+</footer>
+
+<nav class="unterleiste" aria-label="Schnellzugriff">
+  <a href="tel:+494076487272">Anrufen</a>
+  <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Bornheide+47b,+22549+Hamburg" target="_blank" rel="noopener">Route</a>
+  <a href="#zeiten">Zeiten</a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+const q=(s,c=document)=>c.querySelector(s),qa=(s,c=document)=>[...c.querySelectorAll(s)];
+const ruhig=matchMedia("(prefers-reduced-motion: reduce)");
+const hatGsap=!!(window.gsap&&window.ScrollTrigger);
+
+const tabs=qa('[role="tab"]'),panels=tabs.map(t=>document.getElementById(t.getAttribute("aria-controls")));
+const zeige=(i,fokus,anim)=>{
+  tabs.forEach((t,j)=>{const an=j===i;t.setAttribute("aria-selected",an);t.tabIndex=an?0:-1;panels[j].hidden=!an});
+  if(fokus){tabs[i].focus();tabs[i].scrollIntoView({block:"nearest",inline:"center"})}
+  if(hatGsap){if(anim&&!ruhig.matches)gsap.from(panels[i],{autoAlpha:0,y:18,duration:.45,ease:"power2.out",clearProps:"opacity,visibility,transform"});ScrollTrigger.refresh()}
+};
+tabs.forEach((t,i)=>{
+  t.addEventListener("click",()=>zeige(i,false,true));
+  t.addEventListener("keydown",e=>{const d={ArrowRight:1,ArrowLeft:-1}[e.key];if(d){e.preventDefault();zeige((i+d+tabs.length)%tabs.length,true,true)}});
+});
+zeige(0);
+
+const wm=q(".wortmarke");
+const fit=()=>{wm.style.fontSize="";const w=wm.scrollWidth,p=wm.parentElement.clientWidth;if(w>p)wm.style.fontSize=parseFloat(getComputedStyle(wm).fontSize)*p/w*.97+"px"};
+fit();
+if(document.fonts)document.fonts.ready.then(()=>{fit();hatGsap&&ScrollTrigger.refresh()});
+addEventListener("resize",fit);
+
+const teile=Object.fromEntries(new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Berlin",weekday:"short",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(new Date()).map(p=>[p.type,p.value]));
+let tag=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"].indexOf(teile.weekday)+1,h=+teile.hour,t=h+(+teile.minute)/60;
+if(h<3){t+=24;tag=tag===1?7:tag-1}
+const reihe=q(`.tag-reihe[data-tag="${tag}"]`);if(reihe)reihe.classList.add("heute");
+const box=q(".zeit-box"),jetzt=q(".jetzt");
+q("span",jetzt).textContent="jetzt "+teile.hour+":"+teile.minute;
+const setzJetzt=()=>{
+  if(t<13||t>26){jetzt.hidden=true;return}
+  const sp=q(".spur",box).getBoundingClientRect(),br=box.getBoundingClientRect();
+  jetzt.hidden=false;jetzt.style.left=(sp.left-br.left+(t-13)/13*sp.width)+"px";
+};
+setzJetzt();addEventListener("resize",setzJetzt);
+const erf=q("[data-reservierung-erfolg]");
+if(erf)new MutationObserver(()=>{if(erf.hidden)return;const c=q("[data-tage] input:checked"),d=q('[data-wert="datum"]',erf);if(c&&d){const l=c.nextElementSibling||c.closest("label");if(l){const txt=[...l.children].map(x=>x.textContent.trim()).filter(Boolean).join(", ")||l.textContent.trim();if(txt)d.textContent=txt}}}).observe(erf,{attributes:true,attributeFilter:["hidden"]});
+
+if(!hatGsap)return;
+gsap.registerPlugin(ScrollTrigger,...(window.SplitText?[SplitText]:[]));
+const kopf=q(".kopf"),mm=gsap.matchMedia();
+const buehne=q(".zerlegt-buehne");
+
+mm.add("(prefers-reduced-motion: no-preference)",()=>{
+  const klein=innerWidth<820;
+  gsap.from(kopf,{yPercent:-100,duration:.7,ease:"power3.out"});
+  if(window.SplitText){
+    const worte=qa(".wm-wort");
+    wm.classList.add("maske");
+    const s=SplitText.create(worte,{type:"chars"});
+    gsap.timeline({delay:.25,onComplete:()=>wm.classList.remove("maske")})
+      .from(s.chars,{yPercent:115,duration:klein?.6:.9,ease:"expo.out",stagger:klein?.025:.045})
+      .from(worte,{"--k":0,duration:.4},"-=.35")
+      .from(".wortmarke .mini",klein?{autoAlpha:0,duration:.3}:{scale:0,rotate:-14,duration:.7,ease:"back.out(2.4)"},"-=.45");
+    SplitText.create(".hero-titel",{type:"lines",mask:"lines",autoSplit:true,onSplit:x=>gsap.from(x.lines,{yPercent:110,duration:1,ease:"expo.out",stagger:.08,delay:.7})});
+  }
+  gsap.from(".hero-bild",{clipPath:"inset(100% 0% 0% 0%)",duration:1.2,ease:"expo.inOut",delay:.15});
+  gsap.from(".einschub",{y:30,autoAlpha:0,duration:.8,delay:1.1,ease:"power3.out"});
+  gsap.fromTo(".hero-bild img",{yPercent:-2.5,scale:1.06},{yPercent:2.5,ease:"none",scrollTrigger:{trigger:".hero",start:"top top",end:"bottom top",scrub:true}});
+  qa(".enthuellen").forEach(el=>gsap.from(el,{clipPath:"inset(14% 14% 14% 14% round 10px)",duration:1.1,ease:"power3.out",scrollTrigger:{trigger:el,start:"top 85%"}}));
+  if(!klein){const spur=q(".band-spur");ScrollTrigger.create({onUpdate:s=>{spur.style.animationDirection=s.direction<0?"reverse":"normal"}})}
+
+  const z=q(".zerlegt"),ebenen=qa(".zerlegt-ebene",buehne),n=ebenen.length,mitte=(n-1)/2,kurz=()=>innerWidth<820,kb=q(".z-kopf"),ende=q(".zerlegt-ende");
+  qa(".zerlegt-linie path").forEach(p=>{p.style.strokeDasharray=p.getTotalLength();p.style.strokeDashoffset=0});
+  const spalt=()=>parseFloat(getComputedStyle(buehne).getPropertyValue("--spalt"))||24;
+  gsap.timeline({scrollTrigger:{trigger:buehne,start:"top 75%",once:true}})
+    .from(ebenen,{y:i=>-(i-mitte)*(spalt()+ebenen[0].offsetHeight*.5),duration:.9,ease:"power3.inOut",immediateRender:false})
+    .from(".zerlegt-linie path",{strokeDashoffset:(i,el)=>el.getTotalLength(),duration:.5,stagger:.12,immediateRender:false},"-=.2")
+    .from(".zerlegt-label",{autoAlpha:0,x:i=>i%2?16:-16,duration:.4,stagger:.12,immediateRender:false},"<.1");
+
+  const st={trigger:box,start:"top 80%"};
+  gsap.from(".balken",{clipPath:"inset(0% 100% 0% 0%)",duration:.9,ease:"power2.out",stagger:.07,scrollTrigger:st});
+  if(!jetzt.hidden)gsap.from(jetzt,{x:()=>-parseFloat(jetzt.style.left||0),duration:1.4,ease:"power3.inOut",delay:.3,scrollTrigger:{...st}});
+  return()=>{wm.classList.remove("maske");buehne.classList.add("offen")};
+});
+
+mm.add("(pointer: fine) and (prefers-reduced-motion: no-preference)",()=>{
+  const weg=qa(".magnet").map(b=>{
+    const x=gsap.quickTo(b,"x",{duration:.4,ease:"power3"}),y=gsap.quickTo(b,"y",{duration:.4,ease:"power3"});
+    const mv=e=>{const r=b.getBoundingClientRect();x((e.clientX-r.left-r.width/2)*.22);y((e.clientY-r.top-r.height/2)*.35)},lv=()=>{x(0);y(0)};
+    b.addEventListener("pointermove",mv);b.addEventListener("pointerleave",lv);
+    return()=>{b.removeEventListener("pointermove",mv);b.removeEventListener("pointerleave",lv)};
+  });
+  return()=>weg.forEach(f=>f());
+});
+
+if(window.Lenis&&matchMedia("(pointer: fine) and (prefers-reduced-motion: no-preference)").matches){
+  const lenis=new Lenis({autoRaf:false});
+  lenis.on("scroll",ScrollTrigger.update);
+  gsap.ticker.add(tk=>lenis.raf(tk*1000));gsap.ticker.lagSmoothing(0);
+}
+});
+</script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>[data-karte]{width:100%;height:100%;min-height:260px}[data-karte] .leaflet-tile-pane{filter:var(--karte-filter)}
+[data-karte] .leaflet-control-attribution{font-size:10px}.karte-pin{position:relative;width:34px;height:34px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+box-shadow:0 6px 16px rgba(0,0,0,.35);border:3px solid #fff}.karte-pin i{position:absolute;inset:9px;border-radius:50%;background:#fff}</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>(function(){var C={"lat": 53.5873547, "lng": 9.8512377, "name": "Ehso's Burger", "filter": {"hell": "grayscale(1) contrast(1.05) brightness(1.04)", "dunkel": "grayscale(1) invert(1) contrast(.88) brightness(.82)", "warm": "grayscale(1) sepia(.5) contrast(1.02) brightness(1.02)", "kuehl": "grayscale(1) sepia(.35) hue-rotate(175deg) saturate(.55) brightness(1.03)", "mono": "grayscale(1) contrast(1.2)"}};function draw(){if(!window.L)return;document.querySelectorAll('[data-karte]').forEach(function(el){
+if(el._map)return;var st=el.getAttribute('data-stil')||'hell',col=el.getAttribute('data-farbe')||'#c0392b';
+el.style.setProperty('--karte-filter',C.filter[st]||C.filter.hell);
+var m=L.map(el,{scrollWheelZoom:false,zoomControl:true,attributionControl:true}).setView([C.lat,C.lng],16);el._map=m;
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(m);
+var icon=L.divIcon({className:'',html:'<div class="karte-pin" style="background:'+col+'"><i></i></div>',iconSize:[34,34],iconAnchor:[17,34]});
+L.marker([C.lat,C.lng],{icon:icon,title:C.name,alt:C.name}).addTo(m);setTimeout(function(){m.invalidateSize()},300);});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',draw);else draw();window.addEventListener('load',draw);})();</script><script>(function(){
+var P=[[780, 1440], [2340, 2880], [3780, 4320], [5220, 5760], [6660, 7200], [8100, 8760], [9420, 10200]];
+function fmt(m){m=((m%1440)+1440)%1440;var h=Math.floor(m/60),mi=m%60;return (h<10?'0':'')+h+':'+(mi<10?'0':'')+mi;}
+function now(){var d=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Berlin'}));return d.getDay()*1440+d.getHours()*60+d.getMinutes();}
+function status(){if(!P.length)return null;var t=now(),W=10080;
+ for(var i=0;i<P.length;i++){var s=P[i][0],e=P[i][1];if((t>=s&&t<e)||(t+W>=s&&t+W<e))return {offen:true,text:'Jetzt geöffnet bis '+fmt(e)};}
+ var best=null;for(var j=0;j<P.length;j++){var d=(P[j][0]-t+W)%W;if(best===null||d<best.d)best={d:d,s:P[j][0]};}
+ var tag=Math.floor(t/1440),ot=Math.floor(best.s/1440)%7,names=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+ var when=best.d<1440&&ot===tag?'heute':(best.d<2880&&ot===(tag+1)%7?'morgen':names[ot]);
+ return {offen:false,text:'Geschlossen · öffnet '+when+' um '+fmt(best.s)};}
+function run(){var s=status();document.querySelectorAll('[data-status]').forEach(function(el){
+ if(!s){el.style.display='none';return;}el.textContent=s.text;el.setAttribute('data-offen',s.offen?'ja':'nein');});}
+document.querySelectorAll('[data-foto] img').forEach(function(img){
+ function hide(){var b=img.closest('[data-foto]');if(b)b.style.display='none';}
+ if(!img.getAttribute('src'))hide();else{img.addEventListener('error',hide);if(img.complete&&img.naturalWidth===0)hide();}});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();setInterval(run,60000);
+})();</script><!--agent-res--><script>(function () {
+  /* Reservierung: Tage und Uhrzeiten aus den echten Öffnungszeiten, Personen, Prüfung, Bestätigung.
+     Gestaltung kommt von der Seite, die Logik kommt von hier. CFG und P setzt der Agent ein. */
+  var CFG = {"modus": "demo", "ziel": "", "extra": {}, "slot": 30, "vorlauf": 60, "letzte": 60, "max": 8, "tage": 21, "name": "Ehso's Burger", "tel": "04076487272", "telText": "040 76487272"}, P = [[780, 1440], [2340, 2880], [3780, 4320], [5220, 5760], [6660, 7200], [8100, 8760], [9420, 10200]], W = 10080;
+  var TAGE = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"], LANG = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
+  var MON = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+  function berlin() { return new Date(new Date().toLocaleString("en-US", { timeZone: "Europe/Berlin" })); }
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function hm(m) { return pad(Math.floor(m / 60)) + ":" + pad(m % 60); }
+  function iso(d) { return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()); }
+  function el(tag, attrs, html) { var e = document.createElement(tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (html != null) e.innerHTML = html; return e; }
+
+  /* Uhrzeiten eines Kalendertags (Minuten ab 00:00), aus den Wochen-Intervallen P */
+  function slots(day, isToday, nowMin) {
+    var out = [], start = day.getDay() * 1440, step = CFG.slot, last = CFG.letzte;
+    var periods = P.length ? P : [[0, W]];
+    for (var i = 0; i < periods.length; i++) {
+      for (var shift = -W; shift <= W; shift += W) {
+        var s = periods[i][0] + shift, e = periods[i][1] + shift;
+        var from = Math.max(s, start), to = Math.min(e - last, start + 1440 - 1);
+        if (!P.length) { from = start + 11 * 60; to = start + 21 * 60 + 30; }
+        if (to < from && e > start && s < start + 1440 && e - s <= last + step && s >= start) to = from;
+        for (var t = Math.ceil(from / step) * step; t <= to; t += step) {
+          var m = t - start;
+          if (m < 5 * 60 && P.length) continue;              // keine Plätze nach Mitternacht
+          if (isToday && m < nowMin + CFG.vorlauf) continue;  // heute nur mit Vorlauf
+          if (out.indexOf(m) < 0) out.push(m);
+        }
+      }
+    }
+    return out.sort(function (a, b) { return a - b; });
+  }
+
+  function init(form) {
+    if (form._res) return; form._res = true;
+    var now = berlin(), nowMin = now.getHours() * 60 + now.getMinutes();
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var days = [];
+    for (var i = 0; i < CFG.tage; i++) {
+      var d = new Date(today); d.setDate(today.getDate() + i);
+      var s = slots(d, i === 0, nowMin);
+      if (s.length) days.push({ d: d, slots: s, i: i });
+    }
+    var boxTage = form.querySelector("[data-tage]"), boxZeiten = form.querySelector("[data-zeiten]"), boxPers = form.querySelector("[data-personen]");
+    var first = form.querySelector("input, textarea, select, button");
+    function ensure(box, attr, label) {
+      if (box) return box;
+      var wrap = el("fieldset", { "class": "res-gruppe" }, "<legend>" + label + "<\/legend>");
+      var b = el("div", {}); b.setAttribute(attr, ""); wrap.appendChild(b);
+      form.insertBefore(wrap, first && first.parentNode === form ? first : form.firstChild);
+      return b;
+    }
+    boxTage = ensure(boxTage, "data-tage", "Tag");
+    boxZeiten = ensure(boxZeiten, "data-zeiten", "Uhrzeit");
+    boxPers = ensure(boxPers, "data-personen", "Personen");
+    [boxTage, boxZeiten, boxPers].forEach(function (b) { b.setAttribute("role", "radiogroup"); });
+    boxTage.setAttribute("aria-label", "Tag wählen"); boxZeiten.setAttribute("aria-label", "Uhrzeit wählen");
+    boxPers.setAttribute("aria-label", "Anzahl Personen");
+    var uid = "res" + Math.random().toString(36).slice(2, 7);
+
+    function option(name, value, inner, title) {
+      var id = uid + "-" + name + "-" + String(value).replace(/[^a-z0-9]/gi, "");
+      var l = el("label", { "class": "res-option", "for": id, title: title || "" });
+      l.appendChild(el("input", { type: "radio", name: name, value: value, id: id, "class": "res-radio" }));
+      l.appendChild(el("span", { "class": "res-label" }, inner));
+      return l;
+    }
+    function renderDays() {
+      boxTage.innerHTML = "";
+      if (!days.length) { boxTage.appendChild(el("p", { "class": "res-hinweis" }, "In den nächsten Wochen sind online keine Zeiten frei. Bitte rufen Sie an.")); return; }
+      days.forEach(function (x) {
+        var top = x.i === 0 ? "Heute" : x.i === 1 ? "Morgen" : TAGE[x.d.getDay()];
+        boxTage.appendChild(option("datum", iso(x.d), "<b>" + top + "<\/b><small>" + pad(x.d.getDate()) + "." + pad(x.d.getMonth() + 1) + ".<\/small>",
+          LANG[x.d.getDay()] + ", " + x.d.getDate() + ". " + MON[x.d.getMonth()]));
+      });
+    }
+    function renderTimes(dateIso) {
+      boxZeiten.innerHTML = "";
+      var x = days.filter(function (y) { return iso(y.d) === dateIso; })[0];
+      if (!x) { boxZeiten.appendChild(el("p", { "class": "res-hinweis" }, "Bitte zuerst einen Tag wählen.")); return; }
+      x.slots.forEach(function (m) { boxZeiten.appendChild(option("uhrzeit", hm(m), hm(m))); });
+    }
+    function renderPersons() {
+      boxPers.innerHTML = "";
+      for (var n = 1; n <= CFG.max; n++) boxPers.appendChild(option("personen", n, String(n), n + (n === 1 ? " Person" : " Personen")));
+      if (CFG.tel) boxPers.appendChild(el("p", { "class": "res-hinweis" }, "Mehr als " + CFG.max + "? <a href=\"tel:" + CFG.tel + "\">Bitte anrufen<\/a>."));
+    }
+    renderDays(); renderPersons();
+    var firstDay = boxTage.querySelector("input");
+    if (firstDay) { firstDay.checked = true; renderTimes(firstDay.value); } else renderTimes("");
+    var two = boxPers.querySelector('input[value="2"]'); if (two) two.checked = true;
+    boxTage.addEventListener("change", function (e) { if (e.target.name === "datum") { renderTimes(e.target.value); clearError(boxZeiten); } });
+
+    /* Spam-Falle und Felder für den späteren Versand */
+    var trap = el("input", { type: "text", name: "botcheck", tabindex: "-1", autocomplete: "off", "aria-hidden": "true",
+      style: "position:absolute;left:-9999px;width:1px;height:1px;opacity:0" });
+    form.appendChild(trap);
+    var errBox = form.querySelector("[data-reservierung-fehler]");
+    if (!errBox) { errBox = el("p", { "class": "res-fehler" }); form.insertBefore(errBox, form.querySelector('[type="submit"]') || null); }
+    errBox.setAttribute("role", "alert"); errBox.setAttribute("aria-live", "polite");
+    var ok = form.querySelector("[data-reservierung-erfolg]");
+    if (!ok) { ok = el("div", { "class": "res-erfolg", tabindex: "-1" }, "<p><strong>Danke!<\/strong> Ihre Anfrage für <span data-wert=\"datum\"><\/span> um <span data-wert=\"uhrzeit\"><\/span> Uhr (<span data-wert=\"personen\"><\/span>) ist eingegangen.<\/p>"); ok.setAttribute("data-reservierung-erfolg", ""); form.appendChild(ok); }
+    ok.hidden = true; ok.setAttribute("tabindex", "-1");
+    form.noValidate = true;
+
+    function field(n) { return form.querySelector('[name="' + n + '"]'); }
+    function val(n) {
+      var f = field(n); if (!f) return "";
+      if (f.type === "radio") { var c = form.querySelector('[name="' + n + '"]:checked'); return c ? c.value : ""; }
+      return f.type === "checkbox" ? f.checked : String(f.value || "").trim();
+    }
+    function mark(target, bad) { if (!target) return; target.setAttribute("aria-invalid", bad ? "true" : "false"); }
+    function clearError(t) { mark(t, false); }
+    function check() {
+      var errs = [], firstBad = null;
+      function need(cond, target, msg) { mark(target, !cond); if (!cond) { errs.push(msg); firstBad = firstBad || target; } }
+      need(!!val("datum"), boxTage, "Bitte einen Tag wählen.");
+      need(!!val("uhrzeit"), boxZeiten, "Bitte eine Uhrzeit wählen.");
+      need(!!val("personen"), boxPers, "Bitte die Anzahl der Personen wählen.");
+      if (field("name")) need(val("name").length >= 2, field("name"), "Bitte Ihren Namen angeben.");
+      if (field("telefon")) need(val("telefon").replace(/\D/g, "").length >= 6, field("telefon"), "Bitte eine Telefonnummer für Rückfragen angeben.");
+      if (field("email") && val("email")) need(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val("email")), field("email"), "Die E-Mail-Adresse sieht unvollständig aus.");
+      if (field("einwilligung")) need(val("einwilligung") === true, field("einwilligung"), "Bitte der Verarbeitung Ihrer Angaben zustimmen.");
+      errBox.textContent = errs.join(" ");
+      if (firstBad) { var f = firstBad.matches && firstBad.matches("input,textarea,select") ? firstBad : firstBad.querySelector("input:not(:disabled)"); if (f) f.focus(); }
+      return !errs.length;
+    }
+    ["name", "telefon", "email", "einwilligung"].forEach(function (n) { var f = field(n); if (f) f.addEventListener("input", function () { if (f.getAttribute("aria-invalid") === "true") mark(f, false); }); });
+    boxZeiten.addEventListener("change", function () { mark(boxZeiten, false); });
+    boxPers.addEventListener("change", function () { mark(boxPers, false); });
+
+    function readable() {
+      var d = new Date(val("datum") + "T12:00:00"), p = +val("personen");
+      return { datum: LANG[d.getDay()] + ", " + d.getDate() + ". " + MON[d.getMonth()], uhrzeit: val("uhrzeit"), personen: p + (p === 1 ? " Person" : " Personen"), name: val("name") };
+    }
+    function showSuccess() {
+      var r = readable();
+      ok.querySelectorAll("[data-wert]").forEach(function (s) { var k = s.getAttribute("data-wert"); if (r[k] != null) s.textContent = r[k]; });
+      if (CFG.modus === "demo" && !ok.querySelector(".res-demo-hinweis")) {
+        ok.appendChild(el("p", { "class": "res-demo-hinweis" }, "Entwurf: Diese Anfrage wurde nicht übermittelt. In der fertigen Website geht sie sofort an " +
+          CFG.name + "." + (CFG.tel ? " Für eine echte Reservierung bitte <a href=\"tel:" + CFG.tel + "\">anrufen<\/a>." : "")));
+      }
+      Array.prototype.forEach.call(form.children, function (c) { if (c !== ok && c !== trap) { c.setAttribute("data-res-vorher", c.hidden ? "1" : "0"); c.hidden = true; } });
+      ok.hidden = false; form.setAttribute("data-status", "gesendet");
+      try { ok.focus({ preventScroll: true }); } catch (e) { ok.focus(); }
+      var top = form.getBoundingClientRect().top + scrollY - 100; if (top < scrollY) scrollTo({ top: top, behavior: "smooth" });
+    }
+    form.addEventListener("click", function (e) {
+      if (!e.target.closest("[data-reservierung-neu]")) return;
+      e.preventDefault(); ok.hidden = true; form.removeAttribute("data-status");
+      Array.prototype.forEach.call(form.children, function (c) { if (c !== ok && c !== trap) c.hidden = c.getAttribute("data-res-vorher") === "1"; });
+    });
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (trap.value) return;
+      if (!check()) return;
+      var btn = form.querySelector('[type="submit"]'), label = btn ? btn.innerHTML : "";
+      if (btn) { btn.disabled = true; btn.setAttribute("aria-busy", "true"); }
+      form.setAttribute("data-status", "sendet");
+      function done(success) {
+        if (btn) { btn.disabled = false; btn.removeAttribute("aria-busy"); btn.innerHTML = label; }
+        if (success) showSuccess();
+        else { form.removeAttribute("data-status"); errBox.innerHTML = "Das hat leider nicht geklappt." + (CFG.tel ? " Bitte rufen Sie an: <a href=\"tel:" + CFG.tel + "\">" + CFG.telText + "<\/a>." : ""); }
+      }
+      if (CFG.modus !== "live" || !CFG.ziel) { setTimeout(function () { done(true); }, 650); return; }
+      var r = readable(), fd = new FormData(form);
+      fd.set("datum", r.datum + " (" + val("datum") + ")");
+      fd.set("subject", "Reservierungsanfrage " + r.datum + ", " + r.uhrzeit + " Uhr, " + r.personen);
+      fd.set("restaurant", CFG.name);
+      for (var k in (CFG.extra || {})) fd.set(k, CFG.extra[k]);
+      fetch(CFG.ziel, { method: "POST", body: fd, headers: { Accept: "application/json" } })
+        .then(function (res) { done(res.ok); }).catch(function () { done(false); });
+    });
+  }
+  function run() { document.querySelectorAll("form[data-reservierung]").forEach(init); }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run); else run();
+})();
+</script><!--/agent-res--></body>
+</html>
