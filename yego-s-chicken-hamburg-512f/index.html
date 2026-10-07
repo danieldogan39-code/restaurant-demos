@@ -1,0 +1,1513 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yego’s Chicken · Food Truck am Billbrookdeich 60, Hamburg</title>
+<meta name="description" content="Yego’s Chicken: Food Truck in Hamburg-Billbrook. Döner, Grillhähnchen, Sandwiches, Wings und Sides, halal. Mo–Fr 11–21 Uhr, Billbrookdeich 60. Vor Ort, zum Mitnehmen, Lieferung. Tel. 0162 8866066.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--s:#141210;--c:#F4EDE0;--g:#F9B21B;--r:#C8201E;--rd:#8E1512;--h:#C9A77C;--t:#1C1916;--l:#3A342D;--fd:"Barlow Condensed",system-ui,sans-serif;--ft:"Figtree",system-ui,sans-serif;--fa:"Yellowtail",cursive;--rand:clamp(1rem,5vw,4rem);--gap:clamp(1rem,2.4vw,2rem);--abst:clamp(4rem,9vw,8rem);--kopf:68px}
+*,*::before,*::after{box-sizing:border-box}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--s);color:var(--c);font:400 1.0625rem/1.6 var(--ft);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+[hidden]{display:none!important}
+:focus-visible{outline:3px solid var(--g);outline-offset:3px;border-radius:4px}
+h1,h2,h3,p{margin:0}
+.wrap{max-width:1320px;margin-inline:auto;padding-inline:var(--rand)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+em.a{font-family:var(--fa);font-style:normal;font-weight:400;color:var(--g);text-transform:none;letter-spacing:0}
+.markise{height:28px;background:var(--r);border-bottom:4px solid var(--rd);display:flex;align-items:center;justify-content:flex-end;padding-inline:14px;font:600 14px/1 var(--fd);letter-spacing:.06em;color:var(--c)}
+.h2{font:800 clamp(2.6rem,6vw,5.4rem)/.95 var(--fd);letter-spacing:-.005em;hyphens:auto;overflow-wrap:break-word}
+.h2 > div{padding-block:.08em .16em;margin-block:-.08em -.16em}
+.h2 em.a{font-size:1.05em}
+.foto-nachweis{font:400 13px/1.4 var(--ft);color:var(--h);text-decoration:underline;text-underline-offset:2px}
+.unterzeile{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;margin-top:10px;font-size:13px;color:var(--h)}
+
+.kopf{position:sticky;top:0;z-index:60;height:var(--kopf);background:var(--s);border-bottom:1px solid #2A2622;box-shadow:0 8px 18px rgba(0,0,0,.4)}
+.kopf .wrap{height:100%;display:flex;align-items:center;gap:clamp(1rem,2.5vw,2.25rem)}
+.wort{font:400 2.1rem/1 var(--fa);color:var(--g);text-decoration:none;text-shadow:.04em .05em 0 #000;white-space:nowrap;margin-right:auto;padding-block:6px}
+.kopf nav{display:flex;gap:clamp(1rem,2vw,1.75rem)}
+.kopf nav a{font:600 1.05rem/1 var(--fd);letter-spacing:.04em;text-transform:uppercase;text-decoration:none;padding:14px 2px;background:linear-gradient(var(--g),var(--g)) left 80%/0 2px no-repeat;transition:background-size .3s}
+.kopf nav a:hover{background-size:100% 2px}
+.k-anruf{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 20px;border-radius:999px;background:var(--g);color:var(--s);font:700 1.05rem/1 var(--fd);letter-spacing:.03em;text-transform:uppercase;text-decoration:none;white-space:nowrap}
+.k-anruf svg{width:16px;height:16px}
+
+.hero{background:var(--s);padding-bottom:clamp(2rem,4vw,3rem)}
+.hero-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);align-items:start;padding-top:0}
+.hero-text{grid-column:1/7;padding-top:clamp(1.25rem,2.5vw,2rem)}
+.hero-bild{grid-column:7/13;position:relative}
+.status{display:inline-flex;align-items:center;min-height:38px;padding:6px 16px;background:#000;border:1px solid #2A2622;border-radius:999px;font:600 1.05rem/1.2 var(--fd);letter-spacing:.03em}
+[data-status]::before{content:"";display:inline-block;width:.62em;height:.62em;border-radius:50%;background:var(--g);margin-right:.55em;vertical-align:.02em}
+[data-status][data-offen="nein"]::before{background:#8a7e70}
+.marke{margin-top:16px;display:flex;flex-direction:column;align-items:flex-start}
+.marke-gross{display:block;font:400 clamp(4rem,8vw,8rem)/1.15 var(--fa);color:var(--g);white-space:nowrap;padding:0 .15em .18em 0}
+.marke-zusatz{display:block;margin-top:.35em;font:800 clamp(1.25rem,2.2vw,2rem)/1 var(--fd);color:var(--c);text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+.hero-titel{margin-top:1.25rem;font:800 clamp(2.2rem,4.2vw,3.8rem)/.98 var(--fd);text-transform:uppercase}
+.hero-titel > div{padding-block:.08em .16em;margin-block:-.08em -.16em}
+.hero-titel em.a{font-size:1.08em}
+.hero-satz{margin-top:1rem;max-width:34rem;font-size:1.125rem;color:rgba(244,237,224,.85)}
+.aktionen{display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;margin-top:1.5rem}
+.knopf{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:56px;padding:18px 28px;border-radius:999px;background:var(--g);color:var(--s);font:700 1.25rem/1 var(--fd);letter-spacing:.03em;text-transform:uppercase;text-decoration:none;transition:color .3s}
+.knopf::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--r);transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.7,0,.2,1)}
+.knopf:hover{color:var(--c)}
+.knopf:hover::before{transform:scaleX(1)}
+.knopf svg{width:20px;height:20px;flex:none}
+.leise{display:inline-flex;align-items:center;gap:8px;min-height:44px;font:600 1.15rem/1 var(--fd);letter-spacing:.03em;text-transform:uppercase;text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:2px}
+.leise span{transition:transform .25s}
+.leise:hover span{transform:translateX(5px)}
+.hero-fuss{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;margin-top:1rem}
+.plakette{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:8px 16px;background:#000;border:1px solid var(--l);border-radius:6px;text-decoration:none;font:600 1rem/1.2 var(--fd)}
+.bew-stern,.bew-zahl{color:var(--g);font:800 1.35rem/1 var(--fd)}
+.bew-text{color:var(--c);letter-spacing:.02em}
+.rahmen{position:relative;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:var(--t)}
+.rahmen img{width:100%;height:100%;object-fit:cover}
+.hero-bild .rahmen{aspect-ratio:1/1;border-radius:0 0 20px 20px}
+.hero-bild .rahmen img{object-position:center 30%}
+.kante{position:absolute;inset:0 0 auto;height:18px;background:var(--r);border-bottom:4px solid var(--rd);z-index:1}
+.hero-doener{position:absolute;left:-14%;bottom:6%;width:45%;height:auto;object-fit:contain;filter:drop-shadow(0 10px 12px rgba(0,0,0,.6));z-index:2;pointer-events:none}
+
+.billbrook{padding-block:clamp(3rem,6vw,6rem) var(--abst)}
+.bb-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);align-items:center}
+.bb-text{grid-column:1/8}
+.bb-text p{margin-top:1.4rem;max-width:36rem}
+.info{margin:2rem 0 0;max-width:38rem;border-bottom:1px solid var(--l)}
+.info div{display:grid;grid-template-columns:8rem minmax(0,1fr);gap:1rem;padding:12px 0;border-top:1px solid var(--l)}
+.info dt{font:600 1rem/1.5 var(--fd);letter-spacing:.06em;text-transform:uppercase;color:var(--h)}
+.info dd{margin:0;font-variant-numeric:tabular-nums}
+.bb-bilder{grid-column:9/13;position:relative;padding-bottom:3rem}
+.bb-bilder .rahmen{aspect-ratio:3/4}
+.bb-bilder .gross .unterzeile{justify-content:flex-end;margin-left:40%}
+.bb-bilder .klein{position:absolute;left:-22%;bottom:0;width:52%}
+.bb-bilder .klein .rahmen{aspect-ratio:1;border:6px solid var(--s);border-radius:20px}
+.bb-bilder .klein .unterzeile{margin-top:4px}
+
+.zerlegt{background:radial-gradient(ellipse 45% 60% at 70% 58%,rgba(249,178,27,.2),transparent 72%),var(--s);padding-bottom:var(--abst)}
+.z-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);column-gap:var(--gap);align-items:center;padding-top:clamp(2.5rem,5vw,4rem)}
+.z-text p{margin-top:1.2rem;max-width:26rem;color:rgba(244,237,224,.85)}
+[data-zerlegt-buehne] figure{margin:0}
+[data-zerlegt-buehne] img{width:100%;height:auto;object-fit:contain}
+[data-zerlegt-buehne] figcaption{font:700 1.3rem/1.15 var(--fd);letter-spacing:.04em;text-transform:uppercase;color:var(--c)}
+[data-zerlegt-buehne] figcaption b{color:var(--g);margin-right:.35em}
+[data-zerlegt-buehne] figcaption small{display:block;margin-top:3px;font:400 15px/1.4 var(--ft);letter-spacing:0;text-transform:none;color:var(--c)}
+.zerlegt-strich{color:var(--g)}
+
+.karte{padding-bottom:var(--abst)}
+.tafel{position:relative;background:var(--t) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");border-radius:0 0 20px 20px;padding:clamp(1.5rem,4vw,3.5rem);display:grid;grid-template-columns:minmax(0,1fr) 28%;column-gap:var(--gap)}
+.tafel-kopf{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:1rem 2rem}
+.tafel-kopf p{max-width:30rem;color:rgba(244,237,224,.85)}
+.reiter{display:none;gap:4px;margin:2rem 0 1.5rem;grid-column:1/-1;border-bottom:1px solid var(--l);overflow-x:auto;scrollbar-width:none}
+.js .reiter{display:flex}
+.reiter::-webkit-scrollbar{display:none}
+.reiter button{flex:none;min-height:48px;padding:10px 18px;background:none;border:0;border-bottom:3px solid transparent;color:var(--c);font:700 1.2rem/1 var(--fd);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:color .2s,border-color .2s}
+.reiter button:hover{color:var(--g)}
+.reiter button[aria-selected="true"]{color:var(--g);border-color:var(--g)}
+.listen{min-width:0}
+.panel{margin-top:2rem}
+.js .panel{margin-top:0}
+.panel h3{font:800 1.6rem/1 var(--fd);text-transform:uppercase;color:var(--g);margin-bottom:1rem}
+.js .panel h3{font-size:1.3rem;margin-bottom:.75rem;overflow-wrap:break-word}
+.panel-satz{margin-bottom:1rem;color:var(--h);font-size:1rem}
+.liste{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(1.5rem,4vw,3.5rem)}
+.liste li{position:relative;display:grid;grid-template-columns:auto minmax(1rem,1fr) auto;align-items:baseline;gap:0 10px;padding:12px 0 12px 0;border-bottom:1px solid var(--l);cursor:default;transition:padding .25s}
+.liste li::before{content:"";position:absolute;left:0;top:12px;bottom:12px;width:4px;background:var(--g);transform:scaleY(0);transition:transform .25s}
+.liste li.mark,.liste li.angetippt{padding-left:14px}
+.liste li.mark::before,.liste li.angetippt::before{transform:scaleY(1)}
+.liste .n{font:700 1.25rem/1.2 var(--fd);letter-spacing:.01em}
+.liste i{border-bottom:2px dotted #6b6055;transform:translateY(-4px)}
+.liste b{font:700 1.25rem/1 var(--fd);color:var(--g);font-variant-numeric:tabular-nums;text-align:right;transition:transform .25s}
+.liste li:hover b{transform:translateX(-6px)}
+.st{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.st span{padding:3px 9px;border:1px solid var(--l);border-radius:999px;font-size:13px;line-height:1.4;color:var(--c);font-variant-numeric:tabular-nums}
+.tafel-frei{display:grid;align-self:start;margin-right:calc(-1 * clamp(1.5rem,4vw,3.5rem) - 7%);margin-top:-1rem}
+.tafel-frei img{grid-area:1/1;width:100%;height:auto;object-fit:contain;filter:drop-shadow(0 12px 14px rgba(0,0,0,.55));opacity:0;transition:opacity .45s}
+.tafel-frei img.an{opacity:1}
+.hinweis{grid-column:1/-1;margin-top:2rem;padding:16px 18px;border-left:4px solid var(--r);background:rgba(0,0,0,.35);font-size:1rem}
+.hinweis a{color:var(--g);font-weight:600}
+.vorschau{position:fixed;left:0;top:0;width:180px;height:auto;pointer-events:none;z-index:70;opacity:0;filter:drop-shadow(0 10px 10px rgba(0,0,0,.5));transition:opacity .2s}
+.vorschau.zeigen{opacity:1}
+
+.truck{padding-bottom:var(--abst)}
+.truck-kopf{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:1rem 2rem;padding-top:var(--abst);margin-bottom:clamp(1.5rem,3vw,2.5rem)}
+.truck-kopf p{max-width:28rem;color:rgba(244,237,224,.85)}
+.raster{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr) minmax(0,1fr);gap:var(--gap)}
+.kachel{position:relative;margin:0;aspect-ratio:4/3;border-radius:20px;overflow:hidden;background:var(--t)}
+.kachel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.kachel:nth-child(1){grid-area:1/1}.kachel:nth-child(2){grid-area:2/1}.kachel:nth-child(4){grid-area:1/3}.kachel:nth-child(5){grid-area:2/3}
+.kachel[data-mitte]{grid-area:1/2/3/3;aspect-ratio:auto}
+.kachel figcaption{position:absolute;inset:auto 0 0;padding:2.5rem 12px 10px;background:linear-gradient(transparent,rgba(10,9,8,.9) 50%);font:700 1.05rem/1.2 var(--fd);letter-spacing:.02em}
+.kachel[data-mitte] img{object-position:center 25%}
+.kachel figcaption .foto-nachweis{display:block;margin-top:4px;color:rgba(244,237,224,.85)}
+[data-raster-text]{position:absolute;left:16px;right:16px;bottom:16px;z-index:2;padding:16px 18px;background:var(--s);border-top:6px solid var(--r);border-radius:6px 6px 12px 12px}
+[data-raster-text] strong{display:block;font:800 1.6rem/1.05 var(--fd);color:var(--g)}
+[data-raster-text] span{display:block;margin-top:4px;font-size:1rem}
+[data-raster-text] .foto-nachweis{margin-top:6px}
+
+.zeiten{padding-block:var(--abst);background:var(--t);border-top:1px solid var(--l)}
+.ze-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(2rem,5vw,4.5rem);align-items:start}
+.plan{position:relative;margin-top:2.5rem}
+.plan-zeile{display:grid;grid-template-columns:3rem minmax(0,1fr);gap:12px;align-items:center;min-height:52px}
+.achse{position:relative;height:22px;font:600 13px/1 var(--fd);color:var(--h);font-variant-numeric:tabular-nums}
+.achse span{position:absolute;transform:translateX(-50%)}
+.plan-tag .tn{font:800 1.35rem/1 var(--fd);text-transform:uppercase}
+.plan-tag.heute .tn{color:var(--g)}
+.spur{position:relative;height:40px;border-radius:8px;background:repeating-linear-gradient(90deg,#2A2622 0 1px,transparent 1px calc(100% / 14))}
+.balken{position:absolute;left:14.2857%;width:71.4286%;top:4px;bottom:4px;border-radius:6px;background:var(--c);color:var(--s);display:flex;align-items:center;padding-inline:12px;font:700 1rem/1 var(--fd);letter-spacing:.03em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.zu .spur::after{content:"";position:absolute;left:0;right:0;top:50%;border-top:2px dashed #6b6055}
+.zu .spur span{position:absolute;left:14.2857%;top:50%;transform:translateY(-50%);padding:2px 10px;background:var(--t);font:600 1rem/1 var(--fd);color:var(--h);text-transform:uppercase;letter-spacing:.05em}
+.jetzt-ebene{position:absolute;top:0;bottom:0;left:calc(3rem + 12px);right:0;pointer-events:none}
+.jetzt{position:absolute;top:-6px;bottom:0;width:3px;background:var(--g);transform:translateX(-50%)}
+.jetzt span{position:absolute;top:-22px;left:50%;transform:translateX(-50%);padding:2px 6px;background:var(--g);color:var(--s);border-radius:4px;font:700 13px/1.2 var(--fd);font-variant-numeric:tabular-nums}
+.ze-weg p{margin-top:1rem;max-width:30rem}
+.kartenrahmen{aspect-ratio:4/3;border-radius:0 0 20px 20px;overflow:hidden;border:1px solid var(--l);background:var(--s)}
+.kartenrahmen [data-karte]{width:100%;height:100%}
+.ze-weg address{font-style:normal;font:700 1.5rem/1.2 var(--fd);margin-top:1.25rem}
+
+.reservieren{background:var(--s);padding-block:var(--abst)}
+.re-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(2rem,5vw,4.5rem);align-items:start;padding-top:clamp(2.5rem,5vw,4rem)}
+.re-text p{margin-top:1.25rem;max-width:28rem;color:rgba(244,237,224,.85)}
+.re-text .plakette{margin-top:1.5rem}
+.h2 em.rot{font-family:var(--fa);font-style:normal;font-weight:400;color:var(--r)}
+.tresen-wrap{width:100%;max-width:640px;min-width:0}
+.tresen{position:relative;width:100%;min-width:0;min-height:560px;display:flex;flex-direction:column;background:var(--c);color:var(--s);border-radius:0 0 20px 20px;padding:clamp(1.25rem,3vw,2.25rem) clamp(1.25rem,3vw,2.25rem) calc(clamp(1.25rem,3vw,2.25rem) + 12px);overflow:hidden}
+.tresen::after{content:"";position:absolute;inset:auto 0 0;height:12px;background:var(--h)}
+.res-fortschritt{list-style:none;margin:0 0 14px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.res-punkt{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font:700 1rem/1.2 var(--fd);letter-spacing:.04em;text-transform:uppercase;color:#6b5e50}
+.res-punkt::before{content:"";flex:0 0 100%;height:6px;border-radius:3px;background:#DDD1BE}
+.res-jetzt,.res-erledigt{color:var(--s)}
+.res-jetzt::before,.res-erledigt::before{background:var(--r)}
+.res-nr{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--s);color:var(--c);font-size:13px}
+.res-jetzt .res-nr{background:var(--r)}
+.res-zusammenfassung{margin:0 0 16px;padding:10px 14px;background:var(--s);color:var(--g);border-radius:8px;font:700 1.15rem/1.3 var(--fd);letter-spacing:.03em;font-variant-numeric:tabular-nums}
+.res-zusammenfassung:empty{display:none}
+[data-schritt]{flex:1;display:flex;flex-direction:column;min-width:0}
+.schritt-titel{font:800 2rem/1 var(--fd);margin-bottom:1rem}
+.feld-label{font:700 1rem/1.2 var(--fd);letter-spacing:.06em;text-transform:uppercase;margin:6px 0 8px;color:#4a4036}
+[data-tage],[data-zeiten],[data-personen]{min-width:0;margin-bottom:12px;border-radius:12px}
+[data-tage]{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px}
+[data-zeiten]{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:8px}
+[data-personen]{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.res-zeitgruppe{grid-column:1/-1;min-width:0}
+.res-tageszeit{margin:4px 0 6px;font:700 13px/1.2 var(--fd);letter-spacing:.08em;text-transform:uppercase;color:#6b5e50}
+.res-zeitreihe{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:8px}
+.res-option{position:relative;display:block;min-width:0}
+.res-radio{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.res-label{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:48px;padding:8px 10px;border-radius:10px;background:var(--s);color:var(--c);font:700 1.1rem/1.1 var(--fd);letter-spacing:.03em;font-variant-numeric:tabular-nums;text-align:center;cursor:pointer;transition:background .2s,color .2s,transform .15s}
+.res-label b{font-weight:800;text-transform:uppercase}
+.res-label small{font:500 13px/1.2 var(--ft);opacity:.85}
+.res-label:hover{background:#2e2924}
+.res-radio:checked + .res-label{background:var(--g);color:var(--s)}
+.res-radio:focus-visible + .res-label{outline:3px solid var(--r);outline-offset:2px}
+[aria-invalid="true"]:is([data-tage],[data-zeiten],[data-personen]){outline:2px solid var(--r);outline-offset:4px}
+.res-hinweis,.res-demo-hinweis{font-size:13px;line-height:1.45;color:#5a4f45;margin:6px 0}
+.felder-zwei{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.feld{display:flex;flex-direction:column;gap:6px;margin-bottom:12px;min-width:0}
+.feld label{font:700 1rem/1.2 var(--fd);letter-spacing:.05em;text-transform:uppercase;color:#4a4036}
+.feld input,.feld textarea{width:100%;min-height:48px;padding:12px 14px;border:1.5px solid #B4A58F;border-radius:10px;background:#FFFAF1;color:var(--s);font:400 16px/1.4 var(--ft)}
+.feld textarea{resize:vertical}
+.feld input:focus,.feld textarea:focus{outline:3px solid var(--g);outline-offset:1px;border-color:var(--s)}
+.feld [aria-invalid="true"],.einw input[aria-invalid="true"]{border-color:var(--r);outline:2px solid var(--r)}
+.einw{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:10px;background:#EBE2D2;font-size:15px;line-height:1.45;cursor:pointer}
+.einw input{flex:none;width:24px;height:24px;margin:0;accent-color:var(--r)}
+.einw a{color:var(--rd);font-weight:600}
+[data-reservierung-fehler],.res-schritt-fehler{color:#A0181A;font-size:15px;font-weight:600;margin:8px 0 0}
+[data-reservierung-fehler]:empty,.res-schritt-fehler:empty{display:none}
+.res-nav{display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:18px}
+.res-weiter,.tresen button[type="submit"]{margin-left:auto;min-height:52px;padding:14px 30px;border:0;border-radius:999px;background:var(--g);color:var(--s);font:800 1.2rem/1 var(--fd);letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s}
+.res-weiter:hover,.tresen button[type="submit"]:hover{background:var(--s);color:var(--g)}
+.res-zurueck{min-height:48px;padding:12px 14px;border:0;background:none;color:var(--s);font:600 1.05rem/1 var(--fd);letter-spacing:.04em;text-transform:uppercase;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.bon{position:relative;margin:4px 0 22px;padding:26px 22px 22px;background:#FFFAF1;border-radius:10px 10px 0 0;font-variant-numeric:tabular-nums}
+.bon::after{content:"";position:absolute;left:0;right:0;bottom:-10px;height:10px;background:linear-gradient(135deg,#FFFAF1 50%,transparent 50%) 0 0/16px 10px repeat-x,linear-gradient(-135deg,#FFFAF1 50%,transparent 50%) 0 0/16px 10px repeat-x}
+.bon h3{font:800 2.4rem/1 var(--fd)}
+.bon p{margin-top:.5rem}
+.bon dl{margin:1.25rem 0 0;border-top:2px dashed #B4A58F}
+.bon dl div{display:flex;justify-content:space-between;gap:1rem;padding:8px 0;border-bottom:1px dashed #D3C7B3}
+.bon dt{font:600 1rem/1.4 var(--fd);text-transform:uppercase;letter-spacing:.05em;color:#5a4f45}
+.bon dd{margin:0;font-weight:600;text-align:right}
+[data-reservierung-neu]{min-height:48px;padding:12px 24px;border:2px solid var(--s);border-radius:999px;background:none;color:var(--s);font:700 1.05rem/1 var(--fd);letter-spacing:.04em;text-transform:uppercase;cursor:pointer}
+[data-reservierung-neu]:hover{background:var(--s);color:var(--c)}
+
+.schluss{background:var(--r);padding-block:var(--abst);text-align:left}
+.schluss .wrap{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:1.5rem 3rem}
+.hunger{display:block;font:400 clamp(5rem,16vw,14rem)/1.15 var(--fa);color:var(--c);white-space:nowrap;padding:0 .1em .18em 0}
+.schluss p{margin-top:24px;font:600 1.3rem/1.3 var(--fd);letter-spacing:.03em;max-width:24rem}
+.gross-anruf{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:72px;padding:clamp(1rem,2.5vw,1.75rem) clamp(1.25rem,4vw,3rem);border:3px solid var(--c);border-radius:999px;color:var(--c);text-decoration:none;font:800 clamp(2.4rem,8vw,7rem)/1 var(--fd);font-variant-numeric:tabular-nums;letter-spacing:.01em;transition:background .3s,color .3s}
+.gross-anruf span{font-size:.3em;letter-spacing:.06em;text-transform:uppercase}
+.gross-anruf:hover{background:var(--c);color:var(--r)}
+
+.fuss{padding-block:clamp(3rem,6vw,4.5rem) 2rem;background:var(--s);font-size:1rem}
+.fuss-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2rem;padding-bottom:2rem;border-bottom:1px solid var(--l)}
+.fuss h3{font:700 1rem/1.2 var(--fd);letter-spacing:.08em;text-transform:uppercase;color:var(--h);margin-bottom:.6rem}
+.fuss .wort{display:block;font-size:3rem;line-height:1.2;padding-bottom:.15em;margin-bottom:12px}
+.fuss a{text-decoration-color:var(--h)}
+.rechtliches{margin-top:1.5rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem 2rem;font-size:13px;line-height:1.6;color:var(--h)}
+.rechtliches p{max-width:52rem}
+.leiste{display:none}
+
+@media (max-width:1100px){.kopf nav{gap:1rem}}
+@media (max-width:819px){
+ :root{--kopf:60px}
+ .kopf nav{display:none}
+ .wort{font-size:1.9rem}
+ .markise{height:16px;border-bottom-width:3px;font-size:0;padding:0}
+ .hero{padding-bottom:3rem}
+ .hero-grid{display:flex;flex-direction:column;align-items:stretch;min-height:0;padding-top:0}
+ .hero-bild{order:-1;margin-bottom:6vw}
+ .hero-bild .rahmen{aspect-ratio:16/9;border-radius:0 0 16px 16px}
+ .hero-bild .rahmen img{object-position:center 30%}
+ .hero-bild .unterzeile{max-width:58%;flex-direction:column;gap:2px;margin-top:8px}
+ .hero-doener{left:auto;right:-3vw;bottom:-4vw;width:34vw}
+ .kante{height:12px;border-bottom-width:3px}
+ .hero-text{display:flex;flex-direction:column;align-items:flex-start;padding-top:0}
+ .marke{margin-top:12px}
+ .marke-gross{font-size:18vw}
+ .marke-zusatz{margin-top:.3em;font-size:1.25rem}
+ .aktionen{order:3;align-self:stretch;margin-top:1rem}
+ .hero-titel{order:4;font-size:2rem;margin-top:1.75rem}
+ .hero-satz{order:5;font-size:1rem}
+ .hero-fuss{order:6}
+ .aktionen{flex-direction:column;align-items:stretch;gap:12px}
+ .knopf{width:100%}
+ .leise{justify-content:center;min-height:52px;border:2px solid var(--c);border-radius:999px;text-decoration:none}
+ .bb-grid,.ze-grid,.re-grid,.z-grid{display:flex;flex-direction:column;align-items:stretch}
+ .bb-bilder{width:100%;margin-top:3rem;padding-bottom:1.5rem}
+ .bb-bilder .gross{width:100%}
+ .bb-bilder .gross .rahmen{aspect-ratio:4/5}
+ .bb-bilder .gross .unterzeile{margin-left:44%;justify-content:flex-end;text-align:right}
+ .bb-bilder .klein{left:0;bottom:0;width:40%}
+ .info div{grid-template-columns:6.5rem minmax(0,1fr)}
+ .z-grid > *{width:100%}
+ .tafel{display:flex;flex-direction:column}
+ .liste{grid-template-columns:minmax(0,1fr)}
+ .tafel-frei{order:5;width:52vw;align-self:flex-end;margin:-1rem calc(-1 * clamp(1.5rem,4vw,3.5rem) - 4vw) -14vw 0}
+ .raster{grid-template-columns:minmax(0,1fr)}
+ .kachel,.kachel[data-mitte]{grid-area:auto;aspect-ratio:4/3}
+ .kachel[data-mitte]{order:-1}
+ .tresen,.tresen-wrap{max-width:none}
+ .schluss .wrap{grid-template-columns:minmax(0,1fr)}
+ .gross-anruf{border-radius:28px;flex-wrap:wrap}
+ .fuss-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ body{padding-bottom:calc(60px + env(safe-area-inset-bottom))}
+ .leiste{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));position:fixed;left:0;right:0;bottom:0;z-index:65;background:var(--s);border-top:1px solid var(--l);padding-bottom:env(safe-area-inset-bottom)}
+ .leiste a{display:flex;align-items:center;justify-content:center;gap:6px;min-height:60px;font:700 1.1rem/1 var(--fd);letter-spacing:.05em;text-transform:uppercase;text-decoration:none}
+ .leiste a:first-child{background:var(--g);color:var(--s)}
+ .leiste a + a{border-left:1px solid var(--l)}
+ .leiste svg{width:18px;height:18px}
+}
+@media (max-width:560px){
+ .tresen{border-radius:0 0 16px 16px;padding:18px 16px 30px;min-height:540px}
+ .re-grid{padding-inline:0}
+ .reservieren .wrap{padding-inline:8px}
+ .re-text{padding-inline:8px}
+ .res-punkt{font-size:13px}
+ .res-punkt .res-titel{display:none}
+ .res-jetzt .res-titel{display:inline}
+ .schritt-titel{font-size:1.7rem}
+ [data-tage]{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-right:-16px;padding:2px 16px 4px 2px}
+ [data-tage]::-webkit-scrollbar{display:none}
+ [data-tage] .res-option{flex:0 0 27%;scroll-snap-align:start}
+ [data-zeiten],.res-zeitreihe{grid-template-columns:repeat(4,minmax(0,1fr))}
+ .res-label{min-height:48px;padding:8px 4px;font-size:1.05rem}
+ .felder-zwei{grid-template-columns:minmax(0,1fr);gap:0}
+ .einw{padding:14px;min-height:56px}
+ .res-weiter,.tresen button[type="submit"]{flex:1;min-height:52px;padding-inline:16px}
+ .res-zurueck{padding-inline:8px}
+ .fuss-grid{grid-template-columns:minmax(0,1fr)}
+ .info div{grid-template-columns:minmax(0,1fr);gap:2px}
+ .balken{font-size:.95rem;padding-inline:8px}
+ .bon h3{font-size:2rem}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+html{scroll-padding-top:88px}
+[id]{scroll-margin-top:88px}
+.markise{position:relative;z-index:2}
+.markise::after{content:"";position:absolute;left:0;right:0;top:100%;height:10px;background:radial-gradient(circle at 10px 0,var(--rd) 9px,transparent 9.5px) 0 0/20px 10px repeat-x;pointer-events:none}
+.preis{white-space:nowrap}
+</style>
+<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}[data-reservierung] [hidden],form[data-reservierung][hidden],[data-reservierung-erfolg][hidden]{display:none!important}:where(img){height:auto}:where([data-bewertung]){display:inline-flex;align-items:baseline;gap:.35em;flex-wrap:wrap}:where(.bew-stern){color:#E3A21A}:where(.bew-zahl){font-weight:700;font-variant-numeric:tabular-nums}:where(.res-fortschritt){list-style:none;display:flex;gap:.75rem;padding:0;margin:0 0 1rem}:where(.res-punkt){display:flex;align-items:center;gap:.45rem;flex:1;opacity:.5}:where(.res-punkt.res-jetzt,.res-punkt.res-erledigt){opacity:1}:where(.res-punkt.res-erledigt){cursor:pointer}:where(.res-nr){display:inline-grid;place-items:center;width:1.7em;height:1.7em;border-radius:50%;border:1px solid currentColor;font-size:.85em;flex:none}:where(.res-zusammenfassung){margin:0 0 1rem;font-size:.92em;opacity:.8}:where(.res-nav){display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin-top:1.25rem}:where(.res-nav .res-weiter,.res-nav [type=submit]){margin-left:auto}:where(.res-nav button){min-height:44px}:where(.res-zeitgruppe){margin:0 0 .75rem}:where(.res-zeitreihe){display:flex;flex-wrap:wrap;gap:.5rem}:where(.res-tageszeit){margin:0 0 .35rem;font-size:.78em;letter-spacing:.08em;text-transform:uppercase;opacity:.7}@media (max-width:560px){:where(.res-punkt:not(.res-jetzt) .res-titel){display:none}:where(.res-punkt:not(.res-jetzt)){flex:none}:where(.res-zeitreihe){display:grid;grid-template-columns:repeat(4,1fr)}:where(.res-nav button){min-height:48px}:where(.res-nav .res-weiter,.res-nav [type=submit]){flex:1}[data-reservierung] input:not([type=radio]):not([type=checkbox]),[data-reservierung] textarea,[data-reservierung] select{font-size:max(16px,1em)!important}}</style><!--agent-lib--><link rel="stylesheet" href="lib/lenis.css"><script src="lib/gsap.min.js"></script><script src="lib/ScrollTrigger.min.js"></script><script src="lib/SplitText.min.js"></script><script src="lib/lenis.min.js"></script><!--/agent-lib--></head>
+<body><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für Yego&#x27;s Chicken. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
+<header class="kopf">
+ <div class="wrap">
+  <a class="wort" href="#start" aria-label="Yego’s Chicken, zum Anfang">Yego’s</a>
+  <nav aria-label="Hauptnavigation">
+   <a href="#tafel">Tafel</a>
+   <a href="#truck">Am Truck</a>
+   <a href="#zeiten">Zeiten</a>
+   <a href="#reservieren">Reservieren</a>
+  </nav>
+  <a class="k-anruf" href="tel:+491628866066"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>Anrufen</a>
+ </div>
+</header>
+
+<main id="start">
+<section class="hero" aria-labelledby="marke">
+ <div class="wrap">
+  <div class="markise" aria-hidden="true">EST 2021 · BILLBROOK</div>
+  <div class="hero-grid">
+   <div class="hero-text">
+    <p class="status"><span data-status>Mo–Fr 11–21 Uhr</span></p>
+    <h1 class="marke" id="marke"><span class="marke-gross">Yego’s</span><span class="marke-zusatz">Chicken · Food Truck</span></h1>
+    <p class="hero-titel">Grillhähnchen, Döner, Sides –<br><em class="a">aus der Klappe.</em></p>
+    <p class="hero-satz">Billbrookdeich 60, Hamburg · Mo–Fr 11–21 Uhr · halal. Am Stehtisch, zum Mitnehmen oder geliefert.</p>
+    <div class="aktionen">
+     <a class="knopf knopf-anruf" href="tel:+491628866066"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>Anrufen 0162 8866066</a>
+     <a class="leise" href="https://www.google.com/maps/dir/?api=1&amp;destination=Billbrookdeich+60,+22113+Hamburg" target="_blank" rel="noopener">Route zum Truck <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="hero-fuss">
+     <a class="plakette" href="https://www.google.com/maps/search/?api=1&amp;query=Yego%27s+Chicken&amp;query_place_id=ChIJ41XpfNiNsUcR-RHYfswE1-8" target="_blank" rel="noopener"><span data-bewertung aria-label="4,9 von 5 Sternen bei 227 Google-Bewertungen"><span class="bew-stern" aria-hidden="true">★</span><span class="bew-zahl">4,9</span><span class="bew-text">227 Bewertungen auf Google</span></span></a>
+     <a class="leise" href="#reservieren" style="font-size:1rem;border:0">Stehtisch reservieren <span aria-hidden="true">→</span></a>
+    </div>
+   </div>
+   <div class="hero-bild">
+    <figure data-foto style="margin:0">
+     <div class="rahmen"><span class="kante" aria-hidden="true"></span><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmN1nS5qFrSRxMcEDu1QqHgqiZ3fcX1s0QeK23c3qLdqOkEnfmkwIFYzL6EBsfd0y8yAfgv1s-V1eKVUpAx2WTvHovYxnID85DXLomRvJEWC-6hJi4YKJAAaPD2EMy3uvNaDPWhbPQLc3tUL=s4800-w1800" referrerpolicy="no-referrer" alt="Der schwarze Food Truck von Yego’s mit gelbem Leuchtschild, roter Markise und Stehtischen" width="900" height="1200" fetchpriority="high"></div>
+     <figcaption class="unterzeile"><span>Der Truck am Billbrookdeich</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/114839592038830436021" target="_blank" rel="noopener">Foto: Yego&#x27;s Chicken · Google Maps</a></figcaption>
+    </figure>
+    <img class="hero-doener" src="ki-hero-doener.webp" alt="Gefülltes Fladenbrot mit Hähnchen, Salat, Röstzwiebeln und Schafskäse" width="800" height="800" data-tiefe="30">
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="billbrook" aria-labelledby="bb-titel">
+ <div class="wrap bb-grid">
+  <div class="bb-text">
+   <h2 class="h2 zeilen" id="bb-titel">Grill an, <em class="a">Klappe auf,</em> Mo bis Fr.</h2>
+   <p>Mo bis Fr ab 11 Uhr steht die Klappe offen, um 21 Uhr geht sie zu. Raus kommen Döner, Grillhähnchen, Sandwiches, Wings, Nuggets und Sides – alles halal. Iss am Stehtisch, nimm’s mit oder lass es dir liefern.</p>
+   <dl class="info">
+    <div><dt>Adresse</dt><dd>Billbrookdeich 60, 22113 Hamburg</dd></div>
+    <div><dt>Zeiten</dt><dd>Mo–Fr 11–21 Uhr</dd></div>
+    <div><dt>Sa / So</dt><dd>geschlossen</dd></div>
+    <div><dt>Plätze</dt><dd>Stehtische draußen</dd></div>
+    <div><dt>Bestellen</dt><dd>vor Ort, zum Mitnehmen, Lieferung</dd></div>
+    <div><dt>Telefon</dt><dd><a href="tel:+491628866066">0162 8866066</a></dd></div>
+   </dl>
+  </div>
+  <div class="bb-bilder">
+   <figure class="gross" data-foto style="margin:0">
+    <div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmMjVATxWtCnmUaqh2k0AoOHx6zWxRwJadMo2l9rD2fGD8Hsq93pQStH1JlMy29r8pHIJD1R4WonXZxo2y_ocCNy_d_-z7ZGMCH6MOj9hl15pEyxWPp8OJHmhkrQ78bl-1ROJzDyEB2CpqUq=s4800-w1000" referrerpolicy="no-referrer" alt="Gefülltes Fladenbrot mit Hähnchen, Gemüse und Schafskäse, daneben ein Ayran" width="675" height="1200" loading="lazy"></div>
+    <figcaption class="unterzeile"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/114701876479856770769" target="_blank" rel="noopener">Foto: Faruq Hashimi · Google Maps</a></figcaption>
+   </figure>
+   <figure class="klein" data-foto style="margin:0">
+    <div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmMEnPkm82LmlQT8WuXo73sefQUQyAsSXVf3Xcc7wFb95fxJHpfuykBmVDC_by-2axazd_ik2iEuqEibmHg3QnFC8iCTF6Uq6vsmFnwAPgm5Gusxdw8NeOWsuq7jLUCe9ERjvTpW=s4800-w500" referrerpolicy="no-referrer" alt="Teller mit Chicken Nuggets im Fladenbrot, Pommes, Reis und Salat" width="500" height="500" loading="lazy"></div>
+    <figcaption class="unterzeile"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/113003248558862194865" target="_blank" rel="noopener">Foto: hasbihal ilahi grubu · Google Maps</a></figcaption>
+   </figure>
+  </div>
+ </div>
+</section>
+
+<section class="zerlegt" data-szene="zerlegt" id="drin" aria-labelledby="z-titel">
+ <div class="wrap">
+  <div class="markise" aria-hidden="true"></div>
+  <div class="z-grid">
+   <div class="z-text">
+    <h2 class="h2 zeilen" id="z-titel">Was <em class="a">drin</em> ist.</h2>
+    <p>Das große Fladenbrot aus der Klappe, von oben gelesen: Sesam-Fladenbrot, Schafskäse, Röstzwiebeln – darunter Hähnchen und Salat. Scroll weiter, dann geht’s Schicht für Schicht auseinander.</p>
+   </div>
+   <div data-zerlegt-buehne>
+    <figure data-ebene="1"><img src="ki-ebene-brot-oben.webp" alt="Obere Hälfte des Fladenbrots" width="1200" height="600" loading="lazy" data-inhalt="0.000,0.994"><figcaption><b>01</b> Fladenbrot <small>Brot oder Lavas extra: <span class="preis">je 1,50&nbsp;€</span></small></figcaption></figure>
+    <figure data-ebene="2"><img src="ki-ebene-feta.webp" alt="Schicht aus zerbröseltem Schafskäse" width="1200" height="600" loading="lazy" data-inhalt="0.038,1.000"><figcaption><b>02</b> Schafskäse <small>Weißkäse, auch im Çoban Salatası</small></figcaption></figure>
+    <figure data-ebene="3"><img src="ki-ebene-roestzwiebeln.webp" alt="Schicht aus knusprigen Röstzwiebeln" width="1200" height="600" loading="lazy" data-inhalt="0.017,0.996"><figcaption><b>03</b> Röstzwiebeln <small>über Hähnchen und Salat</small></figcaption></figure>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="karte" id="tafel" aria-labelledby="t-titel">
+ <div class="wrap">
+  <div class="markise" aria-hidden="true"></div>
+  <div class="tafel">
+   <div class="tafel-kopf">
+    <h2 class="h2 zeilen" id="t-titel">Die <em class="a">Tafel.</em></h2>
+    <p>Preise wie in der Klappe. Sides gibt’s in Staffeln – je mehr, desto günstiger pro Stück.</p>
+   </div>
+   <div class="reiter" role="tablist" aria-label="Kategorien der Speisekarte">
+    <button role="tab" id="r-sides" aria-controls="p-sides" aria-selected="true" data-bild="wings">Sides</button>
+    <button role="tab" id="r-saucen" aria-controls="p-saucen" aria-selected="false" data-bild="wings">Saucen</button>
+    <button role="tab" id="r-extras" aria-controls="p-extras" aria-selected="false" data-bild="huhn">Extras</button>
+    <button role="tab" id="r-dessert" aria-controls="p-dessert" aria-selected="false" data-bild="huhn">Dessert</button>
+    <button role="tab" id="r-getraenke" aria-controls="p-getraenke" aria-selected="false" data-bild="huhn">Getränke</button>
+   </div>
+   <div class="listen">
+    <div class="panel" id="p-sides" role="tabpanel" aria-labelledby="r-sides">
+     <h3>Sides</h3>
+     <ul class="liste">
+      <li data-bild="ki-chicken-wings.webp"><span class="n">Crispy Chicken Fingers</span><i></i><b>8,50 €</b><span class="st"><span>6x 8,50</span><span>9x 12,00</span><span>12x 15,00</span></span></li>
+      <li data-bild="ki-chicken-wings.webp"><span class="n">Chicken Wings</span><i></i><b>6,50 €</b><span class="st"><span>6x 6,50</span><span>9x 9,10</span><span>12x 11,70</span></span></li>
+      <li data-bild="ki-chicken-wings.webp"><span class="n">Chicken Nuggets</span><i></i><b>5,50 €</b><span class="st"><span>6x 5,50</span><span>9x 7,50</span><span>12x 9,30</span></span></li>
+      <li data-bild="ki-chicken-wings.webp"><span class="n">Chilli Cheese Nuggets</span><i></i><b>4,50 €</b><span class="st"><span>6x 4,50</span><span>9x 6,50</span><span>12x 8,20</span></span></li>
+      <li><span class="n">Mozzarella Sticks</span><i></i><b>4,50 €</b><span class="st"><span>6x 4,50</span><span>9x 6,50</span><span>12x 8,20</span></span></li>
+      <li><span class="n">Kroketten</span><i></i><b>3,00 €</b><span class="st"><span>6x 3,00</span><span>9x 4,00</span><span>12x 5,00</span></span></li>
+      <li><span class="n">Onion Rings</span><i></i><b>2,50 €</b><span class="st"><span>6x 2,50</span><span>9x 3,50</span><span>12x 4,50</span></span></li>
+      <li><span class="n">Sigara Böreği</span><i></i><b>2,00 €</b><span class="st"><span>1 Stk 2,00</span><span>4 Stk 6,00</span></span></li>
+     </ul>
+    </div>
+    <div class="panel" id="p-saucen" role="tabpanel" aria-labelledby="r-saucen">
+     <h3>Saucen</h3>
+     <p class="panel-satz">Hot Garlic gibt’s im kleinen und im großen Becher. Nimm den großen.</p>
+     <ul class="liste">
+      <li><span class="n">Mayo</span><i></i><b>0,50 €</b><span class="st"><span>50 ml 0,50</span><span>125 ml 1,00</span></span></li>
+      <li><span class="n">Curry-Ketchup</span><i></i><b>0,50 €</b><span class="st"><span>50 ml 0,50</span><span>125 ml 1,00</span></span></li>
+      <li class="mark"><span class="n">Yegos Spezial</span><i></i><b>0,70 €</b><span class="st"><span>50 ml 0,70</span><span>125 ml 1,50</span></span></li>
+      <li class="mark"><span class="n">Hot Garlic</span><i></i><b>0,70 €</b><span class="st"><span>50 ml 0,70</span><span>125 ml 1,50</span></span></li>
+      <li><span class="n">Knoblauch</span><i></i><b>0,70 €</b><span class="st"><span>50 ml 0,70</span><span>125 ml 1,50</span></span></li>
+      <li><span class="n">Cocktail</span><i></i><b>0,70 €</b><span class="st"><span>50 ml 0,70</span><span>125 ml 1,50</span></span></li>
+      <li><span class="n">Sriracha</span><i></i><b>0,70 €</b><span class="st"><span>50 ml 0,70</span><span>125 ml 1,50</span></span></li>
+      <li><span class="n">Sweet Chili</span><i></i><b>0,70 €</b><span class="st"><span>50 ml 0,70</span><span>125 ml 1,50</span></span></li>
+     </ul>
+    </div>
+    <div class="panel" id="p-extras" role="tabpanel" aria-labelledby="r-extras">
+     <h3>Extras</h3>
+     <ul class="liste">
+      <li><span class="n">Brot</span><i></i><b>1,50 €</b></li>
+      <li><span class="n">Lavas</span><i></i><b>1,50 €</b></li>
+      <li><span class="n">Jalapeños</span><i></i><b>2,00 €</b><span class="st"><span>125 ml</span></span></li>
+      <li><span class="n">Tursu scharf</span><i></i><b>2,00 €</b><span class="st"><span>lange Peperoni, 125 ml</span></span></li>
+      <li><span class="n">Tursu scharf</span><i></i><b>2,00 €</b><span class="st"><span>kleine Peperoni, 125 ml</span></span></li>
+      <li><span class="n">Tursu mix</span><i></i><b>3,00 €</b><span class="st"><span>250 ml</span></span></li>
+      <li><span class="n">Cacık</span><i></i><b>3,00 €</b><span class="st"><span>250 ml</span></span></li>
+      <li><span class="n">Çoban Salatası</span><i></i><b>6,50 €</b><span class="st"><span>mit Weißkäse &amp; Granatapfelsirup</span></span></li>
+     </ul>
+    </div>
+    <div class="panel" id="p-dessert" role="tabpanel" aria-labelledby="r-dessert">
+     <h3>Dessert</h3>
+     <ul class="liste">
+      <li><span class="n">Baklava</span><i></i><b>2,50 €</b><span class="st"><span>2x 2,50</span><span>4x 4,50</span></span></li>
+      <li><span class="n">Tulumba Tatlısı</span><i></i><b>3,00 €</b></li>
+      <li><span class="n">Milka Muffin</span><i></i><b>3,50 €</b></li>
+      <li><span class="n">Milka &amp; Daim Donut</span><i></i><b>2,50 €</b></li>
+     </ul>
+    </div>
+    <div class="panel" id="p-getraenke" role="tabpanel" aria-labelledby="r-getraenke">
+     <h3>Getränke</h3>
+     <ul class="liste">
+      <li><span class="n">Coca Cola</span><i></i><b>2,50 €</b><span class="st"><span>0,33 l 2,50</span><span>1 l 4,50</span></span></li>
+      <li><span class="n">Cola Zero</span><i></i><b>2,50 €</b><span class="st"><span>0,33 l 2,50</span><span>1 l 4,50</span></span></li>
+      <li><span class="n">Fanta Orange</span><i></i><b>2,50 €</b><span class="st"><span>0,33 l 2,50</span><span>1 l 4,50</span></span></li>
+      <li><span class="n">Coca Cola Cherry</span><i></i><b>2,50 €</b><span class="st"><span>0,33 l</span></span></li>
+      <li><span class="n">Fanta Exotic</span><i></i><b>2,50 €</b><span class="st"><span>0,33 l</span></span></li>
+      <li><span class="n">Mezzo Mix</span><i></i><b>2,50 €</b><span class="st"><span>0,33 l</span></span></li>
+      <li><span class="n">Sprite</span><i></i><b>2,50 €</b><span class="st"><span>0,33 l</span></span></li>
+      <li><span class="n">Uludağ</span><i></i><b>2,50 €</b><span class="st"><span>0,33 l</span></span></li>
+     </ul>
+    </div>
+   </div>
+   <div class="tafel-frei" data-tiefe="20" aria-hidden="true">
+    <img class="an" data-id="wings" src="ki-chicken-wings.webp" alt="" width="800" height="800" loading="lazy">
+    <img data-id="huhn" src="ki-grillhaehnchen.webp" alt="" width="800" height="800" loading="lazy">
+   </div>
+   <p class="hinweis">Döner Kebab, Gemüse Döner, Döner mit Grillgemüse, Grillhähnchen ganz oder als Halbes Hähnchen Spezial, Yego’s Sandwich, Classic Sandwich, Currywurst, Falafel und Schnitzel stehen auf den Tafeln am Truck – Preise vor Ort oder kurz anrufen: <a href="tel:+491628866066">0162 8866066</a>.</p>
+  </div>
+ </div>
+ <img class="vorschau" src="ki-chicken-wings.webp" alt="" width="800" height="800" loading="lazy" aria-hidden="true">
+</section>
+
+<section class="truck" data-szene="raster-zoom" id="truck" aria-labelledby="tr-titel">
+ <div class="wrap">
+  <div class="truck-kopf">
+   <h2 class="h2 zeilen" id="tr-titel">Am <em class="a">Truck.</em></h2>
+   <p>Schwarzer Aufbau, gelbes Schild, rote Markise. Davor Stehtische auf rotem Teppich – dort gibt’s das Essen über den Tresen.</p>
+  </div>
+  <div class="raster">
+   <figure class="kachel" data-foto>
+    <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmNlRdpVYAabck0hIFvufsk779VvVm4l79PzRDHzZQDAa0gFUDoz0YMaQ3mnNhJPIvdLiDxkDPTTMcRa4gyMf_1gXhl-ZpSVT7u0SBMZv3DxfoHrbYzTSzaYSPnks2HqdjPBjtIST46dNGX4=s4800-w1000" referrerpolicy="no-referrer" alt="Großes Fladenbrot gefüllt mit Hähnchen, Salat, Röstzwiebeln und Schafskäse" width="900" height="1200" loading="lazy">
+    <figcaption>Fladenbrot, voll bis oben<a class="foto-nachweis" href="https://maps.google.com/maps/contrib/107854291150323503080" target="_blank" rel="noopener">Foto: Kathryn Degenhardt · Google Maps</a></figcaption>
+   </figure>
+   <figure class="kachel" data-foto>
+    <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmMEnPkm82LmlQT8WuXo73sefQUQyAsSXVf3Xcc7wFb95fxJHpfuykBmVDC_by-2axazd_ik2iEuqEibmHg3QnFC8iCTF6Uq6vsmFnwAPgm5Gusxdw8NeOWsuq7jLUCe9ERjvTpW=s4800-w500" referrerpolicy="no-referrer" alt="Teller mit Nuggets im Fladenbrot, Pommes, Reis und Salat" width="500" height="500" loading="lazy">
+    <figcaption>Nuggets, Pommes, Reis, Salat<a class="foto-nachweis" href="https://maps.google.com/maps/contrib/113003248558862194865" target="_blank" rel="noopener">Foto: hasbihal ilahi grubu · Google Maps</a></figcaption>
+   </figure>
+   <figure class="kachel" data-foto data-mitte>
+    <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmN1nS5qFrSRxMcEDu1QqHgqiZ3fcX1s0QeK23c3qLdqOkEnfmkwIFYzL6EBsfd0y8yAfgv1s-V1eKVUpAx2WTvHovYxnID85DXLomRvJEWC-6hJi4YKJAAaPD2EMy3uvNaDPWhbPQLc3tUL=s4800-w1800" referrerpolicy="no-referrer" alt="Yego’s Food Truck mit gelbem Leuchtschriftzug und Stehtischen" width="900" height="1200" loading="lazy">
+    <div data-raster-text><strong>Billbrookdeich 60</strong><span>Rote Markise, roter Teppich, Stehtische. Mo–Fr 11–21 Uhr.</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/114839592038830436021" target="_blank" rel="noopener">Foto: Yego&#x27;s Chicken · Google Maps</a></div>
+   </figure>
+   <figure class="kachel" data-foto>
+    <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmMjVATxWtCnmUaqh2k0AoOHx6zWxRwJadMo2l9rD2fGD8Hsq93pQStH1JlMy29r8pHIJD1R4WonXZxo2y_ocCNy_d_-z7ZGMCH6MOj9hl15pEyxWPp8OJHmhkrQ78bl-1ROJzDyEB2CpqUq=s4800-w1000" referrerpolicy="no-referrer" alt="Gefülltes Fladenbrot mit Ayran" width="675" height="1200" loading="lazy">
+    <figcaption>Dazu ein Ayran<a class="foto-nachweis" href="https://maps.google.com/maps/contrib/114701876479856770769" target="_blank" rel="noopener">Foto: Faruq Hashimi · Google Maps</a></figcaption>
+   </figure>
+   <figure class="kachel" data-foto>
+    <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmPJuv_2LH4Dl7LQwP__cMyRr39dRBb6tDoJm5IH4yp2ZYCU-BFn70pM0NfwSEYwOoy1_sw7QLlpntYtjHhg8Oku_6-y5VCeEDLOH8nJFG0afxY8hyPP1MpDl1MQcGuIAF3VkxtgxY1DAFE=s4800-w1000" referrerpolicy="no-referrer" alt="Der Food Truck mit Angebotsaufsteller im Vordergrund" width="900" height="1200" loading="lazy">
+    <figcaption>Der Aufsteller zeigt das Angebot<a class="foto-nachweis" href="https://maps.google.com/maps/contrib/114839592038830436021" target="_blank" rel="noopener">Foto: Yego&#x27;s Chicken · Google Maps</a></figcaption>
+   </figure>
+  </div>
+ </div>
+</section>
+
+<section class="zeiten" id="zeiten" aria-labelledby="ze-titel">
+ <div class="wrap ze-grid">
+  <div>
+   <h2 class="h2 zeilen" id="ze-titel">Mo bis Fr, <em class="a">11 bis 21 Uhr.</em></h2>
+   <div class="plan" role="list" aria-label="Öffnungszeiten">
+    <div class="plan-zeile achse-zeile" aria-hidden="true"><span></span><div class="achse"><span style="left:0">9</span><span style="left:21.43%">12</span><span style="left:42.86%">15</span><span style="left:64.29%">18</span><span style="left:85.71%">21</span></div></div>
+    <div class="plan-zeile plan-tag" role="listitem"><span class="tn" aria-label="Montag">Mo</span><div class="spur"><span class="balken">11:00 – 21:00</span></div></div>
+    <div class="plan-zeile plan-tag" role="listitem"><span class="tn" aria-label="Dienstag">Di</span><div class="spur"><span class="balken">11:00 – 21:00</span></div></div>
+    <div class="plan-zeile plan-tag" role="listitem"><span class="tn" aria-label="Mittwoch">Mi</span><div class="spur"><span class="balken">11:00 – 21:00</span></div></div>
+    <div class="plan-zeile plan-tag" role="listitem"><span class="tn" aria-label="Donnerstag">Do</span><div class="spur"><span class="balken">11:00 – 21:00</span></div></div>
+    <div class="plan-zeile plan-tag" role="listitem"><span class="tn" aria-label="Freitag">Fr</span><div class="spur"><span class="balken">11:00 – 21:00</span></div></div>
+    <div class="plan-zeile plan-tag zu" role="listitem"><span class="tn" aria-label="Samstag">Sa</span><div class="spur"><span>geschlossen</span></div></div>
+    <div class="plan-zeile plan-tag zu" role="listitem"><span class="tn" aria-label="Sonntag">So</span><div class="spur"><span>geschlossen</span></div></div>
+    <div class="jetzt-ebene" aria-hidden="true"><div class="jetzt" hidden><span></span></div></div>
+   </div>
+  </div>
+  <div class="ze-weg">
+   <div class="markise" aria-hidden="true"></div><div class="kartenrahmen"><div data-karte data-stil="dunkel" data-farbe="#F9B21B"></div></div>
+   <address>Billbrookdeich 60<br>22113 Hamburg</address>
+   <p>Der Truck steht direkt am Billbrookdeich 60, erkennbar an der roten Markise und dem roten Teppich vor den Stehtischen.</p>
+   <p><a class="leise" href="https://www.google.com/maps/dir/?api=1&amp;destination=Billbrookdeich+60,+22113+Hamburg" target="_blank" rel="noopener">Route in Google Maps <span aria-hidden="true">→</span></a></p>
+  </div>
+ </div>
+</section>
+
+<section class="reservieren" id="reservieren" aria-labelledby="re-titel">
+ <div class="wrap">
+  <div class="re-grid">
+   <div class="re-text">
+    <h2 class="h2 zeilen" id="re-titel">Stehtisch <em class="rot">sichern.</em></h2>
+    <p>Mittags mit dem Team oder nach der Schicht: Sag, wann ihr kommt und wie viele ihr seid. Wir melden uns unter deiner Nummer. Lieber direkt? <a href="tel:+491628866066">0162 8866066</a>.</p>
+    <a class="plakette" href="https://www.google.com/maps/search/?api=1&amp;query=Yego%27s+Chicken&amp;query_place_id=ChIJ41XpfNiNsUcR-RHYfswE1-8" target="_blank" rel="noopener"><span data-bewertung aria-label="4,9 von 5 Sternen bei 227 Google-Bewertungen"><span class="bew-stern" aria-hidden="true">★</span><span class="bew-zahl">4,9</span><span class="bew-text">227 Bewertungen auf Google</span></span></a>
+   </div>
+   <div class="tresen-wrap"><div class="markise" aria-hidden="true"></div><form class="tresen" data-reservierung>
+    <div data-schritt="1" data-titel="Wann?">
+     <h3 class="schritt-titel">Wann?</h3>
+     <p class="feld-label" id="l-tag">Tag</p>
+     <div data-tage aria-labelledby="l-tag"></div>
+     <p class="feld-label" id="l-zeit">Uhrzeit</p>
+     <div data-zeiten aria-labelledby="l-zeit"></div>
+    </div>
+    <div data-schritt="2" data-titel="Wie viele?">
+     <h3 class="schritt-titel">Wie viele?</h3>
+     <p class="feld-label" id="l-pers">Personen</p>
+     <div data-personen aria-labelledby="l-pers"></div>
+    </div>
+    <div data-schritt="3" data-titel="Deine Angaben">
+     <h3 class="schritt-titel">Deine Angaben</h3>
+     <div class="felder-zwei">
+      <div class="feld"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+      <div class="feld"><label for="f-tel">Telefon</label><input id="f-tel" name="telefon" type="tel" autocomplete="tel" required></div>
+     </div>
+     <div class="feld"><label for="f-mail">E-Mail (optional)</label><input id="f-mail" name="email" type="email" autocomplete="email"></div>
+     <div class="feld"><label for="f-nachricht">Nachricht (optional)</label><textarea id="f-nachricht" name="nachricht" rows="2"></textarea></div>
+     <label class="einw"><input type="checkbox" name="einwilligung" required><span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Reservierung verwendet werden. <a href="https://medialyte.de/datenschutzerklaerung" target="_blank" rel="noopener">Datenschutz</a></span></label>
+     <p data-reservierung-fehler></p>
+     <button type="submit">Tisch anfragen</button>
+    </div>
+    <div data-reservierung-erfolg hidden>
+     <div class="bon">
+      <h3>Notiert.</h3>
+      <p>Wir melden uns unter deiner Nummer.</p>
+      <dl>
+       <div><dt>Tag</dt><dd><span data-wert="datum"></span></dd></div>
+       <div><dt>Uhrzeit</dt><dd><span data-wert="uhrzeit"></span></dd></div>
+       <div><dt>Personen</dt><dd><span data-wert="personen"></span></dd></div>
+       <div><dt>Name</dt><dd><span data-wert="name"></span></dd></div>
+      </dl>
+     </div>
+     <button type="button" data-reservierung-neu>Neue Anfrage</button>
+    </div>
+   </form></div>
+  </div>
+ </div>
+</section>
+
+<section class="schluss" aria-labelledby="s-titel">
+ <div class="wrap">
+  <div>
+   <h2 class="hunger" id="s-titel">Hunger?</h2>
+   <p>Mo–Fr 11–21 Uhr. Vor Ort, zum Mitnehmen oder geliefert.</p>
+  </div>
+  <a class="gross-anruf" href="tel:+491628866066">0162 8866066 <span>Jetzt anrufen →</span></a>
+ </div>
+</section>
+</main>
+
+<footer class="fuss">
+ <div class="wrap">
+  <div class="fuss-grid">
+   <div><a class="wort" href="#start">Yego’s</a><p>Chicken · Food Truck<br>Billbrook, seit 2021</p></div>
+   <div><h3>Adresse</h3><p>Billbrookdeich 60<br>22113 Hamburg<br><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Billbrookdeich+60,+22113+Hamburg" target="_blank" rel="noopener">Route</a></p></div>
+   <div><h3>Zeiten</h3><p>Mo–Fr 11:00 – 21:00 Uhr<br>Sa &amp; So geschlossen</p></div>
+   <div><h3>Bestellen</h3><p><a href="tel:+491628866066">0162 8866066</a><br>Halal · vor Ort · zum Mitnehmen · Lieferservice</p></div>
+  </div>
+  <div class="rechtliches"><p>Entwurf von Medialyte, 21147 Hamburg. Adresse und Öffnungszeiten: Google. Fotos: Google Maps, Urheber jeweils am Bild. Einige Bilder und das Logo sind KI-generierte Vorschläge.</p><p><a href="https://medialyte.de/impressum" style="color:inherit;text-decoration:underline">Impressum</a> · <a href="https://medialyte.de/datenschutzerklaerung" style="color:inherit;text-decoration:underline">Datenschutz</a></p></div>
+ </div>
+</footer>
+
+<nav class="leiste" aria-label="Schnellzugriff">
+ <a href="tel:+491628866066"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>Anrufen</a>
+ <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Billbrookdeich+60,+22113+Hamburg" target="_blank" rel="noopener">Route</a>
+ <a href="#zeiten">Zeiten</a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+ document.documentElement.classList.add("js");
+ const tabs=[...document.querySelectorAll('[role="tab"]')],panels=tabs.map(t=>document.getElementById(t.getAttribute("aria-controls"))),frei=document.querySelectorAll(".tafel-frei img");
+ const zeige=(i,fokus)=>{tabs.forEach((t,j)=>{const an=i===j;t.setAttribute("aria-selected",an);t.tabIndex=an?0:-1;panels[j].hidden=!an});frei.forEach(f=>f.classList.toggle("an",f.dataset.id===tabs[i].dataset.bild));if(fokus)tabs[i].focus()};
+ tabs.forEach((t,i)=>{t.addEventListener("click",()=>zeige(i));t.addEventListener("keydown",e=>{const d=e.key==="ArrowRight"?1:e.key==="ArrowLeft"?-1:0;if(d){e.preventDefault();zeige((i+d+tabs.length)%tabs.length,true)}})});
+ if(tabs.length)zeige(0);
+ document.querySelectorAll(".liste li:not(.mark)").forEach(li=>li.addEventListener("click",()=>{document.querySelectorAll(".liste li.angetippt").forEach(x=>x!==li&&x.classList.remove("angetippt"));li.classList.toggle("angetippt")}));
+ const teile=Object.fromEntries(new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Berlin",weekday:"short",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(new Date()).map(p=>[p.type,p.value]));
+ const ti=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"].indexOf(teile.weekday),reihe=document.querySelectorAll(".plan-tag")[ti];
+ if(reihe)reihe.classList.add("heute");
+ const pct=(+teile.hour+ +teile.minute/60-9)/14,jetzt=document.querySelector(".jetzt");
+ if(jetzt&&pct>=0&&pct<=1){jetzt.style.left=pct*100+"%";jetzt.querySelector("span").textContent=teile.hour+":"+teile.minute;jetzt.hidden=false}
+ if(!window.gsap)return;
+ gsap.registerPlugin(ScrollTrigger,SplitText);
+ const mm=gsap.matchMedia();
+ mm.add({ok:"(prefers-reduced-motion: no-preference)",klein:"(max-width: 819px)"},ctx=>{
+  const {ok,klein}=ctx.conditions;if(!ok)return;
+  const marke=SplitText.create(".marke-gross",{type:"chars"});
+  gsap.from(marke.chars,{autoAlpha:0,duration:.18,ease:"steps(2)",stagger:klein?.06:.1,delay:.15});
+  SplitText.create(".hero-titel",{type:"lines",mask:"lines",autoSplit:true,onSplit:s=>gsap.from(s.lines,{yPercent:110,duration:klein?.7:1,ease:"expo.out",stagger:.08,delay:.55})});
+  gsap.utils.toArray(".markise").forEach(m=>gsap.from(m,{scaleY:0,transformOrigin:"50% 0",duration:klein?.4:.7,ease:"power3.out",scrollTrigger:{trigger:m,start:"top 92%",once:true}}));
+  gsap.utils.toArray(".zeilen").forEach(h=>SplitText.create(h,{type:"lines",mask:"lines",autoSplit:true,onSplit:s=>gsap.from(s.lines,{yPercent:110,duration:klein?.6:.9,ease:"expo.out",stagger:.08,delay:.2,scrollTrigger:{trigger:h,start:"top 88%",once:true}})}));
+ });
+ if(matchMedia("(pointer: fine) and (prefers-reduced-motion: no-preference)").matches){
+  const k=document.querySelector(".knopf-anruf");
+  if(k){const qx=gsap.quickTo(k,"x",{duration:.4,ease:"power3"}),qy=gsap.quickTo(k,"y",{duration:.4,ease:"power3"});
+   k.addEventListener("mousemove",e=>{const r=k.getBoundingClientRect();qx((e.clientX-r.left-r.width/2)*.25);qy((e.clientY-r.top-r.height/2)*.35)});
+   k.addEventListener("mouseleave",()=>{qx(0);qy(0)})}
+  const v=document.querySelector(".vorschau");
+  if(v){gsap.set(v,{xPercent:-50,yPercent:-60});const vx=gsap.quickTo(v,"x",{duration:.45,ease:"power3"}),vy=gsap.quickTo(v,"y",{duration:.45,ease:"power3"});
+   document.querySelectorAll(".liste li[data-bild]").forEach(li=>{li.addEventListener("mouseenter",e=>{gsap.set(v,{x:e.clientX,y:e.clientY});v.classList.add("zeigen")});li.addEventListener("mousemove",e=>{vx(e.clientX);vy(e.clientY)});li.addEventListener("mouseleave",()=>v.classList.remove("zeigen"))})}
+  if(window.Lenis){const lenis=new Lenis({autoRaf:false});lenis.on("scroll",ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0)}
+ }
+});
+</script>
+<div style="padding:16px;font:12px/1.5 system-ui,sans-serif;background:#111;color:#ddd">Fotos: <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/114839592038830436021" target="_blank" rel="noopener">Foto: Yego&#x27;s Chicken · Google Maps</a>, <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/114839592038830436021" target="_blank" rel="noopener">Foto: Yego&#x27;s Chicken · Google Maps</a></div><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>[data-karte]{width:100%;height:100%;min-height:260px;position:relative;z-index:0;isolation:isolate}[data-karte] .leaflet-tile-pane{filter:var(--karte-filter)}
+[data-karte] .leaflet-control-attribution{font-size:10px}.karte-pin{position:relative;width:34px;height:34px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+box-shadow:0 6px 16px rgba(0,0,0,.35);border:3px solid #fff}.karte-pin i{position:absolute;inset:9px;border-radius:50%;background:#fff}</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>(function(){var C={"lat": 53.538911399999996, "lng": 10.0842751, "name": "Yego's Chicken", "filter": {"hell": "grayscale(1) contrast(1.05) brightness(1.04)", "dunkel": "grayscale(1) invert(1) contrast(.88) brightness(.82)", "warm": "grayscale(1) sepia(.5) contrast(1.02) brightness(1.02)", "kuehl": "grayscale(1) sepia(.35) hue-rotate(175deg) saturate(.55) brightness(1.03)", "mono": "grayscale(1) contrast(1.2)"}};function draw(){if(!window.L)return;document.querySelectorAll('[data-karte]').forEach(function(el){
+if(el._map)return;var st=el.getAttribute('data-stil')||'hell',col=el.getAttribute('data-farbe')||'#c0392b';
+el.style.setProperty('--karte-filter',C.filter[st]||C.filter.hell);
+var m=L.map(el,{scrollWheelZoom:false,zoomControl:true,attributionControl:true}).setView([C.lat,C.lng],16);el._map=m;
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(m);
+var icon=L.divIcon({className:'',html:'<div class="karte-pin" style="background:'+col+'"><i></i></div>',iconSize:[34,34],iconAnchor:[17,34]});
+L.marker([C.lat,C.lng],{icon:icon,title:C.name,alt:C.name}).addTo(m);setTimeout(function(){m.invalidateSize()},300);});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',draw);else draw();window.addEventListener('load',draw);})();</script><script>(function(){
+var P=[[2100, 2700], [3540, 4140], [4980, 5580], [6420, 7020], [7860, 8460]];
+function fmt(m){m=((m%1440)+1440)%1440;var h=Math.floor(m/60),mi=m%60;return (h<10?'0':'')+h+':'+(mi<10?'0':'')+mi;}
+function now(){var d=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Berlin'}));return d.getDay()*1440+d.getHours()*60+d.getMinutes();}
+function status(){if(!P.length)return null;var t=now(),W=10080;
+ for(var i=0;i<P.length;i++){var s=P[i][0],e=P[i][1];if((t>=s&&t<e)||(t+W>=s&&t+W<e))return {offen:true,text:'Jetzt geöffnet bis '+fmt(e)};}
+ var best=null;for(var j=0;j<P.length;j++){var d=(P[j][0]-t+W)%W;if(best===null||d<best.d)best={d:d,s:P[j][0]};}
+ var tag=Math.floor(t/1440),ot=Math.floor(best.s/1440)%7,names=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+ var when=best.d<1440&&ot===tag?'heute':(best.d<2880&&ot===(tag+1)%7?'morgen':names[ot]);
+ return {offen:false,text:'Geschlossen · öffnet '+when+' um '+fmt(best.s)};}
+function run(){var s=status();document.querySelectorAll('[data-status]').forEach(function(el){
+ if(!s){el.style.display='none';return;}el.textContent=s.text;el.setAttribute('data-offen',s.offen?'ja':'nein');});}
+document.querySelectorAll('[data-foto] img').forEach(function(img){
+ function hide(){var b=img.closest('[data-foto]');if(b)b.style.display='none';}
+ if(!img.getAttribute('src'))hide();else{img.addEventListener('error',hide);if(img.complete&&img.naturalWidth===0)hide();}});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();setInterval(run,60000);
+})();</script><!--agent-res--><script>(function () {
+  /* Reservierung: Tage und Uhrzeiten aus den echten Öffnungszeiten, Personen, Prüfung, Bestätigung.
+     Gestaltung kommt von der Seite, die Logik kommt von hier. CFG und P setzt der Agent ein. */
+  var CFG = {"modus": "demo", "ziel": "", "extra": {}, "slot": 30, "vorlauf": 60, "letzte": 60, "max": 8, "tage": 21, "name": "Yego's Chicken", "tel": "01628866066", "telText": "0162 8866066"}, P = [[2100, 2700], [3540, 4140], [4980, 5580], [6420, 7020], [7860, 8460]], W = 10080;
+  var TAGE = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"], LANG = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
+  var MON = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+  function berlin() { return new Date(new Date().toLocaleString("en-US", { timeZone: "Europe/Berlin" })); }
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function hm(m) { return pad(Math.floor(m / 60)) + ":" + pad(m % 60); }
+  function iso(d) { return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()); }
+  function el(tag, attrs, html) { var e = document.createElement(tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (html != null) e.innerHTML = html; return e; }
+
+  /* Uhrzeiten eines Kalendertags (Minuten ab 00:00), aus den Wochen-Intervallen P */
+  function slots(day, isToday, nowMin) {
+    var out = [], start = day.getDay() * 1440, step = CFG.slot, last = CFG.letzte;
+    var periods = P.length ? P : [[0, W]];
+    for (var i = 0; i < periods.length; i++) {
+      for (var shift = -W; shift <= W; shift += W) {
+        var s = periods[i][0] + shift, e = periods[i][1] + shift;
+        var from = Math.max(s, start), to = Math.min(e - last, start + 1440 - 1);
+        if (!P.length) { from = start + 11 * 60; to = start + 21 * 60 + 30; }
+        if (to < from && e > start && s < start + 1440 && e - s <= last + step && s >= start) to = from;
+        for (var t = Math.ceil(from / step) * step; t <= to; t += step) {
+          var m = t - start;
+          if (m < 5 * 60 && P.length) continue;              // keine Plätze nach Mitternacht
+          if (isToday && m < nowMin + CFG.vorlauf) continue;  // heute nur mit Vorlauf
+          if (out.indexOf(m) < 0) out.push(m);
+        }
+      }
+    }
+    return out.sort(function (a, b) { return a - b; });
+  }
+
+  function init(form) {
+    if (form._res) return; form._res = true;
+    var now = berlin(), nowMin = now.getHours() * 60 + now.getMinutes();
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var days = [];
+    for (var i = 0; i < CFG.tage; i++) {
+      var d = new Date(today); d.setDate(today.getDate() + i);
+      var s = slots(d, i === 0, nowMin);
+      if (s.length) days.push({ d: d, slots: s, i: i });
+    }
+    var boxTage = form.querySelector("[data-tage]"), boxZeiten = form.querySelector("[data-zeiten]"), boxPers = form.querySelector("[data-personen]");
+    var first = form.querySelector("input, textarea, select, button");
+    function ensure(box, attr, label) {
+      if (box) return box;
+      var wrap = el("fieldset", { "class": "res-gruppe" }, "<legend>" + label + "<\/legend>");
+      var b = el("div", {}); b.setAttribute(attr, ""); wrap.appendChild(b);
+      form.insertBefore(wrap, first && first.parentNode === form ? first : form.firstChild);
+      return b;
+    }
+    boxTage = ensure(boxTage, "data-tage", "Tag");
+    boxZeiten = ensure(boxZeiten, "data-zeiten", "Uhrzeit");
+    boxPers = ensure(boxPers, "data-personen", "Personen");
+    [boxTage, boxZeiten, boxPers].forEach(function (b) { b.setAttribute("role", "radiogroup"); });
+    boxTage.setAttribute("aria-label", "Tag wählen"); boxZeiten.setAttribute("aria-label", "Uhrzeit wählen");
+    boxPers.setAttribute("aria-label", "Anzahl Personen");
+    var uid = "res" + Math.random().toString(36).slice(2, 7);
+
+    function option(name, value, inner, title) {
+      var id = uid + "-" + name + "-" + String(value).replace(/[^a-z0-9]/gi, "");
+      var l = el("label", { "class": "res-option", "for": id, title: title || "" });
+      l.appendChild(el("input", { type: "radio", name: name, value: value, id: id, "class": "res-radio" }));
+      l.appendChild(el("span", { "class": "res-label" }, inner));
+      return l;
+    }
+    function renderDays() {
+      boxTage.innerHTML = "";
+      if (!days.length) { boxTage.appendChild(el("p", { "class": "res-hinweis" }, "In den nächsten Wochen sind online keine Zeiten frei. Bitte rufen Sie an.")); return; }
+      days.forEach(function (x) {
+        var top = x.i === 0 ? "Heute" : x.i === 1 ? "Morgen" : TAGE[x.d.getDay()];
+        boxTage.appendChild(option("datum", iso(x.d), "<b>" + top + "<\/b><small>" + pad(x.d.getDate()) + "." + pad(x.d.getMonth() + 1) + ".<\/small>",
+          LANG[x.d.getDay()] + ", " + x.d.getDate() + ". " + MON[x.d.getMonth()]));
+      });
+    }
+    function renderTimes(dateIso) {
+      boxZeiten.innerHTML = "";
+      var x = days.filter(function (y) { return iso(y.d) === dateIso; })[0];
+      if (!x) { boxZeiten.appendChild(el("p", { "class": "res-hinweis" }, "Bitte zuerst einen Tag wählen.")); return; }
+      if (x.slots.length <= 8) { x.slots.forEach(function (m) { boxZeiten.appendChild(option("uhrzeit", hm(m), hm(m))); }); return; }
+      var parts = [["Morgens", 0, 660], ["Mittags", 660, 870], ["Nachmittags", 870, 1020], ["Abends", 1020, 1440]];
+      // eine einzelne Uhrzeit bekommt keine eigene Gruppe, sie wandert in die nächste (bzw. vorige)
+      var groups = parts.map(function (pt) { return [pt[0], x.slots.filter(function (m) { return m >= pt[1] && m < pt[2]; })]; })
+        .filter(function (g) { return g[1].length; });
+      for (var gi = 0; gi < groups.length && groups.length > 1; gi++) {
+        if (groups[gi][1].length > 1) continue;
+        var to = gi + 1 < groups.length ? gi + 1 : gi - 1;
+        groups[to][1] = to > gi ? groups[gi][1].concat(groups[to][1]) : groups[to][1].concat(groups[gi][1]);
+        groups.splice(gi, 1); gi--;
+      }
+      groups.forEach(function (gr) {
+        var pt = [gr[0]], mins = gr[1];
+        var g = el("div", { "class": "res-zeitgruppe" }), row = el("div", { "class": "res-zeitreihe" });
+        g.appendChild(el("p", { "class": "res-tageszeit" }, pt[0]));
+        mins.forEach(function (m) { row.appendChild(option("uhrzeit", hm(m), hm(m))); });
+        g.appendChild(row); boxZeiten.appendChild(g);
+      });
+    }
+    function renderPersons() {
+      boxPers.innerHTML = "";
+      for (var n = 1; n <= CFG.max; n++) boxPers.appendChild(option("personen", n, String(n), n + (n === 1 ? " Person" : " Personen")));
+      if (CFG.tel) boxPers.appendChild(el("p", { "class": "res-hinweis" }, "Mehr als " + CFG.max + "? <a href=\"tel:" + CFG.tel + "\">Bitte anrufen<\/a>."));
+    }
+    renderDays(); renderPersons();
+    var firstDay = boxTage.querySelector("input");
+    if (firstDay) { firstDay.checked = true; renderTimes(firstDay.value); } else renderTimes("");
+    var two = boxPers.querySelector('input[value="2"]'); if (two) two.checked = true;
+    boxTage.addEventListener("change", function (e) { if (e.target.name === "datum") { renderTimes(e.target.value); clearError(boxZeiten); } });
+
+    /* Spam-Falle und Felder für den späteren Versand */
+    var trap = el("input", { type: "text", name: "botcheck", tabindex: "-1", autocomplete: "off", "aria-hidden": "true",
+      style: "position:absolute;left:-9999px;width:1px;height:1px;opacity:0" });
+    form.appendChild(trap);
+    var errBox = form.querySelector("[data-reservierung-fehler]");
+    if (!errBox) { errBox = el("p", { "class": "res-fehler" }); var sb0 = form.querySelector('[type="submit"]'); if (sb0) sb0.parentNode.insertBefore(errBox, sb0); else form.appendChild(errBox); }
+    errBox.setAttribute("role", "alert"); errBox.setAttribute("aria-live", "polite");
+    var ok = form.querySelector("[data-reservierung-erfolg]");
+    if (!ok) { // gestaltete Bestätigung direkt neben dem Formular (gleicher Abschnitt) wird ebenfalls genutzt
+      var area = form.closest("section, [id]") || form.parentNode;
+      ok = area ? area.querySelector("[data-reservierung-erfolg]") : null;
+      if (ok && (ok._resForm || ok.closest("form[data-reservierung]"))) ok = null;
+    }
+    var outside = !!ok && !form.contains(ok);
+    if (ok) ok._resForm = form;
+    if (!ok) { ok = el("div", { "class": "res-erfolg", tabindex: "-1" }, "<p><strong>Danke!<\/strong> Ihre Anfrage für <span data-wert=\"datum\"><\/span> um <span data-wert=\"uhrzeit\"><\/span> Uhr (<span data-wert=\"personen\"><\/span>) ist eingegangen.<\/p>"); ok.setAttribute("data-reservierung-erfolg", ""); form.appendChild(ok); }
+    ok.hidden = true; ok.setAttribute("tabindex", "-1");
+    form.noValidate = true;
+    [["name", "name", "text"], ["telefon", "tel", "tel"], ["email", "email", "email"]].forEach(function (x) {
+      var f = form.querySelector('[name="' + x[0] + '"]'); if (!f || f.tagName !== "INPUT") return;
+      if (!f.getAttribute("autocomplete")) f.setAttribute("autocomplete", x[1]);
+      if (x[2] !== "text") { f.type = x[2]; f.setAttribute("inputmode", x[2]); }
+      if (!f.getAttribute("enterkeyhint")) f.setAttribute("enterkeyhint", "next");
+    });
+    function headerOffset() {
+      var h = 16;
+      document.querySelectorAll("header, nav, [data-kopf]").forEach(function (n) {
+        var cs = getComputedStyle(n), r = n.getBoundingClientRect();
+        if ((cs.position === "fixed" || cs.position === "sticky") && r.top <= 1 && r.height < innerHeight / 3) h = Math.max(h, r.bottom + 12);
+      });
+      return h;
+    }
+    /* gewählten Chip in einer wischbaren Reihe sichtbar machen, ohne die Seite zu verschieben */
+    function revealX(input) {
+      var lab = input && (input.closest(".res-option") || input);
+      for (var n = lab && lab.parentNode; n && n !== form; n = n.parentNode) {
+        var ox = getComputedStyle(n).overflowX;
+        if (ox === "auto" || ox === "scroll") {
+          var r = lab.getBoundingClientRect(), b = n.getBoundingClientRect();
+          if (r.left < b.left || r.right > b.right) n.scrollLeft += r.left - b.left - (b.width - r.width) / 2;
+          return;
+        }
+      }
+    }
+
+    /* Mehrschritt: <div data-schritt="1|2|3" data-titel="…"> – immer nur ein Schritt sichtbar */
+    var steps = Array.prototype.slice.call(form.querySelectorAll("[data-schritt]")), cur = 0;
+    var multi = steps.length >= 2, prog = null, sum = null, live = null;
+    var still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function stepTitle(st, i) { var h = st.getAttribute("data-titel") || ((st.querySelector("h2,h3,h4,legend") || {}).textContent || ""); return h.trim() || ["Wann?", "Wie viele?", "Ihre Angaben"][i] || "Schritt " + (i + 1); }
+    function summaryText() {
+      var bits = [];
+      if (val("datum")) { var d = new Date(val("datum") + "T12:00:00"); bits.push(TAGE[d.getDay()] + " " + pad(d.getDate()) + "." + pad(d.getMonth() + 1) + "."); }
+      if (val("uhrzeit")) bits.push(val("uhrzeit") + " Uhr");
+      if (val("personen")) bits.push(val("personen") + (val("personen") === "1" ? " Person" : " Personen"));
+      return bits.join(" · ");
+    }
+    function stepOk(i, mark_) {
+      var st = steps[i], need = [];
+      if (st.querySelector("[data-tage]") && !val("datum")) need.push([boxTage, "Bitte einen Tag wählen."]);
+      if (st.querySelector("[data-zeiten]") && !val("uhrzeit")) need.push([boxZeiten, "Bitte eine Uhrzeit wählen."]);
+      if (st.querySelector("[data-personen]") && !val("personen")) need.push([boxPers, "Bitte die Anzahl der Personen wählen."]);
+      var hint = st.querySelector(".res-schritt-fehler");
+      if (mark_ && hint) hint.textContent = need.map(function (n) { return n[1]; }).join(" ");
+      need.forEach(function (n) { if (mark_) mark(n[0], true); });
+      return !need.length;
+    }
+    function show(i, dir) {
+      cur = Math.max(0, Math.min(steps.length - 1, i));
+      steps.forEach(function (st, k) { st.hidden = k !== cur; st.classList.toggle("res-aktiv", k === cur); });
+      if (prog) Array.prototype.forEach.call(prog.children, function (li, k) {
+        li.classList.toggle("res-erledigt", k < cur); li.classList.toggle("res-jetzt", k === cur);
+        if (k === cur) li.setAttribute("aria-current", "step"); else li.removeAttribute("aria-current");
+      });
+      if (sum) { var t = summaryText(); sum.textContent = cur > 0 ? t : ""; sum.hidden = cur === 0 || !t; }
+      if (live) live.textContent = "Schritt " + (cur + 1) + " von " + steps.length + ": " + stepTitle(steps[cur], cur);
+      var st = steps[cur];
+      if (dir && !still && st.animate) st.animate([{ opacity: 0, transform: "translateX(" + (dir > 0 ? 18 : -18) + "px)" }, { opacity: 1, transform: "none" }],
+        { duration: 280, easing: "cubic-bezier(.2,.7,.2,1)" });
+      if (dir) {
+        var f = st.querySelector("input:checked") || st;
+        if (f === st && !st.hasAttribute("tabindex")) { st.setAttribute("tabindex", "-1"); st.style.outline = "none"; }
+        try { f.focus({ preventScroll: true }); } catch (e) {}
+        revealX(st.querySelector("[data-tage] input:checked"));
+        var off = headerOffset(), top = form.getBoundingClientRect().top;
+        if (top < off - 2 || top > innerHeight * 0.6) scrollTo({ top: scrollY + top - off, behavior: still ? "auto" : "smooth" });
+      }
+    }
+    function next() { if (stepOk(cur, true)) show(cur + 1, 1); }
+    if (multi) {
+      prog = form.querySelector("[data-fortschritt]");
+      if (!prog) { prog = el("ol", { "class": "res-fortschritt" }); prog.setAttribute("data-fortschritt", ""); form.insertBefore(prog, form.firstChild); }
+      prog.innerHTML = "";
+      steps.forEach(function (st, i) {
+        var li = el("li", { "class": "res-punkt" }, "<span class=\"res-nr\">" + (i + 1) + "<\/span><span class=\"res-titel\">" + stepTitle(st, i) + "<\/span>");
+        li.addEventListener("click", function () { if (i < cur) show(i, -1); });
+        prog.appendChild(li);
+      });
+      sum = form.querySelector("[data-zusammenfassung]");
+      if (!sum) { sum = el("p", { "class": "res-zusammenfassung" }); prog.parentNode.insertBefore(sum, prog.nextSibling); }
+      live = el("p", { "class": "res-ansage", "aria-live": "polite", style: "position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)" });
+      form.appendChild(live);
+      var sbx = form.querySelector('[type="submit"]');
+      if (sbx && !steps.some(function (st) { return st.contains(sbx); })) steps[steps.length - 1].appendChild(sbx);
+      steps.forEach(function (st, i) {
+        if (!st.querySelector(".res-schritt-fehler") && i < steps.length - 1) st.appendChild(el("p", { "class": "res-schritt-fehler", role: "alert" }));
+        var back = st.querySelector("[data-zurueck]"), fwd = st.querySelector("[data-weiter]");
+        if (!back && !fwd && (i > 0 || i < steps.length - 1)) {
+          var nav = el("div", { "class": "res-nav" });
+          if (i > 0) { back = el("button", { type: "button", "class": "res-zurueck" }, "Zurück"); back.setAttribute("data-zurueck", ""); nav.appendChild(back); }
+          if (i < steps.length - 1) { fwd = el("button", { type: "button", "class": "res-weiter" }, "Weiter"); fwd.setAttribute("data-weiter", ""); nav.appendChild(fwd); }
+          var sb = st.querySelector('[type="submit"]');
+          if (sb && sb.parentNode) { sb.parentNode.insertBefore(nav, sb); nav.appendChild(sb); } else st.appendChild(nav);
+        }
+      });
+      form.addEventListener("click", function (e) {
+        if (e.target.closest("[data-weiter]")) { e.preventDefault(); next(); }
+        else if (e.target.closest("[data-zurueck]")) { e.preventDefault(); show(cur - 1, -1); }
+      });
+      form.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" || e.target.tagName === "TEXTAREA" || e.target.closest("[data-zurueck]")) return;
+        if (cur < steps.length - 1) { e.preventDefault(); next(); return; }
+        if (e.target.tagName !== "INPUT" || /^(radio|checkbox|submit|button)$/.test(e.target.type)) return;
+        var texts = Array.prototype.slice.call(steps[cur].querySelectorAll("input:not([type=radio]):not([type=checkbox]):not([type=hidden]):not([name=botcheck]), textarea"));
+        var later = texts.slice(texts.indexOf(e.target) + 1).filter(function (t) { return !String(t.value || "").trim(); })[0];
+        if (later) { e.preventDefault(); later.focus(); }
+      });
+      // Nach der Wahl von Uhrzeit bzw. Personen per Tippen/Klick geht es von selbst weiter (Pfeiltasten nicht)
+      var lastPointer = -1e9, lastKey = -1e9;
+      form.addEventListener("pointerdown", function () { lastPointer = performance.now(); });
+      form.addEventListener("keydown", function () { lastKey = performance.now(); }, true);
+      form.addEventListener("change", function (e) {
+        var n = e.target.name, st = steps[cur], at = cur;
+        var t = performance.now(); if (t - lastPointer > 1500 || t - lastKey < 400) return;
+        if ((n === "uhrzeit" && st.querySelector("[data-zeiten]") && !st.querySelector("[data-personen]")) ||
+            (n === "personen" && st.querySelector("[data-personen]") && cur < steps.length - 1)) {
+          var hint = st.querySelector(".res-schritt-fehler"); if (hint) hint.textContent = "";
+          setTimeout(function () { if (cur === at && stepOk(cur, false)) show(cur + 1, 1); }, 320);
+        }
+      });
+      show(0, 0);
+    }
+
+    function field(n) { return form.querySelector('[name="' + n + '"]'); }
+    function val(n) {
+      var f = field(n); if (!f) return "";
+      if (f.type === "radio") { var c = form.querySelector('[name="' + n + '"]:checked'); return c ? c.value : ""; }
+      return f.type === "checkbox" ? f.checked : String(f.value || "").trim();
+    }
+    function mark(target, bad) { if (!target) return; target.setAttribute("aria-invalid", bad ? "true" : "false"); }
+    function clearError(t) { mark(t, false); }
+    function check() {
+      var errs = [], firstBad = null;
+      function need(cond, target, msg) { mark(target, !cond); if (!cond) { errs.push(msg); firstBad = firstBad || target; } }
+      need(!!val("datum"), boxTage, "Bitte einen Tag wählen.");
+      need(!!val("uhrzeit"), boxZeiten, "Bitte eine Uhrzeit wählen.");
+      need(!!val("personen"), boxPers, "Bitte die Anzahl der Personen wählen.");
+      if (field("name")) need(val("name").length >= 2, field("name"), "Bitte Ihren Namen angeben.");
+      if (field("telefon")) need(val("telefon").replace(/\D/g, "").length >= 6, field("telefon"), "Bitte eine Telefonnummer für Rückfragen angeben.");
+      if (field("email") && val("email")) need(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val("email")), field("email"), "Die E-Mail-Adresse sieht unvollständig aus.");
+      if (field("einwilligung")) need(val("einwilligung") === true, field("einwilligung"), "Bitte der Verarbeitung Ihrer Angaben zustimmen.");
+      errBox.textContent = errs.join(" ");
+      if (firstBad && multi) { var k = steps.findIndex(function (st) { return st.contains(firstBad); }); if (k >= 0 && k !== cur) { show(k, -1); stepOk(k, true); } }
+      if (firstBad) { var f = firstBad.matches && firstBad.matches("input,textarea,select") ? firstBad : firstBad.querySelector("input:not(:disabled)"); if (f) f.focus(); }
+      return !errs.length;
+    }
+    ["name", "telefon", "email", "einwilligung"].forEach(function (n) { var f = field(n); if (f) f.addEventListener("input", function () { if (f.getAttribute("aria-invalid") === "true") mark(f, false); }); });
+    boxZeiten.addEventListener("change", function () { mark(boxZeiten, false); });
+    boxPers.addEventListener("change", function () { mark(boxPers, false); });
+
+    function readable() {
+      var d = new Date(val("datum") + "T12:00:00"), p = +val("personen");
+      return { datum: LANG[d.getDay()] + ", " + d.getDate() + ". " + MON[d.getMonth()], uhrzeit: val("uhrzeit"), personen: p + (p === 1 ? " Person" : " Personen"), name: val("name") };
+    }
+    function showSuccess() {
+      var r = readable();
+      ok.querySelectorAll("[data-wert]").forEach(function (s) { var k = s.getAttribute("data-wert"); if (r[k] != null) s.textContent = r[k]; });
+      if (CFG.modus === "demo" && !ok.querySelector(".res-demo-hinweis")) {
+        ok.appendChild(el("p", { "class": "res-demo-hinweis" }, "Entwurf: Diese Anfrage wurde nicht übermittelt. In der fertigen Website geht sie sofort an " +
+          CFG.name + "." + (CFG.tel ? " Für eine echte Reservierung bitte <a href=\"tel:" + CFG.tel + "\">anrufen<\/a>." : "")));
+      }
+      if (outside) { form.setAttribute("data-res-vorher", form.hidden ? "1" : "0"); form.hidden = true; }
+      for (var n = ok; !outside && n && n !== form; n = n.parentNode) {
+        var sib = n;
+        Array.prototype.forEach.call(n.parentNode.children, function (c) { if (c !== sib && c !== trap && !c.hasAttribute("data-res-vorher")) { c.setAttribute("data-res-vorher", c.hidden ? "1" : "0"); c.hidden = true; } });
+        if (n.parentNode !== form && n.parentNode.hidden) { n.parentNode.setAttribute("data-res-offen", ""); n.parentNode.hidden = false; }
+      }
+      ok.hidden = false; form.setAttribute("data-status", "gesendet");
+      try { ok.focus({ preventScroll: true }); } catch (e) { ok.focus(); }
+      var off = headerOffset(), top = (outside ? ok : form).getBoundingClientRect().top;
+      if (top < off - 2) scrollTo({ top: scrollY + top - off, behavior: still ? "auto" : "smooth" });
+    }
+    function again(e) {
+      if (!e.target.closest("[data-reservierung-neu]")) return;
+      e.preventDefault(); ok.hidden = true; form.removeAttribute("data-status");
+      if (outside) { form.hidden = form.getAttribute("data-res-vorher") === "1"; form.removeAttribute("data-res-vorher"); }
+      form.querySelectorAll("[data-res-vorher]").forEach(function (c) { c.hidden = c.getAttribute("data-res-vorher") === "1"; c.removeAttribute("data-res-vorher"); });
+      form.querySelectorAll("[data-res-offen]").forEach(function (c) { c.hidden = true; c.removeAttribute("data-res-offen"); });
+      if (multi) show(0, -1);
+    }
+    form.addEventListener("click", again);
+    if (outside) ok.addEventListener("click", again);
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (trap.value) return;
+      if (!check()) return;
+      var btn = form.querySelector('[type="submit"]'), label = btn ? btn.innerHTML : "";
+      if (btn) { btn.disabled = true; btn.setAttribute("aria-busy", "true"); }
+      form.setAttribute("data-status", "sendet");
+      function done(success) {
+        if (btn) { btn.disabled = false; btn.removeAttribute("aria-busy"); btn.innerHTML = label; }
+        if (success) showSuccess();
+        else { form.removeAttribute("data-status"); errBox.innerHTML = "Das hat leider nicht geklappt." + (CFG.tel ? " Bitte rufen Sie an: <a href=\"tel:" + CFG.tel + "\">" + CFG.telText + "<\/a>." : ""); }
+      }
+      if (CFG.modus !== "live" || !CFG.ziel) { setTimeout(function () { done(true); }, 650); return; }
+      var r = readable(), fd = new FormData(form);
+      fd.set("datum", r.datum + " (" + val("datum") + ")");
+      fd.set("subject", "Reservierungsanfrage " + r.datum + ", " + r.uhrzeit + " Uhr, " + r.personen);
+      fd.set("restaurant", CFG.name);
+      for (var k in (CFG.extra || {})) fd.set(k, CFG.extra[k]);
+      fetch(CFG.ziel, { method: "POST", body: fd, headers: { Accept: "application/json" } })
+        .then(function (res) { done(res.ok); }).catch(function () { done(false); });
+    });
+  }
+  function run() { document.querySelectorAll("form[data-reservierung]").forEach(init); }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run); else run();
+})();
+</script><!--/agent-res--><!--agent-szenen--><style id="agent-szenen">[data-szene]{position:relative;isolation:isolate}[data-szene="raster-zoom"]{overflow:clip}.szene-nachweis{background:rgba(255,255,255,.9);color:#1a1a1a;border-radius:6px;padding:.15em .5em;width:fit-content}
+.zerlegt-an [data-zerlegt-buehne]{position:relative}.zerlegt-an [data-ebene]{will-change:transform}
+.zerlegt-strich{display:block;height:0;border-top:1.5px solid currentColor;pointer-events:none}
+.zerlegt-strich::before{content:"";position:absolute;top:-4.75px;width:8px;height:8px;border-radius:50%;background:currentColor}
+.zerlegt-strich.rechts::before{left:-4px}.zerlegt-strich.links::before{right:-4px}
+.fenster-an [data-fenster-titel]{display:grid;justify-items:center;align-content:start;padding-top:clamp(.5rem,4vh,2.5rem);text-align:center;pointer-events:none}
+:where(.kapitel-an [data-kapitel]){display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(1.5rem,4vw,4rem);align-items:center;padding:clamp(1rem,4vh,3rem) clamp(1rem,5vw,4rem);box-sizing:border-box}
+:where(.kapitel-an [data-kapitel-bild]){margin:0;overflow:hidden}
+:where(.kapitel-an [data-kapitel-bild] img){width:100%;height:100%;object-fit:cover;display:block}
+@media (max-width:819px){:where(.kapitel-an [data-kapitel]){grid-template-columns:minmax(0,1fr);align-content:start;gap:1rem}}
+.horizontal-an{overflow:hidden}.horizontal-an [data-spur]{overflow:visible!important;flex-wrap:nowrap!important;width:max-content;scroll-snap-type:none!important}
+</style><script>(function () {
+  "use strict";
+  /* Immersive Szenen des Agenten. Die Seite liefert Markup und Gestaltung, der Agent die Bewegung:
+       data-szene="zerlegt"     Gericht öffnet sich beim Scrollen Schicht für Schicht, Linien + Beschriftungen
+       data-szene="raster-zoom" Mittelkachel wächst gepinnt, Seitenkacheln gleiten nach außen
+       data-szene="fenster"     Bild wächst aus einem kleinen Fenster zum Vollbild
+       data-szene="kapitel"     gepinnte Kapitel: Bild wischt herein, Text wechselt
+       data-szene="horizontal"  Streifen läuft beim Scrollen seitlich (gepinnt)
+       data-szene="lesen"       Text leuchtet Wort für Wort mit dem Scrollen auf
+       data-schieben            Abschnitt schiebt sich über den vorigen
+       data-tiefe="10…40"       Parallax in mehreren Geschwindigkeiten (+ Maus-Tiefe auf dem Desktop)
+     Ohne Bewegung (prefers-reduced-motion oder ohne GSAP) bleibt alles ruhig und vollständig sichtbar. */
+  var D = document, root = D.documentElement;
+  function qa(s, r) { return Array.prototype.slice.call((r || D).querySelectorAll(s)); }
+  function q(s, r) { return (r || D).querySelector(s); }
+  var G = window.gsap, ST = window.ScrollTrigger;
+  var still = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+  var motion = !!(G && ST) && !still;
+  var MOTION = "(prefers-reduced-motion: no-preference)";
+  if (G && ST) { G.registerPlugin(ST); if (window.SplitText) G.registerPlugin(window.SplitText); ST.config({ ignoreMobileResize: true }); }
+  var mm = motion ? G.matchMedia() : null;
+
+  /* feste Kopfzeile oben und feste Leisten unten (Handy) */
+  function edges() {
+    var top = 0, bottom = 0, vh = innerHeight;
+    qa("body > *, body > * > *, header, nav, [data-kopf]").forEach(function (n) {
+      if (n.offsetWidth < innerWidth * 0.5) return;
+      var cs = getComputedStyle(n);
+      if (cs.position !== "fixed" && cs.position !== "sticky") return;
+      if (cs.visibility === "hidden" || cs.display === "none" || +cs.opacity === 0) return;
+      var r = n.getBoundingClientRect();
+      if (r.height <= 0 || r.height > vh / 3) return;
+      if (cs.position === "sticky") { // klebt beim Scrollen oben (z. B. unter der Hinweisleiste des Agenten)
+        var t = parseFloat(cs.top), par = n.parentElement;
+        if (!isNaN(t) && t < vh / 3 && par && par.offsetHeight > vh * 2) top = Math.max(top, t + r.height);
+        return;
+      }
+      if (r.top <= 1 && r.bottom > 0) top = Math.max(top, r.bottom);
+      else if (cs.position === "fixed" && r.bottom >= vh - 1) bottom = Math.max(bottom, vh - r.top);
+    });
+    return { top: Math.round(top), bottom: Math.round(bottom) };
+  }
+  var E = { top: 0, bottom: 0 };
+  function measureEdges() {
+    E = edges();
+    root.style.setProperty("--szene-kopf", E.top + "px");
+    root.style.setProperty("--szene-unten", E.bottom + "px");
+  }
+  measureEdges();
+  function kopf() { return E.top; }
+  function start() { return "top " + kopf(); }
+  function sichtbar() { measureEdges(); return innerHeight - E.top - E.bottom; }
+  function loaded(imgs, cb) {
+    var left = imgs.length, done = false;
+    function one() { if (--left <= 0 && !done) { done = true; cb(); } }
+    if (!left) return cb();
+    imgs.forEach(function (i) {
+      i.loading = "eager";
+      if (i.complete && i.naturalWidth) one();
+      else { i.addEventListener("load", one, { once: true }); i.addEventListener("error", one, { once: true }); }
+    });
+    setTimeout(function () { if (!done) { done = true; cb(); } }, 6000);
+  }
+  var pending = 0;
+  function styler() {
+    var saved = [];
+    function put(el, props) {
+      if (!el) return;
+      if (!saved.some(function (x) { return x[0] === el; })) saved.push([el, el.getAttribute("style")]);
+      for (var k in props) el.style.setProperty(k, props[k], "important");
+    }
+    function undo() {
+      saved.forEach(function (x) { if (x[1] == null) x[0].removeAttribute("style"); else x[0].setAttribute("style", x[1]); });
+      saved = [];
+    }
+    return { put: put, undo: undo };
+  }
+  function kinder(box, ausser) { // direkte Kinder, die keine der genannten Elemente sind oder enthalten
+    return Array.prototype.slice.call(box.children).filter(function (c) {
+      return !ausser.some(function (a) { return a && (c === a || c.contains(a)); }) && getComputedStyle(c).position !== "absolute";
+    });
+  }
+  /* gepinnte Abschnitte füllen den sichtbaren Bereich: zu kurze Abschnitte bekommen oben und unten gleich viel Luft */
+  var fills = [];
+  function fill(sec) {
+    if (!sec._pad) { var cs = getComputedStyle(sec); sec._pad = [parseFloat(cs.paddingTop) || 0, parseFloat(cs.paddingBottom) || 0]; fills.push(sec); }
+    sec.style.paddingTop = sec._pad[0] + "px"; sec.style.paddingBottom = sec._pad[1] + "px";
+    var extra = sichtbar() - sec.offsetHeight;
+    if (extra > 0) { sec.style.paddingTop = sec._pad[0] + extra / 2 + "px"; sec.style.paddingBottom = sec._pad[1] + extra / 2 + "px"; }
+  }
+  function unfill(sec) { if (sec._pad) { sec.style.paddingTop = ""; sec.style.paddingBottom = ""; } }
+  function refreshSoon() { if (motion && pending <= 0) { ST.sort(); ST.refresh(); } }
+
+  /* ---------------------------------------------------------------- zerlegt */
+  function zerlegt(sec) {
+    var buehne = q("[data-zerlegt-buehne]", sec);
+    if (!buehne) return;
+    var figs = qa("[data-ebene]", buehne).sort(function (a, b) { return (+a.getAttribute("data-ebene")) - (+b.getAttribute("data-ebene")); });
+    if (figs.length < 2) return;
+    var imgs = figs.map(function (f) { return q("img", f); }).filter(Boolean);
+    var caps = figs.map(function (f) { return q("figcaption, [data-ebene-text]", f); });
+    var lines = figs.map(function (f, i) {
+      if (!caps[i]) return null;
+      var s = q(".zerlegt-strich", f);
+      if (!s) { s = D.createElement("i"); s.className = "zerlegt-strich"; s.setAttribute("aria-hidden", "true"); f.appendChild(s); }
+      return s;
+    });
+    sec.classList.add("zerlegt-an");
+    var P = { asm: [], exp: [], w: 0, seite: [], shift: 0, s0: 1 };
+    function ratio(img) { return img && img.naturalWidth ? img.naturalHeight / img.naturalWidth : 0.35; }
+    function inhalt(img) {
+      var v = (img && img.getAttribute("data-inhalt") || "").split(",").map(parseFloat);
+      return v.length === 2 && v[0] >= 0 && v[1] <= 1 && v[1] > v[0] ? v : [0.08, 0.92];
+    }
+    function layout() {
+      measureEdges();
+      var vw = innerWidth, mobil = vw < 820, n = figs.length;
+      buehne.style.position = "relative"; buehne.style.width = "100%";
+      // Höhe so, dass der gepinnte Abschnitt genau in den sichtbaren Bereich passt (Kopf- und Fußleisten abgezogen)
+      var V = Math.max(320, sichtbar());
+      buehne.style.height = V + "px";
+      // Höhe der Bühne = sichtbarer Bereich minus alles, was im gepinnten Abschnitt über bzw. unter ihr liegt
+      var st = getComputedStyle(sec), oben = 0, n0 = buehne;
+      while (n0 && n0 !== sec) { oben += n0.offsetTop; n0 = n0.offsetParent; if (n0 && !sec.contains(n0) && n0 !== sec) { oben = buehne.getBoundingClientRect().top - sec.getBoundingClientRect().top; break; } }
+      var H = Math.max(240, Math.min(V, V - oben - (parseFloat(st.paddingBottom) || 0)));
+      if (!motion) H = Math.min(V, Math.max(H, 420));
+      buehne.style.height = H + "px";
+      var Wb = buehne.clientWidth, R = figs.map(function (f, i) { return ratio(q("img", f)); });
+      var sumR = R.reduce(function (a, b) { return a + b; }, 0), gap = mobil ? 0.075 : 0.1;
+      var w = Math.min(mobil ? Wb * 0.6 : Math.min(Wb * 0.56, 560), (H * 0.95) / (sumR + (n - 1) * gap));
+      var line = mobil ? 18 : Math.max(36, Math.min(90, Wb * 0.06)), minLabel = mobil ? 92 : 140;
+      var wechsel = !mobil && (Wb - w) / 2 - line - 12 >= minLabel, left, labelW;
+      if (wechsel) { left = (Wb - w) / 2; labelW = Math.min(260, (Wb - w) / 2 - line - 12); }
+      else {
+        // Beschriftungen rechts: Platz bis zum Rand der Bühne und nie über den Bildschirm hinaus
+        var edge = Math.min(Wb, innerWidth - 8 - buehne.getBoundingClientRect().left);
+        left = mobil ? 0 : Math.max(0, Math.min(24, edge - w - line - 10 - minLabel));
+        var room = function (x) { return edge - left - x - line - 10; };
+        if (room(w) < minLabel) w = Math.max(Wb * 0.38, w - (minLabel - room(w)));
+        labelW = Math.max(60, Math.min(240, room(w)));
+      }
+      var h = R.map(function (r) { return r * w; }), g = gap * w;
+      var o = h.map(function (x, i) { return i < n - 1 ? Math.min(x, h[i + 1]) * 0.3 : 0; });
+      var Texp = h.reduce(function (a, b) { return a + b; }, 0) + (n - 1) * g;
+      var Tasm = h.reduce(function (a, b) { return a + b; }, 0) - o.reduce(function (a, b) { return a + b; }, 0);
+      var ye = (H - Texp) / 2, ya = (H - Tasm) / 2;
+      P.w = w;
+      // zusammengesetzt steht das Gericht mittig und etwas größer, beim Öffnen rückt es an seinen Platz
+      P.shift = wechsel ? 0 : Math.max(0, (Wb - w) / 2 - left);
+      P.s0 = Math.max(1, Math.min(1.3, (H * 0.9) / Tasm, (Wb * 0.92) / w));
+      figs.forEach(function (f, i) {
+        P.exp[i] = ye; P.asm[i] = ya; ye += h[i] + g; ya += h[i] - o[i];
+        var rechts = !wechsel || i % 2 === 0;
+        P.seite[i] = rechts ? 1 : -1;
+        f.style.cssText += ";position:absolute;top:0;left:" + left + "px;width:" + w + "px;margin:0;z-index:" + (n - i + 1);
+        var img = q("img", f);
+        if (img) img.style.cssText += ";display:block;width:100%;height:auto;max-width:none";
+        var c = caps[i], s = lines[i];
+        if (!c) return;
+        var span = inhalt(img), mid = h[i] / 2;
+        var x0 = rechts ? (span[1] - 0.07) * w : (span[0] + 0.07) * w, x1 = rechts ? w + line : -line;
+        s.className = "zerlegt-strich " + (rechts ? "rechts" : "links");
+        s.style.cssText = "position:absolute;top:" + mid + "px;left:" + Math.min(x0, x1) + "px;width:" + Math.abs(x1 - x0) + "px;" +
+          "transform-origin:" + (rechts ? "0 50%" : "100% 50%");
+        c.style.cssText += ";position:absolute;margin:0;width:" + labelW + "px;" +
+          (rechts ? "left:" + (w + line + 10) + "px;right:auto;text-align:left" : "left:" + (-line - 10 - labelW) + "px;right:auto;text-align:right");
+        c.style.top = "0px";
+        c.style.top = (mid - c.offsetHeight / 2) + "px";
+      });
+      if (!motion) figs.forEach(function (f, i) { f.style.transform = "translateY(" + P.exp[i] + "px)"; });
+    }
+    pending++;
+    loaded(imgs, function () {
+      pending--;
+      layout();
+      if (!motion) { addEventListener("resize", layout); return; }
+      ST.addEventListener("refreshInit", layout);
+      mm.add(MOTION, function () {
+        var n = figs.length, mobil = innerWidth < 820;
+        var tl = G.timeline({ defaults: { ease: "none" }, scrollTrigger: {
+          trigger: sec, start: start, end: function () { return "+=" + Math.round(innerHeight * (mobil ? 0.5 : 0.62) * (n + 1)); },
+          pin: true, scrub: 0.7, anticipatePin: 1, invalidateOnRefresh: true } });
+        figs.forEach(function (f, i) {
+          tl.fromTo(f, { y: function () { return P.asm[i]; }, x: function () { return P.shift; } },
+            { y: function () { return P.exp[i]; }, x: function () { return P.seite[i] * -P.w * 0.02 * (i % 2 ? 1 : -1); }, ease: "power2.inOut", duration: 1 }, i * 0.06);
+          var img = q("img", f);
+          if (img) tl.fromTo(img, { rotation: 0 }, { rotation: (i % 2 ? -1 : 1) * (1.2 + (i % 3) * 0.8), ease: "power2.inOut", duration: 1 }, i * 0.06);
+        });
+        figs.forEach(function (f, i) {
+          var t = 0.42 + i * (0.55 / n);
+          if (lines[i]) tl.fromTo(lines[i], { scaleX: 0 }, { scaleX: 1, duration: 0.22, ease: "power2.out" }, t);
+          if (caps[i]) tl.fromTo(caps[i], { autoAlpha: 0, x: function () { return P.seite[i] * 14; } }, { autoAlpha: 1, x: 0, duration: 0.22 }, t + 0.06);
+        });
+        tl.fromTo(buehne, { scale: function () { return P.s0; } }, { scale: 1, ease: "power2.inOut", duration: 0.9, transformOrigin: "50% 50%" }, 0);
+        qa("[data-tiefe]", sec).forEach(function (el) {
+          tl.fromTo(el, { yPercent: 0 }, { yPercent: -(parseFloat(el.getAttribute("data-tiefe")) || 20) * 1.5, duration: 1.4 }, 0);
+        });
+        tl.to({}, { duration: 0.3 });
+        // Maus-Tiefe: die Schichten folgen dem Zeiger unterschiedlich stark
+        var off = null;
+        if (matchMedia("(pointer: fine)").matches && innerWidth >= 900) {
+          var qs = imgs.map(function (img, i) { return [G.quickTo(img, "x", { duration: 0.6, ease: "power3" }), G.quickTo(img, "y", { duration: 0.6, ease: "power3" }), 4 + i * 2.5]; });
+          var mv = function (e) { var r = sec.getBoundingClientRect(), dx = (e.clientX - r.left) / r.width - 0.5, dy = (e.clientY - r.top) / r.height - 0.5;
+            qs.forEach(function (z) { z[0](dx * z[2] * 2); z[1](dy * z[2]); }); };
+          var lv = function () { qs.forEach(function (z) { z[0](0); z[1](0); }); };
+          sec.addEventListener("mousemove", mv); sec.addEventListener("mouseleave", lv);
+          off = function () { sec.removeEventListener("mousemove", mv); sec.removeEventListener("mouseleave", lv); };
+        }
+        return function () { if (off) off(); };
+      });
+      refreshSoon();
+    });
+  }
+
+  /* ---------------------------------------------------------------- raster-zoom */
+  function rasterZoom(sec) {
+    var mitte = q("[data-mitte]", sec) || q(".mitte", sec);
+    if (!mitte || !motion) return;
+    var tiles = Array.prototype.slice.call(mitte.parentNode.children).filter(function (c) { return c !== mitte; });
+    sec.style.position = sec.style.position || "relative";
+    function pos(el) {
+      var x = 0, y = 0, n = el;
+      while (n && n !== sec) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; if (n && !sec.contains(n)) break; }
+      return { x: x, y: y };
+    }
+    mm.add("(min-width: 900px) and " + MOTION, function () {
+      var C = {};
+      function calc() {
+        fill(sec);
+        var p = pos(mitte), w = mitte.offsetWidth, h = mitte.offsetHeight, V = innerHeight - kopf();
+        C.s = Math.max(1, Math.min(innerWidth * 0.94 / w, V * 0.9 / h));
+        C.x = innerWidth / 2 - (sec.getBoundingClientRect().left + p.x + w / 2);
+        C.y = V / 2 - (p.y + h / 2);
+      }
+      calc();
+      var tl = G.timeline({ scrollTrigger: { trigger: sec, start: start, end: "+=130%", pin: true, scrub: 1, anticipatePin: 1,
+        invalidateOnRefresh: true, onRefreshInit: calc } });
+      tl.to(mitte, { scale: function () { return C.s; }, x: function () { return C.x; }, y: function () { return C.y; }, ease: "power1.inOut", zIndex: 5 }, 0);
+      var img = q("img", mitte);
+      if (img) tl.fromTo(img, { scale: 1.18 }, { scale: 1, ease: "none" }, 0);
+      tiles.forEach(function (t) {
+        var links = t.offsetLeft + t.offsetWidth / 2 < mitte.offsetLeft + mitte.offsetWidth / 2;
+        tl.to(t, { xPercent: links ? -125 : 125, autoAlpha: 0, ease: "power1.in" }, 0);
+      });
+      var txt = q("[data-raster-text]", sec);
+      if (txt) tl.fromTo(txt, { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.3 }, 0.7);
+      // alles andere im Abschnitt (Überschrift, Text) weicht, bevor die Kachel es erreicht; Bildnachweise bleiben sichtbar
+      var S = styler(), weg = [], pfad = [];
+      for (var n = mitte.parentNode; n && n !== sec; n = n.parentNode) pfad.push(n);
+      [sec].concat(pfad).forEach(function (box) {
+        Array.prototype.slice.call(box.children).forEach(function (c) {
+          if (c === mitte || c.contains(mitte) || pfad.indexOf(c) >= 0 || tiles.indexOf(c) >= 0 || c === txt || (txt && c.contains(txt))) return;
+          if (c.matches(".foto-nachweis") || q(".foto-nachweis", c)) { S.put(c, { position: "relative", "z-index": "8" }); c.classList.add("szene-nachweis"); }
+          else weg.push(c);
+        });
+      });
+      if (weg.length) tl.to(weg, { autoAlpha: 0, y: -20, duration: 0.25, ease: "power1.in" }, 0);
+      return function () { unfill(sec); S.undo(); qa(".szene-nachweis", sec).forEach(function (c) { c.classList.remove("szene-nachweis"); }); };
+    });
+    mm.add("(max-width: 899px) and " + MOTION, function () {
+      G.from([mitte].concat(tiles), { clipPath: "inset(14% 14% 14% 14% round 14px)", duration: 1, ease: "power3.out", stagger: 0.12,
+        scrollTrigger: { trigger: sec, start: "top 80%" } });
+    });
+  }
+
+  /* ---------------------------------------------------------------- fenster */
+  function fenster(sec) {
+    var fig = q("[data-fenster]", sec);
+    if (!fig || !motion) return;
+    mm.add(MOTION, function () {
+      sec.classList.add("fenster-an");
+      var S = styler(), mobil = innerWidth < 820, media = q("img, video", fig);
+      var titel = q("[data-fenster-titel]", sec), txt = q("[data-fenster-text]", sec);
+      var rest = kinder(sec, [fig, titel, txt]);  // weitere Inhalte gehören zur Titel-Ebene und weichen mit ihm
+      S.put(sec, { position: "relative", overflow: "hidden", "padding-top": "0px", "padding-bottom": "0px", "min-height": "0px", "max-height": "none" });
+      S.put(fig, { position: "absolute", top: "0px", left: "0px", right: "0px", bottom: "0px", width: "100%", height: "100%",
+        "max-width": "none", "max-height": "none", margin: "0px", "aspect-ratio": "auto", "z-index": "1" });
+      if (media) S.put(media, { width: "100%", height: "100%", "max-width": "none", "max-height": "none", "object-fit": "cover",
+        "aspect-ratio": "auto", display: "block", position: "static" });
+      if (titel) S.put(titel, { position: "absolute", top: "0px", left: "0px", right: "0px", margin: "0px", "z-index": "0" });
+      if (txt) S.put(txt, { position: "absolute", "z-index": "2", top: "auto", margin: "0px" });
+      rest.forEach(function (r) { S.put(r, { position: "relative", "z-index": "0" }); });
+      var C = {};
+      function geo() {
+        var H = sichtbar(), w = sec.clientWidth;
+        sec.style.setProperty("height", H + "px", "important");
+        var oben = H * 0.12;
+        if (titel) oben = Math.max(oben, titel.offsetTop + titel.offsetHeight + 18);
+        rest.forEach(function (r) { oben = Math.max(oben, r.offsetTop + r.offsetHeight + 18); });
+        var unten = Math.max(H * 0.1, E.bottom ? 12 : 0), hoehe = Math.max(H * 0.28, H - oben - unten);
+        var breite = Math.min(w * (mobil ? 0.84 : 0.42), hoehe * (mobil ? 1.1 : 1.5));
+        hoehe = Math.min(hoehe, breite * (mobil ? 1.25 : 0.9));
+        var seite = Math.max(0, (w - breite) / 2), u = Math.max(0, H - oben - hoehe);
+        C.start = "inset(" + oben + "px " + seite + "px " + u + "px " + seite + "px round 28px)";
+        if (txt) { var rand = Math.max(16, w * 0.05); txt.style.setProperty("left", rand + "px", "important");
+          txt.style.setProperty("right", rand + "px", "important");
+          txt.style.setProperty("bottom", (Math.max(24, H * 0.06)) + "px", "important"); }
+      }
+      geo();
+      ST.addEventListener("refreshInit", geo);
+      var tl = G.timeline({ scrollTrigger: { trigger: sec, start: start, end: function () { return "+=" + Math.round(innerHeight * (mobil ? 1.1 : 1.5)); },
+        pin: true, scrub: 0.8, anticipatePin: 1, invalidateOnRefresh: true } });
+      tl.fromTo(fig, { clipPath: function () { return C.start; } },
+        { clipPath: "inset(0px 0px 0px 0px round 0px)", ease: "power2.inOut", duration: 1 }, 0);
+      if (media) tl.fromTo(media, { scale: 1.3 }, { scale: 1, ease: "power2.out", duration: 1 }, 0);
+      var weich = (titel ? [titel] : []).concat(rest);
+      if (weich.length) tl.fromTo(weich, { scale: 1, autoAlpha: 1 }, { scale: 0.9, autoAlpha: 0, duration: 0.4 }, 0.15);
+      if (txt) tl.fromTo(txt, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.3 }, 0.78);
+      tl.to({}, { duration: 0.25 });
+      return function () { ST.removeEventListener("refreshInit", geo); S.undo(); sec.classList.remove("fenster-an"); };
+    });
+  }
+
+  /* ---------------------------------------------------------------- kapitel */
+  function kapitel(sec) {
+    var ks = qa("[data-kapitel]", sec);
+    if (ks.length < 2 || !motion) return;
+    var box = ks[0].parentNode;
+    if (ks.some(function (k) { return k.parentNode !== box; })) return;
+    mm.add(MOTION, function () {
+      sec.classList.add("kapitel-an");
+      var S = styler(), n = ks.length;
+      // was vor den Kapiteln steht (Überschrift), bleibt sichtbar darüber; was danach steht, ruht während der Szene
+      var vor = [], nach = [];
+      kinder(box, ks).forEach(function (c) { (c.compareDocumentPosition(ks[0]) & 4 ? vor : nach).push(c); });
+      S.put(sec, { position: "relative", overflow: "hidden", "min-height": "0px", "max-height": "none" });
+      if (box !== sec) S.put(box, { position: "relative", "min-height": "0px", "max-height": "none" });
+      nach.forEach(function (c) { S.put(c, { display: "none" }); });
+      function geo() {
+        var H = sichtbar(), cs = getComputedStyle(sec), pb = parseFloat(cs.paddingBottom) || 0;
+        sec.style.setProperty("height", H + "px", "important");
+        var boxH = H - pb - (parseFloat(cs.paddingTop) || 0), top = box === sec ? (parseFloat(cs.paddingTop) || 0) : 0;
+        if (box !== sec) {
+          box.style.setProperty("height", "1px", "important");
+          boxH = Math.max(280, H - pb - (box.getBoundingClientRect().top - sec.getBoundingClientRect().top));
+          box.style.setProperty("height", boxH + "px", "important");
+        }
+        vor.forEach(function (v) { top = Math.max(top, v.offsetTop + v.offsetHeight + 16); });
+        var h = Math.max(240, (box === sec ? H - pb : boxH) - top);
+        ks.forEach(function (k, i) {
+          S.put(k, { position: "absolute", left: "0px", right: "0px", bottom: "auto", "margin-top": "0px", "margin-bottom": "0px",
+            width: "auto", "z-index": String(i + 1) });
+          k.style.setProperty("top", top + "px", "important");
+          k.style.setProperty("height", h + "px", "important");
+          // passt ein Kapitel nicht in die Bühne (Handy), wird sein Bild niedriger statt dass etwas überlappt
+          var bild = q("[data-kapitel-bild]", k), img = bild && q("img", bild);
+          if (!bild) return;
+          ["height", "aspect-ratio", "max-height"].forEach(function (pr) { if (bild._fit) bild.style.removeProperty(pr); });
+          var over = k.scrollHeight - h;
+          if (over > 2) {
+            bild._fit = true;
+            S.put(bild, { height: Math.max(110, bild.offsetHeight - over - 6) + "px", "aspect-ratio": "auto", "max-height": "none" });
+            if (img) S.put(img, { width: "100%", height: "100%", "object-fit": "cover" });
+          }
+        });
+      }
+      geo();
+      ST.addEventListener("refreshInit", geo);
+      var aktiv = function (self) { var at = Math.round(self.progress * (n - 1));  // nur das sichtbare Kapitel ist anklickbar
+        ks.forEach(function (k, i) { k.style.pointerEvents = i === at ? "" : "none"; }); };
+      aktiv({ progress: 0 });
+      var tl = G.timeline({ scrollTrigger: { trigger: sec, start: start, end: function () { return "+=" + Math.round(innerHeight * 0.85 * n); },
+        pin: true, scrub: 0.6, anticipatePin: 1, invalidateOnRefresh: true, onUpdate: aktiv, onRefresh: aktiv,
+        snap: { snapTo: 1 / (n - 1), duration: { min: 0.2, max: 0.6 }, delay: 0.08, ease: "power1.inOut" } } });
+      ks.forEach(function (k, i) {
+        if (!i) return;
+        var bild = q("[data-kapitel-bild]", k), img = bild && q("img", bild), text = q("[data-kapitel-text]", k);
+        var vorText = q("[data-kapitel-text]", ks[i - 1]), vorImg = q("[data-kapitel-bild] img", ks[i - 1]), t = i - 1;
+        if (bild) tl.fromTo(bild, { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1, ease: "power2.inOut" }, t);
+        if (img) tl.fromTo(img, { scale: 1.25, yPercent: 6 }, { scale: 1, yPercent: 0, duration: 1, ease: "power2.out" }, t);
+        if (vorImg) tl.to(vorImg, { scale: 1.08, duration: 1 }, t);
+        if (vorText) tl.to(vorText, { autoAlpha: 0, y: -40, duration: 0.4 }, t);
+        if (text) tl.fromTo(text, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.45 }, t + 0.45);
+      });
+      return function () { ST.removeEventListener("refreshInit", geo); S.undo(); sec.classList.remove("kapitel-an");
+        ks.forEach(function (k) { k.style.pointerEvents = ""; }); };
+    });
+  }
+
+  /* ---------------------------------------------------------------- horizontal */
+  function horizontal(sec) {
+    var spur = q("[data-spur]", sec);
+    if (!spur || !motion) return;
+    mm.add(MOTION, function () {
+      sec.classList.add("horizontal-an");
+      fill(sec);
+      var refill = function () { fill(sec); };
+      ST.addEventListener("refreshInit", refill);
+      var weg = function () { return Math.max(0, spur.scrollWidth - sec.clientWidth + (parseFloat(getComputedStyle(sec).paddingLeft) || 0)); };
+      G.to(spur, { x: function () { return -weg(); }, ease: "none", scrollTrigger: { trigger: sec, start: start,
+        end: function () { return "+=" + weg(); }, pin: true, scrub: 0.8, anticipatePin: 1, invalidateOnRefresh: true } });
+      return function () { sec.classList.remove("horizontal-an"); ST.removeEventListener("refreshInit", refill); unfill(sec); };
+    });
+  }
+
+  /* ---------------------------------------------------------------- lesen */
+  function lesen(el) {
+    if (!motion || !window.SplitText) return;
+    mm.add(MOTION, function () {
+      var s = window.SplitText.create(el, { type: "words" });
+      G.fromTo(s.words, { opacity: 0.16 }, { opacity: 1, stagger: 0.1, ease: "none",
+        scrollTrigger: { trigger: el, start: "top 82%", end: "bottom 42%", scrub: true } });
+      return function () { s.revert(); };
+    });
+  }
+
+  /* ---------------------------------------------------------------- schieben, tiefe */
+  function schieben(el) {
+    if (!motion) return;
+    mm.add(MOTION, function () {
+      G.from(el, { y: innerWidth < 820 ? 48 : 96, ease: "none", scrollTrigger: { trigger: el, start: "top bottom", end: "top 50%", scrub: true } });
+    });
+  }
+  function tiefe() {
+    if (!motion) return;
+    var els = qa("[data-tiefe]").filter(function (el) { return !el.closest('[data-szene="zerlegt"]'); });
+    if (!els.length) return;
+    mm.add(MOTION, function () {
+      els.forEach(function (el) {
+        G.to(el, { yPercent: -(parseFloat(el.getAttribute("data-tiefe")) || 20), ease: "none",
+          scrollTrigger: { trigger: el.closest("section, header, footer") || el, start: "top bottom", end: "bottom top", scrub: true } });
+      });
+    });
+    mm.add("(pointer: fine) and (min-width: 900px) and " + MOTION, function () {
+      var offs = [];
+      qa("section, header").forEach(function (s) {
+        var mine = els.filter(function (el) { return el.closest("section, header") === s; });
+        if (!mine.length) return;
+        var qs = mine.map(function (el) { var t = parseFloat(el.getAttribute("data-tiefe")) || 20;
+          return [G.quickTo(el, "x", { duration: 0.8, ease: "power3" }), G.quickTo(el, "y", { duration: 0.8, ease: "power3" }), t * 0.6]; });
+        var mv = function (e) { var r = s.getBoundingClientRect(), dx = (e.clientX - r.left) / r.width - 0.5, dy = (e.clientY - r.top) / r.height - 0.5;
+          qs.forEach(function (z) { z[0](-dx * z[2]); z[1](-dy * z[2]); }); };
+        s.addEventListener("mousemove", mv);
+        offs.push(function () { s.removeEventListener("mousemove", mv); });
+      });
+      return function () { offs.forEach(function (f) { f(); }); };
+    });
+  }
+
+  function run() {
+    qa('[data-szene="zerlegt"]').forEach(zerlegt);
+    qa('[data-szene="raster-zoom"]').forEach(rasterZoom);
+    qa('[data-szene="fenster"]').forEach(fenster);
+    qa('[data-szene="kapitel"]').forEach(kapitel);
+    qa('[data-szene="horizontal"]').forEach(horizontal);
+    qa('[data-szene="lesen"]').forEach(lesen);
+    qa("[data-schieben]").forEach(schieben);
+    tiefe();
+    refreshSoon();
+    if (motion) {
+      ST.addEventListener("refreshInit", measureEdges);
+      addEventListener("load", function () { ST.sort(); ST.refresh(); });
+    }
+    root.classList.add(motion ? "szenen-bewegt" : "szenen-ruhig");
+  }
+  if (D.readyState === "loading") D.addEventListener("DOMContentLoaded", run); else run();
+})();
+</script><!--/agent-szenen--></body>
+</html>
