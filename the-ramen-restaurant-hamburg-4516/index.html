@@ -529,7 +529,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const rolle = document.querySelector(".rolle"), spur = rolle.querySelector(".rolle-spur");
   rolle.classList.add("gepinnt");
   const weg = () => Math.max(0, spur.scrollWidth - document.documentElement.clientWidth);
-  gsap.to(spur, { x: () => -weg(), ease: "none", scrollTrigger: { trigger: rolle, start: "top 64px", end: () => "+=" + weg(), pin: true, scrub: 1, invalidateOnRefresh: true } });
+  gsap.to(spur, { x: () => -weg(), ease: "none", scrollTrigger: { trigger: rolle, start: "top 64px", end: () => "+=" + Math.round(Math.min(weg()*.75,innerHeight*1.2)), pin: true, scrub: 1, invalidateOnRefresh: true } });
   return () => rolle.classList.remove("gepinnt");
  });
 

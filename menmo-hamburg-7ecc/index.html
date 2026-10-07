@@ -347,9 +347,70 @@ section,section[id]{scroll-margin-top:96px}
   .frage,.abschluss-aktion{text-align:left;justify-content:flex-start}
   .gross-knopf{justify-content:center}
 }
+
+/* Intro (Luxus): Glut, Ringe wie ein Zifferblatt bis Mitternacht, die Wortmarke mit dem Kupfer-Makron */
+@property --loch{syntax:"<percentage>";inherits:false;initial-value:0%}
+.intro{background:radial-gradient(circle at 50% 46%,#241915 0%,var(--grund) 58%,#0d0908 100%);color:var(--elf);--loch:0%}
+.intro.intro-ende{-webkit-mask:radial-gradient(circle at 50% 44%,transparent var(--loch),#000 calc(var(--loch) + 5%));mask:radial-gradient(circle at 50% 44%,transparent var(--loch),#000 calc(var(--loch) + 5%))}
+.intro-glut{position:absolute;left:50%;top:44%;width:min(80vmin,680px);aspect-ratio:1;translate:-50% -50%;border-radius:50%;background:radial-gradient(circle,rgba(217,100,63,.30) 0%,rgba(217,100,63,.10) 38%,transparent 68%);opacity:0;scale:.7}
+.intro-buehne{position:absolute;left:50%;top:44%;width:min(64vmin,520px);aspect-ratio:1;translate:-50% -50%;display:grid;place-items:center}
+.intro-ringe{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.intro-ringe .r{fill:none;stroke-dasharray:100;stroke-dashoffset:100;transform-origin:200px 200px}
+.intro-ringe .r1{stroke:rgba(239,231,220,.22);stroke-width:.8}
+.intro-ringe .r2{stroke:var(--kupfer);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:22 78}
+.intro-ringe .r3{stroke:rgba(239,231,220,.38);stroke-width:.7;stroke-dasharray:.6 1.4}
+.intro-ticks{position:absolute;inset:5.5%;border-radius:50%;opacity:0;background:repeating-conic-gradient(from -.4deg,rgba(239,231,220,.55) 0 .8deg,transparent .8deg 15deg);
+-webkit-mask:radial-gradient(circle,transparent 69%,#000 69.5%,#000 72%,transparent 72.5%);mask:radial-gradient(circle,transparent 69%,#000 69.5%,#000 72%,transparent 72.5%)}
+.intro-marke{position:relative;margin:0;padding-left:.42em;font:200 clamp(1.7rem,4.6vmin,2.9rem)/1 var(--display);letter-spacing:.42em;white-space:nowrap}
+.intro-wort,.intro-o{display:inline-block}
+.intro-o{position:relative;--i:4}
+.intro-buchstabe,.intro-o{opacity:0;translate:0 .35em;filter:blur(8px)}
+.intro-makron{position:absolute;top:-.12em;left:calc((100% - .42em)/2);width:.56em;height:max(.06em,2px);translate:-50% 0;background:var(--kupfer);scale:0 1;box-shadow:0 0 0 rgba(217,100,63,0)}
+.intro-zeilen{position:absolute;left:0;right:0;top:calc(44% + min(32vmin,260px) + clamp(1.5rem,5vh,3rem));margin:0;padding:0 1rem;list-style:none;display:grid;justify-items:center;gap:.7rem;font:500 .75rem/1.3 var(--text);letter-spacing:.24em;text-transform:uppercase;color:rgba(239,231,220,.72)}
+.intro-zeilen li{display:flex;align-items:center;gap:.8em;opacity:0;translate:0 8px}
+.intro-zeilen li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--kupfer);flex:none}
+.intro .intro-weiter{color:rgba(239,231,220,.6);font-family:var(--text)}
+.intro.intro-start .r1{animation:intro-zeichnen 1.1s cubic-bezier(.65,0,.35,1) forwards}
+.intro.intro-start .r3{animation:intro-zeichnen-gestrichelt 1.3s cubic-bezier(.65,0,.35,1) .2s forwards}
+.intro.intro-start .r2{animation:intro-bogen .5s ease-out .35s forwards,intro-drehen 2.6s linear .35s infinite}
+.intro.intro-start .intro-ticks{animation:intro-ein .9s ease-out .25s forwards,intro-drehen 40s linear infinite}
+.intro.intro-start .intro-glut{animation:intro-glut-an 1.6s ease-out forwards}
+.intro.intro-start .intro-buchstabe,.intro.intro-start .intro-o{animation:intro-buchstabe .8s cubic-bezier(.2,.7,.2,1) calc(.5s + var(--i) * 95ms) forwards}
+.intro.intro-start .intro-makron{animation:intro-makron .55s cubic-bezier(.7,0,.2,1) 1.25s forwards}
+.intro.intro-start .intro-zeilen li{animation:intro-zeile .6s ease-out forwards}
+.intro.intro-start .intro-zeilen li:nth-child(1){animation-delay:1.35s}
+.intro.intro-start .intro-zeilen li:nth-child(2){animation-delay:1.55s}
+.intro.intro-start .intro-zeilen li:nth-child(3){animation-delay:1.75s}
+.intro.intro-hoehepunkt .intro-glut{animation:intro-glut-an 1.6s ease-out forwards,intro-glut-puls .9s ease-out forwards}
+.intro.intro-hoehepunkt .intro-makron{box-shadow:0 0 18px 2px rgba(217,100,63,.75);transition:box-shadow .5s}
+.intro.intro-hoehepunkt .r2{stroke-width:2.2;transition:stroke-width .4s}
+.intro.intro-ende{--loch:135%;transition:--loch .8s cubic-bezier(.7,0,.25,1) .22s,opacity .25s linear .8s;opacity:0}
+.intro.intro-ende .intro-buehne,.intro.intro-ende .intro-zeilen{opacity:0;scale:1.06;transition:opacity .3s ease-in,scale .5s ease-in}
+@keyframes intro-zeichnen{to{stroke-dashoffset:0}}
+@keyframes intro-zeichnen-gestrichelt{from{stroke-dashoffset:100;opacity:0}to{stroke-dashoffset:0;opacity:1}}
+@keyframes intro-bogen{from{stroke-dashoffset:22}to{stroke-dashoffset:0}}
+@keyframes intro-drehen{to{rotate:360deg}}
+@keyframes intro-ein{to{opacity:1}}
+@keyframes intro-glut-an{to{opacity:.9;scale:1}}
+@keyframes intro-glut-puls{0%{filter:brightness(1)}35%{filter:brightness(1.9)}100%{filter:brightness(1.15)}}
+@keyframes intro-buchstabe{to{opacity:1;translate:0 0;filter:blur(0)}}
+@keyframes intro-makron{to{scale:1 1}}
+@keyframes intro-zeile{to{opacity:1;translate:0 0}}
+@media (max-width:819px){.intro-buehne,.intro-glut{top:40%}.intro.intro-ende{-webkit-mask:radial-gradient(circle at 50% 40%,transparent var(--loch),#000 calc(var(--loch) + 5%));mask:radial-gradient(circle at 50% 40%,transparent var(--loch),#000 calc(var(--loch) + 5%))}
+.intro-zeilen{top:calc(40% + 32vmin + 2rem);font-size:.6875rem;letter-spacing:.2em}}
 </style>
-<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}</style><!--agent-lib--><link rel="stylesheet" href="lib/lenis.css"><script src="lib/gsap.min.js"></script><script src="lib/ScrollTrigger.min.js"></script><script src="lib/SplitText.min.js"></script><script src="lib/lenis.min.js"></script><!--/agent-lib--></head>
+<meta name="robots" content="noindex, nofollow, noarchive"><!--agent-intro-kopf--><style id="agent-intro">html:not(.intro-laeuft) [data-intro]{display:none!important}[data-intro]{position:fixed!important;inset:0!important;z-index:2147483000!important;overflow:hidden!important;margin:0!important;max-width:none!important}:where([data-intro]){display:grid;place-items:center;background:#0e0c0a;color:#f4ecdc}:where([data-intro].intro-ende){opacity:0;transition:opacity var(--intro-abgang,900ms) cubic-bezier(.7,0,.3,1)}.intro-buchstabe,.intro-luecke{display:inline-block}:where(.intro-weiter){position:absolute;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:5;min-height:44px;padding:0 14px;border:0;background:none;color:inherit;font:500 11px/1 system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;opacity:.5;cursor:pointer}:where(.intro-weiter:hover){opacity:.9}</style><script>(function(){var r=document.documentElement,a=false;try{a=sessionStorage.getItem("intro:"+location.pathname)==="1"}catch(e){}if(a||window.__introAus||(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches))r.classList.add("intro-aus");else r.classList.add("intro-laeuft");window.__nachIntro=[];window.nachIntro=function(f){r.classList.contains("intro-laeuft")?window.__nachIntro.push(f):f()}})()</script><!--/agent-intro-kopf--><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}</style><!--agent-lib--><link rel="stylesheet" href="lib/lenis.css"><script src="lib/gsap.min.js"></script><script src="lib/ScrollTrigger.min.js"></script><script src="lib/SplitText.min.js"></script><script src="lib/lenis.min.js"></script><!--/agent-lib--></head>
 <body id="top"><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für Menmo. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
+<div class="intro" data-intro data-intro-dauer="3000" data-intro-abgang="1050" aria-hidden="true">
+<div class="intro-glut"></div>
+<div class="intro-buehne">
+<svg class="intro-ringe" viewBox="0 0 400 400"><circle class="r r1" cx="200" cy="200" r="197" pathLength="100"/><circle class="r r2" cx="200" cy="200" r="172" pathLength="100"/><circle class="r r3" cx="200" cy="200" r="148" pathLength="100"/></svg>
+<div class="intro-ticks"></div>
+<p class="intro-marke"><span class="intro-wort" data-intro-buchstaben>MENM</span><span class="intro-o">O<i class="intro-makron"></i></span></p>
+</div>
+<ul class="intro-zeilen"><li>Mühlenkamp 54 · Winterhude</li><li>Fusionsküche zum Teilen</li><li>Täglich bis Mitternacht</li></ul>
+</div>
+
 
 <header class="kopf">
   <div class="innen">
@@ -601,8 +662,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const d = gross ? 1.2 : .8;
 
     if (window.SplitText) {
-      SplitText.create(".hero-titel", { type: "lines", mask: "lines", autoSplit: true,
-        onSplit: s => gsap.from(s.lines, { yPercent: 110, duration: d, ease: "expo.out", stagger: .08, delay: .4 }) });
+      (window.nachIntro || (f => f()))(() => SplitText.create(".hero-titel", { type: "lines", mask: "lines", autoSplit: true,
+        onSplit: s => gsap.from(s.lines, { yPercent: 110, duration: d, ease: "expo.out", stagger: .08, delay: .4 }) }));
       void ({ type: "lines", mask: "lines", autoSplit: true,
         onSplit: null });
     }
@@ -623,7 +684,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if ($(".hero .tl-jetzt.an")) tl.from(".hero .tl-jetzt.an", { scale: 0, duration: .45, ease: "back.out(3)" }, ">-.15");
       tl.eventCallback("onComplete", () => flug.remove());
     });
-    document.fonts.ready.then(() => ctx.hero && ctx.hero());
+    document.fonts.ready.then(() => (window.nachIntro || (f => f()))(() => ctx.hero && ctx.hero()));
 
     if (gross) gsap.fromTo(".hero-foto img", { scale: 1.12, yPercent: -3 }, { yPercent: 5, ease: "none",
       scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
@@ -647,7 +708,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (band) {
         gsap.set(band, { overflowX: "visible" });
         gsap.to(band, { x: () => -Math.max(0, band.scrollWidth - innerWidth), ease: "none",
-          scrollTrigger: { trigger: ".streifen", pin: true, scrub: 1, end: () => "+=" + band.scrollWidth, invalidateOnRefresh: true } });
+          scrollTrigger: { trigger: ".streifen", pin: true, scrub: 1, end: () => "+=" + Math.round(Math.min(Math.max(0, band.scrollWidth - innerWidth)*.75,innerHeight*1.2)), invalidateOnRefresh: true } });
       }
     }
 
@@ -705,5 +766,84 @@ document.querySelectorAll('[data-foto] img').forEach(function(img){
  function hide(){var b=img.closest('[data-foto]');if(b)b.style.display='none';}
  if(!img.getAttribute('src'))hide();else{img.addEventListener('error',hide);if(img.complete&&img.naturalWidth===0)hide();}});
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();setInterval(run,60000);
-})();</script></body>
+})();</script><!--agent-intro--><script>(function () {
+  "use strict";
+  /* Intro für Seiten mit Luxus-Charakter. Die Seite liefert Markup und Gestaltung des Intros, der Agent den Ablauf:
+       <div data-intro data-intro-dauer="2800" aria-hidden="true"> … <\/div>  (erstes Element im <body>)
+     Klassen am Intro: .intro-start (Schriften geladen, Auftritt beginnt), .intro-hoehepunkt (bei ~70 % der Dauer),
+     .intro-ende (Abgang, z. B. Vorhang oder Blende). Danach wird das Intro entfernt.
+     data-intro-buchstaben an einem Element: jeder Buchstabe wird ein <span> mit --i (für gestaffelte Auftritte).
+     Einmal pro Sitzung; mit prefers-reduced-motion nie. Jede Eingabe (Klick, Taste, Scrollen, Wischen) überspringt.
+     window.nachIntro(fn) führt fn aus, sobald der Abgang beginnt (ohne Intro sofort). */
+  var D = document, root = D.documentElement, el = D.querySelector("[data-intro]");
+  var KEY = "intro:" + location.pathname;
+  var queue = window.__nachIntro || [];
+  function lauf() { var q = queue; queue = []; window.__nachIntro = []; q.forEach(function (f) { try { f(); } catch (e) { setTimeout(function () { throw e; }); } }); }
+  window.nachIntro = function (f) { if (root.classList.contains("intro-laeuft")) queue.push(f); else f(); };
+  function aus() { root.classList.remove("intro-laeuft"); root.classList.add("intro-aus"); if (el && el.parentNode) el.parentNode.removeChild(el); lauf(); }
+  var still = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+  var gesehen = false;
+  try { gesehen = sessionStorage.getItem(KEY) === "1"; } catch (e) {}
+  if (!el || still || gesehen || window.__introAus || root.classList.contains("intro-aus")) { aus(); return; }
+  root.classList.add("intro-laeuft");
+  function zahl(attr, def, min, max) { var v = parseFloat(el.getAttribute(attr)); return Math.max(min, Math.min(max, isNaN(v) ? def : v)); }
+  var dauer = zahl("data-intro-dauer", 2800, 1600, 3400), abgang = zahl("data-intro-abgang", 900, 500, 1300);
+  el.style.setProperty("--intro-dauer", dauer + "ms");
+  el.style.setProperty("--intro-abgang", abgang + "ms");
+  Array.prototype.forEach.call(el.querySelectorAll("[data-intro-buchstaben]"), function (t) {
+    var txt = t.textContent, i = 0;
+    t.setAttribute("aria-label", txt.trim());
+    t.textContent = "";
+    Array.prototype.forEach.call(txt, function (ch) {
+      var s = D.createElement("span");
+      s.className = ch === " " ? "intro-luecke" : "intro-buchstabe";
+      s.setAttribute("aria-hidden", "true");
+      s.style.setProperty("--i", i++);
+      s.textContent = ch === " " ? " " : ch;
+      t.appendChild(s);
+    });
+    t.style.setProperty("--n", i);
+  });
+  var knopf = el.querySelector(".intro-weiter");
+  if (!knopf) { knopf = D.createElement("button"); knopf.type = "button"; knopf.className = "intro-weiter"; knopf.textContent = "Überspringen"; el.appendChild(knopf); }
+  knopf.tabIndex = -1;
+  var timers = [], phase = 0, t0 = 0;
+  function ende() {
+    if (phase >= 2) return;
+    phase = 2;
+    timers.forEach(clearTimeout);
+    try { sessionStorage.setItem(KEY, "1"); } catch (e) {}
+    el.classList.add("intro-start", "intro-ende");
+    setTimeout(lauf, 120);
+    setTimeout(aus, abgang + 60);
+    off();
+  }
+  function skip(e) {
+    if (phase >= 2) return;
+    if (e.type === "wheel" || e.type === "touchmove") e.preventDefault();
+    if (e.type === "keydown" && (e.key === "Tab" || e.key === "Shift")) return;
+    // ganz frisch gestartet: ein versehentliches Scrollen bricht nicht sofort ab, beendet aber zügig
+    var seit = t0 ? performance.now() - t0 : 0;
+    if (seit < 450 && e.type !== "click" && e.type !== "keydown") { timers.push(setTimeout(ende, 450 - seit)); return; }
+    ende();
+  }
+  var EV = ["wheel", "touchmove", "keydown", "click"];
+  function on() { EV.forEach(function (n) { addEventListener(n, skip, { passive: false, capture: true }); }); }
+  function off() { EV.forEach(function (n) { removeEventListener(n, skip, { capture: true }); }); }
+  on();
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  scrollTo(0, 0);
+  function los() {
+    if (phase) return;
+    phase = 1; t0 = performance.now();
+    el.classList.add("intro-start");
+    timers.push(setTimeout(function () { el.classList.add("intro-hoehepunkt"); }, dauer * 0.7));
+    timers.push(setTimeout(ende, dauer));
+  }
+  // Auftritt erst, wenn die Schriften da sind (höchstens 1,2 s warten), damit nichts nachspringt
+  var fonts = D.fonts && D.fonts.ready ? D.fonts.ready : Promise.resolve();
+  Promise.race([fonts, new Promise(function (r) { setTimeout(r, 1200); })]).then(function () { requestAnimationFrame(los); });
+  setTimeout(function () { if (phase < 2) ende(); }, 1200 + dauer + 400); // Sicherheitsnetz: nie hängen bleiben
+})();
+</script><!--/agent-intro--></body>
 </html>

@@ -722,7 +722,7 @@ mm.add("(min-width: 900px) and (prefers-reduced-motion: no-preference)",()=>{
 gsap.utils.toArray(".hero [data-tiefe]").forEach(el=>gsap.to(el,{yPercent:-parseFloat(el.dataset.tiefe),ease:"none",scrollTrigger:{trigger:".hero",start:"top top",end:"bottom top",scrub:true}}));
 const st=document.querySelector(".streifen"),band=document.querySelector(".streifen-spur");
 if(st&&band){st.classList.add("gepinnt");
-gsap.to(band,{x:()=>-Math.max(0,band.scrollWidth-innerWidth),ease:"none",scrollTrigger:{trigger:st,pin:true,scrub:1,end:()=>"+="+band.scrollWidth,invalidateOnRefresh:true}});
+gsap.to(band,{x:()=>-Math.max(0,band.scrollWidth-innerWidth),ease:"none",scrollTrigger:{trigger:st,pin:true,scrub:1,end:()=>"+="+Math.round(Math.min(Math.max(0,band.scrollWidth-innerWidth)*.75,innerHeight*1.2)),invalidateOnRefresh:true}});
 return()=>st.classList.remove("gepinnt");}
 });
 

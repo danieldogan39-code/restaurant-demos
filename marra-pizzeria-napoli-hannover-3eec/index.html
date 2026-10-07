@@ -1076,6 +1076,14 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 :where(.kapitel-an [data-kapitel-bild] img){width:100%;height:100%;object-fit:cover;display:block}
 @media (max-width:819px){:where(.kapitel-an [data-kapitel]){grid-template-columns:minmax(0,1fr);align-content:start;gap:1rem}}
 .horizontal-an{overflow:hidden}.horizontal-an [data-spur]{overflow:visible!important;flex-wrap:nowrap!important;width:max-content;scroll-snap-type:none!important}
+.horizontal-wisch [data-spur]{flex-wrap:nowrap!important;overflow-x:auto!important;overflow-y:hidden!important;overscroll-behavior-x:contain;scroll-snap-type:x mandatory!important;scrollbar-width:none;-webkit-overflow-scrolling:touch;width:auto!important;max-width:none!important;transform:none!important;box-sizing:border-box}
+.horizontal-wisch [data-spur]::-webkit-scrollbar{display:none}.horizontal-wisch [data-spur]>*{flex-shrink:0!important;scroll-snap-align:start}
+.spur-steuerung{display:none}.horizontal-wisch .spur-steuerung{display:flex}.horizontal-wisch .spur-steuerung.spur-passt{display:none}
+:where(.spur-steuerung){align-items:center;gap:.6rem;margin-top:clamp(.9rem,2.5vh,1.5rem)}
+:where(.spur-leiste){position:relative;flex:1;height:2px;border-radius:2px;background:color-mix(in srgb,currentColor 18%,transparent);overflow:hidden}
+.spur-leiste i{position:absolute;top:0;bottom:0;left:0;width:calc(var(--spur-anteil,.3)*100%);transform:translateX(calc(var(--spur-stand,0)*(1/var(--spur-anteil,.3) - 1)*100%));background:currentColor;border-radius:inherit}
+:where(.spur-zurueck,.spur-weiter){display:inline-grid;place-items:center;width:44px;height:44px;padding:0;border-radius:50%;border:1px solid currentColor;background:transparent;color:inherit;font:inherit;font-size:1.1rem;line-height:1;cursor:pointer;transition:opacity .2s}
+.spur-zurueck:disabled,.spur-weiter:disabled{opacity:.3;cursor:default}
 </style><script>(function () {
   "use strict";
   /* Immersive Szenen des Agenten. Die Seite liefert Markup und Gestaltung, der Agent die Bewegung:
@@ -1083,10 +1091,11 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
        data-szene="raster-zoom" Mittelkachel wächst gepinnt, Seitenkacheln gleiten nach außen
        data-szene="fenster"     Bild wächst aus einem kleinen Fenster zum Vollbild
        data-szene="kapitel"     gepinnte Kapitel: Bild wischt herein, Text wechselt
-       data-szene="horizontal"  Streifen läuft beim Scrollen seitlich (gepinnt)
+       data-szene="horizontal"  Desktop: Reihe läuft beim Scrollen seitlich (gepinnt); Handy: wischbare Reihe
        data-szene="lesen"       Text leuchtet Wort für Wort mit dem Scrollen auf
        data-schieben            Abschnitt schiebt sich über den vorigen
        data-tiefe="10…40"       Parallax in mehreren Geschwindigkeiten (+ Maus-Tiefe auf dem Desktop)
+       data-hintergrund         Abschnitt mit Hintergrundbild ([data-hintergrund-bild]): sanfte Parallaxe
      Ohne Bewegung (prefers-reduced-motion oder ohne GSAP) bleibt alles ruhig und vollständig sichtbar. */
   var D = document, root = D.documentElement;
   function qa(s, r) { return Array.prototype.slice.call((r || D).querySelectorAll(s)); }
@@ -1456,18 +1465,79 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   }
 
   /* ---------------------------------------------------------------- horizontal */
+  /* Desktop mit Maus: gepinnt, die Reihe läuft etwas schneller als gescrollt wird (Pin höchstens ~1,2 Bildschirm-
+     höhen, nie Leerlauf). Handy/Touch und ohne Bewegung: keine Scroll-Entführung, sondern eine wischbare Reihe mit
+     Einrasten, Fortschrittsleiste und Pfeilen, die bis an den Bildschirmrand läuft. */
+  var QUER = "(min-width: 820px) and (hover: hover) and (pointer: fine) and " + MOTION;
+  function wischbar(sec, spur) {
+    sec.classList.add("horizontal-wisch");
+    var bar = D.createElement("div"), knopf = function (cls, label, txt) {
+      var b = D.createElement("button"); b.type = "button"; b.className = cls; b.setAttribute("aria-label", label); b.textContent = txt; return b;
+    };
+    bar.className = "spur-steuerung";
+    var leiste = D.createElement("span"); leiste.className = "spur-leiste"; leiste.setAttribute("aria-hidden", "true");
+    leiste.appendChild(D.createElement("i"));
+    var zur = knopf("spur-zurueck", "Zurück", "←"), vor = knopf("spur-weiter", "Weiter", "→");
+    bar.appendChild(leiste); bar.appendChild(zur); bar.appendChild(vor);
+    spur.parentNode.insertBefore(bar, spur.nextSibling);
+    function schritt() {
+      var k = spur.children[0], cs = getComputedStyle(spur);
+      return k ? k.getBoundingClientRect().width + (parseFloat(cs.columnGap) || parseFloat(cs.gap) || 0) : spur.clientWidth * 0.8;
+    }
+    zur.addEventListener("click", function () { spur.scrollBy({ left: -schritt(), behavior: still ? "auto" : "smooth" }); });
+    vor.addEventListener("click", function () { spur.scrollBy({ left: schritt(), behavior: still ? "auto" : "smooth" }); });
+    function stand() {
+      var max = spur.scrollWidth - spur.clientWidth, p = max > 0 ? spur.scrollLeft / max : 1;
+      bar.classList.toggle("spur-passt", max < 8);
+      zur.disabled = spur.scrollLeft < 4; vor.disabled = spur.scrollLeft > max - 4;
+      leiste.style.setProperty("--spur-anteil", Math.max(0.08, Math.min(1, spur.clientWidth / (spur.scrollWidth || 1))).toFixed(3));
+      leiste.style.setProperty("--spur-stand", p.toFixed(3));
+    }
+    // Reihe läuft bis an den Bildschirmrand, die erste Karte fluchtet trotzdem mit dem Inhalt
+    var KEYS = ["marginLeft", "marginRight", "paddingLeft", "paddingRight", "scrollPaddingLeft", "scrollPaddingRight"];
+    var orig = KEYS.map(function (k) { return spur.style[k]; });
+    function zurueck() { KEYS.forEach(function (k, i) { spur.style[k] = orig[i]; }); }
+    function rand() {
+      if (!sec.classList.contains("horizontal-wisch")) return;
+      zurueck();
+      bar.style.marginLeft = ""; bar.style.marginRight = "";
+      var r = spur.getBoundingClientRect(), cs = getComputedStyle(spur);
+      var l = Math.max(0, Math.round(r.left)), re = Math.max(0, Math.round(D.documentElement.clientWidth - r.right));
+      var pl = parseFloat(cs.paddingLeft) || 0, pr = parseFloat(cs.paddingRight) || 0;
+      // Steuerung fluchtet mit dem Inhalt der Reihe (nie am Bildschirmrand)
+      var b = bar.getBoundingClientRect();
+      bar.style.marginLeft = Math.max(0, Math.round(r.left + pl - b.left)) + "px";
+      bar.style.marginRight = Math.max(0, Math.round(b.right - (r.right - pr))) + "px";
+      spur.style.marginLeft = -l + "px"; spur.style.marginRight = -re + "px";
+      spur.style.paddingLeft = l + pl + "px"; spur.style.paddingRight = re + pr + "px";
+      spur.style.scrollPaddingLeft = l + pl + "px"; spur.style.scrollPaddingRight = re + pr + "px";
+      stand();
+    }
+    spur.addEventListener("scroll", stand, { passive: true });
+    addEventListener("resize", rand);
+    rand();
+    if (D.readyState !== "complete") addEventListener("load", rand, { once: true });
+    return { an: function () { sec.classList.add("horizontal-wisch"); rand(); },
+             aus: function () { sec.classList.remove("horizontal-wisch"); zurueck(); spur.scrollLeft = 0; } };
+  }
   function horizontal(sec) {
     var spur = q("[data-spur]", sec);
-    if (!spur || !motion) return;
-    mm.add(MOTION, function () {
+    if (!spur) return;
+    var w = wischbar(sec, spur);
+    if (!motion) return;
+    mm.add(QUER, function () {
+      var weg = function () { return Math.max(0, spur.scrollWidth - sec.clientWidth + (parseFloat(getComputedStyle(sec).paddingLeft) || 0)); };
+      w.aus();
       sec.classList.add("horizontal-an");
+      if (weg() < 60) { sec.classList.remove("horizontal-an"); w.an(); return function () {}; } // passt fast: kein Pin
       fill(sec);
       var refill = function () { fill(sec); };
       ST.addEventListener("refreshInit", refill);
-      var weg = function () { return Math.max(0, spur.scrollWidth - sec.clientWidth + (parseFloat(getComputedStyle(sec).paddingLeft) || 0)); };
+      // Pinlänge = Bewegung × 0,75, höchstens 1,2 sichtbare Höhen: die Reihe hängt nie, ohne dass sich etwas tut
+      var dauer = function () { return Math.max(1, Math.round(Math.min(weg() * 0.75, sichtbar() * 1.2))); };
       G.to(spur, { x: function () { return -weg(); }, ease: "none", scrollTrigger: { trigger: sec, start: start,
-        end: function () { return "+=" + weg(); }, pin: true, scrub: 0.8, anticipatePin: 1, invalidateOnRefresh: true } });
-      return function () { sec.classList.remove("horizontal-an"); ST.removeEventListener("refreshInit", refill); unfill(sec); };
+        end: function () { return "+=" + dauer(); }, pin: true, scrub: 0.6, anticipatePin: 1, invalidateOnRefresh: true } });
+      return function () { sec.classList.remove("horizontal-an"); ST.removeEventListener("refreshInit", refill); unfill(sec); w.an(); };
     });
   }
 
@@ -1487,6 +1557,18 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     if (!motion) return;
     mm.add(MOTION, function () {
       G.from(el, { y: innerWidth < 820 ? 48 : 96, ease: "none", scrollTrigger: { trigger: el, start: "top bottom", end: "top 50%", scrub: true } });
+    });
+  }
+  /* ---------------------------------------------------------------- hintergrund */
+  /* Hintergrundbild eines Abschnitts (Grundform in agent-basis): sanfte Parallaxe, ohne Bewegung ruhig */
+  function hintergrund() {
+    if (!motion) return;
+    qa("[data-hintergrund-bild] img").forEach(function (img) {
+      var sec = img.closest("[data-hintergrund]") || img.parentNode;
+      mm.add(MOTION, function () {
+        G.fromTo(img, { yPercent: -6 }, { yPercent: 6, ease: "none", scrollTrigger: { trigger: sec, start: "top bottom",
+          end: "bottom top", scrub: true } });
+      });
     });
   }
   function tiefe() {
@@ -1524,6 +1606,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     qa('[data-szene="lesen"]').forEach(lesen);
     qa("[data-schieben]").forEach(schieben);
     tiefe();
+    hintergrund();
     refreshSoon();
     if (motion) {
       ST.addEventListener("refreshInit", measureEdges);

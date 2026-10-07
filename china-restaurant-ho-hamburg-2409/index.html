@@ -259,16 +259,6 @@ form[data-reservierung]{position:relative;min-height:0;display:flex;flex-directi
 .zf{font:400 italic 1.2rem/1.5 var(--disp)}
 [data-reservierung-neu]{min-height:48px;padding:12px 24px;border:1.5px solid var(--tusche);border-radius:10px;background:none;font:600 1rem var(--text);cursor:pointer}
 
-.schluss{background:var(--rot);color:var(--papier);border-radius:32px 32px 0 0;padding:clamp(4rem,9vw,8rem) 0}
-.schluss-in{display:grid;grid-template-columns:minmax(0,1fr) 260px;column-gap:64px;row-gap:var(--s6);align-items:end}
-.schluss h2{font:400 italic clamp(1.6rem,3vw,2.4rem)/1.1 var(--disp);margin-bottom:var(--s4)}
-.gross-tel{display:inline-block;max-width:100%;font:800 clamp(3rem,7.5vw,7.5rem)/.95 var(--disp);white-space:nowrap;text-decoration:none;font-variant-numeric:tabular-nums;border-bottom:4px solid transparent;transition:border-color .3s}
-.gross-tel:hover{border-color:var(--papier)}
-.schluss dl{margin:0;font-variant-numeric:tabular-nums;display:grid;gap:6px;min-width:220px}
-.schluss dt{font-weight:600}
-.schluss dd{margin:0 0 var(--s3)}
-.fuss{background:var(--tusche);color:var(--papier);padding:var(--s8) 0 var(--s7);font-size:.875rem}
-.fuss-in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--s5)}
 .fuss .marke{color:var(--papier);margin:0}
 .rechtliches{max-width:60ch;display:grid;gap:var(--s2);opacity:.92}
 .leiste{display:none}
@@ -304,7 +294,7 @@ form[data-reservierung]{position:relative;min-height:0;display:flex;flex-directi
 .zs-text,.zs-bild,.karte-rahmen,.lage-text{grid-column:1/-1}
 .zs-bild{margin:0 0 var(--s6) 8%}
 .zs-frei{width:40%;left:-10%;bottom:-8%}
-.z-kopf,.res-gitter,.schluss-in{grid-template-columns:minmax(0,1fr)}
+.z-kopf,.res-gitter{grid-template-columns:minmax(0,1fr)}
 .fp-achse{display:none}
 .fp-zeile{grid-template-columns:minmax(0,1fr) auto;gap:var(--s2) var(--s4)}
 .fp-zeile .spur-zeit{grid-column:1/-1;grid-row:2}
@@ -360,11 +350,35 @@ form[data-reservierung]{min-height:0}
 .suppe-text p{max-width:44ch;color:var(--leise)}
 .suppe-text a{font-weight:600;text-underline-offset:3px;color:var(--tusche)}
 @media (max-width:1023px){.tel-lang,.k-lang{display:none}.tel-kurz,.kopf .kurz{display:inline}.kopf nav{gap:var(--s4)}.kopf nav a[href="#lage"]{display:none}.kopf nav a.nav-tel{display:inline-flex;align-items:center;min-height:44px;padding:10px 18px;border:1.5px solid var(--tusche);border-radius:999px;background:none}}
-@media (max-width:999px){.schluss-in{grid-template-columns:minmax(0,1fr)}}
+
 @media (max-width:819px){.kopf nav a.nav-tel{display:none}.marke{font-size:1.2rem}.suppe-in{grid-template-columns:minmax(0,1fr)}.suppe-foto,.suppe-text{grid-column:1/-1}.suppe-foto .wolke{width:min(320px,80%)}.res{padding-bottom:calc(96px + env(safe-area-inset-bottom))}[data-raster-text]{position:static;transform:none;max-width:none;border-radius:0;box-shadow:none}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+/* Abschluss und Footer */
+.schluss{position:relative;min-height:min(88svh,880px);display:grid;align-items:end;padding:clamp(6rem,16vh,10rem) 0 clamp(3.5rem,9vh,6rem);background:var(--wein-tief);color:var(--papier)}
+.schluss::before{content:"";position:absolute;left:0;right:0;top:0;height:14px;z-index:1;background:radial-gradient(circle at 50% 0,var(--wein) 13px,transparent 13.6px) 0 0/28px 14px repeat-x}
+.schluss [data-hintergrund-bild]{--schleier:linear-gradient(180deg,rgb(74 16 29/.5) 0%,rgb(74 16 29/.12) 38%,rgb(29 26 28/.9) 100%),linear-gradient(90deg,rgb(29 26 28/.55),transparent 70%)}
+.schluss-in{display:grid;justify-items:start;gap:var(--s5)}
+.schluss-ueber{display:inline-flex;align-items:center;gap:var(--s3);margin:0;padding:8px 16px 8px 12px;border:1px solid rgb(242 236 223/.35);border-radius:99px;font-weight:500;font-size:.95rem;background:rgb(29 26 28/.25);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.schluss-ueber .status-punkt{background:var(--papier)}
+.schluss h2{font:400 clamp(3.6rem,10vw,9rem)/.9 var(--disp);letter-spacing:-.025em;margin:0;max-width:12ch}
+.schluss h2 em{font-style:italic;color:#F6C9A8}
+.schluss-satz{margin:0;max-width:40ch;font-size:clamp(1.0625rem,1.4vw,1.25rem);line-height:1.55;color:rgb(242 236 223/.9)}
+.schluss-aktionen{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s4) var(--s6);margin-top:var(--s3)}
+.knopf-hell{background:var(--papier);color:var(--tusche);font-size:1.0625rem;padding:16px 28px;transition:color .35s}
+.knopf-hell:hover{color:var(--papier)}
+.schluss-link{display:inline-flex;align-items:center;gap:8px;min-height:48px;color:var(--papier);font-weight:600;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:6px}
+.schluss-link .pfeil{transition:transform .3s}.schluss-link:hover .pfeil{transform:translateX(4px)}
+.fuss{background:var(--tusche);color:var(--papier);padding:var(--s8) 0 var(--s7);font-size:.875rem}
+.fuss-in{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr) minmax(0,1.5fr);gap:var(--s6) var(--s8);align-items:start}
+.fuss-marke p,.fuss-zeiten p{margin:var(--s3) 0 0;line-height:1.65;color:rgb(242 236 223/.82)}
+.fuss-zeiten .fuss-titel{margin:0;color:var(--papier);font-weight:600}
+.fuss a:not(.marke){color:inherit;text-underline-offset:3px}
+.fuss .rechtliches{font-size:.8125rem;line-height:1.6;color:rgb(242 236 223/.68)}
+.fuss .rechtliches p{margin:0 0 var(--s2)}
+@media (max-width:819px){.schluss{min-height:78svh;padding-top:7rem}.schluss-aktionen{width:100%}.knopf-hell{width:100%}.fuss-in{grid-template-columns:minmax(0,1fr)}.fuss{padding-bottom:calc(var(--s9) + env(safe-area-inset-bottom))}}
 </style>
-<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}[data-reservierung] [hidden],form[data-reservierung][hidden],[data-reservierung-erfolg][hidden]{display:none!important}:where(img){height:auto}:where([data-bewertung]){display:inline-flex;align-items:baseline;gap:.35em;flex-wrap:wrap}:where(.bew-stern){color:#E3A21A}:where(.bew-zahl){font-weight:700;font-variant-numeric:tabular-nums}:where(.res-fortschritt){list-style:none;display:flex;gap:.75rem;padding:0;margin:0 0 1rem}:where(.res-punkt){display:flex;align-items:center;gap:.45rem;flex:1;opacity:.5}:where(.res-punkt.res-jetzt,.res-punkt.res-erledigt){opacity:1}:where(.res-punkt.res-erledigt){cursor:pointer}:where(.res-nr){display:inline-grid;place-items:center;width:1.7em;height:1.7em;border-radius:50%;border:1px solid currentColor;font-size:.85em;flex:none}:where(.res-zusammenfassung){margin:0 0 1rem;font-size:.92em;opacity:.8}:where(.res-nav){display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin-top:1.25rem}:where(.res-nav .res-weiter,.res-nav [type=submit]){margin-left:auto}:where(.res-nav button){min-height:44px}:where(.res-zeitgruppe){margin:0 0 .75rem}:where(.res-zeitreihe){display:flex;flex-wrap:wrap;gap:.5rem}:where(.res-tageszeit){margin:0 0 .35rem;font-size:.78em;letter-spacing:.08em;text-transform:uppercase;opacity:.7}@media (max-width:560px){:where(.res-punkt:not(.res-jetzt) .res-titel){display:none}:where(.res-punkt:not(.res-jetzt)){flex:none}:where(.res-zeitreihe){display:grid;grid-template-columns:repeat(4,1fr)}:where(.res-nav button){min-height:48px}:where(.res-nav .res-weiter,.res-nav [type=submit]){flex:1}[data-reservierung] input:not([type=radio]):not([type=checkbox]),[data-reservierung] textarea,[data-reservierung] select{font-size:max(16px,1em)!important}}</style><!--agent-lib--><link rel="stylesheet" href="lib/lenis.css"><script src="lib/gsap.min.js"></script><script src="lib/ScrollTrigger.min.js"></script><script src="lib/SplitText.min.js"></script><script src="lib/lenis.min.js"></script><!--/agent-lib--></head>
+<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}[data-reservierung] [hidden],form[data-reservierung][hidden],[data-reservierung-erfolg][hidden]{display:none!important}:where(img){height:auto}[data-hintergrund]{position:relative;isolation:isolate;overflow:clip}:where([data-hintergrund="dunkel"]){background-color:#15120f;color:#fbf6ee}:where([data-hintergrund="hell"]){background-color:#f3eee6;color:#1b1814}[data-hintergrund-bild]{position:absolute!important;inset:0!important;z-index:-1!important;margin:0!important;padding:0!important;width:auto!important;height:auto!important;max-width:none!important;overflow:hidden!important;border:0!important;transform:none!important}[data-hintergrund-bild] img{position:absolute!important;left:0!important;top:-8%!important;width:100%!important;height:116%!important;max-width:none!important;max-height:none!important;object-fit:cover!important;display:block;border-radius:0!important;margin:0!important}[data-hintergrund-bild]::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:var(--schleier-grund),var(--schleier,linear-gradient(180deg,transparent 30%,rgb(0 0 0/.12)))}[data-hintergrund="dunkel"] [data-hintergrund-bild]{--schleier-grund:linear-gradient(rgb(12 10 8/.5),rgb(12 10 8/.5))}[data-hintergrund="hell"] [data-hintergrund-bild]{--schleier-grund:linear-gradient(rgb(250 247 242/.62),rgb(250 247 242/.62))}[data-hintergrund-bild] .foto-nachweis,[data-hintergrund-bild] figcaption{position:absolute!important;right:12px;bottom:10px;z-index:2;margin:0;color:#fff;opacity:.85;text-shadow:0 1px 3px rgb(0 0 0/.7)}[data-hintergrund="hell"] [data-hintergrund-bild] .foto-nachweis,[data-hintergrund="hell"] [data-hintergrund-bild] figcaption{color:#1b1814;text-shadow:0 1px 3px rgb(255 255 255/.8)}:where([data-bewertung]){display:inline-flex;align-items:baseline;gap:.35em;flex-wrap:wrap}:where(.bew-stern){color:#E3A21A}:where(.bew-zahl){font-weight:700;font-variant-numeric:tabular-nums}:where(.res-fortschritt){list-style:none;display:flex;gap:.75rem;padding:0;margin:0 0 1rem}:where(.res-punkt){display:flex;align-items:center;gap:.45rem;flex:1;opacity:.5}:where(.res-punkt.res-jetzt,.res-punkt.res-erledigt){opacity:1}:where(.res-punkt.res-erledigt){cursor:pointer}:where(.res-nr){display:inline-grid;place-items:center;width:1.7em;height:1.7em;border-radius:50%;border:1px solid currentColor;font-size:.85em;flex:none}:where(.res-zusammenfassung){margin:0 0 1rem;font-size:.92em;opacity:.8}:where(.res-nav){display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin-top:1.25rem}:where(.res-nav .res-weiter,.res-nav [type=submit]){margin-left:auto}:where(.res-nav button){min-height:44px}:where(.res-zeitgruppe){margin:0 0 .75rem}:where(.res-zeitreihe){display:flex;flex-wrap:wrap;gap:.5rem}:where(.res-tageszeit){margin:0 0 .35rem;font-size:.78em;letter-spacing:.08em;text-transform:uppercase;opacity:.7}@media (max-width:560px){:where(.res-punkt:not(.res-jetzt) .res-titel){display:none}:where(.res-punkt:not(.res-jetzt)){flex:none}:where(.res-zeitreihe){display:grid;grid-template-columns:repeat(4,1fr)}:where(.res-nav button){min-height:48px}:where(.res-nav .res-weiter,.res-nav [type=submit]){flex:1}[data-reservierung] input:not([type=radio]):not([type=checkbox]),[data-reservierung] textarea,[data-reservierung] select{font-size:max(16px,1em)!important}}</style><!--agent-lib--><link rel="stylesheet" href="lib/lenis.css"><script src="lib/gsap.min.js"></script><script src="lib/ScrollTrigger.min.js"></script><script src="lib/SplitText.min.js"></script><script src="lib/lenis.min.js"></script><!--/agent-lib--></head>
 <body><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für China-Restaurant Ho. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><clipPath id="wolke" clipPathUnits="objectBoundingBox"><path d="M.89 .5A.102 .102 0 0 1 .838 .695A.102 .102 0 0 1 .695 .838A.102 .102 0 0 1 .5 .89A.102 .102 0 0 1 .305 .838A.102 .102 0 0 1 .162 .695A.102 .102 0 0 1 .11 .5A.102 .102 0 0 1 .162 .305A.102 .102 0 0 1 .305 .162A.102 .102 0 0 1 .5 .11A.102 .102 0 0 1 .695 .162A.102 .102 0 0 1 .838 .305A.102 .102 0 0 1 .89 .5Z"/></clipPath></svg>
 
@@ -581,23 +595,25 @@ form[data-reservierung]{min-height:0}
 </div>
 </section>
 
-<section class="schluss" data-schieben aria-labelledby="schluss-titel">
+<section class="schluss" data-schluss data-hintergrund="dunkel" aria-labelledby="schluss-titel">
+<figure data-hintergrund-bild data-foto><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmOKuLd_aE5xkwLGNf_nsBdSQoxnkpDOtIIlzejzo7bMnNaQhWgo3vv0dq0PrpXBU12AwGMRmE_j-CGGk4qLgzg608gRhCNM3nzDW6SkKQRWJnZ5w8qXkDmVoO66QPbozGvBls3WaiWnMNWp=s4800-w1800" referrerpolicy="no-referrer" alt="" width="1600" height="901" loading="lazy"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/113052873037873384019" target="_blank" rel="noopener">Foto: Martin Westendorff · Google Maps</a></figure>
 <div class="wrap schluss-in">
-<div>
-<h2 id="schluss-titel">Hunger um halb sechs?</h2>
-<a class="gross-tel magnet" href="tel:+49405504454" aria-label="Anrufen: 040 5504454">040 5504454</a>
+<p class="schluss-ueber"><span class="status-punkt" aria-hidden="true"></span><span data-status></span></p>
+<h2 id="schluss-titel">Bis gleich<br>am <em>Tisch.</em></h2>
+<p class="schluss-satz">Frohmestraße 7 in Hamburg. Zum Bleiben oder zum Mitnehmen, mittags und abends.</p>
+<div class="schluss-aktionen">
+<a class="knopf knopf-hell" href="tel:+49405504454"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>Anrufen · 040 5504454</a>
+<a class="schluss-link" href="#reservieren">Tisch reservieren <span class="pfeil" aria-hidden="true">→</span></a>
 </div>
-<dl>
-<dt>Täglich</dt><dd>12:00–15:00<br>17:30–21:00</dd>
-<dt>Adresse</dt><dd>Frohmestraße 7<br>22457 Hamburg</dd>
-</dl>
 </div>
 </section>
 </main>
 
 <footer class="fuss">
 <div class="wrap fuss-in">
-<a class="marke" href="#start"><em>china</em> Restaurant <span class="ho" style="color:var(--papier)">Ho</span><i class="punkt"></i></a>
+<div class="fuss-marke"><a class="marke" href="#start"><em>china</em> Restaurant <span class="ho" style="color:var(--papier)">Ho</span><i class="punkt"></i></a>
+<p>Frohmestraße 7 · 22457 Hamburg<br><a href="tel:+49405504454">040 5504454</a></p></div>
+<div class="fuss-zeiten"><p class="fuss-titel">Täglich geöffnet</p><p>12:00–15:00 und 17:30–21:00</p></div>
 <div class="rechtliches"><p>Entwurf von Medialyte, 21147 Hamburg. Adresse und Öffnungszeiten: Google. Fotos: Google Maps, Urheber jeweils am Bild. Einige Bilder und das Logo sind KI-generierte Vorschläge.</p><p><a href="https://medialyte.de/impressum" style="color:inherit;text-decoration:underline">Impressum</a> · <a href="https://medialyte.de/datenschutzerklaerung" style="color:inherit;text-decoration:underline">Datenschutz</a></p></div>
 </div>
 </footer>
@@ -1027,6 +1043,14 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 :where(.kapitel-an [data-kapitel-bild] img){width:100%;height:100%;object-fit:cover;display:block}
 @media (max-width:819px){:where(.kapitel-an [data-kapitel]){grid-template-columns:minmax(0,1fr);align-content:start;gap:1rem}}
 .horizontal-an{overflow:hidden}.horizontal-an [data-spur]{overflow:visible!important;flex-wrap:nowrap!important;width:max-content;scroll-snap-type:none!important}
+.horizontal-wisch [data-spur]{flex-wrap:nowrap!important;overflow-x:auto!important;overflow-y:hidden!important;overscroll-behavior-x:contain;scroll-snap-type:x mandatory!important;scrollbar-width:none;-webkit-overflow-scrolling:touch;width:auto!important;max-width:none!important;transform:none!important;box-sizing:border-box}
+.horizontal-wisch [data-spur]::-webkit-scrollbar{display:none}.horizontal-wisch [data-spur]>*{flex-shrink:0!important;scroll-snap-align:start}
+.spur-steuerung{display:none}.horizontal-wisch .spur-steuerung{display:flex}.horizontal-wisch .spur-steuerung.spur-passt{display:none}
+:where(.spur-steuerung){align-items:center;gap:.6rem;margin-top:clamp(.9rem,2.5vh,1.5rem)}
+:where(.spur-leiste){position:relative;flex:1;height:2px;border-radius:2px;background:color-mix(in srgb,currentColor 18%,transparent);overflow:hidden}
+.spur-leiste i{position:absolute;top:0;bottom:0;left:0;width:calc(var(--spur-anteil,.3)*100%);transform:translateX(calc(var(--spur-stand,0)*(1/var(--spur-anteil,.3) - 1)*100%));background:currentColor;border-radius:inherit}
+:where(.spur-zurueck,.spur-weiter){display:inline-grid;place-items:center;width:44px;height:44px;padding:0;border-radius:50%;border:1px solid currentColor;background:transparent;color:inherit;font:inherit;font-size:1.1rem;line-height:1;cursor:pointer;transition:opacity .2s}
+.spur-zurueck:disabled,.spur-weiter:disabled{opacity:.3;cursor:default}
 </style><script>(function () {
   "use strict";
   /* Immersive Szenen des Agenten. Die Seite liefert Markup und Gestaltung, der Agent die Bewegung:
@@ -1034,10 +1058,11 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
        data-szene="raster-zoom" Mittelkachel wächst gepinnt, Seitenkacheln gleiten nach außen
        data-szene="fenster"     Bild wächst aus einem kleinen Fenster zum Vollbild
        data-szene="kapitel"     gepinnte Kapitel: Bild wischt herein, Text wechselt
-       data-szene="horizontal"  Streifen läuft beim Scrollen seitlich (gepinnt)
+       data-szene="horizontal"  Desktop: Reihe läuft beim Scrollen seitlich (gepinnt); Handy: wischbare Reihe
        data-szene="lesen"       Text leuchtet Wort für Wort mit dem Scrollen auf
        data-schieben            Abschnitt schiebt sich über den vorigen
        data-tiefe="10…40"       Parallax in mehreren Geschwindigkeiten (+ Maus-Tiefe auf dem Desktop)
+       data-hintergrund         Abschnitt mit Hintergrundbild ([data-hintergrund-bild]): sanfte Parallaxe
      Ohne Bewegung (prefers-reduced-motion oder ohne GSAP) bleibt alles ruhig und vollständig sichtbar. */
   var D = document, root = D.documentElement;
   function qa(s, r) { return Array.prototype.slice.call((r || D).querySelectorAll(s)); }
@@ -1407,18 +1432,79 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   }
 
   /* ---------------------------------------------------------------- horizontal */
+  /* Desktop mit Maus: gepinnt, die Reihe läuft etwas schneller als gescrollt wird (Pin höchstens ~1,2 Bildschirm-
+     höhen, nie Leerlauf). Handy/Touch und ohne Bewegung: keine Scroll-Entführung, sondern eine wischbare Reihe mit
+     Einrasten, Fortschrittsleiste und Pfeilen, die bis an den Bildschirmrand läuft. */
+  var QUER = "(min-width: 820px) and (hover: hover) and (pointer: fine) and " + MOTION;
+  function wischbar(sec, spur) {
+    sec.classList.add("horizontal-wisch");
+    var bar = D.createElement("div"), knopf = function (cls, label, txt) {
+      var b = D.createElement("button"); b.type = "button"; b.className = cls; b.setAttribute("aria-label", label); b.textContent = txt; return b;
+    };
+    bar.className = "spur-steuerung";
+    var leiste = D.createElement("span"); leiste.className = "spur-leiste"; leiste.setAttribute("aria-hidden", "true");
+    leiste.appendChild(D.createElement("i"));
+    var zur = knopf("spur-zurueck", "Zurück", "←"), vor = knopf("spur-weiter", "Weiter", "→");
+    bar.appendChild(leiste); bar.appendChild(zur); bar.appendChild(vor);
+    spur.parentNode.insertBefore(bar, spur.nextSibling);
+    function schritt() {
+      var k = spur.children[0], cs = getComputedStyle(spur);
+      return k ? k.getBoundingClientRect().width + (parseFloat(cs.columnGap) || parseFloat(cs.gap) || 0) : spur.clientWidth * 0.8;
+    }
+    zur.addEventListener("click", function () { spur.scrollBy({ left: -schritt(), behavior: still ? "auto" : "smooth" }); });
+    vor.addEventListener("click", function () { spur.scrollBy({ left: schritt(), behavior: still ? "auto" : "smooth" }); });
+    function stand() {
+      var max = spur.scrollWidth - spur.clientWidth, p = max > 0 ? spur.scrollLeft / max : 1;
+      bar.classList.toggle("spur-passt", max < 8);
+      zur.disabled = spur.scrollLeft < 4; vor.disabled = spur.scrollLeft > max - 4;
+      leiste.style.setProperty("--spur-anteil", Math.max(0.08, Math.min(1, spur.clientWidth / (spur.scrollWidth || 1))).toFixed(3));
+      leiste.style.setProperty("--spur-stand", p.toFixed(3));
+    }
+    // Reihe läuft bis an den Bildschirmrand, die erste Karte fluchtet trotzdem mit dem Inhalt
+    var KEYS = ["marginLeft", "marginRight", "paddingLeft", "paddingRight", "scrollPaddingLeft", "scrollPaddingRight"];
+    var orig = KEYS.map(function (k) { return spur.style[k]; });
+    function zurueck() { KEYS.forEach(function (k, i) { spur.style[k] = orig[i]; }); }
+    function rand() {
+      if (!sec.classList.contains("horizontal-wisch")) return;
+      zurueck();
+      bar.style.marginLeft = ""; bar.style.marginRight = "";
+      var r = spur.getBoundingClientRect(), cs = getComputedStyle(spur);
+      var l = Math.max(0, Math.round(r.left)), re = Math.max(0, Math.round(D.documentElement.clientWidth - r.right));
+      var pl = parseFloat(cs.paddingLeft) || 0, pr = parseFloat(cs.paddingRight) || 0;
+      // Steuerung fluchtet mit dem Inhalt der Reihe (nie am Bildschirmrand)
+      var b = bar.getBoundingClientRect();
+      bar.style.marginLeft = Math.max(0, Math.round(r.left + pl - b.left)) + "px";
+      bar.style.marginRight = Math.max(0, Math.round(b.right - (r.right - pr))) + "px";
+      spur.style.marginLeft = -l + "px"; spur.style.marginRight = -re + "px";
+      spur.style.paddingLeft = l + pl + "px"; spur.style.paddingRight = re + pr + "px";
+      spur.style.scrollPaddingLeft = l + pl + "px"; spur.style.scrollPaddingRight = re + pr + "px";
+      stand();
+    }
+    spur.addEventListener("scroll", stand, { passive: true });
+    addEventListener("resize", rand);
+    rand();
+    if (D.readyState !== "complete") addEventListener("load", rand, { once: true });
+    return { an: function () { sec.classList.add("horizontal-wisch"); rand(); },
+             aus: function () { sec.classList.remove("horizontal-wisch"); zurueck(); spur.scrollLeft = 0; } };
+  }
   function horizontal(sec) {
     var spur = q("[data-spur]", sec);
-    if (!spur || !motion) return;
-    mm.add(MOTION, function () {
+    if (!spur) return;
+    var w = wischbar(sec, spur);
+    if (!motion) return;
+    mm.add(QUER, function () {
+      var weg = function () { return Math.max(0, spur.scrollWidth - sec.clientWidth + (parseFloat(getComputedStyle(sec).paddingLeft) || 0)); };
+      w.aus();
       sec.classList.add("horizontal-an");
+      if (weg() < 60) { sec.classList.remove("horizontal-an"); w.an(); return function () {}; } // passt fast: kein Pin
       fill(sec);
       var refill = function () { fill(sec); };
       ST.addEventListener("refreshInit", refill);
-      var weg = function () { return Math.max(0, spur.scrollWidth - sec.clientWidth + (parseFloat(getComputedStyle(sec).paddingLeft) || 0)); };
+      // Pinlänge = Bewegung × 0,75, höchstens 1,2 sichtbare Höhen: die Reihe hängt nie, ohne dass sich etwas tut
+      var dauer = function () { return Math.max(1, Math.round(Math.min(weg() * 0.75, sichtbar() * 1.2))); };
       G.to(spur, { x: function () { return -weg(); }, ease: "none", scrollTrigger: { trigger: sec, start: start,
-        end: function () { return "+=" + weg(); }, pin: true, scrub: 0.8, anticipatePin: 1, invalidateOnRefresh: true } });
-      return function () { sec.classList.remove("horizontal-an"); ST.removeEventListener("refreshInit", refill); unfill(sec); };
+        end: function () { return "+=" + dauer(); }, pin: true, scrub: 0.6, anticipatePin: 1, invalidateOnRefresh: true } });
+      return function () { sec.classList.remove("horizontal-an"); ST.removeEventListener("refreshInit", refill); unfill(sec); w.an(); };
     });
   }
 
@@ -1438,6 +1524,18 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     if (!motion) return;
     mm.add(MOTION, function () {
       G.from(el, { y: innerWidth < 820 ? 48 : 96, ease: "none", scrollTrigger: { trigger: el, start: "top bottom", end: "top 50%", scrub: true } });
+    });
+  }
+  /* ---------------------------------------------------------------- hintergrund */
+  /* Hintergrundbild eines Abschnitts (Grundform in agent-basis): sanfte Parallaxe, ohne Bewegung ruhig */
+  function hintergrund() {
+    if (!motion) return;
+    qa("[data-hintergrund-bild] img").forEach(function (img) {
+      var sec = img.closest("[data-hintergrund]") || img.parentNode;
+      mm.add(MOTION, function () {
+        G.fromTo(img, { yPercent: -6 }, { yPercent: 6, ease: "none", scrollTrigger: { trigger: sec, start: "top bottom",
+          end: "bottom top", scrub: true } });
+      });
     });
   }
   function tiefe() {
@@ -1475,6 +1573,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     qa('[data-szene="lesen"]').forEach(lesen);
     qa("[data-schieben]").forEach(schieben);
     tiefe();
+    hintergrund();
     refreshSoon();
     if (motion) {
       ST.addEventListener("refreshInit", measureEdges);
