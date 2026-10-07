@@ -1,0 +1,1537 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marra Pizzeria Napoli · Pizza, Pasta & Muscheln in Hannover-Linden</title>
+<meta name="description" content="Marra Pizzeria Napoli in der Deisterstraße 40, Hannover-Linden: neapolitanische Pizza, Tagliolini mit Trüffel, Muscheln in Weißwein. Mi–Sa 16–23 Uhr, So 16–22 Uhr. Telefon 0511 454882.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{
+--creme:#F3EBDD;--papier:#EADCC6;--esp:#2A1C16;--esp2:#5B463B;--rot:#B3261E;--rot-d:#8E1D17;--gruen:#2C5E3A;--linie:#D9CBB4;
+--rand:clamp(1rem,5vw,4rem);--max:1320px;--abst:clamp(4.5rem,10vw,8rem);--kopf:72px;
+--serif:"DM Serif Display",Georgia,serif;--sans:"Karla",system-ui,sans-serif;--hand:"Yellowtail",cursive;
+--punkte:radial-gradient(circle,var(--creme) 3px,transparent 3.6px) 0 0/18px 18px,var(--rot);
+--rauschen:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.07'/%3E%3C/svg%3E");
+--riss:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 8' preserveAspectRatio='none'%3E%3Cpath d='M0 8V4l4-2 5 3 6-4 4 3 7-2 5 4 6-3 5 2 6-4 5 3 7 0V8z'/%3E%3C/svg%3E");
+--schatten:0 18px 40px -22px rgba(42,28,22,.45);
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip}
+body{margin:0;background:var(--creme);color:var(--esp);font:400 1.0625rem/1.6 var(--sans);hyphens:auto;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.05;margin:0;letter-spacing:-.005em;hyphens:manual;text-wrap:balance}
+h2 em,h1 em{font-style:normal;color:var(--rot)}
+p{margin:0}
+:focus-visible{outline:3px solid var(--gruen);outline-offset:3px;border-radius:4px}
+[id]{scroll-margin-top:calc(var(--kopf) + 16px)}
+.wrap{width:min(100% - 2*var(--rand),var(--max));margin-inline:auto}
+.hand{font-family:var(--hand);color:var(--gruen);font-weight:400}
+.foto-nachweis{font-size:12.5px;color:var(--esp2);text-decoration:underline;text-underline-offset:2px}
+.klebe{position:absolute;width:110px;height:28px;background:rgba(243,235,221,.62);clip-path:polygon(3% 8%,10% 0,22% 10%,35% 2%,50% 9%,64% 1%,78% 8%,90% 0,97% 10%,100% 50%,96% 92%,86% 100%,72% 90%,58% 99%,44% 91%,30% 100%,16% 92%,5% 100%,0 50%);z-index:3;box-shadow:inset 0 0 0 40px rgba(255,255,255,.12);transform-origin:left center}
+.polka{height:28px;background:var(--punkte);-webkit-mask:var(--riss) 0 0/60px 8px repeat-x,linear-gradient(#000 0 0) 0 7px/100% calc(100% - 7px) no-repeat;mask:var(--riss) 0 0/60px 8px repeat-x,linear-gradient(#000 0 0) 0 7px/100% calc(100% - 7px) no-repeat}
+.knopf{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:52px;padding:14px 28px;border-radius:999px;font:600 1rem/1.2 var(--sans);text-decoration:none;cursor:pointer;border:2px solid var(--rot);background:var(--rot);color:var(--creme);overflow:hidden;isolation:isolate;transition:color .3s,border-color .3s}
+.knopf::before{content:"";position:absolute;inset:0;background:var(--esp);transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.7,0,.2,1);z-index:-1}
+.knopf:hover::before{transform:scaleX(1)}
+.knopf:hover{border-color:var(--esp)}
+.knopf svg{flex:none;transition:transform .4s}
+.knopf:hover svg{transform:rotate(-14deg)}
+.knopf-linie{background:transparent;color:var(--esp);border-color:var(--esp)}
+.knopf-linie:hover{color:var(--creme)}
+.textlink{font-weight:600;text-decoration:underline;text-decoration-color:var(--rot);text-decoration-thickness:2px;text-underline-offset:6px;display:inline-flex;align-items:center;min-height:44px;gap:.4em;transition:gap .3s}
+.textlink:hover{gap:.8em}
+
+.kopf{position:sticky;top:0;z-index:50;height:var(--kopf);background:var(--creme);border-bottom:1px solid var(--linie);transition:box-shadow .3s}
+.kopf.gescrollt{box-shadow:0 8px 20px -14px rgba(42,28,22,.4)}
+.kopf-in{height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.wortmarke{display:flex;flex-direction:column;line-height:1;text-decoration:none}
+.wortmarke .hand{font-size:22px;transform:rotate(-4deg);transform-origin:left;margin:0 0 -2px 2px}
+.wortmarke b{font:400 22px/1 var(--serif)}
+.kopf nav{display:flex;align-items:center;gap:clamp(16px,2.4vw,32px)}
+.kopf nav a:not(.knopf){font-weight:600;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;background:linear-gradient(var(--rot),var(--rot)) 0 78%/0 2px no-repeat;transition:background-size .3s}
+.kopf nav a:not(.knopf):hover{background-size:100% 2px}
+.kopf .knopf{min-height:46px;padding:12px 24px}
+.nur-handy{display:none!important}
+
+.hero{position:relative;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;min-height:calc(100svh - var(--kopf));overflow-x:clip}
+.hero-text{position:relative;align-self:center;padding:clamp(2.5rem,5vw,4rem) clamp(1.5rem,3.5vw,3rem) clamp(3.5rem,6vw,5rem) max(var(--rand),calc((100vw - var(--max))/2))}
+.statuszeile{display:flex;align-items:center;gap:16px;min-height:32px}
+[data-status]{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:15px;white-space:nowrap}
+[data-status]::before{content:"";width:10px;height:10px;border-radius:50%;border:2px solid var(--esp);flex:none}
+[data-status][data-offen="ja"]::before{background:var(--rot);border-color:var(--rot)}
+.hero-titel{margin:clamp(1.2rem,3vw,2rem) 0 clamp(1rem,2vw,1.5rem);position:relative}
+.zeile{display:block;overflow:hidden;padding-block:.08em .2em;margin-block:-.08em -.2em}
+.zeile>span{display:inline-block}
+.zeile-marra{font:400 clamp(2rem,4vw,3.4rem)/1.1 var(--hand);color:var(--gruen);transform:rotate(-3deg);transform-origin:left bottom;padding-left:.1em;width:max-content}
+.schwung{display:block;width:clamp(120px,14vw,200px);height:auto;margin:-.2em 0 .1em .4em;overflow:visible}
+.schwung path{fill:none;stroke:var(--gruen);stroke-width:2.5;stroke-linecap:round;stroke-dasharray:300}
+.zeile-name{font-size:clamp(2.4rem,5.2vw,5.4rem);line-height:1;white-space:nowrap}
+.i{position:relative;display:inline-block}
+.i-stamm{display:inline-block;clip-path:inset(.3em -.3em -.5em -.3em)}
+.i-punkt{position:absolute;left:50%;top:.1em;width:.19em;height:.19em;margin-left:-.095em;border-radius:50%;background:var(--rot)}
+.angebot{max-width:42ch;font-size:1.125rem}
+.aktionen{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;margin-top:clamp(1.5rem,3vw,2rem)}
+.unterlink{margin-top:4px;font-size:15px}
+.hero-notiz{font-size:22px;margin-top:12px}
+.hero-bild{position:relative;display:grid;place-items:center;background:var(--rauschen),var(--papier);padding:clamp(4rem,7vw,6rem) clamp(48px,7vw,96px) clamp(4.5rem,8vw,6.5rem)}
+.foto-stapel{position:relative;width:min(560px,100%)}
+.polaroid{position:relative;margin:0;background:var(--creme);padding:10px 10px 0;border-radius:14px;box-shadow:var(--schatten)}
+.rahmen{position:relative;overflow:hidden;border-radius:8px}
+.rahmen img{width:100%;height:100%;object-fit:cover}
+.polaroid figcaption{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 12px;padding:10px 6px 12px;font-size:13.5px;line-height:1.4}
+.foto-gross{transform:rotate(-2deg)}
+.foto-gross .rahmen{aspect-ratio:4/3}
+.foto-gross .klebe{top:-12px;left:-26px;transform:rotate(-28deg)}
+.foto-gross .klebe+.klebe{top:auto;left:auto;bottom:40px;right:-30px;transform:rotate(-30deg)}
+.teller{position:absolute;left:-36px;bottom:-64px;width:clamp(150px,13vw,190px);margin:0;transform:rotate(4deg);z-index:4}
+.teller .rahmen{aspect-ratio:1;border-radius:50%;border:6px solid var(--creme);box-shadow:var(--schatten)}
+.teller figcaption{position:absolute;left:calc(100% + 12px);bottom:6px;width:max-content;max-width:220px;font-size:12.5px;line-height:1.3;transform:rotate(-4deg)}
+.zettel-klein{position:absolute;top:clamp(1.25rem,3vw,2.25rem);right:clamp(8px,2vw,24px);width:min(270px,48%);hyphens:none;padding:18px 20px 16px;background:repeating-linear-gradient(transparent 0 25px,var(--linie) 25px 26px),var(--creme);font:400 20px/26px var(--hand);color:var(--gruen);transform:rotate(3deg);box-shadow:0 10px 24px -16px rgba(42,28,22,.5);clip-path:polygon(0 3%,8% 0,20% 2%,34% 0,50% 3%,66% 0,80% 2%,92% 0,100% 3%,100% 100%,0 100%);z-index:5}
+.stempel{display:grid;place-content:center;text-align:center;aspect-ratio:1;border-radius:50%;border:2px solid var(--rot);color:var(--rot);background:var(--creme);box-shadow:inset 0 0 0 5px var(--creme),inset 0 0 0 6px var(--rot);text-decoration:none;transform:rotate(-8deg);transition:transform .4s}
+.stempel:hover{transform:rotate(0) scale(1.04)}
+.stempel [data-bewertung]{display:flex;flex-direction:column;align-items:center;line-height:1.15;font-weight:600}
+.bew-stern{font-size:16px}
+.bew-zahl{font:400 30px/1 var(--serif)}
+.bew-text{font-size:13px;line-height:1.25;max-width:9em;margin-top:2px}
+.stempel-hero{position:absolute;top:clamp(1rem,3vw,2.5rem);right:-56px;width:140px;z-index:6}
+.stempel-hero .bew-zahl{font-size:30px}
+.hero>.polka{grid-column:1/-1;align-self:end}
+
+.voll{padding-block:var(--abst);overflow-x:clip}
+.voll-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(2.5rem,6vw,6rem);align-items:center}
+.voll h2{font-size:clamp(2.4rem,5vw,4.4rem);max-width:12ch}
+.voll-text>p{max-width:46ch;margin-top:1.5rem;font-size:1.125rem}
+.infoliste{margin:2rem 0 0;max-width:30rem}
+.infoliste div{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid var(--linie)}
+.infoliste div:last-child{border-bottom:1px solid var(--linie)}
+.infoliste dt{font-weight:600;display:flex;align-items:center;gap:10px}
+.infoliste dt::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--rot)}
+.infoliste dd{margin:0;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;hyphens:none}
+.voll-bilder{position:relative;padding:0 0 18% 12%}
+.voll-bilder .gross{transform:rotate(1.5deg)}
+.voll-bilder .gross .rahmen{aspect-ratio:4/3}
+.voll-bilder .gross .klebe{top:-14px;left:44%}
+.voll-bilder .klein{position:absolute;left:0;bottom:0;width:38%;transform:rotate(-3deg);z-index:2}
+.voll-bilder .klein .rahmen{aspect-ratio:4/5}
+.voll-bilder .trueffel{position:absolute;right:-2%;bottom:4%;width:clamp(90px,12vw,160px);height:auto;object-fit:contain;filter:drop-shadow(0 8px 8px rgba(42,28,22,.35));z-index:3}
+
+.zutaten{background:var(--gruen);color:var(--creme);overflow:hidden;overflow:clip;max-width:100vw;padding:14px 0}
+.laufband{display:flex;overflow:hidden;max-width:100vw}
+.laufband ul{flex:none;animation:lauf 38s linear infinite}
+.zutaten:hover .laufband ul{animation-play-state:paused}
+.laufband ul{display:flex;align-items:center;margin:0;padding:0;list-style:none}
+.laufband li{display:flex;align-items:center;gap:28px;padding-right:28px;white-space:nowrap}
+.laufband li::after{content:"";width:9px;height:9px;border-radius:50%;background:var(--rot);box-shadow:0 0 0 2px var(--creme)}
+.laufband .h{font:400 28px/1.3 var(--hand)}
+.laufband .k{font-weight:600;font-size:14px;letter-spacing:.14em;text-transform:uppercase}
+@keyframes lauf{to{transform:translateX(-100%)}}
+
+.tisch{padding-top:var(--abst);background:var(--creme)}
+.tisch-kopf{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px 48px}
+.tisch-kopf h2{font-size:clamp(2.2rem,4.6vw,4rem)}
+.tisch-kopf p{max-width:38ch;color:var(--esp2)}
+.spur{display:flex;gap:clamp(24px,3vw,44px);overflow-x:auto;scroll-snap-type:x mandatory;padding:104px var(--rand) clamp(3rem,6vw,4.5rem);scrollbar-width:none}
+.spur::-webkit-scrollbar{display:none}
+.zettel{position:relative;flex:0 0 clamp(280px,26vw,360px);scroll-snap-align:center;background:repeating-linear-gradient(transparent 0 29px,rgba(217,203,180,.7) 29px 30px),var(--papier);padding:22px 22px 26px;border-radius:4px;box-shadow:0 14px 30px -20px rgba(42,28,22,.55);transform:rotate(var(--dreh,0deg));transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s}
+.zettel:hover{transform:rotate(0) translateY(-4px);box-shadow:0 24px 40px -22px rgba(42,28,22,.6)}
+.zettel>.klebe{top:-14px;left:50%;margin-left:-55px}
+.zettel figure{margin:0}
+.zettel .rahmen{aspect-ratio:1;border-radius:6px}
+.zettel figcaption{padding-top:6px}
+.zettel .frei{width:100%;height:auto;aspect-ratio:1;object-fit:contain;filter:drop-shadow(0 14px 14px rgba(42,28,22,.3))}
+.zettel .frei.raus{width:112%;max-width:none;margin:-74px -6% -10px}
+.zettel h3{font-size:clamp(1.7rem,2.4vw,2.1rem);margin-top:14px}
+.zettel p{margin-top:8px}
+.zettel .notiz{font:400 24px/1.2 var(--hand);color:var(--gruen);margin-top:10px;transform:rotate(-2deg)}
+.zettel .anheft{position:absolute;right:-22px;top:46%;width:96px;height:auto;object-fit:contain;filter:drop-shadow(0 6px 6px rgba(42,28,22,.35));z-index:2}
+.zettel-ende{background:var(--gruen);color:var(--creme)}
+.zettel-ende .rahmen{aspect-ratio:1}
+.zettel-ende h3{font-size:clamp(1.5rem,2vw,1.8rem)}
+.zettel-ende a{display:inline-flex;min-height:44px;align-items:center;font:400 2rem/1.1 var(--serif);color:var(--creme);text-decoration:underline;text-decoration-color:var(--rot);text-decoration-thickness:3px;text-underline-offset:6px;margin-top:6px}
+
+.ausbreiten{margin:0;height:40px}
+.abend{padding-block:var(--abst)}
+.abend-in{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,9fr);gap:24px}
+.abend .hand{font-size:clamp(1.8rem,3vw,2.6rem);transform:rotate(-4deg);align-self:start;padding-top:.4em}
+.lesen{font:400 clamp(1.8rem,3.6vw,3rem)/1.22 var(--serif);max-width:28ch;hyphens:manual}
+
+.raster-szene{padding-block:var(--abst) clamp(3rem,6vw,5rem);background:var(--rauschen),var(--papier)}
+.raster-szene h2{font-size:clamp(2.2rem,4.6vw,4rem);margin-bottom:clamp(2rem,4vw,3rem)}
+.raster{display:grid;grid-template-columns:repeat(2,minmax(0,.8fr)) minmax(0,2fr) repeat(2,minmax(0,.8fr));gap:clamp(12px,1.5vw,20px);align-items:stretch}
+.kachel{margin:0;display:grid;grid-template-rows:minmax(0,1fr) auto;background:var(--creme);border-radius:12px;padding:8px;box-shadow:0 10px 24px -18px rgba(42,28,22,.5);min-width:0}
+.kachel .rahmen{border-radius:8px;aspect-ratio:3/4}
+.kachel[data-mitte] .rahmen{aspect-ratio:auto;height:100%}
+.kachel figcaption{padding:8px 4px 4px;font-size:14px;line-height:1.35;display:grid;gap:2px}
+[data-raster-text]{position:absolute;left:clamp(12px,2vw,24px);bottom:clamp(12px,2vw,24px);background:var(--creme);padding:16px 20px;border-radius:10px;max-width:22rem;box-shadow:var(--schatten)}
+[data-raster-text] b{display:block;font:400 clamp(1.4rem,2.2vw,2rem)/1.1 var(--serif)}
+[data-raster-text] span{font-variant-numeric:tabular-nums}
+.kachel[data-mitte]{position:relative}
+
+.zeiten{padding-block:var(--abst)}
+.zeiten-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(2rem,5vw,4rem);align-items:center}
+.stempelkarte{position:relative;background:repeating-linear-gradient(transparent 0 31px,rgba(217,203,180,.6) 31px 32px),var(--papier);padding:clamp(1.5rem,4vw,3rem);border-radius:6px;box-shadow:var(--schatten)}
+.stempelkarte>.klebe{top:-14px;left:28px;transform:rotate(-6deg)}
+.stempelkarte h2{font-size:clamp(2rem,4vw,3.4rem);max-width:16ch}
+.felder{list-style:none;padding:0;margin:clamp(1.5rem,3vw,2.25rem) 0 0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.felder li{display:grid;justify-items:center;gap:6px;padding:14px 6px;background:var(--creme);border:1.5px dashed var(--linie);border-radius:8px;text-align:center}
+.felder b{font:400 1.4rem/1 var(--serif)}
+.felder time{font-variant-numeric:tabular-nums;font-weight:600;font-size:15px}
+.stempelpunkt{width:30px;height:30px;border-radius:50%;background:var(--punkte);background-size:9px 9px,auto;border:3px solid var(--rot);transform:rotate(-12deg)}
+.felder .zu s{font-size:15px;color:var(--esp2)}
+.felder .zu b{text-decoration:line-through;text-decoration-color:var(--rot);text-decoration-thickness:3px}
+.felder .heute{border:2px solid var(--esp)}
+.tagesleiste{--von:20%;--bis:90%;margin-top:clamp(1.5rem,3vw,2rem)}
+.leiste-text{font-weight:600;margin-bottom:10px;font-variant-numeric:tabular-nums}
+.leiste-bahn{position:relative;height:14px;border-radius:999px;background:var(--creme);border:1px solid var(--linie)}
+.leiste-offen{position:absolute;top:2px;bottom:2px;left:var(--von);right:calc(100% - var(--bis));border-radius:999px;background:var(--gruen)}
+.ruhetag .leiste-offen{display:none}
+.leiste-jetzt{position:absolute;top:-8px;width:3px;height:28px;margin-left:-1.5px;background:var(--rot);border-radius:2px}
+.leiste-jetzt::after{content:"jetzt " attr(data-zeit);position:absolute;top:-24px;left:50%;transform:translateX(-50%);font-size:13px;font-weight:600;color:var(--rot);white-space:nowrap;font-variant-numeric:tabular-nums}
+.leiste-skala{display:flex;justify-content:space-between;font-size:13px;color:var(--esp2);margin-top:6px;font-variant-numeric:tabular-nums}
+.anruf p{max-width:30ch}
+.anruf .nummer{display:inline-block;font:400 clamp(2.2rem,4vw,3rem)/1.1 var(--serif);color:var(--rot);text-decoration:none;margin:12px 0;background:linear-gradient(var(--rot),var(--rot)) 0 100%/100% 2px no-repeat;min-height:44px}
+.anruf .hand{font-size:28px;display:block;margin-bottom:8px;transform:rotate(-3deg)}
+
+.res{padding-block:var(--abst);background:var(--rauschen),var(--papier)}
+.res-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(2rem,6vw,5rem);align-items:start}
+.res-grid>*{min-width:0}
+.res h2{font-size:clamp(2.4rem,5vw,4.4rem);max-width:10ch}
+.res-intro p{margin:1.25rem 0 2rem;max-width:34ch;font-size:1.125rem}
+.res-intro .stempel{width:132px}
+.block{position:relative;width:100%;max-width:640px;min-width:0;justify-self:end;background:repeating-linear-gradient(transparent 0 31px,rgba(217,203,180,.55) 31px 32px),var(--creme);padding:58px clamp(20px,4vw,40px) 32px;border-radius:6px;box-shadow:var(--schatten);transform:rotate(-1deg)}
+.block::before{content:"";position:absolute;inset:0 0 auto;height:24px;background:var(--punkte);-webkit-mask:var(--riss) 0 0/60px 8px repeat-x,linear-gradient(#000 0 0) 0 7px/100% calc(100% - 7px) no-repeat;mask:var(--riss) 0 0/60px 8px repeat-x,linear-gradient(#000 0 0) 0 7px/100% calc(100% - 7px) no-repeat;transform:scaleY(-1);border-radius:0 0 6px 6px}
+.block>.klebe{bottom:-12px;right:-20px;transform:rotate(-24deg)}
+[data-reservierung]{min-height:560px;display:flex;flex-direction:column;min-width:0}
+[data-schritt]{min-width:0}
+[data-schritt] h3{font-size:clamp(1.8rem,3vw,2.3rem);margin:8px 0 16px}
+.gruppe-titel{display:block;font-weight:600;font-size:15px;margin:18px 0 8px}
+.res-fortschritt{list-style:none;display:flex;margin:0 0 6px;padding:0}
+.res-punkt{display:flex;align-items:center;gap:8px;font-weight:600;font-size:14px;flex:1;color:var(--esp2)}
+.res-punkt:last-child{flex:0 0 auto}
+.res-punkt:not(:last-child)::after{content:"";flex:1;min-width:12px;border-top:2px dashed var(--linie);margin-inline:4px}
+.res-nr{width:30px;height:30px;border-radius:50%;border:2px solid var(--esp2);display:grid;place-items:center;flex:none;font-size:14px;font-variant-numeric:tabular-nums}
+.res-jetzt{color:var(--esp)}
+.res-jetzt .res-nr{border-color:var(--rot);color:var(--rot)}
+.res-erledigt .res-nr{background:var(--rot);border-color:var(--rot);color:var(--creme)}
+.res-erledigt::after{border-color:var(--rot)!important}
+.res-zusammenfassung{font:400 24px/1.3 var(--hand);color:var(--gruen);min-height:1.3em;margin:4px 0 0}
+.res-option{position:relative;display:block;min-width:0}
+.res-radio{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.res-label{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:48px;padding:6px 8px;border:1.5px solid rgba(42,28,22,.35);border-radius:10px;background:var(--creme);font-weight:600;font-size:15px;line-height:1.2;text-align:center;font-variant-numeric:tabular-nums;transition:background .2s,color .2s,border-color .2s}
+.res-label b{font-size:15px}
+.res-label small{font-size:13px;font-weight:500}
+.res-option:hover .res-label{border-color:var(--esp)}
+.res-radio:checked+.res-label{background:var(--rot);border-color:var(--rot);color:var(--creme)}
+.res-radio:focus-visible+.res-label{outline:3px solid var(--gruen);outline-offset:2px}
+[data-tage]{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:8px;min-width:0}
+[data-zeiten]{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:8px;min-width:0}
+.res-zeitgruppe{grid-column:1/-1;min-width:0}
+.res-tageszeit{font-size:14px;font-weight:600;color:var(--esp2);margin:6px 0 6px}
+.res-zeitreihe{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:8px}
+[data-personen]{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;max-width:380px}
+[data-personen] .res-label{border-radius:999px;min-height:52px;font-size:17px}
+[aria-invalid="true"]>.res-option .res-label,[data-tage][aria-invalid="true"] .res-label,[data-zeiten][aria-invalid="true"] .res-label,[data-personen][aria-invalid="true"] .res-label{border-color:var(--rot)}
+.res-hinweis,.res-demo-hinweis{font-size:14px;color:var(--esp2);margin-top:12px}
+.felder2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.feld{display:grid;gap:4px;min-width:0;margin-bottom:14px}
+.feld label{font-weight:600;font-size:15px}
+.feld label small{font-weight:400;color:var(--esp2)}
+.feld input,.feld textarea{width:100%;font:400 16px/1.4 var(--sans);color:var(--esp);min-height:48px;padding:10px 6px;border:0;border-bottom:2px solid var(--esp);border-radius:4px 4px 0 0;background:rgba(234,220,198,.45)}
+.feld textarea{resize:vertical;min-height:80px}
+.feld input:focus,.feld textarea:focus{outline:none;border-color:var(--gruen);background:rgba(234,220,198,.8)}
+.feld [aria-invalid="true"]{border-color:var(--rot);background:#F4DFDA}
+.einwilligung{display:flex;gap:12px;align-items:flex-start;padding:12px;margin:4px -12px 0;border-radius:10px;cursor:pointer;font-size:15px;line-height:1.45}
+.einwilligung:hover{background:rgba(234,220,198,.6)}
+.einwilligung input{width:22px;height:22px;flex:none;margin-top:1px;accent-color:var(--rot)}
+.einwilligung input[aria-invalid="true"]{outline:2px solid var(--rot);outline-offset:2px}
+[data-reservierung-fehler],.res-schritt-fehler{color:var(--rot);font-weight:600;font-size:15px;min-height:0}
+.res-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:24px}
+.res-zurueck{background:none;border:0;font:600 15px var(--sans);color:var(--esp);text-decoration:underline;text-underline-offset:4px;min-height:44px;padding:0 8px;cursor:pointer}
+.res-weiter,.block [type="submit"]{min-height:52px;padding:14px 32px;border:0;border-radius:999px;background:var(--rot);color:var(--creme);font:600 16px var(--sans);cursor:pointer;margin-left:auto;transition:background .3s,transform .3s}
+.res-weiter:hover,.block [type="submit"]:hover{background:var(--esp)}
+.res-weiter:active,.block [type="submit"]:active{transform:scale(.97)}
+.erfolg{text-align:center;padding:24px 0;display:grid;justify-items:center;gap:12px}
+.notiert{display:grid;place-items:center;width:132px;aspect-ratio:1;border-radius:50%;border:3px solid var(--rot);box-shadow:inset 0 0 0 5px var(--creme),inset 0 0 0 7px var(--rot);color:var(--rot);font:400 30px var(--serif);transform:rotate(-12deg)}
+.erfolg h3{font-size:clamp(1.8rem,3vw,2.3rem)}
+.erfolg-zeile{font:400 26px/1.3 var(--hand);color:var(--gruen)}
+.erfolg button{min-height:48px;padding:12px 26px;border-radius:999px;border:2px solid var(--esp);background:transparent;font:600 15px var(--sans);color:var(--esp);cursor:pointer}
+.erfolg button:hover{background:var(--esp);color:var(--creme)}
+
+.anfahrt{padding-block:var(--abst)}
+.anfahrt-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(2rem,5vw,4rem);align-items:center}
+.karte-rahmen{position:relative;aspect-ratio:4/3;border-radius:14px;overflow:hidden;background:var(--papier);box-shadow:var(--schatten);border:8px solid var(--creme);outline:1px solid var(--linie)}
+.karte-rahmen [data-karte]{width:100%;height:100%}
+.anfahrt h2{font-size:clamp(2rem,3.4vw,3rem);hyphens:none}
+.anfahrt address{font-style:normal;font-size:1.25rem;margin:1.25rem 0 .75rem;font-weight:600}
+.anfahrt p{max-width:40ch}
+.anfahrt .aktionen{margin-top:1.5rem}
+
+.fuss{background:var(--esp);color:var(--creme);padding-bottom:clamp(2.5rem,5vw,3.5rem)}
+.fuss .polka{margin-bottom:clamp(2.5rem,5vw,4rem)}
+.fuss-grid{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px 48px;align-items:end}
+.fuss .wortmarke b{font-size:clamp(2rem,4vw,3rem)}
+.fuss .wortmarke .hand{color:#9CC4A6;font-size:32px}
+.fuss-info{display:grid;gap:4px;font-variant-numeric:tabular-nums}
+.fuss-info a{min-height:44px;display:inline-flex;align-items:center}
+.rechtliches{margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid rgba(243,235,221,.2);font-size:14px;color:#D9CBB4;display:grid;gap:6px}
+.rechtliches a{min-height:44px;display:inline-flex;align-items:center}
+
+.leiste-unten{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;grid-template-columns:repeat(3,minmax(0,1fr));background:var(--creme);border-top:3px solid var(--rot);padding-bottom:env(safe-area-inset-bottom)}
+.leiste-unten a{display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;font-weight:600;text-decoration:none}
+.leiste-unten a:first-child{background:var(--rot);color:var(--creme)}
+.leiste-unten a+a{border-left:1px solid var(--linie)}
+
+@media (max-width:1100px){
+.felder{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:820px){
+:root{--kopf:64px}
+.kopf nav{display:none}
+.nur-handy{display:inline-flex!important}
+.kopf .knopf{min-height:44px;padding:10px 20px}
+.wortmarke .hand{font-size:19px}.wortmarke b{font-size:19px}
+.hero{grid-template-columns:minmax(0,1fr);min-height:0}
+.hero-bild{order:-1;padding:20px 16px 26px}
+.hero-text{padding:20px 16px 32px}
+.foto-stapel{width:100%}
+.foto-gross{transform:rotate(-1.5deg)}
+.foto-gross .klebe+.klebe,.zettel-klein,.teller,.stempel-gross{display:none}
+.foto-gross .klebe{left:-14px;top:-10px;width:84px}
+.hero-titel{margin:14px 0 14px}
+.zeile-marra{font-size:2rem}
+.zeile-name{font-size:clamp(2rem,10vw,3.4rem)}
+.angebot{font-size:1rem}
+.aktionen{flex-direction:column;align-items:stretch;gap:10px}
+.aktionen .knopf{width:100%}
+.hero>.polka{height:20px}
+.voll-grid,.zeiten-grid,.res-grid,.anfahrt-grid{grid-template-columns:minmax(0,1fr)}
+.voll-bilder{padding:0 0 22% 10%}
+.voll-bilder .klein{width:42%}
+.voll-bilder .trueffel{width:90px;right:0;bottom:2%}
+.zettel{flex-basis:82vw}
+.zettel .frei.raus{width:80%;margin:-56px auto -6px}
+.zettel .anheft{width:78px;right:-8px}
+.abend-in{grid-template-columns:minmax(0,1fr)}
+.raster{grid-template-columns:repeat(2,minmax(0,1fr))}
+.kachel[data-mitte]{order:-1;grid-column:1/-1}
+.kachel[data-mitte] .rahmen{aspect-ratio:4/3;height:auto}
+[data-raster-text]{position:static;margin:8px 0 0;box-shadow:none;background:var(--papier);max-width:none}
+.block{justify-self:stretch;transform:none;max-width:none}
+body{padding-bottom:calc(56px + env(safe-area-inset-bottom))}
+.leiste-unten{display:grid}
+}
+@media (max-width:560px){
+.felder{grid-template-columns:repeat(3,minmax(0,1fr))}
+.felder li{padding:12px 4px}
+.block{padding:48px 16px 24px;margin-inline:calc(-1 * var(--rand) + 8px);width:auto}
+.res-punkt:not(.res-jetzt) .res-titel{display:none}
+[data-reservierung]{min-height:520px}
+[data-tage]{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px;margin-right:-16px;padding-right:16px}
+[data-tage]::-webkit-scrollbar{display:none}
+[data-tage] .res-option{flex:0 0 27%;scroll-snap-align:start}
+[data-zeiten],.res-zeitreihe{grid-template-columns:repeat(4,minmax(0,1fr))}
+.res-label{padding:6px 4px}
+.res-tageszeit{font-size:13px}
+.felder2{grid-template-columns:minmax(0,1fr);gap:0}
+.res-weiter,.block [type="submit"]{flex:1;margin-left:0}
+.res-zurueck{flex:none}
+.stempel-klein{width:88px}
+.stempel-klein .bew-zahl{font-size:21px}
+}
+@media (prefers-reduced-motion:reduce){
+*,*::before,*::after{animation:none!important;transition:none!important}
+html{scroll-behavior:auto}
+}
+.foto-gross figcaption{padding-left:168px}
+.voll-bilder .gross figcaption{padding-left:46%}
+.res-intro{position:sticky;top:calc(var(--kopf) + 24px)}
+.res-foto{margin:24px 0 0 48px;max-width:340px;transform:rotate(2deg)}
+.res-foto .rahmen{aspect-ratio:4/5}
+.res-foto .klebe{top:-12px;right:28px;transform:rotate(16deg)}
+@media (min-width:821px) and (max-width:1100px){.infoliste div{display:grid;gap:2px;justify-content:start}.infoliste dd{text-align:left}}
+@media (max-width:820px){
+.foto-gross .rahmen{aspect-ratio:auto;height:24svh}
+.foto-gross figcaption{padding-left:6px;font-size:12.5px}
+.stempel-hero{top:8px;right:12px;width:104px}
+.stempel-hero .bew-zahl{font-size:21px}
+.stempel-hero .bew-stern{font-size:13px}
+.stempel-hero .bew-text{font-size:12.5px;max-width:7em}
+.statuszeile{max-width:calc(100% - 120px)}
+[data-status]{font-size:14px}
+.hero-text{padding-bottom:calc(88px + env(safe-area-inset-bottom))}
+.voll-bilder .gross figcaption{padding-left:50%}
+.res-intro{position:static}
+.res-foto{margin:20px 0 8px;max-width:300px}
+.spur{padding-top:88px}
+}
+</style>
+<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}[data-reservierung] [hidden],form[data-reservierung][hidden],[data-reservierung-erfolg][hidden]{display:none!important}:where(img){height:auto}:where([data-bewertung]){display:inline-flex;align-items:baseline;gap:.35em;flex-wrap:wrap}:where(.bew-stern){color:#E3A21A}:where(.bew-zahl){font-weight:700;font-variant-numeric:tabular-nums}:where(.res-fortschritt){list-style:none;display:flex;gap:.75rem;padding:0;margin:0 0 1rem}:where(.res-punkt){display:flex;align-items:center;gap:.45rem;flex:1;opacity:.5}:where(.res-punkt.res-jetzt,.res-punkt.res-erledigt){opacity:1}:where(.res-punkt.res-erledigt){cursor:pointer}:where(.res-nr){display:inline-grid;place-items:center;width:1.7em;height:1.7em;border-radius:50%;border:1px solid currentColor;font-size:.85em;flex:none}:where(.res-zusammenfassung){margin:0 0 1rem;font-size:.92em;opacity:.8}:where(.res-nav){display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin-top:1.25rem}:where(.res-nav .res-weiter,.res-nav [type=submit]){margin-left:auto}:where(.res-nav button){min-height:44px}:where(.res-zeitgruppe){margin:0 0 .75rem}:where(.res-zeitreihe){display:flex;flex-wrap:wrap;gap:.5rem}:where(.res-tageszeit){margin:0 0 .35rem;font-size:.78em;letter-spacing:.08em;text-transform:uppercase;opacity:.7}@media (max-width:560px){:where(.res-punkt:not(.res-jetzt) .res-titel){display:none}:where(.res-punkt:not(.res-jetzt)){flex:none}:where(.res-zeitreihe){display:grid;grid-template-columns:repeat(4,1fr)}:where(.res-nav button){min-height:48px}:where(.res-nav .res-weiter,.res-nav [type=submit]){flex:1}[data-reservierung] input:not([type=radio]):not([type=checkbox]),[data-reservierung] textarea,[data-reservierung] select{font-size:max(16px,1em)!important}}</style><!--agent-lib--><link rel="stylesheet" href="lib/lenis.css"><script src="lib/gsap.min.js"></script><script src="lib/ScrollTrigger.min.js"></script><script src="lib/SplitText.min.js"></script><script src="lib/lenis.min.js"></script><!--/agent-lib--></head>
+<body><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für Marra Pizzeria Napoli. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
+
+<header class="kopf">
+<div class="wrap kopf-in">
+<a class="wortmarke" href="#start" aria-label="Marra Pizzeria Napoli, nach oben"><span class="hand">Marra</span><b>Pizzeria Napoli</b></a>
+<nav aria-label="Hauptnavigation">
+<a href="#karte">Karte</a>
+<a href="#zeiten">Zeiten</a>
+<a href="#anfahrt">Anfahrt</a>
+<a class="knopf" href="#reservieren">Reservieren</a>
+</nav>
+<a class="knopf nur-handy" href="tel:0511454882">Anrufen</a>
+</div>
+</header>
+
+<main id="start">
+<section class="hero" aria-labelledby="titel">
+<div class="hero-text">
+<div class="statuszeile">
+<span data-status></span>
+<a class="stempel stempel-hero" href="https://www.google.com/maps/search/?api=1&amp;query=Marra+Pizzeria+Napoli&amp;query_place_id=ChIJPYlJm-p0sEcRKG8AyxAVGc8" target="_blank" rel="noopener" aria-label="Google-Bewertung ansehen"><span data-bewertung aria-label="4,8 von 5 Sternen bei 633 Google-Bewertungen"><span class="bew-stern" aria-hidden="true">★</span><span class="bew-zahl">4,8</span><span class="bew-text">633 Bewertungen auf Google</span></span></a>
+</div>
+<h1 class="hero-titel" id="titel">
+<span class="zeile zeile-marra"><span>Marra</span></span>
+<svg class="schwung" viewBox="0 0 220 24" aria-hidden="true"><path d="M4 17c38-10 88-15 136-9 30 4 52 7 76-5"/></svg>
+<span class="zeile zeile-name"><span class="name">P<span class="i"><span class="i-stamm">i</span><span class="i-punkt" aria-hidden="true"></span></span>zzer<span class="i"><span class="i-stamm">i</span><span class="i-punkt" aria-hidden="true"></span></span>a Napoli</span></span>
+</h1>
+<p class="angebot">Neapolitanische Pizza, Tagliolini mit Trüffel, Muscheln in Weißwein. Mittwoch bis Sonntag ab 16 Uhr, Deisterstraße 40, Hannover-Linden.</p>
+<div class="aktionen">
+<a class="knopf magnet" href="tel:0511454882"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>0511 454882 anrufen</a>
+<a class="textlink nur-desktop" href="https://www.google.com/maps/dir/?api=1&amp;destination=Deisterstra%C3%9Fe+40%2C+30449+Hannover" target="_blank" rel="noopener">Route zur Deisterstraße <span aria-hidden="true">→</span></a>
+<a class="knopf knopf-linie nur-handy" href="https://www.google.com/maps/dir/?api=1&amp;destination=Deisterstra%C3%9Fe+40%2C+30449+Hannover" target="_blank" rel="noopener">Route</a>
+</div>
+<p class="unterlink"><a class="textlink" href="#reservieren">Tisch reservieren</a></p>
+<p class="hand hero-notiz nur-handy">Drinnen klein, draußen Pavillons – lieber anrufen.</p>
+</div>
+
+<div class="hero-bild">
+<p class="zettel-klein">Drinnen klein, draußen Pavillons – lieber anrufen.</p>
+<div class="foto-stapel">
+<figure class="polaroid foto-gross" data-foto>
+<span class="klebe" aria-hidden="true"></span><span class="klebe" aria-hidden="true"></span>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmOEZlzprc5ETKgPE0K23NsR5pyBLZRP1G1hXQ-SVw2Mq8GkW8D4QGkVo1abiwD1qq6LIsMKLdbfWErdNQ-PRky3S4hWlpM_0zB9WCyH7e0I6ziPLbONOBYLEH7nyZ5Tkl2q4Liu=s4800-w1000" referrerpolicy="no-referrer" width="1200" height="900" alt="Gastraum mit Holztischen, rot-weiß karierten Kissen und Blick auf die Terrasse" style="object-position:55% 40%"></div>
+<figcaption><span>Drinnen, Blick nach draußen auf die Terrasse</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/111628395640682806369" target="_blank" rel="noopener">Foto: Claus-Dieter Kruse · Google Maps</a></figcaption>
+</figure>
+<figure class="teller" data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmPpsbZ1LZP9v9_yllg6_CB-FOiLJ7pDDZo5XeF2mlfxQRRlcNyJy_0RUVJuiqLQGge-l6NqXch-e01mZTx_theTmTrUYEaH0GgXw0N1mmgrJoF_eeZ2sqfPPZ7UUW8hOujn4kpE0r4e-AI=s4800-w1800" referrerpolicy="no-referrer" width="400" height="400" alt="Neapolitanische Pizza mit Pilzen und gegrilltem Gemüse" style="object-position:50% 50%"></div>
+<figcaption><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/105257703538463425707" target="_blank" rel="noopener">Foto: Piyush Chauhan · Google Maps</a></figcaption>
+</figure>
+</div>
+</div>
+<div class="polka" aria-hidden="true"></div>
+</section>
+
+<section class="voll" id="ueber" aria-labelledby="voll-titel">
+<div class="wrap voll-grid">
+<div class="voll-text">
+<h2 id="voll-titel">Klein. <em>Voll.</em> Und genau so gemeint.</h2>
+<p>Pizza nach neapolitanischer Art, Pasta, Muscheln, Dolci, dazu Wein und Bier. Gegessen wird drinnen auf karierten Kissen oder draußen unter den Pavillons auf dem Gehweg. Alles gibt’s auch zum Mitnehmen: anrufen, abholen.</p>
+<dl class="infoliste">
+<div><dt>Geöffnet</dt><dd>Mi–Sa 16–23, So 16–22</dd></div>
+<div><dt>Ruhetage</dt><dd>Montag, Dienstag</dd></div>
+<div><dt>Draußen</dt><dd>Pavillons auf dem Gehweg</dd></div>
+<div><dt>Mitnehmen</dt><dd>Ja, vorher anrufen</dd></div>
+<div><dt>Vegetarisch</dt><dd>Ja</dd></div>
+</dl>
+</div>
+<div class="voll-bilder">
+<figure class="polaroid gross enthuellen" data-foto>
+<span class="klebe" aria-hidden="true"></span>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmMrLYfjW-LHCANM7Sn2mwiQXx_Ylf1XSgJuxIeGh2H7k-hRAl9GF3BllyorqABg-Lr7O2lyF98UJkSwRr_5RYGPktL24UNAyBKg9G_fV-yIvd6aYx_JLFxeoYvvHREj1wz9qoEaPVjK9W_Z=s4800-w1000" referrerpolicy="no-referrer" loading="lazy" width="1000" height="750" alt="Antipasti-Teller mit gegrilltem Gemüse, Schinken und Vitello tonnato"></div>
+<figcaption><span>Antipasti: Gemüse, Schinken, Vitello tonnato</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/117928438545179858028" target="_blank" rel="noopener">Foto: Jesper Moretti · Google Maps</a></figcaption>
+</figure>
+<figure class="polaroid klein enthuellen" data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmPwJWLZCAzO95YZ8BQC4qJHF_f6GXfQwKz9_SDHX67KYsft4eCf3HWF7XOI5RgEZ0uAiu5rRvxo6DbkRp9YS9PGgx60VKlCaF7BD6iTrr6JQLOgxVww1mGrOjUhGbdfqCKrq9fXlQ=s4800-w1000" referrerpolicy="no-referrer" loading="lazy" width="800" height="1000" alt="Pasta mit Rindfleischstreifen, Gemüse und Petersilie"></div>
+<figcaption><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/110366945704191332309" target="_blank" rel="noopener">Foto: Marika Steuer · Google Maps</a></figcaption>
+</figure>
+</div>
+</div>
+</section>
+
+<div class="zutaten" aria-label="Zutaten des Hauses">
+<div class="laufband">
+<ul><li><span class="h">funghi</span></li><li><span class="k">tartufo nero</span></li><li><span class="h">cozze</span></li><li><span class="k">vongole</span></li><li><span class="h">basilico</span></li><li><span class="k">mozzarella</span></li><li><span class="h">tiramisù</span></li><li><span class="k">vino &amp; birra</span></li></ul>
+<ul aria-hidden="true"><li><span class="h">funghi</span></li><li><span class="k">tartufo nero</span></li><li><span class="h">cozze</span></li><li><span class="k">vongole</span></li><li><span class="h">basilico</span></li><li><span class="k">mozzarella</span></li><li><span class="h">tiramisù</span></li><li><span class="k">vino &amp; birra</span></li></ul>
+</div>
+</div>
+
+<section class="tisch" id="karte" data-szene="horizontal" aria-labelledby="tisch-titel">
+<div class="wrap tisch-kopf">
+<h2 id="tisch-titel">Was auf den <em>Tisch</em> kommt</h2>
+<p>Vier Gerichte aus der Karte. Die vollständige Karte liegt vor Ort aus.</p>
+</div>
+<div class="spur" data-spur>
+<article class="zettel" style="--dreh:-2deg">
+<img class="frei raus" src="ki-pizza-funghi.webp" loading="lazy" width="600" height="600" alt="Neapolitanische Pizza mit Pilzen und gegrilltem Gemüse" data-tiefe="18">
+<h3>Pizza napoletana</h3>
+<p>Luftiger, dunkel gefleckter Rand. Zum Beispiel mit Pilzen und gegrilltem Gemüse.</p>
+<p class="notiz">auch vegetarisch</p>
+</article>
+<article class="zettel" style="--dreh:2deg">
+<span class="klebe" aria-hidden="true"></span>
+<figure data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmOnoTXQ5cOy-bYE0McHLxAPbQtLVrmrrrvA3B4bimSVEYbzeaAUIZ2azTXu0jL07I96u9m5m74U3RlR2u8Vmptl3pqz9W-4EsnLar-l9plxuTRnT4vqZLi0mq4ZLRAAkL2uJI39Ym4ZizaC=s4800-w1000" referrerpolicy="no-referrer" loading="lazy" width="600" height="600" alt="Tagliolini mit schwarzem Trüffel und Basilikum in cremiger Sauce"></div>
+<figcaption><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/106779008141680703266" target="_blank" rel="noopener">Foto: Neele H · Google Maps</a></figcaption>
+</figure>
+<h3>Tagliolini al tartufo</h3>
+<p>Mit schwarzem Trüffel und Basilikum in cremiger Sauce.</p>
+<p class="notiz">tartufo nero!</p>
+</article>
+<article class="zettel" style="--dreh:-1deg">
+<span class="klebe" aria-hidden="true"></span>
+<figure data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmNk3FzC0NZJoodbqxghMue8t4js_XA4S4Z3aKmfpBQEm_4Ye2Iq06cqQX4uE6mA2A3o3EgwWxDuTQa2tcuby7ZEyRiCuBCWVrB1Iqi-ZSL8peFqVPjqmKg1nFhKRTn9rAATuhE_vCyU3NrZ=s4800-w1000" referrerpolicy="no-referrer" loading="lazy" width="600" height="600" alt="Miesmuscheln und Venusmuscheln in Weißweinsauce mit Karotten und Sellerie"></div>
+<figcaption><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/109972324377722101475" target="_blank" rel="noopener">Foto: mark scherbarth · Google Maps</a></figcaption>
+</figure>
+<h3>Cozze e vongole</h3>
+<p>Miesmuscheln und Venusmuscheln in heller Weißweinsauce, mit Karotten und Sellerie.</p>
+<p class="notiz">frutti di mare</p>
+</article>
+<article class="zettel" style="--dreh:3deg">
+<span class="klebe" aria-hidden="true"></span>
+<img class="frei" src="ki-tiramisu.webp" loading="lazy" width="600" height="600" alt="Ein Stück Tiramisu mit Kakao auf einem kleinen Teller" data-tiefe="12">
+<h3>Tiramisù</h3>
+<p>Mascarpone, Löffelbiskuit mit Kaffee, Kakao obendrauf.</p>
+<p class="notiz">dolci zum Schluss</p>
+</article>
+<article class="zettel zettel-ende" style="--dreh:-2deg">
+<span class="klebe" aria-hidden="true"></span>
+<div class="rahmen"><img src="ki-teigkugel.webp" loading="lazy" width="600" height="600" alt="Pizzateig-Kugel auf bemehltem Holzbrett"></div>
+<h3>Die ganze Karte liegt auf dem Tisch. Oder am Telefon:</h3>
+<a href="tel:0511454882">0511 454882</a>
+</article>
+</div>
+</section>
+
+<div class="polka ausbreiten" aria-hidden="true"></div>
+
+<section class="abend" aria-label="Der Abend in der Deisterstraße">
+<div class="wrap abend-in">
+<p class="hand" aria-hidden="true">Buona sera.</p>
+<p class="lesen" data-szene="lesen">Ab vier gehen draußen die Laternen an, später wird jeder Stuhl gebraucht, und wer keinen Tisch reserviert hat, rückt eben ein Stück zusammen.</p>
+</div>
+</section>
+
+<section class="raster-szene" data-szene="raster-zoom" aria-labelledby="raster-titel">
+<div class="wrap">
+<h2 id="raster-titel">Deisterstraße 40, <em>abends</em></h2>
+<div class="raster">
+<figure class="kachel" data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmPwJWLZCAzO95YZ8BQC4qJHF_f6GXfQwKz9_SDHX67KYsft4eCf3HWF7XOI5RgEZ0uAiu5rRvxo6DbkRp9YS9PGgx60VKlCaF7BD6iTrr6JQLOgxVww1mGrOjUhGbdfqCKrq9fXlQ=s4800-w1000" referrerpolicy="no-referrer" loading="lazy" width="600" height="800" alt="Pasta mit Rindfleischstreifen, Gemüse und Petersilie"></div>
+<figcaption><span>Pasta mit Rind und Gemüse</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/110366945704191332309" target="_blank" rel="noopener">Foto: Marika Steuer · Google Maps</a></figcaption>
+</figure>
+<figure class="kachel" data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmONviTmjGCRhFP4YY9lXBqILEftDxYrg7_1ft64PmSPX-XQTsuN6vYs_Yu4WcTKkf1wERwR6bb53Q6v49j7R0Em69rBDPj2v7MiRMaJwJ7WzteGM-dXJosHxgl8SBacJZXtDnze2fJHPwDK=s4800-w1000" referrerpolicy="no-referrer" loading="lazy" width="600" height="800" alt="Crostini mit Tomaten, Kräuterpesto und Frischkäse"></div>
+<figcaption><span>Crostini</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/110959808332165973981" target="_blank" rel="noopener">Foto: Roadtrips Reviewer · Google Maps</a></figcaption>
+</figure>
+<figure class="kachel" data-foto data-mitte>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmOEZlzprc5ETKgPE0K23NsR5pyBLZRP1G1hXQ-SVw2Mq8GkW8D4QGkVo1abiwD1qq6LIsMKLdbfWErdNQ-PRky3S4hWlpM_0zB9WCyH7e0I6ziPLbONOBYLEH7nyZ5Tkl2q4Liu=s4800-w1000" referrerpolicy="no-referrer" loading="lazy" width="1200" height="900" alt="Gastraum mit Holztischen, karierten Kissen und Blick nach draußen"></div>
+<figcaption><span>Der Gastraum, Blick nach draußen</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/111628395640682806369" target="_blank" rel="noopener">Foto: Claus-Dieter Kruse · Google Maps</a></figcaption>
+<div data-raster-text><b>Deisterstraße 40</b><span>Linden-Süd · Mi–Sa 16–23 · So 16–22</span></div>
+</figure>
+<figure class="kachel" data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmNk3FzC0NZJoodbqxghMue8t4js_XA4S4Z3aKmfpBQEm_4Ye2Iq06cqQX4uE6mA2A3o3EgwWxDuTQa2tcuby7ZEyRiCuBCWVrB1Iqi-ZSL8peFqVPjqmKg1nFhKRTn9rAATuhE_vCyU3NrZ=s4800-w1000" referrerpolicy="no-referrer" loading="lazy" width="600" height="800" alt="Muscheln in Weißweinsauce"></div>
+<figcaption><span>Cozze e vongole</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/109972324377722101475" target="_blank" rel="noopener">Foto: mark scherbarth · Google Maps</a></figcaption>
+</figure>
+<figure class="kachel" data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmOnoTXQ5cOy-bYE0McHLxAPbQtLVrmrrrvA3B4bimSVEYbzeaAUIZ2azTXu0jL07I96u9m5m74U3RlR2u8Vmptl3pqz9W-4EsnLar-l9plxuTRnT4vqZLi0mq4ZLRAAkL2uJI39Ym4ZizaC=s4800-w1000" referrerpolicy="no-referrer" loading="lazy" width="600" height="800" alt="Tagliolini mit schwarzem Trüffel"></div>
+<figcaption><span>Tagliolini al tartufo</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/106779008141680703266" target="_blank" rel="noopener">Foto: Neele H · Google Maps</a></figcaption>
+</figure>
+</div>
+</div>
+</section>
+
+<section class="zeiten" id="zeiten" aria-labelledby="zeiten-titel">
+<div class="wrap zeiten-grid">
+<div class="stempelkarte">
+<span class="klebe" aria-hidden="true"></span>
+<h2 id="zeiten-titel">Mittwoch bis Sonntag <em>ab vier.</em> Montag und Dienstag ist Pause.</h2>
+<ol class="felder">
+<li class="zu" data-tag="1"><b>Mo · Di</b><s>Ruhetag</s></li>
+<li data-tag="3"><b>Mi</b><span class="stempelpunkt" aria-hidden="true"></span><time>16–23</time></li>
+<li data-tag="4"><b>Do</b><span class="stempelpunkt" aria-hidden="true"></span><time>16–23</time></li>
+<li data-tag="5"><b>Fr</b><span class="stempelpunkt" aria-hidden="true"></span><time>16–23</time></li>
+<li data-tag="6"><b>Sa</b><span class="stempelpunkt" aria-hidden="true"></span><time>16–23</time></li>
+<li data-tag="0"><b>So</b><span class="stempelpunkt" aria-hidden="true"></span><time>16–22</time></li>
+</ol>
+<div class="tagesleiste" data-leiste>
+<p class="leiste-text" data-leiste-text>Mi–Sa 16–23 Uhr · So 16–22 Uhr</p>
+<div class="leiste-bahn" aria-hidden="true"><span class="leiste-offen"></span><span class="leiste-jetzt" hidden></span></div>
+<div class="leiste-skala" aria-hidden="true"><span>14</span><span>16</span><span>18</span><span>20</span><span>22</span><span>24</span></div>
+</div>
+</div>
+<aside class="anruf">
+<span class="hand">Pronto?</span>
+<p>Tisch, Abholung oder eine Frage zur Karte: am schnellsten per Telefon.</p>
+<a class="nummer" href="tel:0511454882">0511 454882</a>
+<p><a class="textlink" href="#reservieren">Oder online anfragen <span aria-hidden="true">→</span></a></p>
+</aside>
+</div>
+</section>
+
+<section class="res" id="reservieren" aria-labelledby="res-titel">
+<div class="wrap res-grid">
+<div class="res-intro">
+<h2 id="res-titel">Einen Platz am <em>Tisch?</em></h2>
+<p>Wenige Tische, viele Gäste – sicher dir deinen. Ab acht Personen bitte kurz anrufen: <a href="tel:0511454882">0511 454882</a>.</p>
+<a class="stempel" href="https://www.google.com/maps/search/?api=1&amp;query=Marra+Pizzeria+Napoli&amp;query_place_id=ChIJPYlJm-p0sEcRKG8AyxAVGc8" target="_blank" rel="noopener" aria-label="Google-Bewertung ansehen"><span data-bewertung aria-label="4,8 von 5 Sternen bei 633 Google-Bewertungen"><span class="bew-stern" aria-hidden="true">★</span><span class="bew-zahl">4,8</span><span class="bew-text">633 Bewertungen auf Google</span></span></a>
+<figure class="polaroid res-foto" data-foto>
+<span class="klebe" aria-hidden="true"></span>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/ACvplmPpsbZ1LZP9v9_yllg6_CB-FOiLJ7pDDZo5XeF2mlfxQRRlcNyJy_0RUVJuiqLQGge-l6NqXch-e01mZTx_theTmTrUYEaH0GgXw0N1mmgrJoF_eeZ2sqfPPZ7UUW8hOujn4kpE0r4e-AI=s4800-w1800" referrerpolicy="no-referrer" loading="lazy" width="800" height="1000" alt="Neapolitanische Pizza mit Pilzen und gegrilltem Gemüse auf einem Holzbrett"></div>
+<figcaption><span>Pizza mit Pilzen und gegrilltem Gemüse</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/105257703538463425707" target="_blank" rel="noopener">Foto: Piyush Chauhan · Google Maps</a></figcaption>
+</figure>
+</div>
+<div class="block">
+<form data-reservierung novalidate>
+<div data-schritt="1" data-titel="Wann?">
+<h3>Wann?</h3>
+<span class="gruppe-titel" id="l-tag">Tag</span>
+<div data-tage aria-labelledby="l-tag"></div>
+<span class="gruppe-titel" id="l-zeit">Uhrzeit</span>
+<div data-zeiten aria-labelledby="l-zeit"></div>
+</div>
+<div data-schritt="2" data-titel="Wie viele?">
+<h3>Wie viele?</h3>
+<span class="gruppe-titel" id="l-pers">Personen</span>
+<div data-personen aria-labelledby="l-pers"></div>
+<p class="res-hinweis">Mehr als acht? Kurz anrufen: 0511 454882.</p>
+</div>
+<div data-schritt="3" data-titel="Deine Angaben">
+<h3>Deine Angaben</h3>
+<div class="felder2">
+<div class="feld"><label for="r-name">Name</label><input id="r-name" name="name" autocomplete="name" required></div>
+<div class="feld"><label for="r-tel">Telefon</label><input id="r-tel" name="telefon" type="tel" autocomplete="tel" required></div>
+</div>
+<div class="feld"><label for="r-mail">E-Mail <small>(optional)</small></label><input id="r-mail" name="email" type="email" autocomplete="email"></div>
+<div class="feld"><label for="r-nachricht">Nachricht <small>(optional)</small></label><textarea id="r-nachricht" name="nachricht" rows="2"></textarea></div>
+<label class="einwilligung"><input type="checkbox" name="einwilligung" required><span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Reservierung verwendet werden. <a href="https://medialyte.de/datenschutzerklaerung" target="_blank" rel="noopener">Datenschutz</a></span></label>
+<p data-reservierung-fehler></p>
+<button type="submit">Tisch anfragen</button>
+</div>
+<div data-reservierung-erfolg hidden class="erfolg">
+<span class="notiert" aria-hidden="true">Notiert</span>
+<h3>Deine Anfrage liegt auf dem Block.</h3>
+<p class="erfolg-zeile"><span data-wert="datum"></span> · <span data-wert="uhrzeit"></span> · <span data-wert="personen"></span></p>
+<p>Auf den Namen <span data-wert="name"></span>. Wir rufen zurück, falls etwas nicht passt. Bis bald in der Deisterstraße.</p>
+<button type="button" data-reservierung-neu>Neue Anfrage</button>
+</div>
+</form>
+</div>
+</div>
+</section>
+
+<section class="anfahrt" id="anfahrt" aria-labelledby="anfahrt-titel">
+<div class="wrap anfahrt-grid">
+<div class="karte-rahmen"><div data-karte data-stil="warm" data-farbe="#B3261E"></div></div>
+<div>
+<h2 id="anfahrt-titel">Rote Fassade, <em>weißes</em> Schild.</h2>
+<address>Deisterstraße 40<br>30449 Hannover-Linden</address>
+<p>Über der Tür leuchtet abends der weiße Kasten mit „Pizzeria Napoli“, davor stehen die Pavillons mit den gepunkteten Tischdecken.</p>
+<div class="aktionen">
+<a class="knopf" href="https://www.google.com/maps/dir/?api=1&amp;destination=Deisterstra%C3%9Fe+40%2C+30449+Hannover" target="_blank" rel="noopener">Route planen <span aria-hidden="true">→</span></a>
+<a class="textlink" href="tel:0511454882">0511 454882</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="fuss">
+<div class="polka ausbreiten" aria-hidden="true"></div>
+<div class="wrap">
+<div class="fuss-grid">
+<a class="wortmarke" href="#start"><span class="hand">Marra</span><b>Pizzeria Napoli</b></a>
+<div class="fuss-info">
+<span>Deisterstraße 40, 30449 Hannover</span>
+<span>Mi–Sa 16–23 Uhr · So 16–22 Uhr · Mo, Di Ruhetag</span>
+<a href="tel:0511454882">0511 454882</a>
+</div>
+</div>
+<div class="rechtliches"><p>Entwurf von Medialyte, 21147 Hamburg. Adresse und Öffnungszeiten: Google. Fotos: Google Maps, Urheber jeweils am Bild. Einige Bilder und das Logo sind KI-generierte Vorschläge.</p><p><a href="https://medialyte.de/impressum" style="color:inherit;text-decoration:underline">Impressum</a> · <a href="https://medialyte.de/datenschutzerklaerung" style="color:inherit;text-decoration:underline">Datenschutz</a></p></div>
+</div>
+</footer>
+
+<nav class="leiste-unten" aria-label="Schnellzugriff">
+<a href="tel:0511454882">Anrufen</a>
+<a href="https://www.google.com/maps/dir/?api=1&amp;destination=Deisterstra%C3%9Fe+40%2C+30449+Hannover" target="_blank" rel="noopener">Route</a>
+<a href="#zeiten">Zeiten</a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+const q=s=>document.querySelector(s),kopf=q(".kopf");
+const sc=()=>kopf.classList.toggle("gescrollt",scrollY>10);sc();addEventListener("scroll",sc,{passive:true});
+document.querySelectorAll(".nur-desktop").forEach(el=>{const m=matchMedia("(max-width:820px)");const f=()=>el.hidden=m.matches;f();m.addEventListener("change",f)});
+const b=new Date(new Date().toLocaleString("en-US",{timeZone:"Europe/Berlin"})),tag=b.getDay(),h=b.getHours()+b.getMinutes()/60;
+const zeiten={0:[16,22],3:[16,23],4:[16,23],5:[16,23],6:[16,23]},namen=["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"],z=zeiten[tag],p=x=>(x-14)*10+"%";
+const leiste=q("[data-leiste]"),txt=q("[data-leiste-text]"),jetzt=q(".leiste-jetzt");
+const feld=q(`.felder [data-tag="${tag===2?1:tag}"]`);feld&&feld.classList.add("heute");
+if(z){leiste.style.setProperty("--von",p(z[0]));leiste.style.setProperty("--bis",p(z[1]));txt.textContent=`Heute, ${namen[tag]}: ${z[0]}–${z[1]} Uhr`}
+else{leiste.classList.add("ruhetag");txt.textContent=`Heute, ${namen[tag]}: Ruhetag. Ab Mittwoch 16 Uhr wieder da.`}
+if(h>=14){jetzt.hidden=false;jetzt.style.left=p(Math.min(h,24));jetzt.dataset.zeit=String(b.getHours()).padStart(2,"0")+":"+String(b.getMinutes()).padStart(2,"0")}
+if(!window.gsap)return;
+gsap.registerPlugin(ScrollTrigger);
+const mm=gsap.matchMedia();
+mm.add({bewegt:"(prefers-reduced-motion: no-preference)",gross:"(min-width: 821px)",fein:"(pointer: fine)"},c=>{
+const {bewegt,gross,fein}=c.conditions;if(!bewegt)return;
+const tl=gsap.timeline({defaults:{ease:"power3.out"}});
+tl.from(".foto-gross",{scale:1.08,rotation:0,duration:.9})
+.from(".hero-titel .zeile>span",{yPercent:110,duration:1,ease:"expo.out",stagger:.12},.1)
+.fromTo(".schwung path",{strokeDashoffset:300},{strokeDashoffset:0,duration:.9,ease:"power2.inOut"},.55)
+.from(".i-punkt",{scale:0,duration:.5,ease:"back.out(3)",stagger:.14},1)
+.from(".hero>.polka",{clipPath:"inset(0 100% 0 0)",duration:1.1,ease:"power2.inOut"},.4);
+if(gross){tl.from(".foto-gross .klebe",{scaleX:0,duration:.4,stagger:.1},.12)
+.from(".teller,.zettel-klein",{scale:.5,opacity:0,rotation:-18,duration:.6,ease:"back.out(1.6)",stagger:.12},.5)}
+else tl.timeScale(1.6);
+gsap.utils.toArray(".polka.ausbreiten").forEach(el=>gsap.fromTo(el,{clipPath:"inset(0 100% 0 0)"},{clipPath:"inset(0 0% 0 0)",duration:1,ease:"power2.inOut",scrollTrigger:{trigger:el,start:"top 95%",once:true}}));
+gsap.utils.toArray(".enthuellen").forEach((el,i)=>gsap.from(el,{clipPath:"inset(14% 14% 14% 14% round 14px)",duration:1.1,delay:i*.12,ease:"power3.out",scrollTrigger:{trigger:".voll-bilder",start:"top 80%"}}));
+const weg=[];
+if(fein)document.querySelectorAll(".magnet").forEach(el=>{
+const x=gsap.quickTo(el,"x",{duration:.4,ease:"power3"}),y=gsap.quickTo(el,"y",{duration:.4,ease:"power3"});
+const mv=e=>{const r=el.getBoundingClientRect();x((e.clientX-r.left-r.width/2)*.25);y((e.clientY-r.top-r.height/2)*.35)},lv=()=>{x(0);y(0)};
+el.addEventListener("pointermove",mv);el.addEventListener("pointerleave",lv);
+weg.push(()=>{el.removeEventListener("pointermove",mv);el.removeEventListener("pointerleave",lv);gsap.set(el,{x:0,y:0})})});
+return()=>weg.forEach(f=>f());
+});
+if(window.Lenis&&matchMedia("(pointer: fine) and (prefers-reduced-motion: no-preference)").matches){
+const lenis=new Lenis({autoRaf:false});lenis.on("scroll",ScrollTrigger.update);
+gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+}
+});
+</script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>[data-karte]{width:100%;height:100%;min-height:260px;position:relative;z-index:0;isolation:isolate}[data-karte] .leaflet-tile-pane{filter:var(--karte-filter)}
+[data-karte] .leaflet-control-attribution{font-size:10px}.karte-pin{position:relative;width:34px;height:34px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+box-shadow:0 6px 16px rgba(0,0,0,.35);border:3px solid #fff}.karte-pin i{position:absolute;inset:9px;border-radius:50%;background:#fff}</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>(function(){var C={"lat": 52.365139899999996, "lng": 9.7181521, "name": "Marra Pizzeria Napoli", "filter": {"hell": "grayscale(1) contrast(1.05) brightness(1.04)", "dunkel": "grayscale(1) invert(1) contrast(.88) brightness(.82)", "warm": "grayscale(1) sepia(.5) contrast(1.02) brightness(1.02)", "kuehl": "grayscale(1) sepia(.35) hue-rotate(175deg) saturate(.55) brightness(1.03)", "mono": "grayscale(1) contrast(1.2)"}};function draw(){if(!window.L)return;document.querySelectorAll('[data-karte]').forEach(function(el){
+if(el._map)return;var st=el.getAttribute('data-stil')||'hell',col=el.getAttribute('data-farbe')||'#c0392b';
+el.style.setProperty('--karte-filter',C.filter[st]||C.filter.hell);
+var m=L.map(el,{scrollWheelZoom:false,zoomControl:true,attributionControl:true}).setView([C.lat,C.lng],16);el._map=m;
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(m);
+var icon=L.divIcon({className:'',html:'<div class="karte-pin" style="background:'+col+'"><i></i></div>',iconSize:[34,34],iconAnchor:[17,34]});
+L.marker([C.lat,C.lng],{icon:icon,title:C.name,alt:C.name}).addTo(m);setTimeout(function(){m.invalidateSize()},300);});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',draw);else draw();window.addEventListener('load',draw);})();</script><script>(function(){
+var P=[[960, 1320], [5280, 5700], [6720, 7140], [8160, 8580], [9600, 10020]];
+function fmt(m){m=((m%1440)+1440)%1440;var h=Math.floor(m/60),mi=m%60;return (h<10?'0':'')+h+':'+(mi<10?'0':'')+mi;}
+function now(){var d=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Berlin'}));return d.getDay()*1440+d.getHours()*60+d.getMinutes();}
+function status(){if(!P.length)return null;var t=now(),W=10080;
+ for(var i=0;i<P.length;i++){var s=P[i][0],e=P[i][1];if((t>=s&&t<e)||(t+W>=s&&t+W<e))return {offen:true,text:'Jetzt geöffnet bis '+fmt(e)};}
+ var best=null;for(var j=0;j<P.length;j++){var d=(P[j][0]-t+W)%W;if(best===null||d<best.d)best={d:d,s:P[j][0]};}
+ var tag=Math.floor(t/1440),ot=Math.floor(best.s/1440)%7,names=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+ var when=best.d<1440&&ot===tag?'heute':(best.d<2880&&ot===(tag+1)%7?'morgen':names[ot]);
+ return {offen:false,text:'Geschlossen · öffnet '+when+' um '+fmt(best.s)};}
+function run(){var s=status();document.querySelectorAll('[data-status]').forEach(function(el){
+ if(!s){el.style.display='none';return;}el.textContent=s.text;el.setAttribute('data-offen',s.offen?'ja':'nein');});}
+document.querySelectorAll('[data-foto] img').forEach(function(img){
+ function hide(){var b=img.closest('[data-foto]');if(b)b.style.display='none';}
+ if(!img.getAttribute('src'))hide();else{img.addEventListener('error',hide);if(img.complete&&img.naturalWidth===0)hide();}});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();setInterval(run,60000);
+})();</script><!--agent-res--><script>(function () {
+  /* Reservierung: Tage und Uhrzeiten aus den echten Öffnungszeiten, Personen, Prüfung, Bestätigung.
+     Gestaltung kommt von der Seite, die Logik kommt von hier. CFG und P setzt der Agent ein. */
+  var CFG = {"modus": "demo", "ziel": "", "extra": {}, "slot": 30, "vorlauf": 60, "letzte": 60, "max": 8, "tage": 21, "name": "Marra Pizzeria Napoli", "tel": "0511454882", "telText": "0511 454882"}, P = [[960, 1320], [5280, 5700], [6720, 7140], [8160, 8580], [9600, 10020]], W = 10080;
+  var TAGE = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"], LANG = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
+  var MON = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+  function berlin() { return new Date(new Date().toLocaleString("en-US", { timeZone: "Europe/Berlin" })); }
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function hm(m) { return pad(Math.floor(m / 60)) + ":" + pad(m % 60); }
+  function iso(d) { return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()); }
+  function el(tag, attrs, html) { var e = document.createElement(tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (html != null) e.innerHTML = html; return e; }
+
+  /* Uhrzeiten eines Kalendertags (Minuten ab 00:00), aus den Wochen-Intervallen P */
+  function slots(day, isToday, nowMin) {
+    var out = [], start = day.getDay() * 1440, step = CFG.slot, last = CFG.letzte;
+    var periods = P.length ? P : [[0, W]];
+    for (var i = 0; i < periods.length; i++) {
+      for (var shift = -W; shift <= W; shift += W) {
+        var s = periods[i][0] + shift, e = periods[i][1] + shift;
+        var from = Math.max(s, start), to = Math.min(e - last, start + 1440 - 1);
+        if (!P.length) { from = start + 11 * 60; to = start + 21 * 60 + 30; }
+        if (to < from && e > start && s < start + 1440 && e - s <= last + step && s >= start) to = from;
+        for (var t = Math.ceil(from / step) * step; t <= to; t += step) {
+          var m = t - start;
+          if (m < 5 * 60 && P.length) continue;              // keine Plätze nach Mitternacht
+          if (isToday && m < nowMin + CFG.vorlauf) continue;  // heute nur mit Vorlauf
+          if (out.indexOf(m) < 0) out.push(m);
+        }
+      }
+    }
+    return out.sort(function (a, b) { return a - b; });
+  }
+
+  function init(form) {
+    if (form._res) return; form._res = true;
+    var now = berlin(), nowMin = now.getHours() * 60 + now.getMinutes();
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var days = [];
+    for (var i = 0; i < CFG.tage; i++) {
+      var d = new Date(today); d.setDate(today.getDate() + i);
+      var s = slots(d, i === 0, nowMin);
+      if (s.length) days.push({ d: d, slots: s, i: i });
+    }
+    var boxTage = form.querySelector("[data-tage]"), boxZeiten = form.querySelector("[data-zeiten]"), boxPers = form.querySelector("[data-personen]");
+    var first = form.querySelector("input, textarea, select, button");
+    function ensure(box, attr, label) {
+      if (box) return box;
+      var wrap = el("fieldset", { "class": "res-gruppe" }, "<legend>" + label + "<\/legend>");
+      var b = el("div", {}); b.setAttribute(attr, ""); wrap.appendChild(b);
+      form.insertBefore(wrap, first && first.parentNode === form ? first : form.firstChild);
+      return b;
+    }
+    boxTage = ensure(boxTage, "data-tage", "Tag");
+    boxZeiten = ensure(boxZeiten, "data-zeiten", "Uhrzeit");
+    boxPers = ensure(boxPers, "data-personen", "Personen");
+    [boxTage, boxZeiten, boxPers].forEach(function (b) { b.setAttribute("role", "radiogroup"); });
+    boxTage.setAttribute("aria-label", "Tag wählen"); boxZeiten.setAttribute("aria-label", "Uhrzeit wählen");
+    boxPers.setAttribute("aria-label", "Anzahl Personen");
+    var uid = "res" + Math.random().toString(36).slice(2, 7);
+
+    function option(name, value, inner, title) {
+      var id = uid + "-" + name + "-" + String(value).replace(/[^a-z0-9]/gi, "");
+      var l = el("label", { "class": "res-option", "for": id, title: title || "" });
+      l.appendChild(el("input", { type: "radio", name: name, value: value, id: id, "class": "res-radio" }));
+      l.appendChild(el("span", { "class": "res-label" }, inner));
+      return l;
+    }
+    function renderDays() {
+      boxTage.innerHTML = "";
+      if (!days.length) { boxTage.appendChild(el("p", { "class": "res-hinweis" }, "In den nächsten Wochen sind online keine Zeiten frei. Bitte rufen Sie an.")); return; }
+      days.forEach(function (x) {
+        var top = x.i === 0 ? "Heute" : x.i === 1 ? "Morgen" : TAGE[x.d.getDay()];
+        boxTage.appendChild(option("datum", iso(x.d), "<b>" + top + "<\/b><small>" + pad(x.d.getDate()) + "." + pad(x.d.getMonth() + 1) + ".<\/small>",
+          LANG[x.d.getDay()] + ", " + x.d.getDate() + ". " + MON[x.d.getMonth()]));
+      });
+    }
+    function renderTimes(dateIso) {
+      boxZeiten.innerHTML = "";
+      var x = days.filter(function (y) { return iso(y.d) === dateIso; })[0];
+      if (!x) { boxZeiten.appendChild(el("p", { "class": "res-hinweis" }, "Bitte zuerst einen Tag wählen.")); return; }
+      if (x.slots.length <= 8) { x.slots.forEach(function (m) { boxZeiten.appendChild(option("uhrzeit", hm(m), hm(m))); }); return; }
+      var parts = [["Morgens", 0, 660], ["Mittags", 660, 870], ["Nachmittags", 870, 1020], ["Abends", 1020, 1440]];
+      // eine einzelne Uhrzeit bekommt keine eigene Gruppe, sie wandert in die nächste (bzw. vorige)
+      var groups = parts.map(function (pt) { return [pt[0], x.slots.filter(function (m) { return m >= pt[1] && m < pt[2]; })]; })
+        .filter(function (g) { return g[1].length; });
+      for (var gi = 0; gi < groups.length && groups.length > 1; gi++) {
+        if (groups[gi][1].length > 1) continue;
+        var to = gi + 1 < groups.length ? gi + 1 : gi - 1;
+        groups[to][1] = to > gi ? groups[gi][1].concat(groups[to][1]) : groups[to][1].concat(groups[gi][1]);
+        groups.splice(gi, 1); gi--;
+      }
+      groups.forEach(function (gr) {
+        var pt = [gr[0]], mins = gr[1];
+        var g = el("div", { "class": "res-zeitgruppe" }), row = el("div", { "class": "res-zeitreihe" });
+        g.appendChild(el("p", { "class": "res-tageszeit" }, pt[0]));
+        mins.forEach(function (m) { row.appendChild(option("uhrzeit", hm(m), hm(m))); });
+        g.appendChild(row); boxZeiten.appendChild(g);
+      });
+    }
+    function renderPersons() {
+      boxPers.innerHTML = "";
+      for (var n = 1; n <= CFG.max; n++) boxPers.appendChild(option("personen", n, String(n), n + (n === 1 ? " Person" : " Personen")));
+      if (CFG.tel) boxPers.appendChild(el("p", { "class": "res-hinweis" }, "Mehr als " + CFG.max + "? <a href=\"tel:" + CFG.tel + "\">Bitte anrufen<\/a>."));
+    }
+    renderDays(); renderPersons();
+    var firstDay = boxTage.querySelector("input");
+    if (firstDay) { firstDay.checked = true; renderTimes(firstDay.value); } else renderTimes("");
+    var two = boxPers.querySelector('input[value="2"]'); if (two) two.checked = true;
+    boxTage.addEventListener("change", function (e) { if (e.target.name === "datum") { renderTimes(e.target.value); clearError(boxZeiten); } });
+
+    /* Spam-Falle und Felder für den späteren Versand */
+    var trap = el("input", { type: "text", name: "botcheck", tabindex: "-1", autocomplete: "off", "aria-hidden": "true",
+      style: "position:absolute;left:-9999px;width:1px;height:1px;opacity:0" });
+    form.appendChild(trap);
+    var errBox = form.querySelector("[data-reservierung-fehler]");
+    if (!errBox) { errBox = el("p", { "class": "res-fehler" }); var sb0 = form.querySelector('[type="submit"]'); if (sb0) sb0.parentNode.insertBefore(errBox, sb0); else form.appendChild(errBox); }
+    errBox.setAttribute("role", "alert"); errBox.setAttribute("aria-live", "polite");
+    var ok = form.querySelector("[data-reservierung-erfolg]");
+    if (!ok) { // gestaltete Bestätigung direkt neben dem Formular (gleicher Abschnitt) wird ebenfalls genutzt
+      var area = form.closest("section, [id]") || form.parentNode;
+      ok = area ? area.querySelector("[data-reservierung-erfolg]") : null;
+      if (ok && (ok._resForm || ok.closest("form[data-reservierung]"))) ok = null;
+    }
+    var outside = !!ok && !form.contains(ok);
+    if (ok) ok._resForm = form;
+    if (!ok) { ok = el("div", { "class": "res-erfolg", tabindex: "-1" }, "<p><strong>Danke!<\/strong> Ihre Anfrage für <span data-wert=\"datum\"><\/span> um <span data-wert=\"uhrzeit\"><\/span> Uhr (<span data-wert=\"personen\"><\/span>) ist eingegangen.<\/p>"); ok.setAttribute("data-reservierung-erfolg", ""); form.appendChild(ok); }
+    ok.hidden = true; ok.setAttribute("tabindex", "-1");
+    form.noValidate = true;
+    [["name", "name", "text"], ["telefon", "tel", "tel"], ["email", "email", "email"]].forEach(function (x) {
+      var f = form.querySelector('[name="' + x[0] + '"]'); if (!f || f.tagName !== "INPUT") return;
+      if (!f.getAttribute("autocomplete")) f.setAttribute("autocomplete", x[1]);
+      if (x[2] !== "text") { f.type = x[2]; f.setAttribute("inputmode", x[2]); }
+      if (!f.getAttribute("enterkeyhint")) f.setAttribute("enterkeyhint", "next");
+    });
+    function headerOffset() {
+      var h = 16;
+      document.querySelectorAll("header, nav, [data-kopf]").forEach(function (n) {
+        var cs = getComputedStyle(n), r = n.getBoundingClientRect();
+        if ((cs.position === "fixed" || cs.position === "sticky") && r.top <= 1 && r.height < innerHeight / 3) h = Math.max(h, r.bottom + 12);
+      });
+      return h;
+    }
+    /* gewählten Chip in einer wischbaren Reihe sichtbar machen, ohne die Seite zu verschieben */
+    function revealX(input) {
+      var lab = input && (input.closest(".res-option") || input);
+      for (var n = lab && lab.parentNode; n && n !== form; n = n.parentNode) {
+        var ox = getComputedStyle(n).overflowX;
+        if (ox === "auto" || ox === "scroll") {
+          var r = lab.getBoundingClientRect(), b = n.getBoundingClientRect();
+          if (r.left < b.left || r.right > b.right) n.scrollLeft += r.left - b.left - (b.width - r.width) / 2;
+          return;
+        }
+      }
+    }
+
+    /* Mehrschritt: <div data-schritt="1|2|3" data-titel="…"> – immer nur ein Schritt sichtbar */
+    var steps = Array.prototype.slice.call(form.querySelectorAll("[data-schritt]")), cur = 0;
+    var multi = steps.length >= 2, prog = null, sum = null, live = null;
+    var still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function stepTitle(st, i) { var h = st.getAttribute("data-titel") || ((st.querySelector("h2,h3,h4,legend") || {}).textContent || ""); return h.trim() || ["Wann?", "Wie viele?", "Ihre Angaben"][i] || "Schritt " + (i + 1); }
+    function summaryText() {
+      var bits = [];
+      if (val("datum")) { var d = new Date(val("datum") + "T12:00:00"); bits.push(TAGE[d.getDay()] + " " + pad(d.getDate()) + "." + pad(d.getMonth() + 1) + "."); }
+      if (val("uhrzeit")) bits.push(val("uhrzeit") + " Uhr");
+      if (val("personen")) bits.push(val("personen") + (val("personen") === "1" ? " Person" : " Personen"));
+      return bits.join(" · ");
+    }
+    function stepOk(i, mark_) {
+      var st = steps[i], need = [];
+      if (st.querySelector("[data-tage]") && !val("datum")) need.push([boxTage, "Bitte einen Tag wählen."]);
+      if (st.querySelector("[data-zeiten]") && !val("uhrzeit")) need.push([boxZeiten, "Bitte eine Uhrzeit wählen."]);
+      if (st.querySelector("[data-personen]") && !val("personen")) need.push([boxPers, "Bitte die Anzahl der Personen wählen."]);
+      var hint = st.querySelector(".res-schritt-fehler");
+      if (mark_ && hint) hint.textContent = need.map(function (n) { return n[1]; }).join(" ");
+      need.forEach(function (n) { if (mark_) mark(n[0], true); });
+      return !need.length;
+    }
+    function show(i, dir) {
+      cur = Math.max(0, Math.min(steps.length - 1, i));
+      steps.forEach(function (st, k) { st.hidden = k !== cur; st.classList.toggle("res-aktiv", k === cur); });
+      if (prog) Array.prototype.forEach.call(prog.children, function (li, k) {
+        li.classList.toggle("res-erledigt", k < cur); li.classList.toggle("res-jetzt", k === cur);
+        if (k === cur) li.setAttribute("aria-current", "step"); else li.removeAttribute("aria-current");
+      });
+      if (sum) { var t = summaryText(); sum.textContent = cur > 0 ? t : ""; sum.hidden = cur === 0 || !t; }
+      if (live) live.textContent = "Schritt " + (cur + 1) + " von " + steps.length + ": " + stepTitle(steps[cur], cur);
+      var st = steps[cur];
+      if (dir && !still && st.animate) st.animate([{ opacity: 0, transform: "translateX(" + (dir > 0 ? 18 : -18) + "px)" }, { opacity: 1, transform: "none" }],
+        { duration: 280, easing: "cubic-bezier(.2,.7,.2,1)" });
+      if (dir) {
+        var f = st.querySelector("input:checked") || st;
+        if (f === st && !st.hasAttribute("tabindex")) { st.setAttribute("tabindex", "-1"); st.style.outline = "none"; }
+        try { f.focus({ preventScroll: true }); } catch (e) {}
+        revealX(st.querySelector("[data-tage] input:checked"));
+        var off = headerOffset(), top = form.getBoundingClientRect().top;
+        if (top < off - 2 || top > innerHeight * 0.6) scrollTo({ top: scrollY + top - off, behavior: still ? "auto" : "smooth" });
+      }
+    }
+    function next() { if (stepOk(cur, true)) show(cur + 1, 1); }
+    if (multi) {
+      prog = form.querySelector("[data-fortschritt]");
+      if (!prog) { prog = el("ol", { "class": "res-fortschritt" }); prog.setAttribute("data-fortschritt", ""); form.insertBefore(prog, form.firstChild); }
+      prog.innerHTML = "";
+      steps.forEach(function (st, i) {
+        var li = el("li", { "class": "res-punkt" }, "<span class=\"res-nr\">" + (i + 1) + "<\/span><span class=\"res-titel\">" + stepTitle(st, i) + "<\/span>");
+        li.addEventListener("click", function () { if (i < cur) show(i, -1); });
+        prog.appendChild(li);
+      });
+      sum = form.querySelector("[data-zusammenfassung]");
+      if (!sum) { sum = el("p", { "class": "res-zusammenfassung" }); prog.parentNode.insertBefore(sum, prog.nextSibling); }
+      live = el("p", { "class": "res-ansage", "aria-live": "polite", style: "position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)" });
+      form.appendChild(live);
+      var sbx = form.querySelector('[type="submit"]');
+      if (sbx && !steps.some(function (st) { return st.contains(sbx); })) steps[steps.length - 1].appendChild(sbx);
+      steps.forEach(function (st, i) {
+        if (!st.querySelector(".res-schritt-fehler") && i < steps.length - 1) st.appendChild(el("p", { "class": "res-schritt-fehler", role: "alert" }));
+        var back = st.querySelector("[data-zurueck]"), fwd = st.querySelector("[data-weiter]");
+        if (!back && !fwd && (i > 0 || i < steps.length - 1)) {
+          var nav = el("div", { "class": "res-nav" });
+          if (i > 0) { back = el("button", { type: "button", "class": "res-zurueck" }, "Zurück"); back.setAttribute("data-zurueck", ""); nav.appendChild(back); }
+          if (i < steps.length - 1) { fwd = el("button", { type: "button", "class": "res-weiter" }, "Weiter"); fwd.setAttribute("data-weiter", ""); nav.appendChild(fwd); }
+          var sb = st.querySelector('[type="submit"]');
+          if (sb && sb.parentNode) { sb.parentNode.insertBefore(nav, sb); nav.appendChild(sb); } else st.appendChild(nav);
+        }
+      });
+      form.addEventListener("click", function (e) {
+        if (e.target.closest("[data-weiter]")) { e.preventDefault(); next(); }
+        else if (e.target.closest("[data-zurueck]")) { e.preventDefault(); show(cur - 1, -1); }
+      });
+      form.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" || e.target.tagName === "TEXTAREA" || e.target.closest("[data-zurueck]")) return;
+        if (cur < steps.length - 1) { e.preventDefault(); next(); return; }
+        if (e.target.tagName !== "INPUT" || /^(radio|checkbox|submit|button)$/.test(e.target.type)) return;
+        var texts = Array.prototype.slice.call(steps[cur].querySelectorAll("input:not([type=radio]):not([type=checkbox]):not([type=hidden]):not([name=botcheck]), textarea"));
+        var later = texts.slice(texts.indexOf(e.target) + 1).filter(function (t) { return !String(t.value || "").trim(); })[0];
+        if (later) { e.preventDefault(); later.focus(); }
+      });
+      // Nach der Wahl von Uhrzeit bzw. Personen per Tippen/Klick geht es von selbst weiter (Pfeiltasten nicht)
+      var lastPointer = -1e9, lastKey = -1e9;
+      form.addEventListener("pointerdown", function () { lastPointer = performance.now(); });
+      form.addEventListener("keydown", function () { lastKey = performance.now(); }, true);
+      form.addEventListener("change", function (e) {
+        var n = e.target.name, st = steps[cur], at = cur;
+        var t = performance.now(); if (t - lastPointer > 1500 || t - lastKey < 400) return;
+        if ((n === "uhrzeit" && st.querySelector("[data-zeiten]") && !st.querySelector("[data-personen]")) ||
+            (n === "personen" && st.querySelector("[data-personen]") && cur < steps.length - 1)) {
+          var hint = st.querySelector(".res-schritt-fehler"); if (hint) hint.textContent = "";
+          setTimeout(function () { if (cur === at && stepOk(cur, false)) show(cur + 1, 1); }, 320);
+        }
+      });
+      show(0, 0);
+    }
+
+    function field(n) { return form.querySelector('[name="' + n + '"]'); }
+    function val(n) {
+      var f = field(n); if (!f) return "";
+      if (f.type === "radio") { var c = form.querySelector('[name="' + n + '"]:checked'); return c ? c.value : ""; }
+      return f.type === "checkbox" ? f.checked : String(f.value || "").trim();
+    }
+    function mark(target, bad) { if (!target) return; target.setAttribute("aria-invalid", bad ? "true" : "false"); }
+    function clearError(t) { mark(t, false); }
+    function check() {
+      var errs = [], firstBad = null;
+      function need(cond, target, msg) { mark(target, !cond); if (!cond) { errs.push(msg); firstBad = firstBad || target; } }
+      need(!!val("datum"), boxTage, "Bitte einen Tag wählen.");
+      need(!!val("uhrzeit"), boxZeiten, "Bitte eine Uhrzeit wählen.");
+      need(!!val("personen"), boxPers, "Bitte die Anzahl der Personen wählen.");
+      if (field("name")) need(val("name").length >= 2, field("name"), "Bitte Ihren Namen angeben.");
+      if (field("telefon")) need(val("telefon").replace(/\D/g, "").length >= 6, field("telefon"), "Bitte eine Telefonnummer für Rückfragen angeben.");
+      if (field("email") && val("email")) need(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val("email")), field("email"), "Die E-Mail-Adresse sieht unvollständig aus.");
+      if (field("einwilligung")) need(val("einwilligung") === true, field("einwilligung"), "Bitte der Verarbeitung Ihrer Angaben zustimmen.");
+      errBox.textContent = errs.join(" ");
+      if (firstBad && multi) { var k = steps.findIndex(function (st) { return st.contains(firstBad); }); if (k >= 0 && k !== cur) { show(k, -1); stepOk(k, true); } }
+      if (firstBad) { var f = firstBad.matches && firstBad.matches("input,textarea,select") ? firstBad : firstBad.querySelector("input:not(:disabled)"); if (f) f.focus(); }
+      return !errs.length;
+    }
+    ["name", "telefon", "email", "einwilligung"].forEach(function (n) { var f = field(n); if (f) f.addEventListener("input", function () { if (f.getAttribute("aria-invalid") === "true") mark(f, false); }); });
+    boxZeiten.addEventListener("change", function () { mark(boxZeiten, false); });
+    boxPers.addEventListener("change", function () { mark(boxPers, false); });
+
+    function readable() {
+      var d = new Date(val("datum") + "T12:00:00"), p = +val("personen");
+      return { datum: LANG[d.getDay()] + ", " + d.getDate() + ". " + MON[d.getMonth()], uhrzeit: val("uhrzeit"), personen: p + (p === 1 ? " Person" : " Personen"), name: val("name") };
+    }
+    function showSuccess() {
+      var r = readable();
+      ok.querySelectorAll("[data-wert]").forEach(function (s) { var k = s.getAttribute("data-wert"); if (r[k] != null) s.textContent = r[k]; });
+      if (CFG.modus === "demo" && !ok.querySelector(".res-demo-hinweis")) {
+        ok.appendChild(el("p", { "class": "res-demo-hinweis" }, "Entwurf: Diese Anfrage wurde nicht übermittelt. In der fertigen Website geht sie sofort an " +
+          CFG.name + "." + (CFG.tel ? " Für eine echte Reservierung bitte <a href=\"tel:" + CFG.tel + "\">anrufen<\/a>." : "")));
+      }
+      if (outside) { form.setAttribute("data-res-vorher", form.hidden ? "1" : "0"); form.hidden = true; }
+      for (var n = ok; !outside && n && n !== form; n = n.parentNode) {
+        var sib = n;
+        Array.prototype.forEach.call(n.parentNode.children, function (c) { if (c !== sib && c !== trap && !c.hasAttribute("data-res-vorher")) { c.setAttribute("data-res-vorher", c.hidden ? "1" : "0"); c.hidden = true; } });
+        if (n.parentNode !== form && n.parentNode.hidden) { n.parentNode.setAttribute("data-res-offen", ""); n.parentNode.hidden = false; }
+      }
+      ok.hidden = false; form.setAttribute("data-status", "gesendet");
+      try { ok.focus({ preventScroll: true }); } catch (e) { ok.focus(); }
+      var off = headerOffset(), top = (outside ? ok : form).getBoundingClientRect().top;
+      if (top < off - 2) scrollTo({ top: scrollY + top - off, behavior: still ? "auto" : "smooth" });
+    }
+    function again(e) {
+      if (!e.target.closest("[data-reservierung-neu]")) return;
+      e.preventDefault(); ok.hidden = true; form.removeAttribute("data-status");
+      if (outside) { form.hidden = form.getAttribute("data-res-vorher") === "1"; form.removeAttribute("data-res-vorher"); }
+      form.querySelectorAll("[data-res-vorher]").forEach(function (c) { c.hidden = c.getAttribute("data-res-vorher") === "1"; c.removeAttribute("data-res-vorher"); });
+      form.querySelectorAll("[data-res-offen]").forEach(function (c) { c.hidden = true; c.removeAttribute("data-res-offen"); });
+      if (multi) show(0, -1);
+    }
+    form.addEventListener("click", again);
+    if (outside) ok.addEventListener("click", again);
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (trap.value) return;
+      if (!check()) return;
+      var btn = form.querySelector('[type="submit"]'), label = btn ? btn.innerHTML : "";
+      if (btn) { btn.disabled = true; btn.setAttribute("aria-busy", "true"); }
+      form.setAttribute("data-status", "sendet");
+      function done(success) {
+        if (btn) { btn.disabled = false; btn.removeAttribute("aria-busy"); btn.innerHTML = label; }
+        if (success) showSuccess();
+        else { form.removeAttribute("data-status"); errBox.innerHTML = "Das hat leider nicht geklappt." + (CFG.tel ? " Bitte rufen Sie an: <a href=\"tel:" + CFG.tel + "\">" + CFG.telText + "<\/a>." : ""); }
+      }
+      if (CFG.modus !== "live" || !CFG.ziel) { setTimeout(function () { done(true); }, 650); return; }
+      var r = readable(), fd = new FormData(form);
+      fd.set("datum", r.datum + " (" + val("datum") + ")");
+      fd.set("subject", "Reservierungsanfrage " + r.datum + ", " + r.uhrzeit + " Uhr, " + r.personen);
+      fd.set("restaurant", CFG.name);
+      for (var k in (CFG.extra || {})) fd.set(k, CFG.extra[k]);
+      fetch(CFG.ziel, { method: "POST", body: fd, headers: { Accept: "application/json" } })
+        .then(function (res) { done(res.ok); }).catch(function () { done(false); });
+    });
+  }
+  function run() { document.querySelectorAll("form[data-reservierung]").forEach(init); }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run); else run();
+})();
+</script><!--/agent-res--><!--agent-szenen--><style id="agent-szenen">[data-szene]{position:relative;isolation:isolate}[data-szene="raster-zoom"]{overflow:clip}.szene-nachweis{background:rgba(255,255,255,.9);color:#1a1a1a;border-radius:6px;padding:.15em .5em;width:fit-content}
+.zerlegt-an [data-zerlegt-buehne]{position:relative}.zerlegt-an [data-ebene]{will-change:transform}
+.zerlegt-strich{display:block;height:0;border-top:1.5px solid currentColor;pointer-events:none}
+.zerlegt-strich::before{content:"";position:absolute;top:-4.75px;width:8px;height:8px;border-radius:50%;background:currentColor}
+.zerlegt-strich.rechts::before{left:-4px}.zerlegt-strich.links::before{right:-4px}
+.fenster-an [data-fenster-titel]{display:grid;justify-items:center;align-content:start;padding-top:clamp(.5rem,4vh,2.5rem);text-align:center;pointer-events:none}
+:where(.kapitel-an [data-kapitel]){display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(1.5rem,4vw,4rem);align-items:center;padding:clamp(1rem,4vh,3rem) clamp(1rem,5vw,4rem);box-sizing:border-box}
+:where(.kapitel-an [data-kapitel-bild]){margin:0;overflow:hidden}
+:where(.kapitel-an [data-kapitel-bild] img){width:100%;height:100%;object-fit:cover;display:block}
+@media (max-width:819px){:where(.kapitel-an [data-kapitel]){grid-template-columns:minmax(0,1fr);align-content:start;gap:1rem}}
+.horizontal-an{overflow:hidden}.horizontal-an [data-spur]{overflow:visible!important;flex-wrap:nowrap!important;width:max-content;scroll-snap-type:none!important}
+</style><script>(function () {
+  "use strict";
+  /* Immersive Szenen des Agenten. Die Seite liefert Markup und Gestaltung, der Agent die Bewegung:
+       data-szene="zerlegt"     Gericht öffnet sich beim Scrollen Schicht für Schicht, Linien + Beschriftungen
+       data-szene="raster-zoom" Mittelkachel wächst gepinnt, Seitenkacheln gleiten nach außen
+       data-szene="fenster"     Bild wächst aus einem kleinen Fenster zum Vollbild
+       data-szene="kapitel"     gepinnte Kapitel: Bild wischt herein, Text wechselt
+       data-szene="horizontal"  Streifen läuft beim Scrollen seitlich (gepinnt)
+       data-szene="lesen"       Text leuchtet Wort für Wort mit dem Scrollen auf
+       data-schieben            Abschnitt schiebt sich über den vorigen
+       data-tiefe="10…40"       Parallax in mehreren Geschwindigkeiten (+ Maus-Tiefe auf dem Desktop)
+     Ohne Bewegung (prefers-reduced-motion oder ohne GSAP) bleibt alles ruhig und vollständig sichtbar. */
+  var D = document, root = D.documentElement;
+  function qa(s, r) { return Array.prototype.slice.call((r || D).querySelectorAll(s)); }
+  function q(s, r) { return (r || D).querySelector(s); }
+  var G = window.gsap, ST = window.ScrollTrigger;
+  var still = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+  var motion = !!(G && ST) && !still;
+  var MOTION = "(prefers-reduced-motion: no-preference)";
+  if (G && ST) { G.registerPlugin(ST); if (window.SplitText) G.registerPlugin(window.SplitText); ST.config({ ignoreMobileResize: true }); }
+  var mm = motion ? G.matchMedia() : null;
+
+  /* feste Kopfzeile oben und feste Leisten unten (Handy) */
+  function edges() {
+    var top = 0, bottom = 0, vh = innerHeight;
+    qa("body > *, body > * > *, header, nav, [data-kopf]").forEach(function (n) {
+      if (n.offsetWidth < innerWidth * 0.5) return;
+      var cs = getComputedStyle(n);
+      if (cs.position !== "fixed" && cs.position !== "sticky") return;
+      if (cs.visibility === "hidden" || cs.display === "none" || +cs.opacity === 0) return;
+      var r = n.getBoundingClientRect();
+      if (r.height <= 0 || r.height > vh / 3) return;
+      if (cs.position === "sticky") { // klebt beim Scrollen oben (z. B. unter der Hinweisleiste des Agenten)
+        var t = parseFloat(cs.top), par = n.parentElement;
+        if (!isNaN(t) && t < vh / 3 && par && par.offsetHeight > vh * 2) top = Math.max(top, t + r.height);
+        return;
+      }
+      if (r.top <= 1 && r.bottom > 0) top = Math.max(top, r.bottom);
+      else if (cs.position === "fixed" && r.bottom >= vh - 1) bottom = Math.max(bottom, vh - r.top);
+    });
+    return { top: Math.round(top), bottom: Math.round(bottom) };
+  }
+  var E = { top: 0, bottom: 0 };
+  function measureEdges() {
+    E = edges();
+    root.style.setProperty("--szene-kopf", E.top + "px");
+    root.style.setProperty("--szene-unten", E.bottom + "px");
+  }
+  measureEdges();
+  function kopf() { return E.top; }
+  function start() { return "top " + kopf(); }
+  function sichtbar() { measureEdges(); return innerHeight - E.top - E.bottom; }
+  function loaded(imgs, cb) {
+    var left = imgs.length, done = false;
+    function one() { if (--left <= 0 && !done) { done = true; cb(); } }
+    if (!left) return cb();
+    imgs.forEach(function (i) {
+      i.loading = "eager";
+      if (i.complete && i.naturalWidth) one();
+      else { i.addEventListener("load", one, { once: true }); i.addEventListener("error", one, { once: true }); }
+    });
+    setTimeout(function () { if (!done) { done = true; cb(); } }, 6000);
+  }
+  var pending = 0;
+  function styler() {
+    var saved = [];
+    function put(el, props) {
+      if (!el) return;
+      if (!saved.some(function (x) { return x[0] === el; })) saved.push([el, el.getAttribute("style")]);
+      for (var k in props) el.style.setProperty(k, props[k], "important");
+    }
+    function undo() {
+      saved.forEach(function (x) { if (x[1] == null) x[0].removeAttribute("style"); else x[0].setAttribute("style", x[1]); });
+      saved = [];
+    }
+    return { put: put, undo: undo };
+  }
+  function kinder(box, ausser) { // direkte Kinder, die keine der genannten Elemente sind oder enthalten
+    return Array.prototype.slice.call(box.children).filter(function (c) {
+      return !ausser.some(function (a) { return a && (c === a || c.contains(a)); }) && getComputedStyle(c).position !== "absolute";
+    });
+  }
+  /* gepinnte Abschnitte füllen den sichtbaren Bereich: zu kurze Abschnitte bekommen oben und unten gleich viel Luft */
+  var fills = [];
+  function fill(sec) {
+    if (!sec._pad) { var cs = getComputedStyle(sec); sec._pad = [parseFloat(cs.paddingTop) || 0, parseFloat(cs.paddingBottom) || 0]; fills.push(sec); }
+    sec.style.paddingTop = sec._pad[0] + "px"; sec.style.paddingBottom = sec._pad[1] + "px";
+    var extra = sichtbar() - sec.offsetHeight;
+    if (extra > 0) { sec.style.paddingTop = sec._pad[0] + extra / 2 + "px"; sec.style.paddingBottom = sec._pad[1] + extra / 2 + "px"; }
+  }
+  function unfill(sec) { if (sec._pad) { sec.style.paddingTop = ""; sec.style.paddingBottom = ""; } }
+  function refreshSoon() { if (motion && pending <= 0) { ST.sort(); ST.refresh(); } }
+
+  /* ---------------------------------------------------------------- zerlegt */
+  function zerlegt(sec) {
+    var buehne = q("[data-zerlegt-buehne]", sec);
+    if (!buehne) return;
+    var figs = qa("[data-ebene]", buehne).sort(function (a, b) { return (+a.getAttribute("data-ebene")) - (+b.getAttribute("data-ebene")); });
+    if (figs.length < 2) return;
+    var imgs = figs.map(function (f) { return q("img", f); }).filter(Boolean);
+    var caps = figs.map(function (f) { return q("figcaption, [data-ebene-text]", f); });
+    var lines = figs.map(function (f, i) {
+      if (!caps[i]) return null;
+      var s = q(".zerlegt-strich", f);
+      if (!s) { s = D.createElement("i"); s.className = "zerlegt-strich"; s.setAttribute("aria-hidden", "true"); f.appendChild(s); }
+      return s;
+    });
+    sec.classList.add("zerlegt-an");
+    var P = { asm: [], exp: [], w: 0, seite: [], shift: 0, s0: 1 };
+    function ratio(img) { return img && img.naturalWidth ? img.naturalHeight / img.naturalWidth : 0.35; }
+    function inhalt(img) {
+      var v = (img && img.getAttribute("data-inhalt") || "").split(",").map(parseFloat);
+      return v.length === 2 && v[0] >= 0 && v[1] <= 1 && v[1] > v[0] ? v : [0.08, 0.92];
+    }
+    function layout() {
+      measureEdges();
+      var vw = innerWidth, mobil = vw < 820, n = figs.length;
+      buehne.style.position = "relative"; buehne.style.width = "100%";
+      // Höhe so, dass der gepinnte Abschnitt genau in den sichtbaren Bereich passt (Kopf- und Fußleisten abgezogen)
+      var V = Math.max(320, sichtbar());
+      buehne.style.height = V + "px";
+      // Höhe der Bühne = sichtbarer Bereich minus alles, was im gepinnten Abschnitt über bzw. unter ihr liegt
+      var st = getComputedStyle(sec), oben = 0, n0 = buehne;
+      while (n0 && n0 !== sec) { oben += n0.offsetTop; n0 = n0.offsetParent; if (n0 && !sec.contains(n0) && n0 !== sec) { oben = buehne.getBoundingClientRect().top - sec.getBoundingClientRect().top; break; } }
+      var H = Math.max(240, Math.min(V, V - oben - (parseFloat(st.paddingBottom) || 0)));
+      if (!motion) H = Math.min(V, Math.max(H, 420));
+      buehne.style.height = H + "px";
+      var Wb = buehne.clientWidth, R = figs.map(function (f, i) { return ratio(q("img", f)); });
+      var sumR = R.reduce(function (a, b) { return a + b; }, 0), gap = mobil ? 0.075 : 0.1;
+      var w = Math.min(mobil ? Wb * 0.6 : Math.min(Wb * 0.56, 560), (H * 0.95) / (sumR + (n - 1) * gap));
+      var line = mobil ? 18 : Math.max(36, Math.min(90, Wb * 0.06)), minLabel = mobil ? 92 : 140;
+      var wechsel = !mobil && (Wb - w) / 2 - line - 12 >= minLabel, left, labelW;
+      if (wechsel) { left = (Wb - w) / 2; labelW = Math.min(260, (Wb - w) / 2 - line - 12); }
+      else {
+        // Beschriftungen rechts: Platz bis zum Rand der Bühne und nie über den Bildschirm hinaus
+        var edge = Math.min(Wb, innerWidth - 8 - buehne.getBoundingClientRect().left);
+        left = mobil ? 0 : Math.max(0, Math.min(24, edge - w - line - 10 - minLabel));
+        var room = function (x) { return edge - left - x - line - 10; };
+        if (room(w) < minLabel) w = Math.max(Wb * 0.38, w - (minLabel - room(w)));
+        labelW = Math.max(60, Math.min(240, room(w)));
+      }
+      var h = R.map(function (r) { return r * w; }), g = gap * w;
+      var o = h.map(function (x, i) { return i < n - 1 ? Math.min(x, h[i + 1]) * 0.3 : 0; });
+      var Texp = h.reduce(function (a, b) { return a + b; }, 0) + (n - 1) * g;
+      var Tasm = h.reduce(function (a, b) { return a + b; }, 0) - o.reduce(function (a, b) { return a + b; }, 0);
+      var ye = (H - Texp) / 2, ya = (H - Tasm) / 2;
+      P.w = w;
+      // zusammengesetzt steht das Gericht mittig und etwas größer, beim Öffnen rückt es an seinen Platz
+      P.shift = wechsel ? 0 : Math.max(0, (Wb - w) / 2 - left);
+      P.s0 = Math.max(1, Math.min(1.3, (H * 0.9) / Tasm, (Wb * 0.92) / w));
+      figs.forEach(function (f, i) {
+        P.exp[i] = ye; P.asm[i] = ya; ye += h[i] + g; ya += h[i] - o[i];
+        var rechts = !wechsel || i % 2 === 0;
+        P.seite[i] = rechts ? 1 : -1;
+        f.style.cssText += ";position:absolute;top:0;left:" + left + "px;width:" + w + "px;margin:0;z-index:" + (n - i + 1);
+        var img = q("img", f);
+        if (img) img.style.cssText += ";display:block;width:100%;height:auto;max-width:none";
+        var c = caps[i], s = lines[i];
+        if (!c) return;
+        var span = inhalt(img), mid = h[i] / 2;
+        var x0 = rechts ? (span[1] - 0.07) * w : (span[0] + 0.07) * w, x1 = rechts ? w + line : -line;
+        s.className = "zerlegt-strich " + (rechts ? "rechts" : "links");
+        s.style.cssText = "position:absolute;top:" + mid + "px;left:" + Math.min(x0, x1) + "px;width:" + Math.abs(x1 - x0) + "px;" +
+          "transform-origin:" + (rechts ? "0 50%" : "100% 50%");
+        c.style.cssText += ";position:absolute;margin:0;width:" + labelW + "px;" +
+          (rechts ? "left:" + (w + line + 10) + "px;right:auto;text-align:left" : "left:" + (-line - 10 - labelW) + "px;right:auto;text-align:right");
+        c.style.top = "0px";
+        c.style.top = (mid - c.offsetHeight / 2) + "px";
+      });
+      if (!motion) figs.forEach(function (f, i) { f.style.transform = "translateY(" + P.exp[i] + "px)"; });
+    }
+    pending++;
+    loaded(imgs, function () {
+      pending--;
+      layout();
+      if (!motion) { addEventListener("resize", layout); return; }
+      ST.addEventListener("refreshInit", layout);
+      mm.add(MOTION, function () {
+        var n = figs.length, mobil = innerWidth < 820;
+        var tl = G.timeline({ defaults: { ease: "none" }, scrollTrigger: {
+          trigger: sec, start: start, end: function () { return "+=" + Math.round(innerHeight * (mobil ? 0.5 : 0.62) * (n + 1)); },
+          pin: true, scrub: 0.7, anticipatePin: 1, invalidateOnRefresh: true } });
+        figs.forEach(function (f, i) {
+          tl.fromTo(f, { y: function () { return P.asm[i]; }, x: function () { return P.shift; } },
+            { y: function () { return P.exp[i]; }, x: function () { return P.seite[i] * -P.w * 0.02 * (i % 2 ? 1 : -1); }, ease: "power2.inOut", duration: 1 }, i * 0.06);
+          var img = q("img", f);
+          if (img) tl.fromTo(img, { rotation: 0 }, { rotation: (i % 2 ? -1 : 1) * (1.2 + (i % 3) * 0.8), ease: "power2.inOut", duration: 1 }, i * 0.06);
+        });
+        figs.forEach(function (f, i) {
+          var t = 0.42 + i * (0.55 / n);
+          if (lines[i]) tl.fromTo(lines[i], { scaleX: 0 }, { scaleX: 1, duration: 0.22, ease: "power2.out" }, t);
+          if (caps[i]) tl.fromTo(caps[i], { autoAlpha: 0, x: function () { return P.seite[i] * 14; } }, { autoAlpha: 1, x: 0, duration: 0.22 }, t + 0.06);
+        });
+        tl.fromTo(buehne, { scale: function () { return P.s0; } }, { scale: 1, ease: "power2.inOut", duration: 0.9, transformOrigin: "50% 50%" }, 0);
+        qa("[data-tiefe]", sec).forEach(function (el) {
+          tl.fromTo(el, { yPercent: 0 }, { yPercent: -(parseFloat(el.getAttribute("data-tiefe")) || 20) * 1.5, duration: 1.4 }, 0);
+        });
+        tl.to({}, { duration: 0.3 });
+        // Maus-Tiefe: die Schichten folgen dem Zeiger unterschiedlich stark
+        var off = null;
+        if (matchMedia("(pointer: fine)").matches && innerWidth >= 900) {
+          var qs = imgs.map(function (img, i) { return [G.quickTo(img, "x", { duration: 0.6, ease: "power3" }), G.quickTo(img, "y", { duration: 0.6, ease: "power3" }), 4 + i * 2.5]; });
+          var mv = function (e) { var r = sec.getBoundingClientRect(), dx = (e.clientX - r.left) / r.width - 0.5, dy = (e.clientY - r.top) / r.height - 0.5;
+            qs.forEach(function (z) { z[0](dx * z[2] * 2); z[1](dy * z[2]); }); };
+          var lv = function () { qs.forEach(function (z) { z[0](0); z[1](0); }); };
+          sec.addEventListener("mousemove", mv); sec.addEventListener("mouseleave", lv);
+          off = function () { sec.removeEventListener("mousemove", mv); sec.removeEventListener("mouseleave", lv); };
+        }
+        return function () { if (off) off(); };
+      });
+      refreshSoon();
+    });
+  }
+
+  /* ---------------------------------------------------------------- raster-zoom */
+  function rasterZoom(sec) {
+    var mitte = q("[data-mitte]", sec) || q(".mitte", sec);
+    if (!mitte || !motion) return;
+    var tiles = Array.prototype.slice.call(mitte.parentNode.children).filter(function (c) { return c !== mitte; });
+    sec.style.position = sec.style.position || "relative";
+    function pos(el) {
+      var x = 0, y = 0, n = el;
+      while (n && n !== sec) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; if (n && !sec.contains(n)) break; }
+      return { x: x, y: y };
+    }
+    mm.add("(min-width: 900px) and " + MOTION, function () {
+      var C = {};
+      function calc() {
+        fill(sec);
+        var p = pos(mitte), w = mitte.offsetWidth, h = mitte.offsetHeight, V = innerHeight - kopf();
+        C.s = Math.max(1, Math.min(innerWidth * 0.94 / w, V * 0.9 / h));
+        C.x = innerWidth / 2 - (sec.getBoundingClientRect().left + p.x + w / 2);
+        C.y = V / 2 - (p.y + h / 2);
+      }
+      calc();
+      var tl = G.timeline({ scrollTrigger: { trigger: sec, start: start, end: "+=130%", pin: true, scrub: 1, anticipatePin: 1,
+        invalidateOnRefresh: true, onRefreshInit: calc } });
+      tl.to(mitte, { scale: function () { return C.s; }, x: function () { return C.x; }, y: function () { return C.y; }, ease: "power1.inOut", zIndex: 5 }, 0);
+      var img = q("img", mitte);
+      if (img) tl.fromTo(img, { scale: 1.18 }, { scale: 1, ease: "none" }, 0);
+      tiles.forEach(function (t) {
+        var links = t.offsetLeft + t.offsetWidth / 2 < mitte.offsetLeft + mitte.offsetWidth / 2;
+        tl.to(t, { xPercent: links ? -125 : 125, autoAlpha: 0, ease: "power1.in" }, 0);
+      });
+      var txt = q("[data-raster-text]", sec);
+      if (txt) tl.fromTo(txt, { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.3 }, 0.7);
+      // alles andere im Abschnitt (Überschrift, Text) weicht, bevor die Kachel es erreicht; Bildnachweise bleiben sichtbar
+      var S = styler(), weg = [], pfad = [];
+      for (var n = mitte.parentNode; n && n !== sec; n = n.parentNode) pfad.push(n);
+      [sec].concat(pfad).forEach(function (box) {
+        Array.prototype.slice.call(box.children).forEach(function (c) {
+          if (c === mitte || c.contains(mitte) || pfad.indexOf(c) >= 0 || tiles.indexOf(c) >= 0 || c === txt || (txt && c.contains(txt))) return;
+          if (c.matches(".foto-nachweis") || q(".foto-nachweis", c)) { S.put(c, { position: "relative", "z-index": "8" }); c.classList.add("szene-nachweis"); }
+          else weg.push(c);
+        });
+      });
+      if (weg.length) tl.to(weg, { autoAlpha: 0, y: -20, duration: 0.25, ease: "power1.in" }, 0);
+      return function () { unfill(sec); S.undo(); qa(".szene-nachweis", sec).forEach(function (c) { c.classList.remove("szene-nachweis"); }); };
+    });
+    mm.add("(max-width: 899px) and " + MOTION, function () {
+      G.from([mitte].concat(tiles), { clipPath: "inset(14% 14% 14% 14% round 14px)", duration: 1, ease: "power3.out", stagger: 0.12,
+        scrollTrigger: { trigger: sec, start: "top 80%" } });
+    });
+  }
+
+  /* ---------------------------------------------------------------- fenster */
+  function fenster(sec) {
+    var fig = q("[data-fenster]", sec);
+    if (!fig || !motion) return;
+    mm.add(MOTION, function () {
+      sec.classList.add("fenster-an");
+      var S = styler(), mobil = innerWidth < 820, media = q("img, video", fig);
+      var titel = q("[data-fenster-titel]", sec), txt = q("[data-fenster-text]", sec);
+      var rest = kinder(sec, [fig, titel, txt]);  // weitere Inhalte gehören zur Titel-Ebene und weichen mit ihm
+      S.put(sec, { position: "relative", overflow: "hidden", "padding-top": "0px", "padding-bottom": "0px", "min-height": "0px", "max-height": "none" });
+      S.put(fig, { position: "absolute", top: "0px", left: "0px", right: "0px", bottom: "0px", width: "100%", height: "100%",
+        "max-width": "none", "max-height": "none", margin: "0px", "aspect-ratio": "auto", "z-index": "1" });
+      if (media) S.put(media, { width: "100%", height: "100%", "max-width": "none", "max-height": "none", "object-fit": "cover",
+        "aspect-ratio": "auto", display: "block", position: "static" });
+      if (titel) S.put(titel, { position: "absolute", top: "0px", left: "0px", right: "0px", margin: "0px", "z-index": "0" });
+      if (txt) S.put(txt, { position: "absolute", "z-index": "2", top: "auto", margin: "0px" });
+      rest.forEach(function (r) { S.put(r, { position: "relative", "z-index": "0" }); });
+      var C = {};
+      function geo() {
+        var H = sichtbar(), w = sec.clientWidth;
+        sec.style.setProperty("height", H + "px", "important");
+        var oben = H * 0.12;
+        if (titel) oben = Math.max(oben, titel.offsetTop + titel.offsetHeight + 18);
+        rest.forEach(function (r) { oben = Math.max(oben, r.offsetTop + r.offsetHeight + 18); });
+        var unten = Math.max(H * 0.1, E.bottom ? 12 : 0), hoehe = Math.max(H * 0.28, H - oben - unten);
+        var breite = Math.min(w * (mobil ? 0.84 : 0.42), hoehe * (mobil ? 1.1 : 1.5));
+        hoehe = Math.min(hoehe, breite * (mobil ? 1.25 : 0.9));
+        var seite = Math.max(0, (w - breite) / 2), u = Math.max(0, H - oben - hoehe);
+        C.start = "inset(" + oben + "px " + seite + "px " + u + "px " + seite + "px round 28px)";
+        if (txt) { var rand = Math.max(16, w * 0.05); txt.style.setProperty("left", rand + "px", "important");
+          txt.style.setProperty("right", rand + "px", "important");
+          txt.style.setProperty("bottom", (Math.max(24, H * 0.06)) + "px", "important"); }
+      }
+      geo();
+      ST.addEventListener("refreshInit", geo);
+      var tl = G.timeline({ scrollTrigger: { trigger: sec, start: start, end: function () { return "+=" + Math.round(innerHeight * (mobil ? 1.1 : 1.5)); },
+        pin: true, scrub: 0.8, anticipatePin: 1, invalidateOnRefresh: true } });
+      tl.fromTo(fig, { clipPath: function () { return C.start; } },
+        { clipPath: "inset(0px 0px 0px 0px round 0px)", ease: "power2.inOut", duration: 1 }, 0);
+      if (media) tl.fromTo(media, { scale: 1.3 }, { scale: 1, ease: "power2.out", duration: 1 }, 0);
+      var weich = (titel ? [titel] : []).concat(rest);
+      if (weich.length) tl.fromTo(weich, { scale: 1, autoAlpha: 1 }, { scale: 0.9, autoAlpha: 0, duration: 0.4 }, 0.15);
+      if (txt) tl.fromTo(txt, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.3 }, 0.78);
+      tl.to({}, { duration: 0.25 });
+      return function () { ST.removeEventListener("refreshInit", geo); S.undo(); sec.classList.remove("fenster-an"); };
+    });
+  }
+
+  /* ---------------------------------------------------------------- kapitel */
+  function kapitel(sec) {
+    var ks = qa("[data-kapitel]", sec);
+    if (ks.length < 2 || !motion) return;
+    var box = ks[0].parentNode;
+    if (ks.some(function (k) { return k.parentNode !== box; })) return;
+    mm.add(MOTION, function () {
+      sec.classList.add("kapitel-an");
+      var S = styler(), n = ks.length;
+      // was vor den Kapiteln steht (Überschrift), bleibt sichtbar darüber; was danach steht, ruht während der Szene
+      var vor = [], nach = [];
+      kinder(box, ks).forEach(function (c) { (c.compareDocumentPosition(ks[0]) & 4 ? vor : nach).push(c); });
+      S.put(sec, { position: "relative", overflow: "hidden", "min-height": "0px", "max-height": "none" });
+      if (box !== sec) S.put(box, { position: "relative", "min-height": "0px", "max-height": "none" });
+      nach.forEach(function (c) { S.put(c, { display: "none" }); });
+      function geo() {
+        var H = sichtbar(), cs = getComputedStyle(sec), pb = parseFloat(cs.paddingBottom) || 0;
+        sec.style.setProperty("height", H + "px", "important");
+        var boxH = H - pb - (parseFloat(cs.paddingTop) || 0), top = box === sec ? (parseFloat(cs.paddingTop) || 0) : 0;
+        if (box !== sec) {
+          box.style.setProperty("height", "1px", "important");
+          boxH = Math.max(280, H - pb - (box.getBoundingClientRect().top - sec.getBoundingClientRect().top));
+          box.style.setProperty("height", boxH + "px", "important");
+        }
+        vor.forEach(function (v) { top = Math.max(top, v.offsetTop + v.offsetHeight + 16); });
+        var h = Math.max(240, (box === sec ? H - pb : boxH) - top);
+        ks.forEach(function (k, i) {
+          S.put(k, { position: "absolute", left: "0px", right: "0px", bottom: "auto", "margin-top": "0px", "margin-bottom": "0px",
+            width: "auto", "z-index": String(i + 1) });
+          k.style.setProperty("top", top + "px", "important");
+          k.style.setProperty("height", h + "px", "important");
+          // passt ein Kapitel nicht in die Bühne (Handy), wird sein Bild niedriger statt dass etwas überlappt
+          var bild = q("[data-kapitel-bild]", k), img = bild && q("img", bild);
+          if (!bild) return;
+          ["height", "aspect-ratio", "max-height"].forEach(function (pr) { if (bild._fit) bild.style.removeProperty(pr); });
+          var over = k.scrollHeight - h;
+          if (over > 2) {
+            bild._fit = true;
+            S.put(bild, { height: Math.max(110, bild.offsetHeight - over - 6) + "px", "aspect-ratio": "auto", "max-height": "none" });
+            if (img) S.put(img, { width: "100%", height: "100%", "object-fit": "cover" });
+          }
+        });
+      }
+      geo();
+      ST.addEventListener("refreshInit", geo);
+      var aktiv = function (self) { var at = Math.round(self.progress * (n - 1));  // nur das sichtbare Kapitel ist anklickbar
+        ks.forEach(function (k, i) { k.style.pointerEvents = i === at ? "" : "none"; }); };
+      aktiv({ progress: 0 });
+      var tl = G.timeline({ scrollTrigger: { trigger: sec, start: start, end: function () { return "+=" + Math.round(innerHeight * 0.85 * n); },
+        pin: true, scrub: 0.6, anticipatePin: 1, invalidateOnRefresh: true, onUpdate: aktiv, onRefresh: aktiv,
+        snap: { snapTo: 1 / (n - 1), duration: { min: 0.2, max: 0.6 }, delay: 0.08, ease: "power1.inOut" } } });
+      ks.forEach(function (k, i) {
+        if (!i) return;
+        var bild = q("[data-kapitel-bild]", k), img = bild && q("img", bild), text = q("[data-kapitel-text]", k);
+        var vorText = q("[data-kapitel-text]", ks[i - 1]), vorImg = q("[data-kapitel-bild] img", ks[i - 1]), t = i - 1;
+        if (bild) tl.fromTo(bild, { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1, ease: "power2.inOut" }, t);
+        if (img) tl.fromTo(img, { scale: 1.25, yPercent: 6 }, { scale: 1, yPercent: 0, duration: 1, ease: "power2.out" }, t);
+        if (vorImg) tl.to(vorImg, { scale: 1.08, duration: 1 }, t);
+        if (vorText) tl.to(vorText, { autoAlpha: 0, y: -40, duration: 0.4 }, t);
+        if (text) tl.fromTo(text, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.45 }, t + 0.45);
+      });
+      return function () { ST.removeEventListener("refreshInit", geo); S.undo(); sec.classList.remove("kapitel-an");
+        ks.forEach(function (k) { k.style.pointerEvents = ""; }); };
+    });
+  }
+
+  /* ---------------------------------------------------------------- horizontal */
+  function horizontal(sec) {
+    var spur = q("[data-spur]", sec);
+    if (!spur || !motion) return;
+    mm.add(MOTION, function () {
+      sec.classList.add("horizontal-an");
+      fill(sec);
+      var refill = function () { fill(sec); };
+      ST.addEventListener("refreshInit", refill);
+      var weg = function () { return Math.max(0, spur.scrollWidth - sec.clientWidth + (parseFloat(getComputedStyle(sec).paddingLeft) || 0)); };
+      G.to(spur, { x: function () { return -weg(); }, ease: "none", scrollTrigger: { trigger: sec, start: start,
+        end: function () { return "+=" + weg(); }, pin: true, scrub: 0.8, anticipatePin: 1, invalidateOnRefresh: true } });
+      return function () { sec.classList.remove("horizontal-an"); ST.removeEventListener("refreshInit", refill); unfill(sec); };
+    });
+  }
+
+  /* ---------------------------------------------------------------- lesen */
+  function lesen(el) {
+    if (!motion || !window.SplitText) return;
+    mm.add(MOTION, function () {
+      var s = window.SplitText.create(el, { type: "words" });
+      G.fromTo(s.words, { opacity: 0.16 }, { opacity: 1, stagger: 0.1, ease: "none",
+        scrollTrigger: { trigger: el, start: "top 82%", end: "bottom 42%", scrub: true } });
+      return function () { s.revert(); };
+    });
+  }
+
+  /* ---------------------------------------------------------------- schieben, tiefe */
+  function schieben(el) {
+    if (!motion) return;
+    mm.add(MOTION, function () {
+      G.from(el, { y: innerWidth < 820 ? 48 : 96, ease: "none", scrollTrigger: { trigger: el, start: "top bottom", end: "top 50%", scrub: true } });
+    });
+  }
+  function tiefe() {
+    if (!motion) return;
+    var els = qa("[data-tiefe]").filter(function (el) { return !el.closest('[data-szene="zerlegt"]'); });
+    if (!els.length) return;
+    mm.add(MOTION, function () {
+      els.forEach(function (el) {
+        G.to(el, { yPercent: -(parseFloat(el.getAttribute("data-tiefe")) || 20), ease: "none",
+          scrollTrigger: { trigger: el.closest("section, header, footer") || el, start: "top bottom", end: "bottom top", scrub: true } });
+      });
+    });
+    mm.add("(pointer: fine) and (min-width: 900px) and " + MOTION, function () {
+      var offs = [];
+      qa("section, header").forEach(function (s) {
+        var mine = els.filter(function (el) { return el.closest("section, header") === s; });
+        if (!mine.length) return;
+        var qs = mine.map(function (el) { var t = parseFloat(el.getAttribute("data-tiefe")) || 20;
+          return [G.quickTo(el, "x", { duration: 0.8, ease: "power3" }), G.quickTo(el, "y", { duration: 0.8, ease: "power3" }), t * 0.6]; });
+        var mv = function (e) { var r = s.getBoundingClientRect(), dx = (e.clientX - r.left) / r.width - 0.5, dy = (e.clientY - r.top) / r.height - 0.5;
+          qs.forEach(function (z) { z[0](-dx * z[2]); z[1](-dy * z[2]); }); };
+        s.addEventListener("mousemove", mv);
+        offs.push(function () { s.removeEventListener("mousemove", mv); });
+      });
+      return function () { offs.forEach(function (f) { f(); }); };
+    });
+  }
+
+  function run() {
+    qa('[data-szene="zerlegt"]').forEach(zerlegt);
+    qa('[data-szene="raster-zoom"]').forEach(rasterZoom);
+    qa('[data-szene="fenster"]').forEach(fenster);
+    qa('[data-szene="kapitel"]').forEach(kapitel);
+    qa('[data-szene="horizontal"]').forEach(horizontal);
+    qa('[data-szene="lesen"]').forEach(lesen);
+    qa("[data-schieben]").forEach(schieben);
+    tiefe();
+    refreshSoon();
+    if (motion) {
+      ST.addEventListener("refreshInit", measureEdges);
+      addEventListener("load", function () { ST.sort(); ST.refresh(); });
+    }
+    root.classList.add(motion ? "szenen-bewegt" : "szenen-ruhig");
+  }
+  if (D.readyState === "loading") D.addEventListener("DOMContentLoaded", run); else run();
+})();
+</script><!--/agent-szenen--></body>
+</html>
