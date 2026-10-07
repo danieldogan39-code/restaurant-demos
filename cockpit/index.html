@@ -814,7 +814,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "acbf85de65";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "21607034da";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -2104,7 +2104,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     var m = $("#briefm-modus"); m.className = "brief-modus " + (live ? "live" : "test"); m.textContent = live ? "Echter Versand" : "Testmodus";
     $("#briefm-info").textContent = b.verschickt ? "Dieser Brief wurde am " + b.verschickt + " verschickt. Ein zweiter Brief geht nicht raus."
       : live ? "Der Brief wird farbig gedruckt und per Post an das Restaurant geschickt."
-      : "Testmodus: Der Brief landet nur in deinem LetterXpress-Postfach, gedruckt und verschickt wird nichts.";
+      : "Testmodus: Der Brief landet nur in deinem LetterXpress-Warenkorb, gedruckt und verschickt wird nichts.";
     $("#briefm-frist").textContent = "Die Demo bleibt ab Versand noch " + keep + " Tage online.";
     var go = $("#briefm-go"); go.disabled = !!b.verschickt || briefOffen(x); go.textContent = briefOffen(x) ? "Wird verschickt …" : live ? "Brief verschicken" : "Testbrief verschicken";
     var pdf = $("#briefm-pdf"); pdf.setAttribute("aria-disabled", "true"); pdf.removeAttribute("href");
@@ -2153,7 +2153,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       $("#briefm-go").disabled = true;
       briefAuftrag(x, "senden").then(function (zeit) {
         BRIEF_REQ[x.slug] = zeit; closeBrief(true); Sound.play("data"); renderDemos(DATA);
-        toast((DATA.einstellungen || {}).briefmodus === "live" ? "Brief an " + x.name + " geht raus. Der Agent prüft vorher noch einmal bei Google." : "Testbrief an " + x.name + " wird erzeugt und ins LetterXpress-Postfach gelegt.");
+        toast((DATA.einstellungen || {}).briefmodus === "live" ? "Brief an " + x.name + " geht raus. Der Agent prüft vorher noch einmal bei Google." : "Testbrief an " + x.name + " wird erzeugt und in deinen LetterXpress-Warenkorb gelegt (dauert etwa 2 Minuten).");
       }).catch(function (err) { $("#briefm-go").disabled = false; Sound.play("error"); toast("Hat nicht geklappt (" + err.message + ")."); });
     }
   });
