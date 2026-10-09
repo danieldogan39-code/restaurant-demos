@@ -208,6 +208,24 @@ button, input { font: inherit; color: inherit; }
 .app[hidden] { display: none; }
 .top { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
 .title { display: flex; align-items: center; gap: .9rem; }
+/* Menü „Mehr“ (nur Handy): Musik, Töne, Sprachassistent, Berichte, Einstellungen */
+.mehr-btn, .mehr-menu { display: none; }
+@media (max-width: 640px) {
+  .title { position: relative; width: 100%; padding-right: 3.2rem; }
+  .mehr-btn { display: grid; place-items: center; position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 2.7rem; height: 2.7rem; border-radius: 12px; border: 1px solid var(--edge); background: rgba(255,255,255,.04); color: var(--ink); cursor: pointer; transition: background .25s, border-color .25s; }
+  .mehr-btn[aria-expanded="true"] { background: rgba(255,87,87,.14); border-color: rgba(255,87,87,.55); }
+  #mus, #snd, #stimme, #reports, #settings { display: none !important; }
+  .mehr-menu:not([hidden]) { display: block; position: absolute; right: 0; top: calc(100% + .55rem); z-index: 9500; width: min(17.5rem, calc(100vw - 2rem)); padding: .4rem; border-radius: 16px; border: 1px solid var(--edge); background: var(--panel-solid); box-shadow: 0 26px 60px -20px rgba(0,0,0,.95); transform-origin: top right; animation: mehrAuf .22s var(--ease); }
+  @keyframes mehrAuf { from { opacity: 0; transform: translateY(-6px) scale(.97); } to { opacity: 1; transform: none; } }
+  .mehr-menu .zeile { display: flex; align-items: center; gap: .7rem; width: 100%; padding: .72rem .7rem; border: 0; border-radius: 10px; background: none; color: var(--ink); font: inherit; font-size: .93rem; font-weight: 500; text-align: left; text-decoration: none; cursor: pointer; }
+  .mehr-menu .zeile:active, .mehr-menu .zeile:hover { background: rgba(255,255,255,.05); }
+  .mehr-menu .zeile svg { width: 18px; height: 18px; flex: none; color: var(--ink2); }
+  .mehr-menu .schalter { position: relative; margin-left: auto; width: 2.5rem; height: 1.45rem; flex: none; border-radius: 999px; background: rgba(255,255,255,.14); transition: background .25s; }
+  .mehr-menu .schalter::after { content: ""; position: absolute; top: .18rem; left: .18rem; width: 1.09rem; height: 1.09rem; border-radius: 50%; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,.4); transition: transform .25s var(--ease); }
+  .mehr-menu .zeile[aria-checked="true"] .schalter { background: #FF5757; }
+  .mehr-menu .zeile[aria-checked="true"] .schalter::after { transform: translateX(1.05rem); }
+  .mehr-menu hr { border: 0; border-top: 1px solid var(--edge); margin: .3rem .4rem; }
+}
 .title .ml-logo { width: 3rem; height: 3rem; display: block; filter: drop-shadow(0 0 14px rgba(255,87,87,.35)); }
 .title small b { color: var(--coral); font-weight: 600; }
 .lock-logo { display: block; width: 4.2rem; height: 4.2rem; margin: 0 auto 1.2rem; filter: drop-shadow(0 0 18px rgba(255,87,87,.45)); }
@@ -746,7 +764,16 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
 <div class="app" id="app" hidden>
   <header class="top">
     <div class="title"><img class="ml-logo" src="https://medialyte.de/wp-content/uploads/2025/07/Kopie-von-medialyte1.svg" alt="Medialyte">
-      <div><h1>Cockpit</h1><small><b>Medialyte</b> · Website-Agent · <span id="stamp">Stand: –</span></small></div></div>
+      <div><h1>Cockpit</h1><small><b>Medialyte</b> · Website-Agent · <span id="stamp">Stand: –</span></small></div>
+      <button class="mehr-btn" id="mehr" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="mehr-menu" aria-label="Mehr: Musik, Töne, Sprachassistent, Berichte, Einstellungen"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="19" cy="12" r="1.9"/></svg></button>
+      <div class="mehr-menu" id="mehr-menu" role="menu" aria-label="Mehr" hidden>
+        <button class="zeile" type="button" role="menuitemcheckbox" id="mehr-mus" data-schalter="mus" aria-checked="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>Hintergrundmusik<span class="schalter" aria-hidden="true"></span></button>
+        <button class="zeile" type="button" role="menuitemcheckbox" id="mehr-snd" data-schalter="snd" aria-checked="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>Töne<span class="schalter" aria-hidden="true"></span></button>
+        <button class="zeile" type="button" role="menuitemcheckbox" id="mehr-stimme" data-schalter="stimme" aria-checked="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>Sprachassistent &amp; Intro<span class="schalter" aria-hidden="true"></span></button>
+        <hr>
+        <a class="zeile" role="menuitem" id="mehr-berichte" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>Berichte</a>
+        <a class="zeile" role="menuitem" id="mehr-einst" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Einstellungen</a>
+      </div></div>
     <div class="top-actions">
       <span class="chip" id="health"><span class="led"></span><span id="health-text">Agent bereit</span></span>
       <span class="chip" title="Der Agent startet jeden Montag um 7:47 Uhr automatisch einen Wochenlauf. Der Zähler zeigt die Zeit bis dahin."><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><small class="cd-label">Nächster Auto-Lauf</small><span class="countdown" id="countdown"></span></span>
@@ -953,7 +980,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "02fd12afbc";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "eba0e2821f";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -1269,6 +1296,31 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       if (an && DATA) offerNewIntro(DATA);
     }).catch(function () { toast("Auf diesem Gerät gespeichert. Für deine anderen Geräte ließ es sich gerade nicht sichern."); });
   });
+
+  /* Handy: Menü „Mehr“ schaltet dieselben Knöpfe wie oben (eine Quelle für den Zustand) */
+  (function () {
+    var btn = $("#mehr"), menu = $("#mehr-menu");
+    function sync() {
+      [["mus", "mehr-mus"], ["snd", "mehr-snd"], ["stimme", "mehr-stimme"]].forEach(function (z) {
+        $("#" + z[1]).setAttribute("aria-checked", $("#" + z[0]).getAttribute("aria-pressed") === "true" ? "true" : "false");
+      });
+      if ($("#reports").href) $("#mehr-berichte").href = $("#reports").href;
+      if ($("#settings").href) $("#mehr-einst").href = $("#settings").href;
+    }
+    function auf(an) {
+      menu.hidden = !an; btn.setAttribute("aria-expanded", an ? "true" : "false");
+      if (an) { sync(); Sound.play("open"); }
+    }
+    btn.addEventListener("click", function (e) { e.stopPropagation(); auf(menu.hidden); });
+    menu.addEventListener("click", function (e) {
+      var z = e.target.closest("[data-schalter]");
+      if (z) { e.stopPropagation(); $("#" + z.dataset.schalter).click(); setTimeout(sync, 60); return; }
+      if (e.target.closest("a")) auf(false);
+    });
+    // nur echte Tipps außerhalb schließen (das weitergereichte Umschalten der Knöpfe oben zählt nicht)
+    document.addEventListener("click", function (e) { if (e.isTrusted && !menu.hidden && !e.target.closest("#mehr-menu, #mehr")) auf(false); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !menu.hidden) { auf(false); btn.focus(); } });
+  })();
 
   var introAudio = null, introLoading = null;
   function loadIntro(d) {
