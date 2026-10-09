@@ -1491,9 +1491,15 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       // Andocken je nach Bildschirmhöhe: Ist der Abschnitt höher als der sichtbare Bereich, dockt er erst an, wenn die
       // Karten unten vollständig zu sehen sind (die Überschrift darf dafür nach oben hinausrutschen), sonst unter dem Kopf
       var oben = function () {
-        var r = sec.getBoundingClientRect(), s = spur.getBoundingClientRect();
-        var bedarf = Math.min(r.height, s.bottom - r.top + LUFT);
-        return Math.round(Math.min(kopf(), kopf() + sichtbar() - bedarf));
+        var r = sec.getBoundingClientRect(), s = spur.getBoundingClientRect(), unten = s.bottom;
+        [].forEach.call(sec.children, function (c) {  // auch Hinweise unter der Reihe sollen ganz zu sehen sein
+          var cs = getComputedStyle(c), b = c.getBoundingClientRect();
+          if (cs.position !== "absolute" && cs.position !== "fixed" && b.height > 0) unten = Math.max(unten, b.bottom);
+        });
+        var o = Math.min(kopf(), kopf() + sichtbar() - Math.min(r.height, unten - r.top + LUFT));
+        // passt nicht alles: die Karten haben Vorrang, ihre Oberkante bleibt unter dem Kopf
+        if (o + s.top - r.top < kopf()) o = Math.min(kopf(), kopf() + sichtbar() - (s.bottom - r.top + LUFT));
+        return Math.round(o);
       };
       var anfang = function () { var o = oben(); return "top top" + (o < 0 ? "-=" + -o : "+=" + o); };
       // Pinlänge = Bewegung × 0,75, höchstens 1,2 sichtbare Höhen: die Reihe hängt nie, ohne dass sich etwas tut
