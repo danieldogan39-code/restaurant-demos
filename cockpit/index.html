@@ -564,7 +564,22 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
 .mem-col h3 { margin: 0 0 .25rem; font-size: .95rem; }
 .mem-col > p { margin: 0 0 .7rem; font-size: .78rem; color: var(--ink3); }
 .rules { list-style: none; margin: 0 0 1rem; padding: 0; display: grid; gap: .35rem; }
-.rules li { display: grid; grid-template-columns: 1.3rem minmax(0, 1fr) auto; gap: .5rem; align-items: start; padding: .5rem .55rem; border-radius: 10px; background: rgba(255,255,255,.03); border: 1px solid transparent; font-size: .84rem; line-height: 1.4; transition: border-color .2s, opacity .3s; }
+.rules li { display: grid; grid-template-columns: 1.3rem minmax(0, 1fr) auto auto; gap: .5rem; align-items: start; padding: .5rem .55rem; border-radius: 10px; background: rgba(255,255,255,.03); border: 1px solid transparent; font-size: .84rem; line-height: 1.4; transition: border-color .2s, opacity .3s; }
+.rules .rtext { all: unset; box-sizing: border-box; cursor: pointer; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-size: .84rem; line-height: 1.4; color: var(--ink); }
+.rules li.offen .rtext { display: block; -webkit-line-clamp: unset; }
+.rules .rtext:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; border-radius: 4px; }
+.rules .beleg { font-family: var(--display); font-size: .68rem; color: var(--ink3); border: 1px solid var(--edge); border-radius: 999px; padding: .05rem .45rem; margin-top: .1rem; white-space: nowrap; }
+.mem-tabs { margin: 1rem 0 .9rem; }
+.mem-tabs button b { font-family: var(--display); font-size: .72rem; color: var(--ink3); margin-left: .25rem; }
+.mem-tabs button[aria-pressed="true"] b { color: var(--ink); }
+.mem-hint { margin: 0 0 .8rem; font-size: .8rem; color: var(--ink3); }
+.mem-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.2rem; }
+.welt { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 1.2rem; align-items: start; }
+.mem-split h4, .welt h4 { margin: 0 0 .5rem; font-size: .76rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink3); font-weight: 700; }
+.welt-regeln h4 + .rules, .mem-split h4 + .rules { margin-bottom: .5rem; }
+.welt-regeln h4:not(:first-child) { margin-top: 1rem; }
+.mem-mehr { border: 0; background: none; color: var(--cyan); font: inherit; font-size: .8rem; font-weight: 600; cursor: pointer; padding: .2rem 0; }
+.mem-mehr:hover { text-decoration: underline; }
 .rules li:hover { border-color: var(--edge); }
 .rules li .ic { width: 1.3rem; height: 1.3rem; border-radius: 50%; display: grid; place-items: center; font-size: .7rem; font-weight: 800; margin-top: .05rem; }
 .rules li.do .ic { background: rgba(75,227,166,.15); color: var(--ok); }
@@ -578,10 +593,11 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
 .worlds { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: .9rem; }
 .worlds button { border: 1px solid var(--edge); background: rgba(255,255,255,.03); color: var(--ink2); border-radius: 999px; padding: .35rem .75rem; font-size: .8rem; font-weight: 600; cursor: pointer; display: inline-flex; gap: .4rem; align-items: center; }
 .worlds button i { font-style: normal; font-family: var(--display); font-size: .72rem; color: var(--ink3); }
+.worlds button i .up { color: var(--ok); } .worlds button i .down { color: var(--coral); }
 .worlds button[aria-pressed="true"] { background: rgba(123,175,255,.14); border-color: rgba(123,175,255,.6); color: #fff; }
 .wsplit { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: .9rem; }
 .wsplit h4, .gal-h { margin: 0 0 .45rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink3); font-weight: 700; }
-.gal { display: grid; grid-template-columns: repeat(auto-fill, minmax(11.5rem, 1fr)); gap: .7rem; margin-bottom: .6rem; }
+.gal { display: grid; grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr)); gap: .7rem; margin-bottom: .6rem; align-items: start; }
 .vb { border: 1px solid var(--edge); border-radius: 12px; overflow: hidden; background: rgba(9,14,34,.5); }
 .vb .img { aspect-ratio: 16/10; background: linear-gradient(135deg, #111a3d, #0a1029); display: block; position: relative; }
 .vb .img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; opacity: 0; transition: opacity .5s; }
@@ -593,13 +609,21 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
 .vb.bad .mark svg { transform: scaleY(-1); }
 .vb .txt { padding: .55rem .65rem .65rem; font-size: .76rem; color: var(--ink2); line-height: 1.4; }
 .vb .txt b { display: block; color: var(--ink); font-size: .84rem; margin-bottom: .15rem; }
-.vb .txt q { display: block; color: var(--ink); font-style: italic; margin-top: .3rem; }
+.vb .txt q { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; color: var(--ink); font-style: italic; margin-top: .2rem; }
+.vb details { margin-top: .4rem; }
+.vb details summary { cursor: pointer; color: var(--cyan); font-size: .74rem; font-weight: 600; list-style: none; }
+.vb details summary::-webkit-details-marker { display: none; }
+.vb details summary::after { content: " ›"; }
+.vb details[open] summary::after { content: " ‹"; }
+.vb details p { margin: .35rem 0 0; }
+.vb .wartet { display: block; color: var(--ink3); margin-top: .2rem; }
 .vb .txt q::before, .vb .txt q::after { content: none; }
 .vb .txt em { display: block; font-style: normal; color: var(--ink3); margin-top: .3rem; font-size: .7rem; }
 .mem-empty { border: 1px dashed var(--edge); border-radius: 14px; padding: 1.4rem 1rem; color: var(--ink2); font-size: .85rem; text-align: center; }
 .fence { margin-top: .6rem; display: flex; gap: .5rem; align-items: flex-start; font-size: .76rem; color: var(--ink3); }
 .fence svg { width: 1rem; height: 1rem; flex: 0 0 auto; color: var(--cyan); margin-top: .1rem; }
-@media (max-width: 900px) { .mem-grid, .wsplit { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .mem-grid, .wsplit, .mem-split, .welt { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .worlds { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-right: -1rem; padding-right: 1rem; } .worlds::-webkit-scrollbar { display: none; } .worlds button { flex: none; } .mem-tabs { display: flex; } .mem-tabs button { flex: 1; } }
 /* ---------- Handy ---------- */
 .mnav { display: none; }
 @media (max-width: 640px) {
@@ -861,7 +885,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "f9d5976e1a";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "a875937498";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -2123,45 +2147,61 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     }).catch(function (e) { delete thumbs[id]; throw e; });
     return thumbs[id];
   }
-  function rulesHTML(list, cls) {
+  var memTab = "welten", memOffen = {};
+  try { memTab = localStorage.getItem("cockpit-gedaechtnis") === "handwerk" ? "handwerk" : "welten"; } catch (e) {}
+  function sichtbareRegeln(list) {
     var gone = RAT.verworfen || [];
-    list = (list || []).filter(function (r) { return gone.indexOf(r.id) < 0; });
+    return (list || []).filter(function (r) { return gone.indexOf(r.id) < 0; })
+      .sort(function (a, b) { return (b.belege || 0) - (a.belege || 0); });
+  }
+  // Regeln kompakt: zwei Zeilen, Antippen zeigt den ganzen Satz; die stärksten zuerst, der Rest hinter „Alle anzeigen“
+  function rulesHTML(list, cls, key, max) {
+    list = sichtbareRegeln(list);
     if (!list.length) return '<ul class="rules"><li class="none">Noch nichts gelernt.</li></ul>';
-    return '<ul class="rules">' + list.map(function (r) {
-      return '<li class="' + cls + '"><span class="ic" aria-hidden="true">' + (cls === "do" ? "✓" : "✕") + "</span><span>" + esc(r.regel) + "<small>aus " + r.belege + " Bewertung" + (r.belege === 1 ? "" : "en") + '</small></span><button class="veto" type="button" data-veto="' + esc(r.id) + '" aria-label="Regel verwerfen" title="Regel verwerfen: Die KI vergisst sie und nimmt sie nicht wieder auf">×</button></li>';
-    }).join("") + "</ul>";
+    var alle = !max || memOffen[key] || list.length <= max + 1, zeig = alle ? list : list.slice(0, max);
+    return '<ul class="rules">' + zeig.map(function (r) {
+      return '<li class="' + cls + '"><span class="ic" aria-hidden="true">' + (cls === "do" ? "✓" : "✕") + '</span><button type="button" class="rtext" data-rule-auf aria-expanded="false">' + esc(r.regel) + '</button><span class="beleg" title="aus ' + r.belege + " Bewertung" + (r.belege === 1 ? "" : "en") + '">' + r.belege + '×</span><button class="veto" type="button" data-veto="' + esc(r.id) + '" aria-label="Regel verwerfen" title="Regel verwerfen: Die KI vergisst sie und nimmt sie nicht wieder auf">×</button></li>';
+    }).join("") + "</ul>" + (max && list.length > max + 1 ? '<button type="button" class="mem-mehr" data-mehr="' + esc(key) + '">' + (memOffen[key] ? "Weniger anzeigen" : "Alle " + list.length + " anzeigen") + "</button>" : "");
   }
   function vbHTML(v, kind) {
     var live = (DATA.demos || []).some(function (z) { return z.slug === v.slug && String(z.version) === String(v.version); });
     var img = (v.bild ? '<img alt="" data-thumb="' + esc(v.bild) + '">' : "") + '<span class="mark">' + THUMB + "</span>";
     return '<article class="vb ' + kind + '">' + (live && v.url ? '<a class="img" href="' + esc(v.url) + '" target="_blank" rel="noopener" aria-label="' + esc(v.name) + ' öffnen">' + img + "</a>" : '<div class="img" title="Diese Version ist nicht mehr online, das Gedächtnis behält sie.">' + img + "</div>") +
-      '<div class="txt"><b>' + esc(v.name) + "</b>" + esc(v.warum || "Wird gerade ausgewertet.") + (v.kommentar ? "<q>„" + esc(v.kommentar) + "“</q>" : "") + (v.schriften && v.schriften.length ? "<em>Schriften: " + esc(v.schriften.join(" / ")) + "</em>" : "") + "</div></article>";
+      '<div class="txt"><b>' + esc(v.name) + "</b>" + (v.kommentar ? "<q>„" + esc(v.kommentar) + "“</q>" : "") +
+      (v.warum ? '<details><summary>Was die KI daraus lernt</summary><p>' + esc(v.warum) + "</p>" + (v.schriften && v.schriften.length ? "<em>Schriften: " + esc(v.schriften.join(" / ")) + "</em>" : "") + "</details>" : '<span class="wartet">Wird gerade ausgewertet.</span>') + "</div></article>";
   }
   function renderMemory(d) {
     if (!d) return;
     var g = d.gedaechtnis || {}, worlds = g.welten || [], wait = waitingToLearn();
     var ms = function (n, t, c) { return '<span class="ms' + (c ? " " + c : "") + '"><b>' + fmt.format(n || 0) + "</b>" + t + "</span>"; };
-    $("#mem-stats").innerHTML = ms(g.gelernt, "gelernt") + ms(g.hoch, "Daumen hoch", "up") + ms(g.runter, "Daumen runter", "down") + ms(worlds.length, "Stilwelten") + (wait ? ms(wait, "warten aufs Lernen", "wait") : "");
+    $("#mem-stats").innerHTML = ms(g.gelernt, "gelernt") + ms(g.hoch, "Daumen hoch", "up") + ms(g.runter, "Daumen runter", "down") + (wait ? ms(wait, "warten aufs Lernen", "wait") : "");
     var box = $("#mem");
     if (!g.gelernt && !worlds.length) {
       box.innerHTML = '<div class="mem-empty">' + (wait ? "Deine ersten Bewertungen werden gerade gelernt. In ein paar Minuten steht hier, was die KI daraus ableitet." : "Noch nichts gelernt. Bewerte die Demos oben mit Daumen hoch oder runter, gern mit einem Satz dazu. Die KI findet heraus, warum, und baut die nächsten Demos derselben Küche danach. Für alle Küchen gilt nur stilfreies Handwerk wie Lesbarkeit, Kopfzeile und Fotos.") + "</div>";
       return;
     }
     if (!memWorld || !worlds.some(function (w) { return w.key === memWorld; })) memWorld = worlds.length ? worlds[0].key : null;
-    var hw = g.handwerk || {};
-    var w = worlds.filter(function (z) { return z.key === memWorld; })[0];
-    var html = '<div class="mem-grid"><div class="mem-col"><h3>Handwerk</h3><p>Gilt für jede Küche. Stilfrei: keine Schriften, Farben oder Motive.</p>' + rulesHTML(hw.tun, "do") + rulesHTML(hw.meiden, "dont") + "</div>";
-    html += '<div class="mem-col"><h3>Stilwelten</h3><p>Was dir bei einer Küche gefällt, bleibt bei dieser Küche.</p><div class="worlds" role="group" aria-label="Stilwelt wählen">' + worlds.map(function (z) {
-      return '<button type="button" data-world="' + esc(z.key) + '" aria-pressed="' + (z.key === memWorld) + '">' + esc(z.label) + " <i>+" + z.vorbilder.length + " −" + z.abgelehnt.length + "</i></button>";
-    }).join("") + "</div>";
-    if (w) {
-      var none = w.key === "unbestimmt";
-      html += (none ? "" : '<div class="wsplit"><div><h4>Gefällt dir</h4>' + rulesHTML(w.gut, "do") + "</div><div><h4>Gefällt dir nicht</h4>" + rulesHTML(w.meiden, "dont") + "</div></div>") +
-        (w.vorbilder.length ? '<h4 class="gal-h">Vorbilder · Daumen hoch</h4><div class="gal">' + w.vorbilder.slice().reverse().map(function (v) { return vbHTML(v, "good"); }).join("") + "</div>" : "") +
-        (w.abgelehnt.length ? '<h4 class="gal-h">Daumen runter</h4><div class="gal">' + w.abgelehnt.slice().reverse().map(function (v) { return vbHTML(v, "bad"); }).join("") + "</div>" : "") +
-        '<div class="fence">' + FENCE + "<span>" + (none ? "Lokale ohne erkennbare Küche lernen nur Handwerk, kein Stilwissen." : "Diese Regeln und Vorbilder bekommt nur eine neue Demo der Küche „" + esc(w.label) + "“. Die Schriften der Vorbilder sind für neue Demos dieser Küche tabu, damit sich kein Lokal wiederholt.") + "</span></div>";
+    var hw = g.handwerk || {}, nHw = sichtbareRegeln(hw.tun).length + sichtbareRegeln(hw.meiden).length;
+    var tab = function (k, label, n, hint) { return '<button type="button" role="tab" data-mem-tab="' + k + '" aria-selected="' + (memTab === k) + '" aria-pressed="' + (memTab === k) + '" title="' + hint + '">' + label + " <b>" + n + "</b></button>"; };
+    var html = '<div class="seg-ctl mem-tabs" role="tablist" aria-label="Bereich im Design-Gedächtnis">' +
+      tab("welten", "Stilwelten", worlds.length, "Was dir bei einer Küche gefällt, gilt nur für diese Küche") +
+      tab("handwerk", "Handwerk für alle", nHw, "Stilfreie Regeln für jede Demo") + "</div>";
+    if (memTab === "handwerk") {
+      html += '<p class="mem-hint">Gilt für jede Küche und ist stilfrei: keine Schriften, Farben oder Motive. Die am häufigsten bestätigten Regeln stehen oben.</p>' +
+        '<div class="mem-split"><div><h4>So baut der Agent</h4>' + rulesHTML(hw.tun, "do", "hw-tun", 5) + '</div><div><h4>Das vermeidet er</h4>' + rulesHTML(hw.meiden, "dont", "hw-meiden", 5) + "</div></div>";
+    } else {
+      var w = worlds.filter(function (z) { return z.key === memWorld; })[0];
+      html += '<div class="worlds" role="group" aria-label="Stilwelt wählen">' + worlds.map(function (z) {
+        return '<button type="button" data-world="' + esc(z.key) + '" aria-pressed="' + (z.key === memWorld) + '">' + esc(z.label) + ' <i><span class="up">+' + z.vorbilder.length + '</span> <span class="down">−' + z.abgelehnt.length + "</span></i></button>";
+      }).join("") + "</div>";
+      if (w) {
+        var none = w.key === "unbestimmt", bilder = w.vorbilder.slice().reverse().map(function (v) { return vbHTML(v, "good"); }).concat(w.abgelehnt.slice().reverse().map(function (v) { return vbHTML(v, "bad"); }));
+        html += '<div class="welt"><div class="welt-bilder"><h4>Bewertete Demos</h4>' + (bilder.length ? '<div class="gal">' + bilder.join("") + "</div>" : '<p class="mem-hint">Noch keine bewertete Demo dieser Küche.</p>') + "</div>" +
+          '<div class="welt-regeln">' + (none ? '<p class="mem-hint">Lokale ohne erkennbare Küche lernen nur Handwerk, kein Stilwissen.</p>'
+            : "<h4>Gefällt dir</h4>" + rulesHTML(w.gut, "do", "gut-" + w.key, 4) + "<h4>Gefällt dir nicht</h4>" + rulesHTML(w.meiden, "dont", "meiden-" + w.key, 4)) + "</div></div>" +
+          (none ? "" : '<div class="fence">' + FENCE + "<span>Nur neue Demos der Küche „" + esc(w.label) + "“ bekommen diese Regeln. Die Schriften der Vorbilder sind für sie tabu, damit sich kein Lokal wiederholt.</span></div>");
+      }
     }
-    html += "</div></div>";
     box.innerHTML = html;
     box.querySelectorAll("img[data-thumb]").forEach(function (im) { thumb(im.getAttribute("data-thumb")).then(function (u) { im.src = u; im.onload = function () { im.classList.add("on"); }; }).catch(function () {}); });
   }
@@ -2176,7 +2216,13 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   }
   $("#mem").addEventListener("click", function (e) {
     var t = e.target.closest("[data-world]");
-    if (t) { memWorld = t.getAttribute("data-world"); renderMemory(DATA); return; }
+    if (t) { memWorld = t.getAttribute("data-world"); Sound.play("hover"); renderMemory(DATA); return; }
+    t = e.target.closest("[data-mem-tab]");
+    if (t) { memTab = t.getAttribute("data-mem-tab"); try { localStorage.setItem("cockpit-gedaechtnis", memTab); } catch (e2) {} Sound.play("hover"); renderMemory(DATA); return; }
+    t = e.target.closest("[data-mehr]");
+    if (t) { var k = t.getAttribute("data-mehr"); memOffen[k] = !memOffen[k]; renderMemory(DATA); return; }
+    t = e.target.closest("[data-rule-auf]");
+    if (t) { var li = t.closest("li"), auf = !li.classList.contains("offen"); li.classList.toggle("offen", auf); t.setAttribute("aria-expanded", auf ? "true" : "false"); return; }
     t = e.target.closest("[data-veto]");
     if (t) veto(t.getAttribute("data-veto"));
   });
