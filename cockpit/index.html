@@ -296,6 +296,42 @@ button, input { font: inherit; color: inherit; }
 .seg-ctl button { border: 0; background: transparent; padding: .45rem .8rem; border-radius: 9px; font-weight: 600; font-size: .85rem; color: var(--ink2); cursor: pointer; transition: background .25s, color .25s; }
 .seg-ctl button[aria-pressed="true"] { background: rgba(123,175,255,.14); color: var(--ink); }
 .demos { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 1rem; margin-top: 1rem; }
+.demo-filter { display: flex; flex-wrap: wrap; align-items: center; gap: .45rem; margin-top: 1.1rem; }
+.fchip { display: inline-flex; align-items: center; gap: .45rem; padding: .42rem .55rem .42rem .85rem; border-radius: 999px; border: 1px solid var(--edge); background: rgba(255,255,255,.03); color: var(--ink2); font: inherit; font-weight: 600; font-size: .84rem; cursor: pointer; transition: background .25s, border-color .25s, color .25s, opacity .25s; }
+.fchip b { min-width: 1.6rem; text-align: center; font-size: .74rem; font-weight: 700; padding: .08rem .45rem; border-radius: 999px; background: rgba(255,255,255,.07); color: var(--ink3); font-variant-numeric: tabular-nums; transition: background .25s, color .25s; }
+.fchip:hover:not(:disabled) { border-color: var(--edge-hot); color: var(--ink); }
+.fchip[aria-pressed="true"] { background: rgba(255,87,87,.12); border-color: rgba(255,87,87,.6); color: var(--ink); }
+.fchip[aria-pressed="true"] b { background: rgba(255,87,87,.3); color: var(--ink); }
+.fchip:disabled { opacity: .38; cursor: default; }
+.fchip.ort-wahl { position: relative; margin-left: auto; padding: .42rem .7rem; gap: .4rem; }
+.fchip.ort-wahl svg { width: 14px; height: 14px; opacity: .75; flex: none; pointer-events: none; }
+.fchip.ort-wahl select { appearance: none; -webkit-appearance: none; border: 0; background: transparent; color: inherit; font: inherit; padding: 0 1.1rem 0 0; margin-right: -1.1rem; cursor: pointer; outline: none; }
+.fchip.ort-wahl select option { background: #0d1430; color: #fff; }
+.fchip.ort-wahl .pfeil { width: 12px; height: 12px; }
+.fchip.ort-wahl.an { background: rgba(255,87,87,.12); border-color: rgba(255,87,87,.6); color: var(--ink); }
+.fchip.ort-wahl:focus-within { border-color: var(--edge-hot); }
+.demo-leiste { display: flex; align-items: center; gap: .8rem; margin-top: 1rem; }
+.slide-pos { font-size: .82rem; color: var(--ink3); font-variant-numeric: tabular-nums; white-space: nowrap; min-width: 6.5rem; }
+.slide-pos b { color: var(--ink); font-weight: 700; }
+.slide-bar { position: relative; flex: 1; height: 3px; border-radius: 3px; background: rgba(255,255,255,.07); overflow: hidden; }
+.slide-bar i { position: absolute; top: 0; bottom: 0; left: 0; width: 100%; border-radius: inherit; background: linear-gradient(90deg, #7BAFFF, #FF5757); transition: left .15s linear, width .3s var(--ease); }
+.slide-nav { display: inline-flex; gap: .35rem; }
+.slide-nav .btn:disabled { opacity: .35; cursor: default; transform: none; }
+.alle-btn { gap: .45rem; white-space: nowrap; }
+.alle-btn[aria-expanded="true"] { border-color: rgba(255,87,87,.55); background: rgba(255,87,87,.08); }
+.demo-leiste.ohne-mehr .slide-bar, .demo-leiste.ohne-mehr .slide-nav, .demo-leiste.alle .slide-bar, .demo-leiste.alle .slide-nav { visibility: hidden; }
+.demo-leiste.ohne-mehr:not(.alle) .alle-btn { display: none; }
+.demo-buehne { position: relative; }
+.demos.slide { display: flex; overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; margin-top: .25rem; padding: .75rem 2px 1rem; align-items: flex-start; -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 3rem), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 3rem), transparent); }
+.demos.slide.am-ende { -webkit-mask-image: none; mask-image: none; }
+.demos.slide::-webkit-scrollbar { display: none; }
+.demos.slide > .demo { flex: 0 0 calc((100% - 3rem) / 3.3); min-width: 16.5rem; scroll-snap-align: start; }
+.demos.slide > .empty { flex: 1; }
+@media (min-width: 1600px) { .demos.slide > .demo { flex-basis: calc((100% - 4rem) / 4.3); } }
+@media (max-width: 1000px) { .demos.slide > .demo { flex-basis: calc((100% - 2rem) / 2.25); } }
+@media (max-width: 640px) { .demos.slide > .demo { flex-basis: 84%; min-width: 0; } .slide-nav { display: none; } .demo-filter { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-right: -1rem; padding-right: 1rem; } .demo-filter::-webkit-scrollbar { display: none; } .fchip { flex: none; } .fchip.ort-wahl { margin-left: 0; } }
+.demo-fuss { display: flex; justify-content: center; margin-top: 1.2rem; }
+.demo-fuss .btn { gap: .45rem; }
 .demo { position: relative; border-radius: 16px; border: 1px solid var(--edge); background: rgba(9, 14, 34, .55); overflow: hidden; transition: transform .45s var(--ease), border-color .3s, box-shadow .45s; animation: rise .6s var(--ease) both; animation-delay: calc(var(--i) * 45ms); }
 .demo:hover { transform: translateY(-4px); border-color: var(--edge-hot); box-shadow: 0 24px 50px -24px rgba(123,175,255,.45); }
 .screen { position: relative; aspect-ratio: 16/10; overflow: hidden; background: linear-gradient(135deg, #111a3d, #0a1029); }
@@ -710,7 +746,15 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
         </div>
       </div>
     </div>
-    <div class="demos" id="demos"></div>
+    <div class="demo-filter" id="demo-filter" role="toolbar" aria-label="Demos filtern"></div>
+    <div class="demo-leiste" id="demo-leiste">
+      <span class="slide-pos" id="slide-pos"></span>
+      <span class="slide-bar" aria-hidden="true"><i id="slide-bar"></i></span>
+      <span class="slide-nav"><button class="btn icon" type="button" id="slide-prev" aria-label="Vorherige Demos" aria-controls="demos"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button><button class="btn icon" type="button" id="slide-next" aria-label="Weitere Demos" aria-controls="demos"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button></span>
+      <button class="btn alle-btn" type="button" id="demos-alle" aria-expanded="false" aria-controls="demos"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span id="demos-alle-t">Alle ansehen</span></button>
+    </div>
+    <div class="demo-buehne" id="demo-buehne"><div class="demos slide" id="demos"></div></div>
+    <div class="demo-fuss" id="demo-fuss" hidden><button class="btn" type="button" id="demos-weniger"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>Wieder als Slideshow</button></div>
   </section>
 
   <section class="panel" style="--d:8" aria-labelledby="mem-title" data-focus="gedaechtnis" id="memory">
@@ -817,7 +861,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "298128d6aa";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "f9d5976e1a";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -1546,17 +1590,96 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   }
 
   /* Demos */
-  var sortMode = "neu", query = "", io = null;
+  /* Filter und Sortierung bleiben auf diesem Gerät gespeichert; „Alle ansehen“ klappt die Slideshow zum Raster auf */
+  var DF = { filter: "alle", ort: "", sort: "neu" }, query = "", io = null, ALLE = false, slideStart = false;
+  try { var dfs = JSON.parse(localStorage.getItem("cockpit-demos") || "null"); if (dfs && typeof dfs === "object") DF = Object.assign(DF, dfs); } catch (e) {}
+  function dfMerken() { try { localStorage.setItem("cockpit-demos", JSON.stringify(DF)); } catch (e) {} }
+  var FILTER = [
+    ["alle", "Alle", function () { return true; }],
+    ["neu", "Neu", function (x) { return !!x.erstellt && Date.now() - new Date(x.erstellt) < 7 * 864e5; }],
+    ["ohne", "Ohne Brief", function (x) { var b = x.brief || {}; return !b.verschickt && !b.test && !briefOffen(x); }],
+    ["test", "Testbrief", function (x) { var b = x.brief || {}; return !b.verschickt && (!!b.test || briefOffen(x)); }],
+    ["raus", "Verschickt", function (x) { return !!(x.brief || {}).verschickt; }],
+    ["ablauf", "Läuft bald ab", function (x) { var l = daysUntil(x.loescht_am); return l != null && l <= 7; }]
+  ];
+  function filterFn() { return (FILTER.filter(function (z) { return z[0] === DF.filter; })[0] || FILTER[0])[2]; }
+  var PIN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></svg>';
+  function renderFilter(basis) {
+    var imOrt = basis.filter(function (x) { return !DF.ort || x.ort === DF.ort; }), f = filterFn(), orte = {};
+    var html = FILTER.map(function (z) {
+      var n = imOrt.filter(z[2]).length, on = DF.filter === z[0];
+      return '<button type="button" class="fchip" data-df="' + z[0] + '" aria-pressed="' + on + '"' + (!n && !on ? " disabled" : "") + ">" + z[1] + " <b>" + n + "</b></button>";
+    }).join("");
+    basis.filter(f).forEach(function (x) { if (x.ort) orte[x.ort] = (orte[x.ort] || 0) + 1; });
+    var namen = Object.keys(orte).sort();
+    if (namen.length > 1 || DF.ort) {  // Orte als Auswahl: bleibt eine Zeile, auch bei vielen kleinen Orten
+      namen.sort(function (a, b) { return orte[b] - orte[a] || (a < b ? -1 : 1); });
+      if (DF.ort && namen.indexOf(DF.ort) < 0) namen.push(DF.ort);
+      html += '<label class="fchip ort-wahl' + (DF.ort ? " an" : "") + '">' + PIN + '<select id="demo-ort" aria-label="Ort">' +
+        [""].concat(namen).map(function (o) { var n = o ? orte[o] || 0 : basis.filter(f).length;
+          return '<option value="' + esc(o) + '"' + (DF.ort === o ? " selected" : "") + ">" + (o ? esc(o) : "Alle Orte") + " (" + n + ")</option>"; }).join("") +
+        '</select><svg class="pfeil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></label>';
+    }
+    $("#demo-filter").innerHTML = html;
+  }
+  function leiste() {
+    var box = $("#demos"), lst = $("#demo-leiste"), cards = box.querySelectorAll(".demo"), n = cards.length;
+    var mehr = !ALLE && box.scrollWidth > box.clientWidth + 4;
+    lst.classList.toggle("alle", ALLE); lst.classList.toggle("ohne-mehr", !mehr && !ALLE);
+    $("#demos-alle").setAttribute("aria-expanded", ALLE ? "true" : "false");
+    $("#demos-alle-t").textContent = ALLE ? "Als Slideshow" : "Alle ansehen (" + n + ")";
+    $("#demo-fuss").hidden = !ALLE || n < 7;
+    if (ALLE || !n) { $("#slide-pos").innerHTML = n ? "<b>" + n + "</b> Demo" + (n === 1 ? "" : "s") : ""; return; }
+    var step = cards[0].offsetWidth + (parseFloat(getComputedStyle(box).columnGap) || 16);
+    var erst = Math.min(n, Math.round(box.scrollLeft / step) + 1), sicht = Math.max(1, Math.floor((box.clientWidth + 8) / step));
+    var letzt = Math.min(n, erst + sicht - 1), ende = box.scrollLeft + box.clientWidth >= box.scrollWidth - 4;
+    if (ende) { letzt = n; erst = Math.max(1, n - sicht + 1); }
+    $("#slide-pos").innerHTML = "<b>" + (erst === letzt ? erst : erst + "–" + letzt) + "</b> von " + n;
+    var bar = $("#slide-bar"), w = box.scrollWidth ? box.clientWidth / box.scrollWidth : 1;
+    bar.style.width = Math.min(100, w * 100) + "%"; bar.style.left = (box.scrollWidth ? box.scrollLeft / box.scrollWidth * 100 : 0) + "%";
+    $("#slide-prev").disabled = box.scrollLeft <= 2; $("#slide-next").disabled = ende;
+    box.classList.toggle("am-ende", ende);
+  }
+  function demosAufklappen(auf) {
+    var box = $("#demos"), buehne = $("#demo-buehne"), cards = [].slice.call(box.querySelectorAll(".demo"));
+    var vor = cards.map(function (c) { return c.getBoundingClientRect(); }), h0 = buehne.offsetHeight;
+    ALLE = auf;
+    box.className = "demos" + (auf ? " alle" : " slide");
+    if (!auf) box.scrollLeft = 0;
+    leiste();
+    if (!auf) { var sec = buehne.closest("section"), y = sec.getBoundingClientRect().top + scrollY - 80; if (y < scrollY) scrollTo({ top: y, behavior: reduce ? "auto" : "smooth" }); }
+    if (reduce || !buehne.animate) return;
+    var h1 = buehne.offsetHeight;
+    buehne.style.overflow = "hidden";
+    buehne.animate([{ height: h0 + "px" }, { height: h1 + "px" }], { duration: auf ? 700 : 520, easing: "cubic-bezier(.2,.75,.15,1)" })
+      .finished.then(function () { buehne.style.overflow = ""; }, function () { buehne.style.overflow = ""; });
+    cards.forEach(function (c, i) {
+      var a = vor[i], b = c.getBoundingClientRect(), dx = a.left - b.left, dy = a.top - b.top, sx = b.width ? a.width / b.width : 1;
+      var weit = a.left > innerWidth + 40 || b.left > innerWidth + 40 || Math.abs(dy) > innerHeight * 1.5;
+      if (weit) c.animate([{ opacity: 0, transform: "translateY(22px) scale(.97)" }, { opacity: 1, transform: "none" }],
+        { duration: 520, delay: 120 + Math.min(i, 24) * 28, easing: "cubic-bezier(.2,.75,.15,1)", fill: "backwards" });
+      else c.animate([{ transformOrigin: "0 0", transform: "translate(" + dx + "px," + dy + "px) scale(" + sx + ")" }, { transformOrigin: "0 0", transform: "none" }],
+        { duration: 680, delay: Math.min(i, 12) * 22, easing: "cubic-bezier(.2,.75,.15,1)", fill: "backwards" });
+    });
+  }
   function renderDemos(d) {
-    var list = d.demos.filter(function (x) { var q = query.toLowerCase(); return !q || [x.name, x.ort, x.gebiet, x.kueche].join(" ").toLowerCase().indexOf(q) >= 0; });
+    var q = query.toLowerCase();
+    var basis = d.demos.filter(function (x) { return !q || [x.name, x.ort, x.gebiet, x.kueche].join(" ").toLowerCase().indexOf(q) >= 0; });
+    if (DF.ort && !d.demos.some(function (x) { return x.ort === DF.ort; })) DF.ort = "";
+    renderFilter(basis);
+    var f = filterFn(), list = basis.filter(function (x) { return f(x) && (!DF.ort || x.ort === DF.ort); });
     list.sort(function (a, b) {
-      if (sortMode === "ablauf") return (a.loescht_am || "9999") < (b.loescht_am || "9999") ? -1 : 1;
-      if (sortMode === "eignung") return (b.punkte || 0) - (a.punkte || 0);
+      if (DF.sort === "ablauf") return (a.loescht_am || "9999") < (b.loescht_am || "9999") ? -1 : 1;
+      if (DF.sort === "eignung") return (b.punkte || 0) - (a.punkte || 0);
       return (b.erstellt || "") < (a.erstellt || "") ? -1 : 1;
     });
-    $("#demos-sub").textContent = d.demos.length + " Demo-Websites sind gerade online" + (query ? ", " + list.length + " passen zur Suche" : "") + ".";
-    var box = $("#demos"); box.innerHTML = "";
-    if (!list.length) { box.appendChild(h("div", { class: "empty" }, d.demos.length ? "Keine Demo passt zu deiner Suche." : "Noch keine Demos online. Sie erscheinen hier nach dem nächsten Wochenlauf.")); return; }
+    $("#demos-sub").textContent = d.demos.length + " Demo-Websites sind gerade online" + (list.length !== d.demos.length ? ", " + list.length + " davon passen" : "") + ".";
+    var box = $("#demos"), sl = slideStart ? 0 : box.scrollLeft; slideStart = false; box.innerHTML = "";
+    box.className = "demos" + (ALLE ? " alle" : " slide");
+    if (!list.length) {
+      box.appendChild(h("div", { class: "empty" }, d.demos.length ? 'Keine Demo passt zu diesem Filter.<br><button class="btn" type="button" data-df-reset style="margin-top:.8rem">Filter zurücksetzen</button>' : "Noch keine Demos online. Sie erscheinen hier nach dem nächsten Wochenlauf."));
+      leiste(); return;
+    }
     if (io) io.disconnect();
     io = "IntersectionObserver" in window ? new IntersectionObserver(function (es) { es.forEach(function (e) { if (!e.isIntersecting) return; var f = e.target.querySelector("iframe"); if (f && !f.src) f.src = f.dataset.src; io.unobserve(e.target); }); }, { rootMargin: "200px" }) : null;
     list.forEach(function (x, i) {
@@ -1580,9 +1703,30 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       setTimeout(function () { var fg = $(".fg", card); fg.style.strokeDashoffset = fg.dataset.off; }, 400 + i * 40);
     });
     box.querySelectorAll("[data-copy]").forEach(function (b) { b.addEventListener("click", function () { navigator.clipboard && navigator.clipboard.writeText(b.dataset.copy).then(function () { toast("Link kopiert."); }); }); });
+    box.scrollLeft = sl; leiste();
   }
-  $("#q").addEventListener("input", function (e) { query = e.target.value; if (DATA) renderDemos(DATA); });
-  document.querySelectorAll("[data-sort]").forEach(function (b) { b.addEventListener("click", function () { sortMode = b.dataset.sort; document.querySelectorAll("[data-sort]").forEach(function (x) { x.setAttribute("aria-pressed", x === b); }); if (DATA) renderDemos(DATA); }); });
+  $("#q").addEventListener("input", function (e) { query = e.target.value; slideStart = true; if (DATA) renderDemos(DATA); });
+  function sortSync() { document.querySelectorAll("[data-sort]").forEach(function (x) { x.setAttribute("aria-pressed", x.dataset.sort === DF.sort ? "true" : "false"); }); }
+  sortSync();
+  document.querySelectorAll("[data-sort]").forEach(function (b) { b.addEventListener("click", function () { DF.sort = b.dataset.sort; dfMerken(); sortSync(); slideStart = true; if (DATA) renderDemos(DATA); }); });
+  $("#demo-filter").addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b || b.disabled) return;
+    if (b.hasAttribute("data-df")) DF.filter = b.dataset.df; else if (b.hasAttribute("data-ort")) DF.ort = b.dataset.ort; else return;
+    dfMerken(); Sound.play("hover"); slideStart = true; if (DATA) renderDemos(DATA);
+  });
+  $("#demo-filter").addEventListener("change", function (e) {
+    if (e.target.id !== "demo-ort") return;
+    DF.ort = e.target.value; dfMerken(); Sound.play("hover"); slideStart = true; if (DATA) renderDemos(DATA);
+  });
+  $("#demos").addEventListener("click", function (e) { if (e.target.closest("[data-df-reset]")) { DF.filter = "alle"; DF.ort = ""; query = ""; $("#q").value = ""; dfMerken(); slideStart = true; renderDemos(DATA); } });
+  $("#demos-alle").addEventListener("click", function () { Sound.play(ALLE ? "close" : "open"); demosAufklappen(!ALLE); });
+  $("#demos-weniger").addEventListener("click", function () { Sound.play("close"); demosAufklappen(false); });
+  function slideBlaettern(r) { var box = $("#demos"); box.scrollBy({ left: r * Math.max(200, box.clientWidth - 40), behavior: reduce ? "auto" : "smooth" }); }
+  $("#slide-prev").addEventListener("click", function () { slideBlaettern(-1); });
+  $("#slide-next").addEventListener("click", function () { slideBlaettern(1); });
+  var leisteRaf = 0;
+  $("#demos").addEventListener("scroll", function () { cancelAnimationFrame(leisteRaf); leisteRaf = requestAnimationFrame(leiste); }, { passive: true });
+  addEventListener("resize", function () { cancelAnimationFrame(leisteRaf); leisteRaf = requestAnimationFrame(leiste); });
   document.addEventListener("keydown", function (e) { if (e.key === "/" && document.activeElement.tagName !== "INPUT") { e.preventDefault(); $("#q").focus(); } });
 
   /* Board: Restaurants per Drag & Drop einsortieren */
