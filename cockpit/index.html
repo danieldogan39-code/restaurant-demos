@@ -364,7 +364,23 @@ button, input { font: inherit; color: inherit; }
 .tiers button[aria-pressed="true"] { color: #fff; border-color: rgba(255,255,255,.4); background: rgba(255,255,255,.08); }
 .g-legend { display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; margin-top: .9rem; font-size: .78rem; color: var(--ink3); }
 .g-legend i { display: inline-block; width: .7rem; height: .7rem; border-radius: 3px; margin-right: .35rem; vertical-align: -1px; }
-.board { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; margin-top: 1rem; align-items: start; }
+.board { display: grid; grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr); gap: .8rem; margin-top: 1rem; align-items: start; }
+.board-seite { display: grid; gap: .8rem; align-content: start; min-width: 0; }
+.col.haupt { max-height: none; }
+.col.haupt .drop { grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr)); overflow: visible; }
+.col.haupt .drop > .more { grid-column: 1 / -1; }
+.board-seite .col { min-height: 0; }
+.board-seite .col .drop { max-height: 24rem; }
+.col.zu .drop { display: none; }
+.col.zu > header { border-bottom: 0; }
+.col > header .btn.col-auf { grid-column: auto; grid-row: 1; justify-self: end; margin: 0; padding: .3rem .65rem; font-size: .76rem; }
+.col[data-col="demo"] > header { grid-template-columns: 1fr auto auto; }
+.col[data-col="demo"] > header .cnt { grid-column: 2; grid-row: 1; }
+.col[data-col="demo"] > header .btn.col-auf { grid-column: 3; }
+.c-balken { display: flex; gap: 3px; height: 5px; margin-top: .15rem; }
+.c-balken span { display: block; height: 100%; border-radius: 3px; background: rgba(255,255,255,.08); overflow: hidden; }
+.c-balken b { display: block; height: 100%; border-radius: 3px; }
+.g-legend .g-tipp { margin-left: auto; }
 .col { border: 1px solid var(--edge); border-radius: 14px; background: rgba(8,16,30,.35); display: flex; flex-direction: column; min-height: 14rem; max-height: 46rem; transition: border-color .2s, background .2s, box-shadow .2s; }
 .col > header { padding: .8rem .9rem .6rem; border-bottom: 1px solid var(--edge); display: grid; grid-template-columns: 1fr auto; gap: .15rem .6rem; align-items: center; }
 .col > header h3 { margin: 0; font-family: var(--display); font-weight: 400; font-size: 1.02rem; display: flex; align-items: center; gap: .5rem; }
@@ -378,7 +394,7 @@ button, input { font: inherit; color: inherit; }
 .col.nogo { opacity: .45; }
 .col .empty-drop { border: 1.5px dashed var(--edge); border-radius: 12px; padding: 1.1rem .8rem; text-align: center; color: var(--ink3); font-size: .8rem; }
 .col .more { justify-content: center; font-size: .8rem; padding: .45rem; }
-.card { position: relative; border: 1px solid var(--edge); border-radius: 12px; background: rgba(22,36,60,.85); padding: .65rem .7rem .7rem; cursor: grab; user-select: none; -webkit-user-select: none; transition: border-color .2s, transform .25s var(--spring), box-shadow .25s; touch-action: manipulation; }
+.card { position: relative; border: 1px solid var(--edge); border-radius: 12px; background: rgba(22,36,60,.85); padding: .6rem .7rem .65rem; cursor: grab; user-select: none; -webkit-user-select: none; transition: border-color .2s, transform .25s var(--spring), box-shadow .25s; touch-action: manipulation; }
 .card:hover { border-color: rgba(123,175,255,.4); transform: translateY(-1px); box-shadow: 0 10px 24px -14px rgba(0,0,0,.8); }
 .card.lifted { opacity: .35; }
 .card.ghost { position: fixed; z-index: 9000; pointer-events: none; width: 16rem; transform: rotate(-2.5deg) scale(1.03); box-shadow: 0 24px 50px -16px rgba(0,0,0,.9), 0 0 0 1px var(--coral); opacity: .96; cursor: grabbing; }
@@ -390,7 +406,7 @@ button, input { font: inherit; color: inherit; }
 .c-name { font-weight: 600; font-size: .9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .c-score { font-family: var(--display); font-size: 1.05rem; }
 .c-score small { color: var(--ink3); font-size: .7rem; }
-.c-meta { color: var(--ink3); font-size: .74rem; margin: .2rem 0 .5rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.c-meta { color: var(--ink3); font-size: .74rem; margin: .15rem 0 .45rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .c-groups { display: grid; grid-template-columns: repeat(4, 1fr); gap: .3rem; }
 .c-groups span { display: grid; gap: .18rem; font-size: .62rem; color: var(--ink3); letter-spacing: .02em; }
 .c-groups i { display: block; height: 4px; border-radius: 2px; background: rgba(255,255,255,.08); overflow: hidden; }
@@ -410,8 +426,8 @@ button, input { font: inherit; color: inherit; }
 .toast { position: fixed; left: 50%; bottom: 1.4rem; transform: translate(-50%, 30px); opacity: 0; z-index: 9500; background: #14223A; border: 1px solid var(--edge); border-radius: 12px; padding: .7rem 1rem; font-size: .88rem; box-shadow: 0 18px 40px -18px rgba(0,0,0,.9); transition: opacity .3s, transform .4s var(--spring); max-width: calc(100vw - 2rem); display: flex; gap: .8rem; align-items: center; }
 .toast.on { opacity: 1; transform: translate(-50%, 0); }
 .toast button { border: 0; background: none; color: var(--coral); font-weight: 700; cursor: pointer; }
-@media (max-width: 1100px) { .board { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 640px) { .board { grid-template-columns: 1fr; } .col { max-height: 30rem; } }
+@media (max-width: 1100px) { .board { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); } .col.haupt .drop { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 760px) { .board { grid-template-columns: 1fr; } .g-legend .g-tipp { margin-left: 0; } }
 .why { margin: 0 1rem .9rem; font-size: .82rem; }
 .why summary { cursor: pointer; color: var(--ink2); font-weight: 600; }
 .why .cat { display: grid; grid-template-columns: 8.5rem 1fr 3rem; gap: .2rem .6rem; align-items: center; margin-top: .55rem; }
@@ -643,9 +659,8 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   .demos::-webkit-scrollbar { display: none; }
   .demos > .demo { flex: 0 0 84%; scroll-snap-align: start; }
   .demos > .empty { flex: 1 0 100%; }
-  .board { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: .7rem; margin-right: -1rem; padding-right: 1rem; padding-bottom: .4rem; scrollbar-width: none; }
-  .board::-webkit-scrollbar { display: none; }
-  .board > .col { flex: 0 0 86%; max-height: 72vh; scroll-snap-align: start; }
+  .board { grid-template-columns: 1fr; }
+  .board-seite .col .drop { max-height: 20rem; }
   .radar { max-width: 17rem; margin: 0 auto; }
   .kpi { padding: .8rem .85rem; }
   .kpi .spark { display: none; }
@@ -800,12 +815,14 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       </div>
     </div>
     <div class="board" id="board">
-      <div class="col" data-col="offen"><header><h3><i style="background:#7BAFFF"></i>Kandidaten</h3><span class="cnt" id="cnt-offen"></span><p>Automatisch bewertet. Die besten 5 bekommen beim nächsten Lauf eine Website.</p></header><div class="drop" data-drop="offen"></div></div>
-      <div class="col" data-col="bauen" data-focus="board_bauen"><header><h3><i style="background:#FF5757"></i>Website bauen</h3><span class="cnt" id="cnt-bauen"></span><p>Deine Auswahl. Wird zusätzlich und zuerst gebaut.</p><button class="btn btn-hot" type="button" id="build-now">Jetzt bauen</button></header><div class="drop" data-drop="bauen"></div></div>
-      <div class="col" data-col="demo"><header><h3><i style="background:#4BE3A6"></i>Demo online</h3><span class="cnt" id="cnt-demo"></span><p>Hat schon eine Demo-Website.</p></header><div class="drop" data-drop="demo"></div></div>
-      <div class="col" data-col="nie" data-focus="board_aussortiert"><header><h3><i style="background:#6E7AA6"></i>Aussortiert</h3><span class="cnt" id="cnt-nie"></span><p>Bekommt nie eine Website. Eine Demo, die du hierher ziehst, wird nach zwei Bestätigungen sofort gelöscht.</p></header><div class="drop" data-drop="nie"></div></div>
+      <div class="col haupt" data-col="offen"><header><h3><i style="background:#7BAFFF"></i>Kandidaten</h3><span class="cnt" id="cnt-offen"></span><p>Die besten 5 bekommen beim nächsten Lauf automatisch eine Website.</p></header><div class="drop" data-drop="offen"></div></div>
+      <div class="board-seite">
+        <div class="col" data-col="bauen" data-focus="board_bauen"><header><h3><i style="background:#FF5757"></i>Website bauen</h3><span class="cnt" id="cnt-bauen"></span><p>Deine Auswahl, wird zuerst gebaut.</p><button class="btn btn-hot" type="button" id="build-now">Jetzt bauen</button></header><div class="drop" data-drop="bauen"></div></div>
+        <div class="col" data-col="nie" data-focus="board_aussortiert"><header><h3><i style="background:#6E7AA6"></i>Aussortiert</h3><span class="cnt" id="cnt-nie"></span><p>Bekommt nie eine Website. Eine Demo hier wird nach zwei Bestätigungen gelöscht.</p></header><div class="drop" data-drop="nie"></div></div>
+        <div class="col zu" data-col="demo" id="col-demo"><header><h3><i style="background:#4BE3A6"></i>Demo online</h3><span class="cnt" id="cnt-demo"></span><p>Schon gebaut. Ziehen nach „Aussortiert“ löscht die Demo.</p><button class="btn col-auf" type="button" data-col-auf aria-expanded="false" aria-controls="col-demo">Anzeigen</button></header><div class="drop" data-drop="demo"></div></div>
+      </div>
     </div>
-    <div class="g-legend"><span><i style="background:#FF5757"></i>Bedarf: fehlende Website, Reservierung, Bestellung</span><span><i style="background:#7BAFFF"></i>Zugkraft: Bekanntheit, Sterne, Fotos</span><span><i style="background:#FFB547"></i>Budget: Preisniveau, Betriebsart</span><span><i style="background:#4BE3A6"></i>Basis: Öffnungszeiten, Angebot, Telefon</span><span>Stufe A ab 85, B ab 75, C darunter</span></div>
+    <div class="g-legend"><span title="Fehlende Website, Reservierung, Bestellung"><i style="background:#FF5757"></i>Bedarf</span><span title="Bekanntheit, Sterne, Fotos"><i style="background:#7BAFFF"></i>Zugkraft</span><span title="Preisniveau, Betriebsart"><i style="background:#FFB547"></i>Budget</span><span title="Öffnungszeiten, Angebot, Telefon"><i style="background:#4BE3A6"></i>Basis</span><span>Stufe A ab 85 · B ab 75 · C darunter</span><span class="g-tipp">Karte antippen: ganze Bewertung und Knöpfe zum Verschieben</span></div>
   </section>
 
   <section class="grid row4">
@@ -885,7 +902,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "a875937498";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "ec34d6dcbd";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -1793,7 +1810,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     var badge = (DEC[x.place_id] || {}).aktion === "bauen" && x.col === "bauen" ? buildBadge(x) : x.col === "nie" && x.isDemo ? '<span class="c-badge work">Demo wird gelöscht</span>' : x.note ? '<span class="c-badge">Einzelstück · Note ' + x.note + "/10</span>" : "";
     return '<div class="c-top"><span class="tier ' + t + '" title="Stufe ' + t + '">' + t + '</span><b class="c-name" title="' + esc(x.name) + '">' + esc(x.name) + '</b><span class="c-score">' + (x.punkte || "–") + "<small>/100</small></span></div>" +
       '<div class="c-meta">' + esc([x.kueche, x.ort].filter(Boolean).join(" · ")) + km + "</div>" +
-      (g.length ? '<div class="c-groups">' + g.map(function (k) { return '<span title="' + esc(k.name) + ": " + String(k.punkte).replace(".", ",") + " von " + String(k.max).replace(".", ",") + '">' + esc(k.name) + '<i><b style="width:' + (k.max ? Math.round(k.punkte / k.max * 100) : 0) + "%;background:" + (GCOL[k.name] || "#7BAFFF") + '"></b></i></span>'; }).join("") + "</div>" : "") + badge +
+      (g.length ? '<div class="c-balken" title="' + esc(g.map(function (k) { return k.name + " " + String(k.punkte).replace(".", ",") + "/" + String(k.max).replace(".", ","); }).join(" · ")) + '">' + g.map(function (k) { return '<span style="flex:' + (k.max || 1) + '"><b style="width:' + (k.max ? Math.round(k.punkte / k.max * 100) : 0) + "%;background:" + (GCOL[k.name] || "#7BAFFF") + '"></b></span>'; }).join("") + "</div>" : "") + badge +
       '<div class="c-more">' + ["Bedarf", "Zugkraft", "Budget", "Basis"].filter(function (n) { return cats[n]; }).map(function (n) {
         var gg = g.filter(function (z) { return z.name === n; })[0] || { punkte: 0, max: 0 };
         return "<h4><span style=\"color:" + GCOL[n] + "\">" + n + "</span><span>" + String(Math.round(gg.punkte * 10) / 10).replace(".", ",") + " / " + String(Math.round(gg.max * 10) / 10).replace(".", ",") + "</span></h4>" + cats[n].map(function (k) { return '<div class="cat"><span>' + esc(k.name) + "</span><em>" + String(k.punkte).replace(".", ",") + "/" + String(k.max).replace(".", ",") + "</em><small>" + esc(k.warum) + "</small></div>"; }).join("");
@@ -1830,13 +1847,15 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       var box = $('[data-drop="' + c + '"]'), list = all.filter(function (x) { return x.col === c && passes(x); }).sort(function (a, b) { return (b.punkte || 0) - (a.punkte || 0); });
       $("#cnt-" + c).textContent = list.length;
       box.innerHTML = "";
-      var cap = c === "offen" && !showAll ? 30 : 999;
+      var cap = c === "offen" && !showAll ? 12 : 999;
       list.slice(0, cap).forEach(function (x) { var el = h("article", { class: "card", "data-pid": x.place_id, tabindex: "0" }, cardHTML(x)); el._x = x; box.appendChild(el); });
       if (list.length > cap) { var more = h("button", { class: "btn more", type: "button" }, "Alle " + list.length + " anzeigen"); more.addEventListener("click", function () { showAll = true; renderRanks(DATA); }); box.appendChild(more); }
+      else if (c === "offen" && showAll && list.length > 12) { var less = h("button", { class: "btn more", type: "button" }, "Weniger anzeigen"); less.addEventListener("click", function () { showAll = false; renderRanks(DATA); box.closest(".col").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" }); }); box.appendChild(less); }
       if (!list.length) box.appendChild(h("div", { class: "empty-drop" }, c === "bauen" ? "Hierher ziehen: bekommt sicher eine Website" : c === "nie" ? "Hierher ziehen: bekommt nie eine Website" : "Keine Einträge"));
     });
     var n = (d.rangliste || []).length;
-    $("#rank-sub").textContent = (n ? n + " gescannte Restaurants ohne eigene Website. " : "") + "Zieh eine Karte in eine andere Spalte, um selbst zu entscheiden. Antippen zeigt die Bewertung.";
+    $("#rank-sub").textContent = (n ? n + " gescannte Restaurants ohne eigene Website. " : "") + "Zieh eine Karte nach rechts, um selbst zu entscheiden.";
+    demoSpalte();
     $("#build-now").hidden = !all.some(function (x) { return x.col === "bauen"; });
   }
   $("#rq").addEventListener("input", function (e) { rq = e.target.value; if (DATA) renderRanks(DATA); });
@@ -1845,7 +1864,14 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   document.querySelectorAll("[data-tier]").forEach(function (b) { b.addEventListener("click", function () { tiers[b.dataset.tier] = !tiers[b.dataset.tier]; b.setAttribute("aria-pressed", tiers[b.dataset.tier] ? "true" : "false"); if (DATA) renderRanks(DATA); }); });
 
   /* Karte öffnen / Buttons */
+  var demoAuf = false;
+  try { demoAuf = localStorage.getItem("cockpit-board-demos") === "auf"; } catch (e) {}
+  function demoSpalte() {
+    var c = $("#col-demo"), b = $("[data-col-auf]", c);
+    c.classList.toggle("zu", !demoAuf); b.setAttribute("aria-expanded", demoAuf ? "true" : "false"); b.textContent = demoAuf ? "Verbergen" : "Anzeigen";
+  }
   $("#board").addEventListener("click", function (e) {
+    if (e.target.closest("[data-col-auf]")) { demoAuf = !demoAuf; try { localStorage.setItem("cockpit-board-demos", demoAuf ? "auf" : "zu"); } catch (e2) {} demoSpalte(); Sound.play(demoAuf ? "open" : "close"); return; }
     var mv = e.target.closest("[data-move]"); var card = e.target.closest(".card");
     if (mv && card) { e.stopPropagation(); move(card._x, mv.dataset.move); return; }
     if (!card || e.target.closest("a") || dragJustEnded) return;
