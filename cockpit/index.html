@@ -659,28 +659,25 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   .app[hidden] ~ .srail { display: none; }
   .srail-spur { position: absolute; left: calc(1.1rem - 1px); top: 0; width: 2px; height: 100%; border-radius: 2px; background: rgba(255,255,255,.08); }
   .srail-spur i { position: absolute; left: 0; top: 0; width: 100%; height: 0; border-radius: inherit; background: linear-gradient(180deg, rgba(123,175,255,.9), #FF5757); box-shadow: 0 0 8px rgba(255,87,87,.45); }
-  .srail a { position: relative; z-index: 2; width: 2.2rem; height: 2.2rem; border-radius: 50%; display: grid; place-items: center; color: var(--ink3); background: var(--panel-solid); border: 1px solid var(--edge); text-decoration: none; transition: color .3s, border-color .3s, background .35s, box-shadow .35s, transform .3s var(--spring); }
+  .srail a { position: relative; z-index: 2; width: 2.2rem; height: 2.2rem; border-radius: 50%; display: grid; place-items: center; color: var(--ink3); background: var(--panel-solid); border: 1px solid var(--edge); text-decoration: none; transition: color .4s var(--ease), border-color .4s var(--ease), background .5s var(--ease), box-shadow .5s var(--ease); }
   .srail a svg { width: 15px; height: 15px; }
   .srail a:hover { color: var(--ink); border-color: rgba(255,255,255,.3); }
   .srail a.durch { color: var(--ink2); border-color: rgba(123,175,255,.45); }
-  .srail a.an { color: #fff; border-color: transparent; background: linear-gradient(135deg, #FF5757, #7BAFFF); box-shadow: 0 0 18px -3px rgba(255,87,87,.65); transform: scale(1.08); }
+  .srail a.an { color: #fff; border-color: transparent; background: linear-gradient(135deg, #FF5757, #7BAFFF); box-shadow: 0 0 18px -3px rgba(255,87,87,.65); }
   .srail a:focus-visible, .srail-knopf:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
-  .srail-name { position: absolute; left: calc(100% + .7rem); top: 50%; transform: translate(-4px, -50%); white-space: nowrap; font-size: .74rem; font-weight: 600; color: var(--ink); background: rgba(14,25,42,.94); border: 1px solid var(--edge); border-radius: 8px; padding: .22rem .55rem; opacity: 0; pointer-events: none; transition: opacity .18s, transform .18s; }
+  .srail-name { position: absolute; left: calc(100% + .7rem); top: 50%; transform: translate(-4px, -50%); white-space: nowrap; font-size: .74rem; font-weight: 600; color: var(--ink); background: rgba(14,25,42,.94); border: 1px solid var(--edge); border-radius: 8px; padding: .22rem .55rem; opacity: 0; pointer-events: none; transition: opacity .3s var(--ease), transform .3s var(--ease); }
   .srail a:hover .srail-name, .srail a:focus-visible .srail-name { opacity: 1; transform: translate(0, -50%); }
   html.rail-zieht .srail-name { opacity: 0 !important; }
-  .srail-knopf { position: absolute; z-index: 1; left: calc(1.1rem - 6px); top: 0; width: 12px; height: 12px; margin-top: -6px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 3px rgba(255,87,87,.35), 0 0 14px rgba(255,87,87,.75); transition: transform .2s var(--spring), box-shadow .2s; }
-  .srail:hover .srail-knopf { transform: scale(1.3); }
-  .srail-knopf.zieht { z-index: 3; transform: scale(1.6); box-shadow: 0 0 0 4px rgba(255,87,87,.45), 0 0 24px rgba(255,87,87,.95); }
-  .srail-zeige { position: absolute; left: 2.9rem; top: 0; transform: translateY(-50%); white-space: nowrap; font-size: .76rem; font-weight: 700; color: #fff; background: rgba(255,87,87,.92); border-radius: 8px; padding: .2rem .55rem; opacity: 0; pointer-events: none; transition: opacity .15s; box-shadow: 0 8px 20px -8px rgba(0,0,0,.8); }
+  .srail-knopf { position: absolute; z-index: 1; left: calc(1.1rem - 6px); top: 0; width: 12px; height: 12px; margin-top: -6px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 3px rgba(255,87,87,.35), 0 0 14px rgba(255,87,87,.75); transition: transform .35s var(--ease), box-shadow .35s var(--ease); }
+  .srail-knopf.zieht { z-index: 3; transform: scale(1.4); box-shadow: 0 0 0 4px rgba(255,87,87,.45), 0 0 24px rgba(255,87,87,.95); }
+  .srail-zeige { position: absolute; left: 2.9rem; top: 0; transform: translateY(-50%); white-space: nowrap; font-size: .76rem; font-weight: 700; color: #fff; background: rgba(255,87,87,.92); border-radius: 8px; padding: .2rem .55rem; opacity: 0; pointer-events: none; transition: opacity .3s var(--ease); box-shadow: 0 8px 20px -8px rgba(0,0,0,.8); }
   .srail-zeige.an { opacity: 1; }
   html.rail-zieht, html.rail-zieht *, html.rail-nah, html.rail-nah * { cursor: none !important; }
   .srail a.zeigt .srail-name { opacity: 1; transform: translate(0, -50%); }
   .srail a.zeigt { color: var(--ink); border-color: rgba(255,255,255,.35); }
   /* Zeiger wie bei Apple: in der Nähe der Leiste verschwindet der Mauszeiger, eine Perle wird zur Linie gezogen und rastet an den Punkten ein */
-  .srail-zeiger { position: fixed; left: 0; top: 0; z-index: 2000; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%; pointer-events: none; background: rgba(255,255,255,.82); box-shadow: 0 0 0 1px rgba(255,255,255,.25), 0 4px 14px rgba(0,0,0,.5); opacity: 0; transform: translate3d(-100px, -100px, 0) scale(.6); transition: opacity .18s, width .22s var(--spring), height .22s var(--spring), margin .22s var(--spring), background .2s, box-shadow .2s, transform .12s var(--ease); }
-  html.rail-nah .srail-zeiger { opacity: 1; }
-  .srail-zeiger.auf-kachel { width: 46px; height: 46px; margin: -23px 0 0 -23px; background: rgba(255,255,255,.08); box-shadow: 0 0 0 2px rgba(255,255,255,.75), 0 0 22px rgba(123,175,255,.45); }
-  html.rail-zieht .srail-zeiger { opacity: 0; }
+  .srail-zeiger { --ring: 0; position: fixed; left: 0; top: 0; z-index: 2000; width: 12px; height: 12px; border-radius: 50%; pointer-events: none; opacity: 0; will-change: transform, width, height;
+    background: rgba(255,255,255, calc(.85 - .78 * var(--ring))); box-shadow: 0 0 0 calc(2px * var(--ring)) rgba(255,255,255,.7), 0 0 calc(22px * var(--ring)) rgba(123,175,255,.35), 0 3px 10px rgba(0,0,0,.45); }
 }
 @media (prefers-reduced-motion: reduce) { .srail a, .srail-knopf, .srail-name, .srail-zeiger { transition: none; } }
 @media (max-width: 640px) {
@@ -956,7 +953,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "bc8d1d398b";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "ba9ecfd750";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -2370,7 +2367,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     ["memory", function () { return $("#memory"); }], ["board", function () { return $("#rank-title").closest("section"); }],
     ["runs", function () { return $("#runs-title").closest("section"); }]];
   var RAIL_NAME = { kpis: "Übersicht", demos: "Demos", memory: "Gedächtnis", board: "Restaurants", runs: "Protokoll" };
-  var railRaf = 0, railZug = null;
+  var railRaf = 0, railZug = null;  // railZug: {y, s} während des Ziehens (Regler folgt der Hand, die Seite gleitet nach)
   function railAn() { var r = $("#srail"); return r && getComputedStyle(r).display !== "none"; }
   function railMasse() {
     var rail = $("#srail"), rr = rail.getBoundingClientRect(), kacheln = [].slice.call(rail.querySelectorAll("a[data-rail]"));
@@ -2395,7 +2392,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   function railMalen() {
     railRaf = 0;
     if (!railAn()) return;
-    var M = railMasse(), s = scrollY, y = railY(M, s), ende = s >= M.max - 2, akt = -1;
+    var M = railMasse(), s = railZug ? railZug.s : scrollY, y = railZug ? railZug.y : railY(M, s), ende = s >= M.max - 2, akt = -1;
     M.kacheln.forEach(function (k, i) { if (s >= M.ss[i + 1] - 1 || i === 0) akt = i; });
     if (ende) akt = M.kacheln.length - 1;
     M.kacheln.forEach(function (k, i) {
@@ -2419,52 +2416,79 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   }
   (function () {
     var rail = $("#srail"), knopf = $("#srail-knopf"), zeige = $("#srail-zeige"), zeiger = $("#srail-zeiger"), html = document.documentElement;
-    var RADIUS = 46, FANG = 16, dock = { an: false, y: 0, kachel: null }, ziehtGerade = false;
+    // Andocken mit Hysterese (rein bei 44 px, raus erst bei 60 px), damit nichts flackert
+    var REIN = 44, RAUS = 60, FANG = 26, dock = { an: false, y: 0, kachel: null }, ziehtGerade = false;
+    var B = { x: 0, y: 0, s: 12, o: 0, r: 0 }, Z = { x: 0, y: 0, s: 12, o: 0, r: 0 }, perleRaf = 0;
+    function weich(t) { t = Math.max(0, Math.min(1, t)); return t * t * (3 - 2 * t); }
+    function perle() {  // Feder: die Perle folgt ihrem Ziel gleichmäßig, ohne Sprünge
+      var k = .2, rest = 0;
+      ["x", "y"].forEach(function (a) { B[a] += (Z[a] - B[a]) * k; rest += Math.abs(Z[a] - B[a]); });
+      ["s", "o", "r"].forEach(function (a) { B[a] += (Z[a] - B[a]) * .16; rest += Math.abs(Z[a] - B[a]) * (a === "s" ? 1 : 40); });
+      zeiger.style.transform = "translate3d(" + (B.x - B.s / 2).toFixed(2) + "px," + (B.y - B.s / 2).toFixed(2) + "px,0)";
+      zeiger.style.width = zeiger.style.height = B.s.toFixed(2) + "px";
+      zeiger.style.opacity = B.o.toFixed(3); zeiger.style.setProperty("--ring", B.r.toFixed(3));
+      perleRaf = rest > .15 ? requestAnimationFrame(perle) : 0;
+    }
+    function perleLos() { if (!perleRaf) perleRaf = requestAnimationFrame(perle); }
     function geo() {
       var sp = $("#srail-spur").getBoundingClientRect();
       return { x: sp.left + sp.width / 2, oben: sp.top, unten: sp.bottom, kacheln: [].slice.call(rail.querySelectorAll("a[data-rail]")).map(function (k) { var r = k.getBoundingClientRect(); return { el: k, y: r.top + r.height / 2 }; }) };
     }
+    function zeigt(k) {
+      if (k === dock.kachel) return;
+      if (dock.kachel) dock.kachel.classList.remove("zeigt");
+      dock.kachel = k; if (k) k.classList.add("zeigt");
+    }
     function abdocken() {
       if (!dock.an) return;
-      dock.an = false; html.classList.remove("rail-nah"); zeiger.classList.remove("auf-kachel");
-      if (dock.kachel) dock.kachel.classList.remove("zeigt"); dock.kachel = null;
+      dock.an = false; html.classList.remove("rail-nah"); zeigt(null);
+      Z.o = 0; Z.s = 6; Z.r = 0; perleLos();
     }
-    // Nähe zur Leiste: Mauszeiger verschwindet, die Perle wird mit wachsender Nähe auf die Linie gezogen und rastet an Punkten ein
     addEventListener("pointermove", function (e) {
       if (e.pointerType !== "mouse" || ziehtGerade) return;
       if (!railAn()) { abdocken(); return; }
       var G = geo(), dx = Math.abs(e.clientX - G.x), dy = e.clientY < G.oben ? G.oben - e.clientY : e.clientY > G.unten ? e.clientY - G.unten : 0, d = Math.sqrt(dx * dx + dy * dy);
-      if (d > RADIUS) { abdocken(); return; }
-      if (!dock.an) { dock.an = true; html.classList.add("rail-nah"); }
-      var y = Math.max(G.oben, Math.min(G.unten, e.clientY)), naechste = null;
-      G.kacheln.forEach(function (k) { if (Math.abs(k.y - y) < FANG && (!naechste || Math.abs(k.y - y) < Math.abs(naechste.y - y))) naechste = k; });
-      if (naechste) y = naechste.y;
-      if ((naechste && naechste.el) !== dock.kachel) {
-        if (dock.kachel) dock.kachel.classList.remove("zeigt");
-        dock.kachel = naechste ? naechste.el : null;
-        if (dock.kachel) { dock.kachel.classList.add("zeigt"); Sound.play("hover"); }
-      }
-      zeiger.classList.toggle("auf-kachel", !!naechste);
-      var zug = naechste ? 1 : 1 - Math.pow(d / RADIUS, 2);  // je näher, desto stärker eingezogen; an einem Punkt rastet der Ring genau ein
-      dock.y = y;
-      zeiger.style.transform = "translate3d(" + (e.clientX + (G.x - e.clientX) * zug) + "px," + (e.clientY + (y - e.clientY) * zug) + "px,0)";
+      if (d > (dock.an ? RAUS : REIN)) { abdocken(); return; }
+      if (!dock.an) { dock.an = true; html.classList.add("rail-nah"); B.x = e.clientX; B.y = e.clientY; B.s = 10; B.o = 0; B.r = 0; }
+      var zug = weich(1 - d / RAUS);  // je näher, desto stärker zur Linie gezogen
+      var yl = Math.max(G.oben, Math.min(G.unten, e.clientY)), best = null;
+      G.kacheln.forEach(function (k) { if (!best || Math.abs(k.y - yl) < Math.abs(best.y - yl)) best = k; });
+      var w = best ? weich(1 - Math.abs(best.y - yl) / FANG) : 0;  // Magnet zum nächsten Punkt, sanft statt hart
+      var ym = yl + (best ? (best.y - yl) * w : 0);
+      Z.x = e.clientX + (G.x - e.clientX) * zug; Z.y = e.clientY + (ym - e.clientY) * zug;
+      Z.s = 12 + 32 * w * zug; Z.r = w * zug; Z.o = 1;
+      dock.y = ym; zeigt(w * zug > .55 ? best.el : null);
+      perleLos();
     }, { passive: true });
     document.addEventListener("pointerleave", abdocken);
     addEventListener("blur", abdocken);
 
+    var scrollRaf = 0;
+    function gleiten() {  // Seite gleitet dem Regler nach statt zu springen
+      if (!railZug) { scrollRaf = 0; return; }
+      var d = railZug.s - scrollY;
+      if (Math.abs(d) < .6) { scrollTo(0, railZug.s); scrollRaf = 0; return; }
+      scrollTo(0, scrollY + d * .18); scrollRaf = requestAnimationFrame(gleiten);
+    }
     function start(e, kachel, yStart) {
       var M = railMasse(), rr = rail.getBoundingClientRect(), y0 = e.clientY, zieht = false;
       try { rail.setPointerCapture(e.pointerId); } catch (x) {}
       function mv(ev) {
         if (!zieht && Math.abs(ev.clientY - y0) < 4) return;
-        if (!zieht) { zieht = ziehtGerade = true; html.classList.add("rail-zieht"); knopf.classList.add("zieht"); zeige.classList.add("an"); if (dock.kachel) dock.kachel.classList.remove("zeigt"); Sound.play("pick"); }
-        scrollTo(0, Math.round(railS(M, ev.clientY - rr.top))); railMalen();
+        if (!zieht) { zieht = ziehtGerade = true; html.classList.add("rail-zieht"); knopf.classList.add("zieht"); zeige.classList.add("an"); zeigt(null); Z.o = 0; perleLos(); Sound.play("pick"); }
+        var y = Math.max(M.ys[0], Math.min(M.ys[M.ys.length - 1], ev.clientY - rr.top));
+        railZug = { y: y, s: Math.round(railS(M, y)) };
+        railMalen(); if (!scrollRaf) scrollRaf = requestAnimationFrame(gleiten);
       }
       function los(ev) {
         rail.removeEventListener("pointermove", mv); rail.removeEventListener("pointerup", los); rail.removeEventListener("pointercancel", los);
         try { rail.releasePointerCapture(e.pointerId); } catch (x) {}
         html.classList.remove("rail-zieht"); knopf.classList.remove("zieht"); zeige.classList.remove("an"); ziehtGerade = false;
-        if (zieht) { Sound.play("drop"); abdocken(); return; }
+        if (zieht) {  // ausgleiten lassen, danach folgt der Regler wieder der Seite
+          var ziel = railZug ? railZug.s : scrollY;
+          (function aus() { var d = ziel - scrollY; if (Math.abs(d) > .6) { scrollTo(0, scrollY + d * .18); requestAnimationFrame(aus); } else { scrollTo(0, ziel); railZug = null; railMalen(); } })();
+          Sound.play("drop"); abdocken(); return;
+        }
         if (kachel) railHin(kachel.dataset.rail, true);
         else scrollTo({ top: Math.round(railS(M, yStart - rr.top)), behavior: reduce ? "auto" : "smooth" });
         Sound.play("tick");
