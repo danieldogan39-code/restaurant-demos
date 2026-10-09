@@ -953,7 +953,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "ba9ecfd750";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "02fd12afbc";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -2463,13 +2463,27 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     document.addEventListener("pointerleave", abdocken);
     addEventListener("blur", abdocken);
 
-    var scrollRaf = 0;
-    function gleiten() {  // Seite gleitet dem Regler nach statt zu springen
-      if (!railZug) { scrollRaf = 0; return; }
-      var d = railZug.s - scrollY;
-      if (Math.abs(d) < .6) { scrollTo(0, railZug.s); scrollRaf = 0; return; }
-      scrollTo(0, scrollY + d * .18); scrollRaf = requestAnimationFrame(gleiten);
+    // Seite gleitet dem Regler nach. Sicher: ganze Pixel mit Mindestschritt, endet spätestens nach 1,5 s und sofort,
+    // sobald du selbst scrollst, tippst oder klickst. So kann das Gleiten nie gegen dich arbeiten.
+    var scrollRaf = 0, gleitBilder = 0;
+    function gleitSchritt(ziel) {
+      var d = ziel - scrollY;
+      if (Math.abs(d) <= 1 || ++gleitBilder > 90) { scrollTo(0, ziel); return false; }
+      var s = d * .2; s = s > 0 ? Math.max(1, Math.round(s)) : Math.min(-1, Math.round(s));
+      scrollTo(0, Math.round(scrollY) + s); return true;
     }
+    function gleiten() {
+      scrollRaf = 0;
+      if (!railZug) return;
+      if (gleitSchritt(railZug.s)) scrollRaf = requestAnimationFrame(gleiten);
+      else if (!ziehtGerade) { railZug = null; railMalen(); }
+    }
+    function gleitenStopp() {
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0; gleitBilder = 0;
+      if (!ziehtGerade && railZug) { railZug = null; railBald(); }
+    }
+    ["wheel", "touchstart", "keydown"].forEach(function (ev) { addEventListener(ev, gleitenStopp, { passive: true }); });
     function start(e, kachel, yStart) {
       var M = railMasse(), rr = rail.getBoundingClientRect(), y0 = e.clientY, zieht = false;
       try { rail.setPointerCapture(e.pointerId); } catch (x) {}
@@ -2478,15 +2492,14 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
         if (!zieht) { zieht = ziehtGerade = true; html.classList.add("rail-zieht"); knopf.classList.add("zieht"); zeige.classList.add("an"); zeigt(null); Z.o = 0; perleLos(); Sound.play("pick"); }
         var y = Math.max(M.ys[0], Math.min(M.ys[M.ys.length - 1], ev.clientY - rr.top));
         railZug = { y: y, s: Math.round(railS(M, y)) };
-        railMalen(); if (!scrollRaf) scrollRaf = requestAnimationFrame(gleiten);
+        railMalen(); gleitBilder = 0; if (!scrollRaf) scrollRaf = requestAnimationFrame(gleiten);
       }
       function los(ev) {
         rail.removeEventListener("pointermove", mv); rail.removeEventListener("pointerup", los); rail.removeEventListener("pointercancel", los);
         try { rail.releasePointerCapture(e.pointerId); } catch (x) {}
         html.classList.remove("rail-zieht"); knopf.classList.remove("zieht"); zeige.classList.remove("an"); ziehtGerade = false;
-        if (zieht) {  // ausgleiten lassen, danach folgt der Regler wieder der Seite
-          var ziel = railZug ? railZug.s : scrollY;
-          (function aus() { var d = ziel - scrollY; if (Math.abs(d) > .6) { scrollTo(0, scrollY + d * .18); requestAnimationFrame(aus); } else { scrollTo(0, ziel); railZug = null; railMalen(); } })();
+        if (zieht) {  // ausgleiten lassen (gleiten() gibt den Regler am Ende wieder frei)
+          gleitBilder = 0; if (!scrollRaf) scrollRaf = requestAnimationFrame(gleiten);
           Sound.play("drop"); abdocken(); return;
         }
         if (kachel) railHin(kachel.dataset.rail, true);
@@ -2498,6 +2511,9 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     // Angedockt: der Klick gehört der Leiste, auch wenn der (unsichtbare) Mauszeiger knapp daneben ist
     document.addEventListener("pointerdown", function (e) {
       if (!dock.an || e.button > 0 || e.pointerType !== "mouse") return;
+      var G = geo(), dx = Math.abs(e.clientX - G.x), dy = e.clientY < G.oben ? G.oben - e.clientY : e.clientY > G.unten ? e.clientY - G.unten : 0;
+      if (Math.sqrt(dx * dx + dy * dy) > RAUS || !railAn()) { abdocken(); return; }  // nie Klicks woanders schlucken
+      gleitenStopp();
       e.preventDefault(); e.stopPropagation();
       start(e, dock.kachel, dock.y);
     }, true);
