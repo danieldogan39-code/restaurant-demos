@@ -673,9 +673,16 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   .srail-knopf.zieht { z-index: 3; transform: scale(1.6); box-shadow: 0 0 0 4px rgba(255,87,87,.45), 0 0 24px rgba(255,87,87,.95); }
   .srail-zeige { position: absolute; left: 2.9rem; top: 0; transform: translateY(-50%); white-space: nowrap; font-size: .76rem; font-weight: 700; color: #fff; background: rgba(255,87,87,.92); border-radius: 8px; padding: .2rem .55rem; opacity: 0; pointer-events: none; transition: opacity .15s; box-shadow: 0 8px 20px -8px rgba(0,0,0,.8); }
   .srail-zeige.an { opacity: 1; }
-  html.rail-zieht, html.rail-zieht * { cursor: none !important; }
+  html.rail-zieht, html.rail-zieht *, html.rail-nah, html.rail-nah * { cursor: none !important; }
+  .srail a.zeigt .srail-name { opacity: 1; transform: translate(0, -50%); }
+  .srail a.zeigt { color: var(--ink); border-color: rgba(255,255,255,.35); }
+  /* Zeiger wie bei Apple: in der Nähe der Leiste verschwindet der Mauszeiger, eine Perle wird zur Linie gezogen und rastet an den Punkten ein */
+  .srail-zeiger { position: fixed; left: 0; top: 0; z-index: 2000; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%; pointer-events: none; background: rgba(255,255,255,.82); box-shadow: 0 0 0 1px rgba(255,255,255,.25), 0 4px 14px rgba(0,0,0,.5); opacity: 0; transform: translate3d(-100px, -100px, 0) scale(.6); transition: opacity .18s, width .22s var(--spring), height .22s var(--spring), margin .22s var(--spring), background .2s, box-shadow .2s, transform .12s var(--ease); }
+  html.rail-nah .srail-zeiger { opacity: 1; }
+  .srail-zeiger.auf-kachel { width: 46px; height: 46px; margin: -23px 0 0 -23px; background: rgba(255,255,255,.08); box-shadow: 0 0 0 2px rgba(255,255,255,.75), 0 0 22px rgba(123,175,255,.45); }
+  html.rail-zieht .srail-zeiger { opacity: 0; }
 }
-@media (prefers-reduced-motion: reduce) { .srail a, .srail-knopf, .srail-name { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .srail a, .srail-knopf, .srail-name, .srail-zeiger { transition: none; } }
 @media (max-width: 640px) {
   .app { padding-bottom: 5.2rem !important; }
   .top { gap: .7rem; margin-bottom: 1rem; }
@@ -924,6 +931,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   <div class="srail-knopf" id="srail-knopf" role="slider" tabindex="0" aria-label="Seite scrollen" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
   <span class="srail-zeige" id="srail-zeige" aria-hidden="true"></span>
 </nav>
+<div class="srail-zeiger" id="srail-zeiger" aria-hidden="true"></div>
 <nav class="mnav" id="mnav" aria-label="Bereiche">
   <a href="#kpis" data-sec="kpis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>Übersicht</a>
   <a href="#rank-title" data-sec="rank-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="10" rx="1.5"/><rect x="17" y="4" width="4" height="13" rx="1.5"/></svg>Board</a>
@@ -948,7 +956,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "b81afcc007";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "bc8d1d398b";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -2410,27 +2418,69 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     if (el) scrollTo({ top: el.getBoundingClientRect().top + scrollY - 16, behavior: sanft && !reduce ? "smooth" : "auto" });
   }
   (function () {
-    var rail = $("#srail"), knopf = $("#srail-knopf"), zeige = $("#srail-zeige");
-    rail.addEventListener("pointerdown", function (e) {
-      if (e.button > 0 || !railAn()) return;
-      e.preventDefault();
-      var M = railMasse(), rr = rail.getBoundingClientRect(), y0 = e.clientY, zieht = false, kachel = e.target.closest("a[data-rail]");
+    var rail = $("#srail"), knopf = $("#srail-knopf"), zeige = $("#srail-zeige"), zeiger = $("#srail-zeiger"), html = document.documentElement;
+    var RADIUS = 46, FANG = 16, dock = { an: false, y: 0, kachel: null }, ziehtGerade = false;
+    function geo() {
+      var sp = $("#srail-spur").getBoundingClientRect();
+      return { x: sp.left + sp.width / 2, oben: sp.top, unten: sp.bottom, kacheln: [].slice.call(rail.querySelectorAll("a[data-rail]")).map(function (k) { var r = k.getBoundingClientRect(); return { el: k, y: r.top + r.height / 2 }; }) };
+    }
+    function abdocken() {
+      if (!dock.an) return;
+      dock.an = false; html.classList.remove("rail-nah"); zeiger.classList.remove("auf-kachel");
+      if (dock.kachel) dock.kachel.classList.remove("zeigt"); dock.kachel = null;
+    }
+    // Nähe zur Leiste: Mauszeiger verschwindet, die Perle wird mit wachsender Nähe auf die Linie gezogen und rastet an Punkten ein
+    addEventListener("pointermove", function (e) {
+      if (e.pointerType !== "mouse" || ziehtGerade) return;
+      if (!railAn()) { abdocken(); return; }
+      var G = geo(), dx = Math.abs(e.clientX - G.x), dy = e.clientY < G.oben ? G.oben - e.clientY : e.clientY > G.unten ? e.clientY - G.unten : 0, d = Math.sqrt(dx * dx + dy * dy);
+      if (d > RADIUS) { abdocken(); return; }
+      if (!dock.an) { dock.an = true; html.classList.add("rail-nah"); }
+      var y = Math.max(G.oben, Math.min(G.unten, e.clientY)), naechste = null;
+      G.kacheln.forEach(function (k) { if (Math.abs(k.y - y) < FANG && (!naechste || Math.abs(k.y - y) < Math.abs(naechste.y - y))) naechste = k; });
+      if (naechste) y = naechste.y;
+      if ((naechste && naechste.el) !== dock.kachel) {
+        if (dock.kachel) dock.kachel.classList.remove("zeigt");
+        dock.kachel = naechste ? naechste.el : null;
+        if (dock.kachel) { dock.kachel.classList.add("zeigt"); Sound.play("hover"); }
+      }
+      zeiger.classList.toggle("auf-kachel", !!naechste);
+      var zug = naechste ? 1 : 1 - Math.pow(d / RADIUS, 2);  // je näher, desto stärker eingezogen; an einem Punkt rastet der Ring genau ein
+      dock.y = y;
+      zeiger.style.transform = "translate3d(" + (e.clientX + (G.x - e.clientX) * zug) + "px," + (e.clientY + (y - e.clientY) * zug) + "px,0)";
+    }, { passive: true });
+    document.addEventListener("pointerleave", abdocken);
+    addEventListener("blur", abdocken);
+
+    function start(e, kachel, yStart) {
+      var M = railMasse(), rr = rail.getBoundingClientRect(), y0 = e.clientY, zieht = false;
       try { rail.setPointerCapture(e.pointerId); } catch (x) {}
       function mv(ev) {
         if (!zieht && Math.abs(ev.clientY - y0) < 4) return;
-        if (!zieht) { zieht = true; document.documentElement.classList.add("rail-zieht"); knopf.classList.add("zieht"); zeige.classList.add("an"); Sound.play("pick"); }
+        if (!zieht) { zieht = ziehtGerade = true; html.classList.add("rail-zieht"); knopf.classList.add("zieht"); zeige.classList.add("an"); if (dock.kachel) dock.kachel.classList.remove("zeigt"); Sound.play("pick"); }
         scrollTo(0, Math.round(railS(M, ev.clientY - rr.top))); railMalen();
       }
       function los(ev) {
         rail.removeEventListener("pointermove", mv); rail.removeEventListener("pointerup", los); rail.removeEventListener("pointercancel", los);
         try { rail.releasePointerCapture(e.pointerId); } catch (x) {}
-        document.documentElement.classList.remove("rail-zieht"); knopf.classList.remove("zieht"); zeige.classList.remove("an");
-        if (zieht) { Sound.play("drop"); return; }
+        html.classList.remove("rail-zieht"); knopf.classList.remove("zieht"); zeige.classList.remove("an"); ziehtGerade = false;
+        if (zieht) { Sound.play("drop"); abdocken(); return; }
         if (kachel) railHin(kachel.dataset.rail, true);
-        else scrollTo({ top: Math.round(railS(M, ev.clientY - rr.top)), behavior: reduce ? "auto" : "smooth" });
+        else scrollTo({ top: Math.round(railS(M, yStart - rr.top)), behavior: reduce ? "auto" : "smooth" });
         Sound.play("tick");
       }
       rail.addEventListener("pointermove", mv); rail.addEventListener("pointerup", los); rail.addEventListener("pointercancel", los);
+    }
+    // Angedockt: der Klick gehört der Leiste, auch wenn der (unsichtbare) Mauszeiger knapp daneben ist
+    document.addEventListener("pointerdown", function (e) {
+      if (!dock.an || e.button > 0 || e.pointerType !== "mouse") return;
+      e.preventDefault(); e.stopPropagation();
+      start(e, dock.kachel, dock.y);
+    }, true);
+    rail.addEventListener("pointerdown", function (e) {
+      if (e.button > 0 || !railAn()) return;
+      e.preventDefault();
+      start(e, e.target.closest("a[data-rail]"), e.clientY);
     });
     rail.querySelectorAll("a[data-rail]").forEach(function (a) {
       a.addEventListener("click", function (e) { e.preventDefault(); if (e.detail === 0) railHin(a.dataset.rail, true); });  // Tastatur
