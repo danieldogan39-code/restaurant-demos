@@ -67,6 +67,8 @@ button, input { font: inherit; color: inherit; }
 .vtools .btn { padding: .4rem .75rem; font-size: .82rem; }
 .btn.icon { padding: .6rem .7rem; }
 .btn.icon[aria-pressed="false"] { opacity: .55; }
+#stimme .aus { display: none; }
+#stimme[aria-pressed="false"] .aus { display: inline; }
 @media (max-width: 640px) {
   .voice { grid-template-columns: 1fr; justify-items: center; text-align: left; }
   .voice > div:last-child { justify-self: stretch; }
@@ -642,6 +644,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       <button class="btn" id="cost-btn" type="button" aria-expanded="false" aria-controls="cost"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Kosten</button>
       <button class="btn icon" id="mus" type="button" aria-pressed="true" title="Hintergrundmusik an/aus" aria-label="Hintergrundmusik an/aus"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></button>
       <button class="btn icon" id="snd" type="button" aria-pressed="true" title="Töne an/aus" aria-label="Töne an/aus"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H3v6h3l5 4z"/><path class="wave" d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg></button>
+      <button class="btn icon" id="stimme" type="button" aria-pressed="true" title="Sprachassistent und Intro an/aus" aria-label="Sprachassistent und Intro an/aus"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/><path class="aus" d="M4 4l16 16"/></svg></button>
     </div>
   </header>
 
@@ -814,7 +817,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "a717ab0771";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "298128d6aa";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -845,12 +848,12 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   function unlock(pw, silent) {
     lock.classList.add("busy"); setMsg(silent ? "" : "Entschlüssele …", true);
     return fetchBlob().then(function (blob) { return decrypt(blob, pw); }).then(function (data) {
-      PW = pw; DATA = data;
+      PW = pw; DATA = data; Stimme.abgleich(data);
       if ($("#remember").checked) try { localStorage.setItem(STORE, pw); } catch (e) {}
       lock.classList.add("gone"); setTimeout(function () { lock.hidden = true; }, 800);
       GESTURE = !silent;
       if (!startBoot(data, !silent) && !silent) Sound.play("unlock");
-      if (reduce) { Music.load(data); document.addEventListener("click", function () { Music.start(3); }, { once: true }); }
+      if (reduce || !Stimme.an()) { Music.load(data); document.addEventListener("click", function () { Music.start(3); }, { once: true }); }
       var app = $("#app"); app.hidden = false; requestAnimationFrame(function () { app.classList.add("on"); });
       render(data);
     }).catch(function (err) {
@@ -1084,10 +1087,57 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     return { play: play, bedOnly: bedOnly, reverb: reverb };
   })();
 
+  /* ---------- Sprachassistent mit Intro: an/aus bleibt gespeichert (auf diesem Gerät sofort, im Repository für
+     alle Geräte; der Agent erzeugt dann auch keine neue Sprachausgabe) ---------- */
+  var Stimme = (function () {
+    var st = { an: true, zeit: "" };
+    try { var s = JSON.parse(localStorage.getItem("cockpit-stimme") || "null"); if (s && typeof s.an === "boolean") st = s; } catch (e) {}
+    function merken() { try { localStorage.setItem("cockpit-stimme", JSON.stringify(st)); } catch (e) {} }
+    function sync() {
+      var b = $("#stimme"); if (!b) return;
+      b.setAttribute("aria-pressed", st.an ? "true" : "false");
+      b.title = st.an ? "Sprachassistent und Intro sind an (zum Ausschalten klicken)" : "Sprachassistent und Intro sind aus (zum Einschalten klicken)";
+    }
+    function speichern() {
+      var stTok = (DATA && DATA.steuerung) || {};
+      if (!stTok.token) return Promise.resolve(false);
+      var path = "data/cockpit.json", wahl = st;
+      function attempt(retry) {
+        return api("/contents/" + path, { allow404: true }).then(function (f) {
+          var cur = f ? JSON.parse(fromU8(f.content) || "{}") : {};
+          cur.stimme = wahl;
+          return writeFile(path, cur, "Cockpit: Sprachassistent " + (wahl.an ? "an" : "aus"), f && f.sha);
+        }).catch(function (e) { if (retry && (e.status === 409 || e.status === 422)) return attempt(false); throw e; });
+      }
+      return attempt(true).then(function () { return true; });
+    }
+    sync();
+    return {
+      an: function () { return st.an; },
+      // Wahl von einem anderen Gerät (über die Cockpit-Daten) gilt, wenn sie neuer ist als die auf diesem Gerät
+      abgleich: function (d) {
+        var r = ((d || {}).einstellungen || {}).stimme;
+        if (r && typeof r.an === "boolean" && (r.zeit || "") > (st.zeit || "")) { st = { an: r.an, zeit: r.zeit }; merken(); }
+        sync();
+      },
+      setzen: function (an) { st = { an: an, zeit: new Date().toISOString() }; merken(); sync(); return speichern(); }
+    };
+  })();
+  $("#stimme").addEventListener("click", function () {
+    var an = !Stimme.an();
+    if (!an) stopVoice();
+    Sound.play(an ? "open" : "close");
+    Stimme.setzen(an).then(function (alle) {
+      toast(an ? "Sprachassistent und Intro sind wieder an. Beim nächsten Öffnen startet das Intro mit dem Lagebericht."
+        : "Sprachassistent und Intro sind aus" + (alle ? ", auch nach dem Neuladen und auf deinen anderen Geräten." : " (auf diesem Gerät, auch nach dem Neuladen)."));
+      if (an && DATA) offerNewIntro(DATA);
+    }).catch(function () { toast("Auf diesem Gerät gespeichert. Für deine anderen Geräte ließ es sich gerade nicht sichern."); });
+  });
+
   var introAudio = null, introLoading = null;
   function loadIntro(d) {
     introAudio = null;
-    if (!d.intro || !d.intro.audio) { introLoading = Promise.resolve(); return introLoading; }
+    if (!Stimme.an() || !d.intro || !d.intro.audio) { introLoading = Promise.resolve(); return introLoading; }
     introLoading = fetch("intro.json?t=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.json(); })
       .then(function (blob) { return decryptBytes(blob, PW); })
       .then(function (buf) { introAudio = new Audio(URL.createObjectURL(new Blob([buf], { type: "audio/mpeg" }))); introAudio.preload = "auto"; })
@@ -1106,7 +1156,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     if (cur) box.scrollTop = Math.max(0, cur.offsetTop - box.offsetTop - box.clientHeight / 2);
   }
   function startBoot(d, gesture) {
-    if (reduce) return false;
+    if (reduce || !Stimme.an()) return false;
     var b = $("#boot");
     BOOTING = true; b.classList.remove("gone", "hit", "talk"); b.setAttribute("aria-hidden", "false");
     $("#boot-lines").innerHTML = ""; $("#boot-pct").textContent = "0 %"; $("#boot-sub").innerHTML = "";
@@ -1131,6 +1181,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     Sound.play("close"); stopVoice();
   });
   function offerNewIntro(d) {
+    if (!Stimme.an()) return;
     loadIntro(d).then(function () {
       if (voiceOn || BOOTING) return;
       var pill = $("#vpill"), b = $("#vpill-stop");
@@ -1229,7 +1280,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   $("#snd").addEventListener("click", function () { Music.sync(); if (Sound.on) Music.start(2); else Music.stop(.6, true); });
 
   function startVoice(d, music) {
-    if (voiceOn || !Sound.on) return;
+    if (voiceOn || !Sound.on || !Stimme.an()) return;
     var text = (d.intro || {}).text || ""; if (!text) return;
     voiceOn = true; subtitles(text);
     var b = $("#boot"), pill = $("#vpill");
@@ -1334,7 +1385,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     }
   }
   function render(d) {
-    checkVersion(d);
+    checkVersion(d); Stimme.abgleich(d);
     var runs = d.laeufe || [], real = runs.filter(function (r) { return !r.probe; });
     var used = real.length ? real : runs;
     $("#stamp").textContent = "Stand: " + dfmt.format(new Date(d.erstellt));
