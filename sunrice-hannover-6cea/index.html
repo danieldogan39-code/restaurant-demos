@@ -1482,13 +1482,23 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       var weg = function () { return Math.max(0, spur.scrollWidth - sec.clientWidth + (parseFloat(getComputedStyle(sec).paddingLeft) || 0)); };
       w.aus();
       sec.classList.add("horizontal-an");
-      if (weg() < 60) { sec.classList.remove("horizontal-an"); w.an(); return function () {}; } // passt fast: kein Pin
+      var LUFT = 20;
+      // passt fast (kaum Bewegung) oder ist die Reihe selbst höher als der sichtbare Bereich: wischbar statt angedockt
+      if (weg() < 60 || spur.offsetHeight + 2 * LUFT > sichtbar()) { sec.classList.remove("horizontal-an"); w.an(); return function () {}; }
       fill(sec);
       var refill = function () { fill(sec); };
       ST.addEventListener("refreshInit", refill);
+      // Andocken je nach Bildschirmhöhe: Ist der Abschnitt höher als der sichtbare Bereich, dockt er erst an, wenn die
+      // Karten unten vollständig zu sehen sind (die Überschrift darf dafür nach oben hinausrutschen), sonst unter dem Kopf
+      var oben = function () {
+        var r = sec.getBoundingClientRect(), s = spur.getBoundingClientRect();
+        var bedarf = Math.min(r.height, s.bottom - r.top + LUFT);
+        return Math.round(Math.min(kopf(), kopf() + sichtbar() - bedarf));
+      };
+      var anfang = function () { var o = oben(); return "top top" + (o < 0 ? "-=" + -o : "+=" + o); };
       // Pinlänge = Bewegung × 0,75, höchstens 1,2 sichtbare Höhen: die Reihe hängt nie, ohne dass sich etwas tut
       var dauer = function () { return Math.max(1, Math.round(Math.min(weg() * 0.75, sichtbar() * 1.2))); };
-      G.to(spur, { x: function () { return -weg(); }, ease: "none", scrollTrigger: { trigger: sec, start: start,
+      G.to(spur, { x: function () { return -weg(); }, ease: "none", scrollTrigger: { trigger: sec, start: anfang,
         end: function () { return "+=" + dauer(); }, pin: true, scrub: 0.6, anticipatePin: 1, invalidateOnRefresh: true } });
       return function () { sec.classList.remove("horizontal-an"); ST.removeEventListener("refreshInit", refill); unfill(sec); w.an(); };
     });
