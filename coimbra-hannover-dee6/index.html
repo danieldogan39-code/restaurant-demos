@@ -1,0 +1,1603 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coimbra · Portugiesisches Restaurant in der Charlottenstraße, Hannover</title>
+<meta name="description" content="Coimbra in Hannover: portugiesische Küche mit Fisch, Meeresfrüchten und Fleisch, viele Gerichte für mehrere Personen. Di–Fr ab 18 Uhr, Sa & So auch mittags. Charlottenstraße 88, Telefon 0511 451858.">
+<meta name="theme-color" content="#F4EEE2">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{
+--creme:#F4EEE2;--papier:#FBF7EE;--holz:#4A2C1A;--navy:#1C2850;--kobalt:#1F3E8C;--kirsch:#C2733A;--rot:#9B2C1C;
+--holz-weich:rgb(74 44 26/.8);--linie:rgb(74 44 26/.18);
+--f-display:"Gloock",Georgia,serif;--f-text:"Figtree",system-ui,sans-serif;--f-akzent:"Instrument Serif",Georgia,serif;
+--rand:clamp(1rem,5vw,4rem);--kopf:72px;--abschnitt:clamp(72px,10vw,136px);
+--fliese:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect width='28' height='28' fill='%23F4EEE2'/%3E%3Cg fill='%231F3E8C'%3E%3Crect x='.75' y='.75' width='26.5' height='26.5' fill='none' stroke='%231F3E8C' stroke-width='1.5'/%3E%3Cpath d='M14 5c2.6 3 2.6 6 0 9-2.6-3-2.6-6 0-9zM14 23c2.6-3 2.6-6 0-9-2.6 3-2.6 6 0 9zM5 14c3-2.6 6-2.6 9 0-3 2.6-6 2.6-9 0zM23 14c-3-2.6-6-2.6-9 0 3 2.6 6 2.6 9 0z'/%3E%3C/g%3E%3Ccircle cx='14' cy='14' r='1.8' fill='%23F4EEE2'/%3E%3C/svg%3E");
+--fliese-inv:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect width='28' height='28' fill='%231F3E8C'/%3E%3Cpath fill='%23F4EEE2' d='M14 4c2.8 3.2 2.8 6.6 0 10-2.8-3.4-2.8-6.8 0-10zM14 24c2.8-3.2 2.8-6.6 0-10-2.8 3.4-2.8 6.8 0 10zM4 14c3.2-2.8 6.6-2.8 10 0-3.4 2.8-6.8 2.8-10 0zM24 14c-3.2-2.8-6.6-2.8-10 0 3.4 2.8 6.8 2.8 10 0z'/%3E%3C/svg%3E");
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:var(--kopf)}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--creme);color:var(--holz);font:400 17px/1.6 var(--f-text);overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+p{margin:0}
+:focus-visible{outline:3px solid var(--kobalt);outline-offset:3px}
+.dunkel :focus-visible{outline-color:var(--creme)}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;margin:0;line-height:1.02;hyphens:auto;overflow-wrap:break-word}
+em{font-family:var(--f-akzent);font-style:italic;font-weight:400;color:var(--kobalt);font-size:1.08em;letter-spacing:.005em}
+.dunkel em{color:inherit}
+.wrap{max-width:1320px;margin-inline:auto;padding-inline:var(--rand)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.fliese-punkt{display:inline-block;flex:none;width:.2em;height:.2em;background:var(--fliese-inv) center/100%;transform:rotate(45deg) translateY(-.06em);margin-left:.14em}
+.fliesen{height:34px;border-block:3px solid var(--kobalt);background:var(--fliese) 0 0/28px 28px repeat-x}
+
+.knopf{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:16px 28px;border:0;border-radius:6px;font:600 16px/1.2 var(--f-text);color:var(--creme);text-decoration:none;cursor:pointer;background:linear-gradient(var(--navy),var(--navy)) no-repeat 0 0/0% 100%,var(--kobalt);transition:background-size .4s cubic-bezier(.6,0,.2,1)}
+.knopf:hover{background-size:100% 100%}
+.knopf svg{width:18px;height:18px;flex:none}
+.knopf-klein{min-height:44px;padding:10px 20px;font-size:15px}
+.knopf-hell{color:var(--holz);background:linear-gradient(var(--papier),var(--papier)) no-repeat 0 0/0% 100%,var(--creme)}
+.unterstrichen{display:inline-flex;align-items:center;min-height:44px;font-weight:600;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:6px;transition:text-decoration-color .25s}
+.unterstrichen:hover{text-decoration-color:var(--kirsch)}
+
+.kopf{position:sticky;top:0;z-index:50;height:var(--kopf);display:flex;align-items:center;gap:32px;padding-inline:var(--rand);background:var(--creme);border-bottom:1px solid var(--holz)}
+.marke{display:inline-flex;align-items:baseline;font:400 30px/1 var(--f-display);text-decoration:none;margin-right:auto}
+.kopf nav{display:flex;gap:28px}
+.kopf nav a{font-weight:500;font-size:15px;text-decoration:none;padding:12px 0;background:linear-gradient(var(--kirsch),var(--kirsch)) no-repeat 0 82%/0 2px;transition:background-size .3s}
+.kopf nav a:hover{background-size:100% 2px}
+
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:1fr auto;min-height:calc(100svh - var(--kopf) - var(--banner,0px))}
+.hero-text{align-self:end;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;padding:48px max(112px,var(--rand)) 96px var(--rand);max-width:760px;justify-self:end;width:100%}
+.status{display:flex;align-items:center;gap:12px;font-size:15px;font-weight:600;min-height:24px}
+.status .fliese-punkt{width:10px;height:10px;margin:0 2px;transform:rotate(45deg)}
+.status:has([data-offen="nein"]) .fliese-punkt{filter:grayscale(1);opacity:.55}
+.hero-name{font-size:clamp(3.6rem,7.4vw,8rem);color:var(--holz);white-space:nowrap;line-height:1;margin:16px 0 24px;display:block;max-width:100%}
+.name-punkt{display:inline-block;width:.16em;height:.16em;margin-left:.06em;background:var(--fliese-inv) center/100%;transform:rotate(45deg);border-radius:1px}
+.punkt{display:inline-block;width:.14em;height:.14em;margin-left:.08em;vertical-align:baseline;transform:rotate(45deg);overflow:visible;flex:none}
+.marke .punkt{width:.2em;height:.2em}
+.hero-aussage{font:500 clamp(1.25rem,2vw,1.6rem)/1.3 var(--f-text);max-width:30ch}
+.hero-satz{margin-top:16px;max-width:46ch;color:var(--holz-weich)}
+.hero-aktionen{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;margin-top:28px}
+.link-res{margin-top:6px;color:var(--kobalt)}
+.plakette{display:inline-flex;align-items:center;gap:12px;margin-top:22px;min-height:52px;padding:10px 18px 10px 12px;border:2px solid var(--kobalt);border-radius:4px;background:var(--papier);text-decoration:none;color:var(--holz);transition:transform .25s}
+.plakette:hover{transform:translateY(-2px)}
+.plakette::before{content:"";width:28px;height:28px;flex:none;background:var(--fliese-inv) center/100%;border-radius:2px}
+.plakette [data-bewertung]{display:inline-flex;align-items:baseline;gap:6px;flex-wrap:wrap}
+.bew-stern{color:var(--kobalt);font-size:17px}
+.bew-zahl{font:400 22px/1 var(--f-display)}
+.bew-text{font-size:14px;color:var(--holz-weich)}
+
+.hero-buehne{background:var(--navy);color:var(--creme);display:grid;place-items:center;padding:48px 64px 96px 112px}
+.hero-bild-wrap{--bw:min(500px,36vw,calc((100svh - var(--kopf) - 34px - 184px)/1.25));position:relative;width:var(--bw)}
+.hero-figur{margin:0}
+.bogen{overflow:hidden;border-radius:50% 50% 0 0/40% 40% 0 0;aspect-ratio:4/5;background:#2a3766}
+.bogen img{width:100%;height:100%;object-fit:cover}
+.hero-bogen img{object-position:50% 40%}
+.hero-figur figcaption{display:flex;flex-wrap:wrap;gap:2px 10px;margin-top:14px;padding-left:0;font-size:13px;line-height:1.45;color:rgb(244 238 226/.85)}
+.hero-figur figcaption .foto-nachweis{opacity:1}
+.foto-nachweis{font-size:12.5px;text-decoration:none;opacity:.9}
+.foto-nachweis:hover{text-decoration:underline}
+.hero-teller{position:absolute;left:-80px;top:calc(var(--bw)*1.25 - 130px)}
+.teller-rund{width:160px;aspect-ratio:1;border-radius:50%;overflow:hidden;border:6px solid var(--creme);box-shadow:0 16px 30px -8px rgb(8 12 30/.55)}
+.teller-rund img{width:100%;height:100%;object-fit:cover}
+.hero-teller .foto-nachweis{position:absolute;top:calc(100% + 8px);left:0;width:180px;color:var(--creme);line-height:1.35}
+.hero-fliesen{grid-column:1/-1}
+
+.haus{padding-block:var(--abschnitt)}
+.haus-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;align-items:center}
+.haus-text{grid-column:1/6}
+.haus-text h2{font-size:clamp(2.8rem,5.4vw,5rem)}
+.haus-text>p{margin-top:24px;max-width:46ch}
+.liste{margin:36px 0 0;font-variant-numeric:tabular-nums}
+.liste div{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid var(--linie)}
+.liste div:last-child{border-bottom:1px solid var(--linie)}
+.liste dt{color:var(--holz-weich)}
+.liste dd{margin:0;font-weight:600;text-align:right}
+.haus-bilder{grid-column:7/13;position:relative;padding-bottom:22%}
+.haus-bogen{position:relative;width:78%;margin:0 0 0 auto}
+.haus-bogen .bogen{aspect-ratio:1/1;border-radius:50% 50% 0 0/50% 50% 0 0}
+.nachweis-zeile{margin-top:8px;font-size:12.5px;line-height:1.4;color:var(--holz-weich)}
+.haus-bogen .nachweis-zeile{text-align:right;padding-left:40%}
+.haus-platte{position:absolute;left:0;bottom:0;width:50%;margin:0}
+.platte-bild{aspect-ratio:4/3;border-radius:16px;overflow:hidden;border:6px solid var(--creme);box-shadow:0 20px 40px -24px rgb(40 20 10/.6);background:var(--papier)}
+.platte-bild img{width:100%;height:100%;object-fit:cover;object-position:center}
+
+.lesen{background:var(--holz);color:var(--creme);padding:96px var(--rand)}
+.lesen-grid{max-width:1320px;margin-inline:auto;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;align-items:center}
+.lesen-bogen{grid-column:10/13;grid-row:1;align-self:end;margin:0}
+.lesen-bogen .bogen{aspect-ratio:1;border-radius:50%;background:#2b1b11;border:6px solid var(--creme)}
+.lesen-bogen img{object-position:50% 50%}
+.lesen-bogen figcaption{margin-top:10px}
+.lesen p{grid-column:1/10;grid-row:1;font:400 clamp(2rem,4.6vw,4.4rem)/1.1 var(--f-display);max-width:20ch;hyphens:manual}
+
+.tisch{padding-block:var(--abschnitt)}
+.tisch-kopf{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px 48px;margin-bottom:40px}
+.tisch-kopf h2{font-size:clamp(2.6rem,6vw,5.4rem);max-width:12ch}
+.tisch-kopf p{max-width:38ch;color:var(--holz-weich)}
+.raster{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr) minmax(0,1fr);grid-template-rows:repeat(2,minmax(0,1fr));gap:16px;height:min(76svh,720px);max-width:1320px;margin-inline:auto;padding-inline:var(--rand)}
+.kachel{position:relative;margin:0;overflow:hidden;border-radius:10px;background:#2b1b11;min-height:0}
+.kachel img{width:100%;height:100%;object-fit:cover}
+.kachel:nth-child(1){grid-area:1/1}.kachel:nth-child(2){grid-area:2/1}.kachel:nth-child(3){grid-area:1/2/3/3}.kachel:nth-child(4){grid-area:1/3}.kachel:nth-child(5){grid-area:2/3}
+.kachel figcaption{position:absolute;inset:auto 0 0;padding:56px 16px 14px;background:linear-gradient(transparent,rgb(24 14 8/.85));color:var(--creme);font-weight:600;font-size:15px;line-height:1.35}
+.kachel figcaption .foto-nachweis{display:block;font-weight:400;margin-top:2px}
+[data-raster-text]{position:absolute;left:clamp(14px,3vw,40px);top:clamp(14px,3vw,40px);max-width:380px;background:var(--creme);color:var(--holz);padding:18px 22px;border-radius:8px;border-top:6px solid var(--kobalt)}
+[data-raster-text] h3{font-size:clamp(1.5rem,2.6vw,2.2rem)}
+[data-raster-text] p{margin-top:8px;font-size:16px}
+[data-raster-text] a{color:var(--kobalt)}
+
+.karte-sec{padding-block:var(--abschnitt);overflow-x:clip}
+.karte-kopf h2{font-size:clamp(2.6rem,5.6vw,5rem);max-width:14ch}
+.karte-kopf p{margin-top:18px;max-width:52ch;color:var(--holz-weich)}
+.aushang{position:relative;max-width:1100px;margin:48px auto 0;background:var(--papier);border:clamp(10px,1.6vw,18px) solid var(--holz);border-radius:6px;box-shadow:inset 0 0 0 1px rgb(74 44 26/.3),0 30px 50px -34px rgb(40 20 10/.6);padding:clamp(20px,4.5vw,56px)}
+.aushang-raster{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px clamp(32px,5vw,72px)}
+.rubrik summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:2px solid var(--holz);padding-bottom:8px;min-height:44px}
+.rubrik summary::-webkit-details-marker{display:none}
+.rubrik h3{font-size:clamp(1.5rem,2.4vw,2rem)}
+.rubrik ul{list-style:none;margin:0;padding:0}
+.gericht{display:grid;grid-template-columns:auto minmax(24px,1fr) auto;align-items:baseline;gap:2px 10px;padding:12px 0;border-bottom:1px solid var(--linie)}
+.g-name{font-weight:700;font-size:18px}
+.g-fuell{border-bottom:2px dotted rgb(74 44 26/.35);transform:translateY(-5px);transition:border-color .25s}
+.gericht:hover .g-fuell{border-color:var(--kirsch)}
+.g-fliese{width:10px;height:10px;background:var(--fliese-inv) center/100%;transform:rotate(45deg)}
+.g-text{grid-column:1/-1;font-size:15.5px;color:var(--holz-weich)}
+.aushang-bild{margin:18px 0 0;aspect-ratio:3/2;border-radius:6px;overflow:hidden}
+.aushang-bild img,.pudding img{width:100%;height:100%;object-fit:cover}
+.mit-bild{display:grid;grid-template-columns:minmax(0,1fr) 112px;gap:18px;align-items:end}
+.pudding{margin:0;aspect-ratio:4/5;border-radius:50% 50% 0 0/40% 40% 0 0;overflow:hidden}
+.aushang-fuss{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px;margin-top:36px;padding-top:20px;border-top:2px dashed var(--linie);font-size:16px}
+.aushang-fuss a{color:var(--kobalt);font-weight:700}
+.nata{position:absolute;right:clamp(-90px,-5vw,-30px);bottom:-70px;width:clamp(170px,22vw,300px);height:auto;object-fit:contain;filter:drop-shadow(0 12px 14px rgb(60 30 10/.35));pointer-events:none}
+.vorschau{position:fixed;left:0;top:0;z-index:40;width:180px;aspect-ratio:4/5;border-radius:50% 50% 0 0/40% 40% 0 0;overflow:hidden;pointer-events:none;border:5px solid var(--papier);box-shadow:0 20px 40px -18px rgb(40 20 10/.6)}
+.vorschau img{width:100%;height:100%;object-fit:cover}
+
+.zeiten{padding-block:var(--abschnitt)}
+.zeiten-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(40px,6vw,96px);align-items:start}
+.zeiten h2{font-size:clamp(2.4rem,4.8vw,4.4rem);max-width:15ch}
+.woche{--sh:260px;position:relative;display:grid;grid-template-columns:30px repeat(7,minmax(0,1fr));gap:6px;margin-top:40px;font-variant-numeric:tabular-nums}
+.achse{position:relative;margin-top:34px;height:var(--sh);font-size:12.5px;color:var(--holz-weich)}
+.achse span{position:absolute;right:2px;top:calc((var(--s) - 12)/11*100%);transform:translateY(-50%)}
+.tag-kopf{height:28px;display:grid;place-items:center;font-weight:700;font-size:14px;border-radius:4px;margin-bottom:6px}
+.tag-spalte{position:relative;height:var(--sh);background:var(--papier);border:1px solid var(--linie);border-radius:4px}
+.balken{position:absolute;left:4px;right:4px;top:calc((var(--von) - 12)/11*100%);height:calc((var(--bis) - var(--von))/11*100%);background:var(--fliese-inv) 0 0/20px 20px;border-radius:3px}
+.zu{background:repeating-linear-gradient(45deg,rgb(74 44 26/.16) 0 2px,transparent 2px 9px)}
+.zu span{position:absolute;inset:0;display:grid;place-items:center;writing-mode:vertical-rl;transform:rotate(180deg);font-size:13px;font-weight:600}
+.tag.heute .tag-kopf{background:var(--kobalt);color:var(--creme)}
+.tag.heute .tag-spalte{border:2px solid var(--kobalt)}
+.jetzt{position:absolute;left:36px;right:0;top:calc(34px + (var(--h) - 12)/11*var(--sh));height:2px;background:var(--kobalt)}
+.jetzt span{position:absolute;right:0;bottom:4px;padding:1px 6px;border-radius:3px;background:var(--kobalt);color:var(--creme);font-size:12.5px;font-weight:600}
+.zeitliste{margin:32px 0 0;font-variant-numeric:tabular-nums}
+.zeitliste div{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-top:1px solid var(--linie)}
+.zeitliste dd{margin:0;text-align:right;font-weight:600}
+.lage h3{font-size:clamp(1.8rem,3vw,2.4rem)}
+.lage address{font-style:normal;margin-top:14px}
+.lage-links{display:flex;flex-wrap:wrap;gap:4px 28px;margin:12px 0 24px}
+.lage-links a{color:var(--kobalt)}
+.karten-rahmen{aspect-ratio:4/3;border:6px solid var(--holz);border-radius:6px;overflow:hidden;background:var(--papier)}
+[data-karte]{width:100%;height:100%}
+
+.reservieren{padding-block:var(--abschnitt)}
+.res-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px);align-items:start}
+.res-intro h2{font-size:clamp(2.6rem,5vw,4.6rem);max-width:12ch}
+.res-intro>p{margin-top:20px;max-width:40ch}
+.res-intro a[href^="tel"]{color:var(--kobalt);font-weight:700}
+.schild{position:relative;min-width:0;max-width:640px;width:100%;margin-bottom:64px;background:var(--papier);border:3px solid var(--holz);border-radius:10px;padding:clamp(18px,4vw,36px);box-shadow:0 26px 40px -30px rgb(40 20 10/.6)}
+.schild::after{content:"";position:absolute;left:14%;right:14%;top:calc(100% + 3px);height:42px;background:var(--holz);clip-path:polygon(9% 0,91% 0,100% 100%,0 100%);opacity:.9}
+.schild-kopf{font:400 clamp(1.7rem,3.6vw,2.5rem)/1.1 var(--f-display);padding-bottom:14px;margin-bottom:20px;border-bottom:2px dashed var(--linie);overflow-wrap:anywhere}
+[data-reservierung]{min-width:0;min-height:470px}
+[data-schritt]{min-width:0}
+[data-schritt]>h3{font-size:clamp(1.4rem,2.4vw,1.8rem);margin:4px 0 16px}
+.feld-titel{display:block;font-weight:700;font-size:15px;margin:18px 0 8px}
+.res-fortschritt{display:flex;gap:8px;list-style:none;margin:0 0 14px;padding:0}
+.res-punkt{flex:1;display:flex;align-items:center;gap:8px;min-width:0;font-size:14px;font-weight:600;color:var(--holz-weich)}
+.res-punkt:not(:last-child)::after{content:"";flex:1;height:2px;background:var(--linie);min-width:12px}
+.res-nr{flex:none;width:30px;height:30px;display:grid;place-items:center;border:2px solid var(--linie);border-radius:4px;font-variant-numeric:tabular-nums}
+.res-jetzt{color:var(--holz)}
+.res-jetzt .res-nr{border-color:var(--kobalt);color:var(--kobalt)}
+.res-erledigt .res-nr{background:var(--kobalt);border-color:var(--kobalt);color:var(--creme)}
+.res-erledigt::after{background:var(--kobalt)!important}
+.res-titel{white-space:nowrap}
+.res-zusammenfassung{font-variant-numeric:tabular-nums;font-weight:600;color:var(--kobalt);font-size:15px;margin-bottom:6px;min-height:1.6em}
+[data-tage],.res-zeitreihe,[data-personen]{display:grid;grid-template-columns:repeat(auto-fill,minmax(86px,1fr));gap:8px;min-width:0}
+.res-option{position:relative;display:block;min-width:0}
+.res-radio{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
+.res-label{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:48px;height:100%;padding:8px 6px;border:1.5px solid rgb(74 44 26/.32);border-radius:4px;background:var(--creme);font-weight:600;font-size:15px;line-height:1.2;text-align:center;font-variant-numeric:tabular-nums;transition:border-color .2s,background .2s}
+.res-label b{font-size:15px}
+.res-label small{font-size:13px;font-weight:500}
+.res-option:hover .res-label{border-color:var(--kobalt)}
+.res-radio:checked+.res-label{background:var(--kobalt);border-color:var(--kobalt);color:var(--creme)}
+.res-radio:focus-visible+.res-label{outline:3px solid var(--kobalt);outline-offset:2px}
+[aria-invalid="true"]{outline:2px solid var(--rot);outline-offset:4px;border-radius:4px}
+.res-zeitgruppe+.res-zeitgruppe{margin-top:14px}
+.res-tageszeit{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--holz-weich);margin-bottom:6px}
+.res-hinweis,.res-demo-hinweis{font-size:14px;color:var(--holz-weich);margin-top:12px}
+.res-hinweis a,.res-hinweis-text a{color:var(--kobalt);font-weight:700}
+.res-hinweis-text{font-size:15px;margin-top:14px}
+.felder{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 16px}
+.feld-voll{grid-column:1/-1}
+.feld label{display:block;font-weight:700;font-size:15px;margin:14px 0 6px}
+.feld input,.feld textarea{width:100%;min-height:48px;font:400 16px/1.4 var(--f-text);color:var(--holz);padding:12px 14px;border:1.5px solid rgb(74 44 26/.38);border-radius:4px;background:var(--creme)}
+.feld textarea{resize:vertical}
+.feld input:focus,.feld textarea:focus{outline:none;border-color:var(--kobalt);box-shadow:0 0 0 3px rgb(31 62 140/.22)}
+.feld [aria-invalid="true"]{outline:none;border-color:var(--rot)}
+.einw{display:flex;gap:12px;align-items:flex-start;margin-top:16px;padding:10px 0;font-size:15px;line-height:1.45;cursor:pointer}
+.einw input{width:24px;height:24px;flex:none;margin:0;accent-color:var(--kobalt)}
+.einw a{color:var(--kobalt)}
+[data-reservierung-fehler],.res-schritt-fehler{color:var(--rot);font-size:15px;font-weight:600;margin-top:10px}
+[data-reservierung-fehler]:empty,.res-schritt-fehler:empty{display:none}
+.res-nav{display:flex;gap:12px;align-items:center;margin-top:24px}
+.res-weiter,[data-reservierung] button[type="submit"]{flex:1;min-height:52px;padding:14px 24px;border:0;border-radius:6px;background:var(--kobalt);color:var(--creme);font:700 16px var(--f-text);cursor:pointer;transition:background .25s}
+.res-weiter:hover,[data-reservierung] button[type="submit"]:hover{background:var(--navy)}
+.res-zurueck,[data-reservierung-neu]{min-height:52px;padding:12px 18px;border:1.5px solid rgb(74 44 26/.38);border-radius:6px;background:transparent;color:var(--holz);font:600 15px var(--f-text);cursor:pointer}
+.res-zurueck:hover,[data-reservierung-neu]:hover{border-color:var(--holz)}
+[data-reservierung-erfolg]{text-align:center;padding:12px 0}
+.erfolg-gross{font:400 clamp(3rem,9vw,5.5rem)/1 var(--f-display);color:var(--kobalt)}
+.erfolg-name{font:400 clamp(1.5rem,3vw,2rem)/1.2 var(--f-display);margin-top:10px}
+.erfolg-daten{font-variant-numeric:tabular-nums;font-weight:700;margin:12px 0}
+[data-reservierung-erfolg] .plakette{margin:18px auto}
+[data-reservierung-neu]{margin-top:8px}
+@media (prefers-reduced-motion:no-preference){[data-reservierung-erfolg]:not([hidden]){animation:umstellen .8s cubic-bezier(.2,.7,.2,1)}}
+@keyframes umstellen{from{transform:perspective(900px) rotateY(-90deg);opacity:.3}to{transform:none;opacity:1}}
+
+.schluss{position:relative;background:var(--navy);color:var(--creme);min-height:min(80svh,820px);display:flex;flex-direction:column}
+.schluss-inhalt{position:relative;z-index:1;margin-top:auto;width:100%;max-width:1320px;margin-inline:auto;padding:96px var(--rand) 72px}
+.schluss-inhalt>*{max-width:min(760px,100%);margin-left:clamp(0px,7vw,110px)}
+.schluss .status{color:var(--creme)}
+.schluss h2{font-size:clamp(2.2rem,6vw,5.5rem);margin-top:18px;hyphens:none;overflow-wrap:normal}
+.schluss h2 em{font-size:1.04em}
+.schluss-satz{margin-top:20px;font-size:18px;max-width:42ch}
+.schluss-aktionen{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;margin-top:32px}
+.schluss .fliesen{position:relative;z-index:1}
+
+.fuss{background:var(--navy);color:var(--creme);padding:56px 0 calc(var(--szene-unten,0px) + 24px)}
+.fuss-raster{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;align-items:start}
+.fuss .marke{font-size:34px}
+.fuss p{margin-top:10px;font-size:16px;line-height:1.6}
+.fuss h2{font:600 14px/1.4 var(--f-text);color:rgb(244 238 226/.85)}
+.fuss-recht{margin-top:44px;padding-top:20px;border-top:1px solid rgb(194 115 58/.6);font-size:13px;color:rgb(244 238 226/.85)}
+.fuss-recht p{margin-top:6px;font-size:13px}
+.handyleiste{display:none}
+
+@media (max-width:1040px) and (min-width:900px){.hero-text{padding-right:96px}.kopf nav{gap:20px}}
+@media (max-width:899px){
+.kopf nav{display:none}
+.marke{font-size:28px}
+.hero{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto;min-height:0}
+.hero-buehne{order:-1;padding:16px var(--rand) 40px}
+.hero-bild-wrap{--bw:calc(100vw - 2*var(--rand));width:100%}
+.hero-bogen{aspect-ratio:auto;height:max(170px,28svh);border-radius:50% 50% 0 0/38% 38% 0 0}
+.hero-bu{display:none}
+.hero-figur figcaption{padding:0 108px 0 0;margin-top:10px}
+.hero-teller{left:auto;right:12px;top:calc(max(170px,28svh) - 64px)}
+.teller-rund{width:88px;border-width:4px}
+.hero-teller .foto-nachweis{left:auto;right:-12px;top:calc(100% + 28px);width:150px;text-align:right}
+.hero-text{padding:24px var(--rand) 40px;justify-self:stretch;max-width:none}
+.hero-name{font-size:clamp(3.2rem,16vw,4.6rem);margin:10px 0 20px}
+.hero-satz{margin-top:10px}
+.hero-aktionen{margin-top:20px}
+.hero-aktionen{flex-direction:column;align-items:stretch;width:100%;gap:12px}
+.hero-aktionen .knopf{width:100%}
+.link-route{justify-content:center;min-height:52px;border:2px solid var(--holz);border-radius:6px;text-decoration:none}
+.link-res{align-self:center}
+.haus-text,.haus-bilder{grid-column:1/-1}
+.haus-bilder{margin-top:24px}
+.raster{grid-template-columns:minmax(0,1fr);grid-template-rows:none;height:auto}
+.kachel,.kachel:nth-child(n){grid-area:auto;aspect-ratio:4/3}
+.kachel[data-mitte]{aspect-ratio:4/5}
+.aushang{margin-top:96px;padding-top:64px}
+.aushang-raster{grid-template-columns:minmax(0,1fr);gap:8px}
+.rubrik summary{cursor:pointer}
+.rubrik summary::after{content:"+";font:400 28px/1 var(--f-text);color:var(--kobalt);transition:transform .25s}
+.rubrik[open] summary::after{transform:rotate(45deg)}
+.rubrik ul{padding-bottom:16px}
+.nata{width:112px;right:-8px;top:-70px;bottom:auto;filter:drop-shadow(0 6px 6px rgb(60 30 10/.35))}
+.zeiten-grid,.res-grid{grid-template-columns:minmax(0,1fr)}
+.woche{--sh:220px;gap:4px}
+.fuss-raster{grid-template-columns:minmax(0,1fr)}
+.fuss{padding-bottom:calc(var(--szene-unten,0px) + 84px + env(safe-area-inset-bottom))}
+.handyleiste{position:fixed;left:0;right:0;bottom:0;z-index:60;display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:6px;padding:8px 8px calc(8px + env(safe-area-inset-bottom));background:var(--navy);border-top:3px solid var(--kobalt)}
+.handyleiste a{display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;border-radius:6px;color:var(--creme);font-weight:700;font-size:15px;text-decoration:none;border:1.5px solid rgb(244 238 226/.4)}
+.handyleiste a:first-child{background:var(--kobalt);border-color:var(--kobalt)}
+.handyleiste svg{width:17px;height:17px}
+.schluss{min-height:72svh}
+.schluss-inhalt>*{margin-left:0}
+.schluss-aktionen{flex-direction:column;align-items:stretch}
+}
+@media (min-width:900px){.rubrik summary{pointer-events:none}}
+@media (max-width:560px){
+.schild{padding:18px 16px;border-width:2px;margin-inline:calc(var(--rand)*-.5);width:auto}
+.res-titel{display:none}
+.res-jetzt .res-titel{display:inline}
+[data-tage]{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;gap:8px;padding-bottom:4px}
+[data-tage]::-webkit-scrollbar{display:none}
+[data-tage] .res-option{flex:0 0 26%;scroll-snap-align:start}
+.res-zeitreihe,[data-personen]{grid-template-columns:repeat(4,minmax(0,1fr))}
+.felder{grid-template-columns:minmax(0,1fr)}
+.res-zurueck{flex:0 0 auto}
+[data-reservierung]{min-height:500px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+.haus{padding-bottom:clamp(48px,6vw,80px)}
+.res-zeitreihe{grid-template-columns:repeat(4,minmax(0,1fr))}
+[data-zeiten]{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;min-width:0}
+[data-zeiten]>div:not(.res-option),[data-zeiten]>p,[data-zeiten]>span{grid-column:1/-1}
+[data-zeiten] .res-label{min-height:48px}
+.res-tageszeit{font-size:14px;letter-spacing:0;text-transform:none;font-weight:700;color:var(--holz)}
+.schild:has([data-reservierung-erfolg]:not([hidden])) .schild-kopf{display:none}
+[data-reservierung]:has([data-reservierung-erfolg]:not([hidden])){min-height:0}
+.erfolg-daten{font-size:17px}
+@media (max-width:899px){html{scroll-padding-bottom:88px}.lesen{padding-block:64px}.lesen-grid{grid-template-columns:minmax(0,1fr);gap:28px}.lesen-bogen{grid-column:1/-1;width:min(52%,240px)}.lesen p{grid-column:1/-1}}
+@media (max-width:560px){.res-fortschritt{max-width:100%;overflow:hidden;gap:6px}.res-punkt{flex:0 0 auto;gap:6px}.res-punkt:not(:last-child)::after{flex:0 0 14px;min-width:0}.res-jetzt{flex:1 1 auto;min-width:0}.res-jetzt .res-titel{overflow:hidden;text-overflow:ellipsis}.schild{padding-bottom:calc(72px + env(safe-area-inset-bottom))}[data-tage]{-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent)}}
+.kopf{background:#F4EEE2;box-shadow:0 6px 16px -12px rgb(40 20 10/.45)}
+.fliesen{position:relative;z-index:1;scroll-margin-top:calc(var(--kopf) + 24px)}
+.hero-text>.status{padding:6px 14px 6px 6px;border:1.5px solid var(--kobalt);border-radius:4px;background:var(--papier)}
+.hero-text>.status .fliese-punkt{width:22px;height:22px;margin:0;transform:none;border-radius:2px}
+@media (min-width:900px){.hero-buehne{position:relative}.hero-bild-wrap{position:static}.hero-teller{left:-80px;top:clamp(48px,12%,120px);z-index:2}.teller-rund{width:200px}.tisch .raster{max-width:none;grid-template-columns:minmax(0,.8fr) minmax(0,1.7fr) minmax(0,.8fr);height:min(80svh,780px)}}
+.tisch{background:var(--navy);color:var(--creme)}
+.tisch-kopf p{color:rgb(244 238 226/.85)}
+.tisch [data-raster-text] :focus-visible{outline-color:var(--kobalt)}
+[data-reservierung]{min-height:0}
+@media (min-width:561px){[data-tage]{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:8px;padding-bottom:8px;scrollbar-width:thin}[data-tage] .res-option{flex:0 0 96px;scroll-snap-align:start}}
+@media (max-width:899px){.lesen-bogen,.lesen p{grid-row:auto}.lesen-bogen{order:2}}
+@media (max-width:560px){.schild{padding-bottom:20px}[data-reservierung]{min-height:0}}
+</style>
+<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}[data-reservierung] [hidden],form[data-reservierung][hidden],[data-reservierung-erfolg][hidden]{display:none!important}:where(img){height:auto}[data-hintergrund]{position:relative;isolation:isolate;overflow:clip}:where([data-hintergrund="dunkel"]){background-color:#15120f;color:#fbf6ee}:where([data-hintergrund="hell"]){background-color:#f3eee6;color:#1b1814}[data-hintergrund-bild]{position:absolute!important;inset:0!important;z-index:-1!important;margin:0!important;padding:0!important;width:auto!important;height:auto!important;max-width:none!important;overflow:hidden!important;border:0!important;transform:none!important}[data-hintergrund-bild] img{position:absolute!important;left:0!important;top:-8%!important;width:100%!important;height:116%!important;max-width:none!important;max-height:none!important;object-fit:cover!important;display:block;border-radius:0!important;margin:0!important}[data-hintergrund-bild]::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:var(--schleier-grund),var(--schleier,linear-gradient(180deg,transparent 30%,rgb(0 0 0/.12)))}[data-hintergrund="dunkel"] [data-hintergrund-bild]{--schleier-grund:linear-gradient(rgb(12 10 8/.5),rgb(12 10 8/.5))}[data-hintergrund="hell"] [data-hintergrund-bild]{--schleier-grund:linear-gradient(rgb(250 247 242/.62),rgb(250 247 242/.62))}[data-hintergrund-bild] .foto-nachweis,[data-hintergrund-bild] figcaption{position:absolute!important;right:12px;bottom:10px;z-index:2;margin:0;color:#fff;opacity:.85;text-shadow:0 1px 3px rgb(0 0 0/.7)}[data-hintergrund="hell"] [data-hintergrund-bild] .foto-nachweis,[data-hintergrund="hell"] [data-hintergrund-bild] figcaption{color:#1b1814;text-shadow:0 1px 3px rgb(255 255 255/.8)}:where([data-bewertung]){display:inline-flex;align-items:baseline;gap:.35em;flex-wrap:wrap}:where(.bew-stern){color:#E3A21A}:where(.bew-zahl){font-weight:700;font-variant-numeric:tabular-nums}:where(.res-fortschritt){list-style:none;display:flex;gap:.75rem;padding:0;margin:0 0 1rem}:where(.res-punkt){display:flex;align-items:center;gap:.45rem;flex:1;opacity:.5}:where(.res-punkt.res-jetzt,.res-punkt.res-erledigt){opacity:1}:where(.res-punkt.res-erledigt){cursor:pointer}:where(.res-nr){display:inline-grid;place-items:center;width:1.7em;height:1.7em;border-radius:50%;border:1px solid currentColor;font-size:.85em;flex:none}:where(.res-zusammenfassung){margin:0 0 1rem;font-size:.92em;opacity:.8}:where(.res-nav){display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin-top:1.25rem}:where(.res-nav .res-weiter,.res-nav [type=submit]){margin-left:auto}:where(.res-nav button){min-height:44px}:where(.res-zeitgruppe){margin:0 0 .75rem}:where(.res-zeitreihe){display:flex;flex-wrap:wrap;gap:.5rem}:where(.res-tageszeit){margin:0 0 .35rem;font-size:.78em;letter-spacing:.08em;text-transform:uppercase;opacity:.7}@media (max-width:560px){:where(.res-punkt:not(.res-jetzt) .res-titel){display:none}:where(.res-punkt:not(.res-jetzt)){flex:none}:where(.res-zeitreihe){display:grid;grid-template-columns:repeat(4,1fr)}:where(.res-nav button){min-height:48px}:where(.res-nav .res-weiter,.res-nav [type=submit]){flex:1}[data-reservierung] input:not([type=radio]):not([type=checkbox]),[data-reservierung] textarea,[data-reservierung] select{font-size:max(16px,1em)!important}}</style><!--agent-lib--><link rel="stylesheet" href="lib/lenis.css"><script src="lib/gsap.min.js"></script><script src="lib/ScrollTrigger.min.js"></script><script src="lib/SplitText.min.js"></script><script src="lib/lenis.min.js"></script><!--/agent-lib--></head>
+<body><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für Coimbra. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-tel" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M5.5 3.5h3.2l1.8 4.6-2.3 1.5a11.5 11.5 0 0 0 6.2 6.2l1.5-2.3 4.6 1.8v3.2a2 2 0 0 1-2.1 2A16.5 16.5 0 0 1 3.5 5.6a2 2 0 0 1 2-2.1z"/></symbol><symbol id="i-fliese" viewBox="0 0 28 28"><rect width="28" height="28" rx="2" fill="#1F3E8C"/><path fill="#F4EEE2" d="M14 4c2.8 3.2 2.8 6.6 0 10-2.8-3.4-2.8-6.8 0-10zM14 24c2.8-3.2 2.8-6.6 0-10-2.8 3.4-2.8 6.8 0 10zM4 14c3.2-2.8 6.6-2.8 10 0-3.4 2.8-6.8 2.8-10 0zM24 14c-3.2-2.8-6.6-2.8-10 0 3.4 2.8 6.8 2.8 10 0z"/></symbol></svg>
+
+<header class="kopf">
+<a class="marke" href="#top" aria-label="Coimbra, zum Seitenanfang">Coimbra<svg class="punkt" viewBox="0 0 28 28" aria-hidden="true"><use href="#i-fliese"/></svg></a>
+<nav aria-label="Hauptnavigation"><a href="#karte">Karte</a><a href="#zeiten">Zeiten &amp; Lage</a><a href="#reservieren">Reservieren</a></nav>
+<a class="knopf knopf-klein" href="tel:0511451858"><svg aria-hidden="true"><use href="#i-tel"/></svg>Anrufen</a>
+</header>
+
+<main id="top">
+<section class="hero" aria-labelledby="hero-name">
+<div class="hero-text">
+<p class="status"><span class="fliese-punkt" aria-hidden="true"></span><span data-status></span></p>
+<h1 class="hero-name" id="hero-name">Coimbra<span class="name-punkt" aria-hidden="true"></span></h1>
+<p class="hero-aussage">Portugiesisch essen, am liebsten <em>für alle</em> in der Mitte.</p>
+<p class="hero-satz">Fisch, Meeresfrüchte und Fleisch nach portugiesischer Art. Di–Fr ab 18 Uhr, Sa &amp; So auch mittags. Charlottenstraße 88, Hannover.</p>
+<div class="hero-aktionen">
+<a class="knopf magnet" href="tel:0511451858"><svg aria-hidden="true"><use href="#i-tel"/></svg>Anrufen 0511 451858</a>
+<a class="unterstrichen link-route" href="https://www.google.com/maps/dir/?api=1&amp;destination=Restaurant+Coimbra+Charlottenstra%C3%9Fe+88+30449+Hannover" target="_blank" rel="noopener">Route planen →</a>
+</div>
+<a class="unterstrichen link-res" href="#reservieren">Tisch reservieren</a>
+<a class="plakette" href="https://www.google.com/maps/search/?api=1&amp;query=Restaurant+Coimbra&amp;query_place_id=ChIJ86qMxsJ0sEcRdITk7F_fIO4" target="_blank" rel="noopener"><span data-bewertung aria-label="4,6 von 5 Sternen bei 889 Google-Bewertungen"><span class="bew-stern" aria-hidden="true">★</span><span class="bew-zahl">4,6</span><span class="bew-text">889 Bewertungen auf Google</span></span></a>
+</div>
+<div class="hero-buehne dunkel">
+<div class="hero-bild-wrap">
+<figure class="hero-figur" data-foto>
+<div class="bogen hero-bogen"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfBy1vpzgZ7CoynV534l0FlQ3Yaw0msJsHX8qf990NMzdAZn6Dm1jCWzp0FdWXfgX91BZ-bU3uZXF5xtF4IWo4HJFFhFXVb3cCcO6v8ZCfTr63_BBDfhesf7vBDIvbSkW24eHNZxw=s4800-w1800" alt="Gastraum des Coimbra: gedeckte Tische mit weißen Servietten, dunkle Holzvertäfelung, Pflanzen" width="1200" height="900" fetchpriority="high" referrerpolicy="no-referrer"></div>
+<figcaption><span class="hero-bu">Der Gastraum in der Charlottenstraße.</span> <span>Fotos: <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/100500698762205759527" target="_blank" rel="noopener">Frank-Michael Preuss</a>, <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/115132343803911917845" target="_blank" rel="noopener">T L</a> · Google Maps</span></figcaption>
+</figure>
+<div class="hero-teller" data-foto>
+<div class="teller-rund"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLdvxKJav7-hiGAaIZeR6TaL23YfEq5Ry6Pnxl1dOZ8aSWDkEMjAuMacKP0ytTQ0Nh9Pnetd6Z8k27bgj5hk6A1LtIny-YyUHRCcnzzCStsR900_jR_AD0y4OnE9TCKQfPZkBnXGMGVgk68T=s4800-w1000" alt="Meeresfrüchte-Paella mit Miesmuscheln, Garnelen und Zitrone in der Pfanne" width="1080" height="1000" referrerpolicy="no-referrer"></div>
+</div>
+</div>
+</div>
+<div class="fliesen hero-fliesen" aria-hidden="true"></div>
+</section>
+
+<section class="haus" aria-labelledby="haus-titel">
+<div class="wrap haus-grid">
+<div class="haus-text">
+<h2 id="haus-titel">Um sechs ist es voll.</h2>
+<p>Coimbra ist ein familiäres portugiesisches Restaurant in Hannover. Viele Gerichte sind für mehrere Personen gedacht und kommen in die Mitte des Tisches. Abends sind die Plätze schnell vergeben, also lieber vorher anrufen oder einen Tisch reservieren.</p>
+<dl class="liste">
+<div><dt>Küche</dt><dd>portugiesisch</dd></div>
+<div><dt>Abends</dt><dd>Di–So ab 18:00</dd></div>
+<div><dt>Mittags</dt><dd>Sa &amp; So 12:00–14:30</dd></div>
+<div><dt>Montag</dt><dd>Ruhetag</dd></div>
+<div><dt>Draußen</dt><dd>Plätze vorhanden</dd></div>
+<div><dt>Mitnehmen</dt><dd>möglich</dd></div>
+</dl>
+</div>
+<div class="haus-bilder">
+<figure class="haus-bogen" data-foto>
+<div class="bogen haus-bogen-maske"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfBy1vpzgZ7CoynV534l0FlQ3Yaw0msJsHX8qf990NMzdAZn6Dm1jCWzp0FdWXfgX91BZ-bU3uZXF5xtF4IWo4HJFFhFXVb3cCcO6v8ZCfTr63_BBDfhesf7vBDIvbSkW24eHNZxw=s4800-w1800" alt="Gastraum des Coimbra mit gedeckten Tischen, weißen Servietten und dunkler Holzvertäfelung" width="1200" height="900" loading="lazy" referrerpolicy="no-referrer"></div>
+<figcaption class="nachweis-zeile"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/100500698762205759527" target="_blank" rel="noopener">Foto: Frank-Michael Preuss · Google Maps</a></figcaption>
+</figure>
+<figure class="haus-platte" data-foto>
+<div class="platte-bild"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLeeFyqqWBtiEAxc-1A31Qk-0SwoV0jh7aepzDR8DNG9ZvXz-UJev74muKGWyJ1-RIUoArGtxGkr9JLmoWd2Dp9FKoKDJEnapjPk8f5oHrwQ63m9DM_deK7mm6l-FiAcyMUDb2kpI7DhZYI=s4800-w1000" alt="Gemischte Fischplatte mit Garnelen, Sardinen, Muscheln, Pommes frites und Knoblauchsauce" width="1200" height="788" loading="lazy" referrerpolicy="no-referrer"></div>
+<figcaption class="nachweis-zeile"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/100164284792864906818" target="_blank" rel="noopener">Foto: Mike · Google Maps</a></figcaption>
+</figure>
+</div>
+</div>
+</section>
+
+<div class="fliesen" aria-hidden="true"></div>
+
+<section class="lesen dunkel" aria-label="Wie bei uns gegessen wird">
+<div class="lesen-grid">
+<figure class="lesen-bogen" data-foto>
+<div class="bogen"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLdvxKJav7-hiGAaIZeR6TaL23YfEq5Ry6Pnxl1dOZ8aSWDkEMjAuMacKP0ytTQ0Nh9Pnetd6Z8k27bgj5hk6A1LtIny-YyUHRCcnzzCStsR900_jR_AD0y4OnE9TCKQfPZkBnXGMGVgk68T=s4800-w1000" alt="Meeresfrüchte-Paella in der Pfanne, mit Miesmuscheln, Garnelen und Zitrone" width="1080" height="1000" loading="lazy" referrerpolicy="no-referrer"></div>
+<figcaption><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/115132343803911917845" target="_blank" rel="noopener">Foto: T L · Google Maps</a></figcaption>
+</figure>
+<p data-szene="lesen">Bei uns kommt die Pfanne in die Mitte, die Fischplatte wird geteilt, dazu Kartoffelspalten und ein Sagres, und zum Schluss gibt es Pudding mit Karamellsauce.</p>
+</div>
+</section>
+
+<div class="fliesen" aria-hidden="true"></div>
+
+<section class="tisch dunkel" data-szene="raster-zoom" aria-labelledby="tisch-titel">
+<div class="wrap tisch-kopf">
+<h2 id="tisch-titel">Was auf den Tisch kommt</h2>
+<p>Fotos von Gästen aus dem Coimbra: Platten, Pfannen und Gegrilltes, so wie sie aus der Küche kommen.</p>
+</div>
+<div class="raster">
+<figure class="kachel" data-foto>
+<img src="https://lh3.googleusercontent.com/grass-cs/AABkmLeeFyqqWBtiEAxc-1A31Qk-0SwoV0jh7aepzDR8DNG9ZvXz-UJev74muKGWyJ1-RIUoArGtxGkr9JLmoWd2Dp9FKoKDJEnapjPk8f5oHrwQ63m9DM_deK7mm6l-FiAcyMUDb2kpI7DhZYI=s4800-w1000" alt="Fischplatte mit Garnelen, Sardinen und Muscheln" width="1200" height="788" loading="lazy" referrerpolicy="no-referrer">
+<figcaption>Fischplatte<a class="foto-nachweis" href="https://maps.google.com/maps/contrib/100164284792864906818" target="_blank" rel="noopener">Foto: Mike · Google Maps</a></figcaption>
+</figure>
+<figure class="kachel" data-foto>
+<img src="https://lh3.googleusercontent.com/grass-cs/AABkmLcKIgWWp9Osa4PDcNY-4l70zpYGnTZXPcjebce47CAdcV-Zc3q_-vqJTbjZL-HQs54xIUR4HwULn5HX2CyKHrl3E77Ic_p9fnnsUjyvQSbg2-sbGyCKjrXsvX0hhoAEfzvbLLo=s4800-w1000" alt="Gegrillter Tintenfisch mit Salzkartoffeln und Olivenöl" width="1200" height="675" loading="lazy" referrerpolicy="no-referrer">
+<figcaption>Gegrillter Tintenfisch mit Kartoffeln<a class="foto-nachweis" href="https://maps.google.com/maps/contrib/110619496981571295787" target="_blank" rel="noopener">Foto: Frank Trouw · Google Maps</a></figcaption>
+</figure>
+<figure class="kachel" data-foto data-mitte>
+<img src="https://lh3.googleusercontent.com/grass-cs/AABkmLdvxKJav7-hiGAaIZeR6TaL23YfEq5Ry6Pnxl1dOZ8aSWDkEMjAuMacKP0ytTQ0Nh9Pnetd6Z8k27bgj5hk6A1LtIny-YyUHRCcnzzCStsR900_jR_AD0y4OnE9TCKQfPZkBnXGMGVgk68T=s4800-w1000" alt="Meeresfrüchte-Paella mit Miesmuscheln, Garnelen und Zitronenspalten in der Pfanne" width="1080" height="1000" loading="lazy" referrerpolicy="no-referrer">
+<figcaption>Meeresfrüchte-Paella<a class="foto-nachweis" href="https://maps.google.com/maps/contrib/115132343803911917845" target="_blank" rel="noopener">Foto: T L · Google Maps</a></figcaption>
+<div data-raster-text><h3>Die Pfanne kommt in die Mitte.</h3><p>Paella und Arroz de Marisco werden am Tisch geteilt. <a href="#karte">Zur Karte</a></p></div>
+</figure>
+<figure class="kachel" data-foto>
+<img src="https://lh3.googleusercontent.com/grass-cs/AABkmLf-S-DfYwUYCJA3fzHKuSQ_tY3ZVfNnD1dgzvDGwF1lrGqx_fBVsW9usslZMGRSxx3NqLbi6W49UjxzKT6w_tCGrd9E1lr6EiiqWNev32Olmgoa6P8hrAd8LLSPiN0RJ_aOlPL4Jw=s4800-w1000" alt="Gegrillte Dorade mit Zitrone, Kartoffeln und Gemüse" width="900" height="1200" loading="lazy" referrerpolicy="no-referrer">
+<figcaption>Gegrillte Dorade<a class="foto-nachweis" href="https://maps.google.com/maps/contrib/115458053723062099798" target="_blank" rel="noopener">Foto: M D · Google Maps</a></figcaption>
+</figure>
+<figure class="kachel" data-foto>
+<img src="https://lh3.googleusercontent.com/grass-cs/AABkmLcA3OvdoHs7-n1OR2Z7GsJtRSRubj9PGyIoZz9Q_UZchaK-3vSn1AM_vJCfRgOeVLD0iT4OCZfcYd9igj_JDNh_h7qYce6kBW6QejA6-Pq6P2jWJxZl2AfNukWtkWExy2uP_FLa=s4800-w1000" alt="Geschmortes Fleisch in dunkler Sauce mit Kartoffeln, Blumenkohl und Brokkoli" width="900" height="1200" loading="lazy" referrerpolicy="no-referrer">
+<figcaption>Fleisch, geschmort, mit Kartoffeln<a class="foto-nachweis" href="https://maps.google.com/maps/contrib/100027869544419655690" target="_blank" rel="noopener">Foto: Madalina Marancea · Google Maps</a></figcaption>
+</figure>
+</div>
+</section>
+
+<section class="karte-sec" id="karte" aria-labelledby="karte-titel">
+<div class="wrap">
+<div class="karte-kopf">
+<h2 id="karte-titel">Für die Mitte, vom Grill, <em>zum Schluss</em>.</h2>
+<p>Ein Auszug aus dem, was regelmäßig auf den Tisch kommt. Die Fischplatte kommt in die Mitte, dazu Kartoffeln und Knoblauchsauce.</p>
+</div>
+<div class="aushang">
+<img class="nata" src="ki-pastel-de-nata.webp" alt="Pastel de Nata mit karamellisierter Oberfläche" width="800" height="800" loading="lazy" data-tiefe="20">
+<div class="aushang-raster">
+<div>
+<details class="rubrik" open><summary><h3>Für die Mitte</h3></summary>
+<ul>
+<li class="gericht" data-bild="https://lh3.googleusercontent.com/grass-cs/AABkmLeeFyqqWBtiEAxc-1A31Qk-0SwoV0jh7aepzDR8DNG9ZvXz-UJev74muKGWyJ1-RIUoArGtxGkr9JLmoWd2Dp9FKoKDJEnapjPk8f5oHrwQ63m9DM_deK7mm6l-FiAcyMUDb2kpI7DhZYI=s4800-w1000"><span class="g-name">Fischplatte</span><span class="g-fuell"></span><span class="g-fliese"></span><span class="g-text">Garnelen, Sardinen und Muscheln, dazu Pommes und Knoblauchsauce</span></li>
+<li class="gericht"><span class="g-name">Arroz de Marisco</span><span class="g-fuell"></span><span class="g-fliese"></span><span class="g-text">Reis mit Meeresfrüchten</span></li>
+<li class="gericht" data-bild="https://lh3.googleusercontent.com/grass-cs/AABkmLdvxKJav7-hiGAaIZeR6TaL23YfEq5Ry6Pnxl1dOZ8aSWDkEMjAuMacKP0ytTQ0Nh9Pnetd6Z8k27bgj5hk6A1LtIny-YyUHRCcnzzCStsR900_jR_AD0y4OnE9TCKQfPZkBnXGMGVgk68T=s4800-w1000"><span class="g-name">Meeresfrüchte-Paella</span><span class="g-fuell"></span><span class="g-fliese"></span><span class="g-text">in der Pfanne, mit Miesmuscheln, Garnelen und Zitrone</span></li>
+<li class="gericht" data-bild="ki-ameijoas.webp"><span class="g-name">Amêijoas</span><span class="g-fuell"></span><span class="g-fliese"></span><span class="g-text">Venusmuscheln</span></li>
+</ul>
+</details>
+<details class="rubrik" open><summary><h3>Kleine Vorspeisen</h3></summary>
+<ul>
+<li class="gericht"><span class="g-name">Kleine Vorspeisen</span><span class="g-fuell"></span><span class="g-fliese"></span><span class="g-text">Auswahl auf der Karte im Lokal</span></li>
+<li class="gericht"><span class="g-name">Frittierte Kartoffelspalten</span><span class="g-fuell"></span><span class="g-fliese"></span></li>
+</ul>
+</details>
+</div>
+<div>
+<details class="rubrik" open><summary><h3>Vom Grill &amp; aus der Pfanne</h3></summary>
+<ul>
+<li class="gericht" data-bild="https://lh3.googleusercontent.com/grass-cs/AABkmLcKIgWWp9Osa4PDcNY-4l70zpYGnTZXPcjebce47CAdcV-Zc3q_-vqJTbjZL-HQs54xIUR4HwULn5HX2CyKHrl3E77Ic_p9fnnsUjyvQSbg2-sbGyCKjrXsvX0hhoAEfzvbLLo=s4800-w1000"><span class="g-name">Gegrillter Tintenfisch</span><span class="g-fuell"></span><span class="g-fliese"></span><span class="g-text">mit Kartoffeln und Olivenöl</span></li>
+<li class="gericht" data-bild="ki-bacalhau-bras.webp"><span class="g-name">Bacalhau à Brás</span><span class="g-fuell"></span><span class="g-fliese"></span><span class="g-text">Stockfisch mit Kartoffelstroh und Ei</span></li>
+</ul>
+<figure class="aushang-bild"><img src="ki-bacalhau-bras.webp" alt="Bacalhau à Brás in einer Tonschale" width="1200" height="800" loading="lazy"></figure>
+</details>
+<details class="rubrik" open><summary><h3>Zum Schluss</h3></summary>
+<div class="mit-bild">
+<ul>
+<li class="gericht"><span class="g-name">Pastel de Nata</span><span class="g-fuell"></span><span class="g-fliese"></span></li>
+<li class="gericht" data-bild="ki-karamellpudding.webp"><span class="g-name">Karamellpudding</span><span class="g-fuell"></span><span class="g-fliese"></span><span class="g-text">mit Karamellsauce</span></li>
+</ul>
+<figure class="pudding"><img src="ki-karamellpudding.webp" alt="Portugiesischer Karamellpudding mit Karamellsauce" width="1000" height="1000" loading="lazy"></figure>
+</div>
+</details>
+</div>
+</div>
+<div class="aushang-fuss">
+<p>Die vollständige Karte mit Preisen liegt im Lokal aus. Fragen? <a href="tel:0511451858">0511 451858</a></p>
+<p>Im Glas: Sangria, Sagres, Wein, Kaffee. Gerichte auch zum Mitnehmen.</p>
+</div>
+</div>
+</div>
+</section>
+
+<div class="fliesen" aria-hidden="true"></div>
+
+<section class="zeiten" id="zeiten" aria-labelledby="zeiten-titel">
+<div class="wrap zeiten-grid">
+<div>
+<h2 id="zeiten-titel">Abends ab sechs, am Wochenende <em>auch mittags</em>.</h2>
+<div class="woche" aria-hidden="true">
+<div class="achse"><span style="--s:12">12</span><span style="--s:14">14</span><span style="--s:16">16</span><span style="--s:18">18</span><span style="--s:20">20</span><span style="--s:22">22</span></div>
+<div class="tag" data-tag="1"><div class="tag-kopf">Mo</div><div class="tag-spalte zu"><span>Ruhetag</span></div></div>
+<div class="tag" data-tag="2"><div class="tag-kopf">Di</div><div class="tag-spalte"><i class="balken" style="--von:18;--bis:22.5"></i></div></div>
+<div class="tag" data-tag="3"><div class="tag-kopf">Mi</div><div class="tag-spalte"><i class="balken" style="--von:18;--bis:22.5"></i></div></div>
+<div class="tag" data-tag="4"><div class="tag-kopf">Do</div><div class="tag-spalte"><i class="balken" style="--von:18;--bis:22.5"></i></div></div>
+<div class="tag" data-tag="5"><div class="tag-kopf">Fr</div><div class="tag-spalte"><i class="balken" style="--von:18;--bis:22.5"></i></div></div>
+<div class="tag" data-tag="6"><div class="tag-kopf">Sa</div><div class="tag-spalte"><i class="balken" style="--von:12;--bis:14.5"></i><i class="balken" style="--von:18;--bis:22"></i></div></div>
+<div class="tag" data-tag="0"><div class="tag-kopf">So</div><div class="tag-spalte"><i class="balken" style="--von:12;--bis:14.5"></i><i class="balken" style="--von:18;--bis:22"></i></div></div>
+<div class="jetzt" hidden><span></span></div>
+</div>
+<dl class="zeitliste">
+<div><dt>Montag</dt><dd>Ruhetag</dd></div>
+<div><dt>Dienstag – Freitag</dt><dd>18:00 – 22:30</dd></div>
+<div><dt>Samstag &amp; Sonntag</dt><dd>12:00 – 14:30 · 18:00 – 22:00</dd></div>
+</dl>
+</div>
+<div class="lage">
+<h3>Charlottenstraße 88</h3>
+<address>Restaurant Coimbra<br>Charlottenstraße 88<br>30449 Hannover</address>
+<p class="status" style="margin-top:12px"><span class="fliese-punkt" aria-hidden="true"></span><span data-status></span></p>
+<div class="lage-links">
+<a class="unterstrichen" href="https://www.google.com/maps/dir/?api=1&amp;destination=Restaurant+Coimbra+Charlottenstra%C3%9Fe+88+30449+Hannover" target="_blank" rel="noopener">Route planen →</a>
+<a class="unterstrichen" href="tel:0511451858">0511 451858</a>
+</div>
+<div class="karten-rahmen"><div data-karte data-stil="warm" data-farbe="#1F3E8C"></div></div>
+</div>
+</div>
+</section>
+
+<section class="reservieren" id="reservieren" aria-labelledby="res-titel">
+<div class="wrap res-grid">
+<div class="res-intro">
+<h2 id="res-titel">Ein Tisch für <em>heute Abend</em>?</h2>
+<p>Tag, Uhrzeit und Personen wählen, wir rufen zurück, falls etwas nicht passt. Für kurzfristige Anfragen und große Runden lieber direkt anrufen: <a href="tel:0511451858">0511 451858</a>.</p>
+<a class="plakette" href="https://www.google.com/maps/search/?api=1&amp;query=Restaurant+Coimbra&amp;query_place_id=ChIJ86qMxsJ0sEcRdITk7F_fIO4" target="_blank" rel="noopener"><span data-bewertung aria-label="4,6 von 5 Sternen bei 889 Google-Bewertungen"><span class="bew-stern" aria-hidden="true">★</span><span class="bew-zahl">4,6</span><span class="bew-text">889 Bewertungen auf Google</span></span></a>
+</div>
+<div class="schild">
+<p class="schild-kopf" aria-live="polite">Reserviert für <span data-schild-name>…</span></p>
+<form data-reservierung>
+<div data-schritt="1" data-titel="Wann?">
+<h3>Wann?</h3>
+<span class="feld-titel">Tag</span>
+<div data-tage></div>
+<span class="feld-titel">Uhrzeit</span>
+<div data-zeiten></div>
+</div>
+<div data-schritt="2" data-titel="Wie viele?">
+<h3>Wie viele?</h3>
+<span class="feld-titel">Personen</span>
+<div data-personen></div>
+<p class="res-hinweis-text">Viele Gerichte sind für mehrere Personen gedacht. Mehr als 8 Personen? Bitte anrufen: <a href="tel:0511451858">0511 451858</a></p>
+</div>
+<div data-schritt="3" data-titel="Ihre Angaben">
+<h3>Ihre Angaben</h3>
+<div class="felder">
+<div class="feld"><label for="r-name">Name</label><input id="r-name" name="name" autocomplete="name" required></div>
+<div class="feld"><label for="r-tel">Telefon</label><input id="r-tel" name="telefon" type="tel" autocomplete="tel" required></div>
+<div class="feld feld-voll"><label for="r-mail">E-Mail <small>(optional)</small></label><input id="r-mail" name="email" type="email" autocomplete="email"></div>
+<div class="feld feld-voll"><label for="r-nachricht">Nachricht <small>(optional)</small></label><textarea id="r-nachricht" name="nachricht" rows="2"></textarea></div>
+</div>
+<label class="einw"><input type="checkbox" name="einwilligung" required><span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Reservierung verwendet werden. <a href="https://medialyte.de/datenschutzerklaerung" target="_blank" rel="noopener">Datenschutz</a></span></label>
+<p data-reservierung-fehler></p>
+<button type="submit">Tisch anfragen</button>
+</div>
+<div data-reservierung-erfolg hidden>
+<p class="erfolg-gross">Reserviert</p>
+<p class="erfolg-daten"><span data-wert="name"></span> · <span data-wert="datum"></span> · <span data-wert="uhrzeit"></span> · <span data-wert="personen"></span></p>
+<p>Wir melden uns, falls etwas nicht passt.</p>
+<button type="button" data-reservierung-neu>Neue Anfrage</button>
+</div>
+</form>
+</div>
+</div>
+</section>
+
+<section class="schluss dunkel" data-schluss data-hintergrund="dunkel" aria-labelledby="schluss-titel">
+<figure data-hintergrund-bild data-foto style="--schleier:linear-gradient(90deg,rgb(28 40 80/.86),rgb(28 40 80/.62) 55%,rgb(28 40 80/.4))"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfBy1vpzgZ7CoynV534l0FlQ3Yaw0msJsHX8qf990NMzdAZn6Dm1jCWzp0FdWXfgX91BZ-bU3uZXF5xtF4IWo4HJFFhFXVb3cCcO6v8ZCfTr63_BBDfhesf7vBDIvbSkW24eHNZxw=s4800-w1800" alt="" width="1200" height="900" loading="lazy" referrerpolicy="no-referrer"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/100500698762205759527" target="_blank" rel="noopener">Foto: Frank-Michael Preuss · Google Maps</a></figure>
+<div class="schluss-inhalt">
+<p class="status"><span class="fliese-punkt" aria-hidden="true"></span><span data-status></span></p>
+<h2 id="schluss-titel">Bis heute Abend in der <em>Charlottenstraße</em>.</h2>
+<p class="schluss-satz">Abends wird es schnell voll, ein Anruf oder eine Reservierung sichert den Tisch.</p>
+<div class="schluss-aktionen">
+<a class="knopf knopf-hell magnet" href="#reservieren">Tisch reservieren</a>
+<a class="unterstrichen" href="https://www.google.com/maps/dir/?api=1&amp;destination=Restaurant+Coimbra+Charlottenstra%C3%9Fe+88+30449+Hannover" target="_blank" rel="noopener">Route planen →</a>
+</div>
+</div>
+<div class="fliesen" aria-hidden="true"></div>
+</section>
+</main>
+
+<footer class="fuss dunkel">
+<div class="wrap fuss-raster">
+<div><p class="marke">Coimbra<svg class="punkt" viewBox="0 0 28 28" aria-hidden="true"><use href="#i-fliese"/></svg></p><p>Portugiesisches Restaurant in Hannover. Fisch, Meeresfrüchte und Fleisch, viele Gerichte für mehrere Personen.</p></div>
+<div><h2>Adresse &amp; Telefon</h2><p>Charlottenstraße 88<br>30449 Hannover</p><p><a href="tel:0511451858">0511 451858</a> · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Restaurant+Coimbra+Charlottenstra%C3%9Fe+88+30449+Hannover" target="_blank" rel="noopener">Route</a></p></div>
+<div><h2>Öffnungszeiten</h2><p>Mo Ruhetag<br>Di–Fr 18:00–22:30<br>Sa &amp; So 12:00–14:30, 18:00–22:00</p></div>
+</div>
+<div class="wrap fuss-recht"><div class="rechtliches"><p>Entwurf von Medialyte, 21147 Hamburg. Adresse und Öffnungszeiten: Google. Fotos: Google Maps, Urheber jeweils am Bild. Einige Bilder und das Logo sind KI-generierte Vorschläge.</p><p><a href="https://medialyte.de/impressum" style="color:inherit;text-decoration:underline">Impressum</a> · <a href="https://medialyte.de/datenschutzerklaerung" style="color:inherit;text-decoration:underline">Datenschutz</a></p></div></div>
+</footer>
+
+<nav class="handyleiste" aria-label="Schnellzugriff">
+<a href="tel:0511451858"><svg aria-hidden="true"><use href="#i-tel"/></svg>Anrufen</a>
+<a href="https://www.google.com/maps/dir/?api=1&amp;destination=Restaurant+Coimbra+Charlottenstra%C3%9Fe+88+30449+Hannover" target="_blank" rel="noopener">Route</a>
+<a href="#zeiten">Zeiten</a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+const teile=new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Berlin",weekday:"short",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(new Date());
+const wert=k=>(teile.find(p=>p.type===k)||{}).value;
+const tag=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(wert("weekday"));
+const h=+wert("hour"),m=+wert("minute"),dez=h+m/60;
+const tagEl=document.querySelector(`.tag[data-tag="${tag}"]`);
+if(tagEl)tagEl.classList.add("heute");
+const linie=document.querySelector(".jetzt");
+if(linie&&dez>=12&&dez<=23){linie.style.setProperty("--h",dez.toFixed(2));linie.querySelector("span").textContent="jetzt "+String(h).padStart(2,"0")+":"+String(m).padStart(2,"0");linie.hidden=false}
+if(matchMedia("(max-width:899px)").matches)document.querySelectorAll(".rubrik").forEach((d,i)=>{if(i)d.open=false});
+
+const form=document.querySelector("[data-reservierung]"),schild=document.querySelector("[data-schild-name]");
+if(form&&schild){const upd=()=>{const n=form.elements.namedItem("name"),name=n?n.value.trim():"";const p=form.querySelector("[data-personen] input:checked");const pl=p?p.closest(".res-option").textContent.trim():"";schild.textContent=(name||"…")+(pl?" · "+pl+(/^\d+$/.test(pl)?(pl==="1"?" Person":" Personen"):""):"")};form.addEventListener("input",upd);form.addEventListener("change",upd)}
+
+if(!window.gsap||!window.ScrollTrigger)return;
+gsap.registerPlugin(ScrollTrigger,SplitText);
+const mm=gsap.matchMedia();
+mm.add({bewegt:"(prefers-reduced-motion: no-preference)",desk:"(min-width: 900px)",fein:"(pointer: fine)"},ctx=>{
+const {bewegt,desk,fein}=ctx.conditions;
+if(!bewegt)return;
+const band=(b,delay,trigger)=>{const n=Math.max(4,Math.round(b.offsetWidth/28));gsap.from(b,{clipPath:"inset(0% 100% 0% 0%)",duration:desk?1.3:.9,ease:`steps(${n})`,delay:delay||0,scrollTrigger:trigger?{trigger:b,start:"top 94%",once:true}:undefined})};
+(window.nachIntro||(f=>f()))(()=>{
+const tl=gsap.timeline({defaults:{ease:"expo.out"}});
+tl.from(".hero-bogen",{clipPath:"inset(100% 0% 0% 0%)",duration:desk?1.3:.9,ease:"power3.inOut"},0);
+tl.fromTo(".hero-name",{clipPath:"inset(0% 0% 100% 0%)",y:24},{clipPath:"inset(-20% -10% -20% -10%)",y:0,duration:desk?1.1:.8,clearProps:"clipPath,transform"},.15);
+tl.from(".hero-text>*:not(.hero-name)",{opacity:0,y:12,duration:.7,stagger:.06,ease:"power2.out"},.35);
+if(desk)tl.from(".hero-teller",{x:-140,rotation:-140,opacity:0,duration:1.1,ease:"power3.out"},.75);
+else tl.from(".hero-teller",{scale:.6,opacity:0,duration:.5,ease:"back.out(1.6)"},.5);
+band(document.querySelector(".hero-fliesen"),desk?1.2:.7,false);
+});
+gsap.utils.toArray(".fliesen:not(.hero-fliesen)").forEach(b=>{band(b,0,true);if(desk)gsap.fromTo(b,{backgroundPositionX:"0px"},{backgroundPositionX:"14px",ease:"none",scrollTrigger:{trigger:b,start:"top bottom",end:"bottom top",scrub:true}})});
+gsap.from(".haus-bogen-maske",{clipPath:"inset(100% 0% 0% 0%)",duration:1.2,ease:"power3.inOut",scrollTrigger:{trigger:".haus-bilder",start:"top 78%",once:true}});
+gsap.from(".platte-bild",{clipPath:"inset(0% 0% 0% 100% round 16px)",duration:1,delay:.35,ease:"power3.out",scrollTrigger:{trigger:".haus-bilder",start:"top 78%",once:true}});
+gsap.from(".gericht",{opacity:0,x:-14,duration:.5,stagger:.05,ease:"power2.out",scrollTrigger:{trigger:".aushang",start:"top 75%",once:true}});
+if(desk&&fein){
+document.querySelectorAll(".magnet").forEach(el=>{const qx=gsap.quickTo(el,"x",{duration:.4,ease:"power3"}),qy=gsap.quickTo(el,"y",{duration:.4,ease:"power3"});el.addEventListener("mousemove",e=>{const r=el.getBoundingClientRect();qx((e.clientX-r.left-r.width/2)*.22);qy((e.clientY-r.top-r.height/2)*.32)});el.addEventListener("mouseleave",()=>{qx(0);qy(0)})});
+const v=document.createElement("div");v.className="vorschau";v.setAttribute("aria-hidden","true");const im=new Image();im.alt="";im.referrerPolicy="no-referrer";im.width=180;im.height=225;v.append(im);document.body.append(v);
+gsap.set(v,{xPercent:-50,yPercent:-112,opacity:0,scale:.85});
+const vx=gsap.quickTo(v,"x",{duration:.45,ease:"power3"}),vy=gsap.quickTo(v,"y",{duration:.45,ease:"power3"});
+let ok=true;im.onerror=()=>{ok=false;gsap.set(v,{opacity:0})};im.onload=()=>{ok=true};
+document.querySelectorAll("[data-bild]").forEach(li=>{li.addEventListener("mouseenter",e=>{vx(e.clientX);vy(e.clientY);im.src=li.dataset.bild;gsap.to(v,{opacity:1,scale:1,duration:.3})});li.addEventListener("mousemove",e=>{vx(e.clientX);vy(e.clientY);if(!ok)gsap.set(v,{opacity:0})});li.addEventListener("mouseleave",()=>gsap.to(v,{opacity:0,scale:.85,duration:.25}))});
+return()=>v.remove();
+}
+});
+if(window.Lenis&&matchMedia("(pointer: fine) and (prefers-reduced-motion: no-preference)").matches){
+const lenis=new Lenis({autoRaf:false});
+lenis.on("scroll",ScrollTrigger.update);
+gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+}
+});
+</script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>[data-karte]{width:100%;height:100%;min-height:260px;position:relative;z-index:0;isolation:isolate}[data-karte] .leaflet-tile-pane{filter:var(--karte-filter)}
+[data-karte] .leaflet-control-attribution{font-size:10px}.karte-pin{position:relative;width:34px;height:34px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+box-shadow:0 6px 16px rgba(0,0,0,.35);border:3px solid #fff}.karte-pin i{position:absolute;inset:9px;border-radius:50%;background:#fff}</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>(function(){var C={"lat": 52.357417999999996, "lng": 9.718285, "name": "Coimbra", "filter": {"hell": "grayscale(1) contrast(1.05) brightness(1.04)", "dunkel": "grayscale(1) invert(1) contrast(.88) brightness(.82)", "warm": "grayscale(1) sepia(.5) contrast(1.02) brightness(1.02)", "kuehl": "grayscale(1) sepia(.35) hue-rotate(175deg) saturate(.55) brightness(1.03)", "mono": "grayscale(1) contrast(1.2)"}};function draw(){if(!window.L)return;document.querySelectorAll('[data-karte]').forEach(function(el){
+if(el._map)return;var st=el.getAttribute('data-stil')||'hell',col=el.getAttribute('data-farbe')||'#c0392b';
+el.style.setProperty('--karte-filter',C.filter[st]||C.filter.hell);
+var m=L.map(el,{scrollWheelZoom:false,zoomControl:true,attributionControl:true}).setView([C.lat,C.lng],16);el._map=m;
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(m);
+var icon=L.divIcon({className:'',html:'<div class="karte-pin" style="background:'+col+'"><i></i></div>',iconSize:[34,34],iconAnchor:[17,34]});
+L.marker([C.lat,C.lng],{icon:icon,title:C.name,alt:C.name}).addTo(m);setTimeout(function(){m.invalidateSize()},300);});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',draw);else draw();window.addEventListener('load',draw);})();</script><script>(function(){
+var P=[[720, 870], [1080, 1320], [3960, 4230], [5400, 5670], [6840, 7110], [8280, 8550], [9360, 9510], [9720, 9960]];
+function fmt(m){m=((m%1440)+1440)%1440;var h=Math.floor(m/60),mi=m%60;return (h<10?'0':'')+h+':'+(mi<10?'0':'')+mi;}
+function now(){var d=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Berlin'}));return d.getDay()*1440+d.getHours()*60+d.getMinutes();}
+function status(){if(!P.length)return null;var t=now(),W=10080;
+ for(var i=0;i<P.length;i++){var s=P[i][0],e=P[i][1];if((t>=s&&t<e)||(t+W>=s&&t+W<e))return {offen:true,text:'Jetzt geöffnet bis '+fmt(e)};}
+ var best=null;for(var j=0;j<P.length;j++){var d=(P[j][0]-t+W)%W;if(best===null||d<best.d)best={d:d,s:P[j][0]};}
+ var tag=Math.floor(t/1440),ot=Math.floor(best.s/1440)%7,names=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+ var when=best.d<1440&&ot===tag?'heute':(best.d<2880&&ot===(tag+1)%7?'morgen':names[ot]);
+ return {offen:false,text:'Geschlossen · öffnet '+when+' um '+fmt(best.s)};}
+function run(){var s=status();document.querySelectorAll('[data-status]').forEach(function(el){
+ if(!s){el.style.display='none';return;}el.textContent=s.text;el.setAttribute('data-offen',s.offen?'ja':'nein');});}
+document.querySelectorAll('[data-foto] img').forEach(function(img){
+ function hide(){var b=img.closest('[data-foto]');if(b)b.style.display='none';}
+ if(!img.getAttribute('src'))hide();else{img.addEventListener('error',hide);if(img.complete&&img.naturalWidth===0)hide();}});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();setInterval(run,60000);
+})();</script><!--agent-res--><script>(function () {
+  /* Reservierung: Tage und Uhrzeiten aus den echten Öffnungszeiten, Personen, Prüfung, Bestätigung.
+     Gestaltung kommt von der Seite, die Logik kommt von hier. CFG und P setzt der Agent ein. */
+  var CFG = {"modus": "demo", "ziel": "", "extra": {}, "slot": 30, "vorlauf": 60, "letzte": 60, "max": 8, "tage": 21, "name": "Coimbra", "tel": "0511451858", "telText": "0511 451858"}, P = [[720, 870], [1080, 1320], [3960, 4230], [5400, 5670], [6840, 7110], [8280, 8550], [9360, 9510], [9720, 9960]], W = 10080;
+  var TAGE = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"], LANG = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
+  var MON = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+  function berlin() { return new Date(new Date().toLocaleString("en-US", { timeZone: "Europe/Berlin" })); }
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function hm(m) { return pad(Math.floor(m / 60)) + ":" + pad(m % 60); }
+  function iso(d) { return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()); }
+  function el(tag, attrs, html) { var e = document.createElement(tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (html != null) e.innerHTML = html; return e; }
+
+  /* Uhrzeiten eines Kalendertags (Minuten ab 00:00), aus den Wochen-Intervallen P */
+  function slots(day, isToday, nowMin) {
+    var out = [], start = day.getDay() * 1440, step = CFG.slot, last = CFG.letzte;
+    var periods = P.length ? P : [[0, W]];
+    for (var i = 0; i < periods.length; i++) {
+      for (var shift = -W; shift <= W; shift += W) {
+        var s = periods[i][0] + shift, e = periods[i][1] + shift;
+        var from = Math.max(s, start), to = Math.min(e - last, start + 1440 - 1);
+        if (!P.length) { from = start + 11 * 60; to = start + 21 * 60 + 30; }
+        if (to < from && e > start && s < start + 1440 && e - s <= last + step && s >= start) to = from;
+        for (var t = Math.ceil(from / step) * step; t <= to; t += step) {
+          var m = t - start;
+          if (m < 5 * 60 && P.length) continue;              // keine Plätze nach Mitternacht
+          if (isToday && m < nowMin + CFG.vorlauf) continue;  // heute nur mit Vorlauf
+          if (out.indexOf(m) < 0) out.push(m);
+        }
+      }
+    }
+    return out.sort(function (a, b) { return a - b; });
+  }
+
+  function init(form) {
+    if (form._res) return; form._res = true;
+    var now = berlin(), nowMin = now.getHours() * 60 + now.getMinutes();
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var days = [];
+    for (var i = 0; i < CFG.tage; i++) {
+      var d = new Date(today); d.setDate(today.getDate() + i);
+      var s = slots(d, i === 0, nowMin);
+      if (s.length) days.push({ d: d, slots: s, i: i });
+    }
+    var boxTage = form.querySelector("[data-tage]"), boxZeiten = form.querySelector("[data-zeiten]"), boxPers = form.querySelector("[data-personen]");
+    var first = form.querySelector("input, textarea, select, button");
+    function ensure(box, attr, label) {
+      if (box) return box;
+      var wrap = el("fieldset", { "class": "res-gruppe" }, "<legend>" + label + "<\/legend>");
+      var b = el("div", {}); b.setAttribute(attr, ""); wrap.appendChild(b);
+      form.insertBefore(wrap, first && first.parentNode === form ? first : form.firstChild);
+      return b;
+    }
+    boxTage = ensure(boxTage, "data-tage", "Tag");
+    boxZeiten = ensure(boxZeiten, "data-zeiten", "Uhrzeit");
+    boxPers = ensure(boxPers, "data-personen", "Personen");
+    [boxTage, boxZeiten, boxPers].forEach(function (b) { b.setAttribute("role", "radiogroup"); });
+    boxTage.setAttribute("aria-label", "Tag wählen"); boxZeiten.setAttribute("aria-label", "Uhrzeit wählen");
+    boxPers.setAttribute("aria-label", "Anzahl Personen");
+    var uid = "res" + Math.random().toString(36).slice(2, 7);
+
+    function option(name, value, inner, title) {
+      var id = uid + "-" + name + "-" + String(value).replace(/[^a-z0-9]/gi, "");
+      var l = el("label", { "class": "res-option", "for": id, title: title || "" });
+      l.appendChild(el("input", { type: "radio", name: name, value: value, id: id, "class": "res-radio" }));
+      l.appendChild(el("span", { "class": "res-label" }, inner));
+      return l;
+    }
+    function renderDays() {
+      boxTage.innerHTML = "";
+      if (!days.length) { boxTage.appendChild(el("p", { "class": "res-hinweis" }, "In den nächsten Wochen sind online keine Zeiten frei. Bitte rufen Sie an.")); return; }
+      days.forEach(function (x) {
+        var top = x.i === 0 ? "Heute" : x.i === 1 ? "Morgen" : TAGE[x.d.getDay()];
+        boxTage.appendChild(option("datum", iso(x.d), "<b>" + top + "<\/b><small>" + pad(x.d.getDate()) + "." + pad(x.d.getMonth() + 1) + ".<\/small>",
+          LANG[x.d.getDay()] + ", " + x.d.getDate() + ". " + MON[x.d.getMonth()]));
+      });
+    }
+    function renderTimes(dateIso) {
+      boxZeiten.innerHTML = "";
+      var x = days.filter(function (y) { return iso(y.d) === dateIso; })[0];
+      if (!x) { boxZeiten.appendChild(el("p", { "class": "res-hinweis" }, "Bitte zuerst einen Tag wählen.")); return; }
+      if (x.slots.length <= 8) { x.slots.forEach(function (m) { boxZeiten.appendChild(option("uhrzeit", hm(m), hm(m))); }); return; }
+      var parts = [["Morgens", 0, 660], ["Mittags", 660, 870], ["Nachmittags", 870, 1020], ["Abends", 1020, 1440]];
+      // eine einzelne Uhrzeit bekommt keine eigene Gruppe, sie wandert in die nächste (bzw. vorige)
+      var groups = parts.map(function (pt) { return [pt[0], x.slots.filter(function (m) { return m >= pt[1] && m < pt[2]; })]; })
+        .filter(function (g) { return g[1].length; });
+      for (var gi = 0; gi < groups.length && groups.length > 1; gi++) {
+        if (groups[gi][1].length > 1) continue;
+        var to = gi + 1 < groups.length ? gi + 1 : gi - 1;
+        groups[to][1] = to > gi ? groups[gi][1].concat(groups[to][1]) : groups[to][1].concat(groups[gi][1]);
+        groups.splice(gi, 1); gi--;
+      }
+      groups.forEach(function (gr) {
+        var pt = [gr[0]], mins = gr[1];
+        var g = el("div", { "class": "res-zeitgruppe" }), row = el("div", { "class": "res-zeitreihe" });
+        g.appendChild(el("p", { "class": "res-tageszeit" }, pt[0]));
+        mins.forEach(function (m) { row.appendChild(option("uhrzeit", hm(m), hm(m))); });
+        g.appendChild(row); boxZeiten.appendChild(g);
+      });
+    }
+    function renderPersons() {
+      boxPers.innerHTML = "";
+      for (var n = 1; n <= CFG.max; n++) boxPers.appendChild(option("personen", n, String(n), n + (n === 1 ? " Person" : " Personen")));
+      if (CFG.tel) boxPers.appendChild(el("p", { "class": "res-hinweis" }, "Mehr als " + CFG.max + "? <a href=\"tel:" + CFG.tel + "\">Bitte anrufen<\/a>."));
+    }
+    renderDays(); renderPersons();
+    var firstDay = boxTage.querySelector("input");
+    if (firstDay) { firstDay.checked = true; renderTimes(firstDay.value); } else renderTimes("");
+    var two = boxPers.querySelector('input[value="2"]'); if (two) two.checked = true;
+    boxTage.addEventListener("change", function (e) { if (e.target.name === "datum") { renderTimes(e.target.value); clearError(boxZeiten); } });
+
+    /* Spam-Falle und Felder für den späteren Versand */
+    var trap = el("input", { type: "text", name: "botcheck", tabindex: "-1", autocomplete: "off", "aria-hidden": "true",
+      style: "position:absolute;left:-9999px;width:1px;height:1px;opacity:0" });
+    form.appendChild(trap);
+    var errBox = form.querySelector("[data-reservierung-fehler]");
+    if (!errBox) { errBox = el("p", { "class": "res-fehler" }); var sb0 = form.querySelector('[type="submit"]'); if (sb0) sb0.parentNode.insertBefore(errBox, sb0); else form.appendChild(errBox); }
+    errBox.setAttribute("role", "alert"); errBox.setAttribute("aria-live", "polite");
+    var ok = form.querySelector("[data-reservierung-erfolg]");
+    if (!ok) { // gestaltete Bestätigung direkt neben dem Formular (gleicher Abschnitt) wird ebenfalls genutzt
+      var area = form.closest("section, [id]") || form.parentNode;
+      ok = area ? area.querySelector("[data-reservierung-erfolg]") : null;
+      if (ok && (ok._resForm || ok.closest("form[data-reservierung]"))) ok = null;
+    }
+    var outside = !!ok && !form.contains(ok);
+    if (ok) ok._resForm = form;
+    if (!ok) { ok = el("div", { "class": "res-erfolg", tabindex: "-1" }, "<p><strong>Danke!<\/strong> Ihre Anfrage für <span data-wert=\"datum\"><\/span> um <span data-wert=\"uhrzeit\"><\/span> Uhr (<span data-wert=\"personen\"><\/span>) ist eingegangen.<\/p>"); ok.setAttribute("data-reservierung-erfolg", ""); form.appendChild(ok); }
+    ok.hidden = true; ok.setAttribute("tabindex", "-1");
+    form.noValidate = true;
+    [["name", "name", "text"], ["telefon", "tel", "tel"], ["email", "email", "email"]].forEach(function (x) {
+      var f = form.querySelector('[name="' + x[0] + '"]'); if (!f || f.tagName !== "INPUT") return;
+      if (!f.getAttribute("autocomplete")) f.setAttribute("autocomplete", x[1]);
+      if (x[2] !== "text") { f.type = x[2]; f.setAttribute("inputmode", x[2]); }
+      if (!f.getAttribute("enterkeyhint")) f.setAttribute("enterkeyhint", "next");
+    });
+    function headerOffset() {
+      var h = 16;
+      document.querySelectorAll("header, nav, [data-kopf]").forEach(function (n) {
+        var cs = getComputedStyle(n), r = n.getBoundingClientRect();
+        if ((cs.position === "fixed" || cs.position === "sticky") && r.top <= 1 && r.height < innerHeight / 3) h = Math.max(h, r.bottom + 12);
+      });
+      return h;
+    }
+    /* gewählten Chip in einer wischbaren Reihe sichtbar machen, ohne die Seite zu verschieben */
+    function revealX(input) {
+      var lab = input && (input.closest(".res-option") || input);
+      for (var n = lab && lab.parentNode; n && n !== form; n = n.parentNode) {
+        var ox = getComputedStyle(n).overflowX;
+        if (ox === "auto" || ox === "scroll") {
+          var r = lab.getBoundingClientRect(), b = n.getBoundingClientRect();
+          if (r.left < b.left || r.right > b.right) n.scrollLeft += r.left - b.left - (b.width - r.width) / 2;
+          return;
+        }
+      }
+    }
+
+    /* Mehrschritt: <div data-schritt="1|2|3" data-titel="…"> – immer nur ein Schritt sichtbar */
+    var steps = Array.prototype.slice.call(form.querySelectorAll("[data-schritt]")), cur = 0;
+    var multi = steps.length >= 2, prog = null, sum = null, live = null;
+    var still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function stepTitle(st, i) { var h = st.getAttribute("data-titel") || ((st.querySelector("h2,h3,h4,legend") || {}).textContent || ""); return h.trim() || ["Wann?", "Wie viele?", "Ihre Angaben"][i] || "Schritt " + (i + 1); }
+    function summaryText() {
+      var bits = [];
+      if (val("datum")) { var d = new Date(val("datum") + "T12:00:00"); bits.push(TAGE[d.getDay()] + " " + pad(d.getDate()) + "." + pad(d.getMonth() + 1) + "."); }
+      if (val("uhrzeit")) bits.push(val("uhrzeit") + " Uhr");
+      if (val("personen")) bits.push(val("personen") + (val("personen") === "1" ? " Person" : " Personen"));
+      return bits.join(" · ");
+    }
+    function stepOk(i, mark_) {
+      var st = steps[i], need = [];
+      if (st.querySelector("[data-tage]") && !val("datum")) need.push([boxTage, "Bitte einen Tag wählen."]);
+      if (st.querySelector("[data-zeiten]") && !val("uhrzeit")) need.push([boxZeiten, "Bitte eine Uhrzeit wählen."]);
+      if (st.querySelector("[data-personen]") && !val("personen")) need.push([boxPers, "Bitte die Anzahl der Personen wählen."]);
+      var hint = st.querySelector(".res-schritt-fehler");
+      if (mark_ && hint) hint.textContent = need.map(function (n) { return n[1]; }).join(" ");
+      need.forEach(function (n) { if (mark_) mark(n[0], true); });
+      return !need.length;
+    }
+    function show(i, dir) {
+      cur = Math.max(0, Math.min(steps.length - 1, i));
+      steps.forEach(function (st, k) { st.hidden = k !== cur; st.classList.toggle("res-aktiv", k === cur); });
+      if (prog) Array.prototype.forEach.call(prog.children, function (li, k) {
+        li.classList.toggle("res-erledigt", k < cur); li.classList.toggle("res-jetzt", k === cur);
+        if (k === cur) li.setAttribute("aria-current", "step"); else li.removeAttribute("aria-current");
+      });
+      if (sum) { var t = summaryText(); sum.textContent = cur > 0 ? t : ""; sum.hidden = cur === 0 || !t; }
+      if (live) live.textContent = "Schritt " + (cur + 1) + " von " + steps.length + ": " + stepTitle(steps[cur], cur);
+      var st = steps[cur];
+      if (dir && !still && st.animate) st.animate([{ opacity: 0, transform: "translateX(" + (dir > 0 ? 18 : -18) + "px)" }, { opacity: 1, transform: "none" }],
+        { duration: 280, easing: "cubic-bezier(.2,.7,.2,1)" });
+      if (dir) {
+        var f = st.querySelector("input:checked") || st;
+        if (f === st && !st.hasAttribute("tabindex")) { st.setAttribute("tabindex", "-1"); st.style.outline = "none"; }
+        try { f.focus({ preventScroll: true }); } catch (e) {}
+        revealX(st.querySelector("[data-tage] input:checked"));
+        var off = headerOffset(), top = form.getBoundingClientRect().top;
+        if (top < off - 2 || top > innerHeight * 0.6) scrollTo({ top: scrollY + top - off, behavior: still ? "auto" : "smooth" });
+      }
+    }
+    function next() { if (stepOk(cur, true)) show(cur + 1, 1); }
+    if (multi) {
+      prog = form.querySelector("[data-fortschritt]");
+      if (!prog) { prog = el("ol", { "class": "res-fortschritt" }); prog.setAttribute("data-fortschritt", ""); form.insertBefore(prog, form.firstChild); }
+      prog.innerHTML = "";
+      steps.forEach(function (st, i) {
+        var li = el("li", { "class": "res-punkt" }, "<span class=\"res-nr\">" + (i + 1) + "<\/span><span class=\"res-titel\">" + stepTitle(st, i) + "<\/span>");
+        li.addEventListener("click", function () { if (i < cur) show(i, -1); });
+        prog.appendChild(li);
+      });
+      sum = form.querySelector("[data-zusammenfassung]");
+      if (!sum) { sum = el("p", { "class": "res-zusammenfassung" }); prog.parentNode.insertBefore(sum, prog.nextSibling); }
+      live = el("p", { "class": "res-ansage", "aria-live": "polite", style: "position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)" });
+      form.appendChild(live);
+      var sbx = form.querySelector('[type="submit"]');
+      if (sbx && !steps.some(function (st) { return st.contains(sbx); })) steps[steps.length - 1].appendChild(sbx);
+      steps.forEach(function (st, i) {
+        if (!st.querySelector(".res-schritt-fehler") && i < steps.length - 1) st.appendChild(el("p", { "class": "res-schritt-fehler", role: "alert" }));
+        var back = st.querySelector("[data-zurueck]"), fwd = st.querySelector("[data-weiter]");
+        if (!back && !fwd && (i > 0 || i < steps.length - 1)) {
+          var nav = el("div", { "class": "res-nav" });
+          if (i > 0) { back = el("button", { type: "button", "class": "res-zurueck" }, "Zurück"); back.setAttribute("data-zurueck", ""); nav.appendChild(back); }
+          if (i < steps.length - 1) { fwd = el("button", { type: "button", "class": "res-weiter" }, "Weiter"); fwd.setAttribute("data-weiter", ""); nav.appendChild(fwd); }
+          var sb = st.querySelector('[type="submit"]');
+          if (sb && sb.parentNode) { sb.parentNode.insertBefore(nav, sb); nav.appendChild(sb); } else st.appendChild(nav);
+        }
+      });
+      form.addEventListener("click", function (e) {
+        if (e.target.closest("[data-weiter]")) { e.preventDefault(); next(); }
+        else if (e.target.closest("[data-zurueck]")) { e.preventDefault(); show(cur - 1, -1); }
+      });
+      form.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" || e.target.tagName === "TEXTAREA" || e.target.closest("[data-zurueck]")) return;
+        if (cur < steps.length - 1) { e.preventDefault(); next(); return; }
+        if (e.target.tagName !== "INPUT" || /^(radio|checkbox|submit|button)$/.test(e.target.type)) return;
+        var texts = Array.prototype.slice.call(steps[cur].querySelectorAll("input:not([type=radio]):not([type=checkbox]):not([type=hidden]):not([name=botcheck]), textarea"));
+        var later = texts.slice(texts.indexOf(e.target) + 1).filter(function (t) { return !String(t.value || "").trim(); })[0];
+        if (later) { e.preventDefault(); later.focus(); }
+      });
+      // Nach der Wahl von Uhrzeit bzw. Personen per Tippen/Klick geht es von selbst weiter (Pfeiltasten nicht)
+      var lastPointer = -1e9, lastKey = -1e9;
+      form.addEventListener("pointerdown", function () { lastPointer = performance.now(); });
+      form.addEventListener("keydown", function () { lastKey = performance.now(); }, true);
+      form.addEventListener("change", function (e) {
+        var n = e.target.name, st = steps[cur], at = cur;
+        var t = performance.now(); if (t - lastPointer > 1500 || t - lastKey < 400) return;
+        if ((n === "uhrzeit" && st.querySelector("[data-zeiten]") && !st.querySelector("[data-personen]")) ||
+            (n === "personen" && st.querySelector("[data-personen]") && cur < steps.length - 1)) {
+          var hint = st.querySelector(".res-schritt-fehler"); if (hint) hint.textContent = "";
+          setTimeout(function () { if (cur === at && stepOk(cur, false)) show(cur + 1, 1); }, 320);
+        }
+      });
+      show(0, 0);
+    }
+
+    function field(n) { return form.querySelector('[name="' + n + '"]'); }
+    function val(n) {
+      var f = field(n); if (!f) return "";
+      if (f.type === "radio") { var c = form.querySelector('[name="' + n + '"]:checked'); return c ? c.value : ""; }
+      return f.type === "checkbox" ? f.checked : String(f.value || "").trim();
+    }
+    function mark(target, bad) { if (!target) return; target.setAttribute("aria-invalid", bad ? "true" : "false"); }
+    function clearError(t) { mark(t, false); }
+    function check() {
+      var errs = [], firstBad = null;
+      function need(cond, target, msg) { mark(target, !cond); if (!cond) { errs.push(msg); firstBad = firstBad || target; } }
+      need(!!val("datum"), boxTage, "Bitte einen Tag wählen.");
+      need(!!val("uhrzeit"), boxZeiten, "Bitte eine Uhrzeit wählen.");
+      need(!!val("personen"), boxPers, "Bitte die Anzahl der Personen wählen.");
+      if (field("name")) need(val("name").length >= 2, field("name"), "Bitte Ihren Namen angeben.");
+      if (field("telefon")) need(val("telefon").replace(/\D/g, "").length >= 6, field("telefon"), "Bitte eine Telefonnummer für Rückfragen angeben.");
+      if (field("email") && val("email")) need(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val("email")), field("email"), "Die E-Mail-Adresse sieht unvollständig aus.");
+      if (field("einwilligung")) need(val("einwilligung") === true, field("einwilligung"), "Bitte der Verarbeitung Ihrer Angaben zustimmen.");
+      errBox.textContent = errs.join(" ");
+      if (firstBad && multi) { var k = steps.findIndex(function (st) { return st.contains(firstBad); }); if (k >= 0 && k !== cur) { show(k, -1); stepOk(k, true); } }
+      if (firstBad) { var f = firstBad.matches && firstBad.matches("input,textarea,select") ? firstBad : firstBad.querySelector("input:not(:disabled)"); if (f) f.focus(); }
+      return !errs.length;
+    }
+    ["name", "telefon", "email", "einwilligung"].forEach(function (n) { var f = field(n); if (f) f.addEventListener("input", function () { if (f.getAttribute("aria-invalid") === "true") mark(f, false); }); });
+    boxZeiten.addEventListener("change", function () { mark(boxZeiten, false); });
+    boxPers.addEventListener("change", function () { mark(boxPers, false); });
+
+    function readable() {
+      var d = new Date(val("datum") + "T12:00:00"), p = +val("personen");
+      return { datum: LANG[d.getDay()] + ", " + d.getDate() + ". " + MON[d.getMonth()], uhrzeit: val("uhrzeit"), personen: p + (p === 1 ? " Person" : " Personen"), name: val("name") };
+    }
+    function showSuccess() {
+      var r = readable();
+      ok.querySelectorAll("[data-wert]").forEach(function (s) { var k = s.getAttribute("data-wert"); if (r[k] != null) s.textContent = r[k]; });
+      if (CFG.modus === "demo" && !ok.querySelector(".res-demo-hinweis")) {
+        ok.appendChild(el("p", { "class": "res-demo-hinweis" }, "Entwurf: Diese Anfrage wurde nicht übermittelt. In der fertigen Website geht sie sofort an " +
+          CFG.name + "." + (CFG.tel ? " Für eine echte Reservierung bitte <a href=\"tel:" + CFG.tel + "\">anrufen<\/a>." : "")));
+      }
+      if (outside) { form.setAttribute("data-res-vorher", form.hidden ? "1" : "0"); form.hidden = true; }
+      for (var n = ok; !outside && n && n !== form; n = n.parentNode) {
+        var sib = n;
+        Array.prototype.forEach.call(n.parentNode.children, function (c) { if (c !== sib && c !== trap && !c.hasAttribute("data-res-vorher")) { c.setAttribute("data-res-vorher", c.hidden ? "1" : "0"); c.hidden = true; } });
+        if (n.parentNode !== form && n.parentNode.hidden) { n.parentNode.setAttribute("data-res-offen", ""); n.parentNode.hidden = false; }
+      }
+      ok.hidden = false; form.setAttribute("data-status", "gesendet");
+      try { ok.focus({ preventScroll: true }); } catch (e) { ok.focus(); }
+      var off = headerOffset(), top = (outside ? ok : form).getBoundingClientRect().top;
+      if (top < off - 2) scrollTo({ top: scrollY + top - off, behavior: still ? "auto" : "smooth" });
+    }
+    function again(e) {
+      if (!e.target.closest("[data-reservierung-neu]")) return;
+      e.preventDefault(); ok.hidden = true; form.removeAttribute("data-status");
+      if (outside) { form.hidden = form.getAttribute("data-res-vorher") === "1"; form.removeAttribute("data-res-vorher"); }
+      form.querySelectorAll("[data-res-vorher]").forEach(function (c) { c.hidden = c.getAttribute("data-res-vorher") === "1"; c.removeAttribute("data-res-vorher"); });
+      form.querySelectorAll("[data-res-offen]").forEach(function (c) { c.hidden = true; c.removeAttribute("data-res-offen"); });
+      if (multi) show(0, -1);
+    }
+    form.addEventListener("click", again);
+    if (outside) ok.addEventListener("click", again);
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (trap.value) return;
+      if (!check()) return;
+      var btn = form.querySelector('[type="submit"]'), label = btn ? btn.innerHTML : "";
+      if (btn) { btn.disabled = true; btn.setAttribute("aria-busy", "true"); }
+      form.setAttribute("data-status", "sendet");
+      function done(success) {
+        if (btn) { btn.disabled = false; btn.removeAttribute("aria-busy"); btn.innerHTML = label; }
+        if (success) showSuccess();
+        else { form.removeAttribute("data-status"); errBox.innerHTML = "Das hat leider nicht geklappt." + (CFG.tel ? " Bitte rufen Sie an: <a href=\"tel:" + CFG.tel + "\">" + CFG.telText + "<\/a>." : ""); }
+      }
+      if (CFG.modus !== "live" || !CFG.ziel) { setTimeout(function () { done(true); }, 650); return; }
+      var r = readable(), fd = new FormData(form);
+      fd.set("datum", r.datum + " (" + val("datum") + ")");
+      fd.set("subject", "Reservierungsanfrage " + r.datum + ", " + r.uhrzeit + " Uhr, " + r.personen);
+      fd.set("restaurant", CFG.name);
+      for (var k in (CFG.extra || {})) fd.set(k, CFG.extra[k]);
+      fetch(CFG.ziel, { method: "POST", body: fd, headers: { Accept: "application/json" } })
+        .then(function (res) { done(res.ok); }).catch(function () { done(false); });
+    });
+  }
+  function run() { document.querySelectorAll("form[data-reservierung]").forEach(init); }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run); else run();
+})();
+</script><!--/agent-res--><!--agent-szenen--><style id="agent-szenen">[data-szene]{position:relative;isolation:isolate}[data-szene="raster-zoom"]{overflow:clip}.szene-nachweis{background:rgba(255,255,255,.9);color:#1a1a1a;border-radius:6px;padding:.15em .5em;width:fit-content}
+.zerlegt-an [data-zerlegt-buehne]{position:relative}.zerlegt-an [data-ebene]{will-change:transform}
+.zerlegt-strich{display:block;height:0;border-top:1.5px solid currentColor;pointer-events:none}
+.zerlegt-strich::before{content:"";position:absolute;top:-4.75px;width:8px;height:8px;border-radius:50%;background:currentColor}
+.zerlegt-strich.rechts::before{left:-4px}.zerlegt-strich.links::before{right:-4px}
+.fenster-an [data-fenster-titel]{display:grid;justify-items:center;align-content:start;padding-top:clamp(.5rem,4vh,2.5rem);text-align:center;pointer-events:none}
+:where(.kapitel-an [data-kapitel]){display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(1.5rem,4vw,4rem);align-items:center;padding:clamp(1rem,4vh,3rem) clamp(1rem,5vw,4rem);box-sizing:border-box}
+:where(.kapitel-an [data-kapitel-bild]){margin:0;overflow:hidden}
+:where(.kapitel-an [data-kapitel-bild] img){width:100%;height:100%;object-fit:cover;display:block}
+@media (max-width:819px){:where(.kapitel-an [data-kapitel]){grid-template-columns:minmax(0,1fr);align-content:start;gap:1rem}}
+.horizontal-an{overflow:hidden}.horizontal-an [data-spur]{overflow:visible!important;flex-wrap:nowrap!important;width:max-content;scroll-snap-type:none!important}
+.horizontal-wisch [data-spur]{flex-wrap:nowrap!important;overflow-x:auto!important;overflow-y:hidden!important;overscroll-behavior-x:contain;scroll-snap-type:x mandatory!important;scrollbar-width:none;-webkit-overflow-scrolling:touch;width:auto!important;max-width:none!important;transform:none!important;box-sizing:border-box}
+.horizontal-wisch [data-spur]::-webkit-scrollbar{display:none}.horizontal-wisch [data-spur]>*{flex-shrink:0!important;scroll-snap-align:start}
+.spur-steuerung{display:none}.horizontal-wisch .spur-steuerung{display:flex}.horizontal-wisch .spur-steuerung.spur-passt{display:none}
+:where(.spur-steuerung){align-items:center;gap:.6rem;margin-top:clamp(.9rem,2.5vh,1.5rem)}
+:where(.spur-leiste){position:relative;flex:1;height:2px;border-radius:2px;background:color-mix(in srgb,currentColor 18%,transparent);overflow:hidden}
+.spur-leiste i{position:absolute;top:0;bottom:0;left:0;width:calc(var(--spur-anteil,.3)*100%);transform:translateX(calc(var(--spur-stand,0)*(1/var(--spur-anteil,.3) - 1)*100%));background:currentColor;border-radius:inherit}
+:where(.spur-zurueck,.spur-weiter){display:inline-grid;place-items:center;width:44px;height:44px;padding:0;border-radius:50%;border:1px solid currentColor;background:transparent;color:inherit;font:inherit;font-size:1.1rem;line-height:1;cursor:pointer;transition:opacity .2s}
+.spur-zurueck:disabled,.spur-weiter:disabled{opacity:.3;cursor:default}
+</style><script>(function () {
+  "use strict";
+  /* Immersive Szenen des Agenten. Die Seite liefert Markup und Gestaltung, der Agent die Bewegung:
+       data-szene="zerlegt"     Gericht öffnet sich beim Scrollen Schicht für Schicht, Linien + Beschriftungen
+       data-szene="raster-zoom" Mittelkachel wächst gepinnt, Seitenkacheln gleiten nach außen
+       data-szene="fenster"     Bild wächst aus einem kleinen Fenster zum Vollbild
+       data-szene="kapitel"     gepinnte Kapitel: Bild wischt herein, Text wechselt
+       data-szene="horizontal"  Desktop: Reihe läuft beim Scrollen seitlich (gepinnt); Handy: wischbare Reihe
+       data-szene="lesen"       Text leuchtet Wort für Wort mit dem Scrollen auf
+       data-schieben            Abschnitt schiebt sich über den vorigen
+       data-tiefe="10…40"       Parallax in mehreren Geschwindigkeiten (+ Maus-Tiefe auf dem Desktop)
+       data-hintergrund         Abschnitt mit Hintergrundbild ([data-hintergrund-bild]): sanfte Parallaxe
+     Ohne Bewegung (prefers-reduced-motion oder ohne GSAP) bleibt alles ruhig und vollständig sichtbar. */
+  var D = document, root = D.documentElement;
+  function qa(s, r) { return Array.prototype.slice.call((r || D).querySelectorAll(s)); }
+  function q(s, r) { return (r || D).querySelector(s); }
+  var G = window.gsap, ST = window.ScrollTrigger;
+  var still = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+  var motion = !!(G && ST) && !still;
+  var MOTION = "(prefers-reduced-motion: no-preference)";
+  if (G && ST) { G.registerPlugin(ST); if (window.SplitText) G.registerPlugin(window.SplitText); ST.config({ ignoreMobileResize: true }); }
+  var mm = motion ? G.matchMedia() : null;
+
+  /* feste Kopfzeile oben und feste Leisten unten (Handy) */
+  function edges() {
+    var top = 0, bottom = 0, vh = innerHeight;
+    qa("body > *, body > * > *, header, nav, [data-kopf]").forEach(function (n) {
+      if (n.offsetWidth < innerWidth * 0.5) return;
+      var cs = getComputedStyle(n);
+      if (cs.position !== "fixed" && cs.position !== "sticky") return;
+      if (cs.visibility === "hidden" || cs.display === "none" || +cs.opacity === 0) return;
+      var r = n.getBoundingClientRect();
+      if (r.height <= 0 || r.height > vh / 3) return;
+      if (cs.position === "sticky") { // klebt beim Scrollen oben (z. B. unter der Hinweisleiste des Agenten)
+        var t = parseFloat(cs.top), par = n.parentElement;
+        if (!isNaN(t) && t < vh / 3 && par && par.offsetHeight > vh * 2) top = Math.max(top, t + r.height);
+        return;
+      }
+      if (r.top <= 1 && r.bottom > 0) top = Math.max(top, r.bottom);
+      else if (cs.position === "fixed" && r.bottom >= vh - 1) bottom = Math.max(bottom, vh - r.top);
+    });
+    return { top: Math.round(top), bottom: Math.round(bottom) };
+  }
+  var E = { top: 0, bottom: 0 };
+  function measureEdges() {
+    E = edges();
+    root.style.setProperty("--szene-kopf", E.top + "px");
+    root.style.setProperty("--szene-unten", E.bottom + "px");
+  }
+  measureEdges();
+  function kopf() { return E.top; }
+  function start() { return "top " + kopf(); }
+  function sichtbar() { measureEdges(); return innerHeight - E.top - E.bottom; }
+  function loaded(imgs, cb) {
+    var left = imgs.length, done = false;
+    function one() { if (--left <= 0 && !done) { done = true; cb(); } }
+    if (!left) return cb();
+    imgs.forEach(function (i) {
+      i.loading = "eager";
+      if (i.complete && i.naturalWidth) one();
+      else { i.addEventListener("load", one, { once: true }); i.addEventListener("error", one, { once: true }); }
+    });
+    setTimeout(function () { if (!done) { done = true; cb(); } }, 6000);
+  }
+  var pending = 0;
+  function styler() {
+    var saved = [];
+    function put(el, props) {
+      if (!el) return;
+      if (!saved.some(function (x) { return x[0] === el; })) saved.push([el, el.getAttribute("style")]);
+      for (var k in props) el.style.setProperty(k, props[k], "important");
+    }
+    function undo() {
+      saved.forEach(function (x) { if (x[1] == null) x[0].removeAttribute("style"); else x[0].setAttribute("style", x[1]); });
+      saved = [];
+    }
+    return { put: put, undo: undo };
+  }
+  function kinder(box, ausser) { // direkte Kinder, die keine der genannten Elemente sind oder enthalten
+    return Array.prototype.slice.call(box.children).filter(function (c) {
+      return !ausser.some(function (a) { return a && (c === a || c.contains(a)); }) && getComputedStyle(c).position !== "absolute";
+    });
+  }
+  /* gepinnte Abschnitte füllen den sichtbaren Bereich: zu kurze Abschnitte bekommen oben und unten gleich viel Luft */
+  var fills = [];
+  function fill(sec) {
+    if (!sec._pad) { var cs = getComputedStyle(sec); sec._pad = [parseFloat(cs.paddingTop) || 0, parseFloat(cs.paddingBottom) || 0]; fills.push(sec); }
+    sec.style.paddingTop = sec._pad[0] + "px"; sec.style.paddingBottom = sec._pad[1] + "px";
+    var extra = sichtbar() - sec.offsetHeight;
+    if (extra > 0) { sec.style.paddingTop = sec._pad[0] + extra / 2 + "px"; sec.style.paddingBottom = sec._pad[1] + extra / 2 + "px"; }
+  }
+  function unfill(sec) { if (sec._pad) { sec.style.paddingTop = ""; sec.style.paddingBottom = ""; } }
+  function refreshSoon() { if (motion && pending <= 0) { ST.sort(); ST.refresh(); } }
+
+  /* ---------------------------------------------------------------- zerlegt */
+  function zerlegt(sec) {
+    var buehne = q("[data-zerlegt-buehne]", sec);
+    if (!buehne) return;
+    var figs = qa("[data-ebene]", buehne).sort(function (a, b) { return (+a.getAttribute("data-ebene")) - (+b.getAttribute("data-ebene")); });
+    if (figs.length < 2) return;
+    var imgs = figs.map(function (f) { return q("img", f); }).filter(Boolean);
+    var caps = figs.map(function (f) { return q("figcaption, [data-ebene-text]", f); });
+    var lines = figs.map(function (f, i) {
+      if (!caps[i]) return null;
+      var s = q(".zerlegt-strich", f);
+      if (!s) { s = D.createElement("i"); s.className = "zerlegt-strich"; s.setAttribute("aria-hidden", "true"); f.appendChild(s); }
+      return s;
+    });
+    sec.classList.add("zerlegt-an");
+    var P = { asm: [], exp: [], w: 0, seite: [], shift: 0, s0: 1 };
+    function ratio(img) { return img && img.naturalWidth ? img.naturalHeight / img.naturalWidth : 0.35; }
+    function inhalt(img) {
+      var v = (img && img.getAttribute("data-inhalt") || "").split(",").map(parseFloat);
+      return v.length === 2 && v[0] >= 0 && v[1] <= 1 && v[1] > v[0] ? v : [0.08, 0.92];
+    }
+    function layout() {
+      measureEdges();
+      var vw = innerWidth, mobil = vw < 820, n = figs.length;
+      buehne.style.position = "relative"; buehne.style.width = "100%";
+      // Höhe so, dass der gepinnte Abschnitt genau in den sichtbaren Bereich passt (Kopf- und Fußleisten abgezogen)
+      var V = Math.max(320, sichtbar());
+      buehne.style.height = V + "px";
+      // Höhe der Bühne = sichtbarer Bereich minus alles, was im gepinnten Abschnitt über bzw. unter ihr liegt
+      var st = getComputedStyle(sec), oben = 0, n0 = buehne;
+      while (n0 && n0 !== sec) { oben += n0.offsetTop; n0 = n0.offsetParent; if (n0 && !sec.contains(n0) && n0 !== sec) { oben = buehne.getBoundingClientRect().top - sec.getBoundingClientRect().top; break; } }
+      var H = Math.max(240, Math.min(V, V - oben - (parseFloat(st.paddingBottom) || 0)));
+      if (!motion) H = Math.min(V, Math.max(H, 420));
+      buehne.style.height = H + "px";
+      var Wb = buehne.clientWidth, R = figs.map(function (f, i) { return ratio(q("img", f)); });
+      var sumR = R.reduce(function (a, b) { return a + b; }, 0), gap = mobil ? 0.075 : 0.1;
+      var w = Math.min(mobil ? Wb * 0.6 : Math.min(Wb * 0.56, 560), (H * 0.95) / (sumR + (n - 1) * gap));
+      var line = mobil ? 18 : Math.max(36, Math.min(90, Wb * 0.06)), minLabel = mobil ? 92 : 140;
+      var wechsel = !mobil && (Wb - w) / 2 - line - 12 >= minLabel, left, labelW;
+      if (wechsel) { left = (Wb - w) / 2; labelW = Math.min(260, (Wb - w) / 2 - line - 12); }
+      else {
+        // Beschriftungen rechts: Platz bis zum Rand der Bühne und nie über den Bildschirm hinaus
+        var edge = Math.min(Wb, innerWidth - 8 - buehne.getBoundingClientRect().left);
+        left = mobil ? 0 : Math.max(0, Math.min(24, edge - w - line - 10 - minLabel));
+        var room = function (x) { return edge - left - x - line - 10; };
+        if (room(w) < minLabel) w = Math.max(Wb * 0.38, w - (minLabel - room(w)));
+        labelW = Math.max(60, Math.min(240, room(w)));
+      }
+      var h = R.map(function (r) { return r * w; }), g = gap * w;
+      var o = h.map(function (x, i) { return i < n - 1 ? Math.min(x, h[i + 1]) * 0.3 : 0; });
+      var Texp = h.reduce(function (a, b) { return a + b; }, 0) + (n - 1) * g;
+      var Tasm = h.reduce(function (a, b) { return a + b; }, 0) - o.reduce(function (a, b) { return a + b; }, 0);
+      var ye = (H - Texp) / 2, ya = (H - Tasm) / 2;
+      P.w = w;
+      // zusammengesetzt steht das Gericht mittig und etwas größer, beim Öffnen rückt es an seinen Platz
+      P.shift = wechsel ? 0 : Math.max(0, (Wb - w) / 2 - left);
+      P.s0 = Math.max(1, Math.min(1.3, (H * 0.9) / Tasm, (Wb * 0.92) / w));
+      figs.forEach(function (f, i) {
+        P.exp[i] = ye; P.asm[i] = ya; ye += h[i] + g; ya += h[i] - o[i];
+        var rechts = !wechsel || i % 2 === 0;
+        P.seite[i] = rechts ? 1 : -1;
+        f.style.cssText += ";position:absolute;top:0;left:" + left + "px;width:" + w + "px;margin:0;z-index:" + (n - i + 1);
+        var img = q("img", f);
+        if (img) img.style.cssText += ";display:block;width:100%;height:auto;max-width:none";
+        var c = caps[i], s = lines[i];
+        if (!c) return;
+        var span = inhalt(img), mid = h[i] / 2;
+        var x0 = rechts ? (span[1] - 0.07) * w : (span[0] + 0.07) * w, x1 = rechts ? w + line : -line;
+        s.className = "zerlegt-strich " + (rechts ? "rechts" : "links");
+        s.style.cssText = "position:absolute;top:" + mid + "px;left:" + Math.min(x0, x1) + "px;width:" + Math.abs(x1 - x0) + "px;" +
+          "transform-origin:" + (rechts ? "0 50%" : "100% 50%");
+        c.style.cssText += ";position:absolute;margin:0;width:" + labelW + "px;" +
+          (rechts ? "left:" + (w + line + 10) + "px;right:auto;text-align:left" : "left:" + (-line - 10 - labelW) + "px;right:auto;text-align:right");
+        c.style.top = "0px";
+        c.style.top = (mid - c.offsetHeight / 2) + "px";
+      });
+      if (!motion) figs.forEach(function (f, i) { f.style.transform = "translateY(" + P.exp[i] + "px)"; });
+    }
+    pending++;
+    loaded(imgs, function () {
+      pending--;
+      layout();
+      if (!motion) { addEventListener("resize", layout); return; }
+      ST.addEventListener("refreshInit", layout);
+      mm.add(MOTION, function () {
+        var n = figs.length, mobil = innerWidth < 820;
+        var tl = G.timeline({ defaults: { ease: "none" }, scrollTrigger: {
+          trigger: sec, start: start, end: function () { return "+=" + Math.round(innerHeight * (mobil ? 0.5 : 0.62) * (n + 1)); },
+          pin: true, scrub: 0.7, anticipatePin: 1, invalidateOnRefresh: true } });
+        figs.forEach(function (f, i) {
+          tl.fromTo(f, { y: function () { return P.asm[i]; }, x: function () { return P.shift; } },
+            { y: function () { return P.exp[i]; }, x: function () { return P.seite[i] * -P.w * 0.02 * (i % 2 ? 1 : -1); }, ease: "power2.inOut", duration: 1 }, i * 0.06);
+          var img = q("img", f);
+          if (img) tl.fromTo(img, { rotation: 0 }, { rotation: (i % 2 ? -1 : 1) * (1.2 + (i % 3) * 0.8), ease: "power2.inOut", duration: 1 }, i * 0.06);
+        });
+        figs.forEach(function (f, i) {
+          var t = 0.42 + i * (0.55 / n);
+          if (lines[i]) tl.fromTo(lines[i], { scaleX: 0 }, { scaleX: 1, duration: 0.22, ease: "power2.out" }, t);
+          if (caps[i]) tl.fromTo(caps[i], { autoAlpha: 0, x: function () { return P.seite[i] * 14; } }, { autoAlpha: 1, x: 0, duration: 0.22 }, t + 0.06);
+        });
+        tl.fromTo(buehne, { scale: function () { return P.s0; } }, { scale: 1, ease: "power2.inOut", duration: 0.9, transformOrigin: "50% 50%" }, 0);
+        qa("[data-tiefe]", sec).forEach(function (el) {
+          tl.fromTo(el, { yPercent: 0 }, { yPercent: -(parseFloat(el.getAttribute("data-tiefe")) || 20) * 1.5, duration: 1.4 }, 0);
+        });
+        tl.to({}, { duration: 0.3 });
+        // Maus-Tiefe: die Schichten folgen dem Zeiger unterschiedlich stark
+        var off = null;
+        if (matchMedia("(pointer: fine)").matches && innerWidth >= 900) {
+          var qs = imgs.map(function (img, i) { return [G.quickTo(img, "x", { duration: 0.6, ease: "power3" }), G.quickTo(img, "y", { duration: 0.6, ease: "power3" }), 4 + i * 2.5]; });
+          var mv = function (e) { var r = sec.getBoundingClientRect(), dx = (e.clientX - r.left) / r.width - 0.5, dy = (e.clientY - r.top) / r.height - 0.5;
+            qs.forEach(function (z) { z[0](dx * z[2] * 2); z[1](dy * z[2]); }); };
+          var lv = function () { qs.forEach(function (z) { z[0](0); z[1](0); }); };
+          sec.addEventListener("mousemove", mv); sec.addEventListener("mouseleave", lv);
+          off = function () { sec.removeEventListener("mousemove", mv); sec.removeEventListener("mouseleave", lv); };
+        }
+        return function () { if (off) off(); };
+      });
+      refreshSoon();
+    });
+  }
+
+  /* ---------------------------------------------------------------- raster-zoom */
+  function rasterZoom(sec) {
+    var mitte = q("[data-mitte]", sec) || q(".mitte", sec);
+    if (!mitte || !motion) return;
+    var tiles = Array.prototype.slice.call(mitte.parentNode.children).filter(function (c) { return c !== mitte; });
+    sec.style.position = sec.style.position || "relative";
+    function pos(el) {
+      var x = 0, y = 0, n = el;
+      while (n && n !== sec) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; if (n && !sec.contains(n)) break; }
+      return { x: x, y: y };
+    }
+    mm.add("(min-width: 900px) and " + MOTION, function () {
+      var C = {};
+      function calc() {
+        fill(sec);
+        var p = pos(mitte), w = mitte.offsetWidth, h = mitte.offsetHeight, V = innerHeight - kopf();
+        C.s = Math.max(1, Math.min(innerWidth * 0.94 / w, V * 0.9 / h));
+        C.x = innerWidth / 2 - (sec.getBoundingClientRect().left + p.x + w / 2);
+        C.y = V / 2 - (p.y + h / 2);
+      }
+      calc();
+      var tl = G.timeline({ scrollTrigger: { trigger: sec, start: start, end: "+=130%", pin: true, scrub: 1, anticipatePin: 1,
+        invalidateOnRefresh: true, onRefreshInit: calc } });
+      tl.to(mitte, { scale: function () { return C.s; }, x: function () { return C.x; }, y: function () { return C.y; }, ease: "power1.inOut", zIndex: 5 }, 0);
+      var img = q("img", mitte);
+      if (img) tl.fromTo(img, { scale: 1.18 }, { scale: 1, ease: "none" }, 0);
+      tiles.forEach(function (t) {
+        var links = t.offsetLeft + t.offsetWidth / 2 < mitte.offsetLeft + mitte.offsetWidth / 2;
+        tl.to(t, { xPercent: links ? -125 : 125, autoAlpha: 0, ease: "power1.in" }, 0);
+      });
+      var txt = q("[data-raster-text]", sec);
+      if (txt) tl.fromTo(txt, { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.3 }, 0.7);
+      // alles andere im Abschnitt (Überschrift, Text) weicht, bevor die Kachel es erreicht; Bildnachweise bleiben sichtbar
+      var S = styler(), weg = [], pfad = [];
+      for (var n = mitte.parentNode; n && n !== sec; n = n.parentNode) pfad.push(n);
+      [sec].concat(pfad).forEach(function (box) {
+        Array.prototype.slice.call(box.children).forEach(function (c) {
+          if (c === mitte || c.contains(mitte) || pfad.indexOf(c) >= 0 || tiles.indexOf(c) >= 0 || c === txt || (txt && c.contains(txt))) return;
+          if (c.matches(".foto-nachweis") || q(".foto-nachweis", c)) { S.put(c, { position: "relative", "z-index": "8" }); c.classList.add("szene-nachweis"); }
+          else weg.push(c);
+        });
+      });
+      if (weg.length) tl.to(weg, { autoAlpha: 0, y: -20, duration: 0.25, ease: "power1.in" }, 0);
+      return function () { unfill(sec); S.undo(); qa(".szene-nachweis", sec).forEach(function (c) { c.classList.remove("szene-nachweis"); }); };
+    });
+    mm.add("(max-width: 899px) and " + MOTION, function () {
+      G.from([mitte].concat(tiles), { clipPath: "inset(14% 14% 14% 14% round 14px)", duration: 1, ease: "power3.out", stagger: 0.12,
+        scrollTrigger: { trigger: sec, start: "top 80%" } });
+    });
+  }
+
+  /* ---------------------------------------------------------------- fenster */
+  function fenster(sec) {
+    var fig = q("[data-fenster]", sec);
+    if (!fig || !motion) return;
+    mm.add(MOTION, function () {
+      sec.classList.add("fenster-an");
+      var S = styler(), mobil = innerWidth < 820, media = q("img, video", fig);
+      var titel = q("[data-fenster-titel]", sec), txt = q("[data-fenster-text]", sec);
+      var rest = kinder(sec, [fig, titel, txt]);  // weitere Inhalte gehören zur Titel-Ebene und weichen mit ihm
+      S.put(sec, { position: "relative", overflow: "hidden", "padding-top": "0px", "padding-bottom": "0px", "min-height": "0px", "max-height": "none" });
+      S.put(fig, { position: "absolute", top: "0px", left: "0px", right: "0px", bottom: "0px", width: "100%", height: "100%",
+        "max-width": "none", "max-height": "none", margin: "0px", "aspect-ratio": "auto", "z-index": "1" });
+      if (media) S.put(media, { width: "100%", height: "100%", "max-width": "none", "max-height": "none", "object-fit": "cover",
+        "aspect-ratio": "auto", display: "block", position: "static" });
+      if (titel) S.put(titel, { position: "absolute", top: "0px", left: "0px", right: "0px", margin: "0px", "z-index": "0" });
+      if (txt) S.put(txt, { position: "absolute", "z-index": "2", top: "auto", margin: "0px" });
+      rest.forEach(function (r) { S.put(r, { position: "relative", "z-index": "0" }); });
+      var C = {};
+      function geo() {
+        var H = sichtbar(), w = sec.clientWidth;
+        sec.style.setProperty("height", H + "px", "important");
+        var oben = H * 0.12;
+        if (titel) oben = Math.max(oben, titel.offsetTop + titel.offsetHeight + 18);
+        rest.forEach(function (r) { oben = Math.max(oben, r.offsetTop + r.offsetHeight + 18); });
+        var unten = Math.max(H * 0.1, E.bottom ? 12 : 0), hoehe = Math.max(H * 0.28, H - oben - unten);
+        var breite = Math.min(w * (mobil ? 0.84 : 0.42), hoehe * (mobil ? 1.1 : 1.5));
+        hoehe = Math.min(hoehe, breite * (mobil ? 1.25 : 0.9));
+        var seite = Math.max(0, (w - breite) / 2), u = Math.max(0, H - oben - hoehe);
+        C.start = "inset(" + oben + "px " + seite + "px " + u + "px " + seite + "px round 28px)";
+        if (txt) { var rand = Math.max(16, w * 0.05); txt.style.setProperty("left", rand + "px", "important");
+          txt.style.setProperty("right", rand + "px", "important");
+          txt.style.setProperty("bottom", (Math.max(24, H * 0.06)) + "px", "important"); }
+      }
+      geo();
+      ST.addEventListener("refreshInit", geo);
+      var tl = G.timeline({ scrollTrigger: { trigger: sec, start: start, end: function () { return "+=" + Math.round(innerHeight * (mobil ? 1.1 : 1.5)); },
+        pin: true, scrub: 0.8, anticipatePin: 1, invalidateOnRefresh: true } });
+      tl.fromTo(fig, { clipPath: function () { return C.start; } },
+        { clipPath: "inset(0px 0px 0px 0px round 0px)", ease: "power2.inOut", duration: 1 }, 0);
+      if (media) tl.fromTo(media, { scale: 1.3 }, { scale: 1, ease: "power2.out", duration: 1 }, 0);
+      var weich = (titel ? [titel] : []).concat(rest);
+      if (weich.length) tl.fromTo(weich, { scale: 1, autoAlpha: 1 }, { scale: 0.9, autoAlpha: 0, duration: 0.4 }, 0.15);
+      if (txt) tl.fromTo(txt, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.3 }, 0.78);
+      tl.to({}, { duration: 0.25 });
+      return function () { ST.removeEventListener("refreshInit", geo); S.undo(); sec.classList.remove("fenster-an"); };
+    });
+  }
+
+  /* ---------------------------------------------------------------- kapitel */
+  function kapitel(sec) {
+    var ks = qa("[data-kapitel]", sec);
+    if (ks.length < 2 || !motion) return;
+    var box = ks[0].parentNode;
+    if (ks.some(function (k) { return k.parentNode !== box; })) return;
+    mm.add(MOTION, function () {
+      sec.classList.add("kapitel-an");
+      var S = styler(), n = ks.length;
+      // was vor den Kapiteln steht (Überschrift), bleibt sichtbar darüber; was danach steht, ruht während der Szene
+      var vor = [], nach = [];
+      kinder(box, ks).forEach(function (c) { (c.compareDocumentPosition(ks[0]) & 4 ? vor : nach).push(c); });
+      S.put(sec, { position: "relative", overflow: "hidden", "min-height": "0px", "max-height": "none" });
+      if (box !== sec) S.put(box, { position: "relative", "min-height": "0px", "max-height": "none" });
+      nach.forEach(function (c) { S.put(c, { display: "none" }); });
+      function geo() {
+        var H = sichtbar(), cs = getComputedStyle(sec), pb = parseFloat(cs.paddingBottom) || 0;
+        sec.style.setProperty("height", H + "px", "important");
+        var boxH = H - pb - (parseFloat(cs.paddingTop) || 0), top = box === sec ? (parseFloat(cs.paddingTop) || 0) : 0;
+        if (box !== sec) {
+          box.style.setProperty("height", "1px", "important");
+          boxH = Math.max(280, H - pb - (box.getBoundingClientRect().top - sec.getBoundingClientRect().top));
+          box.style.setProperty("height", boxH + "px", "important");
+        }
+        vor.forEach(function (v) { top = Math.max(top, v.offsetTop + v.offsetHeight + 16); });
+        var h = Math.max(240, (box === sec ? H - pb : boxH) - top);
+        ks.forEach(function (k, i) {
+          S.put(k, { position: "absolute", left: "0px", right: "0px", bottom: "auto", "margin-top": "0px", "margin-bottom": "0px",
+            width: "auto", "z-index": String(i + 1) });
+          k.style.setProperty("top", top + "px", "important");
+          k.style.setProperty("height", h + "px", "important");
+          // passt ein Kapitel nicht in die Bühne (Handy), wird sein Bild niedriger statt dass etwas überlappt
+          var bild = q("[data-kapitel-bild]", k), img = bild && q("img", bild);
+          if (!bild) return;
+          ["height", "aspect-ratio", "max-height"].forEach(function (pr) { if (bild._fit) bild.style.removeProperty(pr); });
+          var over = k.scrollHeight - h;
+          if (over > 2) {
+            bild._fit = true;
+            S.put(bild, { height: Math.max(110, bild.offsetHeight - over - 6) + "px", "aspect-ratio": "auto", "max-height": "none" });
+            if (img) S.put(img, { width: "100%", height: "100%", "object-fit": "cover" });
+          }
+        });
+      }
+      geo();
+      ST.addEventListener("refreshInit", geo);
+      var aktiv = function (self) { var at = Math.round(self.progress * (n - 1));  // nur das sichtbare Kapitel ist anklickbar
+        ks.forEach(function (k, i) { k.style.pointerEvents = i === at ? "" : "none"; }); };
+      aktiv({ progress: 0 });
+      var tl = G.timeline({ scrollTrigger: { trigger: sec, start: start, end: function () { return "+=" + Math.round(innerHeight * 0.85 * n); },
+        pin: true, scrub: 0.6, anticipatePin: 1, invalidateOnRefresh: true, onUpdate: aktiv, onRefresh: aktiv,
+        snap: { snapTo: 1 / (n - 1), duration: { min: 0.2, max: 0.6 }, delay: 0.08, ease: "power1.inOut" } } });
+      ks.forEach(function (k, i) {
+        if (!i) return;
+        var bild = q("[data-kapitel-bild]", k), img = bild && q("img", bild), text = q("[data-kapitel-text]", k);
+        var vorText = q("[data-kapitel-text]", ks[i - 1]), vorImg = q("[data-kapitel-bild] img", ks[i - 1]), t = i - 1;
+        if (bild) tl.fromTo(bild, { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1, ease: "power2.inOut" }, t);
+        if (img) tl.fromTo(img, { scale: 1.25, yPercent: 6 }, { scale: 1, yPercent: 0, duration: 1, ease: "power2.out" }, t);
+        if (vorImg) tl.to(vorImg, { scale: 1.08, duration: 1 }, t);
+        if (vorText) tl.to(vorText, { autoAlpha: 0, y: -40, duration: 0.4 }, t);
+        if (text) tl.fromTo(text, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.45 }, t + 0.45);
+      });
+      return function () { ST.removeEventListener("refreshInit", geo); S.undo(); sec.classList.remove("kapitel-an");
+        ks.forEach(function (k) { k.style.pointerEvents = ""; }); };
+    });
+  }
+
+  /* ---------------------------------------------------------------- horizontal */
+  /* Desktop mit Maus: gepinnt, die Reihe läuft etwas schneller als gescrollt wird (Pin höchstens ~1,2 Bildschirm-
+     höhen, nie Leerlauf). Handy/Touch und ohne Bewegung: keine Scroll-Entführung, sondern eine wischbare Reihe mit
+     Einrasten, Fortschrittsleiste und Pfeilen, die bis an den Bildschirmrand läuft. */
+  var QUER = "(min-width: 820px) and (hover: hover) and (pointer: fine) and " + MOTION;
+  function wischbar(sec, spur) {
+    sec.classList.add("horizontal-wisch");
+    var bar = D.createElement("div"), knopf = function (cls, label, txt) {
+      var b = D.createElement("button"); b.type = "button"; b.className = cls; b.setAttribute("aria-label", label); b.textContent = txt; return b;
+    };
+    bar.className = "spur-steuerung";
+    var leiste = D.createElement("span"); leiste.className = "spur-leiste"; leiste.setAttribute("aria-hidden", "true");
+    leiste.appendChild(D.createElement("i"));
+    var zur = knopf("spur-zurueck", "Zurück", "←"), vor = knopf("spur-weiter", "Weiter", "→");
+    bar.appendChild(leiste); bar.appendChild(zur); bar.appendChild(vor);
+    spur.parentNode.insertBefore(bar, spur.nextSibling);
+    function schritt() {
+      var k = spur.children[0], cs = getComputedStyle(spur);
+      return k ? k.getBoundingClientRect().width + (parseFloat(cs.columnGap) || parseFloat(cs.gap) || 0) : spur.clientWidth * 0.8;
+    }
+    zur.addEventListener("click", function () { spur.scrollBy({ left: -schritt(), behavior: still ? "auto" : "smooth" }); });
+    vor.addEventListener("click", function () { spur.scrollBy({ left: schritt(), behavior: still ? "auto" : "smooth" }); });
+    function stand() {
+      var max = spur.scrollWidth - spur.clientWidth, p = max > 0 ? spur.scrollLeft / max : 1;
+      bar.classList.toggle("spur-passt", max < 8);
+      zur.disabled = spur.scrollLeft < 4; vor.disabled = spur.scrollLeft > max - 4;
+      leiste.style.setProperty("--spur-anteil", Math.max(0.08, Math.min(1, spur.clientWidth / (spur.scrollWidth || 1))).toFixed(3));
+      leiste.style.setProperty("--spur-stand", p.toFixed(3));
+    }
+    // Reihe läuft bis an den Bildschirmrand, die erste Karte fluchtet trotzdem mit dem Inhalt
+    var KEYS = ["marginLeft", "marginRight", "paddingLeft", "paddingRight", "scrollPaddingLeft", "scrollPaddingRight"];
+    var orig = KEYS.map(function (k) { return spur.style[k]; });
+    function zurueck() { KEYS.forEach(function (k, i) { spur.style[k] = orig[i]; }); }
+    function rand() {
+      if (!sec.classList.contains("horizontal-wisch")) return;
+      zurueck();
+      bar.style.marginLeft = ""; bar.style.marginRight = "";
+      var r = spur.getBoundingClientRect(), cs = getComputedStyle(spur);
+      var l = Math.max(0, Math.round(r.left)), re = Math.max(0, Math.round(D.documentElement.clientWidth - r.right));
+      var pl = parseFloat(cs.paddingLeft) || 0, pr = parseFloat(cs.paddingRight) || 0;
+      // Steuerung fluchtet mit dem Inhalt der Reihe (nie am Bildschirmrand)
+      var b = bar.getBoundingClientRect();
+      bar.style.marginLeft = Math.max(0, Math.round(r.left + pl - b.left)) + "px";
+      bar.style.marginRight = Math.max(0, Math.round(b.right - (r.right - pr))) + "px";
+      spur.style.marginLeft = -l + "px"; spur.style.marginRight = -re + "px";
+      spur.style.paddingLeft = l + pl + "px"; spur.style.paddingRight = re + pr + "px";
+      spur.style.scrollPaddingLeft = l + pl + "px"; spur.style.scrollPaddingRight = re + pr + "px";
+      stand();
+    }
+    spur.addEventListener("scroll", stand, { passive: true });
+    addEventListener("resize", rand);
+    rand();
+    if (D.readyState !== "complete") addEventListener("load", rand, { once: true });
+    return { an: function () { sec.classList.add("horizontal-wisch"); rand(); },
+             aus: function () { sec.classList.remove("horizontal-wisch"); zurueck(); spur.scrollLeft = 0; } };
+  }
+  function horizontal(sec) {
+    var spur = q("[data-spur]", sec);
+    if (!spur) return;
+    var w = wischbar(sec, spur);
+    if (!motion) return;
+    mm.add(QUER, function () {
+      var weg = function () { return Math.max(0, spur.scrollWidth - sec.clientWidth + (parseFloat(getComputedStyle(sec).paddingLeft) || 0)); };
+      w.aus();
+      sec.classList.add("horizontal-an");
+      var LUFT = 20;
+      // passt fast (kaum Bewegung) oder ist die Reihe selbst höher als der sichtbare Bereich: wischbar statt angedockt
+      if (weg() < 60 || spur.offsetHeight + 2 * LUFT > sichtbar()) { sec.classList.remove("horizontal-an"); w.an(); return function () {}; }
+      fill(sec);
+      var refill = function () { fill(sec); };
+      ST.addEventListener("refreshInit", refill);
+      // Andocken je nach Bildschirmhöhe: Ist der Abschnitt höher als der sichtbare Bereich, dockt er erst an, wenn die
+      // Karten unten vollständig zu sehen sind (die Überschrift darf dafür nach oben hinausrutschen), sonst unter dem Kopf
+      var oben = function () {
+        var r = sec.getBoundingClientRect(), s = spur.getBoundingClientRect(), unten = s.bottom;
+        [].forEach.call(sec.children, function (c) {  // auch Hinweise unter der Reihe sollen ganz zu sehen sein
+          var cs = getComputedStyle(c), b = c.getBoundingClientRect();
+          if (cs.position !== "absolute" && cs.position !== "fixed" && b.height > 0) unten = Math.max(unten, b.bottom);
+        });
+        var o = Math.min(kopf(), kopf() + sichtbar() - Math.min(r.height, unten - r.top + LUFT));
+        // passt nicht alles: die Karten haben Vorrang, ihre Oberkante bleibt unter dem Kopf
+        if (o + s.top - r.top < kopf()) o = Math.min(kopf(), kopf() + sichtbar() - (s.bottom - r.top + LUFT));
+        return Math.round(o);
+      };
+      var anfang = function () { var o = oben(); return "top top" + (o < 0 ? "-=" + -o : "+=" + o); };
+      // Pinlänge = Bewegung × 0,75, höchstens 1,2 sichtbare Höhen: die Reihe hängt nie, ohne dass sich etwas tut
+      var dauer = function () { return Math.max(1, Math.round(Math.min(weg() * 0.75, sichtbar() * 1.2))); };
+      G.to(spur, { x: function () { return -weg(); }, ease: "none", scrollTrigger: { trigger: sec, start: anfang,
+        end: function () { return "+=" + dauer(); }, pin: true, scrub: 0.6, anticipatePin: 1, invalidateOnRefresh: true } });
+      return function () { sec.classList.remove("horizontal-an"); ST.removeEventListener("refreshInit", refill); unfill(sec); w.an(); };
+    });
+  }
+
+  /* ---------------------------------------------------------------- lesen */
+  function lesen(el) {
+    if (!motion || !window.SplitText) return;
+    mm.add(MOTION, function () {
+      var s = window.SplitText.create(el, { type: "words" });
+      G.fromTo(s.words, { opacity: 0.16 }, { opacity: 1, stagger: 0.1, ease: "none",
+        scrollTrigger: { trigger: el, start: "top 82%", end: "bottom 42%", scrub: true } });
+      return function () { s.revert(); };
+    });
+  }
+
+  /* ---------------------------------------------------------------- schieben, tiefe */
+  function schieben(el) {
+    if (!motion) return;
+    mm.add(MOTION, function () {
+      G.from(el, { y: innerWidth < 820 ? 48 : 96, ease: "none", scrollTrigger: { trigger: el, start: "top bottom", end: "top 50%", scrub: true } });
+    });
+  }
+  /* ---------------------------------------------------------------- hintergrund */
+  /* Hintergrundbild eines Abschnitts (Grundform in agent-basis): sanfte Parallaxe, ohne Bewegung ruhig */
+  function hintergrund() {
+    if (!motion) return;
+    qa("[data-hintergrund-bild] img").forEach(function (img) {
+      var sec = img.closest("[data-hintergrund]") || img.parentNode;
+      mm.add(MOTION, function () {
+        G.fromTo(img, { yPercent: -6 }, { yPercent: 6, ease: "none", scrollTrigger: { trigger: sec, start: "top bottom",
+          end: "bottom top", scrub: true } });
+      });
+    });
+  }
+  function tiefe() {
+    if (!motion) return;
+    var els = qa("[data-tiefe]").filter(function (el) { return !el.closest('[data-szene="zerlegt"]'); });
+    if (!els.length) return;
+    mm.add(MOTION, function () {
+      els.forEach(function (el) {
+        G.to(el, { yPercent: -(parseFloat(el.getAttribute("data-tiefe")) || 20), ease: "none",
+          scrollTrigger: { trigger: el.closest("section, header, footer") || el, start: "top bottom", end: "bottom top", scrub: true } });
+      });
+    });
+    mm.add("(pointer: fine) and (min-width: 900px) and " + MOTION, function () {
+      var offs = [];
+      qa("section, header").forEach(function (s) {
+        var mine = els.filter(function (el) { return el.closest("section, header") === s; });
+        if (!mine.length) return;
+        var qs = mine.map(function (el) { var t = parseFloat(el.getAttribute("data-tiefe")) || 20;
+          return [G.quickTo(el, "x", { duration: 0.8, ease: "power3" }), G.quickTo(el, "y", { duration: 0.8, ease: "power3" }), t * 0.6]; });
+        var mv = function (e) { var r = s.getBoundingClientRect(), dx = (e.clientX - r.left) / r.width - 0.5, dy = (e.clientY - r.top) / r.height - 0.5;
+          qs.forEach(function (z) { z[0](-dx * z[2]); z[1](-dy * z[2]); }); };
+        s.addEventListener("mousemove", mv);
+        offs.push(function () { s.removeEventListener("mousemove", mv); });
+      });
+      return function () { offs.forEach(function (f) { f(); }); };
+    });
+  }
+
+  function run() {
+    qa('[data-szene="zerlegt"]').forEach(zerlegt);
+    qa('[data-szene="raster-zoom"]').forEach(rasterZoom);
+    qa('[data-szene="fenster"]').forEach(fenster);
+    qa('[data-szene="kapitel"]').forEach(kapitel);
+    qa('[data-szene="horizontal"]').forEach(horizontal);
+    qa('[data-szene="lesen"]').forEach(lesen);
+    qa("[data-schieben]").forEach(schieben);
+    tiefe();
+    hintergrund();
+    refreshSoon();
+    if (motion) {
+      ST.addEventListener("refreshInit", measureEdges);
+      addEventListener("load", function () { ST.sort(); ST.refresh(); });
+    }
+    root.classList.add(motion ? "szenen-bewegt" : "szenen-ruhig");
+  }
+  if (D.readyState === "loading") D.addEventListener("DOMContentLoaded", run); else run();
+})();
+</script><!--/agent-szenen--></body>
+</html>
