@@ -369,6 +369,20 @@ button, input { font: inherit; color: inherit; }
 .life.low .fg { stroke: var(--warn); }
 .life span { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--display); font-weight: 700; font-size: .78rem; }
 .tags { display: flex; gap: .35rem; flex-wrap: wrap; padding: 0 1rem .9rem; }
+/* Favorit: Stern oben rechts auf der Vorschau, Glas-Material, gibt beim Drücken nach */
+.fav { position: absolute; top: .55rem; right: .55rem; z-index: 2; width: 2.3rem; height: 2.3rem; padding: 0; border-radius: 50%; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.16); background: rgba(9,14,34,.58); -webkit-backdrop-filter: blur(10px) saturate(160%); backdrop-filter: blur(10px) saturate(160%); color: rgba(255,255,255,.8); cursor: pointer; -webkit-tap-highlight-color: transparent; touch-action: manipulation; transition: scale .16s cubic-bezier(.23,1,.32,1), background .2s cubic-bezier(.23,1,.32,1), color .2s cubic-bezier(.23,1,.32,1), border-color .2s cubic-bezier(.23,1,.32,1), opacity .2s cubic-bezier(.23,1,.32,1); }
+.fav svg { width: 1.1rem; height: 1.1rem; }
+.fav svg path { fill: transparent; transition: fill .2s cubic-bezier(.23,1,.32,1); }
+.fav:active { scale: .9; }
+.fav[aria-pressed="true"] { color: #FFB547; border-color: rgba(255,181,71,.6); background: rgba(48,32,6,.66); }
+.fav[aria-pressed="true"] svg path { fill: currentColor; }
+.fav.pop svg { animation: favpop .34s cubic-bezier(.23,1,.32,1); }
+@keyframes favpop { 0% { transform: scale(.72); } 55% { transform: scale(1.14); } 100% { transform: scale(1); } }
+@media (hover: hover) and (pointer: fine) { .demo .fav:not([aria-pressed="true"]) { opacity: .55; } .demo:hover .fav, .demo .fav:focus-visible { opacity: 1; } .fav:hover { border-color: rgba(255,255,255,.4); color: #fff; } .fav[aria-pressed="true"]:hover { color: #FFC56E; } }
+@media (pointer: coarse) { .fav { width: 2.75rem; height: 2.75rem; top: .45rem; right: .45rem; } .fav svg { width: 1.2rem; height: 1.2rem; } }
+@media (prefers-reduced-motion: reduce) { .fav.pop svg { animation: none; } }
+.fchip .stern { width: .95em; height: .95em; margin-right: -.1rem; color: #FFB547; }
+.fchip .stern path { fill: currentColor; }
 .tag { font-size: .72rem; font-weight: 600; padding: .2rem .55rem; border-radius: 999px; border: 1px solid var(--edge); color: var(--ink2); }
 .tag.keep { border-color: rgba(75,227,166,.5); color: var(--ok); }
 .demo .acts { display: flex; gap: .4rem; padding: 0 1rem 1rem; }
@@ -980,7 +994,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "29dab9a5e0";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "ac03c01eb1";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -1630,6 +1644,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     renderFlow(d, checked, hits, used);
     renderChart(used);
     if (!syncRatings.done) { RAT = normRat(d.bewertungen); syncRatings.done = true; }
+    if (!syncFav.done) { FAV = normFav(d.favoriten); syncFav.done = true; syncFav(); }
     renderDemos(d);
     renderMemory(d);
     syncRatings();
@@ -1743,9 +1758,49 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   var DF = { filter: "alle", ort: "", sort: "neu" }, query = "", io = null, ALLE = false, slideStart = false;
   try { var dfs = JSON.parse(localStorage.getItem("cockpit-demos") || "null"); if (dfs && typeof dfs === "object") DF = Object.assign(DF, dfs); } catch (e) {}
   function dfMerken() { try { localStorage.setItem("cockpit-demos", JSON.stringify(DF)); } catch (e) {} }
+  // Sortiert wird sekundengenau nach dem Bauzeitpunkt (wird nicht angezeigt); ältere Daten haben nur den Tag
+  function zeitOf(x) { return Date.parse(x.zeit || x.erstellt || "") || 0; }
+  /* Favoriten: dauerhaft in data/favoriten.json (über GitHub, auf allen Geräten gleich), ohne Lauf auszulösen */
+  var STERN_D = "M12 3.4l2.65 5.37 5.93.86-4.29 4.18 1.01 5.9L12 16.92l-5.3 2.79 1.01-5.9L3.42 9.63l5.93-.86z";
+  var FAV = {}, favSha = null, favRemote = null, favSaving = Promise.resolve();
+  function normFav(f) { var o = {}; if (f && typeof f === "object") Object.keys(f).forEach(function (k) { if (f[k]) o[k] = String(f[k]); }); return o; }
+  function isFav(x) { return !!FAV[x.slug]; }
+  function loadFav() {
+    return api("/contents/data/favoriten.json", { allow404: true }).then(function (f) {
+      favSha = f ? f.sha : null; favRemote = normFav(f ? JSON.parse(fromU8(f.content) || "{}") : {}); return favRemote;
+    });
+  }
+  function saveFav(slug, on, name) {
+    favSaving = favSaving.catch(function () {}).then(function () {
+      function attempt(retry) {
+        return (favRemote ? Promise.resolve(favRemote) : loadFav()).then(function (cur) {
+          cur = normFav(cur); if (on) cur[slug] = cur[slug] || new Date().toISOString(); else delete cur[slug];
+          return writeFile("data/favoriten.json", cur, "Cockpit: " + (on ? "Favorit" : "kein Favorit mehr") + " · " + (name || slug), favSha)
+            .then(function (res) { favSha = res && res.content ? res.content.sha : null; favRemote = cur; });
+        }).catch(function (e) {
+          if (retry && (e.status === 409 || e.status === 422)) { favRemote = null; return attempt(false); }
+          throw e;
+        });
+      }
+      return attempt(true);
+    });
+    return favSaving;
+  }
+  function syncFav() {
+    var st = (DATA && DATA.steuerung) || {}; if (!st.token) return;
+    favSaving.catch(function () {}).then(function () { return loadFav(); }).then(function (cur) {
+      if (JSON.stringify(cur) === JSON.stringify(FAV)) return;
+      FAV = cur; renderDemos(DATA);
+    }).catch(function () {});
+  }
+  function favKnopf(x) {
+    var on = isFav(x);
+    return '<button class="fav" type="button" data-fav aria-pressed="' + on + '" aria-label="' + esc(x.name) + (on ? ' ist Favorit' : ' als Favorit markieren') + '" title="' + (on ? "Favorit (nochmal tippen zum Entfernen)" : "Als Favorit markieren") + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="' + STERN_D + '"/></svg></button>';
+  }
   var FILTER = [
     ["alle", "Alle", function () { return true; }],
-    ["neu", "Neu", function (x) { return !!x.erstellt && Date.now() - new Date(x.erstellt) < 7 * 864e5; }],
+    ["fav", '<svg class="stern" viewBox="0 0 24 24" aria-hidden="true"><path d="' + STERN_D + '"/></svg>Favoriten', function (x) { return isFav(x); }],
+    ["neu", "Neu", function (x) { var t = zeitOf(x); return !!t && Date.now() - t < 7 * 864e5; }],
     ["ohne", "Ohne Brief", function (x) { var b = x.brief || {}; return !b.verschickt && !b.test && !briefOffen(x); }],
     ["test", "Testbrief", function (x) { var b = x.brief || {}; return !b.verschickt && (!!b.test || briefOffen(x)); }],
     ["raus", "Verschickt", function (x) { return !!(x.brief || {}).verschickt; }],
@@ -1811,16 +1866,19 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
         { duration: 680, delay: Math.min(i, 12) * 22, easing: "cubic-bezier(.2,.75,.15,1)", fill: "backwards" });
     });
   }
-  function renderDemos(d) {
+  function demoBasis(d) {
     var q = query.toLowerCase();
-    var basis = d.demos.filter(function (x) { return !q || [x.name, x.ort, x.gebiet, x.kueche].join(" ").toLowerCase().indexOf(q) >= 0; });
+    return d.demos.filter(function (x) { return !q || [x.name, x.ort, x.gebiet, x.kueche].join(" ").toLowerCase().indexOf(q) >= 0; });
+  }
+  function renderDemos(d) {
+    var basis = demoBasis(d);
     if (DF.ort && !d.demos.some(function (x) { return x.ort === DF.ort; })) DF.ort = "";
     renderFilter(basis);
     var f = filterFn(), list = basis.filter(function (x) { return f(x) && (!DF.ort || x.ort === DF.ort); });
     list.sort(function (a, b) {
       if (DF.sort === "ablauf") return (a.loescht_am || "9999") < (b.loescht_am || "9999") ? -1 : 1;
       if (DF.sort === "eignung") return (b.punkte || 0) - (a.punkte || 0);
-      return (b.erstellt || "") < (a.erstellt || "") ? -1 : 1;
+      return zeitOf(b) - zeitOf(a) || (a.name < b.name ? -1 : 1);
     });
     $("#demos-sub").textContent = d.demos.length + " Demo-Websites sind gerade online" + (list.length !== d.demos.length ? ", " + list.length + " davon passen" : "") + ".";
     var box = $("#demos"), sl = slideStart ? 0 : box.scrollLeft; slideStart = false; box.innerHTML = "";
@@ -1836,7 +1894,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       var frac = left == null ? 1 : Math.max(0, Math.min(1, left / total));
       var why = x.website_art === "plattform" ? "nur " + (x.plattform || "Plattform") : "keine Website";
       var card = h("article", { class: "demo", style: "--i:" + Math.min(i, 20) },
-        '<div class="screen"><iframe title="Vorschau ' + esc(x.name) + '" data-src="' + esc(x.url) + '" loading="lazy" tabindex="-1" aria-hidden="true"></iframe><div class="scan"></div></div>' +
+        '<div class="screen"><iframe title="Vorschau ' + esc(x.name) + '" data-src="' + esc(x.url) + '" loading="lazy" tabindex="-1" aria-hidden="true"></iframe><div class="scan"></div>' + favKnopf(x) + '</div>' +
         '<div class="body"><h3 title="' + esc(x.name) + '">' + esc(x.name) + '</h3>' +
         '<div class="life' + (left != null && left <= 7 ? " low" : "") + '" title="' + (left == null ? "wird behalten" : "wird in " + left + " Tagen gelöscht") + '"><svg viewBox="0 0 44 44"><circle class="bg" cx="22" cy="22" r="18"/><circle class="fg" cx="22" cy="22" r="18" stroke-dasharray="' + C + '" stroke-dashoffset="' + C + '" data-off="' + C * (1 - frac) + '"/></svg><span>' + (left == null ? "∞" : left + "T") + "</span></div>" +
         '<div class="meta">' + esc([x.kueche, x.ort].filter(Boolean).join(", ")) + "</div></div>" +
@@ -1866,6 +1924,25 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   $("#demo-filter").addEventListener("change", function (e) {
     if (e.target.id !== "demo-ort") return;
     DF.ort = e.target.value; dfMerken(); Sound.play("hover"); slideStart = true; if (DATA) renderDemos(DATA);
+  });
+  $("#demos").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-fav]"); if (!b) return;
+    var card = b.closest(".demo"), x = card && card._x; if (!x || !ctl()) return;
+    var on = !isFav(x);
+    function zeigen(an) {
+      b.setAttribute("aria-pressed", an ? "true" : "false");
+      b.setAttribute("aria-label", x.name + (an ? " ist Favorit" : " als Favorit markieren"));
+      b.title = an ? "Favorit (nochmal tippen zum Entfernen)" : "Als Favorit markieren";
+      b.classList.remove("pop"); if (an) { void b.offsetWidth; b.classList.add("pop"); }
+      renderFilter(demoBasis(DATA));
+    }
+    if (on) FAV[x.slug] = new Date().toISOString(); else delete FAV[x.slug];
+    zeigen(on); Sound.play(on ? "pick" : "tick");
+    if (!on && DF.filter === "fav") setTimeout(function () { if (!isFav(x)) { slideStart = false; renderDemos(DATA); } }, 420);
+    saveFav(x.slug, on, x.name).catch(function () {
+      if (on) delete FAV[x.slug]; else FAV[x.slug] = new Date().toISOString();
+      zeigen(!on); Sound.play("error"); toast("Favorit konnte nicht gespeichert werden. Bitte gleich nochmal versuchen.");
+    });
   });
   $("#demos").addEventListener("click", function (e) { if (e.target.closest("[data-df-reset]")) { DF.filter = "alle"; DF.ort = ""; query = ""; $("#q").value = ""; dfMerken(); slideStart = true; renderDemos(DATA); } });
   $("#demos-alle").addEventListener("click", function () { Sound.play(ALLE ? "close" : "open"); demosAufklappen(!ALLE); });
