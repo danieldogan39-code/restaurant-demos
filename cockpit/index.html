@@ -385,6 +385,9 @@ button, input { font: inherit; color: inherit; }
 .fchip .stern path { fill: currentColor; }
 .tag { font-size: .72rem; font-weight: 600; padding: .2rem .55rem; border-radius: 999px; border: 1px solid var(--edge); color: var(--ink2); }
 .tag.keep { border-color: rgba(75,227,166,.5); color: var(--ok); }
+.tag.auf { border-color: rgba(75,227,166,.55); color: var(--ok); background: rgba(75,227,166,.08); display: inline-flex; align-items: center; gap: .35rem; }
+.tag.auf::before { content: ""; width: .45rem; height: .45rem; border-radius: 50%; background: currentColor; box-shadow: 0 0 0 3px rgba(75,227,166,.18); }
+.auf-slot { display: contents; }
 .demo .acts { display: flex; gap: .4rem; padding: 0 1rem 1rem; }
 .demo .acts .btn { padding: .45rem .7rem; font-size: .82rem; flex: 1; justify-content: center; }
 .tag.score { border-color: rgba(123,175,255,.6); color: var(--cyan); font-family: var(--display); }
@@ -994,7 +997,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "ac03c01eb1";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "7f51a90320";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -1026,6 +1029,8 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     lock.classList.add("busy"); setMsg(silent ? "" : "Entschlüssele …", true);
     return fetchBlob().then(function (blob) { return decrypt(blob, pw); }).then(function (data) {
       PW = pw; DATA = data; Stimme.abgleich(data);
+      // dieses Gerät gehört Daniel: Kurzlinks aus den Briefen zählen hier nie als Kunde
+      try { localStorage.setItem("medialyte-intern", new Date().toISOString()); } catch (e) {}
       if ($("#remember").checked) try { localStorage.setItem(STORE, pw); } catch (e) {}
       lock.classList.add("gone"); setTimeout(function () { lock.hidden = true; }, 800);
       GESTURE = !silent;
@@ -1646,6 +1651,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     if (!syncRatings.done) { RAT = normRat(d.bewertungen); syncRatings.done = true; }
     if (!syncFav.done) { FAV = normFav(d.favoriten); syncFav.done = true; syncFav(); }
     renderDemos(d);
+    ladeAufrufe(true);
     renderMemory(d);
     syncRatings();
     if (!syncDecisions.done) { syncDecisions(d); syncAreas(); syncDecisions.done = true; } else renderAreas();
@@ -1793,6 +1799,44 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       FAV = cur; renderDemos(DATA);
     }).catch(function () {});
   }
+  /* Wer hat seine Demo geöffnet? Aufrufe des Kurzlinks aus dem Brief (Zähler bei Cloudflare, Schlüssel im Cockpit).
+     Zählt nur, was nach der frühestmöglichen Zustellung kam (Tag nach dem Verschicken); Daniels Geräte melden nie. */
+  var AUF = {}, aufGeladen = 0, aufLaeuft = false;
+  var aufFmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit", timeZone: "Europe/Berlin" });
+  var GERAET = { handy: "Handy", tablet: "Tablet", laptop: "Laptop" };
+  function aufrufeVon(x) {
+    var b = x.brief || {}, liste = x.kurz && AUF[x.kurz];
+    if (!liste || !b.verschickt) return [];
+    var ab = Date.parse(String(b.verschickt).slice(0, 10)) + 864e5;
+    return liste.filter(function (a) { return Date.parse(a.z) >= ab; });
+  }
+  function aufTag(x) {
+    var a = aufrufeVon(x); if (!a.length) return "";
+    var titel = a.map(function (e) { return aufFmt.format(new Date(e.z)) + (GERAET[e.g] ? " · " + GERAET[e.g] : ""); }).join("\n");
+    return '<span class="tag auf" title="Vom Kunden geöffnet:\n' + esc(titel) + '">Geöffnet ' + aufFmt.format(new Date(a[0].z)) +
+      (GERAET[a[0].g] ? " · " + GERAET[a[0].g] : "") + (a.length > 1 ? " · " + a.length + "×" : "") + "</span>";
+  }
+  function paintAufrufe() {
+    document.querySelectorAll("#demos .demo").forEach(function (c) { var s = $(".auf-slot", c); if (s && c._x) s.innerHTML = aufTag(c._x); });
+    if (DATA) renderFilter(demoBasis(DATA));
+  }
+  function ladeAufrufe(sofort) {
+    var z = ((DATA && DATA.steuerung) || {}).zaehler;
+    if (!z || !z.url || aufLaeuft || (!sofort && Date.now() - aufGeladen < 120000)) return;
+    aufLaeuft = true;
+    fetch(z.url.replace(/\/$/, "") + "/liste", { headers: { Authorization: "Bearer " + z.schluessel }, cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (d) {
+        var neu = {};
+        (d.aufrufe || []).forEach(function (a) { if (a.k && a.z) (neu[a.k] = neu[a.k] || []).push(a); });
+        Object.keys(neu).forEach(function (k) { neu[k].sort(function (p, q) { return p.z < q.z ? 1 : -1; }); });
+        AUF = neu; aufGeladen = Date.now(); paintAufrufe();
+        if (DF.filter === "auf") renderDemos(DATA);
+      })
+      .catch(function () {})
+      .then(function () { aufLaeuft = false; });
+  }
+  document.addEventListener("visibilitychange", function () { if (!document.hidden) ladeAufrufe(false); });
   function favKnopf(x) {
     var on = isFav(x);
     return '<button class="fav" type="button" data-fav aria-pressed="' + on + '" aria-label="' + esc(x.name) + (on ? ' ist Favorit' : ' als Favorit markieren') + '" title="' + (on ? "Favorit (nochmal tippen zum Entfernen)" : "Als Favorit markieren") + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="' + STERN_D + '"/></svg></button>';
@@ -1800,6 +1844,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   var FILTER = [
     ["alle", "Alle", function () { return true; }],
     ["fav", '<svg class="stern" viewBox="0 0 24 24" aria-hidden="true"><path d="' + STERN_D + '"/></svg>Favoriten', function (x) { return isFav(x); }],
+    ["auf", "Geöffnet", function (x) { return aufrufeVon(x).length > 0; }],
     ["neu", "Neu", function (x) { var t = zeitOf(x); return !!t && Date.now() - t < 7 * 864e5; }],
     ["ohne", "Ohne Brief", function (x) { var b = x.brief || {}; return !b.verschickt && !b.test && !briefOffen(x); }],
     ["test", "Testbrief", function (x) { var b = x.brief || {}; return !b.verschickt && (!!b.test || briefOffen(x)); }],
@@ -1898,7 +1943,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
         '<div class="body"><h3 title="' + esc(x.name) + '">' + esc(x.name) + '</h3>' +
         '<div class="life' + (left != null && left <= 7 ? " low" : "") + '" title="' + (left == null ? "wird behalten" : "wird in " + left + " Tagen gelöscht") + '"><svg viewBox="0 0 44 44"><circle class="bg" cx="22" cy="22" r="18"/><circle class="fg" cx="22" cy="22" r="18" stroke-dasharray="' + C + '" stroke-dashoffset="' + C + '" data-off="' + C * (1 - frac) + '"/></svg><span>' + (left == null ? "∞" : left + "T") + "</span></div>" +
         '<div class="meta">' + esc([x.kueche, x.ort].filter(Boolean).join(", ")) + "</div></div>" +
-        '<div class="tags">' + (x.punkte != null ? '<span class="tag score">' + x.punkte + "/100 Eignung</span>" : "") + '<span class="tag">' + esc(why) + "</span>" + (x.design === "einzeln" ? '<span class="tag">Einzelstück' + (x.note ? " · Note " + x.note + "/10" : "") + "</span>" : x.theme ? '<span class="tag">' + esc(x.theme) + "</span>" : "") + (x.entfernung_km != null ? '<span class="tag">' + String(x.entfernung_km).replace(".", ",") + " km</span>" : "") + (x.bewertung ? '<span class="tag">' + String(x.bewertung).replace(".", ",") + " ★ · " + fmt.format(x.anzahl || 0) + "</span>" : "") + (x.status === "behalten" ? '<span class="tag keep">behalten</span>' : "") + briefTag(x) + (x.welt_label && x.welt !== "unbestimmt" ? '<span class="tag welt" title="Stilwelt: lernt nur aus Demos derselben Küche">' + esc(x.welt_label) + "</span>" : "") + "</div>" +
+        '<div class="tags">' + (x.punkte != null ? '<span class="tag score">' + x.punkte + "/100 Eignung</span>" : "") + '<span class="tag">' + esc(why) + "</span>" + (x.design === "einzeln" ? '<span class="tag">Einzelstück' + (x.note ? " · Note " + x.note + "/10" : "") + "</span>" : x.theme ? '<span class="tag">' + esc(x.theme) + "</span>" : "") + (x.entfernung_km != null ? '<span class="tag">' + String(x.entfernung_km).replace(".", ",") + " km</span>" : "") + (x.bewertung ? '<span class="tag">' + String(x.bewertung).replace(".", ",") + " ★ · " + fmt.format(x.anzahl || 0) + "</span>" : "") + (x.status === "behalten" ? '<span class="tag keep">behalten</span>' : "") + briefTag(x) + '<span class="auf-slot">' + aufTag(x) + "</span>" + (x.welt_label && x.welt !== "unbestimmt" ? '<span class="tag welt" title="Stilwelt: lernt nur aus Demos derselben Küche">' + esc(x.welt_label) + "</span>" : "") + "</div>" +
         '<div class="rating"></div>' +
         '' + (x.kategorien && x.kategorien.length ? '<details class="why"><summary>Warum ausgewählt?</summary>' + x.kategorien.map(function (k) { return '<div class="cat"><span>' + esc(k.name) + '</span><span class="bar2"><b style="width:' + Math.round(k.punkte / k.max * 100) + '%"></b></span><span class="pt">' + String(k.punkte).replace(".", ",") + "/" + k.max + '</span><small>' + esc(k.warum) + "</small></div>"; }).join("") + "</details>" : "") +
         '<div class="acts"><a class="btn" href="' + esc(x.url) + '" target="_blank" rel="noopener">Öffnen</a><button class="btn regen" type="button" data-regen title="Neu generieren">' + REGEN + '<span class="lg">Neu generieren</span><span class="sm">Neu</span></button><button class="btn icon copy" type="button" data-copy="' + esc(x.url) + '" title="Link kopieren" aria-label="Link kopieren"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg></button><button class="btn icon del" type="button" data-del title="Demo löschen" aria-label="Demo ' + esc(x.name) + ' löschen">' + TRASH + '</button></div><div class="brief-zeile">' + briefKnopf(x) + '</div><div class="regen-slot"></div>');
