@@ -233,6 +233,7 @@ button, input { font: inherit; color: inherit; }
   .mehr-menu .schalter::after { content: ""; position: absolute; top: .18rem; left: .18rem; width: 1.09rem; height: 1.09rem; border-radius: 50%; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,.4); transition: transform .25s var(--ease); }
   .mehr-menu .zeile[aria-checked="true"] .schalter { background: #FF5757; }
   .mehr-menu .zeile[aria-checked="true"] .schalter::after { transform: translateX(1.05rem); }
+  .mehr-menu .neben { margin-left: auto; color: var(--ink2); font-size: .78rem; font-weight: 400; font-variant-numeric: tabular-nums; }
   .mehr-menu hr { border: 0; border-top: 1px solid var(--edge); margin: .3rem .4rem; }
 }
 .title .ml-logo { width: 3rem; height: 3rem; display: block; filter: drop-shadow(0 0 14px rgba(255,87,87,.35)); }
@@ -800,6 +801,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
         <button class="zeile" type="button" role="menuitemcheckbox" id="mehr-stimme" data-schalter="stimme" aria-checked="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>Sprachassistent &amp; Intro<span class="schalter" aria-hidden="true"></span></button>
         <button class="zeile" type="button" role="menuitemcheckbox" id="mehr-glocke" data-schalter="glocke" aria-checked="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>Benachrichtigungen<span class="schalter" aria-hidden="true"></span></button>
         <button class="zeile" type="button" role="menuitem" id="mehr-app" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M12 7v7M9 11l3 3 3-3"/></svg>Als App installieren</button>
+        <a class="zeile" role="menuitem" id="mehr-apk" download="medialyte-cockpit.apk" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>Android-App laden<small class="neben" id="mehr-apk-info"></small></a>
         <hr>
         <a class="zeile" role="menuitem" id="mehr-berichte" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>Berichte</a>
         <a class="zeile" role="menuitem" id="mehr-einst" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Einstellungen</a>
@@ -1011,7 +1013,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "cc5086c603";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "f140af1334";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -1411,15 +1413,39 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     knopf.addEventListener("click", function () { knopf.getAttribute("aria-pressed") === "true" ? aus() : an(); });
     return { stand: stand };
   })();
+  /* Echte Android-App (APK, gebaut vom Workflow „Android-App bauen“): Download im Menü, in der App selbst ausgeblendet.
+     Auf Android ersetzt sie die Verknüpfung „Als App installieren“, sonst stünden zwei Symbole auf dem Handy. */
+  var IN_APP = (function () {
+    var start = document.referrer.indexOf("android-app://de.medialyte.cockpit") === 0;
+    try { if (start) sessionStorage.setItem("cockpit-app", "1"); return start || sessionStorage.getItem("cockpit-app") === "1"; }
+    catch (e) { return start; }
+  })();
+  var APK = false, ANDROID = /Android/.test(navigator.userAgent);
   var installieren = null;
-  addEventListener("beforeinstallprompt", function (e) { e.preventDefault(); installieren = e; $("#mehr-app").hidden = false; });
-  if (GERAHMT) $("#mehr-app").hidden = false;  // im Rahmen: öffnet das Cockpit direkt, dort lässt es sich installieren
-  addEventListener("appinstalled", function () { installieren = null; $("#mehr-app").hidden = true; toast("Das Cockpit ist jetzt als App auf deinem Gerät."); });
+  function pwaZeigen(an) { $("#mehr-app").hidden = !an || IN_APP || (APK && ANDROID); }
+  function appLink(d) {
+    var a = $("#mehr-apk"), info = (d && d.app) || {};
+    APK = !!info.datei && !IN_APP;
+    a.hidden = !APK;
+    if (APK) {
+      a.href = info.datei + "?v=" + encodeURIComponent(info.version || "");
+      if (GERAHMT) a.target = "_blank";
+      $("#mehr-apk-info").textContent = info.groesse ? (Math.round(info.groesse / 104857.6) / 10).toLocaleString("de-DE") + " MB" : "";
+    }
+    pwaZeigen(!!installieren || GERAHMT);
+  }
+  $("#mehr-apk").addEventListener("click", function () {
+    toast(ANDROID ? "Die App wird geladen. Danach die Datei öffnen und „Installieren“ tippen (einmalig Chrome erlauben, Apps zu installieren)."
+                  : "Die Android-App wird geladen. Am einfachsten direkt am Handy über dieses Menü laden.");
+  });
+  addEventListener("beforeinstallprompt", function (e) { e.preventDefault(); installieren = e; pwaZeigen(true); });
+  if (GERAHMT) pwaZeigen(true);  // im Rahmen: öffnet das Cockpit direkt, dort lässt es sich installieren
+  addEventListener("appinstalled", function () { installieren = null; pwaZeigen(false); toast("Das Cockpit ist jetzt als App auf deinem Gerät."); });
   $("#mehr-app").addEventListener("click", function () {
     if (GERAHMT) { direktOeffnen("", "Installieren geht nur im Cockpit selbst. Es öffnet sich gleich direkt, dann im Chrome-Menü ⋮ „App installieren“ wählen."); return; }
     if (!installieren) return;
     installieren.prompt();
-    installieren.userChoice.then(function () { installieren = null; $("#mehr-app").hidden = true; }).catch(function () {});
+    installieren.userChoice.then(function () { installieren = null; pwaZeigen(false); }).catch(function () {});
   });
   /* Sprungziele aus Benachrichtigungen: #demo=<slug>, #demos, #gedaechtnis … */
   function zielOeffnen(hash) {
@@ -1758,6 +1784,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     renderDemos(d);
     ladeAufrufe(true);
     Glocke.stand();
+    appLink(d);
     if (!render.zielDa) { render.zielDa = true; if (location.hash) setTimeout(function () { zielOeffnen(location.hash); }, 600); }
     renderMemory(d);
     syncRatings();
