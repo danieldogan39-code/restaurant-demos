@@ -1,0 +1,24 @@
+{
+  "name": "Medialyte Cockpit",
+  "short_name": "Cockpit",
+  "description": "Restaurant-Agent: Demos, Briefe, Läufe und wer seine Demo geöffnet hat.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "lang": "de",
+  "background_color": "#0E192A",
+  "theme_color": "#0E192A",
+  "categories": ["business", "productivity"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Demos", "url": "./#demos", "icons": [{ "src": "icon-192.png", "sizes": "192x192" }] },
+    { "name": "Design-Gedächtnis", "url": "./#gedaechtnis", "icons": [{ "src": "icon-192.png", "sizes": "192x192" }] }
+  ]
+}
