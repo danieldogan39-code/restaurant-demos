@@ -1011,7 +1011,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "864f11e895";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "cc5086c603";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -1357,6 +1357,12 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
 
   /* Cockpit als App (Android: Chrome installiert es als echte App) und Benachrichtigungen per Web-Push.
      Angemeldet wird beim Zähler (Cloudflare); er schickt die Nachrichten verschlüsselt an dieses Gerät. */
+  var GERAHMT = (function () { try { return window.top !== window.self; } catch (e) { return true; } })();
+  var DIREKT = location.href.split("#")[0];
+  function direktOeffnen(hash, hinweis) {
+    toast(hinweis);
+    setTimeout(function () { window.open(DIREKT + (hash || ""), "_blank", "noopener"); }, 700);
+  }
   var SW = ("serviceWorker" in navigator) ? navigator.serviceWorker.register("sw.js").then(function () { return navigator.serviceWorker.ready; }).catch(function () { return null; }) : Promise.resolve(null);
   var Glocke = (function () {
     var knopf = $("#glocke");
@@ -1380,6 +1386,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     }
     function an() {
       var zz = z();
+      if (GERAHMT) { direktOeffnen("#glocke", "Benachrichtigungen gehen nur im Cockpit selbst. Es öffnet sich gleich direkt, dort die Glocke noch einmal antippen."); return; }
       if (!kann()) { toast("Dieser Browser kann keine Benachrichtigungen empfangen. Am Handy: Cockpit in Chrome öffnen."); return; }
       if (!zz || !zz.vapid) { toast("Benachrichtigungen gehen, sobald der Zähler bei Cloudflare eingerichtet ist."); return; }
       Notification.requestPermission().then(function (erlaubt) {
@@ -1406,8 +1413,10 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   })();
   var installieren = null;
   addEventListener("beforeinstallprompt", function (e) { e.preventDefault(); installieren = e; $("#mehr-app").hidden = false; });
+  if (GERAHMT) $("#mehr-app").hidden = false;  // im Rahmen: öffnet das Cockpit direkt, dort lässt es sich installieren
   addEventListener("appinstalled", function () { installieren = null; $("#mehr-app").hidden = true; toast("Das Cockpit ist jetzt als App auf deinem Gerät."); });
   $("#mehr-app").addEventListener("click", function () {
+    if (GERAHMT) { direktOeffnen("", "Installieren geht nur im Cockpit selbst. Es öffnet sich gleich direkt, dann im Chrome-Menü ⋮ „App installieren“ wählen."); return; }
     if (!installieren) return;
     installieren.prompt();
     installieren.userChoice.then(function () { installieren = null; $("#mehr-app").hidden = true; }).catch(function () {});
