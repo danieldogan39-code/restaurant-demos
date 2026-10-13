@@ -980,7 +980,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "eba0e2821f";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "29dab9a5e0";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -1583,6 +1583,11 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     var last = used[used.length - 1], health = $("#health");
     health.className = "chip" + (!last ? " warn" : last.status === "fehler" ? " bad" : last.status === "ok" ? "" : " warn");
     $("#health-text").textContent = !last ? "Noch kein Lauf" : last.status === "fehler" ? "Letzter Lauf fehlgeschlagen" : last.status === "wartet" ? "Wartet auf Freigabe" : last.status === "leer" ? "Letzter Lauf ohne neue Demos" : "Agent bereit";
+    health.title = "";
+    if (last && last.ki_ausfall) {  // Claude nicht nutzbar: es wurde nichts gebaut und keine Notlösung veröffentlicht
+      health.className = "chip bad"; $("#health-text").textContent = last.ki_ausfall.grund + " · nichts gebaut";
+      health.title = "Aufträge bleiben offen und kommen im nächsten Lauf dran. Fehler: " + (last.ki_ausfall.fehler || "");
+    }
     if (d.live && d.live.aktiv) { health.className = "chip warn"; $("#health-text").textContent = "Lauf läuft gerade"; }
 
     // Kennzahlen
