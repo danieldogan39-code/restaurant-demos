@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "de.medialyte.cockpit",
+      "sha256_cert_fingerprints": [
+        "0A:EE:A0:89:4F:63:D1:81:AD:78:63:1A:F3:06:F3:09:0B:5C:47:81:EC:29:81:7A:5E:59:2A:DF:D5:61:23:37"
+      ]
+    }
+  }
+]
