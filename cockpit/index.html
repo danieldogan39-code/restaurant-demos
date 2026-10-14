@@ -155,6 +155,11 @@ button, input { font: inherit; color: inherit; }
 .nf-verlauf { margin: 0; padding: 0; list-style: none; display: grid; gap: .25rem; font-size: .8rem; color: var(--ink3); }
 .nf-verlauf li { display: flex; gap: .6rem; }
 .nf-verlauf time { flex: none; min-width: 6.6rem; font-variant-numeric: tabular-nums; }
+.nf-zitat { grid-column: 1 / -1; margin: .35rem 0 0; padding: .45rem .7rem; border-left: 2px solid rgba(75,227,166,.5); font-size: .86rem; font-style: italic; color: var(--ink); background: rgba(75,227,166,.06); border-radius: 0 8px 8px 0; }
+.nf-links { margin: 0; display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; font-size: .84rem; }
+.nf-links a { display: inline-flex; align-items: center; gap: .4rem; color: var(--ink2); text-decoration: none; }
+.nf-links a svg { width: 14px; height: 14px; }
+@media (hover: hover) and (pointer: fine) { .nf-links a:hover { color: var(--ink); text-decoration: underline; } }
 .nf-leer { border: 1px dashed var(--edge); border-radius: 14px; padding: 1.4rem 1rem; text-align: center; color: var(--ink2); font-size: .9rem; }
 .nf-mehr-btn { margin-top: .6rem; }
 .nf-erledigt > summary { cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: .5rem; font-size: .74rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink3); margin-bottom: .6rem; }
@@ -498,6 +503,7 @@ button, input { font: inherit; color: inherit; }
 .tag { font-size: .72rem; font-weight: 600; padding: .2rem .55rem; border-radius: 999px; border: 1px solid var(--edge); color: var(--ink2); }
 .tag.keep { border-color: rgba(75,227,166,.5); color: var(--ok); }
 .tag.auf { border-color: rgba(75,227,166,.55); color: var(--ok); background: rgba(75,227,166,.08); display: inline-flex; align-items: center; gap: .35rem; }
+.tag.auf.ang { border-color: rgba(255,181,71,.6); color: #FFC56B; background: rgba(255,181,71,.08); }
 .tag.auf::before { content: ""; width: .45rem; height: .45rem; border-radius: 50%; background: currentColor; box-shadow: 0 0 0 3px rgba(75,227,166,.18); }
 .auf-slot { display: contents; }
 .demo .acts { display: flex; gap: .4rem; padding: 0 1rem 1rem; }
@@ -1123,7 +1129,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "f2c59c0e2a";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "a1eba7dd6c";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -2049,20 +2055,25 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   }
   /* Wer hat seine Demo geöffnet? Aufrufe des Kurzlinks aus dem Brief (Zähler bei Cloudflare, Schlüssel im Cockpit).
      Zählt nur, was nach der frühestmöglichen Zustellung kam (Tag nach dem Verschicken); Daniels Geräte melden nie. */
-  var AUF = {}, aufGeladen = 0, aufLaeuft = false;
+  var AUF = {}, ANF = {}, aufGeladen = 0, aufLaeuft = false;  // ANF: Rückrufwünsche von der Angebotsseite je Demo
   var aufFmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit", timeZone: "Europe/Berlin" });
   var GERAET = { handy: "Handy", tablet: "Tablet", laptop: "Laptop" };
-  function aufrufeVon(x) {
+  // seite: "demo" (Kurzlink aus dem Brief), "angebot" (Angebotsseite hinter der Demo) oder leer für beide
+  function aufrufeVon(x, seite) {
     var b = x.brief || {}, liste = x.kurz && AUF[x.kurz];
     if (!liste || !b.verschickt) return [];
     var ab = Date.parse(String(b.verschickt).slice(0, 10)) + 864e5;
-    return liste.filter(function (a) { return Date.parse(a.z) >= ab; });
+    return liste.filter(function (a) { return Date.parse(a.z) >= ab && (!seite || (a.s || "demo") === seite); });
   }
   function aufTag(x) {
-    var a = aufrufeVon(x); if (!a.length) return "";
-    var titel = a.map(function (e) { return aufFmt.format(new Date(e.z)) + (GERAET[e.g] ? " · " + GERAET[e.g] : ""); }).join("\n");
-    return '<span class="tag auf" title="Vom Kunden geöffnet:\n' + esc(titel) + '">Geöffnet ' + aufFmt.format(new Date(a[0].z)) +
-      (GERAET[a[0].g] ? " · " + GERAET[a[0].g] : "") + (a.length > 1 ? " · " + a.length + "×" : "") + "</span>";
+    var out = "";
+    [["demo", "Geöffnet", "Vom Kunden geöffnet"], ["angebot", "Angebot angesehen", "Angebotsseite angesehen"]].forEach(function (z) {
+      var a = aufrufeVon(x, z[0]); if (!a.length) return;
+      var titel = a.map(function (e) { return aufFmt.format(new Date(e.z)) + (GERAET[e.g] ? " · " + GERAET[e.g] : ""); }).join("\n");
+      out += '<span class="tag auf' + (z[0] === "angebot" ? " ang" : "") + '" title="' + z[2] + ':\n' + esc(titel) + '">' + z[1] + " " + aufFmt.format(new Date(a[0].z)) +
+        (GERAET[a[0].g] ? " · " + GERAET[a[0].g] : "") + (a.length > 1 ? " · " + a.length + "×" : "") + "</span>";
+    });
+    return out;
   }
   function paintAufrufe() {
     document.querySelectorAll("#demos .demo").forEach(function (c) { var s = $(".auf-slot", c); if (s && c._x) s.innerHTML = aufTag(c._x); });
@@ -2072,6 +2083,15 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     var z = ((DATA && DATA.steuerung) || {}).zaehler;
     if (!z || !z.url || aufLaeuft || (!sofort && Date.now() - aufGeladen < 120000)) return;
     aufLaeuft = true;
+    fetch(z.url.replace(/\/$/, "") + "/anfragen", { headers: { Authorization: "Bearer " + z.schluessel }, cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (d) {
+        var neu = {};
+        (d.anfragen || []).forEach(function (a) { if (a.slug && a.zeit) (neu[a.slug] = neu[a.slug] || []).push(a); });
+        Object.keys(neu).forEach(function (k) { neu[k].sort(function (p, q) { return p.zeit < q.zeit ? 1 : -1; }); });
+        if (JSON.stringify(neu) !== JSON.stringify(ANF)) { ANF = neu; if (DATA) renderNachfass(DATA); }
+      })
+      .catch(function () {});
     fetch(z.url.replace(/\/$/, "") + "/liste", { headers: { Authorization: "Bearer " + z.schluessel }, cache: "no-store" })
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(function (d) {
@@ -2313,28 +2333,43 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   }
   function nfEin(x) {
     var e = NF[x.slug] || {}, st = NF_NAME[e.status] ? e.status : "offen", heute = tagHeute();
-    var gesendet = String(x.brief.verschickt).slice(0, 10), tage = ((DATA && DATA.einstellungen) || {}).nachfass_tage || 6;
+    var anf = ANF[x.slug] || [], tage = ((DATA && DATA.einstellungen) || {}).nachfass_tage || 6;
+    var gesendet = x.brief && x.brief.verschickt ? String(x.brief.verschickt).slice(0, 10) : anf.length ? tagVon(anf[anf.length - 1].zeit) : heute;
     var auf = aufrufeVon(x), kontakt = 0;
     (e.verlauf || []).forEach(function (v) { if (v.status !== "offen") kontakt = Math.max(kontakt, Date.parse(v.zeit) || 0); });
-    var letzt = auf.length ? Date.parse(auf[0].z) : 0, g, faellig = null;
-    if (NF_ERLEDIGT[st]) g = "erledigt";
+    // Rückrufwunsch von der Angebotsseite, nach dem du noch nichts eingetragen hast: steht ganz oben, auch wenn schon abgehakt
+    var anfNeu = anf.length && Date.parse(anf[0].zeit) > kontakt ? anf[0] : null;
+    var letzt = Math.max(auf.length ? Date.parse(auf[0].z) : 0, anfNeu ? Date.parse(anfNeu.zeit) : 0), g, faellig = null;
+    if (anfNeu) { g = "heiss"; faellig = heute; }
+    else if (NF_ERLEDIGT[st]) g = "erledigt";
     else if (letzt && letzt > kontakt) { g = "heiss"; faellig = heute; }
     else if (st === "offen") { faellig = werktag(tagPlus(gesendet, tage)); g = heute >= faellig ? "heute" : "spaeter"; }
     else if (e.wieder) { faellig = e.wieder; g = heute >= faellig ? "heute" : "spaeter"; }
     else if (st === "interesse") g = "spaeter";
     else { g = "heute"; faellig = heute; }
-    return { g: g, st: st, faellig: faellig, auf: auf, e: e, gesendet: gesendet, kontakt: kontakt, letzt: letzt };
+    return { g: g, st: st, faellig: faellig, auf: auf, e: e, gesendet: gesendet, kontakt: kontakt, letzt: letzt, anf: anf, anfNeu: anfNeu,
+             brief: !!(x.brief && x.brief.verschickt) };
+  }
+  function nfGrundOhneBrief(n) {
+    var w = n.e.wieder;
+    return NF_NAME[n.st] + (w ? " · " + (tagHeute() >= w ? "heute dran" : tagText(w)) : "");
   }
   function nfGrund(x, n) {
     var heute = tagHeute(), w = n.e.wieder;
+    if (n.anfNeu) {
+      var r = n.anfNeu, WANN = { vormittags: "vormittags", nachmittags: "nachmittags", abends: "abends" };
+      return "Möchte zurückgerufen werden" + (r.kontakt ? " · " + r.kontakt : "") + (WANN[r.wann] ? " · am liebsten " + WANN[r.wann] : "") + " · " + aufFmt.format(new Date(r.zeit));
+    }
     if (n.g === "heiss") {
-      var a = n.auf[0];
-      return "Hat die Demo geöffnet · " + aufFmt.format(new Date(a.z)) + (GERAET[a.g] ? " · " + GERAET[a.g] : "") + (n.auf.length > 1 ? " · " + n.auf.length + "×" : "");
+      var a = n.auf[0], gleich = n.auf.filter(function (b) { return (b.s || "demo") === (a.s || "demo"); });
+      return (a.s === "angebot" ? "Hat sich das Angebot angesehen · " : "Hat die Demo geöffnet · ") + aufFmt.format(new Date(a.z)) +
+        (GERAET[a.g] ? " · " + GERAET[a.g] : "") + (gleich.length > 1 ? " · " + gleich.length + "×" : "");
     }
     if (n.g === "erledigt") {
       var seit = n.e.zeit ? " seit " + briefDatum(tagVon(n.e.zeit)) : "";
       return n.st === "kunde" ? "Kunde" + (seit ? seit + " " : ". ") + "Die Demo bleibt online." : "Kein Interesse" + (n.e.zeit ? " (" + briefDatum(tagVon(n.e.zeit)) + ")" : "") + ".";
     }
+    if (!n.brief) return n.st === "offen" ? "Hatte um Rückruf gebeten. Bitte den Stand eintragen." : nfGrundOhneBrief(n);
     var da = tagPlus(n.gesendet, 1);
     if (n.st === "offen") {
       var seitDa = tageZwischen(da, heute);
@@ -2355,6 +2390,10 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     var d = tageZwischen(n.gesendet, tagHeute()), datum = new Date(n.gesendet + "T12:00:00Z");
     var wann = d <= 6 ? "am " + nfLangFmt.format(datum) : "am " + nfDatumFmt.format(datum);
     var auf = n.auf.length > 0;
+    if (n.anfNeu) return '<p>„Guten Tag, hier ist ' + esc(ich) + " von " + esc(firma) + ". Sie hatten auf der Seite zu Ihrem Website-Entwurf um einen Rückruf gebeten. Schön, dass Sie sich gemeldet haben.“</p>" +
+      "<p>„Was hat Ihnen am Entwurf gefallen, und was soll anders sein?“</p>" +
+      (n.anfNeu.nachricht ? '<p class="tipp">Die Nachricht dazu: „' + esc(n.anfNeu.nachricht) + "“</p>" : "") +
+      '<p class="tipp">Nach dem Gespräch oben den Stand antippen.</p>';
     return '<p>„Guten Tag, hier ist ' + esc(ich) + " von " + esc(firma) + ". Ich habe Ihnen " + esc(wann) + " einen Brief geschickt, mit einem fertigen Entwurf für eine neue Website von " + esc(x.name) + ".“</p>" +
       (auf ? "<p>„Sie haben ihn sich schon angesehen. Wie gefällt er Ihnen?“</p>"
            : "<p>„Ist der Brief bei Ihnen angekommen? Ich schicke Ihnen den Link auch gern per WhatsApp, dann können Sie gleich reinschauen.“</p>") +
@@ -2362,8 +2401,9 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       '<p class="tipp">Nach dem Gespräch oben den Stand antippen. Bei „Nicht erreicht“ steht ' + esc(x.name) + " am nächsten Werktag wieder oben.</p>";
   }
   function nfVerlauf(x, n) {
-    var ev = [{ t: Date.parse(n.gesendet + "T08:00:00Z"), tag: n.gesendet, txt: "Brief verschickt" }];
-    n.auf.slice().reverse().forEach(function (a) { ev.push({ t: Date.parse(a.z), z: a.z, txt: "Demo geöffnet" + (GERAET[a.g] ? " · " + GERAET[a.g] : "") }); });
+    var ev = n.brief ? [{ t: Date.parse(n.gesendet + "T08:00:00Z"), tag: n.gesendet, txt: "Brief verschickt" }] : [];
+    n.auf.slice().reverse().forEach(function (a) { ev.push({ t: Date.parse(a.z), z: a.z, txt: (a.s === "angebot" ? "Angebot angesehen" : "Demo geöffnet") + (GERAET[a.g] ? " · " + GERAET[a.g] : "") }); });
+    n.anf.forEach(function (r) { ev.push({ t: Date.parse(r.zeit), z: r.zeit, txt: "Rückruf gewünscht · " + r.telefon + (r.kontakt ? " (" + r.kontakt + ")" : "") }); });
     (n.e.verlauf || []).forEach(function (v) { ev.push({ t: Date.parse(v.zeit) || 0, z: v.zeit, txt: (NF_NAME[v.status] || v.status) + (v.wieder && !NF_ERLEDIGT[v.status] && v.status !== "offen" ? " · wieder " + briefDatum(v.wieder) : "") }); });
     ev.sort(function (a, b) { return a.t - b.t; });
     return '<ol class="nf-verlauf" aria-label="Verlauf">' + ev.slice(-8).map(function (v) {
@@ -2372,6 +2412,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   }
   function nfKarte(x, n) {
     var tel = x.telefon, offen = !!NF_AUF[x.slug], id = "nf-d-" + x.slug, heute = tagHeute();
+    if (n.anfNeu) tel = { nummer: n.anfNeu.telefon.replace(/[^\d+]/g, ""), text: n.anfNeu.telefon };  // die Nummer aus dem Rückrufwunsch
     var mitWieder = n.st === "nicht_erreicht" || n.st === "rueckruf" || n.st === "interesse";
     var schnell = [[1, "Morgen"], [3, "In 3 Tagen"], [7, "Nächste Woche"]];
     var karte = h("article", { class: "nf-karte g-" + n.g + " st-" + n.st + (offen ? " offen" : ""), "data-slug": x.slug },
@@ -2379,8 +2420,9 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
         '<button class="nf-kopf" type="button" data-nf-auf aria-expanded="' + offen + '" aria-controls="' + id + '">' +
           '<span class="nf-name"><h3>' + esc(x.name) + "</h3>" + (n.st !== "offen" ? '<span class="nf-stand st-' + n.st + '">' + esc(NF_NAME[n.st]) + "</span>" : "") + "</span>" +
           '<span class="nf-pfeil" aria-hidden="true">' + PFEIL + "</span>" +
-          '<p class="nf-meta">' + esc([x.kueche, x.ort, "Brief " + briefDatum(n.gesendet)].filter(Boolean).join(" · ")) + "</p>" +
+          '<p class="nf-meta">' + esc([x.kueche, x.ort, n.brief ? "Brief " + briefDatum(n.gesendet) : "ohne Brief"].filter(Boolean).join(" · ")) + "</p>" +
           '<p class="nf-grund">' + esc(nfGrund(x, n)) + "</p>" +
+          (n.anfNeu && n.anfNeu.nachricht ? '<p class="nf-zitat">„' + esc(n.anfNeu.nachricht) + "“</p>" : "") +
         "</button>" +
         '<div class="nf-acts">' +
           (tel ? '<a class="btn nf-tel' + (n.g === "heiss" || n.g === "heute" ? " btn-hot" : "") + '" href="tel:' + esc(tel.nummer) + '" data-anruf aria-label="' + esc(x.name) + " anrufen: " + esc(tel.text) + '">' + TEL + "<span>" + esc(tel.text) + "</span></a>"
@@ -2400,6 +2442,8 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
           '<input type="date" data-wieder-datum min="' + heute + '" value="' + esc(n.e.wieder || "") + '" aria-label="Anderes Datum"></div>' : "") +
         '<label class="nf-notiz"><span class="nf-label">Notiz</span><textarea data-nf-notiz rows="2" maxlength="1200" placeholder="z. B. Chef ist erst ab 15 Uhr da">' + esc(n.e.notiz || "") + "</textarea><small data-nf-gespeichert></small></label>" +
         '<details class="nf-skript"><summary>Was sage ich am Telefon?</summary><div>' + nfSkript(x, n) + "</div></details>" +
+        '<p class="nf-links"><a href="' + esc(x.url.replace(/\/?$/, "/") + "angebot/") + '" target="_blank" rel="noopener">' + EXTERN + "Angebotsseite ansehen</a>" +
+          (n.anfNeu && x.telefon && x.telefon.nummer !== tel.nummer ? ' <a href="tel:' + esc(x.telefon.nummer) + '" data-anruf>' + TEL + "Restaurant: " + esc(x.telefon.text) + "</a>" : "") + "</p>" +
         nfVerlauf(x, n) +
       "</div>");
     karte._x = x;
@@ -2407,7 +2451,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   }
   function nfListe(d) {
     var reihe = { heiss: 0, heute: 1, spaeter: 2, erledigt: 3 };
-    return d.demos.filter(function (x) { return x.brief && x.brief.verschickt; }).map(function (x) { return { x: x, n: nfEin(x) }; })
+    return d.demos.filter(function (x) { return (x.brief && x.brief.verschickt) || ANF[x.slug]; }).map(function (x) { return { x: x, n: nfEin(x) }; })
       .sort(function (a, b) {
         if (reihe[a.n.g] !== reihe[b.n.g]) return reihe[a.n.g] - reihe[b.n.g];
         if (a.n.g === "heiss") return b.n.letzt - a.n.letzt;

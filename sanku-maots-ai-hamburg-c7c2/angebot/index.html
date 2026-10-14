@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#F6F4EF">
+<title>So wird der Entwurf Ihre Website · Sanku Maots&#39;ai</title>
+<meta name="description" content="Was zur Website von Sanku Maots&#39;ai dazugehört und wie es weitergeht. Unverbindlich, von Medialyte.">
+<link rel="icon" href="https://medialyte.de/wp-content/uploads/2025/07/Kopie-von-medialyte1.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela+Round&family=Poppins:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  --grund: #F6F4EF; --karte: #FFFFFF; --tinte: #0E192A; --tinte2: #4A5670; --tinte3: #7A8499;
+  --linie: rgba(14,25,42,.11); --koralle: #FF5757; --koralle-tief: #D93B3F; --himmel: #7BAFFF; --navy: #223C64;
+  --display: "Varela Round", system-ui, sans-serif; --body: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ease-out: cubic-bezier(.23,1,.32,1); --r: 18px;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 1rem; }
+body { margin: 0; background: var(--grund); color: var(--tinte); font: 400 17px/1.6 var(--body); -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; overflow-x: clip; }
+a { color: inherit; }
+img { display: block; max-width: 100%; height: auto; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; letter-spacing: -.01em; margin: 0; text-wrap: balance; }
+p { margin: 0; text-wrap: pretty; }
+.wrap { width: min(68rem, 100% - 2.5rem); margin-inline: auto; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+:focus-visible { outline: 3px solid var(--himmel); outline-offset: 3px; border-radius: 8px; }
+
+/* Kopf */
+.kopf { padding: max(1rem, env(safe-area-inset-top)) 0 0; }
+.kopf .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.logo { height: 28px; width: auto; }
+.zurueck { display: inline-flex; align-items: center; gap: .4rem; font-size: .9rem; font-weight: 500; color: var(--tinte2); text-decoration: none; padding: .5rem .2rem; }
+.zurueck svg { width: 16px; height: 16px; }
+
+/* Einstieg */
+.hero { padding: clamp(2.2rem, 7vw, 4.5rem) 0 0; }
+.dach { display: inline-flex; align-items: center; gap: .55rem; font-size: .88rem; font-weight: 600; color: var(--tinte2); margin-bottom: 1rem; }
+.dach i { width: .55rem; height: .55rem; border-radius: 50%; background: var(--koralle); box-shadow: 0 0 0 4px rgba(255,87,87,.16); }
+.hero h1 { font-size: clamp(2.2rem, 7.4vw, 4.1rem); line-height: 1.06; max-width: 15ch; }
+.hero .lead { margin-top: 1.1rem; font-size: clamp(1.05rem, 2.6vw, 1.22rem); color: var(--tinte2); max-width: 40rem; }
+.knoepfe { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.8rem; }
+.knopf { display: inline-flex; align-items: center; justify-content: center; gap: .55rem; min-height: 3.25rem; padding: .85rem 1.4rem; border-radius: 14px; border: 1.5px solid transparent; font: 600 1rem/1.2 var(--body); text-decoration: none; cursor: pointer; transition: transform .16s var(--ease-out), background-color .2s, border-color .2s, box-shadow .2s; touch-action: manipulation; -webkit-user-select: none; user-select: none; }
+.knopf:active { transform: scale(.97); }
+.knopf svg { width: 20px; height: 20px; flex: none; }
+.knopf.haupt { background: var(--tinte); color: #fff; box-shadow: 0 12px 28px -14px rgba(14,25,42,.7); }
+.knopf.neben { background: transparent; border-color: rgba(14,25,42,.22); color: var(--tinte); }
+@media (hover: hover) and (pointer: fine) {
+  .knopf.haupt:hover { background: var(--navy); }
+  .knopf.neben:hover { border-color: var(--tinte); }
+  .zurueck:hover { color: var(--tinte); }
+}
+.vorschau { margin-top: clamp(2.2rem, 6vw, 3.5rem); position: relative; }
+.vorschau::before { content: ""; position: absolute; inset: 12% 6% -4%; border-radius: 50%; background: radial-gradient(closest-side, rgba(123,175,255,.32), rgba(255,87,87,.14) 60%, transparent); filter: blur(30px); z-index: -1; }
+.vorschau img { width: 100%; }
+@media (max-width: 600px) { .vorschau img { width: auto; max-height: 30rem; margin-inline: auto; } }
+.vorschau figcaption { margin-top: .6rem; font-size: .8rem; color: var(--tinte3); text-align: center; }
+
+/* Abschnitte */
+.abschnitt { padding: clamp(3.5rem, 9vw, 6rem) 0 0; }
+.abschnitt > .wrap > h2, .abschnitt h2 { font-size: clamp(1.75rem, 4.6vw, 2.6rem); line-height: 1.12; max-width: 22ch; }
+.unter { margin-top: .7rem; color: var(--tinte2); max-width: 40rem; }
+.raster { display: grid; gap: 1rem; margin-top: 1.8rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr)); }
+.teil { background: var(--karte); border: 1px solid var(--linie); border-radius: var(--r); padding: 1.3rem 1.3rem 1.4rem; }
+.teil .ic { width: 2.6rem; height: 2.6rem; border-radius: 12px; display: grid; place-items: center; background: rgba(255,87,87,.1); color: var(--koralle-tief); margin-bottom: .9rem; }
+.teil .ic svg { width: 21px; height: 21px; }
+.teil h3 { font-size: 1.16rem; line-height: 1.3; }
+.teil p { margin-top: .35rem; font-size: .96rem; color: var(--tinte2); }
+.schon .teil { padding: 1.1rem 1.2rem; display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto 1fr; gap: .1rem .9rem; align-items: start; }
+.schon .teil .ic { grid-row: span 2; margin: 0; width: 2.3rem; height: 2.3rem; background: rgba(123,175,255,.16); color: var(--navy); }
+.schon .teil p { margin-top: .1rem; }
+
+/* Alles inklusive */
+.inklusive { display: grid; gap: 1rem; margin-top: 1.8rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.inklusive .teil.agent { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 1.6rem; align-items: center;
+  background: radial-gradient(120% 140% at 0% 0%, #223C64 0%, #0E192A 62%); color: #fff; border: 0; padding: clamp(1.4rem, 4vw, 2.2rem); position: relative; overflow: hidden; }
+.agent::after { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1.5px; background: linear-gradient(341deg, #7BAFFF, #FF5757); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
+.agent .ic { background: rgba(255,255,255,.1); color: #fff; }
+.agent h3 { font-size: clamp(1.35rem, 3.4vw, 1.75rem); }
+.agent p { color: rgba(255,255,255,.78); font-size: 1rem; }
+.agent .marke { display: inline-block; margin-bottom: .7rem; font-size: .74rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #FFB0B0; }
+.chat { display: grid; gap: .6rem; }
+.blase { max-width: 88%; padding: .75rem .95rem; border-radius: 16px; font-size: .93rem; line-height: 1.45; }
+.blase small { display: block; font-size: .72rem; opacity: .65; margin-bottom: .15rem; font-weight: 600; }
+.blase.sie { justify-self: start; background: rgba(255,255,255,.1); border-bottom-left-radius: 5px; }
+.blase.er { justify-self: end; background: #fff; color: var(--tinte); border-bottom-right-radius: 5px; }
+.blase.er small { color: var(--koralle-tief); opacity: 1; }
+.tippt { justify-self: end; display: inline-flex; gap: 4px; padding: .7rem .9rem; border-radius: 16px; background: rgba(255,255,255,.1); }
+.tippt i { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.7); animation: tippen 1.2s infinite var(--ease-out); }
+.tippt i:nth-child(2) { animation-delay: .15s; } .tippt i:nth-child(3) { animation-delay: .3s; }
+@keyframes tippen { 0%, 60%, 100% { transform: translateY(0); opacity: .5; } 30% { transform: translateY(-3px); opacity: 1; } }
+.chat .blase.er, .chat .tippt { transition: opacity .35s var(--ease-out), transform .35s var(--ease-out); }
+.chat:not(.fertig) .blase.er { opacity: 0; transform: translateY(6px); position: absolute; visibility: hidden; }
+.chat.fertig .tippt { display: none; }
+
+/* Ablauf */
+.schritte { list-style: none; padding: 0; margin: 1.8rem 0 0; display: grid; gap: 1rem; grid-template-columns: repeat(3, minmax(0, 1fr)); counter-reset: s; }
+.schritte li { counter-increment: s; background: var(--karte); border: 1px solid var(--linie); border-radius: var(--r); padding: 1.3rem; }
+.schritte li::before { content: counter(s); display: grid; place-items: center; width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--tinte); color: #fff; font: 600 .95rem/1 var(--body); margin-bottom: .9rem; }
+.schritte h3 { font-size: 1.16rem; }
+.schritte p { margin-top: .35rem; font-size: .96rem; color: var(--tinte2); }
+
+/* Preis */
+.preis { margin-top: 1.8rem; background: var(--karte); border: 1px solid var(--linie); border-radius: var(--r); padding: clamp(1.4rem, 4vw, 2rem); display: grid; grid-template-columns: auto 1fr; gap: 1.2rem; align-items: start; }
+.preis .ic { width: 3rem; height: 3rem; border-radius: 14px; display: grid; place-items: center; background: rgba(255,87,87,.1); color: var(--koralle-tief); }
+.preis .ic svg { width: 24px; height: 24px; }
+.preis p + p { margin-top: .5rem; }
+.preis p { color: var(--tinte2); }
+.preis p strong { color: var(--tinte); font-weight: 600; }
+
+/* Rückruf */
+.rueckruf { margin-top: 1.8rem; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 1rem; align-items: start; }
+.formular { background: var(--karte); border: 1px solid var(--linie); border-radius: var(--r); padding: clamp(1.3rem, 4vw, 2rem); position: relative; }
+.feld { display: grid; gap: .4rem; margin-bottom: 1.05rem; }
+.feld label, .feld .bez { font-size: .9rem; font-weight: 600; }
+.feld label small, .feld .bez small { font-weight: 400; color: var(--tinte3); }
+.feld input, .feld textarea { width: 100%; font: 400 1rem/1.4 var(--body); color: var(--tinte); background: #FBFAF7; border: 1.5px solid rgba(14,25,42,.16); border-radius: 12px; padding: .8rem .9rem; transition: border-color .2s, box-shadow .2s; }
+.feld textarea { min-height: 5.5rem; resize: vertical; }
+.feld input:focus, .feld textarea:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 4px rgba(123,175,255,.25); }
+.feld input[aria-invalid="true"] { border-color: var(--koralle-tief); box-shadow: 0 0 0 4px rgba(255,87,87,.15); }
+.wann { display: flex; flex-wrap: wrap; gap: .45rem; border: 0; padding: 0; margin: 0; }
+.wann label { position: relative; }
+.wann input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.wann span { display: inline-flex; align-items: center; min-height: 2.6rem; padding: .5rem .95rem; border-radius: 999px; border: 1.5px solid rgba(14,25,42,.16); font-size: .92rem; font-weight: 500; transition: background-color .2s, border-color .2s, color .2s, transform .16s var(--ease-out); }
+.wann input:checked + span { background: var(--tinte); border-color: var(--tinte); color: #fff; }
+.wann input:focus-visible + span { outline: 3px solid var(--himmel); outline-offset: 2px; }
+.wann label:active span { transform: scale(.96); }
+.honig { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.formular .knopf { width: 100%; margin-top: .3rem; }
+.formular .knopf[disabled] { opacity: .7; cursor: progress; }
+.kreis { width: 18px; height: 18px; border-radius: 50%; border: 2.5px solid rgba(255,255,255,.35); border-top-color: #fff; animation: dreh .8s linear infinite; }
+@keyframes dreh { to { transform: rotate(360deg); } }
+.hinweis { margin-top: .8rem; font-size: .8rem; color: var(--tinte3); }
+.fehler { margin-top: .8rem; font-size: .9rem; color: var(--koralle-tief); font-weight: 500; }
+.danke { text-align: center; padding: 1.4rem .4rem; }
+.danke .haken { width: 4rem; height: 4rem; margin: 0 auto 1rem; border-radius: 50%; display: grid; place-items: center; background: rgba(75,190,140,.14); color: #1E8E5E; }
+.danke .haken svg { width: 30px; height: 30px; stroke-dasharray: 30; stroke-dashoffset: 30; animation: strich .5s .15s var(--ease-out) forwards; }
+@keyframes strich { to { stroke-dashoffset: 0; } }
+.danke h3 { font-size: 1.5rem; }
+.danke p { margin-top: .5rem; color: var(--tinte2); }
+.direkt { background: var(--tinte); color: #fff; border-radius: var(--r); padding: clamp(1.3rem, 4vw, 2rem); }
+.direkt h3 { font-size: 1.3rem; }
+.direkt p { margin-top: .4rem; color: rgba(255,255,255,.75); font-size: .96rem; }
+.direkt .knopf { width: 100%; margin-top: .8rem; }
+.direkt .knopf.hell { background: #fff; color: var(--tinte); }
+.direkt .knopf.wa { background: transparent; border-color: rgba(255,255,255,.35); color: #fff; }
+.direkt .person { display: flex; align-items: center; gap: .8rem; margin-top: 1.3rem; padding-top: 1.1rem; border-top: 1px solid rgba(255,255,255,.14); font-size: .9rem; }
+.direkt .person b { display: block; font-weight: 600; }
+.direkt .person span { color: rgba(255,255,255,.7); }
+.direkt .monogramm { width: 2.8rem; height: 2.8rem; flex: none; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(341deg, #7BAFFF, #FF5757); font: 600 1rem/1 var(--body); }
+
+/* Fragen */
+.fragen { margin-top: 1.6rem; display: grid; gap: .6rem; max-width: 46rem; }
+.fragen details { background: var(--karte); border: 1px solid var(--linie); border-radius: 14px; }
+.fragen summary { list-style: none; cursor: pointer; padding: 1rem 1.15rem; font-weight: 600; display: flex; justify-content: space-between; gap: 1rem; align-items: center; }
+.fragen summary::-webkit-details-marker { display: none; }
+.fragen summary::after { content: ""; flex: none; width: .6rem; height: .6rem; border-right: 2px solid var(--tinte3); border-bottom: 2px solid var(--tinte3); transform: rotate(45deg) translateY(-2px); transition: transform .25s var(--ease-out); }
+.fragen details[open] summary::after { transform: rotate(-135deg) translateY(-2px); }
+.fragen details p { padding: 0 1.15rem 1.1rem; color: var(--tinte2); font-size: .97rem; }
+
+/* Fuß */
+.fuss { margin-top: clamp(3.5rem, 9vw, 6rem); padding: 2rem 0 calc(2rem + env(safe-area-inset-bottom)); border-top: 1px solid var(--linie); font-size: .86rem; color: var(--tinte3); }
+.fuss .wrap { display: flex; flex-wrap: wrap; gap: .6rem 1.6rem; justify-content: space-between; }
+.fuss a { color: var(--tinte2); }
+
+/* Leiste am Handy */
+.leiste { position: fixed; left: .7rem; right: .7rem; bottom: calc(.7rem + env(safe-area-inset-bottom)); z-index: 50; display: none; gap: .5rem; padding: .5rem; border-radius: 18px;
+  background: rgba(255,255,255,.82); -webkit-backdrop-filter: saturate(180%) blur(16px); backdrop-filter: saturate(180%) blur(16px); box-shadow: 0 14px 40px -14px rgba(14,25,42,.45), 0 0 0 1px rgba(14,25,42,.08);
+  transform: translateY(calc(100% + 1.5rem)); transition: transform .4s var(--ease-out); }
+.leiste.an { transform: none; }
+.leiste .knopf { min-height: 3rem; padding: .7rem 1rem; }
+.leiste .knopf.haupt { flex: 1; }
+.leiste .knopf.rund { width: 3rem; padding: 0; background: rgba(14,25,42,.06); color: var(--tinte); }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .leiste { background: #fff; } }
+@media (prefers-reduced-transparency: reduce) { .leiste { background: #fff; -webkit-backdrop-filter: none; backdrop-filter: none; } }
+
+/* Auftritt beim Scrollen */
+.auf { opacity: 0; transform: translateY(14px); transition: opacity .6s var(--ease-out), transform .6s var(--ease-out); }
+.auf.da { opacity: 1; transform: none; }
+
+@media (max-width: 820px) {
+  .inklusive, .rueckruf, .schritte { grid-template-columns: minmax(0, 1fr); }
+  .inklusive .teil.agent { grid-template-columns: minmax(0, 1fr); }
+  .leiste { display: flex; }
+  body { padding-bottom: 5rem; }
+}
+@media (max-width: 480px) {
+  body { font-size: 16px; }
+  .knoepfe .knopf { flex: 1 1 100%; }
+  .preis { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .auf { opacity: 1; transform: none; transition: none; }
+  .tippt i, .kreis, .danke .haken svg { animation: none; }
+  .danke .haken svg { stroke-dashoffset: 0; }
+  .leiste, .knopf, .wann span { transition: none; }
+}
+</style>
+</head>
+<body>
+
+
+
+
+
+<header class="kopf">
+  <div class="wrap">
+    <img class="logo" src="https://medialyte.de/wp-content/uploads/2025/07/Kopie-von-medialyte1.svg" alt="Medialyte" width="140" height="28">
+    <a class="zurueck" href="../"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Zurück zum Entwurf</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="titel">
+    <div class="wrap">
+      <p class="dach"><i aria-hidden="true"></i>Für Sanku Maots&#39;ai, Hamburg</p>
+      <h1 id="titel">Aus dem Entwurf wird Ihre Website.</h1>
+      <p class="lead">Alles, was Sie im Entwurf gesehen haben, geht für Sanku Maots&#39;ai online: unter Ihrer eigenen Adresse, mit Ihren Fotos und Ihrer Speisekarte. Um die Technik kümmern wir uns, kleine Änderungen übernimmt Ihr Website-Agent.</p>
+      <div class="knoepfe" id="oben">
+        <a class="knopf haupt" href="#rueckruf">Rückruf anfordern</a>
+        <a class="knopf neben" href="tel:01709647532"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>0170 9647532</a>
+      </div>
+      
+      <figure class="vorschau">
+        <picture>
+          <source media="(max-width: 600px)" srcset="vorschau-handy.webp" width="410" height="757">
+          <img src="vorschau.webp" width="1600" height="787" alt="Der Entwurf für Sanku Maots&#39;ai auf Laptop und Handy" fetchpriority="high">
+        </picture>
+        <figcaption>Ihr Entwurf, so wie er gerade aussieht. Alles daran lässt sich noch ändern.</figcaption>
+      </figure>
+      
+    </div>
+  </section>
+
+  <section class="abschnitt schon" aria-labelledby="t-schon">
+    <div class="wrap">
+      <h2 id="t-schon" class="auf">Schon fertig in Ihrem Entwurf</h2>
+      <p class="unter auf">Das kann die Seite heute schon, ohne dass Sie etwas dafür tun mussten.</p>
+      <div class="raster">
+        
+        <div class="teil auf"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><h3>Live-Öffnungsstatus</h3><p>Zeigt jederzeit, ob gerade geöffnet ist und wann es wieder losgeht.</p></div>
+        
+        <div class="teil auf"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span><h3>Anrufen mit einem Tipp</h3><p>Ihre Nummer ist auf jeder Seite nur einen Fingertipp entfernt.</p></div>
+        
+        <div class="teil auf"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></span><h3>Fürs Handy gebaut</h3><p>Die meisten Gäste kommen übers Handy. Die Seite ist genau dafür gemacht.</p></div>
+        
+      </div>
+    </div>
+  </section>
+
+  <section class="abschnitt" aria-labelledby="t-inklusive">
+    <div class="wrap">
+      <h2 id="t-inklusive" class="auf">Alles dabei, damit Sie sich um nichts kümmern müssen</h2>
+      <div class="inklusive">
+        <div class="teil agent auf">
+          <div>
+            <span class="marke">Neu bei Medialyte</span>
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="7" width="14" height="11" rx="3"/><path d="M12 3v4M9 12h.01M15 12h.01M9.5 15h5"/></svg></span>
+            <h3>Ihr eigener Website-Agent</h3>
+            <p>Ein kleiner KI-Agent betreut Ihre Seite fortlaufend und übernimmt kleine Änderungen wie Tagesmenü, Speisekarte oder neue Bilder. Sie sagen Bescheid, er kümmert sich darum.</p>
+          </div>
+          <div class="chat" id="chat" aria-label="Beispiel">
+            <div class="blase sie"><small>Sanku Maots&#39;ai</small>Ab Montag gibt es Linsensuppe als Tagesgericht.</div>
+            <div class="tippt" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="blase er"><small>Ihr Website-Agent</small>Ist eingetragen. Ab Montag steht sie auf Ihrer Website.</div>
+          </div>
+        </div>
+        <div class="teil auf"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><h3>Eigene Adresse, Hosting und SSL</h3><p>Ihre Website läuft unter Ihrer eigenen Adresse, zum Beispiel www.sanku-maots-ai.de, sicher verschlüsselt. Server und Technik übernehmen wir.</p></div>
+        <div class="teil auf"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg></span><h3>Angepasst an Ihre Wünsche</h3><p>Eigene Fotos, Texte, Farben, Gerichte: Vor dem Start bauen wir den Entwurf so um, wie Sie ihn haben möchten.</p></div>
+        <div class="teil auf"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h12a4 4 0 0 1 4 4v12H8a4 4 0 0 1-4-4z"/><path d="M8 9h5M8 13h8"/><path d="M15.5 15.5l2 2 3.5-4"/></svg></span><h3>Speisekarte selbst pflegen</h3><p>Gerichte, Preise und Öffnungszeiten ändern Sie jederzeit selbst, ganz ohne Vorkenntnisse.</p></div>
+        <div class="teil auf"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span><h3>Laufende Betreuung</h3><p>Updates, Sicherheit und kleine Änderungen nach dem Start übernehmen wir. Sie haben einen direkten Ansprechpartner.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="abschnitt" aria-labelledby="t-ablauf">
+    <div class="wrap">
+      <h2 id="t-ablauf" class="auf">So geht es weiter</h2>
+      <ol class="schritte">
+        <li class="auf"><h3>Kurz sprechen</h3><p>Sie rufen an oder lassen sich zurückrufen. Wir klären, was Ihnen gefällt und was anders sein soll.</p></li>
+        <li class="auf"><h3>Anpassen</h3><p>Wir bauen Ihre Wünsche ein, mit Ihren Fotos und Ihrer Speisekarte. Sie sehen alles, bevor es online geht.</p></li>
+        <li class="auf"><h3>Online gehen</h3><p>Die Website startet unter Ihrer eigenen Adresse. Danach betreuen wir sie weiter, Ihr Website-Agent ist ab dem ersten Tag dabei.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="abschnitt" aria-labelledby="t-preis">
+    <div class="wrap">
+      <h2 id="t-preis" class="auf">Und was kostet das?</h2>
+      <div class="preis auf">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg></span>
+        <div>
+          <p><strong>Das besprechen wir persönlich.</strong> Der Preis richtet sich danach, was Sanku Maots&#39;ai braucht.</p>
+          <p>Das Gespräch ist unverbindlich. Wenn Sie nichts tun, passiert nichts: Der Entwurf ist nicht bei Google zu finden und wird nach 30 Tagen gelöscht.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="abschnitt" id="rueckruf" aria-labelledby="t-rueckruf">
+    <div class="wrap">
+      <h2 id="t-rueckruf" class="auf">Lassen Sie sich zurückrufen</h2>
+      <p class="unter auf">Wann es Ihnen passt, ruft Daniel Sie an. Gern auch zwischen Mittag und Abendgeschäft.</p>
+      <div class="rueckruf">
+        
+        <form class="formular auf" id="formular" novalidate>
+          <div id="formular-felder">
+            <div class="feld"><label for="f-kontakt">Ihr Name <small>(freiwillig)</small></label><input id="f-kontakt" name="kontakt" autocomplete="name" maxlength="80"></div>
+            <div class="feld"><label for="f-telefon">Telefonnummer</label><input id="f-telefon" name="telefon" type="tel" inputmode="tel" autocomplete="tel" maxlength="30" required aria-describedby="f-fehler"></div>
+            <div class="feld"><span class="bez" id="f-wann-bez">Wann passt es?</span>
+              <fieldset class="wann" aria-labelledby="f-wann-bez">
+                
+                <label><input type="radio" name="wann" value="vormittags"><span>Vormittags</span></label>
+                
+                <label><input type="radio" name="wann" value="nachmittags" checked><span>Nachmittags</span></label>
+                
+                <label><input type="radio" name="wann" value="abends"><span>Abends</span></label>
+                
+                <label><input type="radio" name="wann" value="egal"><span>Egal</span></label>
+                
+              </fieldset>
+            </div>
+            <div class="feld"><label for="f-nachricht">Nachricht <small>(freiwillig)</small></label><textarea id="f-nachricht" name="nachricht" maxlength="600" placeholder="z. B. Gefällt mir, aber mit unseren eigenen Fotos"></textarea></div>
+            <div class="honig" aria-hidden="true"><label>Bitte leer lassen <input name="hp" tabindex="-1" autocomplete="off"></label></div>
+            <button class="knopf haupt" type="submit" id="senden">Rückruf anfordern</button>
+            <p class="fehler" id="f-fehler" role="alert" hidden></p>
+            <p class="hinweis">Ihre Angaben nutzen wir nur, um Sie zurückzurufen. Mehr in der <a href="https://medialyte.de/datenschutzerklaerung" target="_blank" rel="noopener">Datenschutzerklärung</a>.</p>
+          </div>
+          <div class="danke" id="danke" hidden tabindex="-1">
+            <div class="haken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+            <h3>Danke, ist angekommen.</h3>
+            <p id="danke-text">Daniel meldet sich bei Ihnen.</p>
+          </div>
+        </form>
+        
+        <aside class="direkt auf" aria-labelledby="t-direkt">
+          <h3 id="t-direkt">Lieber gleich sprechen?</h3>
+          <p>Rufen Sie direkt an oder schreiben Sie per WhatsApp.</p>
+          <a class="knopf hell" href="tel:01709647532"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>0170 9647532</a>
+          <a class="knopf wa" href="https://wa.me/491709647532?text=Guten%20Tag%2C%20ich%20habe%20den%20Entwurf%20f%C3%BCr%20Sanku%20Maots%27ai%20gesehen%20und%20h%C3%A4tte%20gern%20mehr%20dazu%20geh%C3%B6rt." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4A8.5 8.5 0 1 1 8 19.6z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1.2-1.4-2-1-1 .8a4 4 0 0 1-2.1-2.1l.8-1-1-2z"/></svg>Per WhatsApp schreiben</a>
+          <div class="person"><span class="monogramm" aria-hidden="true">DD</span><div><b>Daniel Dogan</b><span>Medialyte, Hamburg</span></div></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="abschnitt" aria-labelledby="t-fragen">
+    <div class="wrap">
+      <h2 id="t-fragen" class="auf">Häufige Fragen</h2>
+      <div class="fragen">
+        <details class="auf"><summary>Muss ich mich um Technik kümmern?</summary><p>Nein. Adresse, Hosting, Verschlüsselung und Updates übernehmen wir. Sie kümmern sich um Ihre Gäste.</p></details>
+        <details class="auf"><summary>Kann ich später noch etwas ändern?</summary><p>Ja. Speisekarte und Öffnungszeiten pflegen Sie selbst. Kleine Änderungen wie Tagesmenü oder neue Bilder übernimmt Ihr Website-Agent, alles Größere wir.</p></details>
+        <details class="auf"><summary>Kann ich eigene Fotos verwenden?</summary><p>Ja, gern. Im Entwurf zeigen wir Fotos von Google Maps mit Angabe der Urheber. Für Ihre Website bauen wir Ihre eigenen Fotos ein.</p></details>
+        <details class="auf"><summary>Warum haben Sie den Entwurf gebaut?</summary><p>Sanku Maots&#39;ai hat noch keine eigene Website, nur einen Auftritt bei Instagram. Wir wollten Ihnen zeigen, wie sie aussehen könnte, statt nur davon zu erzählen.</p></details>
+        <details class="auf"><summary>Was passiert, wenn ich mich nicht melde?</summary><p>Nichts. Der Entwurf ist unverbindlich, nicht bei Google zu finden und wird nach 30 Tagen gelöscht.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="fuss">
+  <div class="wrap">
+    <span>Daniel Dogan · Medialyte · Schaaphusen 3, 21147 Hamburg</span>
+    <span><a href="https://medialyte.de/impressum" target="_blank" rel="noopener">Impressum</a> · <a href="https://medialyte.de/datenschutzerklaerung" target="_blank" rel="noopener">Datenschutz</a></span>
+  </div>
+</footer>
+
+<nav class="leiste" id="leiste" aria-label="Kontakt">
+  <a class="knopf haupt" href="#rueckruf">Rückruf anfordern</a>
+  <a class="knopf rund" href="tel:01709647532" aria-label="Anrufen: 0170 9647532"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></a>
+  <a class="knopf rund" href="https://wa.me/491709647532?text=Guten%20Tag%2C%20ich%20habe%20den%20Entwurf%20f%C3%BCr%20Sanku%20Maots%27ai%20gesehen%20und%20h%C3%A4tte%20gern%20mehr%20dazu%20geh%C3%B6rt." target="_blank" rel="noopener" aria-label="Per WhatsApp schreiben"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4A8.5 8.5 0 1 1 8 19.6z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1.2-1.4-2-1-1 .8a4 4 0 0 1-2.1-2.1l.8-1-1-2z"/></svg></a>
+</nav>
+
+<script>
+(function () {
+  var ZAEHLER = "https://medialyte-zaehler.patient-water-7819.workers.dev", CODE = "jp8f", SLUG = "sanku-maots-ai-hamburg-c7c2", NAME = "Sanku Maots\u0027ai";
+  var ruhig = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function intern() { try { return !!localStorage.getItem("medialyte-intern"); } catch (e) { return false; } }
+  // Aufruf melden (nicht auf Daniels Geräten): nur Kurzcode, Seite und Geräteart
+  if (ZAEHLER && CODE && !intern() && navigator.sendBeacon) {
+    try {
+      var t = matchMedia("(pointer: coarse)").matches, g = t ? (Math.min(screen.width, screen.height) >= 600 ? "tablet" : "handy") : "laptop";
+      navigator.sendBeacon(ZAEHLER.replace(/\/$/, "") + "/z", JSON.stringify({ k: CODE, g: g, s: "angebot" }));
+    } catch (e) {}
+  }
+  // Auftritt beim Scrollen
+  var teile = [].slice.call(document.querySelectorAll(".auf"));
+  if (ruhig || !("IntersectionObserver" in window)) teile.forEach(function (e) { e.classList.add("da"); });
+  else {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("da"); io.unobserve(e.target); } }); }, { rootMargin: "0px 0px -8% 0px" });
+    teile.forEach(function (e) { io.observe(e); });
+  }
+  // Beispiel-Chat: der Agent „tippt“ kurz, dann steht die Antwort da
+  var chat = document.getElementById("chat");
+  if (chat) {
+    if (ruhig || !("IntersectionObserver" in window)) chat.classList.add("fertig");
+    else { var co = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { co.disconnect(); setTimeout(function () { chat.classList.add("fertig"); }, 1300); } }, { threshold: .6 }); co.observe(chat); }
+  }
+  // Leiste am Handy: erscheint unter dem Einstieg, verschwindet am Formular
+  var leiste = document.getElementById("leiste"), oben = document.getElementById("oben"), ziel = document.getElementById("rueckruf");
+  if (leiste && oben && ziel && "IntersectionObserver" in window) {
+    var sicht = { oben: true, ziel: false };
+    var lo = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.target === oben) sicht.oben = e.isIntersecting; else sicht.ziel = e.isIntersecting; });
+      leiste.classList.toggle("an", !sicht.oben && !sicht.ziel);
+    });
+    lo.observe(oben); lo.observe(ziel);
+  }
+  // Rückruf anfordern
+  var f = document.getElementById("formular");
+  if (!f) return;
+  var tel = document.getElementById("f-telefon"), fehler = document.getElementById("f-fehler"), knopf = document.getElementById("senden");
+  var WANN = { vormittags: "am Vormittag", nachmittags: "am Nachmittag", abends: "am Abend" };
+  function zeigeFehler(text) { fehler.textContent = text; fehler.hidden = !text; }
+  tel.addEventListener("input", function () { if (tel.getAttribute("aria-invalid") === "true") { tel.removeAttribute("aria-invalid"); zeigeFehler(""); } });
+  f.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var d = new FormData(f), nummer = String(d.get("telefon") || "").trim();
+    if ((nummer.match(/\d/g) || []).length < 7 || /[^\d +()\/-]/.test(nummer)) {
+      tel.setAttribute("aria-invalid", "true"); tel.focus();
+      zeigeFehler("Bitte eine Telefonnummer eintragen, unter der wir Sie erreichen."); return;
+    }
+    knopf.disabled = true; knopf.innerHTML = '<span class="kreis" aria-hidden="true"></span>Wird gesendet';
+    zeigeFehler("");
+    fetch(ZAEHLER.replace(/\/$/, "") + "/anfrage", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ slug: SLUG, k: CODE, name: NAME, kontakt: d.get("kontakt") || "", telefon: nummer, wann: d.get("wann") || "",
+                             nachricht: d.get("nachricht") || "", hp: d.get("hp") || "" })
+    }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function () {
+        var w = WANN[d.get("wann")];
+        document.getElementById("danke-text").textContent = "Daniel" + " meldet sich " + (w ? w + " " : "") + "unter " + nummer + ".";
+        document.getElementById("formular-felder").hidden = true;
+        var dk = document.getElementById("danke"); dk.hidden = false; dk.focus({ preventScroll: true });
+        if (leiste) leiste.remove();
+      })
+      .catch(function () {
+        knopf.disabled = false; knopf.textContent = "Rückruf anfordern";
+        zeigeFehler("Das hat gerade nicht geklappt. Bitte nochmal versuchen oder direkt anrufen: 0170 9647532");
+      });
+  });
+})();
+</script>
+</body>
+</html>
