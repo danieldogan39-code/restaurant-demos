@@ -9,7 +9,9 @@ self.addEventListener("activate", (e) => e.waitUntil(self.clients.claim()));
 self.addEventListener("fetch", (e) => {
   const req = e.request, url = new URL(req.url), scope = new URL(self.registration.scope);
   if (req.method !== "GET" || url.origin !== scope.origin || !url.pathname.startsWith(scope.pathname)) return;
-  const schluessel = req.mode === "navigate" ? scope.pathname : /data\.json$/.test(url.pathname) ? url.pathname : null;
+  // nur das Cockpit selbst (nicht Seiten darin wie das Beispiel-Tischbuch) gilt als Startseite
+  const startseite = url.pathname === scope.pathname || url.pathname === scope.pathname + "index.html";
+  const schluessel = req.mode === "navigate" && startseite ? scope.pathname : /data\.json$/.test(url.pathname) ? url.pathname : null;
   if (!schluessel) return;
   e.respondWith(fetch(req).then((r) => {
     if (r.ok) { const kopie = r.clone(); e.waitUntil(caches.open(CACHE).then((c) => c.put(schluessel, kopie))); }
@@ -31,7 +33,7 @@ self.addEventListener("notificationclick", (e) => {
   e.notification.close();
   const ziel = new URL((e.notification.data && e.notification.data.url) || "./", self.registration.scope);
   e.waitUntil(self.clients.matchAll({ type: "window", includeUncontrolled: true }).then((fenster) => {
-    const offen = fenster.find((c) => c.url.startsWith(self.registration.scope));
+    const offen = fenster.find((c) => c.frameType !== "nested" && c.url.startsWith(self.registration.scope) && !c.url.includes("/tischbuch-beispiel/"));
     if (offen) { offen.postMessage({ typ: "ziel", hash: ziel.hash }); return offen.focus(); }
     return self.clients.openWindow(ziel.href);
   }));

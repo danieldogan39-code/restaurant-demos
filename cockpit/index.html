@@ -190,6 +190,9 @@ button, input { font: inherit; color: inherit; }
 
 /* ---------- Tischbücher der Kunden (nur ansehen) ---------- */
 .tbs { margin-bottom: 1rem; }
+.tb-kopf-rechts { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: .5rem; margin-bottom: .9rem; }
+.tb-kopf-rechts .btn { padding: .45rem .85rem; font-size: .84rem; }
+@media (max-width: 760px) { .tb-kopf-rechts { width: 100%; justify-content: space-between; } }
 .tb-liste { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr)); gap: .6rem; align-items: start; }
 .tb-liste > .nf-leer { grid-column: 1 / -1; }
 .tb-karte { --akzent: rgba(75,227,166,.75); position: relative; display: grid; gap: .55rem; align-content: start; width: 100%; min-width: 0; text-align: left; font: inherit; color: inherit; cursor: pointer;
@@ -222,53 +225,48 @@ button, input { font: inherit; color: inherit; }
 .tb-auf { display: inline-flex; align-items: center; gap: .3rem; justify-self: end; font-size: .78rem; font-weight: 600; color: var(--ink3); transition: color .2s; }
 .tb-auf svg { width: 14px; height: 14px; }
 .tb-stand-zeile { grid-column: 1 / -1; margin: .1rem 0 0; font-size: .76rem; color: var(--ink3); }
-/* Ansicht eines Tischbuchs */
-.modal-card.tb-card { max-width: 44rem; max-height: calc(100dvh - 2rem); overflow-y: auto; overscroll-behavior: contain; padding-bottom: 0; }
-.tb-card .mstep { justify-content: space-between; flex-wrap: wrap; }
-.tb-card .tb-nur { display: inline-flex; align-items: center; gap: .4rem; padding: .25rem .7rem; border-radius: 99px; background: rgba(123,175,255,.12); color: #9CC2FF; }
-.tb-card .tb-nur svg { width: 13px; height: 13px; }
-.tb-card #tbm-zeit { font-weight: 600; letter-spacing: .02em; text-transform: none; }
-.tb-info { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .35rem 1rem; margin: .7rem 0 .9rem; padding: .8rem .95rem; border-radius: 14px; border: 1px solid var(--edge); background: rgba(255,255,255,.03); font-size: .86rem; }
-.tb-info dt { color: var(--ink3); font-weight: 600; }
-.tb-info dd { margin: 0; color: var(--ink); min-width: 0; overflow-wrap: anywhere; }
+/* Tischbuch ansehen: die echte Oberfläche des Restaurants (oder das Beispiel) im Handyrahmen */
+.modal.tbm { padding: 1rem; }
+.tb-buehne { display: flex; align-items: center; justify-content: center; gap: 1.25rem; width: 100%; max-height: calc(100dvh - 2rem); }
+.tb-seite { flex: none; width: 21rem; max-height: calc(100dvh - 2rem); overflow-y: auto; overscroll-behavior: contain; background: var(--panel-solid); border: 1px solid rgba(255,87,87,.35); border-radius: 18px; padding: 1.15rem 1.25rem; box-shadow: 0 30px 80px -30px rgba(0,0,0,.95); animation: modalin .28s var(--spring); }
+.tb-seite-kopf { display: flex; align-items: flex-start; gap: .5rem; }
+.tb-seite-kopf > div { flex: 1; min-width: 0; }
+.tb-seite h3 { margin: .55rem 0 .2rem; font-size: 1.15rem; line-height: 1.3; }
+.tb-seite h3 b { color: var(--ink); }
+.tb-nur { display: inline-flex; align-items: center; gap: .4rem; padding: .25rem .7rem; border-radius: 99px; background: rgba(123,175,255,.12); color: #9CC2FF; font-size: .7rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.tb-nur.beispiel { background: rgba(255,181,71,.14); color: #FFC56B; }
+.tb-nur svg { width: 13px; height: 13px; }
+.tb-seite-kopf .btn.icon { flex: none; padding: .5rem .55rem; }
+.tb-erklaer { margin: .5rem 0 .8rem; font-size: .86rem; line-height: 1.55; color: var(--ink2); }
+.tb-zahlenreihe { margin: .1rem 0 .6rem; font-size: .84rem; color: var(--ink2); }
+.tb-info { display: grid; grid-template-columns: minmax(0, 1fr); gap: .05rem; margin: .6rem 0 .2rem; padding: .75rem .85rem; border-radius: 14px; border: 1px solid var(--edge); background: rgba(255,255,255,.03); font-size: .84rem; }
+.tb-info dt { color: var(--ink3); font-weight: 600; font-size: .74rem; letter-spacing: .04em; text-transform: uppercase; }
+.tb-info dd { margin: 0 0 .5rem; color: var(--ink); min-width: 0; overflow-wrap: anywhere; }
+.tb-info dd:last-child { margin-bottom: 0; }
 .tb-info dd small { color: var(--ink3); }
 .tb-info .warn { color: #FFC56B; font-weight: 600; }
-.tb-card .k-box a { color: var(--ink); font-weight: 600; }
-.tb-reiter { display: flex; width: 100%; margin-bottom: .8rem; }
-.tb-reiter button { flex: 1 1 0; min-width: 0; display: inline-flex; justify-content: center; align-items: center; gap: .4rem; min-height: 2.5rem; padding: .45rem .4rem; }
-.tb-reiter button b { font-family: var(--display); font-variant-numeric: tabular-nums; font-size: .8rem; padding: 0 .4rem; border-radius: 99px; background: rgba(255,255,255,.08); }
-.tb-reiter button[data-tb-reiter="offen"] b.an { background: var(--coral); color: #fff; }
-.tb-tag { margin-bottom: .9rem; }
-.tb-tag > header { display: flex; justify-content: space-between; align-items: baseline; gap: .8rem; padding: 0 .1rem .4rem; border-bottom: 1px solid var(--edge); margin-bottom: .35rem; }
-.tb-tag > header b { font-size: .9rem; }
-.tb-tag > header span { font-size: .78rem; color: var(--ink3); text-align: right; }
-.tb-z { display: grid; grid-template-columns: 3.1rem minmax(0, 1fr) auto; gap: .2rem .7rem; align-items: start; padding: .6rem .3rem; border-bottom: 1px solid rgba(255,255,255,.04); }
-.tb-z:last-child { border-bottom: 0; }
-.tb-z time { font-family: var(--display); font-size: .98rem; font-weight: 600; font-variant-numeric: tabular-nums; padding-top: .05rem; }
-.tb-wer { min-width: 0; font-size: .9rem; line-height: 1.45; }
-.tb-wer > b { font-weight: 600; }
-.tb-wer > span { color: var(--ink2); }
-.tb-wer small { display: block; font-size: .78rem; color: var(--ink3); overflow-wrap: anywhere; }
-.tb-wer small a { color: var(--ink2); text-decoration: none; }
-.tb-wer q { display: block; margin: .25rem 0 .1rem; padding: .3rem .6rem; border-left: 2px solid rgba(123,175,255,.45); border-radius: 0 8px 8px 0; background: rgba(123,175,255,.06); font-size: .84rem; font-style: italic; color: var(--ink); quotes: "„" "“"; }
-.tb-st { font-size: .68rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: .2rem .55rem; border-radius: 999px; border: 1px solid var(--edge); color: var(--ink2); white-space: nowrap; }
-.tb-z.st-offen .tb-st { border-color: rgba(255,87,87,.6); color: #FF9C9C; background: rgba(255,87,87,.08); }
-.tb-z.st-bestaetigt .tb-st { border-color: rgba(75,227,166,.55); color: var(--ok); }
-.tb-z.st-unbeantwortet .tb-st { border-color: rgba(255,181,71,.55); color: #FFC56B; }
-.tb-z.st-abgelehnt, .tb-z.st-storniert { opacity: .72; }
-.tb-z.st-abgelehnt .tb-wer > b, .tb-z.st-storniert .tb-wer > b { text-decoration: line-through; text-decoration-color: rgba(255,255,255,.35); }
-.tb-card .tb-fuss { position: sticky; bottom: 0; margin: 1rem -1.35rem 0; padding: .8rem 1.35rem calc(.9rem + env(safe-area-inset-bottom)); background: var(--panel-solid); border-top: 1px solid var(--edge); box-shadow: 0 -14px 24px -12px rgba(4,9,18,.9); }
-.tb-card .tb-fuss .modal-acts { margin-top: 0; }
-.tb-card .tb-fuss p { margin: 0 0 .55rem; font-size: .78rem; color: var(--ink3); }
-@media (prefers-reduced-motion: reduce) { .tb-hinweis.heiss::before { animation: none; } }
-@media (max-width: 560px) {
-  .tb-info { grid-template-columns: minmax(0, 1fr); gap: .1rem; }
-  .tb-info dd { margin-bottom: .45rem; }
-  .tb-info dd:last-child { margin-bottom: 0; }
-  .tb-z { grid-template-columns: 2.9rem minmax(0, 1fr); }
-  .tb-z .tb-st { grid-column: 2; justify-self: start; }
-  .tb-card .tb-fuss .modal-acts { display: grid; grid-template-columns: 1fr 1fr; }
-  .tb-card .tb-fuss .modal-acts .btn { justify-content: center; }
+.tb-seite .k-box { margin: .6rem 0; font-size: .86rem; }
+.tb-seite .k-box p { font-size: inherit; }
+.tb-seite .k-box a { color: var(--ink); font-weight: 600; }
+.tb-acts { display: grid; gap: .5rem; margin-top: .9rem; }
+.tb-acts .btn { justify-content: center; }
+.tb-acts .btn[hidden] { display: none; }
+.tb-zeit { display: block; margin-top: .7rem; font-size: .74rem; color: var(--ink3); }
+.tb-handy { position: relative; flex: none; box-sizing: content-box; width: 390px; height: min(844px, calc(100dvh - 2rem - 18px)); border-radius: 38px; border: 9px solid #05080F; background: #F4F3F0; overflow: hidden; box-shadow: 0 0 0 1px rgba(255,255,255,.1), 0 40px 90px -30px rgba(0,0,0,.95); animation: modalin .32s var(--spring); }
+.tb-handy iframe { display: block; width: 100%; height: 100%; border: 0; background: #F4F3F0; }
+.tb-handy .tb-leer { position: absolute; inset: 0; display: grid; place-items: center; padding: 1.5rem; text-align: center; color: #5B6170; font-size: .95rem; line-height: 1.5; background: #F4F3F0; }
+.tb-als-klein { display: none !important; }
+@media (prefers-reduced-motion: reduce) { .tb-hinweis.heiss::before, .tb-seite, .tb-handy { animation: none; } }
+@media (max-width: 760px) {
+  .modal.tbm { padding: 0; place-items: stretch; }
+  .tb-buehne { flex-direction: column; align-items: stretch; gap: 0; height: 100dvh; max-height: none; }
+  .tb-seite { width: auto; max-height: none; overflow: visible; border: 0; border-bottom: 1px solid var(--edge); border-radius: 0; padding: calc(.55rem + env(safe-area-inset-top)) .75rem .6rem; box-shadow: none; animation: none; }
+  .tb-seite h3 { margin: .3rem 0 0; font-size: 1rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .tb-seite .tb-erklaer, .tb-seite .tb-info, .tb-seite .tb-acts, .tb-seite .tb-zeit, .tb-seite .tb-zahlenreihe { display: none; }
+  .tb-seite .k-box { margin: .45rem 0 0; padding: .5rem .7rem; font-size: .8rem; }
+  .tb-als-klein:not([hidden]) { display: inline-flex !important; }
+  .tb-handy { flex: 1; box-sizing: border-box; width: auto; height: auto; min-height: 0; border: 0; border-radius: 0; box-shadow: none; animation: none; }
+}
 }
 
 /* ---------- Systemstart (Intro) ---------- */
@@ -1124,8 +1122,8 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
 
   <section class="panel tbs" style="--d:5" aria-labelledby="tb-title" data-focus="tischbuecher" id="tischbuecher">
     <div class="panel-head">
-      <div><h2 id="tb-title">Tischbücher</h2><p class="sub" id="tb-sub">Reservierungen deiner Kunden, live aus dem Dienst. Hier nur zum Ansehen: Bestätigen und Absagen bleibt beim Restaurant.</p></div>
-      <div class="nf-zahlen" id="tb-zahlen"></div>
+      <div><h2 id="tb-title">Tischbücher</h2><p class="sub" id="tb-sub">Reservierungen und Website-Agent deiner Kunden, live aus dem Dienst. Nur zum Ansehen: Bestätigen, Absagen und Änderungen bleiben beim Restaurant.</p></div>
+      <div class="tb-kopf-rechts"><div class="nf-zahlen" id="tb-zahlen"></div><button class="btn tb-beispiel" type="button" data-tb="beispiel">Beispiel ansehen</button></div>
     </div>
     <div class="tb-liste" id="tb-liste"></div>
   </section>
@@ -1297,17 +1295,20 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     </div>
   </div>
 </div>
-<div class="modal" id="tbm" hidden role="dialog" aria-modal="true" aria-labelledby="tbm-t">
-  <div class="modal-card tb-card">
-    <div class="mstep"><span class="tb-nur"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Nur ansehen</span><span id="tbm-zeit" aria-live="polite"></span></div>
-    <h3 id="tbm-t">Tischbuch <b class="nm" id="tbm-name"></b></h3>
-    <div id="tbm-lage"></div>
-    <div class="seg-ctl tb-reiter" id="tbm-reiter" role="tablist" aria-label="Anfragen"></div>
-    <div id="tbm-liste" role="tabpanel"></div>
-    <div class="tb-fuss">
-      <p id="tbm-fuss-text">Aktualisiert sich alle 30 Sekunden. Anfragen bleiben bis 30 Tage nach dem Termin sichtbar.</p>
-      <div class="modal-acts"><button class="btn" type="button" data-x id="tbm-zu">Schließen</button><a class="btn" id="tbm-als" target="_blank" rel="noopener" hidden title="Öffnet das Tischbuch so, wie das Restaurant es sieht. Dort entscheidest du im Namen des Restaurants.">Als Restaurant öffnen</a></div>
-    </div>
+<div class="modal tbm" id="tbm" hidden role="dialog" aria-modal="true" aria-labelledby="tbm-t">
+  <div class="tb-buehne">
+    <aside class="tb-seite">
+      <div class="tb-seite-kopf">
+        <div><span class="tb-nur" id="tbm-art"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Nur ansehen</span><h3 id="tbm-t">Tischbuch <b id="tbm-name"></b></h3></div>
+        <a class="btn icon tb-als-klein" id="tbm-als-klein" target="_blank" rel="noopener" hidden aria-label="Als Restaurant öffnen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg></a>
+        <button class="btn icon" type="button" data-x id="tbm-zu" aria-label="Schließen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </div>
+      <div id="tbm-lage"></div>
+      <p class="tb-erklaer" id="tbm-text"></p>
+      <div class="tb-acts"><a class="btn" id="tbm-als" target="_blank" rel="noopener" hidden title="Öffnet das Tischbuch so, wie das Restaurant es nutzt. Dort entscheidest du im Namen des Restaurants."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>Als Restaurant öffnen</a><button class="btn" type="button" id="tbm-neu">Neu laden</button></div>
+      <span class="tb-zeit" id="tbm-zeit" aria-live="polite"></span>
+    </aside>
+    <div class="tb-handy" id="tbm-handy"><iframe id="tbm-frame" title="Tischbuch"></iframe><div class="tb-leer" id="tbm-leer" hidden></div></div>
   </div>
 </div>
 <div class="vpill" id="vpill" role="status" aria-live="off"><div class="wave" aria-hidden="true"><i style="--k:.6"></i><i style="--k:1"></i><i style="--k:.8"></i><i style="--k:1.2"></i><i style="--k:.7"></i></div><span id="vpill-text">Lagebericht</span><button type="button" id="vpill-stop">Stopp</button></div>
@@ -1350,7 +1351,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "46c8f544c8";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "de3ac1aa9b";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -3930,12 +3931,12 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   $("#kundem").addEventListener("input", function () { if (KUNDE.liveFrage) { KUNDE.liveFrage = false; kLage(); } if (!$("#k-fehlt").hidden) kPruefen(true); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !$("#kundem").hidden) kundeSchliessen(); });
 
-  /* ---------- Tischbücher der Kunden: live aus dem Dienst, nur zum Ansehen ----------
-     Übersicht über GET /t/lokale, ein Tischbuch über GET /t/einsicht (beides mit dem Cockpit-Schlüssel). Gästedaten
-     kommen nur live aus dem Dienst und werden nirgends gespeichert. Entscheiden kann nur das Restaurant. */
+  /* ---------- Tischbücher der Kunden ----------
+     Übersicht über GET /t/lokale (mit dem Cockpit-Schlüssel). „Ansehen“ zeigt die echte Oberfläche des Restaurants
+     (Reservierungen und Website-Agent) nur zum Ansehen, daneben die Lage über GET /t/einsicht. Gästedaten kommen nur
+     live aus dem Dienst und werden im Cockpit nirgends gespeichert. Dazu ein Beispiel-Tischbuch mit erfundenen Daten. */
   var BUCH = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="m9 15.5 2 2 4-4"/></svg>';
-  var TB = { lokale: null, heute: "", fehler: false, laedt: false, geladen: 0, slug: null, buch: null, reiter: null, timer: 0, zurueck: null, zeit: 0 };
-  var TB_ST = { offen: "Offen", bestaetigt: "Bestätigt", abgelehnt: "Abgelehnt", storniert: "Storniert", unbeantwortet: "Unbeantwortet" };
+  var TB = { lokale: null, heute: "", fehler: false, laedt: false, geladen: 0, slug: null, buch: null, timer: 0, zurueck: null, zeit: 0 };
   var TB_WT = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"], TB_WARTEN = 60 * 60000;  // ab einer Stunde ohne Antwort wartet ein Gast
   var TB_FMT = new Intl.DateTimeFormat("sv-SE", { timeZone: "Europe/Berlin", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false });
   function tbDienst() { var z = ((DATA && DATA.steuerung) || {}).zaehler; return z && z.url && z.schluessel ? z : null; }
@@ -3998,7 +3999,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   }
   function renderTischbuecher() {
     var box = $("#tb-liste"), zahlen = $("#tb-zahlen"); if (!box) return;
-    if (!tbDienst()) { zahlen.innerHTML = ""; tbBadge(0); box.innerHTML = '<div class="nf-leer">Der Dienst bei Cloudflare ist noch nicht eingerichtet. Danach stehen hier die Tischbücher deiner Kunden.</div>'; return; }
+    if (!tbDienst()) { zahlen.innerHTML = ""; tbBadge(0); box.innerHTML = '<div class="nf-leer">Der Dienst bei Cloudflare ist noch nicht eingerichtet. Danach stehen hier die Tischbücher deiner Kunden. Wie sie aussehen, zeigt das Beispiel oben.</div>'; return; }
     if (!TB.lokale) {
       box.innerHTML = TB.fehler ? '<div class="nf-leer">Der Dienst ist gerade nicht erreichbar. <button class="btn" type="button" data-tb-neu>Nochmal laden</button></div>'
                                 : '<div class="nf-leer"><span class="ai-wait"><i></i>Tischbücher werden geladen …</span></div>';
@@ -4007,7 +4008,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     var slugs = Object.keys(TB.lokale);
     if (!slugs.length) {
       zahlen.innerHTML = ""; tbBadge(0);
-      box.innerHTML = '<div class="nf-leer">Noch kein Restaurant mit Tischbuch. Sobald du für einen Kunden die Vorschau baust, steht sein Tischbuch hier: Anfragen, Reservierungen und ob das Restaurant rechtzeitig antwortet.</div>';
+      box.innerHTML = '<div class="nf-leer">Noch kein Restaurant mit Tischbuch. Sobald du für einen Kunden die Vorschau baust, steht sein Tischbuch hier: Anfragen, Reservierungen, der Website-Agent und ob das Restaurant rechtzeitig antwortet.<br><button class="btn" type="button" data-tb="beispiel" style="margin-top:.8rem">Beispiel-Tischbuch ansehen</button></div>';
       return;
     }
     var warten = 0, offen = 0, heute = 0;
@@ -4026,97 +4027,78 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       (TB.fehler ? '<p class="tb-stand-zeile">Dienst gerade nicht erreichbar, Stand von ' + esc(TB_FMT.format(new Date(TB.geladen)).slice(11, 16)) + " Uhr.</p>" : "");
     tbBadge(warten);
   }
-  function tbOeffnen(slug) {
-    if (!tbDienst()) { Sound.play("deny"); toast("Tischbücher gehen, sobald der Dienst bei Cloudflare eingerichtet ist."); return; }
-    var s = kStand(slug) || {}, als = $("#tbm-als");
-    TB.slug = slug; TB.buch = null; TB.reiter = null;
-    if ($("#tbm").hidden) TB.zurueck = document.activeElement;
-    $("#tbm-name").textContent = tbName(slug);
-    if (s.tischbuch) { als.href = s.tischbuch; als.hidden = false; } else { als.removeAttribute("href"); als.hidden = true; }
-    $("#tbm-lage").innerHTML = ""; $("#tbm-reiter").innerHTML = ""; $("#tbm-zeit").textContent = "";
-    $("#tbm-liste").innerHTML = '<span class="ai-wait"><i></i>Tischbuch wird geladen …</span>';
-    $("#tbm").hidden = false; Sound.play("open");
-    setTimeout(function () { $("#tbm-zu").focus({ preventScroll: true }); $("#tbm .tb-card").scrollTop = 0; }, 30);
-    tbBuchLaden();
-    clearInterval(TB.timer); TB.timer = setInterval(function () { if (!document.hidden && !$("#tbm").hidden) tbBuchLaden(); }, 30000);
+  /* Tischbuch ansehen: die echte Oberfläche des Restaurants im Handyrahmen (Reservierungen und Website-Agent), mit
+     ?ansicht=medialyte nur zum Ansehen. Daneben die Lage aus dem Dienst. „beispiel“ zeigt das Beispiel-Tischbuch. */
+  var TB_AUGE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
+  var TB_STERN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.7 4.7 1.8-4.7 1.8L12 16l-1.8-4.7-4.7-1.8 4.7-1.8z"/></svg>';
+  function tbAnsichtUrl(link) {  // Link mit Schlüssel (#k=…) → dieselbe Seite als Ansicht für Medialyte
+    try { var u = new URL(link); u.search = "?ansicht=medialyte"; return u.href; } catch (e) { return ""; }
   }
-  function tbBuchLaden() {
-    var slug = TB.slug; if (!slug) return;
+  function tbOeffnen(slug) {
+    var beispiel = slug === "beispiel";
+    if (!beispiel && !tbDienst()) { Sound.play("deny"); toast("Tischbücher gehen, sobald der Dienst bei Cloudflare eingerichtet ist."); return; }
+    var s = beispiel ? {} : kStand(slug) || {}, frame = $("#tbm-frame"), leer = $("#tbm-leer");
+    var ziel = beispiel ? "tischbuch-beispiel/" : s.tischbuch ? tbAnsichtUrl(s.tischbuch) : "";
+    TB.slug = slug; TB.buch = null; TB.zeit = 0;
+    if ($("#tbm").hidden) TB.zurueck = document.activeElement;
+    $("#tbm-art").className = "tb-nur" + (beispiel ? " beispiel" : "");
+    $("#tbm-art").innerHTML = beispiel ? TB_STERN + "Beispiel" : TB_AUGE + "Nur ansehen";
+    $("#tbm-name").textContent = beispiel ? "Lokal am Eck" : tbName(slug);
+    $("#tbm-text").textContent = beispiel
+      ? "So sieht das Tischbuch für deine Kunden aus. Alle Daten sind erfunden, nichts wird gesendet. Probier Bestätigen und Ablehnen, unten den Reiter „Website“ mit dem Agenten und dort „Übernehmen“."
+      : "Genau das, was das Restaurant sieht, auch den Website-Agenten (Reiter „Website“ unten). Bestätigen und Senden sind hier gesperrt; eingreifen kannst du über „Als Restaurant öffnen“.";
+    ["#tbm-als", "#tbm-als-klein"].forEach(function (id) { var a = $(id); if (!beispiel && s.tischbuch) { a.href = s.tischbuch; a.hidden = false; } else { a.removeAttribute("href"); a.hidden = true; } });
+    $("#tbm-neu").textContent = beispiel ? "Beispiel neu starten" : "Neu laden";
+    $("#tbm-lage").innerHTML = ""; $("#tbm-zeit").textContent = "";
+    leer.hidden = !!ziel; frame.hidden = !ziel;
+    if (!ziel) leer.textContent = "Für dieses Restaurant fehlt im Cockpit der Tischbuch-Link. Einmal im Kunden-Fenster „Neu veröffentlichen“, dann geht es.";
+    frame.src = ziel || "about:blank";
+    $("#tbm").hidden = false; Sound.play("open");
+    setTimeout(function () { $("#tbm-zu").focus({ preventScroll: true }); }, 30);
+    clearInterval(TB.timer);
+    if (!beispiel) { tbLageLaden(); TB.timer = setInterval(function () { if (!document.hidden && !$("#tbm").hidden) tbLageLaden(); }, 30000); }
+  }
+  function tbLageLaden() {
+    var slug = TB.slug; if (!slug || slug === "beispiel") return;
     tbHolen("/t/einsicht?l=" + encodeURIComponent(slug)).then(function (d) {
       if (TB.slug !== slug) return;
       TB.buch = d; TB.heute = d.heute || TB.heute; TB.zeit = Date.now();
       if (TB.lokale && d.lokal) { TB.lokale[slug] = d.lokal; renderTischbuecher(); }
-      tbBuchZeichnen();
+      tbLageZeichnen();
     }).catch(function (err) {
       if (TB.slug !== slug) return;
       if (TB.buch) { $("#tbm-zeit").textContent = "Dienst nicht erreichbar · Stand " + TB_FMT.format(new Date(TB.zeit)).slice(11, 16) + " Uhr"; return; }
-      $("#tbm-liste").innerHTML = '<div class="nf-leer">' + (String(err.message) === "404" ? "Dieses Tischbuch gibt es im Dienst nicht (mehr)." : "Der Dienst ist gerade nicht erreichbar. Er versucht es gleich wieder.") + "</div>";
+      $("#tbm-lage").innerHTML = '<div class="k-box warn"><p>' + (String(err.message) === "404" ? "Dieses Tischbuch gibt es im Dienst nicht (mehr)." : "Der Dienst ist gerade nicht erreichbar.") + "</p></div>";
     });
   }
-  function tbZeile(a, h) {
-    var st = a.status === "offen" && a.datum < h ? "unbeantwortet" : a.status, kontakt = [], weg = "Angefragt " + tbKlein(tbZeitpunkt(a.zeit));
-    if (a.telefon) kontakt.push('<a href="tel:' + esc(String(a.telefon).replace(/[^\d+]/g, "")) + '">' + esc(a.telefon) + "</a>");
-    if (a.email) kontakt.push('<a href="mailto:' + esc(a.email) + '">' + esc(a.email) + "</a>");
-    if (st === "offen") weg += " · wartet seit " + tbDauer(Date.now() - Date.parse(a.zeit));
-    else if (a.von === "auto") weg += " · automatisch bestätigt";
-    else if (st === "unbeantwortet") weg += " · nie beantwortet";
-    else if (a.entschieden) weg += " · " + (TB_ST[st] || st).toLowerCase() + " vom Restaurant " + tbKlein(tbZeitpunkt(a.entschieden));
-    return '<div class="tb-z st-' + esc(st) + '"><time>' + esc(a.uhrzeit) + '</time><div class="tb-wer"><b>' + esc(a.name) + "</b> <span>· " + tbPers(a.personen) + "</span>" +
-      (kontakt.length ? "<small>" + kontakt.join(" · ") + "</small>" : "") + (a.nachricht ? "<q>" + esc(a.nachricht) + "</q>" : "") +
-      (a.hinweis ? "<small>Hinweis an den Gast: „" + esc(a.hinweis) + "“</small>" : "") + "<small>" + esc(weg) + "</small></div>" +
-      '<span class="tb-st">' + (TB_ST[st] || esc(st)) + "</span></div>";
-  }
-  function tbBuchZeichnen() {
+  function tbLageZeichnen() {
     var d = TB.buch; if (!d || $("#tbm").hidden) return;
-    var l = d.lokal || {}, h = d.heute || tbHeute(), alle = (d.anfragen || []).slice();
-    var nachZeit = function (a, b) { return (a.datum + a.uhrzeit) < (b.datum + b.uhrzeit) ? -1 : (a.datum + a.uhrzeit) > (b.datum + b.uhrzeit) ? 1 : 0; };
-    alle.sort(nachZeit);
-    var G = { offen: alle.filter(function (a) { return a.status === "offen" && a.datum >= h; }),
-              kommend: alle.filter(function (a) { return a.status === "bestaetigt" && a.datum >= h; }),
-              verlauf: alle.filter(function (a) { return a.datum < h || a.status === "abgelehnt" || a.status === "storniert"; })
-                .sort(function (a, b) { return a.datum !== b.datum ? (a.datum < b.datum ? 1 : -1) : nachZeit(a, b); }) };
-    if (!TB.reiter) TB.reiter = G.offen.length ? "offen" : "kommend";
+    var l = d.lokal || {}, geraete = l.geraete_liste || [], auto = l.auto_regel || {};
     $("#tbm-name").textContent = l.name || tbName(TB.slug);
-    $("#tbm-zeit").textContent = "Stand " + TB_FMT.format(new Date(TB.zeit || Date.now())).slice(11, 16) + " Uhr";
-    var geraete = l.geraete_liste || [], auto = l.auto_regel || {};
+    $("#tbm-zeit").textContent = "Lage aus dem Dienst, Stand " + TB_FMT.format(new Date(TB.zeit || Date.now())).slice(11, 16) + " Uhr";
     var tel = l.telefon ? '<a href="tel:' + esc(String(l.telefon).replace(/[^\d+]/g, "")) + '">' + esc(l.telefon) + "</a>" : "";
     $("#tbm-lage").innerHTML = (tbWartet(l) ? '<div class="k-box warn"><p><b>' + esc(tbWarteText(l)) + "</b>" + (tel ? " Vielleicht kurz beim Restaurant anrufen: " + tel + "." : "") + "</p></div>" : "") +
+      '<p class="tb-zahlenreihe">' + (Number(l.offen) || 0) + " offen · heute " + (Number(l.heute_tische) || 0) + (Number(l.heute_tische) === 1 ? " Tisch" : " Tische") +
+        " · " + (Number(l.kommend) || 0) + " kommend · " + (Number(l.woche) || 0) + " Anfragen in 7 Tagen</p>" +
       '<dl class="tb-info">' +
       "<dt>Benachrichtigungen</dt><dd>" + (geraete.length ? geraete.map(function (g) { return esc(g.geraet || "Gerät") + (g.seit ? " <small>seit " + esc(tbKlein(tbZeitpunkt(g.seit).split(",")[0])) + "</small>" : ""); }).join(", ")
                                                        : '<span class="warn">keine eingeschaltet</span>') + "</dd>" +
-      "<dt>Automatisch bestätigen</dt><dd>" + (auto.an ? "an, bis " + tbPers(auto.max) + " und " + (Number(auto.tische) || 0) + (Number(auto.tische) === 1 ? " Tisch" : " Tische") + " je Uhrzeit" : "aus, das Restaurant bestätigt selbst") + "</dd>" +
+      "<dt>Automatisch bestätigen</dt><dd>" + (auto.an ? "an, bis " + tbPers(auto.max) + ", " + (Number(auto.tische) || 0) + (Number(auto.tische) === 1 ? " Tisch" : " Tische") + " je Uhrzeit" : "aus") + "</dd>" +
       "<dt>Online-Anfragen</dt><dd>" + (l.pause_alle ? '<span class="warn">pausiert</span>' : l.pause_bis ? '<span class="warn">pausiert bis ' + esc(tbKlein(tbTag(l.pause_bis))) + "</span>" : "an") + "</dd>" +
       "<dt>Mails an Gäste</dt><dd>" + (l.mail_aktiv ? "an" : "aus") + "</dd>" +
       (tel ? "<dt>Restaurant</dt><dd>" + tel + "</dd>" : "") + "</dl>";
-    $("#tbm-reiter").innerHTML = [["offen", "Offen"], ["kommend", "Kommend"], ["verlauf", "Verlauf"]].map(function (r) {
-      var an = TB.reiter === r[0];
-      return '<button type="button" role="tab" data-tb-reiter="' + r[0] + '" aria-selected="' + an + '" aria-pressed="' + an + '">' + r[1] + ' <b class="' + (r[0] === "offen" && G.offen.length ? "an" : "") + '">' + G[r[0]].length + "</b></button>";
-    }).join("");
-    var liste = G[TB.reiter].slice(0, 200);
-    if (!liste.length) {
-      $("#tbm-liste").innerHTML = '<div class="nf-leer">' + { offen: "Keine offenen Anfragen.", kommend: "Keine kommenden Reservierungen.", verlauf: "Noch nichts im Verlauf." }[TB.reiter] + "</div>";
-      return;
-    }
-    var tage = [], nach = {};
-    liste.forEach(function (a) { if (!nach[a.datum]) { nach[a.datum] = []; tage.push(a.datum); } nach[a.datum].push(a); });
-    $("#tbm-liste").innerHTML = tage.map(function (t) {
-      var z = nach[t], ok = z.filter(function (a) { return a.status === "bestaetigt"; }), p = ok.reduce(function (n, a) { return n + (Number(a.personen) || 0); }, 0);
-      var info = TB.reiter === "offen" ? z.length + (z.length === 1 ? " Anfrage" : " Anfragen")
-               : ok.length ? ok.length + (ok.length === 1 ? " Tisch" : " Tische") + " · " + tbPers(p) : z.length + (z.length === 1 ? " Anfrage" : " Anfragen");
-      return '<div class="tb-tag"><header><b>' + esc(tbTag(t)) + "</b><span>" + esc(info) + "</span></header>" + z.map(function (a) { return tbZeile(a, h); }).join("") + "</div>";
-    }).join("");
   }
   function tbSchliessen(still) {
     $("#tbm").hidden = true; TB.slug = null; TB.buch = null; clearInterval(TB.timer); if (!still) Sound.play("close");
+    $("#tbm-frame").src = "about:blank";
     if (TB.zurueck && TB.zurueck.focus && document.contains(TB.zurueck)) try { TB.zurueck.focus({ preventScroll: true }); } catch (e) {}
   }
   $("#tbm").addEventListener("click", function (e) {
-    if (e.target === this || e.target.closest("[data-x]")) { tbSchliessen(); return; }
-    var r = e.target.closest("[data-tb-reiter]");
-    if (r && r.dataset.tbReiter !== TB.reiter) { TB.reiter = r.dataset.tbReiter; tbBuchZeichnen(); Sound.play("tick"); }
+    if (e.target === this || e.target.classList.contains("tb-buehne") || e.target.closest("[data-x]")) { tbSchliessen(); return; }
+    if (e.target.closest("#tbm-neu") && TB.slug) { var f = $("#tbm-frame"), src = f.src; f.src = "about:blank"; setTimeout(function () { f.src = src; }, 50); tbLageLaden(); Sound.play("tick"); }
   });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !$("#tbm").hidden) tbSchliessen(); });
-  $("#tb-liste").addEventListener("click", function (e) {
+  $("#tischbuecher").addEventListener("click", function (e) {
     var k = e.target.closest("[data-tb]"); if (k) { tbOeffnen(k.dataset.tb); return; }
     if (e.target.closest("[data-tb-neu]")) { TB.fehler = false; renderTischbuecher(); ladeTischbuecher(true); }
   });
