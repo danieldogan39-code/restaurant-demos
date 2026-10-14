@@ -75,26 +75,124 @@ p { margin: 0; text-wrap: pretty; }
 
 /* Alles inklusive */
 .inklusive { display: grid; gap: 1rem; margin-top: 1.8rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.inklusive .teil.agent { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 1.6rem; align-items: center;
-  background: radial-gradient(120% 140% at 0% 0%, #223C64 0%, #0E192A 62%); color: #fff; border: 0; padding: clamp(1.4rem, 4vw, 2.2rem); position: relative; overflow: hidden; }
-.agent::after { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1.5px; background: linear-gradient(341deg, #7BAFFF, #FF5757); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
-.agent .ic { background: rgba(255,255,255,.1); color: #fff; }
-.agent h3 { font-size: clamp(1.35rem, 3.4vw, 1.75rem); }
-.agent p { color: rgba(255,255,255,.78); font-size: 1rem; }
-.agent .marke { display: inline-block; margin-bottom: .7rem; font-size: .74rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #FFB0B0; }
-.chat { display: grid; gap: .6rem; }
-.blase { max-width: 88%; padding: .75rem .95rem; border-radius: 16px; font-size: .93rem; line-height: 1.45; }
-.blase small { display: block; font-size: .72rem; opacity: .65; margin-bottom: .15rem; font-weight: 600; }
-.blase.sie { justify-self: start; background: rgba(255,255,255,.1); border-bottom-left-radius: 5px; }
-.blase.er { justify-self: end; background: #fff; color: var(--tinte); border-bottom-right-radius: 5px; }
-.blase.er small { color: var(--koralle-tief); opacity: 1; }
-.tippt { justify-self: end; display: inline-flex; gap: 4px; padding: .7rem .9rem; border-radius: 16px; background: rgba(255,255,255,.1); }
-.tippt i { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.7); animation: tippen 1.2s infinite var(--ease-out); }
-.tippt i:nth-child(2) { animation-delay: .15s; } .tippt i:nth-child(3) { animation-delay: .3s; }
-@keyframes tippen { 0%, 60%, 100% { transform: translateY(0); opacity: .5; } 30% { transform: translateY(-3px); opacity: 1; } }
-.chat .blase.er, .chat .tippt { transition: opacity .35s var(--ease-out), transform .35s var(--ease-out); }
-.chat:not(.fertig) .blase.er { opacity: 0; transform: translateY(6px); position: absolute; visibility: hidden; }
-.chat.fertig .tippt { display: none; }
+/* Website-Agent: eigener Abschnitt mit Vorführung (Chat links, Website rechts ändert sich mit) */
+.agent-band { position: relative; margin-top: clamp(3.5rem, 9vw, 6rem); padding: clamp(3.2rem, 8vw, 5.5rem) 0; color: #fff; overflow: hidden;
+  background: radial-gradient(60rem 30rem at 12% 0%, rgba(123,175,255,.22), transparent 60%), radial-gradient(50rem 30rem at 95% 100%, rgba(255,87,87,.2), transparent 60%), #0B1424; }
+.agent-band::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
+  background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 44px 44px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000, transparent 75%); mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000, transparent 75%); }
+.agent-band .wrap { position: relative; }
+.agent-kopf { max-width: 44rem; }
+.agent-kopf .marke { display: inline-flex; align-items: center; gap: .55rem; padding: .4rem .85rem; border-radius: 999px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); font-size: .8rem; font-weight: 600; letter-spacing: .02em; color: rgba(255,255,255,.88); }
+.agent-kopf .marke i { width: .5rem; height: .5rem; border-radius: 50%; background: #FF5757; box-shadow: 0 0 0 3px rgba(255,87,87,.25); animation: puls 2.4s var(--ease-out) infinite; }
+@keyframes puls { 50% { box-shadow: 0 0 0 7px rgba(255,87,87,0); } }
+.agent-kopf h2 { margin-top: 1rem; font-size: clamp(2.1rem, 6.4vw, 3.6rem); line-height: 1.05; }
+.verlauf-text { background: linear-gradient(100deg, #9CC2FF 10%, #FF8A8A 90%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.agent-kopf p { margin-top: 1rem; font-size: clamp(1.02rem, 2.4vw, 1.18rem); color: rgba(255,255,255,.76); }
+
+.buehne { margin-top: clamp(2rem, 5vw, 3rem); display: grid; grid-template-columns: minmax(0, 22rem) auto minmax(0, 1fr); align-items: center; gap: clamp(1rem, 3vw, 2.2rem); }
+.handy { position: relative; height: 31rem; border-radius: 2.6rem; padding: .7rem; background: #05080F; box-shadow: 0 0 0 1px rgba(255,255,255,.12), 0 40px 80px -30px rgba(0,0,0,.8), inset 0 0 0 1px rgba(255,255,255,.05); display: flex; flex-direction: column; }
+.handy > * { position: relative; }
+.handy::before { content: ""; position: absolute; inset: .7rem; border-radius: 2rem; background: linear-gradient(180deg, #111C2E, #0D1626); }
+.handy-kopf { display: flex; align-items: center; gap: .7rem; padding: 1.1rem 1rem .8rem; border-bottom: 1px solid rgba(255,255,255,.07); }
+.ava { width: 2.4rem; height: 2.4rem; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(341deg, #7BAFFF, #FF5757); flex: none; }
+.ava svg { width: 20px; height: 20px; color: #fff; }
+.handy-kopf b { display: block; font-size: .95rem; }
+.handy-kopf small { display: inline-flex; align-items: center; gap: .35rem; font-size: .75rem; color: rgba(255,255,255,.6); }
+.handy-kopf small i { width: .45rem; height: .45rem; border-radius: 50%; background: #4BE3A6; }
+.verlauf { flex: 1; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; gap: .55rem; padding: .9rem .85rem; }
+.msg { max-width: 86%; padding: .62rem .85rem; border-radius: 18px; font-size: .9rem; line-height: 1.4; animation: msg .45s var(--ease-out) both; }
+@keyframes msg { from { opacity: 0; transform: translateY(10px) scale(.96); } }
+.msg.sie { align-self: flex-end; background: linear-gradient(135deg, #FF6B6B, #E8484E); color: #fff; border-bottom-right-radius: 6px; transform-origin: bottom right; }
+.msg.er { align-self: flex-start; background: #fff; color: var(--tinte); border-bottom-left-radius: 6px; transform-origin: bottom left; }
+.msg.er small { display: block; font-size: .7rem; font-weight: 700; color: var(--koralle-tief); margin-bottom: .1rem; }
+.msg .bild { display: block; width: 9.5rem; height: 6.5rem; border-radius: 12px; margin-bottom: .35rem; background: radial-gradient(circle at 35% 40%, #FFD9A8, #E9A15A 40%, #8A4B24 75%); position: relative; overflow: hidden; }
+.msg .bild::after { content: ""; position: absolute; inset: 22% 26%; border-radius: 50%; background: radial-gradient(circle at 40% 35%, #FFF6E8, #F2D2A6 60%, #C98B4E); box-shadow: 0 6px 14px rgba(0,0,0,.25); }
+.msg.tippt { align-self: flex-start; display: inline-flex; gap: 4px; padding: .8rem .95rem; background: rgba(255,255,255,.12); }
+.msg.tippt i { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.75); animation: tippen 1.1s infinite var(--ease-out); }
+.msg.tippt i:nth-child(2) { animation-delay: .15s; } .msg.tippt i:nth-child(3) { animation-delay: .3s; }
+@keyframes tippen { 0%, 60%, 100% { transform: translateY(0); opacity: .45; } 30% { transform: translateY(-3px); opacity: 1; } }
+.eingabe { display: flex; align-items: center; gap: .6rem; margin: 0 .7rem .7rem; padding: .55rem .55rem .55rem 1rem; border-radius: 999px; background: rgba(255,255,255,.07); font-size: .82rem; color: rgba(255,255,255,.45); }
+.eingabe span { flex: 1; }
+.eingabe b { width: 2rem; height: 2rem; border-radius: 50%; display: grid; place-items: center; background: #FF5757; }
+.eingabe svg { width: 15px; height: 15px; color: #fff; }
+
+.pfeil { display: flex; gap: .5rem; align-items: center; }
+.pfeil i { width: .55rem; height: .55rem; border-radius: 50%; background: rgba(255,255,255,.18); }
+.buehne.wirkt .pfeil i { animation: fluss 1.1s var(--ease-out) both; background: #FF8A8A; }
+.buehne.wirkt .pfeil i:nth-child(2) { animation-delay: .12s; } .buehne.wirkt .pfeil i:nth-child(3) { animation-delay: .24s; }
+@keyframes fluss { 0% { transform: scale(.6); opacity: .3; } 40% { transform: scale(1.25); opacity: 1; } 100% { transform: scale(1); opacity: .5; } }
+
+.seite { position: relative; border-radius: 1.3rem; background: #FBFAF7; color: var(--tinte); box-shadow: 0 40px 80px -34px rgba(0,0,0,.75), 0 0 0 1px rgba(255,255,255,.08); overflow: hidden; }
+.browser { display: flex; align-items: center; gap: .4rem; padding: .7rem .9rem; background: #EEECE7; border-bottom: 1px solid rgba(14,25,42,.07); }
+.browser i { width: .6rem; height: .6rem; border-radius: 50%; background: #D6D3CC; }
+.browser span { margin-left: .6rem; flex: 1; max-width: 18rem; padding: .25rem .8rem; border-radius: 999px; background: #fff; font-size: .74rem; color: var(--tinte2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.seite-inhalt { padding: 1.2rem; display: grid; gap: .75rem; }
+.s-kopf { display: flex; justify-content: space-between; align-items: center; gap: .6rem; }
+.s-kopf b { font-family: var(--display); font-size: 1.35rem; font-weight: 400; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.s-offen { display: inline-flex; align-items: center; gap: .35rem; flex: none; font-size: .74rem; font-weight: 600; color: #1E8E5E; background: rgba(75,190,140,.12); padding: .25rem .6rem; border-radius: 999px; }
+.s-offen i { width: .45rem; height: .45rem; border-radius: 50%; background: #1E8E5E; }
+.s-karte { position: relative; border-radius: 14px; background: #fff; border: 1px solid var(--linie); padding: .8rem .9rem; transition: box-shadow .5s var(--ease-out), border-color .5s; }
+.s-karte small, .s-galerie small { display: block; font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--tinte3); margin-bottom: .2rem; }
+.s-tages b { font-family: var(--display); font-weight: 400; font-size: 1.25rem; }
+.s-karte span { font-size: .92rem; }
+.s-raster { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+.s-galerie .kacheln { display: grid; grid-template-columns: repeat(4, 1fr); gap: .45rem; }
+.s-galerie .kacheln i { aspect-ratio: 1; border-radius: 10px; background: linear-gradient(135deg, #E9E5DC, #D9D3C7); }
+.s-galerie .kacheln i.k1 { background: radial-gradient(circle at 50% 50%, #F4EFE6 0 30%, #E3DACB 31% 34%, transparent 35%), linear-gradient(135deg, #7E8C5A, #4F5C36); }
+.s-galerie .kacheln i.k2 { background: radial-gradient(circle at 46% 52%, #C9572F 0 16%, #F4EFE6 17% 31%, #E3DACB 32% 35%, transparent 36%), linear-gradient(135deg, #C98A5B, #8C5532); }
+.s-galerie .kacheln i.k3 { background: radial-gradient(circle at 50% 50%, #F2C14E 0 18%, #F4EFE6 19% 31%, #E3DACB 32% 35%, transparent 36%), linear-gradient(135deg, #4B6378, #2E3F4F); }
+.s-galerie .kacheln i.k4 { background: radial-gradient(circle at 54% 48%, #6F9A4E 0 17%, #F4EFE6 18% 31%, #E3DACB 32% 35%, transparent 36%), linear-gradient(135deg, #D8C3A0, #B39A72); }
+.s-galerie .kacheln i.neu { background: radial-gradient(circle at 50% 50%, #FFF6E8 0 28%, transparent 30%), radial-gradient(circle at 35% 40%, #FFD9A8, #E9A15A 45%, #8A4B24 80%); animation: kachel .6s var(--ease-out) both; }
+@keyframes kachel { from { transform: scale(.6); opacity: 0; } }
+[data-feld].frisch { border-color: rgba(255,87,87,.55); box-shadow: 0 0 0 4px rgba(255,87,87,.14); }
+[data-wert] { display: inline-block; transition: opacity .25s, transform .35s var(--ease-out); }
+[data-wert].weg { opacity: 0; transform: translateY(-4px); }
+.aktuell { position: absolute; right: .9rem; bottom: .9rem; display: inline-flex; align-items: center; gap: .4rem; padding: .45rem .8rem; border-radius: 999px; background: var(--tinte); color: #fff; font-size: .78rem; font-weight: 600; opacity: 0; transform: translateY(8px); transition: opacity .3s var(--ease-out), transform .4s var(--ease-out); }
+.aktuell svg { width: 14px; height: 14px; color: #4BE3A6; }
+.aktuell.an { opacity: 1; transform: none; }
+
+.kann { list-style: none; padding: 0; margin: clamp(2.2rem, 5vw, 3.2rem) 0 0; display: grid; gap: .8rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.kann li { display: grid; align-content: start; grid-template-columns: auto 1fr; gap: .1rem .8rem; padding: 1rem 1.1rem; border-radius: 16px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.09); }
+.kann .ic { grid-row: span 2; width: 2.4rem; height: 2.4rem; border-radius: 12px; display: grid; place-items: center; background: rgba(255,255,255,.08); color: #FFB0B0; }
+.kann .ic svg { width: 20px; height: 20px; }
+.kann b { font-weight: 600; font-size: .98rem; }
+.kann small { color: rgba(255,255,255,.62); font-size: .88rem; }
+.agent-schritte { list-style: none; counter-reset: a; padding: 0; margin: 1.6rem 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; }
+.agent-schritte li { counter-increment: a; position: relative; padding: 1rem 1.1rem 1rem 3.4rem; border-radius: 16px; background: linear-gradient(135deg, rgba(123,175,255,.12), rgba(255,87,87,.1)); border: 1px solid rgba(255,255,255,.1); }
+.agent-schritte li::before { content: counter(a); position: absolute; left: 1rem; top: 1rem; width: 1.8rem; height: 1.8rem; border-radius: 50%; display: grid; place-items: center; background: #fff; color: var(--tinte); font-weight: 700; font-size: .9rem; }
+.agent-schritte b { display: block; font-weight: 600; }
+.agent-schritte small { color: rgba(255,255,255,.65); font-size: .88rem; }
+.agent-band .fussnote { margin-top: 1.2rem; font-size: .88rem; color: rgba(255,255,255,.55); }
+@media (max-width: 900px) {
+  .buehne { grid-template-columns: minmax(0, 1fr); justify-items: center; }
+  .handy { width: min(100%, 22rem); height: 21rem; border-radius: 2.2rem; }
+  .handy::before { border-radius: 1.7rem; }
+  .handy-kopf { padding: .8rem .9rem .6rem; }
+  .msg { font-size: .86rem; padding: .55rem .78rem; }
+  .msg .bild { width: 7.5rem; height: 5rem; }
+  .pfeil { flex-direction: column; gap: .35rem; }
+  .pfeil i { width: .45rem; height: .45rem; }
+  .seite { width: 100%; max-width: 30rem; }
+  .kann { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .agent-schritte { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  .kann { gap: .6rem; }
+  .kann li { grid-template-columns: minmax(0, 1fr); gap: .15rem; padding: .9rem; }
+  .kann .ic { grid-row: auto; margin-bottom: .4rem; width: 2.1rem; height: 2.1rem; }
+  .kann b { font-size: .92rem; line-height: 1.3; }
+  .kann small { font-size: .82rem; line-height: 1.35; }
+  .seite-inhalt { padding: .85rem; gap: .55rem; }
+  .s-kopf b { font-size: 1.1rem; }
+  .s-offen { font-size: .68rem; }
+  .s-karte { padding: .6rem .7rem; border-radius: 12px; }
+  .s-tages b { font-size: 1.05rem; }
+  .s-karte span { font-size: .8rem; }
+  .s-raster { gap: .55rem; }
+  .browser { padding: .55rem .7rem; }
+  .aktuell { right: .6rem; bottom: .6rem; }
+}
 
 /* Ablauf */
 .schritte { list-style: none; padding: 0; margin: 1.8rem 0 0; display: grid; gap: 1rem; grid-template-columns: repeat(3, minmax(0, 1fr)); counter-reset: s; }
@@ -183,7 +281,6 @@ p { margin: 0; text-wrap: pretty; }
 
 @media (max-width: 820px) {
   .inklusive, .rueckruf, .schritte { grid-template-columns: minmax(0, 1fr); }
-  .inklusive .teil.agent { grid-template-columns: minmax(0, 1fr); }
   .leiste { display: flex; }
   body { padding-bottom: 5rem; }
 }
@@ -195,7 +292,7 @@ p { margin: 0; text-wrap: pretty; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .auf { opacity: 1; transform: none; transition: none; }
-  .tippt i, .kreis, .danke .haken svg { animation: none; }
+  .msg, .msg.tippt i, .kreis, .danke .haken svg, .agent-kopf .marke i, .s-galerie .kacheln i.neu, .buehne.wirkt .pfeil i { animation: none; }
   .danke .haken svg { stroke-dashoffset: 0; }
   .leiste, .knopf, .wann span { transition: none; }
 }
@@ -254,23 +351,56 @@ p { margin: 0; text-wrap: pretty; }
     </div>
   </section>
 
+  <section class="agent-band" aria-labelledby="t-agent">
+    <div class="wrap">
+      <div class="agent-kopf auf">
+        <span class="marke"><i aria-hidden="true"></i>Neu bei Medialyte</span>
+        <h2 id="t-agent">Ihr eigener <span class="verlauf-text">Website-Agent</span></h2>
+        <p>Ein kleiner KI-Agent betreut die Website von Kohldampf fortlaufend. Neues Tagesgericht, geänderte Preise, frische Fotos: Sie schreiben ihm kurz, er setzt es um. Ganz ohne Technik.</p>
+      </div>
+      <div class="buehne auf" id="buehne">
+        <div class="handy" aria-hidden="true">
+          <div class="handy-kopf"><span class="ava"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="7" width="14" height="11" rx="3"/><path d="M12 3v4M9 12h.01M15 12h.01M9.5 15h5"/></svg></span><div><b>Website-Agent</b><small><i></i>für Kohldampf</small></div></div>
+          <div class="verlauf" id="verlauf"></div>
+          <div class="eingabe"><span>Nachricht an Ihren Agenten</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg></b></div>
+        </div>
+        <div class="pfeil" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="seite" aria-hidden="true">
+          <div class="browser"><i></i><i></i><i></i><span>www.kohldampf.de</span></div>
+          <div class="seite-inhalt">
+            <div class="s-kopf"><b>Kohldampf</b><span class="s-offen"><i></i>Heute geöffnet</span></div>
+            <div class="s-karte s-tages" data-feld="tages"><small>Tagesgericht</small><b data-wert>Classic Burger</b></div>
+            <div class="s-raster">
+              <div class="s-karte" data-feld="preis"><small>Speisekarte</small><span data-wert>Cheeseburger · 10,90</span></div>
+              <div class="s-karte" data-feld="zeiten"><small>Öffnungszeiten</small><span data-wert>Mo–So 11–22 Uhr</span></div>
+            </div>
+            <div class="s-galerie" data-feld="foto"><small>Galerie</small><div class="kacheln"><i class="k1"></i><i class="k2"></i><i class="k3"></i><i class="k4"></i></div></div>
+          </div>
+          <span class="aktuell" id="aktuell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Website aktualisiert</span>
+        </div>
+      </div>
+      <p class="sr">Beispiele: Sie schreiben „Neues Tagesgericht ab Montag: BBQ Bacon Burger“, der Agent trägt es ein. Sie schreiben einen neuen Preis, er ändert die Speisekarte. Sie schicken ein Foto, er setzt es in die Galerie. Sie melden einen Feiertag, er passt die Öffnungszeiten an.</p>
+      <ul class="kann">
+        <li class="auf"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13h16a8 8 0 0 1-16 0z"/><path d="M8 9c0-2 2-2 2-4M12 9c0-2 2-2 2-4"/></svg></span><b>Tagesgericht und Mittagstisch</b><small>auf Wunsch jeden Tag neu</small></li>
+        <li class="auf"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h12a4 4 0 0 1 4 4v12H8a4 4 0 0 1-4-4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg></span><b>Speisekarte und Preise</b><small>Gerichte ergänzen, ändern, streichen</small></li>
+        <li class="auf"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2h5L16 6"/></svg></span><b>Fotos</b><small>neue Bilder vom Handy auf die Seite</small></li>
+        <li class="auf"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><b>Öffnungszeiten und Feiertage</b><small>Urlaub, Ruhetage, Sonderzeiten</small></li>
+        <li class="auf"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.7 4.7 1.8-4.7 1.8L12 16l-1.8-4.7-4.7-1.8 4.7-1.8z"/><path d="M18.5 15l.8 1.9 1.9.8-1.9.8-.8 1.9-.8-1.9-1.9-.8 1.9-.8z"/></svg></span><b>Hinweise und Aktionen</b><small>Events, Saisonkarte, Neuigkeiten</small></li>
+        <li class="auf"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span><b>Immer auf dem neuesten Stand</b><small>Ihre Gäste sehen, was gerade gilt</small></li>
+      </ul>
+      <ol class="agent-schritte auf">
+        <li><b>Kurz schreiben</b><small>oder einfach ein Foto schicken</small></li>
+        <li><b>Der Agent setzt es um</b><small>passend zum Design Ihrer Seite</small></li>
+        <li><b>Ihre Website ist aktuell</b><small>ohne dass Sie etwas einrichten müssen</small></li>
+      </ol>
+      <p class="fussnote auf">Größere Wünsche wie ein neuer Bereich oder ein neues Design übernimmt weiterhin unser Team.</p>
+    </div>
+  </section>
+
   <section class="abschnitt" aria-labelledby="t-inklusive">
     <div class="wrap">
       <h2 id="t-inklusive" class="auf">Alles dabei, damit Sie sich um nichts kümmern müssen</h2>
       <div class="inklusive">
-        <div class="teil agent auf">
-          <div>
-            <span class="marke">Neu bei Medialyte</span>
-            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="7" width="14" height="11" rx="3"/><path d="M12 3v4M9 12h.01M15 12h.01M9.5 15h5"/></svg></span>
-            <h3>Ihr eigener Website-Agent</h3>
-            <p>Ein kleiner KI-Agent betreut Ihre Seite fortlaufend und übernimmt kleine Änderungen wie Tagesmenü, Speisekarte oder neue Bilder. Sie sagen Bescheid, er kümmert sich darum.</p>
-          </div>
-          <div class="chat" id="chat" aria-label="Beispiel">
-            <div class="blase sie"><small>Kohldampf</small>Ab Montag gibt es Linsensuppe als Tagesgericht.</div>
-            <div class="tippt" aria-hidden="true"><i></i><i></i><i></i></div>
-            <div class="blase er"><small>Ihr Website-Agent</small>Ist eingetragen. Ab Montag steht sie auf Ihrer Website.</div>
-          </div>
-        </div>
         <div class="teil auf"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><h3>Eigene Adresse, Hosting und SSL</h3><p>Ihre Website läuft unter Ihrer eigenen Adresse, zum Beispiel www.kohldampf.de, sicher verschlüsselt. Server und Technik übernehmen wir.</p></div>
         <div class="teil auf"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg></span><h3>Angepasst an Ihre Wünsche</h3><p>Eigene Fotos, Texte, Farben, Gerichte: Vor dem Start bauen wir den Entwurf so um, wie Sie ihn haben möchten.</p></div>
         <div class="teil auf"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h12a4 4 0 0 1 4 4v12H8a4 4 0 0 1-4-4z"/><path d="M8 9h5M8 13h8"/><path d="M15.5 15.5l2 2 3.5-4"/></svg></span><h3>Speisekarte selbst pflegen</h3><p>Gerichte, Preise und Öffnungszeiten ändern Sie jederzeit selbst, ganz ohne Vorkenntnisse.</p></div>
@@ -396,12 +526,52 @@ p { margin: 0; text-wrap: pretty; }
     var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("da"); io.unobserve(e.target); } }); }, { rootMargin: "0px 0px -8% 0px" });
     teile.forEach(function (e) { io.observe(e); });
   }
-  // Beispiel-Chat: der Agent „tippt“ kurz, dann steht die Antwort da
-  var chat = document.getElementById("chat");
-  if (chat) {
-    if (ruhig || !("IntersectionObserver" in window)) chat.classList.add("fertig");
-    else { var co = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { co.disconnect(); setTimeout(function () { chat.classList.add("fertig"); }, 1300); } }, { threshold: .6 }); co.observe(chat); }
-  }
+  // Vorführung des Website-Agenten: Nachricht, der Agent „tippt“, antwortet, und die Website rechts ändert sich mit
+  (function () {
+    var buehne = document.getElementById("buehne"), verlauf = document.getElementById("verlauf"), aktuell = document.getElementById("aktuell");
+    if (!buehne || !verlauf) return;
+    var SZENEN = [
+      { sie: "Neues Tagesgericht ab Montag: BBQ Bacon Burger.", er: "Ist eingetragen. Ab Montag steht es oben auf Ihrer Website.", feld: "tages", wert: "BBQ Bacon Burger" },
+      { sie: "Neuer Preis f\u00fcr Cheeseburger: 11,50.", er: "Erledigt, der neue Preis steht in der Speisekarte.", feld: "preis", wert: "Cheeseburger \u00b7 11,50" },
+      { foto: true, sie: "Neues Foto aus der Küche", er: "Schönes Foto. Es ist jetzt in der Galerie.", feld: "foto" },
+      { sie: "Am 24.12. haben wir geschlossen.", er: "Ist drin: Die Öffnungszeiten zeigen den Feiertag.", feld: "zeiten", wert: "24.12. geschlossen" }
+    ];
+    var ANFANG = {}; buehne.querySelectorAll("[data-feld] [data-wert]").forEach(function (w) { ANFANG[w.parentNode.getAttribute("data-feld")] = w.textContent; });
+    var kacheln = buehne.querySelector(".kacheln"), KACHELN = kacheln ? kacheln.innerHTML : "";
+    function blase(art, html) { var d = document.createElement("div"); d.className = "msg " + art; d.innerHTML = html; verlauf.appendChild(d); while (verlauf.children.length > 6) verlauf.removeChild(verlauf.firstChild); return d; }
+    function aendern(z) {
+      var f = buehne.querySelector('[data-feld="' + z.feld + '"]'); if (!f) return;
+      if (z.foto) { var k = f.querySelector(".kacheln"), i = document.createElement("i"); i.className = "neu"; k.insertBefore(i, k.firstChild); if (k.children.length > 4) k.removeChild(k.lastChild); }
+      else { var w = f.querySelector("[data-wert]"); w.classList.add("weg"); setTimeout(function () { w.textContent = z.wert; w.classList.remove("weg"); }, 260); }
+      f.classList.add("frisch"); buehne.classList.remove("wirkt"); void buehne.offsetWidth; buehne.classList.add("wirkt");
+      aktuell.classList.add("an");
+      setTimeout(function () { f.classList.remove("frisch"); aktuell.classList.remove("an"); }, 2300);
+    }
+    function zurueck() {
+      Object.keys(ANFANG).forEach(function (k) { var w = buehne.querySelector('[data-feld="' + k + '"] [data-wert]'); if (w) w.textContent = ANFANG[k]; });
+      if (kacheln) kacheln.innerHTML = KACHELN;
+    }
+    function sieHtml(z) { return z.foto ? '<span class="bild"></span>' + z.sie : z.sie; }
+    if (ruhig || !("IntersectionObserver" in window)) {  // ohne Bewegung: alles auf einmal zeigen
+      SZENEN.slice(0, 2).forEach(function (z) { blase("sie", sieHtml(z)); blase("er", "<small>Ihr Website-Agent</small>" + z.er); });
+      SZENEN.forEach(function (z) { var f = buehne.querySelector('[data-feld="' + z.feld + '"]'); if (!f) return; if (z.foto) f.querySelector(".kacheln i").className = "neu"; else f.querySelector("[data-wert]").textContent = z.wert; });
+      return;
+    }
+    var sichtbar = false, laeuft = false, n = 0, t = [];
+    function warte(ms) { return new Promise(function (r) { t.push(setTimeout(r, ms)); }); }
+    function weiter() {
+      if (!sichtbar) { laeuft = false; return; }
+      laeuft = true;
+      var z = SZENEN[n % SZENEN.length];
+      if (n % SZENEN.length === 0 && n) { verlauf.innerHTML = ""; zurueck(); }
+      blase("sie", sieHtml(z));
+      warte(900).then(function () { var tp = blase("tippt", "<i></i><i></i><i></i>"); return warte(1500).then(function () { tp.remove(); }); })
+        .then(function () { blase("er", "<small>Ihr Website-Agent</small>" + z.er); return warte(350); })
+        .then(function () { aendern(z); return warte(n % SZENEN.length === SZENEN.length - 1 ? 4200 : 3000); })
+        .then(function () { n++; weiter(); });
+    }
+    new IntersectionObserver(function (es) { sichtbar = es[0].isIntersecting; if (sichtbar && !laeuft) weiter(); }, { threshold: .35 }).observe(buehne);
+  })();
   // Leiste am Handy: erscheint unter dem Einstieg, verschwindet am Formular
   var leiste = document.getElementById("leiste"), oben = document.getElementById("oben"), ziel = document.getElementById("rueckruf");
   if (leiste && oben && ziel && "IntersectionObserver" in window) {
