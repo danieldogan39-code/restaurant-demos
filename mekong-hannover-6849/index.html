@@ -360,14 +360,9 @@ document.querySelectorAll('[data-foto] img').forEach(function(img){
  if(!img.getAttribute('src'))hide();else{img.addEventListener('error',hide);if(img.complete&&img.naturalWidth===0)hide();}});
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();setInterval(run,60000);
 })();</script><!--agent-angebot-hinweis--><script>(function () {
-  var NAME = "Mekong", SLUG = "mekong-hannover-6849", NACH = 60 * 1000, KEY = "medialyte-angebot-" + SLUG;
-  if (navigator.webdriver || !window.localStorage) return;
-  try {
-    var war = localStorage.getItem(KEY);
-    if (war === "gesehen" || (war && Date.now() - Number(war) < 7 * 864e5)) return;
-    if (/\/angebot\/?(\?|#|$)/.test(document.referrer)) { localStorage.setItem(KEY, "gesehen"); return; }
-  } catch (e) { return; }
-  var aktiv = 0, letzt = Date.now(), host = null;
+  var NAME = "Mekong", SLUG = "mekong-hannover-6849", NACH = 60 * 1000;
+  if (navigator.webdriver) return;
+  var aktiv = 0, letzt = Date.now(), host = null, vorher = null;
   function tippt() { var a = document.activeElement; return a && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName); }
   function tick() {
     var jetzt = Date.now();
@@ -375,59 +370,87 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     letzt = jetzt;
     if (aktiv >= (window.__angebotNach || NACH) && !tippt()) zeigen(); else setTimeout(tick, 1000);
   }
-  function merken(wert) { try { localStorage.setItem(KEY, wert); } catch (e) {} }
   function zu() {
     if (!host) return;
-    var k = host.shadowRoot.querySelector(".k"); k.classList.remove("an");
-    var h = host; host = null; setTimeout(function () { h.remove(); }, 220);
-    document.removeEventListener("keydown", esc);
+    var h = host; host = null;
+    h.shadowRoot.querySelector(".w").classList.remove("an");
+    document.removeEventListener("keydown", taste, true);
+    setTimeout(function () { h.remove(); }, 260);
+    if (vorher && vorher.focus) try { vorher.focus({ preventScroll: true }); } catch (e) {}
   }
-  function esc(e) { if (e.key === "Escape") { merken(String(Date.now())); zu(); } }
+  function taste(e) {
+    if (!host) return;
+    if (e.key === "Escape") { e.preventDefault(); zu(); return; }
+    if (e.key === "Tab") {  // Fokus bleibt im Fenster
+      var r = host.shadowRoot, f = [].slice.call(r.querySelectorAll("a,button")), i = f.indexOf(r.activeElement);
+      e.preventDefault();
+      f[(i + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
+    }
+  }
   function zeigen() {
+    vorher = document.activeElement;
     host = document.createElement("div");
     host.id = "medialyte-angebot";
-    host.style.cssText = "all:initial;position:fixed;left:0;right:0;bottom:0;z-index:2147483646;pointer-events:none";
+    host.style.cssText = "all:initial;position:fixed;inset:0;z-index:2147483646";
     var r = host.attachShadow({ mode: "open" });
+    var haken = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
     r.innerHTML = '<style>' +
       ':host{all:initial}*{box-sizing:border-box}' +
-      '.k{pointer-events:auto;position:fixed;right:20px;bottom:20px;width:min(372px,calc(100vw - 24px));padding:20px 20px 18px;border-radius:20px;' +
-      'background:#0E192A;color:#fff;font:400 15px/1.5 Poppins,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;' +
-      'box-shadow:0 24px 60px -18px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08);opacity:0;transform:translateY(16px) scale(.98);' +
-      'transition:opacity .22s cubic-bezier(.23,1,.32,1),transform .4s cubic-bezier(.23,1,.32,1)}' +
-      '.k.an{opacity:1;transform:none}' +
+      '.w{position:fixed;inset:0;display:grid;place-items:center;padding:20px;padding-bottom:max(20px,env(safe-area-inset-bottom));' +
+      'font:400 16px/1.55 Poppins,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;overscroll-behavior:contain}' +
+      '.grund{position:absolute;inset:0;background:rgba(8,14,26,.58);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:0;transition:opacity .3s cubic-bezier(.23,1,.32,1)}' +
+      '.k{position:relative;width:min(460px,100%);max-height:calc(100dvh - 40px);overflow:auto;padding:30px 28px 24px;border-radius:24px;background:#0E192A;color:#fff;text-align:center;' +
+      'box-shadow:0 40px 90px -30px rgba(0,0,0,.7);opacity:0;transform:translateY(14px) scale(.96);' +
+      'transition:opacity .25s cubic-bezier(.23,1,.32,1),transform .45s cubic-bezier(.23,1,.32,1)}' +
+      '.w.an .grund,.w.an .k{opacity:1}.w.an .k{transform:none}' +
       '.k::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:linear-gradient(341deg,#7BAFFF,#FF5757);' +
       '-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}' +
-      '.dach{display:flex;align-items:center;gap:8px;margin:0 36px 8px 0;font-size:12px;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.7)}' +
+      '.dach{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.08);font-size:13px;font-weight:600;color:rgba(255,255,255,.85)}' +
       '.dach i{width:8px;height:8px;border-radius:50%;background:#FF5757;box-shadow:0 0 0 3px rgba(255,87,87,.25)}' +
-      'h2{margin:0;font:600 19px/1.3 Poppins,system-ui,sans-serif;letter-spacing:-.01em}' +
-      'p{margin:6px 0 0;color:rgba(255,255,255,.78);font-size:14.5px}' +
-      '.ja{display:flex;gap:8px;margin-top:16px;align-items:center}' +
-      'a.los{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:10px 16px;border-radius:13px;' +
-      'background:#fff;color:#0E192A;font:600 15px/1.2 Poppins,system-ui,sans-serif;text-decoration:none;transition:transform .16s cubic-bezier(.23,1,.32,1)}' +
-      'a.los:active{transform:scale(.97)}a.los svg{width:18px;height:18px;transition:transform .2s cubic-bezier(.23,1,.32,1)}' +
-      'button{all:unset;cursor:pointer;border-radius:12px;color:rgba(255,255,255,.75);font:500 14px/1.2 Poppins,system-ui,sans-serif}' +
-      'button.spaeter{min-height:46px;padding:0 14px}' +
-      'button.x{position:absolute;top:10px;right:10px;width:36px;height:36px;display:grid;place-items:center;font-size:22px;line-height:1}' +
-      'button:focus-visible,a:focus-visible{outline:3px solid #7BAFFF;outline-offset:2px}' +
-      '@media (hover:hover) and (pointer:fine){a.los:hover svg{transform:translateX(3px)}button:hover{color:#fff;background:rgba(255,255,255,.08)}}' +
-      '@media (max-width:600px){.k{left:10px;right:10px;width:auto;bottom:calc(10px + env(safe-area-inset-bottom))}}' +
+      'h2{margin:16px 0 0;font:600 clamp(24px,6.4vw,30px)/1.18 Poppins,system-ui,sans-serif;letter-spacing:-.015em;text-wrap:balance}' +
+      'p{margin:10px 0 0;color:rgba(255,255,255,.78);font-size:16px;text-wrap:pretty}' +
+      'ul{list-style:none;margin:20px 0 0;padding:16px 18px;border-radius:16px;background:rgba(255,255,255,.06);display:grid;gap:10px;text-align:left}' +
+      'li{display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.4}' +
+      'li span{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:rgba(75,227,166,.16);color:#4BE3A6}' +
+      'li svg{width:14px;height:14px}' +
+      'a.los{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:54px;margin-top:22px;padding:12px 18px;border-radius:15px;' +
+      'background:#fff;color:#0E192A;font:600 17px/1.2 Poppins,system-ui,sans-serif;text-decoration:none;box-shadow:0 14px 30px -14px rgba(255,255,255,.45);' +
+      'transition:transform .16s cubic-bezier(.23,1,.32,1)}' +
+      'a.los:active{transform:scale(.97)}a.los svg{width:20px;height:20px;transition:transform .2s cubic-bezier(.23,1,.32,1)}' +
+      'button{all:unset;cursor:pointer;border-radius:12px;color:rgba(255,255,255,.7);font:500 15px/1.2 Poppins,system-ui,sans-serif}' +
+      'button.weiter{display:block;margin:8px auto 0;padding:12px 16px}' +
+      'button.x{position:absolute;top:12px;right:12px;width:40px;height:40px;display:grid;place-items:center;font-size:24px;line-height:1}' +
+      'small{display:block;margin-top:10px;font-size:12.5px;color:rgba(255,255,255,.5)}.k:focus{outline:none}' +
+      'button:focus-visible,a:focus-visible{outline:3px solid #7BAFFF;outline-offset:3px}' +
+      '@media (hover:hover) and (pointer:fine){a.los:hover svg{transform:translateX(4px)}button:hover{color:#fff;background:rgba(255,255,255,.08)}}' +
+      '@media (max-width:420px){.k{padding:26px 20px 18px}}' +
       '@media (prefers-reduced-motion:reduce){.k{transform:none;transition:opacity .2s}}' +
+      '@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.grund{background:rgba(8,14,26,.72)}}' +
       '</style>' +
-      '<div class="k" role="dialog" aria-modal="false" aria-labelledby="t" aria-describedby="d">' +
-      '<div class="dach"><i></i>Entwurf von Medialyte</div>' +
+      '<div class="w"><div class="grund"></div>' +
+      '<div class="k" role="dialog" aria-modal="true" aria-labelledby="t" aria-describedby="d" tabindex="-1">' +
       '<button class="x" type="button" aria-label="Schließen">×</button>' +
-      '<h2 id="t">Gefällt Ihnen, was Sie sehen?</h2>' +
+      '<div class="dach"><i></i><b id="name"></b></div>' +
+      '<h2 id="t">Gefällt Ihnen der Entwurf?</h2>' +
       '<p id="d"></p>' +
-      '<div class="ja"><a class="los" href="angebot/">So geht es weiter<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>' +
-      '<button class="spaeter" type="button">Später</button></div></div>';
-    r.getElementById("d").textContent = "So wird daraus die Website von " + NAME + ": eigene Adresse, Ihre Fotos und ein Website-Agent für kleine Änderungen. Unverbindlich.";
+      '<ul><li><span>' + haken + '</span>Eigene Adresse, Hosting und SSL</li>' +
+      '<li><span>' + haken + '</span>Ihre Fotos, Ihre Speisekarte, Ihre Wünsche</li>' +
+      '<li><span>' + haken + '</span>Ein Website-Agent für kleine Änderungen</li></ul>' +
+      '<a class="los" href="angebot/">So wird es Ihre Website<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>' +
+      '<small>Unverbindlich. Alles Weitere besprechen wir persönlich.</small>' +
+      '<button class="weiter" type="button">Erst weiter ansehen</button>' +
+      '</div></div>';
+    r.getElementById("name").textContent = "Für " + NAME;
+    r.getElementById("d").textContent = "Aus diesem Entwurf wird die Website von " + NAME + ". Wir kümmern uns um alles.";
     document.body.appendChild(host);
-    var k = r.querySelector(".k");
-    requestAnimationFrame(function () { requestAnimationFrame(function () { k.classList.add("an"); }); });
-    r.querySelector("a.los").addEventListener("click", function () { merken("gesehen"); });
-    r.querySelector(".x").addEventListener("click", function () { merken(String(Date.now())); zu(); });
-    r.querySelector(".spaeter").addEventListener("click", function () { merken(String(Date.now())); zu(); });
-    document.addEventListener("keydown", esc);
+    var w = r.querySelector(".w");
+    // Hinter dem Fenster scrollt die Demo nicht weiter
+    ["wheel", "touchmove"].forEach(function (t) { w.addEventListener(t, function (e) { if (!r.querySelector(".k").contains(e.target)) e.preventDefault(); }, { passive: false }); });
+    r.querySelector(".grund").addEventListener("click", zu);
+    r.querySelector(".x").addEventListener("click", zu);
+    r.querySelector(".weiter").addEventListener("click", zu);
+    document.addEventListener("keydown", taste, true);
+    requestAnimationFrame(function () { requestAnimationFrame(function () { w.classList.add("an"); r.querySelector(".k").focus({ preventScroll: true }); }); });
   }
   setTimeout(tick, 1000);
 })();</script><!--/agent-angebot-hinweis--></body>

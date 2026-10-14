@@ -386,7 +386,6 @@ p { margin: 0; text-wrap: pretty; }
   var ZAEHLER = "https://medialyte-zaehler.patient-water-7819.workers.dev", CODE = "7933", SLUG = "volkans-grillhaus-hamburg-0ab2", NAME = "Volkans Grillhaus";
   var ruhig = matchMedia("(prefers-reduced-motion: reduce)").matches;
   function intern() { try { return !!localStorage.getItem("medialyte-intern"); } catch (e) { return false; } }
-  try { localStorage.setItem("medialyte-angebot-" + SLUG, "gesehen"); } catch (e) {}  // kein Hinweisfenster mehr in der Demo
   // Aufruf melden (nicht auf Daniels Geräten): nur Kurzcode, Seite und Geräteart
   if (ZAEHLER && CODE && !intern() && navigator.sendBeacon) {
     try {
