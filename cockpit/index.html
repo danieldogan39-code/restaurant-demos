@@ -750,6 +750,14 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   .kunde-card .k-fuss .modal-acts.ein { grid-template-columns: auto minmax(0, 1fr); }
   .kunde-card .k-fuss .modal-acts.ein .btn-hot { grid-column: auto; }
 }
+.k-agent { margin: .8rem 0; }
+.k-agent ul { list-style: none; margin: .4rem 0 0; padding: 0; display: grid; gap: .45rem; }
+.k-agent li { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: .6rem; align-items: start; padding: .6rem .75rem; border-radius: 12px; background: rgba(255,255,255,.03); border: 1px solid var(--edge); font-size: .86rem; }
+.k-agent li time { color: var(--ink3); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.k-agent li b { display: block; font-weight: 600; color: var(--ink); }
+.k-agent li small { display: block; color: var(--ink3); overflow-wrap: anywhere; }
+.k-agent li.aus b { text-decoration: line-through; color: var(--ink3); }
+.k-agent li .btn { padding: .35rem .6rem; font-size: .78rem; }
 .nf-kunde { margin: .35rem 0 0; font-size: .84rem; color: var(--ok); }
 .nf-kunde.st-fehler { color: var(--bad); }
 .nf-kunde.st-wartet, .nf-kunde.st-baut { color: #FFC56B; }
@@ -1168,6 +1176,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     <div class="mstep"><span class="k-stand" id="kundem-stand"></span></div>
     <h3 id="kundem-t">Website für <b class="nm" id="kundem-name"></b></h3>
     <div id="kundem-lage"></div>
+    <div id="kundem-agent"></div>
     <h4>Domain</h4>
     <p class="k-hilfe">Bei INWX registrieren (falls noch nicht geschehen). Die Seite läuft dann mit und ohne www.</p>
     <div class="k-domain"><span>www.</span><input type="text" id="k-domain" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="restaurant-name.de" aria-label="Domain"></div>
@@ -1235,7 +1244,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "cff7239715";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "35654fdeef";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -3663,6 +3672,30 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     $("#k-live").textContent = KUNDE.liveFrage ? "Wirklich live schalten?" : live ? "Neu veröffentlichen" : "Live schalten";
     $("#k-live").disabled = !!bautGerade;
   }
+  /* Website-Agent: was der Wirt zuletzt geändert hat, offene Vorschau, letzte Änderung zurücknehmen */
+  var K_ZURUECK = {};
+  function kAgent() {
+    var x = KUNDE.x, box = $("#kundem-agent"), b = (kDaten().betreuung || {})[x.slug], s = kStand(x.slug);
+    if (!b || (!b.aenderungen.length && !b.kandidat) || !s || !s.vorschau) { box.innerHTML = ""; return; }
+    var letzteGruppe = null;
+    b.aenderungen.forEach(function (a) { if (!letzteGruppe && a.status === "live") letzteGruppe = a.gruppe; });
+    var tag = function (iso) { return iso ? briefDatum(String(iso).slice(0, 10)) : ""; };
+    box.innerHTML = '<div class="k-agent"><h4>Website-Agent</h4>' +
+      (b.kandidat ? '<p class="k-hilfe">Offene Vorschau: ' + esc(b.kandidat.teile.map(function (t) { return t.zusammenfassung; }).join("; ")) +
+        (b.kandidat.vorschau ? ' · <a href="' + esc(b.kandidat.vorschau) + '" target="_blank" rel="noopener">ansehen</a>' : "") + "</p>" : "") +
+      "<ul>" + b.aenderungen.slice(0, 8).map(function (a) {
+        var aus = a.status !== "live", knopf = !aus && a.gruppe === letzteGruppe && !K_ZURUECK[a.gruppe];
+        return '<li class="' + (aus ? "aus" : "") + '"><time>' + tag(a.live_seit || a.zeit) + "</time><div><b>" + esc(a.zusammenfassung || "Änderung") + "</b><small>„" + esc(a.auftrag || "") + "“" +
+          (aus ? " · zurückgenommen" : "") + "</small></div>" + (knopf ? '<button class="btn" type="button" data-agent-zurueck="' + esc(a.gruppe) + '">Rückgängig</button>' : (K_ZURUECK[a.gruppe] ? "<small>wird zurückgenommen …</small>" : "<span></span>")) + "</li>";
+      }).join("") + "</ul></div>";
+  }
+  function kAgentZurueck(gruppe) {
+    var x = KUNDE.x; if (!x || !ctl()) return;
+    K_ZURUECK[gruppe] = true; kAgent();
+    api("/dispatches", { method: "POST", body: { event_type: "betreuung", client_payload: { slug: x.slug, id: gruppe, modus: "zurueck" } } })
+      .then(function () { Sound.play("data"); toast("Wird zurückgenommen. Das Restaurant sieht es auch in seinem Chat."); })
+      .catch(function (err) { delete K_ZURUECK[gruppe]; kAgent(); Sound.play("error"); toast("Hat nicht geklappt (" + err.message + ")."); });
+  }
   function kFotos() {
     var box = $("#k-fotos"), n = KUNDE.fotos.length, offen = kGoogleOffen();
     $("#k-fotos-hilfe").textContent = !n ? "Die Seite nutzt keine Fotos von Google Maps." :
@@ -3726,7 +3759,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     document.querySelectorAll("#kundem [data-imp]").forEach(function (f) { f.value = imp[f.dataset.imp] != null ? imp[f.dataset.imp] : vor[f.dataset.imp] || ""; });
     $("#k-ds").value = alt.datenschutz || "";
     $("#k-fotos").innerHTML = '<span class="ai-wait"><i></i>Fotos der Demo werden geladen …</span>'; $("#k-fotos-hilfe").textContent = "";
-    kLage(); kPruefen(false);
+    kLage(); kAgent(); kPruefen(false);
     $("#kundem").hidden = false; Sound.play("open");
     setTimeout(function () { $("#kundem-zu").focus({ preventScroll: true }); $("#kundem .kunde-card").scrollTop = 0; }, 30);
     kDemoLesen(x).then(function (d) {
@@ -3775,6 +3808,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     if (e.target.closest("#k-vorschau")) { kSpeichern("vorschau"); return; }
     if (e.target.closest("#k-live")) { kSpeichern("live"); return; }
     if (e.target.closest("#k-tb-senden")) { kTischbuchSenden(); return; }
+    var zr = e.target.closest("[data-agent-zurueck]"); if (zr) { zr.disabled = true; kAgentZurueck(zr.dataset.agentZurueck); return; }
     var ns = e.target.closest("[data-ns]");
     if (ns && navigator.clipboard) { navigator.clipboard.writeText(ns.dataset.ns).then(function () { Sound.play("pick"); toast(ns.dataset.ns + " kopiert."); }).catch(function () {}); return; }
     var aus = e.target.closest("[data-foto-aus]");
