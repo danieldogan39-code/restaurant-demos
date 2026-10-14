@@ -188,6 +188,89 @@ button, input { font: inherit; color: inherit; }
   .nf-zahlen { width: 100%; }
 }
 
+/* ---------- Tischbücher der Kunden (nur ansehen) ---------- */
+.tbs { margin-bottom: 1rem; }
+.tb-liste { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr)); gap: .6rem; align-items: start; }
+.tb-liste > .nf-leer { grid-column: 1 / -1; }
+.tb-karte { --akzent: rgba(75,227,166,.75); position: relative; display: grid; gap: .55rem; align-content: start; width: 100%; min-width: 0; text-align: left; font: inherit; color: inherit; cursor: pointer;
+  border: 1px solid var(--edge); border-radius: 14px; background: rgba(9,16,30,.42); padding: .9rem .95rem .85rem 1.15rem; overflow: hidden; transition: border-color .2s, background .2s, transform .16s cubic-bezier(.23,1,.32,1); }
+.tb-karte::before { content: ""; position: absolute; left: 0; top: .7rem; bottom: .7rem; width: 3px; border-radius: 0 3px 3px 0; background: var(--akzent); }
+.tb-karte.warn { --akzent: var(--warn); }
+.tb-karte.heiss { --akzent: var(--coral); border-color: rgba(255,87,87,.45); background: linear-gradient(100deg, rgba(255,87,87,.09), rgba(9,16,30,.42) 50%); }
+.tb-karte:active { transform: scale(.985); }
+@media (hover: hover) and (pointer: fine) { .tb-karte:hover { border-color: rgba(255,255,255,.28); background: rgba(14,24,44,.6); } .tb-karte:hover .tb-auf { color: var(--ink); } }
+.tb-kopf { display: flex; align-items: center; gap: .55rem; min-width: 0; }
+.tb-name { min-width: 0; font-size: .98rem; font-weight: 600; line-height: 1.3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tb-stand { flex: none; margin-left: auto; font-size: .66rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: .18rem .5rem; border-radius: 999px; background: rgba(123,175,255,.12); color: #9CC2FF; }
+.tb-stand.ist-live { background: rgba(75,227,166,.14); color: var(--ok); }
+.tb-meta { margin-top: -.35rem; min-width: 0; font-size: .8rem; color: var(--ink2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tb-meta small { display: block; font-size: .76rem; color: var(--ink3); white-space: normal; }
+.tb-werte { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .35rem; }
+.tb-wert { display: grid; gap: .05rem; padding: .45rem .5rem; border-radius: 10px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.05); min-width: 0; }
+.tb-wert b { font-family: var(--display); font-size: 1.15rem; font-weight: 600; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.tb-wert > span { font-size: .7rem; font-weight: 600; color: var(--ink3); line-height: 1.25; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tb-wert small { display: block; font-weight: 500; font-size: .68rem; color: var(--ink3); opacity: .85; }
+.tb-wert.offen { border-color: rgba(255,87,87,.4); background: rgba(255,87,87,.08); }
+.tb-wert.offen > span { color: #FF9C9C; }
+.tb-hinweis { display: flex; align-items: flex-start; gap: .45rem; font-size: .82rem; line-height: 1.4; color: var(--ink2); }
+.tb-hinweis::before { content: ""; flex: none; width: .45rem; height: .45rem; margin-top: .42em; border-radius: 50%; background: var(--ok); }
+.tb-hinweis.warn { color: #FFD59A; }
+.tb-hinweis.warn::before { background: var(--warn); }
+.tb-hinweis.heiss { color: #FFB4B4; font-weight: 600; }
+.tb-hinweis.heiss::before { background: var(--coral); box-shadow: 0 0 0 3px rgba(255,87,87,.2); animation: tbPuls 2s cubic-bezier(.23,1,.32,1) infinite; }
+@keyframes tbPuls { 0%, 100% { box-shadow: 0 0 0 3px rgba(255,87,87,.22); } 50% { box-shadow: 0 0 0 6px rgba(255,87,87,0); } }
+.tb-auf { display: inline-flex; align-items: center; gap: .3rem; justify-self: end; font-size: .78rem; font-weight: 600; color: var(--ink3); transition: color .2s; }
+.tb-auf svg { width: 14px; height: 14px; }
+.tb-stand-zeile { grid-column: 1 / -1; margin: .1rem 0 0; font-size: .76rem; color: var(--ink3); }
+/* Ansicht eines Tischbuchs */
+.modal-card.tb-card { max-width: 44rem; max-height: calc(100dvh - 2rem); overflow-y: auto; overscroll-behavior: contain; padding-bottom: 0; }
+.tb-card .mstep { justify-content: space-between; flex-wrap: wrap; }
+.tb-card .tb-nur { display: inline-flex; align-items: center; gap: .4rem; padding: .25rem .7rem; border-radius: 99px; background: rgba(123,175,255,.12); color: #9CC2FF; }
+.tb-card .tb-nur svg { width: 13px; height: 13px; }
+.tb-card #tbm-zeit { font-weight: 600; letter-spacing: .02em; text-transform: none; }
+.tb-info { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .35rem 1rem; margin: .7rem 0 .9rem; padding: .8rem .95rem; border-radius: 14px; border: 1px solid var(--edge); background: rgba(255,255,255,.03); font-size: .86rem; }
+.tb-info dt { color: var(--ink3); font-weight: 600; }
+.tb-info dd { margin: 0; color: var(--ink); min-width: 0; overflow-wrap: anywhere; }
+.tb-info dd small { color: var(--ink3); }
+.tb-info .warn { color: #FFC56B; font-weight: 600; }
+.tb-card .k-box a { color: var(--ink); font-weight: 600; }
+.tb-reiter { display: flex; width: 100%; margin-bottom: .8rem; }
+.tb-reiter button { flex: 1 1 0; min-width: 0; display: inline-flex; justify-content: center; align-items: center; gap: .4rem; min-height: 2.5rem; padding: .45rem .4rem; }
+.tb-reiter button b { font-family: var(--display); font-variant-numeric: tabular-nums; font-size: .8rem; padding: 0 .4rem; border-radius: 99px; background: rgba(255,255,255,.08); }
+.tb-reiter button[data-tb-reiter="offen"] b.an { background: var(--coral); color: #fff; }
+.tb-tag { margin-bottom: .9rem; }
+.tb-tag > header { display: flex; justify-content: space-between; align-items: baseline; gap: .8rem; padding: 0 .1rem .4rem; border-bottom: 1px solid var(--edge); margin-bottom: .35rem; }
+.tb-tag > header b { font-size: .9rem; }
+.tb-tag > header span { font-size: .78rem; color: var(--ink3); text-align: right; }
+.tb-z { display: grid; grid-template-columns: 3.1rem minmax(0, 1fr) auto; gap: .2rem .7rem; align-items: start; padding: .6rem .3rem; border-bottom: 1px solid rgba(255,255,255,.04); }
+.tb-z:last-child { border-bottom: 0; }
+.tb-z time { font-family: var(--display); font-size: .98rem; font-weight: 600; font-variant-numeric: tabular-nums; padding-top: .05rem; }
+.tb-wer { min-width: 0; font-size: .9rem; line-height: 1.45; }
+.tb-wer > b { font-weight: 600; }
+.tb-wer > span { color: var(--ink2); }
+.tb-wer small { display: block; font-size: .78rem; color: var(--ink3); overflow-wrap: anywhere; }
+.tb-wer small a { color: var(--ink2); text-decoration: none; }
+.tb-wer q { display: block; margin: .25rem 0 .1rem; padding: .3rem .6rem; border-left: 2px solid rgba(123,175,255,.45); border-radius: 0 8px 8px 0; background: rgba(123,175,255,.06); font-size: .84rem; font-style: italic; color: var(--ink); quotes: "„" "“"; }
+.tb-st { font-size: .68rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: .2rem .55rem; border-radius: 999px; border: 1px solid var(--edge); color: var(--ink2); white-space: nowrap; }
+.tb-z.st-offen .tb-st { border-color: rgba(255,87,87,.6); color: #FF9C9C; background: rgba(255,87,87,.08); }
+.tb-z.st-bestaetigt .tb-st { border-color: rgba(75,227,166,.55); color: var(--ok); }
+.tb-z.st-unbeantwortet .tb-st { border-color: rgba(255,181,71,.55); color: #FFC56B; }
+.tb-z.st-abgelehnt, .tb-z.st-storniert { opacity: .72; }
+.tb-z.st-abgelehnt .tb-wer > b, .tb-z.st-storniert .tb-wer > b { text-decoration: line-through; text-decoration-color: rgba(255,255,255,.35); }
+.tb-card .tb-fuss { position: sticky; bottom: 0; margin: 1rem -1.35rem 0; padding: .8rem 1.35rem calc(.9rem + env(safe-area-inset-bottom)); background: var(--panel-solid); border-top: 1px solid var(--edge); box-shadow: 0 -14px 24px -12px rgba(4,9,18,.9); }
+.tb-card .tb-fuss .modal-acts { margin-top: 0; }
+.tb-card .tb-fuss p { margin: 0 0 .55rem; font-size: .78rem; color: var(--ink3); }
+@media (prefers-reduced-motion: reduce) { .tb-hinweis.heiss::before { animation: none; } }
+@media (max-width: 560px) {
+  .tb-info { grid-template-columns: minmax(0, 1fr); gap: .1rem; }
+  .tb-info dd { margin-bottom: .45rem; }
+  .tb-info dd:last-child { margin-bottom: 0; }
+  .tb-z { grid-template-columns: 2.9rem minmax(0, 1fr); }
+  .tb-z .tb-st { grid-column: 2; justify-self: start; }
+  .tb-card .tb-fuss .modal-acts { display: grid; grid-template-columns: 1fr 1fr; }
+  .tb-card .tb-fuss .modal-acts .btn { justify-content: center; }
+}
+
 /* ---------- Systemstart (Intro) ---------- */
 .boot { position: fixed; inset: 0; z-index: 9800; display: grid; place-items: center; background: radial-gradient(circle at 50% 45%, #15253F 0%, #0E192A 55%, #070D18 100%); transition: opacity .9s var(--ease), visibility .9s; }
 .boot.gone { opacity: 0; visibility: hidden; pointer-events: none; }
@@ -1039,6 +1122,14 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     <div id="nf-liste"></div>
   </section>
 
+  <section class="panel tbs" style="--d:5" aria-labelledby="tb-title" data-focus="tischbuecher" id="tischbuecher">
+    <div class="panel-head">
+      <div><h2 id="tb-title">Tischbücher</h2><p class="sub" id="tb-sub">Reservierungen deiner Kunden, live aus dem Dienst. Hier nur zum Ansehen: Bestätigen und Absagen bleibt beim Restaurant.</p></div>
+      <div class="nf-zahlen" id="tb-zahlen"></div>
+    </div>
+    <div class="tb-liste" id="tb-liste"></div>
+  </section>
+
   <section class="grid row2">
     <article class="panel" style="--d:6" aria-labelledby="radar-title" data-focus="gebiete">
       <div class="panel-head"><div><h2 id="radar-title">Suchradar</h2><p class="sub">Alle Suchgebiete im Uhrzeigersinn. Der blinkende Punkt ist das Gebiet, in dem der Agent als Nächstes sucht.</p></div></div>
@@ -1206,11 +1297,25 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     </div>
   </div>
 </div>
+<div class="modal" id="tbm" hidden role="dialog" aria-modal="true" aria-labelledby="tbm-t">
+  <div class="modal-card tb-card">
+    <div class="mstep"><span class="tb-nur"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Nur ansehen</span><span id="tbm-zeit" aria-live="polite"></span></div>
+    <h3 id="tbm-t">Tischbuch <b class="nm" id="tbm-name"></b></h3>
+    <div id="tbm-lage"></div>
+    <div class="seg-ctl tb-reiter" id="tbm-reiter" role="tablist" aria-label="Anfragen"></div>
+    <div id="tbm-liste" role="tabpanel"></div>
+    <div class="tb-fuss">
+      <p id="tbm-fuss-text">Aktualisiert sich alle 30 Sekunden. Anfragen bleiben bis 30 Tage nach dem Termin sichtbar.</p>
+      <div class="modal-acts"><button class="btn" type="button" data-x id="tbm-zu">Schließen</button><a class="btn" id="tbm-als" target="_blank" rel="noopener" hidden title="Öffnet das Tischbuch so, wie das Restaurant es sieht. Dort entscheidest du im Namen des Restaurants.">Als Restaurant öffnen</a></div>
+    </div>
+  </div>
+</div>
 <div class="vpill" id="vpill" role="status" aria-live="off"><div class="wave" aria-hidden="true"><i style="--k:.6"></i><i style="--k:1"></i><i style="--k:.8"></i><i style="--k:1.2"></i><i style="--k:.7"></i></div><span id="vpill-text">Lagebericht</span><button type="button" id="vpill-stop">Stopp</button></div>
 <nav class="srail" id="srail" aria-label="Bereiche">
   <div class="srail-spur" id="srail-spur" aria-hidden="true"><i id="srail-voll"></i></div>
   <a href="#kpis" data-rail="kpis" aria-label="Übersicht"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg><span class="srail-name">Übersicht</span></a>
   <a href="#nf-title" data-rail="nachfass" aria-label="Nachfassen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span class="srail-name">Nachfassen</span></a>
+  <a href="#tb-title" data-rail="tischbuecher" aria-label="Tischbücher"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="m9 15.5 2 2 4-4"/></svg><span class="srail-name">Tischbücher</span></a>
   <a href="#demos-title" data-rail="demos" aria-label="Demos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg><span class="srail-name">Demos</span></a>
   <a href="#mem-title" data-rail="memory" aria-label="Gedächtnis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.7 4.7 1.8-4.7 1.8L12 16l-1.8-4.7-4.7-1.8 4.7-1.8z"/><path d="M18.5 15l.8 1.9 1.9.8-1.9.8-.8 1.9-.8-1.9-1.9-.8 1.9-.8z"/></svg><span class="srail-name">Gedächtnis</span></a>
   <a href="#rank-title" data-rail="board" aria-label="Restaurants"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="10" rx="1.5"/><rect x="17" y="4" width="4" height="13" rx="1.5"/></svg><span class="srail-name">Restaurants</span></a>
@@ -1222,6 +1327,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
 <nav class="mnav" id="mnav" aria-label="Bereiche">
   <a href="#kpis" data-sec="kpis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>Übersicht</a>
   <a href="#nf-title" data-sec="nachfass"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Anrufe</a>
+  <a href="#tischbuecher" data-sec="tischbuecher"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="m9 15.5 2 2 4-4"/></svg>Tische</a>
   <a href="#rank-title" data-sec="rank-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="10" rx="1.5"/><rect x="17" y="4" width="4" height="13" rx="1.5"/></svg>Board</a>
   <a href="#demos-title" data-sec="demos-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg>Demos</a>
   <a href="#cost" data-sec="cost"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Kosten</a>
@@ -1244,7 +1350,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "35654fdeef";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "46c8f544c8";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -1701,6 +1807,8 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   function zielOeffnen(hash) {
     hash = String(hash || "").replace(/^[^#]*/, "");
     if (!hash || !DATA) return;
+    var tbz = hash.match(/^#tischbuch=([\w-]+)/);  // Tischbuch eines Kunden ansehen
+    if (tbz) { var tsec = $("#tischbuecher"); if (tsec) scrollTo({ top: tsec.getBoundingClientRect().top + scrollY - 70, behavior: "auto" }); tbOeffnen(tbz[1]); return; }
     var ku = hash.match(/^#kunde=([\w-]+)/);  // Übernahme: Vorschau fertig, Nameserver eintragen, live
     if (ku) { var xk = (DATA.demos || []).filter(function (d) { return d.slug === ku[1]; })[0]; if (xk) { nfZeigen(ku[1], false); kundeOeffnen(xk); return; } }
     var nf = hash.match(/^#(?:nachfass|demo)=([\w-]+)/);  // „hat die Demo geöffnet“: gleich zur Karte mit der Nummer
@@ -2039,6 +2147,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     if (!syncNf.done) { NF = normNf(d.nachfass); syncNf.done = true; syncNf(); }
     renderNachfass(d);
     ladeAufrufe(true);
+    ladeTischbuecher(true);
     Glocke.stand();
     appLink(d);
     if (!render.zielDa) { render.zielDa = true; if (location.hash) setTimeout(function () { zielOeffnen(location.hash); }, 600); }
@@ -2240,7 +2349,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       .catch(function () {})
       .then(function () { aufLaeuft = false; });
   }
-  document.addEventListener("visibilitychange", function () { if (!document.hidden) ladeAufrufe(false); });
+  document.addEventListener("visibilitychange", function () { if (!document.hidden) { ladeAufrufe(false); ladeTischbuecher(false); } });
   function favKnopf(x) {
     var on = isFav(x);
     return '<button class="fav" type="button" data-fav aria-pressed="' + on + '" aria-label="' + esc(x.name) + (on ? ' ist Favorit' : ' als Favorit markieren') + '" title="' + (on ? "Favorit (nochmal tippen zum Entfernen)" : "Als Favorit markieren") + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="' + STERN_D + '"/></svg></button>';
@@ -3294,10 +3403,10 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   document.querySelectorAll("#mnav a").forEach(function (a) { a.addEventListener("click", function (e) { e.preventDefault(); var id = a.dataset.sec; if (id === "cost" && $("#cost").hidden) { $("#cost").hidden = false; renderCost(DATA); } var t = document.getElementById(id); if (t) t.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" }); Sound.play("tick"); }); });
   /* Sprungleiste: eine Linie führt durch die Bereiche, der Regler zeigt, wo du bist. Ziehen (überall auf der Leiste)
      scrollt die Seite, der Mauszeiger verschwindet dabei; Klick auf einen Bereich springt hin. */
-  var RAIL = [["kpis", function () { return $("#kpis"); }], ["nachfass", function () { return $("#nachfass"); }], ["demos", function () { return $("#demos-title").closest("section"); }],
+  var RAIL = [["kpis", function () { return $("#kpis"); }], ["nachfass", function () { return $("#nachfass"); }], ["tischbuecher", function () { return $("#tischbuecher"); }], ["demos", function () { return $("#demos-title").closest("section"); }],
     ["memory", function () { return $("#memory"); }], ["board", function () { return $("#rank-title").closest("section"); }],
     ["runs", function () { return $("#runs-title").closest("section"); }]];
-  var RAIL_NAME = { kpis: "Übersicht", nachfass: "Nachfassen", demos: "Demos", memory: "Gedächtnis", board: "Restaurants", runs: "Protokoll" };
+  var RAIL_NAME = { kpis: "Übersicht", nachfass: "Nachfassen", tischbuecher: "Tischbücher", demos: "Demos", memory: "Gedächtnis", board: "Restaurants", runs: "Protokoll" };
   var railRaf = 0, railZug = null;  // railZug: {y, s} während des Ziehens (Regler folgt der Hand, die Seite gleitet nach)
   function railAn() { var r = $("#srail"); return r && getComputedStyle(r).display !== "none"; }
   function railMasse() {
@@ -3464,7 +3573,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   })();
   if ("IntersectionObserver" in window) {
     var navIO = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) document.querySelectorAll("#mnav a").forEach(function (a) { a.classList.toggle("on", a.dataset.sec === e.target.id); }); }); }, { rootMargin: "-45% 0px -50% 0px" });
-    ["kpis", "nachfass", "rank-title", "demos-title", "cost", "runs-title"].forEach(function (id) { var el = document.getElementById(id); if (el) navIO.observe(el); });
+    ["kpis", "nachfass", "tischbuecher", "rank-title", "demos-title", "cost", "runs-title"].forEach(function (id) { var el = document.getElementById(id); if (el) navIO.observe(el); });
   }
 
   /* ---------- Demo löschen: zwei Bestätigungen, dann sofort offline ---------- */
@@ -3653,7 +3762,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     st.className = "k-stand" + (s ? " st-" + s.stand : ""); st.textContent = s ? (s.stand === "baut" && s.art === "live" ? "Wird live geschaltet" : K_STAND[s.stand] || s.stand) : "Neuer Kunde";
     var tb = s && s.tischbuch, vor = s && s.vorschau, dom = s && s.domain;
     var knoepfe = (s && s.stand === "live" ? '<a class="btn" href="https://www.' + esc(dom) + '/" target="_blank" rel="noopener">' + EXTERN + "Website öffnen</a>" : vor ? '<a class="btn" href="' + esc(vor) + '" target="_blank" rel="noopener">' + EXTERN + "Vorschau ansehen</a>" : "") +
-      (tb ? '<button class="btn" type="button" id="k-tb-senden">' + SENDEN + 'Tischbuch-Link ans Restaurant</button><a class="btn" href="' + esc(tb) + '" target="_blank" rel="noopener">' + EXTERN + "Tischbuch öffnen</a>" : "");
+      (tb ? '<button class="btn" type="button" id="k-tb-senden">' + SENDEN + 'Tischbuch-Link ans Restaurant</button><button class="btn" type="button" data-tb-ansehen="' + esc(x.slug) + '">' + BUCH + "Tischbuch ansehen</button>" : "");
     var html = "";
     if (!s) html = '<div class="k-box"><p><b>So geht es:</b> Domain und Impressum eintragen (Adresse und Telefon stehen schon drin), Google-Fotos durch Fotos des Restaurants ersetzen oder ausblenden, dann Vorschau bauen. Live schalten geht danach mit einem Tipp.</p></div>';
     else if (s.stand === "baut") html = '<div class="k-box warn"><p>' + (s.art === "live" ? "Wird gebaut und live geschaltet." : "Die Vorschau wird gebaut.") + " Das dauert ein paar Minuten, du bekommst eine Benachrichtigung.</p></div>";
@@ -3808,6 +3917,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     if (e.target.closest("#k-vorschau")) { kSpeichern("vorschau"); return; }
     if (e.target.closest("#k-live")) { kSpeichern("live"); return; }
     if (e.target.closest("#k-tb-senden")) { kTischbuchSenden(); return; }
+    var tba = e.target.closest("[data-tb-ansehen]"); if (tba) { kundeSchliessen(true); tbOeffnen(tba.dataset.tbAnsehen); return; }
     var zr = e.target.closest("[data-agent-zurueck]"); if (zr) { zr.disabled = true; kAgentZurueck(zr.dataset.agentZurueck); return; }
     var ns = e.target.closest("[data-ns]");
     if (ns && navigator.clipboard) { navigator.clipboard.writeText(ns.dataset.ns).then(function () { Sound.play("pick"); toast(ns.dataset.ns + " kopiert."); }).catch(function () {}); return; }
@@ -3819,6 +3929,197 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   });
   $("#kundem").addEventListener("input", function () { if (KUNDE.liveFrage) { KUNDE.liveFrage = false; kLage(); } if (!$("#k-fehlt").hidden) kPruefen(true); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !$("#kundem").hidden) kundeSchliessen(); });
+
+  /* ---------- Tischbücher der Kunden: live aus dem Dienst, nur zum Ansehen ----------
+     Übersicht über GET /t/lokale, ein Tischbuch über GET /t/einsicht (beides mit dem Cockpit-Schlüssel). Gästedaten
+     kommen nur live aus dem Dienst und werden nirgends gespeichert. Entscheiden kann nur das Restaurant. */
+  var BUCH = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="m9 15.5 2 2 4-4"/></svg>';
+  var TB = { lokale: null, heute: "", fehler: false, laedt: false, geladen: 0, slug: null, buch: null, reiter: null, timer: 0, zurueck: null, zeit: 0 };
+  var TB_ST = { offen: "Offen", bestaetigt: "Bestätigt", abgelehnt: "Abgelehnt", storniert: "Storniert", unbeantwortet: "Unbeantwortet" };
+  var TB_WT = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"], TB_WARTEN = 60 * 60000;  // ab einer Stunde ohne Antwort wartet ein Gast
+  var TB_FMT = new Intl.DateTimeFormat("sv-SE", { timeZone: "Europe/Berlin", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false });
+  function tbDienst() { var z = ((DATA && DATA.steuerung) || {}).zaehler; return z && z.url && z.schluessel ? z : null; }
+  function tbHolen(pfad) {
+    var z = tbDienst(); if (!z) return Promise.reject(new Error("kein Dienst"));
+    return fetch(z.url.replace(/\/$/, "") + pfad, { headers: { Authorization: "Bearer " + z.schluessel }, cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); });
+  }
+  function tbHeute() { return TB.heute || TB_FMT.format(new Date()).slice(0, 10); }
+  function tbPlus(iso, n) { var d = new Date(iso + "T12:00:00Z"); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); }
+  function tbTag(iso) {
+    var h = tbHeute(); if (iso === h) return "Heute"; if (iso === tbPlus(h, 1)) return "Morgen"; if (iso === tbPlus(h, -1)) return "Gestern";
+    var d = new Date(iso + "T12:00:00Z"); return TB_WT[d.getUTCDay()] + " " + iso.slice(8, 10) + "." + iso.slice(5, 7) + ".";
+  }
+  function tbKlein(t) { return t.replace(/^(Heute|Morgen|Gestern)/, function (w) { return w.toLowerCase(); }); }
+  function tbZeitpunkt(iso) { var d = new Date(iso); if (!iso || isNaN(d)) return ""; var s = TB_FMT.format(d); return tbTag(s.slice(0, 10)) + ", " + s.slice(11, 16); }
+  function tbDauer(ms) {
+    var m = Math.max(1, Math.round(ms / 60000)); if (m < 60) return m + " Min.";
+    var h = Math.round(m / 60); if (h < 36) return h + " Std.";
+    var t = Math.round(h / 24); return t + (t === 1 ? " Tag" : " Tagen");
+  }
+  function tbPers(n) { n = Number(n) || 0; return n + (n === 1 ? " Person" : " Personen"); }
+  function tbWartet(l) { return !!(l && l.offen && l.offen_seit && Date.now() - Date.parse(l.offen_seit) > TB_WARTEN); }
+  function tbWarteText(l) { return (l.offen === 1 ? "Ein Gast wartet" : "Die älteste von " + l.offen + " Anfragen wartet") + " seit " + tbDauer(Date.now() - Date.parse(l.offen_seit)) + " auf Antwort."; }
+  function tbHinweise(l) {
+    var z = [];
+    if (tbWartet(l)) z.push(["heiss", tbWarteText(l)]);
+    if (!l.geraete) z.push(["warn", "Keine Benachrichtigungen eingeschaltet: Das Restaurant sieht neue Anfragen nur, wenn es selbst nachschaut."]);
+    if (l.pause_alle) z.push(["warn", "Online-Anfragen sind pausiert."]);
+    else if (l.pause_bis) z.push(["warn", "Online-Anfragen pausiert bis " + tbKlein(tbTag(l.pause_bis)) + "."]);
+    if (!z.length) z.push(["gut", "Benachrichtigungen auf " + (l.geraete === 1 ? "1 Gerät" : l.geraete + " Geräten") + (l.auto_regel && l.auto_regel.an ? " · bestätigt automatisch bis " + tbPers(l.auto_regel.max) : "") + "."]);
+    return z;
+  }
+  function tbName(slug) {
+    var l = (TB.lokale || {})[slug], d = ((DATA && DATA.demos) || []).filter(function (x) { return x.slug === slug; })[0];
+    return (l && l.name) || (d && d.name) || slug;
+  }
+  function tbBadge(zahl) {
+    var m = document.querySelector('#mnav a[data-sec="tischbuecher"]'), r = document.querySelector('#srail a[data-rail="tischbuecher"]');
+    if (m) { var b = $(".nf-badge", m); if (zahl && !b) { b = h("b", { class: "nf-badge", "aria-hidden": "true" }); m.appendChild(b); } if (b) { if (zahl) b.textContent = zahl > 9 ? "9+" : zahl; else b.remove(); } m.setAttribute("aria-label", "Tischbücher" + (zahl ? ", " + zahl + " mit wartenden Gästen" : "")); }
+    if (r) { var p = $(".nf-punkt-rail", r); if (zahl && !p) r.appendChild(h("i", { class: "nf-punkt-rail", "aria-hidden": "true" })); else if (!zahl && p) p.remove(); }
+  }
+  function ladeTischbuecher(sofort) {
+    if (!tbDienst() || TB.laedt || (!sofort && Date.now() - TB.geladen < 60000)) { renderTischbuecher(); return; }
+    TB.laedt = true;
+    tbHolen("/t/lokale").then(function (d) { TB.lokale = d.lokale || {}; TB.heute = d.heute || ""; TB.fehler = false; TB.geladen = Date.now(); })
+      .catch(function () { TB.fehler = true; })
+      .then(function () { TB.laedt = false; renderTischbuecher(); });
+  }
+  function tbKarte(slug, l) {
+    var s = kStand(slug) || {}, live = s.stand === "live", heiss = tbWartet(l), hw = tbHinweise(l);
+    var wert = function (n, label, klein, kl) { return '<span class="tb-wert' + (kl ? " " + kl : "") + '"><b>' + (Number(n) || 0) + "</b><span>" + label + (klein ? "<small>" + klein + "</small>" : "") + "</span></span>"; };
+    return '<button type="button" class="tb-karte' + (heiss ? " heiss" : hw[0][0] === "warn" ? " warn" : "") + '" data-tb="' + esc(slug) + '">' +
+      '<span class="tb-kopf"><b class="tb-name">' + esc(l.name || tbName(slug)) + "</b>" + (s.stand ? '<span class="tb-stand' + (live ? " ist-live" : "") + '">' + (live ? "Live" : "Vorschau") + "</span>" : "") + "</span>" +
+      '<span class="tb-meta">' + esc(s.domain ? "www." + s.domain : slug) + "<small>" + esc(l.letzte ? (Number(l.woche) || 0) + (Number(l.woche) === 1 ? " Anfrage" : " Anfragen") + " in 7 Tagen · letzte vor " + tbDauer(Date.now() - Date.parse(l.letzte)) : "noch keine Anfrage") + "</small></span>" +
+      '<span class="tb-werte">' + wert(l.offen, "offen", "", l.offen ? "offen" : "") + wert(l.heute_tische, "heute", l.heute_tische ? tbPers(l.heute_personen) : "") +
+        wert(l.kommend, "kommend", "bestätigt") + "</span>" +
+      hw.map(function (x) { return '<span class="tb-hinweis ' + x[0] + '">' + esc(x[1]) + "</span>"; }).join("") +
+      '<span class="tb-auf">Ansehen<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>';
+  }
+  function renderTischbuecher() {
+    var box = $("#tb-liste"), zahlen = $("#tb-zahlen"); if (!box) return;
+    if (!tbDienst()) { zahlen.innerHTML = ""; tbBadge(0); box.innerHTML = '<div class="nf-leer">Der Dienst bei Cloudflare ist noch nicht eingerichtet. Danach stehen hier die Tischbücher deiner Kunden.</div>'; return; }
+    if (!TB.lokale) {
+      box.innerHTML = TB.fehler ? '<div class="nf-leer">Der Dienst ist gerade nicht erreichbar. <button class="btn" type="button" data-tb-neu>Nochmal laden</button></div>'
+                                : '<div class="nf-leer"><span class="ai-wait"><i></i>Tischbücher werden geladen …</span></div>';
+      return;
+    }
+    var slugs = Object.keys(TB.lokale);
+    if (!slugs.length) {
+      zahlen.innerHTML = ""; tbBadge(0);
+      box.innerHTML = '<div class="nf-leer">Noch kein Restaurant mit Tischbuch. Sobald du für einen Kunden die Vorschau baust, steht sein Tischbuch hier: Anfragen, Reservierungen und ob das Restaurant rechtzeitig antwortet.</div>';
+      return;
+    }
+    var warten = 0, offen = 0, heute = 0;
+    slugs.forEach(function (s) { var l = TB.lokale[s]; offen += l.offen || 0; heute += l.heute_tische || 0; if (tbWartet(l)) warten++; });
+    slugs.sort(function (a, b) {
+      var A = TB.lokale[a], B = TB.lokale[b], wa = tbWartet(A), wb = tbWartet(B);
+      if (wa !== wb) return wa ? -1 : 1;
+      if (wa && A.offen_seit !== B.offen_seit) return A.offen_seit < B.offen_seit ? -1 : 1;
+      if ((B.offen || 0) !== (A.offen || 0)) return (B.offen || 0) - (A.offen || 0);
+      if ((B.heute_tische || 0) !== (A.heute_tische || 0)) return (B.heute_tische || 0) - (A.heute_tische || 0);
+      return tbName(a).localeCompare(tbName(b), "de");
+    });
+    zahlen.innerHTML = '<span class="nf-zahl' + (warten ? " jetzt" : "") + '"><b>' + offen + "</b>offen</span>" + '<span class="nf-zahl"><b>' + heute + "</b>heute reserviert</span>" +
+      '<span class="nf-zahl kunde"><b>' + slugs.length + "</b>" + (slugs.length === 1 ? "Restaurant" : "Restaurants") + "</span>";
+    box.innerHTML = slugs.map(function (s) { return tbKarte(s, TB.lokale[s]); }).join("") +
+      (TB.fehler ? '<p class="tb-stand-zeile">Dienst gerade nicht erreichbar, Stand von ' + esc(TB_FMT.format(new Date(TB.geladen)).slice(11, 16)) + " Uhr.</p>" : "");
+    tbBadge(warten);
+  }
+  function tbOeffnen(slug) {
+    if (!tbDienst()) { Sound.play("deny"); toast("Tischbücher gehen, sobald der Dienst bei Cloudflare eingerichtet ist."); return; }
+    var s = kStand(slug) || {}, als = $("#tbm-als");
+    TB.slug = slug; TB.buch = null; TB.reiter = null;
+    if ($("#tbm").hidden) TB.zurueck = document.activeElement;
+    $("#tbm-name").textContent = tbName(slug);
+    if (s.tischbuch) { als.href = s.tischbuch; als.hidden = false; } else { als.removeAttribute("href"); als.hidden = true; }
+    $("#tbm-lage").innerHTML = ""; $("#tbm-reiter").innerHTML = ""; $("#tbm-zeit").textContent = "";
+    $("#tbm-liste").innerHTML = '<span class="ai-wait"><i></i>Tischbuch wird geladen …</span>';
+    $("#tbm").hidden = false; Sound.play("open");
+    setTimeout(function () { $("#tbm-zu").focus({ preventScroll: true }); $("#tbm .tb-card").scrollTop = 0; }, 30);
+    tbBuchLaden();
+    clearInterval(TB.timer); TB.timer = setInterval(function () { if (!document.hidden && !$("#tbm").hidden) tbBuchLaden(); }, 30000);
+  }
+  function tbBuchLaden() {
+    var slug = TB.slug; if (!slug) return;
+    tbHolen("/t/einsicht?l=" + encodeURIComponent(slug)).then(function (d) {
+      if (TB.slug !== slug) return;
+      TB.buch = d; TB.heute = d.heute || TB.heute; TB.zeit = Date.now();
+      if (TB.lokale && d.lokal) { TB.lokale[slug] = d.lokal; renderTischbuecher(); }
+      tbBuchZeichnen();
+    }).catch(function (err) {
+      if (TB.slug !== slug) return;
+      if (TB.buch) { $("#tbm-zeit").textContent = "Dienst nicht erreichbar · Stand " + TB_FMT.format(new Date(TB.zeit)).slice(11, 16) + " Uhr"; return; }
+      $("#tbm-liste").innerHTML = '<div class="nf-leer">' + (String(err.message) === "404" ? "Dieses Tischbuch gibt es im Dienst nicht (mehr)." : "Der Dienst ist gerade nicht erreichbar. Er versucht es gleich wieder.") + "</div>";
+    });
+  }
+  function tbZeile(a, h) {
+    var st = a.status === "offen" && a.datum < h ? "unbeantwortet" : a.status, kontakt = [], weg = "Angefragt " + tbKlein(tbZeitpunkt(a.zeit));
+    if (a.telefon) kontakt.push('<a href="tel:' + esc(String(a.telefon).replace(/[^\d+]/g, "")) + '">' + esc(a.telefon) + "</a>");
+    if (a.email) kontakt.push('<a href="mailto:' + esc(a.email) + '">' + esc(a.email) + "</a>");
+    if (st === "offen") weg += " · wartet seit " + tbDauer(Date.now() - Date.parse(a.zeit));
+    else if (a.von === "auto") weg += " · automatisch bestätigt";
+    else if (st === "unbeantwortet") weg += " · nie beantwortet";
+    else if (a.entschieden) weg += " · " + (TB_ST[st] || st).toLowerCase() + " vom Restaurant " + tbKlein(tbZeitpunkt(a.entschieden));
+    return '<div class="tb-z st-' + esc(st) + '"><time>' + esc(a.uhrzeit) + '</time><div class="tb-wer"><b>' + esc(a.name) + "</b> <span>· " + tbPers(a.personen) + "</span>" +
+      (kontakt.length ? "<small>" + kontakt.join(" · ") + "</small>" : "") + (a.nachricht ? "<q>" + esc(a.nachricht) + "</q>" : "") +
+      (a.hinweis ? "<small>Hinweis an den Gast: „" + esc(a.hinweis) + "“</small>" : "") + "<small>" + esc(weg) + "</small></div>" +
+      '<span class="tb-st">' + (TB_ST[st] || esc(st)) + "</span></div>";
+  }
+  function tbBuchZeichnen() {
+    var d = TB.buch; if (!d || $("#tbm").hidden) return;
+    var l = d.lokal || {}, h = d.heute || tbHeute(), alle = (d.anfragen || []).slice();
+    var nachZeit = function (a, b) { return (a.datum + a.uhrzeit) < (b.datum + b.uhrzeit) ? -1 : (a.datum + a.uhrzeit) > (b.datum + b.uhrzeit) ? 1 : 0; };
+    alle.sort(nachZeit);
+    var G = { offen: alle.filter(function (a) { return a.status === "offen" && a.datum >= h; }),
+              kommend: alle.filter(function (a) { return a.status === "bestaetigt" && a.datum >= h; }),
+              verlauf: alle.filter(function (a) { return a.datum < h || a.status === "abgelehnt" || a.status === "storniert"; })
+                .sort(function (a, b) { return a.datum !== b.datum ? (a.datum < b.datum ? 1 : -1) : nachZeit(a, b); }) };
+    if (!TB.reiter) TB.reiter = G.offen.length ? "offen" : "kommend";
+    $("#tbm-name").textContent = l.name || tbName(TB.slug);
+    $("#tbm-zeit").textContent = "Stand " + TB_FMT.format(new Date(TB.zeit || Date.now())).slice(11, 16) + " Uhr";
+    var geraete = l.geraete_liste || [], auto = l.auto_regel || {};
+    var tel = l.telefon ? '<a href="tel:' + esc(String(l.telefon).replace(/[^\d+]/g, "")) + '">' + esc(l.telefon) + "</a>" : "";
+    $("#tbm-lage").innerHTML = (tbWartet(l) ? '<div class="k-box warn"><p><b>' + esc(tbWarteText(l)) + "</b>" + (tel ? " Vielleicht kurz beim Restaurant anrufen: " + tel + "." : "") + "</p></div>" : "") +
+      '<dl class="tb-info">' +
+      "<dt>Benachrichtigungen</dt><dd>" + (geraete.length ? geraete.map(function (g) { return esc(g.geraet || "Gerät") + (g.seit ? " <small>seit " + esc(tbKlein(tbZeitpunkt(g.seit).split(",")[0])) + "</small>" : ""); }).join(", ")
+                                                       : '<span class="warn">keine eingeschaltet</span>') + "</dd>" +
+      "<dt>Automatisch bestätigen</dt><dd>" + (auto.an ? "an, bis " + tbPers(auto.max) + " und " + (Number(auto.tische) || 0) + (Number(auto.tische) === 1 ? " Tisch" : " Tische") + " je Uhrzeit" : "aus, das Restaurant bestätigt selbst") + "</dd>" +
+      "<dt>Online-Anfragen</dt><dd>" + (l.pause_alle ? '<span class="warn">pausiert</span>' : l.pause_bis ? '<span class="warn">pausiert bis ' + esc(tbKlein(tbTag(l.pause_bis))) + "</span>" : "an") + "</dd>" +
+      "<dt>Mails an Gäste</dt><dd>" + (l.mail_aktiv ? "an" : "aus") + "</dd>" +
+      (tel ? "<dt>Restaurant</dt><dd>" + tel + "</dd>" : "") + "</dl>";
+    $("#tbm-reiter").innerHTML = [["offen", "Offen"], ["kommend", "Kommend"], ["verlauf", "Verlauf"]].map(function (r) {
+      var an = TB.reiter === r[0];
+      return '<button type="button" role="tab" data-tb-reiter="' + r[0] + '" aria-selected="' + an + '" aria-pressed="' + an + '">' + r[1] + ' <b class="' + (r[0] === "offen" && G.offen.length ? "an" : "") + '">' + G[r[0]].length + "</b></button>";
+    }).join("");
+    var liste = G[TB.reiter].slice(0, 200);
+    if (!liste.length) {
+      $("#tbm-liste").innerHTML = '<div class="nf-leer">' + { offen: "Keine offenen Anfragen.", kommend: "Keine kommenden Reservierungen.", verlauf: "Noch nichts im Verlauf." }[TB.reiter] + "</div>";
+      return;
+    }
+    var tage = [], nach = {};
+    liste.forEach(function (a) { if (!nach[a.datum]) { nach[a.datum] = []; tage.push(a.datum); } nach[a.datum].push(a); });
+    $("#tbm-liste").innerHTML = tage.map(function (t) {
+      var z = nach[t], ok = z.filter(function (a) { return a.status === "bestaetigt"; }), p = ok.reduce(function (n, a) { return n + (Number(a.personen) || 0); }, 0);
+      var info = TB.reiter === "offen" ? z.length + (z.length === 1 ? " Anfrage" : " Anfragen")
+               : ok.length ? ok.length + (ok.length === 1 ? " Tisch" : " Tische") + " · " + tbPers(p) : z.length + (z.length === 1 ? " Anfrage" : " Anfragen");
+      return '<div class="tb-tag"><header><b>' + esc(tbTag(t)) + "</b><span>" + esc(info) + "</span></header>" + z.map(function (a) { return tbZeile(a, h); }).join("") + "</div>";
+    }).join("");
+  }
+  function tbSchliessen(still) {
+    $("#tbm").hidden = true; TB.slug = null; TB.buch = null; clearInterval(TB.timer); if (!still) Sound.play("close");
+    if (TB.zurueck && TB.zurueck.focus && document.contains(TB.zurueck)) try { TB.zurueck.focus({ preventScroll: true }); } catch (e) {}
+  }
+  $("#tbm").addEventListener("click", function (e) {
+    if (e.target === this || e.target.closest("[data-x]")) { tbSchliessen(); return; }
+    var r = e.target.closest("[data-tb-reiter]");
+    if (r && r.dataset.tbReiter !== TB.reiter) { TB.reiter = r.dataset.tbReiter; tbBuchZeichnen(); Sound.play("tick"); }
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !$("#tbm").hidden) tbSchliessen(); });
+  $("#tb-liste").addEventListener("click", function (e) {
+    var k = e.target.closest("[data-tb]"); if (k) { tbOeffnen(k.dataset.tb); return; }
+    if (e.target.closest("[data-tb-neu]")) { TB.fehler = false; renderTischbuecher(); ladeTischbuecher(true); }
+  });
 
   function deleteDemo(x) {
     var prev = DEC[x.place_id] ? Object.assign({}, DEC[x.place_id]) : null;
