@@ -694,6 +694,65 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
 .brief-modus.test { background: rgba(123,175,255,.12); color: #9CC2FF; }
 .brief-modus.live { background: rgba(255,87,87,.14); color: #FF8C8C; }
 .modal-card .modal-acts .btn[aria-disabled="true"] { opacity: .45; pointer-events: none; }
+/* Übernahme: aus der Demo wird die Website des Kunden */
+.modal-card.kunde-card { max-width: 44rem; max-height: calc(100dvh - 2rem); overflow-y: auto; overscroll-behavior: contain; padding-bottom: 0; }
+.kunde-card .k-stand { display: inline-flex; align-items: center; gap: .45rem; padding: .25rem .7rem; border-radius: 99px; font-size: .74rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; background: rgba(123,175,255,.12); color: #9CC2FF; }
+.kunde-card .k-stand.st-live { background: rgba(75,227,166,.14); color: var(--ok); }
+.kunde-card .k-stand.st-wartet, .kunde-card .k-stand.st-baut { background: rgba(255,181,71,.14); color: #FFC56B; }
+.kunde-card .k-stand.st-fehler { background: rgba(255,107,142,.14); color: var(--bad); }
+.k-box { margin: .8rem 0; padding: .9rem 1rem; border-radius: 14px; border: 1px solid var(--edge); background: rgba(255,255,255,.03); }
+.k-box.warn { border-color: rgba(255,181,71,.45); background: rgba(255,181,71,.06); }
+.k-box.fehler { border-color: rgba(255,107,142,.5); background: rgba(255,107,142,.07); color: #FFB3C3; }
+.k-box.gut { border-color: rgba(75,227,166,.45); background: rgba(75,227,166,.06); }
+.k-box p { margin: 0 0 .5rem; }
+.k-box p:last-child { margin-bottom: 0; }
+.k-reihe { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .6rem; }
+.k-reihe .btn { font-size: .86rem; padding: .5rem .8rem; }
+.k-ns { display: grid; gap: .4rem; margin: .5rem 0; }
+.k-ns button { display: flex; justify-content: space-between; align-items: center; gap: .6rem; width: 100%; padding: .6rem .8rem; border-radius: 10px; border: 1px dashed rgba(255,181,71,.5); background: rgba(0,0,0,.2); color: var(--ink); font: 600 .95rem/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; cursor: pointer; text-align: left; }
+.k-ns button small { font: 600 .72rem/1 system-ui, sans-serif; color: #FFC56B; letter-spacing: .04em; text-transform: uppercase; }
+.k-ns button:active { transform: scale(.98); }
+.kunde-card h4 { margin: 1.3rem 0 .2rem; font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink3); }
+.kunde-card .k-hilfe { margin: 0 0 .55rem; font-size: .84rem; color: var(--ink3); }
+.k-felder { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .55rem .7rem; }
+.k-felder label { display: grid; gap: .15rem; font-size: .8rem; color: var(--ink2); }
+.k-felder label.breit { grid-column: 1 / -1; }
+.k-felder label i { font-style: normal; color: var(--ink3); }
+.kunde-card input[type="text"], .kunde-card input[type="email"], .kunde-card input[type="tel"], .kunde-card textarea { width: 100%; margin: 0; padding: .65rem .8rem; border-radius: 11px; border: 1px solid var(--edge); background: rgba(0,0,0,.25); color: var(--ink); font: inherit; font-size: 1rem; }
+.kunde-card textarea { min-height: 16rem; font-size: .88rem; line-height: 1.5; resize: vertical; }
+.kunde-card input:focus, .kunde-card textarea:focus { outline: none; border-color: rgba(255,87,87,.7); box-shadow: 0 0 0 3px rgba(255,87,87,.18); }
+.kunde-card [aria-invalid="true"] { border-color: rgba(255,107,142,.8) !important; }
+.k-domain { display: flex; align-items: center; gap: .4rem; }
+.k-domain span { color: var(--ink3); font-weight: 600; }
+.k-fotos { display: grid; grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr)); gap: .6rem; }
+.k-foto { position: relative; border-radius: 12px; overflow: hidden; border: 1px solid var(--edge); background: rgba(0,0,0,.25); }
+.k-foto .bild { aspect-ratio: 4 / 3; display: block; width: 100%; object-fit: cover; background: rgba(255,255,255,.04); }
+.k-foto.aus .bild { opacity: .25; filter: grayscale(1); }
+.k-foto .marke { position: absolute; left: .4rem; top: .4rem; padding: .15rem .45rem; border-radius: 99px; font-size: .66rem; font-weight: 700; letter-spacing: .04em; background: rgba(4,9,18,.75); color: #FFC56B; }
+.k-foto.eigenes .marke { color: var(--ok); }
+.k-foto.aus .marke { color: var(--ink3); }
+.k-foto .wahl { display: grid; grid-template-columns: 1fr 1fr; }
+.k-foto .wahl > * { display: grid; place-items: center; min-height: 40px; padding: .35rem; font-size: .78rem; font-weight: 600; color: var(--ink2); background: none; border: 0; border-top: 1px solid var(--edge); cursor: pointer; }
+.k-foto .wahl > * + * { border-left: 1px solid var(--edge); }
+.k-foto .wahl > *:hover { color: var(--ink); background: rgba(255,255,255,.05); }
+.k-foto input[type="file"] { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.k-foto.laedt::after { content: "Lädt hoch …"; position: absolute; inset: 0; display: grid; place-items: center; background: rgba(4,9,18,.7); font-size: .8rem; font-weight: 600; }
+.kunde-card details.k-ds { margin-top: .3rem; }
+.kunde-card details.k-ds summary { cursor: pointer; padding: .55rem 0; font-weight: 600; color: var(--ink2); }
+.kunde-card .k-fuss { position: sticky; bottom: 0; margin: 1rem -1.35rem 0; padding: .8rem 1.35rem calc(.9rem + env(safe-area-inset-bottom)); background: var(--panel-solid); border-top: 1px solid var(--edge); box-shadow: 0 -14px 24px -12px rgba(4,9,18,.9); }
+.kunde-card .k-fuss .modal-acts { margin-top: 0; }
+.kunde-card .k-fehlt { margin: 0 0 .5rem; font-size: .84rem; color: #FFC56B; }
+@media (max-width: 560px) {
+  .k-felder { grid-template-columns: minmax(0, 1fr); }
+  .kunde-card .k-fuss .modal-acts { display: grid; grid-template-columns: 1fr 1fr; }
+  .kunde-card .k-fuss .modal-acts .btn { justify-content: center; }
+  .kunde-card .k-fuss .modal-acts .btn-hot { grid-column: 1 / -1; }
+  .kunde-card .k-fuss .modal-acts.ein { grid-template-columns: auto minmax(0, 1fr); }
+  .kunde-card .k-fuss .modal-acts.ein .btn-hot { grid-column: auto; }
+}
+.nf-kunde { margin: .35rem 0 0; font-size: .84rem; color: var(--ok); }
+.nf-kunde.st-fehler { color: var(--bad); }
+.nf-kunde.st-wartet, .nf-kunde.st-baut { color: #FFC56B; }
 @media (max-width: 640px) { .brief-vorschau { height: 42vh; } }
 .demo .acts .btn.del { color: var(--ink3); }
 .demo .acts .btn.del:hover, .demo .acts .btn.del:focus-visible { color: #FF8C8C; border-color: rgba(255,87,87,.6); background: rgba(255,87,87,.08); }
@@ -1104,6 +1163,40 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     <div class="modal-acts"><button class="btn" type="button" data-x id="briefm-cancel">Abbrechen</button><a class="btn" id="briefm-pdf" target="_blank" rel="noopener" aria-disabled="true">PDF öffnen</a><button class="btn btn-hot" type="button" id="briefm-go">Brief verschicken</button></div>
   </div>
 </div>
+<div class="modal" id="kundem" hidden role="dialog" aria-modal="true" aria-labelledby="kundem-t">
+  <div class="modal-card kunde-card">
+    <div class="mstep"><span class="k-stand" id="kundem-stand"></span></div>
+    <h3 id="kundem-t">Website für <b class="nm" id="kundem-name"></b></h3>
+    <div id="kundem-lage"></div>
+    <h4>Domain</h4>
+    <p class="k-hilfe">Bei INWX registrieren (falls noch nicht geschehen). Die Seite läuft dann mit und ohne www.</p>
+    <div class="k-domain"><span>www.</span><input type="text" id="k-domain" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="restaurant-name.de" aria-label="Domain"></div>
+    <h4>Impressum</h4>
+    <p class="k-hilfe">Angaben des Restaurants. Steht so im Impressum und in der Datenschutzerklärung.</p>
+    <div class="k-felder">
+      <label class="breit">Name oder Firma <input type="text" data-imp="firma" placeholder="z. B. Lokal am Eck GmbH oder Inhaber Ada Eck"></label>
+      <label class="breit">Vertreten durch <i>(bei GmbH: Geschäftsführer)</i><input type="text" data-imp="vertreten"></label>
+      <label>Straße und Nr. <input type="text" data-imp="strasse"></label>
+      <label>PLZ und Ort <input type="text" data-imp="plz_ort"></label>
+      <label>Telefon <input type="tel" data-imp="telefon"></label>
+      <label>E-Mail <input type="email" data-imp="email" autocapitalize="off"></label>
+      <label>USt-IdNr. <i>(falls vorhanden)</i><input type="text" data-imp="ust_id" autocapitalize="characters"></label>
+      <label>Registereintrag <i>(falls vorhanden)</i><input type="text" data-imp="register" placeholder="Amtsgericht Hamburg, HRB 12345"></label>
+    </div>
+    <h4>Fotos</h4>
+    <p class="k-hilfe" id="k-fotos-hilfe"></p>
+    <div class="k-fotos" id="k-fotos"></div>
+    <h4>Datenschutzerklärung</h4>
+    <details class="k-ds"><summary>Vorlage ansehen und anpassen</summary>
+      <p class="k-hilfe">Vorlage passend zur Seite (Hosting bei Cloudflare, Reservierung, Karte). Bitte einmal prüfen. „## “ macht eine Überschrift. Der Abschnitt „Verantwortlich“ kommt automatisch aus dem Impressum.</p>
+      <textarea id="k-ds" spellcheck="true" aria-label="Datenschutzerklärung"></textarea>
+    </details>
+    <div class="k-fuss">
+      <p class="k-fehlt" id="k-fehlt" hidden></p>
+      <div class="modal-acts"><button class="btn" type="button" data-x id="kundem-zu">Schließen</button><button class="btn" type="button" id="k-vorschau">Vorschau bauen</button><button class="btn btn-hot" type="button" id="k-live">Live schalten</button></div>
+    </div>
+  </div>
+</div>
 <div class="vpill" id="vpill" role="status" aria-live="off"><div class="wave" aria-hidden="true"><i style="--k:.6"></i><i style="--k:1"></i><i style="--k:.8"></i><i style="--k:1.2"></i><i style="--k:.7"></i></div><span id="vpill-text">Lagebericht</span><button type="button" id="vpill-stop">Stopp</button></div>
 <nav class="srail" id="srail" aria-label="Bereiche">
   <div class="srail-spur" id="srail-spur" aria-hidden="true"><i id="srail-voll"></i></div>
@@ -1142,7 +1235,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "a17a7050bb";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "cff7239715";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -1599,6 +1692,8 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   function zielOeffnen(hash) {
     hash = String(hash || "").replace(/^[^#]*/, "");
     if (!hash || !DATA) return;
+    var ku = hash.match(/^#kunde=([\w-]+)/);  // Übernahme: Vorschau fertig, Nameserver eintragen, live
+    if (ku) { var xk = (DATA.demos || []).filter(function (d) { return d.slug === ku[1]; })[0]; if (xk) { nfZeigen(ku[1], false); kundeOeffnen(xk); return; } }
     var nf = hash.match(/^#(?:nachfass|demo)=([\w-]+)/);  // „hat die Demo geöffnet“: gleich zur Karte mit der Nummer
     if (nf && nfZeigen(nf[1], false)) return;
     var m = hash.match(/^#demo=([\w-]+)/);
@@ -2454,9 +2549,11 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
           '<span class="nf-pfeil" aria-hidden="true">' + PFEIL + "</span>" +
           '<p class="nf-meta">' + esc([x.kueche, x.ort, n.brief ? "Brief " + briefDatum(n.gesendet) : "ohne Brief"].filter(Boolean).join(" · ")) + "</p>" +
           '<p class="nf-grund">' + esc(nfGrund(x, n)) + "</p>" +
+          (n.st === "kunde" ? (function () { var z = kNfZeile(x); return '<p class="nf-kunde ' + z[0] + '">' + esc(z[1]) + "</p>"; })() : "") +
           (n.anfNeu && n.anfNeu.nachricht ? '<p class="nf-zitat">„' + esc(n.anfNeu.nachricht) + "“</p>" : "") +
         "</button>" +
         '<div class="nf-acts">' +
+          (n.st === "kunde" ? '<button class="btn' + (kStand(x.slug) && kStand(x.slug).stand === "live" ? "" : " btn-hot") + '" type="button" data-kunde>' + (kStand(x.slug) ? "Website verwalten" : "Website übernehmen") + "</button>" : "") +
           (tel ? '<a class="btn nf-tel' + (n.g === "heiss" || n.g === "heute" ? " btn-hot" : "") + '" href="tel:' + esc(tel.nummer) + '" data-anruf aria-label="' + esc(x.name) + " anrufen: " + esc(tel.text) + '">' + TEL + "<span>" + esc(tel.text) + "</span></a>"
                : '<a class="btn nf-tel" href="https://www.google.com/maps/search/?api=1&amp;query=' + encodeURIComponent(x.name + " " + (x.ort || "")) + "&amp;query_place_id=" + encodeURIComponent(x.place_id || "") + '" target="_blank" rel="noopener">' + TEL + "<span>Nummer in Google Maps</span></a>") +
           '<a class="btn" href="' + esc(x.url) + '" target="_blank" rel="noopener">' + EXTERN + "Demo</a>" +
@@ -2502,8 +2599,9 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     if (box.contains(document.activeElement) && document.activeElement.tagName === "TEXTAREA") { nfSpaeter = true; return; }
     nfSpaeter = false;
     var alle = nfListe(d), jetzt = alle.filter(function (z) { return z.n.g === "heiss" || z.n.g === "heute"; });
-    var spaeter = alle.filter(function (z) { return z.n.g === "spaeter"; }), fertig = alle.filter(function (z) { return z.n.g === "erledigt"; });
-    var kunden = fertig.filter(function (z) { return z.n.st === "kunde"; }).length;
+    var neuK = alle.filter(function (z) { return z.n.st === "kunde" && (kStand(z.x.slug) || {}).stand !== "live"; });
+    var spaeter = alle.filter(function (z) { return z.n.g === "spaeter"; }), fertig = alle.filter(function (z) { return z.n.g === "erledigt" && neuK.indexOf(z) < 0; });
+    var kunden = alle.filter(function (z) { return z.n.st === "kunde"; }).length;
     $("#nf-zahlen").innerHTML = alle.length ? '<span class="nf-zahl jetzt"><b>' + jetzt.length + "</b>heute dran</span>" + '<span class="nf-zahl"><b>' + spaeter.length + "</b>später</span>" + '<span class="nf-zahl kunde"><b>' + kunden + "</b>" + (kunden === 1 ? "Kunde" : "Kunden") + "</span>" : "";
     nfBadge(jetzt.length);
     box.innerHTML = "";
@@ -2519,6 +2617,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       }
       return g;
     }
+    if (neuK.length) box.appendChild(gruppe("Neue Kunden: Website übernehmen", neuK));
     if (jetzt.length) box.appendChild(gruppe("Jetzt anrufen", jetzt));
     else {
       var naechst = spaeter.filter(function (z) { return z.n.faellig; })[0];
@@ -2576,7 +2675,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       nicht_erreicht: x.name + " nicht erreicht. Steht " + wann + " wieder oben.",
       rueckruf: "Rückruf bei " + x.name + " " + wann + ". Das Datum kannst du unten ändern.",
       interesse: x.name + " hat Interesse. Die Demo bleibt online, nachhaken " + wann + ".",
-      kunde: "Glückwunsch! " + x.name + " ist Kunde. Die Demo bleibt online.",
+      kunde: "Glückwunsch! " + x.name + " ist Kunde. Oben in der Liste: Website übernehmen.",
       kein_interesse: x.name + " abgehakt."
     };
     Sound.play(st === "kunde" ? "done" : st === "kein_interesse" ? "tick" : "pick");
@@ -2619,6 +2718,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     if (e.target.closest("[data-nf-auf]")) { var an = !karte.classList.contains("offen"); nfAufklappen(karte, an); Sound.play(an ? "open" : "close"); return; }
     if (e.target.closest("[data-nf-link]")) { nfLinkSenden(x); return; }
     if (e.target.closest("[data-nf-brief]")) { openBrief(x); return; }
+    if (e.target.closest("[data-kunde]")) { kundeOeffnen(x); return; }
     var st = e.target.closest("[data-st]"); if (st) { if (st.getAttribute("aria-checked") !== "true") nfStatus(x, st.dataset.st); return; }
     var w = e.target.closest("[data-wieder]"); if (w) { nfWieder(x, w.dataset.wieder); return; }
   });
@@ -3469,6 +3569,223 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     }
   });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !$("#briefm").hidden) closeBrief(); });
+  /* Übernahme gewonnener Kunden: Domain, Impressum, Fotos und Datenschutz landen in data/kunden/<slug>.json, mit
+     einem Auftrag. Der Workflow „Kunden-Website“ baut daraus die echte Website samt Tischbuch, lädt sie zu Cloudflare
+     Pages und hängt beim Livegang die Domain an. Den Stand liefert DATA.kunden.stand (mit dem Tischbuch-Link). */
+  var KUNDE = { x: null, zurueck: null, fotos: [], aus: {}, eigen: {}, bilder: {}, liveFrage: false, gespeichert: {}, auftrag: {}, demo: {} };
+  var K_STAND = { baut: "Wird gebaut", vorschau: "Vorschau fertig", wartet: "Wartet auf Nameserver", live: "Live", fehler: "Hat nicht geklappt" };
+  function kDaten() { return (DATA && DATA.kunden) || { eingaben: {}, stand: {}, datenschutz: [] }; }
+  function kStand(slug) {
+    var s = (kDaten().stand || {})[slug] || null, a = KUNDE.auftrag[slug];
+    if (a && (!s || s.auftrag_erledigt !== a.zeit)) return Object.assign({}, s || {}, { stand: "baut", art: a.art, fehler: null });
+    return s;
+  }
+  function kEingabe(slug) { return KUNDE.gespeichert[slug] || (kDaten().eingaben || {})[slug] || null; }
+  function kDomainVorschlag(name) {
+    var t = String(name || "").toLowerCase().replace(/ä/g, "ae").replace(/ö/g, "oe").replace(/ü/g, "ue").replace(/ß/g, "ss").replace(/&/g, "und");
+    t = t.normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+    return (t.slice(0, 40).replace(/-+$/, "") || "ihr-restaurant") + ".de";
+  }
+  function kDomain(text) {
+    var d = String(text || "").trim().toLowerCase().replace(/^[a-z]+:\/\//, "").split(/[/?#]/)[0].replace(/^\.+|\.+$/g, "");
+    if (d.indexOf("www.") === 0) d = d.slice(4);
+    return /^(?!-)[a-z0-9äöüß-]{1,63}(?:\.[a-z0-9äöüß-]{1,63})*\.[a-z]{2,24}$/.test(d) && !/(^|\.)-|-(\.|$)/.test(d) ? d : "";
+  }
+  function kNfZeile(x) {
+    var s = kStand(x.slug), d = s && s.domain ? "www." + s.domain : "";
+    if (!s) return ["", "Website noch nicht übernommen."];
+    if (s.stand === "baut") return ["st-baut", s.art === "live" ? "Wird live geschaltet …" : "Vorschau wird gebaut …"];
+    if (s.stand === "vorschau") return ["", "Vorschau fertig. Ansehen und live schalten."];
+    if (s.stand === "wartet") return ["st-wartet", "Nameserver bei INWX eintragen, dann ist " + d + " live."];
+    if (s.stand === "live") return ["", "Live unter " + d];
+    return ["st-fehler", "Übernahme: " + String(s.fehler || "hat nicht geklappt").slice(0, 140)];
+  }
+  /* aus der Demo selbst: Google-Fotos (in derselben Reihenfolge wie beim Bauen), Adresse, Reservierung, Karte */
+  function kDemoLesen(x) {
+    if (KUNDE.demo[x.slug]) return Promise.resolve(KUNDE.demo[x.slug]);
+    return fetch(x.url, { cache: "no-store" }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function (html) {
+      var fotos = [];
+      (html.match(/https:\/\/lh3\.googleusercontent\.com\/[^"'\s)<>,]+/g) || []).forEach(function (u) { u = u.replace(/&amp;/g, "&"); if (fotos.indexOf(u) < 0) fotos.push(u); });
+      var adr = {}, m = html.match(/google\.com\/maps\/dir\/\?api=1&(?:amp;)?destination=([^"'&]+)/);
+      if (m) {
+        var t = decodeURIComponent(m[1].replace(/\+/g, " ")).split(",").map(function (z) { return z.trim(); });
+        var plz = t.filter(function (z) { return /^\d{5}\s+\S/.test(z); })[0];
+        if (plz && t[0] !== plz) adr = { strasse: t[0], plz_ort: plz };
+      }
+      var d = { fotos: fotos, adresse: adr, reservierung: /data-reservierung/.test(html), karte: /data-karte/.test(html) };
+      KUNDE.demo[x.slug] = d;
+      return d;
+    }).catch(function () { return { fotos: [], adresse: {}, reservierung: true, karte: false, fehler: true }; });
+  }
+  function kDsVorlage(d) {
+    return (kDaten().datenschutz || []).filter(function (t) { return !t.wenn || d[t.wenn]; }).map(function (t) { return t.text; }).join("\n\n");
+  }
+  function kFormular() {
+    var x = KUNDE.x, imp = {};
+    document.querySelectorAll("#kundem [data-imp]").forEach(function (f) { imp[f.dataset.imp] = f.value.trim(); });
+    var aus = [], eigen = [];
+    KUNDE.fotos.forEach(function (u, i) { var nr = i + 1; if (KUNDE.eigen[nr]) eigen.push(nr); else if (KUNDE.aus[nr]) aus.push(nr); });
+    return { name: x.name, slug: x.slug, domain: kDomain($("#k-domain").value), impressum: imp, datenschutz: $("#k-ds").value.trim(),
+             fotos_aus: aus, fotos_eigen: eigen };
+  }
+  function kFehlt(e) {
+    var f = [];
+    if (!e.domain) f.push(["#k-domain", "Domain"]);
+    [["firma", "Name oder Firma"], ["strasse", "Straße"], ["plz_ort", "PLZ und Ort"], ["telefon", "Telefon"], ["email", "E-Mail"]].forEach(function (z) {
+      if (!e.impressum[z[0]]) f.push(['#kundem [data-imp="' + z[0] + '"]', z[1]]);
+    });
+    if (e.impressum.email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e.impressum.email)) f.push(['#kundem [data-imp="email"]', "gültige E-Mail"]);
+    if (e.datenschutz.length < 200) f.push(["#k-ds", "Datenschutzerklärung"]);
+    return f;
+  }
+  function kGoogleOffen() { return KUNDE.fotos.filter(function (u, i) { return !KUNDE.eigen[i + 1] && !KUNDE.aus[i + 1]; }).length; }
+  function kLage() {
+    var x = KUNDE.x, s = kStand(x.slug), box = $("#kundem-lage"), st = $("#kundem-stand");
+    st.className = "k-stand" + (s ? " st-" + s.stand : ""); st.textContent = s ? (s.stand === "baut" && s.art === "live" ? "Wird live geschaltet" : K_STAND[s.stand] || s.stand) : "Neuer Kunde";
+    var tb = s && s.tischbuch, vor = s && s.vorschau, dom = s && s.domain;
+    var knoepfe = (s && s.stand === "live" ? '<a class="btn" href="https://www.' + esc(dom) + '/" target="_blank" rel="noopener">' + EXTERN + "Website öffnen</a>" : vor ? '<a class="btn" href="' + esc(vor) + '" target="_blank" rel="noopener">' + EXTERN + "Vorschau ansehen</a>" : "") +
+      (tb ? '<button class="btn" type="button" id="k-tb-senden">' + SENDEN + 'Tischbuch-Link ans Restaurant</button><a class="btn" href="' + esc(tb) + '" target="_blank" rel="noopener">' + EXTERN + "Tischbuch öffnen</a>" : "");
+    var html = "";
+    if (!s) html = '<div class="k-box"><p><b>So geht es:</b> Domain und Impressum eintragen (Adresse und Telefon stehen schon drin), Google-Fotos durch Fotos des Restaurants ersetzen oder ausblenden, dann Vorschau bauen. Live schalten geht danach mit einem Tipp.</p></div>';
+    else if (s.stand === "baut") html = '<div class="k-box warn"><p>' + (s.art === "live" ? "Wird gebaut und live geschaltet." : "Die Vorschau wird gebaut.") + " Das dauert ein paar Minuten, du bekommst eine Benachrichtigung.</p></div>";
+    else if (s.stand === "vorschau") html = '<div class="k-box gut"><p>Die Vorschau ist fertig. Schau sie dir an; wenn alles passt: live schalten.</p><div class="k-reihe">' + knoepfe + "</div></div>";
+    else if (s.stand === "wartet") html = '<div class="k-box warn"><p><b>Letzter Schritt bei INWX:</b> Domain <b>' + esc(dom) + "</b> öffnen → Nameserver → eigene Nameserver eintragen (antippen zum Kopieren):</p>" +
+      '<div class="k-ns">' + (s.nameserver || []).map(function (n) { return '<button type="button" data-ns="' + esc(n) + '">' + esc(n) + "<small>Kopieren</small></button>"; }).join("") + "</div>" +
+      "<p>Danach dauert es meist ein paar Stunden. Du bekommst eine Benachrichtigung, sobald www." + esc(dom) + " live ist.</p>" +
+      "<p>" + ((s.mx || []).length ? "E-Mail des Restaurants läuft weiter (übernommen: " + esc(s.mx.join(", ")) + ")." : "Unter dieser Domain gab es keine E-Mail-Einträge.") + "</p>" +
+      '<div class="k-reihe">' + knoepfe + "</div></div>";
+    else if (s.stand === "live") html = '<div class="k-box gut"><p><b>Live unter www.' + esc(dom) + "</b>" + (s.live_seit ? " seit " + esc(briefDatum(String(s.live_seit).slice(0, 10))) : "") + ". Reservierungen landen im Tischbuch des Restaurants.</p><div class=\"k-reihe\">" + knoepfe + "</div></div>";
+    else html = '<div class="k-box fehler"><p>' + esc(s.fehler || "Hat nicht geklappt.") + "</p><p>Angaben prüfen und nochmal bauen.</p>" + (knoepfe ? '<div class="k-reihe">' + knoepfe + "</div>" : "") + "</div>";
+    box.innerHTML = html;
+    var live = s && (s.stand === "live" || s.stand === "wartet"), bautGerade = s && s.stand === "baut";
+    $("#k-vorschau").textContent = s && s.vorschau ? "Neu bauen" : "Vorschau bauen";
+    $("#k-vorschau").hidden = !!live; $("#k-vorschau").disabled = !!bautGerade; $("#kundem .k-fuss .modal-acts").classList.toggle("ein", !!live);
+    $("#k-live").textContent = KUNDE.liveFrage ? "Wirklich live schalten?" : live ? "Neu veröffentlichen" : "Live schalten";
+    $("#k-live").disabled = !!bautGerade;
+  }
+  function kFotos() {
+    var box = $("#k-fotos"), n = KUNDE.fotos.length, offen = kGoogleOffen();
+    $("#k-fotos-hilfe").textContent = !n ? "Die Seite nutzt keine Fotos von Google Maps." :
+      offen ? n + (n === 1 ? " Foto stammt" : " Fotos stammen") + " von Google Maps und dürfen nicht auf die echte Website. Fotos vom Restaurant (gern per WhatsApp schicken lassen) hier hochladen oder das Foto ausblenden. Noch offen: " + offen + "."
+           : "Alle Google-Fotos sind ersetzt oder ausgeblendet.";
+    box.innerHTML = KUNDE.fotos.map(function (u, i) {
+      var nr = i + 1, art = KUNDE.eigen[nr] ? "eigenes" : KUNDE.aus[nr] ? "aus" : "google";
+      var src = KUNDE.eigen[nr] ? (KUNDE.bilder[nr] || "") : u;
+      return '<div class="k-foto ' + art + '" data-nr="' + nr + '">' + (src ? '<img class="bild" src="' + esc(src) + '" alt="Foto ' + nr + '" loading="lazy" referrerpolicy="no-referrer">' : '<span class="bild"></span>') +
+        '<span class="marke">' + (art === "eigenes" ? "Eigenes Foto" : art === "aus" ? "Ausgeblendet" : "Google") + "</span>" +
+        '<div class="wahl"><label>' + (art === "eigenes" ? "Anderes" : "Ersetzen") + '<input type="file" accept="image/*" data-foto-datei="' + nr + '" aria-label="Foto ' + nr + ' ersetzen"></label>' +
+        '<button type="button" data-foto-aus="' + nr + '">' + (art === "aus" ? "Einblenden" : art === "eigenes" ? "Google" : "Ausblenden") + "</button></div></div>";
+    }).join("");
+    KUNDE.fotos.forEach(function (u, i) {  // schon hochgeladene eigene Fotos aus dem Repository zeigen
+      var nr = i + 1;
+      if (KUNDE.eigen[nr] && !KUNDE.bilder[nr] && KUNDE.x) apiRaw("data/kunden/fotos/" + KUNDE.x.slug + "/" + nr + ".jpg").then(function (blob) {
+        KUNDE.bilder[nr] = URL.createObjectURL(blob); var img = $('#k-fotos [data-nr="' + nr + '"] .bild'); if (img && img.tagName === "IMG") img.src = KUNDE.bilder[nr]; else kFotos();
+      }).catch(function () {});
+    });
+  }
+  function kBase64(buf) { var b = new Uint8Array(buf), s = ""; for (var i = 0; i < b.length; i += 0x8000) s += String.fromCharCode.apply(null, b.subarray(i, i + 0x8000)); return btoa(s); }
+  function kFotoHochladen(nr, datei) {
+    var x = KUNDE.x, karte = $('#k-fotos [data-nr="' + nr + '"]'); if (!x || !ctl()) return;
+    if (karte) karte.classList.add("laedt");
+    var pfad = "data/kunden/fotos/" + x.slug + "/" + nr + ".jpg", blobFertig;
+    createImageBitmap(datei).then(function (bmp) {
+      var f = Math.min(1, 2000 / Math.max(bmp.width, 1)), c = document.createElement("canvas");
+      c.width = Math.round(bmp.width * f); c.height = Math.round(bmp.height * f); c.getContext("2d").drawImage(bmp, 0, 0, c.width, c.height);
+      return new Promise(function (ok) { c.toBlob(ok, "image/jpeg", .86); });
+    }).then(function (blob) { blobFertig = blob; return blob.arrayBuffer(); }).then(function (buf) {
+      return api("/contents/" + pfad, { allow404: true }).then(function (f) {
+        return api("/contents/" + pfad, { method: "PUT", body: { message: "Cockpit: Foto " + nr + " für " + x.name, content: kBase64(buf), sha: (f && f.sha) || undefined } });
+      });
+    }).then(function () {
+      KUNDE.eigen[nr] = true; delete KUNDE.aus[nr];
+      if (KUNDE.bilder[nr]) URL.revokeObjectURL(KUNDE.bilder[nr]);
+      KUNDE.bilder[nr] = URL.createObjectURL(blobFertig); kFotos(); kPruefen(); Sound.play("pick");
+    }).catch(function (err) { if (karte) karte.classList.remove("laedt"); Sound.play("error"); toast("Foto nicht hochgeladen (" + err.message + ")."); });
+  }
+  function kPruefen(markieren) {
+    var e = kFormular(), f = kFehlt(e), offen = kGoogleOffen(), hinweis = $("#k-fehlt");
+    document.querySelectorAll("#kundem [aria-invalid]").forEach(function (el) { el.removeAttribute("aria-invalid"); });
+    if (markieren) f.forEach(function (z) { var el = document.querySelector(z[0]); if (el) el.setAttribute("aria-invalid", "true"); });
+    var teile = [];
+    if (f.length) teile.push("Es fehlt noch: " + f.map(function (z) { return z[1]; }).join(", ") + ".");
+    if (offen) teile.push("Zum Live schalten: " + offen + (offen === 1 ? " Google-Foto" : " Google-Fotos") + " ersetzen oder ausblenden.");
+    hinweis.hidden = !(markieren && teile.length); hinweis.textContent = teile.join(" ");
+    return { e: e, f: f, offen: offen };
+  }
+  function kundeOeffnen(x) {
+    if (!x) return;
+    KUNDE.x = x; KUNDE.zurueck = document.activeElement; KUNDE.liveFrage = false;
+    var alt = kEingabe(x.slug) || {}, imp = alt.impressum || {};
+    KUNDE.aus = {}; (alt.fotos_aus || []).forEach(function (n) { KUNDE.aus[n] = true; });
+    KUNDE.eigen = {}; (alt.fotos_eigen || []).forEach(function (n) { KUNDE.eigen[n] = true; });
+    Object.keys(KUNDE.bilder).forEach(function (k) { URL.revokeObjectURL(KUNDE.bilder[k]); }); KUNDE.bilder = {};
+    KUNDE.fotos = [];
+    $("#kundem-name").textContent = x.name;
+    $("#k-domain").value = alt.domain || (kStand(x.slug) || {}).domain || kDomainVorschlag(x.name);
+    var vor = { firma: x.name, telefon: (x.telefon && x.telefon.text) || "" };
+    document.querySelectorAll("#kundem [data-imp]").forEach(function (f) { f.value = imp[f.dataset.imp] != null ? imp[f.dataset.imp] : vor[f.dataset.imp] || ""; });
+    $("#k-ds").value = alt.datenschutz || "";
+    $("#k-fotos").innerHTML = '<span class="ai-wait"><i></i>Fotos der Demo werden geladen …</span>'; $("#k-fotos-hilfe").textContent = "";
+    kLage(); kPruefen(false);
+    $("#kundem").hidden = false; Sound.play("open");
+    setTimeout(function () { $("#kundem-zu").focus({ preventScroll: true }); $("#kundem .kunde-card").scrollTop = 0; }, 30);
+    kDemoLesen(x).then(function (d) {
+      if (KUNDE.x !== x) return;
+      KUNDE.fotos = d.fotos;
+      var f1 = $('#kundem [data-imp="strasse"]'), f2 = $('#kundem [data-imp="plz_ort"]');
+      if (!f1.value && d.adresse.strasse) f1.value = d.adresse.strasse;
+      if (!f2.value && d.adresse.plz_ort) f2.value = d.adresse.plz_ort;
+      if (!$("#k-ds").value) $("#k-ds").value = kDsVorlage(d);
+      kFotos(); kPruefen(false);
+    });
+  }
+  function kundeSchliessen(still) {
+    $("#kundem").hidden = true; KUNDE.x = null; if (!still) Sound.play("close");
+    if (KUNDE.zurueck && KUNDE.zurueck.focus) try { KUNDE.zurueck.focus({ preventScroll: true }); } catch (e) {}
+  }
+  function kSpeichern(art) {
+    var x = KUNDE.x; if (!x || !ctl()) return;
+    var p = kPruefen(true);
+    if (p.f.length || (art === "live" && p.offen)) { Sound.play("deny"); $("#k-fehlt").scrollIntoView({ block: "nearest" }); return; }
+    var s = kStand(x.slug);
+    if (art === "live" && !KUNDE.liveFrage && !(s && (s.stand === "live" || s.stand === "wartet"))) { KUNDE.liveFrage = true; kLage(); Sound.play("pick"); return; }
+    var e = p.e; e.auftrag = { art: art, zeit: new Date().toISOString() };
+    var pfad = "data/kunden/" + x.slug + ".json", knopf = $(art === "live" ? "#k-live" : "#k-vorschau");
+    knopf.disabled = true;
+    function versuch(nochmal) {
+      return api("/contents/" + pfad, { allow404: true }).then(function (f) {
+        return writeFile(pfad, e, "Cockpit: " + (art === "live" ? "live schalten" : "Vorschau bauen") + " · " + x.name, f && f.sha);
+      }).catch(function (err) { if (nochmal && (err.status === 409 || err.status === 422)) return versuch(false); throw err; });
+    }
+    versuch(true).then(function () {
+      KUNDE.gespeichert[x.slug] = e; KUNDE.auftrag[x.slug] = e.auftrag;
+      Sound.play("data"); kundeSchliessen(true); renderNachfass(DATA);
+      toast(art === "live" ? x.name + " wird live geschaltet. Danach zeigt das Cockpit die zwei Nameserver für INWX." : "Vorschau für " + x.name + " wird gebaut (ein paar Minuten). Du bekommst eine Benachrichtigung.");
+    }).catch(function (err) { knopf.disabled = false; Sound.play("error"); toast("Nicht gespeichert (" + err.message + ")."); });
+  }
+  function kTischbuchSenden() {
+    var x = KUNDE.x, s = x && kStand(x.slug); if (!s || !s.tischbuch) return;
+    var st = DATA.einstellungen || {};
+    var text = "Guten Tag, hier ist Ihr Tischbuch für " + x.name + ": " + s.tischbuch + "\nEinmal öffnen, „Zum Startbildschirm hinzufügen“ und Benachrichtigungen einschalten. Neue Tischanfragen bestätigen Sie dann mit einem Tipp. Viele Grüße, " + (st.absender || "Daniel") + (st.firma ? ", " + st.firma : "");
+    if (navigator.share && matchMedia("(pointer: coarse)").matches) { navigator.share({ text: text }).catch(function () {}); return; }
+    if (navigator.clipboard) navigator.clipboard.writeText(text).then(function () { Sound.play("pick"); toast("Nachricht mit dem Tischbuch-Link kopiert. Einfach in WhatsApp einfügen."); }).catch(function () { toast(s.tischbuch); });
+  }
+  $("#kundem").addEventListener("click", function (e) {
+    if (e.target === this || e.target.closest("[data-x]")) { kundeSchliessen(); return; }
+    if (e.target.closest("#k-vorschau")) { kSpeichern("vorschau"); return; }
+    if (e.target.closest("#k-live")) { kSpeichern("live"); return; }
+    if (e.target.closest("#k-tb-senden")) { kTischbuchSenden(); return; }
+    var ns = e.target.closest("[data-ns]");
+    if (ns && navigator.clipboard) { navigator.clipboard.writeText(ns.dataset.ns).then(function () { Sound.play("pick"); toast(ns.dataset.ns + " kopiert."); }).catch(function () {}); return; }
+    var aus = e.target.closest("[data-foto-aus]");
+    if (aus) { var nr = +aus.dataset.fotoAus; if (KUNDE.eigen[nr]) delete KUNDE.eigen[nr]; else if (KUNDE.aus[nr]) delete KUNDE.aus[nr]; else KUNDE.aus[nr] = true; KUNDE.liveFrage = false; kFotos(); kLage(); kPruefen(!$("#k-fehlt").hidden); Sound.play("tick"); }
+  });
+  $("#kundem").addEventListener("change", function (e) {
+    var f = e.target.closest("[data-foto-datei]"); if (f && f.files && f.files[0]) kFotoHochladen(+f.dataset.fotoDatei, f.files[0]);
+  });
+  $("#kundem").addEventListener("input", function () { if (KUNDE.liveFrage) { KUNDE.liveFrage = false; kLage(); } if (!$("#k-fehlt").hidden) kPruefen(true); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !$("#kundem").hidden) kundeSchliessen(); });
+
   function deleteDemo(x) {
     var prev = DEC[x.place_id] ? Object.assign({}, DEC[x.place_id]) : null;
     var entry = { aktion: "nie", name: x.name, kueche: x.kueche, ort: x.ort, punkte: x.punkte, zeit: new Date().toISOString(), demo_loeschen: x.slug || true };
