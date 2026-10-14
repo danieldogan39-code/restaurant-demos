@@ -322,24 +322,36 @@ button, input { font: inherit; color: inherit; }
 .app[hidden] { display: none; }
 .top { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
 .title { display: flex; align-items: center; gap: .9rem; }
-/* Menü „Mehr“ (nur Handy): Musik, Töne, Sprachassistent, Berichte, Einstellungen */
-.mehr-btn, .mehr-menu { display: none; }
+/* Einstellungen (Computer) bzw. „Mehr“ (Handy): Musik, Töne, Sprachassistent, Benachrichtigungen, App, Berichte.
+   Die Schalter-Knöpfe bleiben unsichtbar im Code: sie halten den Zustand, das Menü schaltet sie. */
+.mehr-btn, .mehr-menu, .schalter-gruppe, #settings { display: none !important; }
+.mehr-menu:not([hidden]) { display: block !important; }
+.einst-wrap { position: relative; }
+#einst[aria-expanded="true"] { background: rgba(255,87,87,.14); border-color: rgba(255,87,87,.55); }
+#einst svg { transition: transform .45s cubic-bezier(.23,1,.32,1); }
+#einst[aria-expanded="true"] svg { transform: rotate(60deg); }
+.einst-punkte { display: inline-flex; gap: 3px; margin-left: .1rem; }
+.einst-punkte i { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.22); }
+.einst-punkte i.an { background: #FF5757; box-shadow: 0 0 6px rgba(255,87,87,.6); }
+.mehr-menu:not([hidden]) { position: absolute; right: 0; top: calc(100% + .55rem); z-index: 9500; width: min(18.5rem, calc(100vw - 2rem)); padding: .4rem; border-radius: 16px; border: 1px solid var(--edge); background: var(--panel-solid); box-shadow: 0 26px 60px -20px rgba(0,0,0,.95); transform-origin: top right; animation: mehrAuf .22s var(--ease); }
+@keyframes mehrAuf { from { opacity: 0; transform: translateY(-6px) scale(.97); } to { opacity: 1; transform: none; } }
+.mehr-menu .zeile { display: flex; align-items: center; gap: .7rem; width: 100%; padding: .72rem .7rem; border: 0; border-radius: 10px; background: none; color: var(--ink); font: inherit; font-size: .93rem; font-weight: 500; text-align: left; text-decoration: none; cursor: pointer; }
+.mehr-menu .zeile:active { background: rgba(255,255,255,.05); }
+@media (hover: hover) and (pointer: fine) { .mehr-menu .zeile:hover { background: rgba(255,255,255,.05); } }
+.mehr-menu .zeile svg { width: 18px; height: 18px; flex: none; color: var(--ink2); }
+.mehr-menu .schalter { position: relative; margin-left: auto; width: 2.5rem; height: 1.45rem; flex: none; border-radius: 999px; background: rgba(255,255,255,.14); transition: background .25s; }
+.mehr-menu .schalter::after { content: ""; position: absolute; top: .18rem; left: .18rem; width: 1.09rem; height: 1.09rem; border-radius: 50%; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,.4); transition: transform .25s var(--ease); }
+.mehr-menu .zeile[aria-checked="true"] .schalter { background: #FF5757; }
+.mehr-menu .zeile[aria-checked="true"] .schalter::after { transform: translateX(1.05rem); }
+.mehr-menu .neben { margin-left: auto; color: var(--ink2); font-size: .78rem; font-weight: 400; font-variant-numeric: tabular-nums; }
+.mehr-menu hr { border: 0; border-top: 1px solid var(--edge); margin: .3rem .4rem; }
+.einst-wrap #mehr-berichte { display: none; }  /* am Computer gibt es „Berichte“ schon oben */
+@media (prefers-reduced-motion: reduce) { .mehr-menu:not([hidden]) { animation: none; } #einst svg { transition: none; } }
 @media (max-width: 640px) {
   .title { position: relative; width: 100%; padding-right: 3.2rem; }
-  .mehr-btn { display: grid; place-items: center; position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 2.7rem; height: 2.7rem; border-radius: 12px; border: 1px solid var(--edge); background: rgba(255,255,255,.04); color: var(--ink); cursor: pointer; transition: background .25s, border-color .25s; }
+  .mehr-btn { display: grid !important; place-items: center; position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 2.7rem; height: 2.7rem; border-radius: 12px; border: 1px solid var(--edge); background: rgba(255,255,255,.04); color: var(--ink); cursor: pointer; transition: background .25s, border-color .25s; }
   .mehr-btn[aria-expanded="true"] { background: rgba(255,87,87,.14); border-color: rgba(255,87,87,.55); }
-  #mus, #snd, #stimme, #glocke, #reports, #settings, .schalter-gruppe { display: none !important; }
-  .mehr-menu:not([hidden]) { display: block; position: absolute; right: 0; top: calc(100% + .55rem); z-index: 9500; width: min(17.5rem, calc(100vw - 2rem)); padding: .4rem; border-radius: 16px; border: 1px solid var(--edge); background: var(--panel-solid); box-shadow: 0 26px 60px -20px rgba(0,0,0,.95); transform-origin: top right; animation: mehrAuf .22s var(--ease); }
-  @keyframes mehrAuf { from { opacity: 0; transform: translateY(-6px) scale(.97); } to { opacity: 1; transform: none; } }
-  .mehr-menu .zeile { display: flex; align-items: center; gap: .7rem; width: 100%; padding: .72rem .7rem; border: 0; border-radius: 10px; background: none; color: var(--ink); font: inherit; font-size: .93rem; font-weight: 500; text-align: left; text-decoration: none; cursor: pointer; }
-  .mehr-menu .zeile:active, .mehr-menu .zeile:hover { background: rgba(255,255,255,.05); }
-  .mehr-menu .zeile svg { width: 18px; height: 18px; flex: none; color: var(--ink2); }
-  .mehr-menu .schalter { position: relative; margin-left: auto; width: 2.5rem; height: 1.45rem; flex: none; border-radius: 999px; background: rgba(255,255,255,.14); transition: background .25s; }
-  .mehr-menu .schalter::after { content: ""; position: absolute; top: .18rem; left: .18rem; width: 1.09rem; height: 1.09rem; border-radius: 50%; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,.4); transition: transform .25s var(--ease); }
-  .mehr-menu .zeile[aria-checked="true"] .schalter { background: #FF5757; }
-  .mehr-menu .zeile[aria-checked="true"] .schalter::after { transform: translateX(1.05rem); }
-  .mehr-menu .neben { margin-left: auto; color: var(--ink2); font-size: .78rem; font-weight: 400; font-variant-numeric: tabular-nums; }
-  .mehr-menu hr { border: 0; border-top: 1px solid var(--edge); margin: .3rem .4rem; }
+  #reports, .einst-wrap { display: none !important; }
 }
 .title .ml-logo { width: 3rem; height: 3rem; display: block; filter: drop-shadow(0 0 14px rgba(255,87,87,.35)); }
 .title small b { color: var(--coral); font-weight: 600; }
@@ -901,7 +913,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     <div class="title"><img class="ml-logo" src="https://medialyte.de/wp-content/uploads/2025/07/Kopie-von-medialyte1.svg" alt="Medialyte">
       <div><h1>Cockpit</h1><small><b>Medialyte</b> · Website-Agent · <span id="stamp">Stand: –</span></small></div>
       <button class="mehr-btn" id="mehr" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="mehr-menu" aria-label="Mehr: Musik, Töne, Sprachassistent, Berichte, Einstellungen"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="19" cy="12" r="1.9"/></svg></button>
-      <div class="mehr-menu" id="mehr-menu" role="menu" aria-label="Mehr" hidden>
+      <div class="mehr-menu" id="mehr-menu" role="menu" aria-label="Einstellungen" hidden>
         <button class="zeile" type="button" role="menuitemcheckbox" id="mehr-mus" data-schalter="mus" aria-checked="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>Hintergrundmusik<span class="schalter" aria-hidden="true"></span></button>
         <button class="zeile" type="button" role="menuitemcheckbox" id="mehr-snd" data-schalter="snd" aria-checked="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>Töne<span class="schalter" aria-hidden="true"></span></button>
         <button class="zeile" type="button" role="menuitemcheckbox" id="mehr-stimme" data-schalter="stimme" aria-checked="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>Sprachassistent &amp; Intro<span class="schalter" aria-hidden="true"></span></button>
@@ -910,7 +922,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
         <a class="zeile" role="menuitem" id="mehr-apk" download="medialyte-cockpit.apk" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>Android-App laden<small class="neben" id="mehr-apk-info"></small></a>
         <hr>
         <a class="zeile" role="menuitem" id="mehr-berichte" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>Berichte</a>
-        <a class="zeile" role="menuitem" id="mehr-einst" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Einstellungen</a>
+        <a class="zeile" role="menuitem" id="mehr-einst" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Weitere Einstellungen</a>
       </div></div>
     <div class="top-actions">
       <span class="chip" id="health"><span class="led"></span><span id="health-text">Agent bereit</span></span>
@@ -918,7 +930,8 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       <button class="btn btn-hot" id="run-now" type="button"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><span id="run-label">Lauf starten</span></button>
       <button class="btn" id="run-stop" type="button" hidden><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>Abbrechen</button>
       <a class="btn" id="reports" target="_blank" rel="noopener">Berichte</a>
-      <a class="btn" id="settings" target="_blank" rel="noopener">Einstellungen</a>
+      <a id="settings" target="_blank" rel="noopener" hidden></a>
+      <div class="einst-wrap"><button class="btn" id="einst" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="mehr-menu"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Einstellungen<span class="einst-punkte" id="einst-punkte" aria-hidden="true"></span></button></div>
       <button class="btn" id="cost-btn" type="button" aria-expanded="false" aria-controls="cost"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Kosten</button>
       <div class="schalter-gruppe" role="group" aria-label="Musik, Töne, Stimme, Benachrichtigungen"><button class="btn icon" id="mus" type="button" aria-pressed="true" title="Hintergrundmusik an/aus" aria-label="Hintergrundmusik an/aus"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></button>
       <button class="btn icon" id="snd" type="button" aria-pressed="true" title="Töne an/aus" aria-label="Töne an/aus"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H3v6h3l5 4z"/><path class="wave" d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg></button>
@@ -1129,7 +1142,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "a1eba7dd6c";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "a17a7050bb";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -1448,29 +1461,48 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     }).catch(function () { toast("Auf diesem Gerät gespeichert. Für deine anderen Geräte ließ es sich gerade nicht sichern."); });
   });
 
-  /* Handy: Menü „Mehr“ schaltet dieselben Knöpfe wie oben (eine Quelle für den Zustand) */
+  /* Einstellungen (Computer) bzw. „Mehr“ (Handy): ein Menü für Musik, Töne, Sprachassistent, Benachrichtigungen und die App.
+     Es schaltet die unsichtbaren Knöpfe #mus, #snd, #stimme, #glocke (eine Quelle für den Zustand). */
   (function () {
-    var btn = $("#mehr"), menu = $("#mehr-menu");
+    var menu = $("#mehr-menu"), knoepfe = [$("#mehr"), $("#einst")], offen = null;
+    var PAARE = [["mus", "mehr-mus"], ["snd", "mehr-snd"], ["stimme", "mehr-stimme"], ["glocke", "mehr-glocke"]];
     function sync() {
-      [["mus", "mehr-mus"], ["snd", "mehr-snd"], ["stimme", "mehr-stimme"], ["glocke", "mehr-glocke"]].forEach(function (z) {
-        $("#" + z[1]).setAttribute("aria-checked", $("#" + z[0]).getAttribute("aria-pressed") === "true" ? "true" : "false");
+      var punkte = "";
+      PAARE.forEach(function (z) {
+        var an = $("#" + z[0]).getAttribute("aria-pressed") === "true";
+        $("#" + z[1]).setAttribute("aria-checked", an ? "true" : "false");
+        punkte += '<i class="' + (an ? "an" : "") + '"></i>';
       });
+      $("#einst-punkte").innerHTML = punkte;  // auf einen Blick: was ist an
+      $("#einst").title = PAARE.map(function (z) { return ($("#" + z[1]).textContent || "").trim() + ": " + ($("#" + z[0]).getAttribute("aria-pressed") === "true" ? "an" : "aus"); }).join("\n");
       if ($("#reports").href) $("#mehr-berichte").href = $("#reports").href;
       if ($("#settings").href) $("#mehr-einst").href = $("#settings").href;
     }
-    function auf(an) {
-      menu.hidden = !an; btn.setAttribute("aria-expanded", an ? "true" : "false");
-      if (an) { sync(); Sound.play("open"); }
+    function auf(an, knopf) {
+      if (an) {
+        offen = knopf;
+        knopf.parentNode.appendChild(menu);  // Menü hängt am Knopf, der es geöffnet hat
+        sync(); Sound.play("open");
+      }
+      menu.hidden = !an;
+      knoepfe.forEach(function (k) { k.setAttribute("aria-expanded", an && k === offen ? "true" : "false"); });
+      if (!an) offen = null;
     }
-    btn.addEventListener("click", function (e) { e.stopPropagation(); auf(menu.hidden); });
+    knoepfe.forEach(function (k) {
+      k.addEventListener("click", function (e) { e.stopPropagation(); if (!menu.hidden && offen === k) auf(false); else auf(true, k); });
+    });
     menu.addEventListener("click", function (e) {
       var z = e.target.closest("[data-schalter]");
-      if (z) { e.stopPropagation(); $("#" + z.dataset.schalter).click(); setTimeout(sync, 60); return; }
+      if (z) { e.stopPropagation(); $("#" + z.dataset.schalter).click(); setTimeout(sync, 60); setTimeout(sync, 1500); return; }
       if (e.target.closest("a")) auf(false);
     });
-    // nur echte Tipps außerhalb schließen (das weitergereichte Umschalten der Knöpfe oben zählt nicht)
-    document.addEventListener("click", function (e) { if (e.isTrusted && !menu.hidden && !e.target.closest("#mehr-menu, #mehr")) auf(false); });
-    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !menu.hidden) { auf(false); btn.focus(); } });
+    // nur echte Klicks außerhalb schließen (das weitergereichte Umschalten der Knöpfe zählt nicht)
+    document.addEventListener("click", function (e) { if (e.isTrusted && !menu.hidden && !e.target.closest("#mehr-menu, #mehr, #einst")) auf(false); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !menu.hidden) { var k = offen; auf(false); if (k) k.focus(); } });
+    setTimeout(sync, 0);
+    ["mus", "snd", "stimme", "glocke"].forEach(function (id) {  // Punkte am Knopf aktuell halten
+      new MutationObserver(sync).observe($("#" + id), { attributes: true, attributeFilter: ["aria-pressed"] });
+    });
   })();
 
   /* Cockpit als App (Android: Chrome installiert es als echte App) und Benachrichtigungen per Web-Push.
