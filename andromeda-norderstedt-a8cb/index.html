@@ -1,0 +1,1665 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Andromeda · Griechisches Restaurant mit Garten · Jägerlauf 1, Norderstedt</title>
+<meta name="description" content="Restaurant Andromeda in Norderstedt-Glashütte: griechische Küche mit Fisch und Fleisch, drinnen im Backsteinhaus oder draußen im großen Garten. Mo–Fr ab 16 Uhr, Sa ab 15 Uhr, So bis 21:30 Uhr. Tel. 040 32042202.">
+<meta name="theme-color" content="#1B2A44">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{
+--blau:#1B2A44;--blau2:#22344F;--nacht:#13203A;--tief:#0F1A2C;--leinen:#F3EDE1;--karte:#FBF7EF;--amber:#F2B544;--stein:#9C4A32;
+--text2:rgb(243 237 225/.84);--linie:rgb(243 237 225/.18);
+--rand:clamp(1rem,5vw,4rem);--max:1320px;--kopf:72px;
+--ease-out:cubic-bezier(.23,1,.32,1);--ease-in-out:cubic-bezier(.77,0,.175,1);--ease-drawer:cubic-bezier(.32,.72,0,1);
+--serif:"Gloock",Georgia,serif;--sans:"Figtree",system-ui,sans-serif;--schrift:"Corinthia",cursive;
+--giebel:polygon(0 9%,50% 0,100% 9%,100% 100%,0 100%);
+--lat-clip:polygon(50% 0,70% 13%,82% 13%,100% 90%,100% 100%,0 100%,0 90%,18% 13%,30% 13%);
+--lat-u:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 34'><path d='M12 1l8 7H4zM3 26.5h18v3H3zM10.5 29.5h3V34h-3z'/><path d='M6 9.5h12l1.6 16H4.4z' fill='none' stroke='black' stroke-width='1.8'/></svg>");
+--lat-f:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 34'><path d='M7.6 11.2h8.8l1.4 12.6H6.2z'/></svg>");
+--zaun-m:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 42 24'><path d='M0 0h4v24H0zM0 4h42v2.6H0zM0 18h42v2.6H0z'/><path d='M3 6l39 13M3 19L42 6' stroke='black' stroke-width='2.6'/></svg>");
+--zaun-w:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 42 24'><path fill='%2308101E' d='M0 0h4v24H0zM0 4h42v2.6H0zM0 18h42v2.6H0z'/><path d='M3 6l39 13M3 19L42 6' stroke='%2308101E' stroke-width='2.6'/></svg>")
+}
+:root:has([data-status][data-offen="ja"]){--an:1}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--kopf) + 16px)}
+body{margin:0;background:var(--blau);color:var(--leinen);font:400 1.0625rem/1.6 var(--sans);overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;line-height:1.06;letter-spacing:-.015em;text-wrap:balance;hyphens:manual}
+p{margin:0;text-wrap:pretty}
+a{color:inherit}
+figure{margin:0}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:4px}
+.akzent{font-family:var(--schrift);font-style:normal;font-size:1.5em;line-height:.8;letter-spacing:0;color:var(--amber)}
+.marke{font-family:var(--serif);letter-spacing:-.02em;white-space:nowrap;line-height:1;text-decoration:none}
+.marke-a{position:relative;display:inline-block}
+.marke-a .lat{position:absolute;left:50%;bottom:.6em;width:.24em;height:.34em;transform:translateX(-50%)}
+.lat{position:relative;display:inline-block;width:.72em;height:1.02em;flex:0 0 auto}
+.lat::before,.lat::after,.wochen-band .woche-tag::before,.wochen-band .woche-tag::after,.res-punkt::before,.res-punkt::after{content:"";position:absolute;background:currentColor;-webkit-mask:var(--lat-u) center/contain no-repeat;mask:var(--lat-u) center/contain no-repeat}
+.lat::after,.wochen-band .woche-tag::after,.res-punkt::after{-webkit-mask-image:var(--lat-f);mask-image:var(--lat-f);background:var(--amber);opacity:0;transition:opacity .22s var(--ease-out)}
+.lat::before,.lat::after{inset:0}
+.lat::after{opacity:calc(var(--an,0) * var(--fill,1))}
+.lat.an{--an:1}
+.knopf,.res-weiter,.res-nav [type=submit]{display:inline-flex;align-items:center;justify-content:center;gap:.5em;min-height:48px;padding:14px 28px;border-radius:999px;border:1.5px solid var(--amber);background:var(--amber);color:var(--blau);font:600 1rem/1.2 var(--sans);text-decoration:none;cursor:pointer;touch-action:manipulation;user-select:none;-webkit-tap-highlight-color:transparent;font-variant-numeric:tabular-nums;transition:transform .16s var(--ease-out),background-color .2s var(--ease-out),border-color .2s var(--ease-out)}
+.knopf.kontur{background:transparent;border-color:currentColor;color:var(--leinen)}
+.leise{display:inline-flex;align-items:center;gap:.4em;min-height:44px;padding:0 4px;font-weight:500;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.3em;touch-action:manipulation;user-select:none;-webkit-tap-highlight-color:transparent;transition:transform .16s var(--ease-out)}
+.pfeil{display:inline-block;transition:transform .2s var(--ease-out)}
+.knopf:active,.leise:active,.res-weiter:active,.res-zurueck:active,.res-nav [type=submit]:active,.leiste a:active,.spur-steuerung button:active{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){
+.knopf:hover,.res-weiter:hover,.res-nav [type=submit]:hover{background:#F6C565;border-color:#F6C565}
+.knopf.kontur:hover{background:rgb(243 237 225/.08);border-color:currentColor}
+.leise:hover .pfeil{transform:translateX(4px)}
+.kopf nav a:hover::after{transform:scaleX(1)}
+.res-option:hover .res-label{border-color:var(--blau);background:rgb(27 42 68/.05)}
+.liste li[data-vorschau]:hover{color:var(--amber)}
+}
+.foto-nachweis{color:inherit;font-size:max(.8125rem,12.5px);line-height:1.4;text-decoration:underline;text-underline-offset:2px}
+
+.kopf{position:sticky;top:0;z-index:50;height:var(--kopf);display:flex;align-items:center;gap:clamp(16px,3vw,40px);padding-inline:var(--rand);background:rgb(27 42 68/.97);border-bottom:1px solid var(--linie)}
+@supports ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){.kopf{-webkit-backdrop-filter:saturate(180%) blur(16px);backdrop-filter:saturate(180%) blur(16px)}}
+.logo{font-size:1.75rem;margin-right:auto;padding-top:6px;color:var(--leinen)}
+.kopf nav{display:flex;gap:28px}
+.kopf nav a{position:relative;padding:10px 0;font-weight:500;text-decoration:none}
+.kopf nav a::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .2s var(--ease-out)}
+.kopf .knopf{min-height:44px;padding:10px 22px;font-size:.95rem}
+
+.hero{position:relative;display:flex;flex-direction:column;min-height:calc(100svh - var(--kopf));background:var(--blau);overflow:clip}
+.hero-flaeche{position:absolute;left:0;top:0;bottom:0;width:calc((100% - min(100%,var(--max)))/2 + min(100%,var(--max))*.6);background:var(--blau2)}
+.hero-in{position:relative;flex:1;width:100%;max-width:var(--max);margin-inline:auto;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(56px,5vw,88px);align-items:center;padding:clamp(28px,4vw,56px) var(--rand)}
+.hero-bild,.duo{position:relative}
+.giebel{aspect-ratio:4/3;clip-path:var(--giebel);border-radius:0 0 20px 20px;overflow:hidden;background:var(--nacht)}
+.giebel img{width:100%;height:100%;object-fit:cover}
+.hero .giebel img{object-position:50% 60%}
+.giebel-fig figcaption{display:flex;flex-direction:column;gap:2px;margin-top:12px;font-size:.8125rem;line-height:1.45;color:var(--text2)}
+.hero-bild .giebel-fig figcaption{padding-right:clamp(150px,36%,240px)}
+.laterne-fig{position:absolute;bottom:0;right:-48px;width:clamp(150px,18vw,260px);display:flex;flex-direction:column;align-items:flex-end;gap:6px;text-align:right;line-height:1.35;color:var(--text2)}
+.laterne{width:100%;aspect-ratio:4/5;filter:drop-shadow(0 18px 30px rgba(0,0,0,.35))}
+.laterne img{width:100%;height:100%;object-fit:cover;clip-path:var(--lat-clip)}
+.hero-text{display:flex;flex-direction:column;align-items:flex-start;gap:20px;min-width:0}
+.status{display:inline-flex;align-items:center;gap:10px;font-size:.9375rem;font-weight:500;font-variant-numeric:tabular-nums}
+.status .lat{font-size:16px}
+.hero-marke{font-size:clamp(2.75rem,6.2vw,7rem);margin-top:6px}
+.hero-titel{font-size:clamp(1.5rem,3vw,3rem);line-height:1.14}
+.hero-titel>div{padding-block:.12em .2em;margin-block:-.12em -.2em}
+.hero-satz{max-width:46ch;font-size:1.125rem;color:var(--text2)}
+.hero-aktionen{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px}
+.magnet{display:inline-flex}
+.bew{display:inline-flex;flex-wrap:wrap;align-items:center;gap:4px 8px;padding-top:12px;border-top:1px solid var(--linie);font-size:.9375rem;text-decoration:none;font-variant-numeric:tabular-nums}
+.bew-stern{color:var(--amber)}
+.bew-zahl{font-weight:700}
+.bew-text{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+
+.zaun{position:relative;height:46px;color:var(--zaun,#0F1A2C)}
+.zaun::before{content:"";position:absolute;left:0;right:0;bottom:0;height:24px;background:currentColor;-webkit-mask:var(--zaun-m) repeat-x 0 0/42px 24px;mask:var(--zaun-m) repeat-x 0 0/42px 24px}
+.zaun .lat{position:absolute;bottom:18px;left:var(--x);width:16px;height:23px}
+
+.haus{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,80px);align-items:center;padding:clamp(72px,10vw,128px) var(--rand) 64px}
+.haus h2{font-size:clamp(2.4rem,4vw,3.75rem)}
+.haus-text>p{margin-top:24px;max-width:52ch;color:var(--text2)}
+.infoliste{margin:32px 0 0;border-top:1px solid var(--linie)}
+.infoliste div{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--linie)}
+.infoliste dt{color:rgb(243 237 225/.74)}
+.infoliste dd{margin:0;text-align:right;font-weight:500}
+.duo .giebel{aspect-ratio:1135/787}
+.duo .giebel-fig figcaption{padding-left:clamp(120px,24%,230px);align-items:flex-end;text-align:right}
+.laterne-fig.links{left:-28px;right:auto;align-items:flex-start;text-align:left;width:clamp(110px,15vw,200px)}
+
+.wochen-band{background:var(--nacht);padding:clamp(64px,8vw,96px) 0}
+.wb-kopf,.zeitleiste,.wochen-band [data-woche]{max-width:var(--max);margin-inline:auto;padding-inline:var(--rand)}
+.wb-kopf{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 32px}
+.wb-kopf h2{font-size:clamp(2rem,4vw,3.5rem)}
+.wochen-band [data-woche]{margin-top:44px}
+.wochen-band .woche{position:relative;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));background:var(--zaun-w) 0 44px/42px 24px repeat-x local}
+.wochen-band .woche-tag{position:relative;display:flex;flex-direction:column;gap:0;padding:84px 0 0;text-align:center;color:rgb(243 237 225/.9)}.wochen-band .woche-tag>*{background:#182742;padding:0 6px}.wochen-band .woche-tag>:first-child{padding-top:14px}.wochen-band .woche-tag>:last-child{padding-bottom:14px}
+.wochen-band .woche-tag::before,.wochen-band .woche-tag::after{left:50%;top:0;width:34px;height:48px;margin-left:-17px}
+.wochen-band .woche-tag[data-heute][data-offen="ja"]::after{opacity:1}
+.woche-name{font-family:var(--serif);font-size:1.25rem;line-height:1.2}
+.woche-zeit{font-size:.9375rem;font-variant-numeric:tabular-nums;color:var(--text2)}
+.wochen-band .woche-tag[data-heute] .woche-name{color:var(--amber)}
+.wochen-band .woche-tag[data-heute] .woche-zeit{color:var(--leinen);font-weight:600}
+.wochen-band .woche-tag[data-heute] .woche-zeit::after{content:"heute";display:block;font-size:.8125rem;font-weight:500;color:var(--amber)}
+.zeitleiste{margin-top:56px}
+.zl-kopf{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;margin-bottom:34px;font-size:.9375rem;font-variant-numeric:tabular-nums}
+.zl-spur{position:relative;height:10px;border-radius:5px;background:rgb(243 237 225/.12)}
+.zl-offen{position:absolute;top:0;bottom:0;left:var(--a,14.2857%);right:var(--e,0%);border-radius:5px;background:rgb(242 181 68/.42)}
+.ohne-start .zl-offen{background:linear-gradient(90deg,transparent,rgb(242 181 68/.42) 40%)}
+.zl-jetzt{display:none;position:absolute;top:-8px;bottom:-8px;left:var(--p,0);width:2px;margin-left:-1px;background:var(--amber)}
+.zl-jetzt b{position:absolute;bottom:calc(100% + 4px);left:50%;transform:translateX(-50%);font-size:.8125rem;font-weight:600;color:var(--amber);white-space:nowrap;font-variant-numeric:tabular-nums}
+.mit-jetzt .zl-jetzt{display:block}
+.zl-skala{list-style:none;display:flex;justify-content:space-between;margin:12px 0 0;padding:0;font-size:.8125rem;color:rgb(243 237 225/.78);font-variant-numeric:tabular-nums}
+.zl-skala li{width:0;display:flex;justify-content:center}
+
+.teller{background:var(--blau);padding:clamp(72px,9vw,120px) 0 clamp(24px,3vw,40px)}
+.teller-kopf{max-width:var(--max);margin:0 auto 40px;padding-inline:var(--rand);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:16px 48px;align-items:end}
+.teller-kopf h2{font-size:clamp(2.4rem,5vw,4.5rem)}
+.teller-kopf p{color:var(--text2);max-width:44ch}
+[data-spur]{display:flex;gap:clamp(16px,2vw,28px);padding-inline:var(--rand)}
+.tk{--b:clamp(240px,66vw,290px);flex:0 0 auto;width:var(--b)}
+.tk.breit{width:calc(var(--b) * 1.38)}
+.tk-bild{aspect-ratio:4/5;overflow:hidden;background:var(--nacht);border-radius:50% 50% 16px 16px/calc(var(--b) * .5) calc(var(--b) * .5) 16px 16px}
+.tk.breit .tk-bild{aspect-ratio:1.104}
+.tk-bild img{width:100%;height:100%;object-fit:cover}
+.tk figcaption{padding-top:16px;display:flex;flex-direction:column;gap:4px}
+.tk h3{font-size:1.5rem}
+.tk p{color:var(--text2);font-size:1rem;line-height:1.45}
+.tk .foto-nachweis{color:rgb(243 237 225/.78)}
+.teller .zaun{margin-top:36px}
+.spur-steuerung{display:flex;align-items:center;gap:12px;padding:20px var(--rand) 0;color:var(--leinen)}
+.spur-leiste{position:relative;flex:1;height:2px;overflow:hidden;border-radius:1px;background:rgb(243 237 225/.2)}
+.spur-leiste i{position:absolute;inset:0;background:var(--amber);transform-origin:left}
+.spur-steuerung button{width:44px;height:44px;border-radius:50%;border:1.5px solid rgb(243 237 225/.5);background:transparent;color:inherit;font-size:1.1rem;cursor:pointer;touch-action:manipulation;user-select:none;transition:transform .16s var(--ease-out)}
+.spur-zurueck:empty::before{content:"←"}
+.spur-weiter:empty::before{content:"→"}
+
+.liste{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:32px clamp(32px,5vw,80px);padding:clamp(48px,7vw,96px) var(--rand) clamp(72px,9vw,120px)}
+.liste-titel{font-size:clamp(2rem,3.6vw,3.25rem)}
+.liste-spalten{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 48px}
+.liste h3{font-family:var(--sans);font-size:.875rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-bottom:6px}
+.liste ul{list-style:none;margin:0;padding:0}
+.liste li{font-family:var(--serif);font-size:1.375rem;line-height:1.3;padding:12px 0;border-bottom:1px solid var(--linie);transition:color .2s var(--ease-out)}
+.liste-hinweis{grid-column:2;color:var(--text2)}
+.liste-hinweis a{font-weight:600;white-space:nowrap}
+.vorschau{position:fixed;left:0;top:0;z-index:40;width:180px;pointer-events:none;opacity:0;display:none;transition:opacity .2s var(--ease-out)}
+@media (hover:hover) and (pointer:fine){.vorschau{display:block}}
+.vorschau.an{opacity:1}
+.vs-in{aspect-ratio:4/5;clip-path:var(--lat-clip);transform:scale(.95);transition:transform .25s var(--ease-out)}
+.vorschau.an .vs-in{transform:scale(1)}
+.vs-in img{width:100%;height:100%;object-fit:cover}
+
+.haltung{background:var(--nacht);padding:clamp(88px,12vw,160px) var(--rand)}
+.haltung-in{max-width:var(--max);margin:0 auto}
+.haltung-text{margin-left:8.33%;max-width:75%;font-family:var(--serif);font-size:clamp(1.8rem,3.4vw,3.2rem);line-height:1.22;letter-spacing:-.01em}
+
+.res{background:var(--leinen);color:var(--blau);padding:clamp(72px,9vw,128px) var(--rand)}
+.res-in{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,80px);align-items:start}
+.res-seite{display:flex;flex-direction:column;align-items:flex-start;gap:24px;min-width:0}
+.res h2{font-size:clamp(2.4rem,4.5vw,4rem)}
+.res h2 .akzent{color:var(--blau)}
+.res-seite p{max-width:40ch}
+.res .bew{border-color:rgb(27 42 68/.2)}
+.res .bew-stern{color:var(--blau)}
+.res .knopf.kontur{color:var(--blau)}
+.res-karte{justify-self:end;width:100%;max-width:640px;min-width:0;min-height:560px;background:var(--karte);border:1px solid rgb(27 42 68/.15);border-radius:20px;padding:clamp(20px,3vw,36px)}
+[data-schritt]{min-width:0}
+.schritt-titel{font-size:clamp(1.6rem,2.6vw,2.1rem);margin-bottom:16px}
+.feld-titel{font-size:.875rem;font-weight:600;margin:18px 0 8px}
+.res-fortschritt{list-style:none;display:flex;gap:12px;margin:0 0 14px;padding:0 0 14px;border-bottom:1px solid rgb(27 42 68/.12)}
+.res-punkt{position:relative;flex:1;display:flex;align-items:center;gap:6px;min-height:32px;padding-left:28px;font-size:.9375rem;color:rgb(27 42 68/.72);font-variant-numeric:tabular-nums}
+.res-punkt::before,.res-punkt::after{left:0;top:50%;width:20px;height:28px;margin-top:-14px}
+.res-punkt::before{background:var(--blau)}
+.res-jetzt::after,.res-erledigt::after{opacity:1}
+.res-jetzt{color:var(--blau);font-weight:600}
+.res-zusammenfassung{min-height:1.6em;margin-bottom:6px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--blau)}
+.res-option{position:relative;display:block;min-width:0}
+.res-radio{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.res-label{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:48px;padding:8px 6px;border:1.5px solid rgb(27 42 68/.55);border-radius:12px;font-weight:600;line-height:1.2;text-align:center;font-variant-numeric:tabular-nums;user-select:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation;transition:background-color .18s var(--ease-out),color .18s var(--ease-out),border-color .18s var(--ease-out),transform .16s var(--ease-out)}
+.res-label small{font-size:.8125rem;font-weight:500}
+.res-option:active .res-label{transform:scale(.98)}
+.res-radio:checked+.res-label{background:var(--blau);border-color:var(--amber);color:var(--leinen);box-shadow:inset 0 0 0 1px var(--amber)}
+.res-radio:focus-visible+.res-label{outline:2px solid var(--blau);outline-offset:2px}
+[aria-invalid="true"] .res-label{border-color:var(--stein)}
+[data-tage],[data-zeiten],.res-zeitreihe,[data-personen]{display:grid;grid-template-columns:repeat(auto-fill,minmax(86px,1fr));gap:8px;min-width:0}
+[data-zeiten]:has(.res-zeitgruppe){display:block}
+.res-tageszeit{font-size:.8125rem;font-weight:600;color:rgb(27 42 68/.75);margin:12px 0 6px}
+.res-hinweis,.res-demo-hinweis{margin-top:14px;font-size:.875rem;color:rgb(27 42 68/.78)}
+.felder{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px}
+.feld{display:flex;flex-direction:column;gap:6px;min-width:0}
+.feld.voll,.einw{grid-column:1/-1}
+.feld label{font-size:.875rem;font-weight:600}
+.feld label span{font-weight:400;color:rgb(27 42 68/.75)}
+.feld input,.feld textarea{width:100%;min-height:48px;padding:12px 14px;font:inherit;font-size:1rem;color:var(--blau);background:#FFFDF8;border:1.5px solid rgb(27 42 68/.35);border-radius:10px;transition:border-color .18s var(--ease-out)}
+.feld textarea{min-height:88px;resize:vertical}
+.feld ::placeholder{color:rgb(27 42 68/.7)}
+.feld input:focus-visible,.feld textarea:focus-visible{outline:2px solid var(--blau);outline-offset:1px;border-color:var(--blau)}
+.res [aria-invalid="true"]{border-color:var(--stein)}
+.einw{display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:12px;background:rgb(27 42 68/.05);font-size:.9375rem;line-height:1.45;cursor:pointer}
+.einw input{width:22px;height:22px;margin:1px 0 0;flex:0 0 auto;accent-color:var(--blau)}
+.einw a{font-weight:600}
+[data-reservierung-fehler],.res-schritt-fehler{color:var(--stein);font-weight:600;font-size:.9375rem;margin-top:10px}
+[data-reservierung-fehler]:empty,.res-schritt-fehler:empty{display:none}
+.res-nav{display:flex;align-items:center;justify-content:flex-end;gap:12px;margin-top:28px}
+.res-zurueck{min-height:48px;padding:0 16px;border:0;border-radius:999px;background:transparent;color:var(--blau);font:500 1rem var(--sans);text-decoration:underline;text-underline-offset:.3em;cursor:pointer;touch-action:manipulation;user-select:none;transition:transform .16s var(--ease-out)}
+[data-reservierung-erfolg]{display:grid;justify-items:center;gap:14px;padding:32px 8px;text-align:center}
+[data-reservierung-erfolg][hidden]{display:none}
+.erfolg-lat{font-size:64px;color:var(--blau)}
+[data-reservierung-erfolg] h3{font-size:clamp(1.8rem,3vw,2.4rem)}
+.erfolg-daten{font-weight:600;font-variant-numeric:tabular-nums;color:var(--blau)}
+
+.raster{background:var(--tief);padding:clamp(72px,9vw,120px) var(--rand)}
+.raster h2{max-width:var(--max);margin:0 auto 32px;font-size:clamp(2rem,4vw,3.5rem)}
+.raster-gitter{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.4fr) minmax(0,1fr);gap:14px}
+.kachel{position:relative;overflow:hidden;border-radius:18px;aspect-ratio:1;background:var(--nacht)}
+.kachel img{width:100%;height:100%;object-fit:cover}
+.k1{grid-area:1/1}.k2{grid-area:2/1}.k3{grid-area:1/3}.k4{grid-area:2/3}
+.kachel[data-mitte]{grid-area:1/2/3/3;aspect-ratio:auto}
+.kachel figcaption{position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;gap:2px;padding:44px 14px 12px;font-size:.875rem;line-height:1.35;background:linear-gradient(transparent,rgb(15 26 44/.92))}
+.kachel[data-mitte] figcaption{top:0;bottom:auto;padding:12px 16px 44px;background:linear-gradient(rgb(15 26 44/.88),transparent)}
+[data-raster-text]{position:absolute;left:clamp(14px,2vw,28px);bottom:clamp(14px,2vw,28px);max-width:30rem;padding:18px 22px;border-radius:14px;background:rgb(15 26 44/.9)}
+[data-raster-text] p{font-family:var(--serif);font-size:clamp(1.25rem,2vw,1.75rem);line-height:1.25}
+
+.lage{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,72px);align-items:center;padding:clamp(72px,9vw,128px) var(--rand)}
+.karte-rahmen{aspect-ratio:4/3;clip-path:var(--giebel);border-radius:0 0 20px 20px;overflow:hidden;background:var(--nacht)}
+.karte-rahmen [data-karte]{width:100%;height:100%}
+.lage-text{display:flex;flex-direction:column;align-items:flex-start;gap:20px}
+.lage h2{font-size:clamp(2.2rem,4vw,3.6rem)}
+.lage address{font-style:normal;font-size:1.25rem;line-height:1.45}
+.lage-text>p{color:var(--text2);max-width:42ch}
+.lage-aktionen{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center}
+
+.schluss{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:min(88svh,860px);background:var(--blau)}
+.schluss [data-hintergrund-bild]{--schleier:linear-gradient(180deg,rgb(27 42 68/.6),rgb(27 42 68/.3) 38%,rgb(27 42 68/.9))}
+.schluss>:not(figure){position:relative;z-index:1}
+.schluss-in{width:100%;max-width:var(--max);margin:auto auto 0;padding:96px var(--rand) 12svh}
+.schluss-in>*{margin-left:8.33%}
+.schluss h2{font-size:clamp(2.8rem,6vw,6rem);margin:20px 0 20px 8.33%;max-width:12ch}
+.schluss-in>p:not(.status){font-size:1.125rem;max-width:40ch;margin-bottom:28px}
+.schluss .zaun{--zaun:#0F1A2C}
+
+.fuss{background:var(--tief);color:var(--text2);font-size:.9375rem;padding:48px var(--rand) calc(var(--szene-unten,0px) + 24px)}
+.fuss-in{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;align-items:start}
+.fuss-marke{display:inline-block;font-size:2.25rem;color:var(--leinen);margin-bottom:14px}
+.fuss a{text-underline-offset:3px}
+.fuss .woche{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:4px;max-width:280px}
+.fuss .woche-tag{display:flex;justify-content:space-between;gap:12px}
+.fuss .woche-tag .woche-name{font:inherit}
+.fuss .woche-tag[data-heute]{color:var(--amber);font-weight:600}
+.fuss .woche-tag[data-heute] .woche-zeit{color:inherit}
+.rechtliches p{font-size:.875rem;margin-bottom:10px}
+.leiste{display:none}
+
+@media (max-width:959px){
+.hero-in{grid-template-columns:minmax(0,1fr);padding-top:0;gap:24px}
+.hero-flaeche{display:none}
+.hero-bild{margin-inline:calc(var(--rand) * -1)}
+.hero .giebel{aspect-ratio:16/9;border-radius:0}
+.hero .giebel img{object-position:50% 65%}
+.hero-bild .giebel-fig figcaption{padding-inline:var(--rand) 132px}
+.hero-bild .laterne-fig{right:var(--rand);width:clamp(96px,16vw,140px)}
+.hero-text{gap:14px}
+}
+@media (max-width:819px){
+:root{--szene-unten:80px}
+.kopf nav{display:none}
+.haus,.liste,.res-in,.lage,.teller-kopf{grid-template-columns:minmax(0,1fr)}
+.laterne-fig.links{left:0}
+.wochen-band [data-woche]{padding-inline:0}
+.wochen-band .woche{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--rand);overscroll-behavior-x:contain;scrollbar-width:none;padding-inline:var(--rand)}
+.wochen-band .woche::-webkit-scrollbar{display:none}
+.wochen-band .woche-tag{flex:0 0 116px;scroll-snap-align:start}
+.liste-spalten{grid-template-columns:minmax(0,1fr)}
+.liste-hinweis{grid-column:1}
+.liste li{font-size:1.25rem}
+.haltung-text{margin-left:0;max-width:none}
+.res-karte{justify-self:stretch}
+.raster-gitter{grid-template-columns:repeat(2,minmax(0,1fr))}
+.kachel[data-mitte]{grid-area:1/1/2/3;aspect-ratio:4/3}
+.k1{grid-area:2/1}.k2{grid-area:2/2}.k3{grid-area:3/1}.k4{grid-area:3/2}
+.kachel figcaption{font-size:.8125rem}
+.schluss{min-height:72svh}
+.schluss-in>*,.schluss h2{margin-left:0}
+.fuss-in{grid-template-columns:minmax(0,1fr)}
+.leiste{position:fixed;left:0;right:0;bottom:0;z-index:60;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:8px;padding:10px 12px max(12px,env(safe-area-inset-bottom));background:var(--tief);border-top:1px solid var(--linie)}
+.leiste a{display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 12px;border-radius:999px;border:1.5px solid rgb(243 237 225/.35);font-weight:600;text-decoration:none;touch-action:manipulation;user-select:none;-webkit-tap-highlight-color:transparent;transition:transform .16s var(--ease-out)}
+.leiste .l-an{background:var(--amber);border-color:var(--amber);color:var(--blau)}
+}
+@media (max-width:560px){
+.hero .giebel{aspect-ratio:16/10}
+.hero-marke{font-size:clamp(2.75rem,13vw,4rem)}
+.hero-titel{font-size:1.5rem}
+.hero-satz{font-size:1rem}
+.hero-aktionen{flex-direction:column;align-items:stretch;width:100%;gap:12px}
+.magnet,.magnet .knopf{width:100%}
+.hero-aktionen .knopf{min-height:52px}
+.hero-aktionen .leise{justify-content:center;min-height:48px;border:1.5px solid rgb(243 237 225/.45);border-radius:999px;text-decoration:none}
+.res{padding-inline:10px}
+.res-seite{padding-inline:6px}
+.res-karte{padding:18px 16px;border-radius:16px;min-height:0}
+.res-punkt{flex:0 0 auto}
+.res-punkt:not(.res-jetzt) .res-titel{display:none}
+.res-jetzt{flex:1}
+[data-tage]{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:16px;overscroll-behavior-x:contain;scrollbar-width:none;margin-inline:-16px;padding-inline:16px}
+[data-tage]::-webkit-scrollbar{display:none}
+[data-tage] .res-option{flex:0 0 84px;scroll-snap-align:start}
+[data-zeiten]:not(:has(.res-zeitgruppe)),.res-zeitreihe,[data-personen]{grid-template-columns:repeat(4,minmax(0,1fr))}
+.felder{grid-template-columns:minmax(0,1fr)}
+.res-nav{justify-content:space-between}
+.res-weiter,.res-nav [type=submit]{flex:1;min-height:52px;padding-inline:16px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+.laterne-fig .foto-nachweis{white-space:nowrap}
+.schluss .zaun,.zaun-ueber{height:56px}
+.zaun-ueber{background:var(--blau)}
+.schluss .zaun::before,.zaun-ueber::before{bottom:8px}
+.schluss .zaun::after,.zaun-ueber::after{content:"";position:absolute;left:0;right:0;bottom:0;height:9px;background:currentColor}
+.schluss .zaun .lat,.zaun-ueber .lat{bottom:26px;color:var(--leinen)}
+.schluss [data-hintergrund-bild] img{object-position:50% 85%!important}
+.schluss [data-hintergrund-bild] .foto-nachweis{position:absolute;right:var(--rand);bottom:64px;left:auto;top:auto;z-index:3;padding:4px 10px;border-radius:6px;background:rgb(15 26 44/.8);color:var(--leinen);font-size:12.5px;white-space:nowrap}
+[data-tage]{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;padding-bottom:4px}
+[data-tage]::-webkit-scrollbar{display:none}
+[data-tage] .res-option{flex:0 0 84px;scroll-snap-align:start}
+[data-tage] .res-option:nth-child(n+15){display:none}
+.res-seite .res-foto{width:100%;margin-top:8px}
+.res .giebel-fig figcaption{color:rgb(27 42 68/.8)}
+.fuss .woche-zeit{text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:819px){.res-seite .res-foto{display:none}}
+</style>
+<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}:where(:root){--ease-out:cubic-bezier(.23,1,.32,1);--ease-in-out:cubic-bezier(.77,0,.175,1);--ease-drawer:cubic-bezier(.32,.72,0,1)}:where(html){-webkit-tap-highlight-color:transparent}:where(a,button,label,summary,select,[role=button]){touch-action:manipulation}:where(button,.res-option,.spur-steuerung button){-webkit-user-select:none;user-select:none}:where([data-spur],[data-tage]){overscroll-behavior-x:contain}:where(.woche){list-style:none;margin:0;padding:0;display:grid;gap:.4rem}:where(.woche-tag){display:flex;justify-content:space-between;gap:1rem;font-variant-numeric:tabular-nums}:where(.woche-tag[data-heute]){font-weight:700}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}[data-reservierung] [hidden],form[data-reservierung][hidden],[data-reservierung-erfolg][hidden]{display:none!important}:where(img){height:auto}[data-hintergrund]{position:relative;isolation:isolate;overflow:clip}:where([data-hintergrund="dunkel"]){background-color:#15120f;color:#fbf6ee}:where([data-hintergrund="hell"]){background-color:#f3eee6;color:#1b1814}[data-hintergrund-bild]{position:absolute!important;inset:0!important;z-index:-1!important;margin:0!important;padding:0!important;width:auto!important;height:auto!important;max-width:none!important;overflow:hidden!important;border:0!important;transform:none!important}[data-hintergrund-bild] img{position:absolute!important;left:0!important;top:-8%!important;width:100%!important;height:116%!important;max-width:none!important;max-height:none!important;object-fit:cover!important;display:block;border-radius:0!important;margin:0!important}[data-hintergrund-bild]::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:var(--schleier-grund),var(--schleier,linear-gradient(180deg,transparent 30%,rgb(0 0 0/.12)))}[data-hintergrund="dunkel"] [data-hintergrund-bild]{--schleier-grund:linear-gradient(rgb(12 10 8/.5),rgb(12 10 8/.5))}[data-hintergrund="hell"] [data-hintergrund-bild]{--schleier-grund:linear-gradient(rgb(250 247 242/.62),rgb(250 247 242/.62))}[data-hintergrund-bild] .foto-nachweis,[data-hintergrund-bild] figcaption{position:absolute!important;right:12px;bottom:10px;z-index:2;margin:0;color:#fff;opacity:.85;text-shadow:0 1px 3px rgb(0 0 0/.7)}[data-hintergrund="hell"] [data-hintergrund-bild] .foto-nachweis,[data-hintergrund="hell"] [data-hintergrund-bild] figcaption{color:#1b1814;text-shadow:0 1px 3px rgb(255 255 255/.8)}:where([data-bewertung]){display:inline-flex;align-items:baseline;gap:.35em;flex-wrap:wrap}:where(.bew-stern){color:#E3A21A}:where(.bew-zahl){font-weight:700;font-variant-numeric:tabular-nums}:where(.res-fortschritt){list-style:none;display:flex;gap:.75rem;padding:0;margin:0 0 1rem}:where(.res-punkt){display:flex;align-items:center;gap:.45rem;flex:1;opacity:.5}:where(.res-punkt.res-jetzt,.res-punkt.res-erledigt){opacity:1}:where(.res-punkt.res-erledigt){cursor:pointer}:where(.res-nr){display:inline-grid;place-items:center;width:1.7em;height:1.7em;border-radius:50%;border:1px solid currentColor;font-size:.85em;flex:none}:where(.res-zusammenfassung){margin:0 0 1rem;font-size:.92em;opacity:.8}:where(.res-nav){display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin-top:1.25rem}:where(.res-nav .res-weiter,.res-nav [type=submit]){margin-left:auto}:where(.res-nav button){min-height:44px}:where(.res-zeitgruppe){margin:0 0 .75rem}:where(.res-zeitreihe){display:flex;flex-wrap:wrap;gap:.5rem}:where(.res-tageszeit){margin:0 0 .35rem;font-size:.78em;letter-spacing:.08em;text-transform:uppercase;opacity:.7}@media (max-width:560px){:where(.res-punkt:not(.res-jetzt) .res-titel){display:none}:where(.res-punkt:not(.res-jetzt)){flex:none}:where(.res-zeitreihe){display:grid;grid-template-columns:repeat(4,1fr)}:where(.res-nav button){min-height:48px}:where(.res-nav .res-weiter,.res-nav [type=submit]){flex:1}[data-reservierung] input:not([type=radio]):not([type=checkbox]),[data-reservierung] textarea,[data-reservierung] select{font-size:max(16px,1em)!important}}</style><!--agent-lib--><link rel="stylesheet" href="lib/lenis.css"><script src="lib/gsap.min.js"></script><script src="lib/ScrollTrigger.min.js"></script><script src="lib/SplitText.min.js"></script><script src="lib/lenis.min.js"></script><!--/agent-lib--></head>
+<body><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für Andromeda. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="angebot/" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">So wird daraus Ihre Website</a> oder <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
+<header class="kopf">
+<a class="logo marke" href="#" aria-label="Andromeda, zum Seitenanfang">Andromed<span class="marke-a">a<span class="lat" aria-hidden="true"></span></span></a>
+<nav aria-label="Hauptnavigation"><a href="#karte">Karte</a><a href="#zeiten">Zeiten</a><a href="#lage">Lage</a></nav>
+<a class="knopf" href="#reservieren">Reservieren</a>
+</header>
+
+<main>
+<section class="hero">
+<div class="hero-flaeche" aria-hidden="true"></div>
+<div class="hero-in">
+<div class="hero-bild">
+<figure class="giebel-fig" data-foto>
+<div class="giebel"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLdCFDlDHrRWnFm32MSv-yjRVhGxu0pBWtpIxdVdlc1pZ0PYhpXJHYFLtxolpU7gdmUs2cVA7E0Ea-sbkgNzfCpMSXXDTy2tHBlb4kcphrOJ7RLvNgu6bcF9YnPDk0yQknwSD_M5=s4800-w1800" alt="Der Garten des Andromeda am Abend: beleuchtete Schirme, Laternen und Gartentische vor dem Backsteinhaus" width="1200" height="900" referrerpolicy="no-referrer" fetchpriority="high"></div>
+<figcaption><span>Der Garten am Jägerlauf, kurz nach Sonnenuntergang</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/111896966205672399236" target="_blank" rel="noopener">Foto: Dr. Thomas Dress (Tom_35) · Google Maps</a></figcaption>
+</figure>
+<figure class="laterne-fig" data-foto>
+<div class="laterne"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLcX9dW0VcwCxHgp4UtlXAplEXjCarY3Vd8gHk7kxYEn5dFfrE2_Fol4jpgbbZw8s5hDJQWlcb0Zi-OPOA852pS_7_P8wkvmCDImKsCgqQVoByN51toJ_2_kYCn843JcsjqTQAuo=s4800-w1000" alt="Griechischer Vorspeisenteller mit gegrilltem Gemüse, Tzatziki, Dips und Fladenbrot" width="1200" height="900" referrerpolicy="no-referrer"></div>
+<a class="foto-nachweis" href="https://maps.google.com/maps/contrib/102816899162784330152" target="_blank" rel="noopener">Foto: eveils · Google Maps</a>
+</figure>
+</div>
+<div class="hero-text">
+<p class="status"><span class="lat" aria-hidden="true"></span><span data-status></span></p>
+<p class="marke hero-marke">Andromed<span class="marke-a">a<span class="lat" aria-hidden="true"></span></span></p>
+<h1 class="hero-titel">Griechisch essen, wenn im Garten die&nbsp;<em class="akzent">Laternen</em> angehen.</h1>
+<p class="hero-satz">Vorspeisenteller, Lammfilet, Souflaki und Bifteki, drinnen im Backsteinhaus oder draußen im großen Garten. Mo bis Fr ab 16 Uhr, Sa ab 15 Uhr, Jägerlauf 1, Norderstedt-Glashütte.</p>
+<div class="hero-aktionen">
+<span class="magnet"><a class="knopf" href="tel:+494032042202">Anrufen · 040 32042202</a></span>
+<a class="leise" href="https://www.google.com/maps/dir/?api=1&amp;destination=J%C3%A4gerlauf%201%2C%2022851%20Norderstedt" target="_blank" rel="noopener">Route zum Jägerlauf 1 <span class="pfeil" aria-hidden="true">→</span></a>
+</div>
+<a class="bew" href="https://www.google.com/maps/search/?api=1&amp;query=Restaurant+Andromeda&amp;query_place_id=ChIJsX7vvt0nskcRpQdt7n6So0w" target="_blank" rel="noopener"><span data-bewertung aria-label="4,7 von 5 Sternen bei 359 Google-Bewertungen"><span class="bew-stern" aria-hidden="true">★</span><span class="bew-zahl">4,7</span><span class="bew-text">359 Bewertungen auf Google</span></span></a>
+</div>
+</div>
+<div class="zaun" aria-hidden="true"><span class="lat" style="--x:7%"></span><span class="lat" style="--x:31%"></span><span class="lat" style="--x:64%"></span><span class="lat" style="--x:89%"></span></div>
+</section>
+
+<section class="haus" id="haus">
+<div class="haus-text">
+<h2>Drinnen Backstein, draußen Garten.</h2>
+<p>Griechische Küche mit Fisch und Fleisch: vorweg Salat mit Brot und hausgemachtem Dip, danach Souflaki, Bifteki oder Lammfilet, zum Schluss ein Dessert. Bei gutem Wetter decken wir im großen Garten mit Terrasse und Feldsteinwall, sonst drinnen im Backsteinhaus. Alles gibt es auch zum Mitnehmen.</p>
+<dl class="infoliste">
+<div><dt>Küche</dt><dd>griechisch</dd></div>
+<div><dt>Plätze</dt><dd>drinnen und im Garten</dd></div>
+<div><dt>Mitnehmen</dt><dd>ja</dd></div>
+<div><dt>Reservieren</dt><dd>telefonisch oder online</dd></div>
+<div><dt>Getränke</dt><dd>Wein, Bier, Kaffee</dd></div>
+<div><dt>Nachtisch</dt><dd>Desserts</dd></div>
+</dl>
+</div>
+<div class="duo">
+<figure class="giebel-fig" data-foto>
+<div class="giebel"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLcUIeesTKTGCnVoTKWDfRryD02Y1l545e7aVb6-omsPSetcf4BidONDWOXTsRYmyR67EAQ5k4Zig9cTS-PCliQ5IygP3RW-ouUgEJpPVMe9HqtQl8Z1W5Lvw_p1nuXEUzFSoACQhM5uSPfJ=s4800-w1000" alt="Das Backsteinhaus des Andromeda mit großem Garten und Terrasse bei Sonnenschein" width="1135" height="787" loading="lazy" referrerpolicy="no-referrer"></div>
+<figcaption><span>Haus und Garten am Nachmittag</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/110949239973636052823" target="_blank" rel="noopener">Foto: Restaurant Andromeda · Google Maps</a></figcaption>
+</figure>
+<figure class="laterne-fig links" data-foto>
+<div class="laterne"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLcsswSeJDBO3m9Z8Ekdy9VovUnKedflPLhFENx6xK1SkF4jt2uwJ7pHvTA-UmNbzZpkMxe011BeE5M1MmTcswOyNbexnYJBqAdkDoca4PwiS7xt4b3r63KOtQxupBtSAHCmnlxB8Hsp-mwQ=s4800-w1000" alt="Griechischer Bauernsalat mit Feta, Tomaten, Gurken, roten Zwiebeln und Peperoni" width="900" height="1200" loading="lazy" referrerpolicy="no-referrer"></div>
+<a class="foto-nachweis" href="https://maps.google.com/maps/contrib/110949239973636052823" target="_blank" rel="noopener">Foto: Restaurant Andromeda · Google Maps</a>
+</figure>
+</div>
+</section>
+
+<div class="zaun zaun-ueber" aria-hidden="true" style="--zaun:#13203A"><span class="lat" style="--x:14%"></span><span class="lat" style="--x:52%"></span><span class="lat" style="--x:83%"></span></div>
+<section class="wochen-band" id="zeiten">
+<div class="wb-kopf">
+<h2>Wann die Laternen brennen</h2>
+<p class="status"><span class="lat" aria-hidden="true"></span><span data-status></span></p>
+</div>
+<div data-woche></div>
+<div class="zeitleiste">
+<div class="zl-kopf"><span class="zl-heute">Mo–Fr 16–22 · Sa 15–22 · So bis 21:30 Uhr</span><span>Tisch per Telefon: <a href="tel:+494032042202">040 32042202</a></span></div>
+<div class="zl-spur" aria-hidden="true"><span class="zl-offen"></span><span class="zl-jetzt"><b>jetzt</b></span></div>
+<ol class="zl-skala" aria-hidden="true"><li>15</li><li>16</li><li>17</li><li>18</li><li>19</li><li>20</li><li>21</li><li>22</li></ol>
+</div>
+</section>
+
+<section class="teller" data-szene="horizontal" id="karte">
+<div class="teller-kopf">
+<h2>Was auf den Tisch kommt</h2>
+<p>Vorweg Salat, Brot und Dip, danach Fisch- und Fleischgerichte. Ein paar Teller aus der Küche am Jägerlauf.</p>
+</div>
+<div data-spur>
+<figure class="tk" data-foto><div class="tk-bild"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLcsswSeJDBO3m9Z8Ekdy9VovUnKedflPLhFENx6xK1SkF4jt2uwJ7pHvTA-UmNbzZpkMxe011BeE5M1MmTcswOyNbexnYJBqAdkDoca4PwiS7xt4b3r63KOtQxupBtSAHCmnlxB8Hsp-mwQ=s4800-w1000" alt="Griechischer Bauernsalat mit Feta" width="900" height="1200" loading="lazy" referrerpolicy="no-referrer"></div><figcaption><h3>Bauernsalat</h3><p>Mit Feta, Tomaten, Gurken, roten Zwiebeln und Peperoni.</p><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/110949239973636052823" target="_blank" rel="noopener">Foto: Restaurant Andromeda · Google Maps</a></figcaption></figure>
+<figure class="tk breit"><div class="tk-bild"><img src="ki-tzatziki-brot.webp" alt="Schale Tzatziki mit Gurke und Olive neben gegrilltem Fladenbrot" width="1000" height="1000" loading="lazy"></div><figcaption><h3>Salat, Brot und Dip</h3><p>So fängt es an: frisches Brot und der hausgemachte Dip.</p></figcaption></figure>
+<figure class="tk"><div class="tk-bild"><img src="ki-souflaki.webp" alt="Zwei gegrillte Souflaki-Spieße mit Zitrone und Tzatziki" width="800" height="1000" loading="lazy"></div><figcaption><h3>Souflaki</h3><p>Vom Grill, am Spieß.</p></figcaption></figure>
+<figure class="tk breit" data-foto><div class="tk-bild"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLcX9dW0VcwCxHgp4UtlXAplEXjCarY3Vd8gHk7kxYEn5dFfrE2_Fol4jpgbbZw8s5hDJQWlcb0Zi-OPOA852pS_7_P8wkvmCDImKsCgqQVoByN51toJ_2_kYCn843JcsjqTQAuo=s4800-w1000" alt="Griechischer Vorspeisenteller mit gegrilltem Gemüse, Tzatziki, Dips, Peperoni und Fladenbrot" width="1200" height="900" loading="lazy" referrerpolicy="no-referrer"></div><figcaption><h3>Vorspeisenteller</h3><p>Gegrilltes Gemüse, Tzatziki, Dips, Peperoni und Fladenbrot.</p><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/102816899162784330152" target="_blank" rel="noopener">Foto: eveils · Google Maps</a></figcaption></figure>
+<figure class="tk"><div class="tk-bild"><img src="ki-lammfilet.webp" alt="Rosa gebratenes Lammfilet in Scheiben mit Kartoffeln und Rosmarin" width="800" height="1000" loading="lazy"></div><figcaption><h3>Lammfilet</h3><p>Eines der Fleischgerichte für den Abend im Garten.</p></figcaption></figure>
+<figure class="tk" data-foto><div class="tk-bild"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfbjEL-TGH1LOLFkO07xpwvNyZfQFpQyFUWBPCmgtAZMfpRqNw49P42088Obx_cleg8Oej5eg9KRFYaR5CnlZCHGd14TwAgIqCt9M3eTEB9FvtRu9H6tIfAbJ7P8DoQuxEEtWw8v00SNJmf=s4800-w1000" alt="Bruschetta mit Tomaten und zerbröseltem Feta auf Rucola" width="900" height="1200" loading="lazy" referrerpolicy="no-referrer"></div><figcaption><h3>Bruschetta mit Feta</h3><p>Mit Tomaten und Feta auf Rucola.</p><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/110949239973636052823" target="_blank" rel="noopener">Foto: Restaurant Andromeda · Google Maps</a></figcaption></figure>
+<figure class="tk"><div class="tk-bild"><img src="ki-bifteki.webp" alt="Aufgeschnittenes Bifteki mit Feta, dazu Reis und Tomaten" width="800" height="1000" loading="lazy"></div><figcaption><h3>Bifteki</h3><p>Der griechische Klassiker vom Grill.</p></figcaption></figure>
+</div>
+<div class="zaun" aria-hidden="true" style="--zaun:#0F1A2C"><span class="lat" style="--x:12%"></span><span class="lat" style="--x:47%"></span><span class="lat" style="--x:78%"></span></div>
+</section>
+
+<section class="liste" aria-labelledby="liste-titel">
+<h2 class="liste-titel" id="liste-titel">Bekannt aus der Küche</h2>
+<div class="liste-spalten">
+<div><h3>Zum Anfang</h3><ul>
+<li data-vorschau="https://lh3.googleusercontent.com/grass-cs/AABkmLcX9dW0VcwCxHgp4UtlXAplEXjCarY3Vd8gHk7kxYEn5dFfrE2_Fol4jpgbbZw8s5hDJQWlcb0Zi-OPOA852pS_7_P8wkvmCDImKsCgqQVoByN51toJ_2_kYCn843JcsjqTQAuo=s4800-w1000">Griechischer Vorspeisenteller</li>
+<li data-vorschau="https://lh3.googleusercontent.com/grass-cs/AABkmLcsswSeJDBO3m9Z8Ekdy9VovUnKedflPLhFENx6xK1SkF4jt2uwJ7pHvTA-UmNbzZpkMxe011BeE5M1MmTcswOyNbexnYJBqAdkDoca4PwiS7xt4b3r63KOtQxupBtSAHCmnlxB8Hsp-mwQ=s4800-w1000">Bauernsalat mit Feta</li>
+<li data-vorschau="https://lh3.googleusercontent.com/grass-cs/AABkmLfbjEL-TGH1LOLFkO07xpwvNyZfQFpQyFUWBPCmgtAZMfpRqNw49P42088Obx_cleg8Oej5eg9KRFYaR5CnlZCHGd14TwAgIqCt9M3eTEB9FvtRu9H6tIfAbJ7P8DoQuxEEtWw8v00SNJmf=s4800-w1000">Bruschetta mit Tomaten und Feta</li>
+<li data-vorschau="ki-tzatziki-brot.webp">Salat mit Brot und hausgemachtem Dip</li>
+</ul></div>
+<div><h3>Danach</h3><ul>
+<li data-vorschau="ki-lammfilet.webp">Lammfilet</li>
+<li data-vorschau="ki-souflaki.webp">Souflaki</li>
+<li data-vorschau="ki-bifteki.webp">Bifteki</li>
+<li>Fisch- und Fleischgerichte</li>
+<li>Seniorenteller</li>
+<li>Desserts</li>
+</ul></div>
+</div>
+<p class="liste-hinweis">Die vollständige Karte liegt vor Ort aus. Aktuelle Karte und Preise gern am Telefon: <a href="tel:+494032042202">040 32042202</a></p>
+</section>
+<div class="vorschau" aria-hidden="true"><div class="vs-in"><img src="ki-lammfilet.webp" alt="" width="400" height="500" referrerpolicy="no-referrer"></div></div>
+
+<section class="haltung">
+<div class="haltung-in"><p class="haltung-text" data-szene="lesen">Hier sitzt man lange. Erst kommen Salat, Brot und Dip, dann Souflaki, Bifteki oder Lammfilet, und wenn die Laternen angehen, ist im Garten noch lange nicht Schluss.</p></div>
+</section>
+
+<section class="res" id="reservieren">
+<div class="res-in">
+<div class="res-seite">
+<h2>Einen Tisch, drinnen oder im <em class="akzent">Garten</em></h2>
+<p>Mittwochabend, vier Personen, Garten? Wählen Sie hier Ihre Zeit oder rufen Sie kurz an. Für mehr als zwölf Personen bitte telefonisch.</p>
+<a class="bew" href="https://www.google.com/maps/search/?api=1&amp;query=Restaurant+Andromeda&amp;query_place_id=ChIJsX7vvt0nskcRpQdt7n6So0w" target="_blank" rel="noopener"><span data-bewertung aria-label="4,7 von 5 Sternen bei 359 Google-Bewertungen"><span class="bew-stern" aria-hidden="true">★</span><span class="bew-zahl">4,7</span><span class="bew-text">359 Bewertungen auf Google</span></span></a>
+<a class="knopf kontur" href="tel:+494032042202">Anrufen · 040 32042202</a>
+<figure class="giebel-fig res-foto" data-foto>
+<div class="giebel"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLcUIeesTKTGCnVoTKWDfRryD02Y1l545e7aVb6-omsPSetcf4BidONDWOXTsRYmyR67EAQ5k4Zig9cTS-PCliQ5IygP3RW-ouUgEJpPVMe9HqtQl8Z1W5Lvw_p1nuXEUzFSoACQhM5uSPfJ=s4800-w1000" alt="Das Backsteinhaus des Andromeda mit Garten und Terrasse in der Sonne" width="1135" height="787" loading="lazy" referrerpolicy="no-referrer"></div>
+<figcaption><span>Terrasse und Garten am Jägerlauf</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/110949239973636052823" target="_blank" rel="noopener">Foto: Restaurant Andromeda · Google Maps</a></figcaption>
+</figure>
+</div>
+<form class="res-karte" data-reservierung>
+<div data-schritt="1" data-titel="Wann?">
+<h3 class="schritt-titel">Wann?</h3>
+<p class="feld-titel">Tag</p><div data-tage></div>
+<p class="feld-titel">Uhrzeit</p><div data-zeiten></div>
+</div>
+<div data-schritt="2" data-titel="Wie viele?">
+<h3 class="schritt-titel">Wie viele?</h3>
+<p class="feld-titel">Personen</p><div data-personen></div>
+<p class="res-hinweis">Mehr als zwölf Personen? Bitte anrufen: <a href="tel:+494032042202">040 32042202</a></p>
+</div>
+<div data-schritt="3" data-titel="Ihre Angaben">
+<h3 class="schritt-titel">Ihre Angaben</h3>
+<div class="felder">
+<div class="feld"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
+<div class="feld"><label for="f-tel">Telefon</label><input id="f-tel" name="telefon" type="tel" autocomplete="tel" required></div>
+<div class="feld voll"><label for="f-mail">E-Mail <span>(optional)</span></label><input id="f-mail" name="email" type="email" autocomplete="email"></div>
+<div class="feld voll"><label for="f-nachricht">Nachricht <span>(optional)</span></label><textarea id="f-nachricht" name="nachricht" rows="2" placeholder="z. B. gern im Garten"></textarea></div>
+<label class="einw"><input type="checkbox" name="einwilligung" required><span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Reservierung verwendet werden. <a href="https://medialyte.de/datenschutzerklaerung" target="_blank" rel="noopener">Datenschutz</a></span></label>
+</div>
+<p data-reservierung-fehler></p>
+<button type="submit">Tisch anfragen</button>
+</div>
+<div data-reservierung-erfolg hidden>
+<span class="lat an erfolg-lat" aria-hidden="true"></span>
+<h3>Ihr Tisch ist angefragt.</h3>
+<p class="erfolg-daten"><span data-wert="datum"></span> · <span data-wert="uhrzeit"></span> · <span data-wert="personen"></span></p>
+<p>Für <span data-wert="name"></span>. Wir melden uns telefonisch, falls etwas nicht passt.</p>
+<button type="button" class="knopf" data-reservierung-neu>Neue Anfrage</button>
+</div>
+</form>
+</div>
+</section>
+
+<section class="raster" data-szene="raster-zoom" aria-labelledby="raster-titel">
+<h2 id="raster-titel">Ein Abend am Jägerlauf</h2>
+<div class="raster-gitter">
+<figure class="kachel k1" data-foto><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLcUIeesTKTGCnVoTKWDfRryD02Y1l545e7aVb6-omsPSetcf4BidONDWOXTsRYmyR67EAQ5k4Zig9cTS-PCliQ5IygP3RW-ouUgEJpPVMe9HqtQl8Z1W5Lvw_p1nuXEUzFSoACQhM5uSPfJ=s4800-w1000" alt="Backsteinhaus mit Garten und Terrasse bei Sonne" width="1135" height="787" loading="lazy" referrerpolicy="no-referrer"><figcaption><span>Haus und Terrasse</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/110949239973636052823" target="_blank" rel="noopener">Foto: Restaurant Andromeda · Google Maps</a></figcaption></figure>
+<figure class="kachel k2" data-foto><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLcX9dW0VcwCxHgp4UtlXAplEXjCarY3Vd8gHk7kxYEn5dFfrE2_Fol4jpgbbZw8s5hDJQWlcb0Zi-OPOA852pS_7_P8wkvmCDImKsCgqQVoByN51toJ_2_kYCn843JcsjqTQAuo=s4800-w1000" alt="Vorspeisenteller mit Dips und Fladenbrot" width="1200" height="900" loading="lazy" referrerpolicy="no-referrer"><figcaption><span>Vorspeisenteller</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/102816899162784330152" target="_blank" rel="noopener">Foto: eveils · Google Maps</a></figcaption></figure>
+<figure class="kachel" data-mitte data-foto><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLdCFDlDHrRWnFm32MSv-yjRVhGxu0pBWtpIxdVdlc1pZ0PYhpXJHYFLtxolpU7gdmUs2cVA7E0Ea-sbkgNzfCpMSXXDTy2tHBlb4kcphrOJ7RLvNgu6bcF9YnPDk0yQknwSD_M5=s4800-w1800" alt="Der Garten in der Dämmerung mit beleuchteten Schirmen und Laternen" width="1200" height="900" loading="lazy" referrerpolicy="no-referrer"><figcaption><span>Der Garten in der blauen Stunde</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/111896966205672399236" target="_blank" rel="noopener">Foto: Dr. Thomas Dress (Tom_35) · Google Maps</a></figcaption><div data-raster-text><p>Bei gutem Wetter decken wir draußen, bis die Laternen brennen.</p></div></figure>
+<figure class="kachel k3" data-foto><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLcsswSeJDBO3m9Z8Ekdy9VovUnKedflPLhFENx6xK1SkF4jt2uwJ7pHvTA-UmNbzZpkMxe011BeE5M1MmTcswOyNbexnYJBqAdkDoca4PwiS7xt4b3r63KOtQxupBtSAHCmnlxB8Hsp-mwQ=s4800-w1000" alt="Bauernsalat mit Feta" width="900" height="1200" loading="lazy" referrerpolicy="no-referrer"><figcaption><span>Bauernsalat</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/110949239973636052823" target="_blank" rel="noopener">Foto: Restaurant Andromeda · Google Maps</a></figcaption></figure>
+<figure class="kachel k4" data-foto><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfbjEL-TGH1LOLFkO07xpwvNyZfQFpQyFUWBPCmgtAZMfpRqNw49P42088Obx_cleg8Oej5eg9KRFYaR5CnlZCHGd14TwAgIqCt9M3eTEB9FvtRu9H6tIfAbJ7P8DoQuxEEtWw8v00SNJmf=s4800-w1000" alt="Bruschetta mit Tomaten und Feta" width="900" height="1200" loading="lazy" referrerpolicy="no-referrer"><figcaption><span>Bruschetta mit Feta</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/110949239973636052823" target="_blank" rel="noopener">Foto: Restaurant Andromeda · Google Maps</a></figcaption></figure>
+</div>
+</section>
+
+<section class="lage" id="lage">
+<div class="karte-rahmen"><div data-karte data-stil="hell" data-farbe="#9C4A32"></div></div>
+<div class="lage-text">
+<h2>Am Ortsrand von Glashütte</h2>
+<address>Jägerlauf 1<br>22851 Norderstedt</address>
+<p>Das Backsteinhaus mit dem großen Garten, am Giebel das weiße Schild mit dem Namen.</p>
+<div class="lage-aktionen">
+<a class="knopf" href="https://www.google.com/maps/dir/?api=1&amp;destination=J%C3%A4gerlauf%201%2C%2022851%20Norderstedt" target="_blank" rel="noopener">Route planen <span class="pfeil" aria-hidden="true">→</span></a>
+<a class="leise" href="tel:+494032042202">Anrufen · 040 32042202</a>
+</div>
+</div>
+</section>
+
+<section class="schluss" data-hintergrund="dunkel" data-schluss>
+<figure data-hintergrund-bild data-foto><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLdCFDlDHrRWnFm32MSv-yjRVhGxu0pBWtpIxdVdlc1pZ0PYhpXJHYFLtxolpU7gdmUs2cVA7E0Ea-sbkgNzfCpMSXXDTy2tHBlb4kcphrOJ7RLvNgu6bcF9YnPDk0yQknwSD_M5=s4800-w1800" alt="" referrerpolicy="no-referrer"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/111896966205672399236" target="_blank" rel="noopener">Foto: Dr. Thomas Dress (Tom_35) · Google Maps</a></figure>
+<div class="schluss-in">
+<p class="status"><span class="lat" aria-hidden="true"></span><span data-status></span></p>
+<h2>Heute Abend im <em class="akzent">Garten</em>?</h2>
+<p>Tisch reservieren oder kurz anrufen, drinnen ist auch Platz.</p>
+<div class="hero-aktionen">
+<a class="knopf" href="#reservieren">Tisch reservieren</a>
+<a class="leise" href="tel:+494032042202">Anrufen · 040 32042202</a>
+</div>
+</div>
+<div class="zaun" aria-hidden="true"><span class="lat" style="--x:9%"></span><span class="lat" style="--x:38%"></span><span class="lat" style="--x:71%"></span><span class="lat" style="--x:93%"></span></div>
+</section>
+</main>
+
+<footer class="fuss">
+<div class="fuss-in">
+<div>
+<a class="marke fuss-marke" href="#">Andromed<span class="marke-a">a<span class="lat" aria-hidden="true"></span></span></a>
+<p>Restaurant Andromeda<br>Jägerlauf 1, 22851 Norderstedt</p>
+<p><a href="tel:+494032042202">040 32042202</a></p>
+</div>
+<div><p>Öffnungszeiten</p><div data-woche="kurz"></div></div>
+<div><div class="rechtliches"><p>Entwurf von Medialyte, 21147 Hamburg. Adresse und Öffnungszeiten: Google. Fotos: Google Maps, Urheber jeweils am Bild. Einige Bilder und das Logo sind KI-generierte Vorschläge.</p><p><a href="https://medialyte.de/impressum" style="color:inherit;text-decoration:underline">Impressum</a> · <a href="https://medialyte.de/datenschutzerklaerung" style="color:inherit;text-decoration:underline">Datenschutz</a></p></div></div>
+</div>
+</footer>
+
+<nav class="leiste" aria-label="Schnellzugriff">
+<a class="l-an" href="tel:+494032042202">Anrufen</a>
+<a href="https://www.google.com/maps/dir/?api=1&amp;destination=J%C3%A4gerlauf%201%2C%2022851%20Norderstedt" target="_blank" rel="noopener">Route</a>
+<a href="#zeiten">Zeiten</a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+const d=new Date(),wd=d.getDay(),zeiten={0:[null,21.5],6:[15,22]},[a,e]=zeiten[wd]||[16,22];
+const fmt=h=>String(Math.floor(h)).padStart(2,"0")+":"+(h%1?"30":"00");
+const namen=["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"];
+const zl=document.querySelector(".zeitleiste");
+if(zl){
+zl.style.setProperty("--a",((a??15)-15)/7*100+"%");
+zl.style.setProperty("--e",(22-e)/7*100+"%");
+if(a==null)zl.classList.add("ohne-start");
+zl.querySelector(".zl-heute").textContent=`Heute, ${namen[wd]}: ${a==null?"bis "+fmt(e):fmt(a)+"–"+fmt(e)} Uhr`;
+const h=d.getHours()+d.getMinutes()/60;
+if(h>=15&&h<=22){zl.style.setProperty("--p",(h-15)/7*100+"%");zl.classList.add("mit-jetzt");zl.querySelector(".zl-jetzt b").textContent=String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0")}
+}
+const zuHeute=()=>{const w=document.querySelector(".wochen-band .woche"),t=w&&w.querySelector("[data-heute]");if(t&&w.scrollWidth>w.clientWidth)w.scrollLeft=t.offsetLeft-16};
+window.addEventListener("load",()=>{zuHeute();setTimeout(zuHeute,700)});
+const hz=t=>zeiten[t]||[16,22];
+const statusText=()=>{const n=new Date(),t=n.getDay(),h=n.getHours()+n.getMinutes()/60,[s,z]=hz(t);
+const morgen=()=>{const [s2,z2]=hz((t+1)%7);return s2==null?"Geschlossen · morgen bis "+fmt(z2)+" Uhr":"Geschlossen · öffnet morgen um "+fmt(s2)+" Uhr"};
+if(h>=z)return [morgen(),"nein"];
+if(s==null)return ["Heute bis "+fmt(z)+" Uhr geöffnet","ja"];
+if(h<s)return ["Öffnet heute um "+fmt(s)+" Uhr","nein"];
+return ["Jetzt geöffnet bis "+fmt(z)+" Uhr","ja"]};
+const setze=()=>{const [txt,of]=statusText();
+document.querySelectorAll("[data-status]").forEach(el=>{if(el.textContent!==txt)el.textContent=txt;if(el.dataset.offen!==of)el.dataset.offen=of});
+const ht=document.querySelector(".wochen-band .woche-tag[data-heute]");if(ht&&ht.dataset.offen!==of)ht.dataset.offen=of;
+document.querySelectorAll("[data-woche] *").forEach(el=>{if(el.children.length)return;const tx=el.textContent.trim();if(/^0?0[:.]00\s*[–-]/.test(tx))el.textContent="bis "+tx.replace(/^0?0[:.]00\s*[–-]\s*/,"")})};
+const mo=new MutationObserver(()=>{mo.disconnect();setze();beobachte()});
+const beobachte=()=>document.querySelectorAll("[data-status],[data-woche]").forEach(el=>mo.observe(el,{childList:true,subtree:true,characterData:true,attributes:true}));
+setze();beobachte();
+setInterval(()=>{mo.disconnect();setze();beobachte()},60000);
+if(!window.gsap)return;
+gsap.registerPlugin(ScrollTrigger,SplitText);
+const fein=matchMedia("(hover:hover) and (pointer:fine)").matches;
+const mm=gsap.matchMedia();
+mm.add("(prefers-reduced-motion: no-preference)",()=>{
+const klein=innerWidth<820;
+(window.nachIntro||(f=>f()))(()=>{
+const tl=gsap.timeline();
+tl.from(".hero .giebel",{clipPath:"polygon(0 9%,50% 9%,100% 9%,100% 100%,0 100%)",duration:klein?.7:.9,ease:"expo.out"})
+.from(".hero .laterne-fig",{opacity:0,y:16,duration:.6,ease:"power3.out"},"-=.55")
+.from(".hero .status .lat",{opacity:0,duration:.22,ease:"power3.out"},"-=.5");
+SplitText.create(".hero-titel",{type:"lines",mask:"lines",autoSplit:true,onSplit:s=>tl.from(s.lines,{yPercent:110,duration:.8,ease:"expo.out",stagger:.08},.35)});
+});
+ScrollTrigger.create({trigger:".wochen-band",start:"top 75%",once:true,onEnter:()=>{
+const tage=document.querySelectorAll(".wochen-band .woche-tag");
+if(tage.length)gsap.from(tage,{opacity:.25,duration:.5,ease:"power3.out",stagger:.04});
+const j=document.querySelector(".mit-jetzt .zl-jetzt");
+if(j)gsap.from(j,{x:-j.offsetLeft,duration:.6,ease:"power3.out",delay:.2});
+}});
+gsap.utils.toArray(".duo .giebel,.karte-rahmen").forEach(el=>gsap.from(el,{clipPath:"polygon(0 9%,50% 9%,100% 9%,100% 100%,0 100%)",duration:.9,ease:"expo.out",scrollTrigger:{trigger:el,start:"top 82%"}}));
+if(fein){
+const m=document.querySelector(".magnet");
+if(m){const xT=gsap.quickTo(m,"x",{duration:.4,ease:"power3.out"}),yT=gsap.quickTo(m,"y",{duration:.4,ease:"power3.out"});
+m.addEventListener("mousemove",ev=>{const r=m.getBoundingClientRect();xT((ev.clientX-r.left-r.width/2)*.25);yT((ev.clientY-r.top-r.height/2)*.35)});
+m.addEventListener("mouseleave",()=>{xT(0);yT(0)})}
+}
+});
+if(fein){
+const v=document.querySelector(".vorschau"),vi=v.querySelector("img");
+const xT=gsap.quickTo(v,"x",{duration:.45,ease:"power3.out"}),yT=gsap.quickTo(v,"y",{duration:.45,ease:"power3.out"});
+document.querySelectorAll(".liste li[data-vorschau]").forEach(li=>{
+li.addEventListener("mouseenter",()=>{vi.src=li.dataset.vorschau;v.classList.add("an")});
+li.addEventListener("mouseleave",()=>v.classList.remove("an"));
+li.addEventListener("mousemove",ev=>{xT(ev.clientX+28);yT(ev.clientY-120)});
+});
+}
+if(window.Lenis&&matchMedia("(pointer: fine) and (prefers-reduced-motion: no-preference)").matches){
+const lenis=new Lenis({autoRaf:false});
+lenis.on("scroll",ScrollTrigger.update);
+gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+}
+});
+</script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>[data-karte]{width:100%;height:100%;min-height:260px;position:relative;z-index:0;isolation:isolate}[data-karte] .leaflet-tile-pane{filter:var(--karte-filter)}
+[data-karte] .leaflet-control-attribution{font-size:10px}.karte-pin{position:relative;width:34px;height:34px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+box-shadow:0 6px 16px rgba(0,0,0,.35);border:3px solid #fff}.karte-pin i{position:absolute;inset:9px;border-radius:50%;background:#fff}</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>(function(){var C={"lat": 53.6919647, "lng": 10.0223266, "name": "Andromeda", "filter": {"hell": "grayscale(1) contrast(1.05) brightness(1.04)", "dunkel": "grayscale(1) invert(1) contrast(.88) brightness(.82)", "warm": "grayscale(1) sepia(.5) contrast(1.02) brightness(1.02)", "kuehl": "grayscale(1) sepia(.35) hue-rotate(175deg) saturate(.55) brightness(1.03)", "mono": "grayscale(1) contrast(1.2)"}};function draw(){if(!window.L)return;document.querySelectorAll('[data-karte]').forEach(function(el){
+if(el._map)return;var st=el.getAttribute('data-stil')||'hell',col=el.getAttribute('data-farbe')||'#c0392b';
+el.style.setProperty('--karte-filter',C.filter[st]||C.filter.hell);
+var m=L.map(el,{scrollWheelZoom:false,zoomControl:true,attributionControl:true}).setView([C.lat,C.lng],16);el._map=m;
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(m);
+var icon=L.divIcon({className:'',html:'<div class="karte-pin" style="background:'+col+'"><i></i></div>',iconSize:[34,34],iconAnchor:[17,34]});
+L.marker([C.lat,C.lng],{icon:icon,title:C.name,alt:C.name}).addTo(m);setTimeout(function(){m.invalidateSize()},300);});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',draw);else draw();window.addEventListener('load',draw);})();</script><script>(function(){
+var P=[[0, 1290], [2400, 2760], [3840, 4200], [5280, 5640], [6720, 7080], [8160, 8520], [9540, 9960]];
+function fmt(m){m=((m%1440)+1440)%1440;var h=Math.floor(m/60),mi=m%60;return (h<10?'0':'')+h+':'+(mi<10?'0':'')+mi;}
+function now(){var d=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Berlin'}));return d.getDay()*1440+d.getHours()*60+d.getMinutes();}
+function status(){if(!P.length)return null;var t=now(),W=10080;
+ for(var i=0;i<P.length;i++){var s=P[i][0],e=P[i][1];if((t>=s&&t<e)||(t+W>=s&&t+W<e))return {offen:true,text:'Jetzt geöffnet bis '+fmt(e)};}
+ var best=null;for(var j=0;j<P.length;j++){var d=(P[j][0]-t+W)%W;if(best===null||d<best.d)best={d:d,s:P[j][0]};}
+ var tag=Math.floor(t/1440),ot=Math.floor(best.s/1440)%7,names=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+ var when=best.d<1440&&ot===tag?'heute':(best.d<2880&&ot===(tag+1)%7?'morgen':names[ot]);
+ return {offen:false,text:'Geschlossen · öffnet '+when+' um '+fmt(best.s)};}
+function run(){var s=status();document.querySelectorAll('[data-status]').forEach(function(el){
+ if(!s){el.style.display='none';return;}el.textContent=s.text;el.setAttribute('data-offen',s.offen?'ja':'nein');});}
+document.querySelectorAll('[data-foto] img').forEach(function(img){
+ function hide(){var b=img.closest('[data-foto]');if(b)b.style.display='none';}
+ if(!img.getAttribute('src'))hide();else{img.addEventListener('error',hide);if(img.complete&&img.naturalWidth===0)hide();}});
+function woche(s){var els=document.querySelectorAll('[data-woche]');if(!els.length)return;
+ var lang=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'],kurz=['So','Mo','Di','Mi','Do','Fr','Sa'];
+ var heute=Math.floor(now()/1440)%7,offen=s&&s.offen?'ja':'nein',Q=P.slice().sort(function(a,b){return a[0]-b[0];});
+ els.forEach(function(el){if(!Q.length){el.style.display='none';return;}
+  var k=el.getAttribute('data-woche')==='kurz',key=heute+offen+k;if(el.getAttribute('data-woche-stand')===key)return;
+  var h='<ol class="woche">';
+  for(var i=1;i<=7;i++){var d=i%7,z=[];
+   for(var j=0;j<Q.length;j++){if(Math.floor(Q[j][0]/1440)%7===d)z.push(fmt(Q[j][0])+'–'+fmt(Q[j][1]));}
+   h+='<li class="woche-tag"'+(d===heute?' data-heute data-offen="'+offen+'" aria-current="date"':'')+'><span class="woche-name">'
+     +(k?kurz[d]:lang[d])+'</span><span class="woche-zeit">'+(z.length?z.join(' · '):'Ruhetag')+'</span></li>';}
+  el.innerHTML=h+'</ol>';el.setAttribute('data-woche-stand',key);});}
+var run0=run;run=function(){run0();woche(status());};
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();setInterval(run,60000);
+})();</script><!--agent-res--><script>(function () {
+  /* Reservierung: Tage und Uhrzeiten aus den echten Öffnungszeiten, Personen, Prüfung, Bestätigung.
+     Gestaltung kommt von der Seite, die Logik kommt von hier. CFG und P setzt der Agent ein. */
+  var CFG = {"modus": "demo", "ziel": "", "extra": {}, "slot": 30, "vorlauf": 60, "letzte": 60, "max": 8, "tage": 21, "name": "Andromeda", "tel": "04032042202", "telText": "040 32042202"}, P = [[0, 1290], [2400, 2760], [3840, 4200], [5280, 5640], [6720, 7080], [8160, 8520], [9540, 9960]], W = 10080;
+  var TAGE = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"], LANG = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
+  var MON = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+  function berlin() { return new Date(new Date().toLocaleString("en-US", { timeZone: "Europe/Berlin" })); }
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function hm(m) { return pad(Math.floor(m / 60)) + ":" + pad(m % 60); }
+  function iso(d) { return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()); }
+  function el(tag, attrs, html) { var e = document.createElement(tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (html != null) e.innerHTML = html; return e; }
+
+  /* Uhrzeiten eines Kalendertags (Minuten ab 00:00), aus den Wochen-Intervallen P */
+  function slots(day, isToday, nowMin) {
+    var out = [], start = day.getDay() * 1440, step = CFG.slot, last = CFG.letzte;
+    var sonder = window.AGENT && window.AGENT.sonder && window.AGENT.sonder[iso(day)];  // andere Zeiten an diesem Tag
+    if (sonder) {
+      sonder.forEach(function (p) {
+        for (var t = Math.ceil(p[0] / step) * step; t <= Math.min(p[1] - last, 1439); t += step) {
+          if (isToday && t < nowMin + CFG.vorlauf) continue;
+          if (out.indexOf(t) < 0) out.push(t);
+        }
+      });
+      return out.sort(function (a, b) { return a - b; });
+    }
+    var periods = P.length ? P : [[0, W]];
+    for (var i = 0; i < periods.length; i++) {
+      for (var shift = -W; shift <= W; shift += W) {
+        var s = periods[i][0] + shift, e = periods[i][1] + shift;
+        var from = Math.max(s, start), to = Math.min(e - last, start + 1440 - 1);
+        if (!P.length) { from = start + 11 * 60; to = start + 21 * 60 + 30; }
+        if (to < from && e > start && s < start + 1440 && e - s <= last + step && s >= start) to = from;
+        for (var t = Math.ceil(from / step) * step; t <= to; t += step) {
+          var m = t - start;
+          if (m < 5 * 60 && P.length) continue;              // keine Plätze nach Mitternacht
+          if (isToday && m < nowMin + CFG.vorlauf) continue;  // heute nur mit Vorlauf
+          if (out.indexOf(m) < 0) out.push(m);
+        }
+      }
+    }
+    return out.sort(function (a, b) { return a - b; });
+  }
+
+  function init(form) {
+    if (form._res) return; form._res = true;
+    var now = berlin(), nowMin = now.getHours() * 60 + now.getMinutes();
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var days = [], zu = (window.AGENT && window.AGENT.zu) || [];  // Tage, an denen das Restaurant geschlossen hat (Website-Agent)
+    for (var i = 0; i < CFG.tage; i++) {
+      var d = new Date(today); d.setDate(today.getDate() + i);
+      var s = slots(d, i === 0, nowMin);
+      if (s.length && zu.indexOf(iso(d)) < 0) days.push({ d: d, slots: s, i: i });
+    }
+    var boxTage = form.querySelector("[data-tage]"), boxZeiten = form.querySelector("[data-zeiten]"), boxPers = form.querySelector("[data-personen]");
+    var first = form.querySelector("input, textarea, select, button");
+    function ensure(box, attr, label) {
+      if (box) return box;
+      var wrap = el("fieldset", { "class": "res-gruppe" }, "<legend>" + label + "<\/legend>");
+      var b = el("div", {}); b.setAttribute(attr, ""); wrap.appendChild(b);
+      form.insertBefore(wrap, first && first.parentNode === form ? first : form.firstChild);
+      return b;
+    }
+    boxTage = ensure(boxTage, "data-tage", "Tag");
+    boxZeiten = ensure(boxZeiten, "data-zeiten", "Uhrzeit");
+    boxPers = ensure(boxPers, "data-personen", "Personen");
+    [boxTage, boxZeiten, boxPers].forEach(function (b) { b.setAttribute("role", "radiogroup"); });
+    boxTage.setAttribute("aria-label", "Tag wählen"); boxZeiten.setAttribute("aria-label", "Uhrzeit wählen");
+    boxPers.setAttribute("aria-label", "Anzahl Personen");
+    var uid = "res" + Math.random().toString(36).slice(2, 7);
+
+    function option(name, value, inner, title) {
+      var id = uid + "-" + name + "-" + String(value).replace(/[^a-z0-9]/gi, "");
+      var l = el("label", { "class": "res-option", "for": id, title: title || "" });
+      l.appendChild(el("input", { type: "radio", name: name, value: value, id: id, "class": "res-radio" }));
+      l.appendChild(el("span", { "class": "res-label" }, inner));
+      return l;
+    }
+    function renderDays() {
+      boxTage.innerHTML = "";
+      if (!days.length) { boxTage.appendChild(el("p", { "class": "res-hinweis" }, "In den nächsten Wochen sind online keine Zeiten frei. Bitte rufen Sie an.")); return; }
+      days.forEach(function (x) {
+        var top = x.i === 0 ? "Heute" : x.i === 1 ? "Morgen" : TAGE[x.d.getDay()];
+        boxTage.appendChild(option("datum", iso(x.d), "<b>" + top + "<\/b><small>" + pad(x.d.getDate()) + "." + pad(x.d.getMonth() + 1) + ".<\/small>",
+          LANG[x.d.getDay()] + ", " + x.d.getDate() + ". " + MON[x.d.getMonth()]));
+      });
+    }
+    function renderTimes(dateIso) {
+      boxZeiten.innerHTML = "";
+      var x = days.filter(function (y) { return iso(y.d) === dateIso; })[0];
+      if (!x) { boxZeiten.appendChild(el("p", { "class": "res-hinweis" }, "Bitte zuerst einen Tag wählen.")); return; }
+      if (x.slots.length <= 8) { x.slots.forEach(function (m) { boxZeiten.appendChild(option("uhrzeit", hm(m), hm(m))); }); return; }
+      var parts = [["Morgens", 0, 660], ["Mittags", 660, 870], ["Nachmittags", 870, 1020], ["Abends", 1020, 1440]];
+      // eine einzelne Uhrzeit bekommt keine eigene Gruppe, sie wandert in die nächste (bzw. vorige)
+      var groups = parts.map(function (pt) { return [pt[0], x.slots.filter(function (m) { return m >= pt[1] && m < pt[2]; })]; })
+        .filter(function (g) { return g[1].length; });
+      for (var gi = 0; gi < groups.length && groups.length > 1; gi++) {
+        if (groups[gi][1].length > 1) continue;
+        var to = gi + 1 < groups.length ? gi + 1 : gi - 1;
+        groups[to][1] = to > gi ? groups[gi][1].concat(groups[to][1]) : groups[to][1].concat(groups[gi][1]);
+        groups.splice(gi, 1); gi--;
+      }
+      groups.forEach(function (gr) {
+        var pt = [gr[0]], mins = gr[1];
+        var g = el("div", { "class": "res-zeitgruppe" }), row = el("div", { "class": "res-zeitreihe" });
+        g.appendChild(el("p", { "class": "res-tageszeit" }, pt[0]));
+        mins.forEach(function (m) { row.appendChild(option("uhrzeit", hm(m), hm(m))); });
+        g.appendChild(row); boxZeiten.appendChild(g);
+      });
+    }
+    function renderPersons() {
+      boxPers.innerHTML = "";
+      for (var n = 1; n <= CFG.max; n++) boxPers.appendChild(option("personen", n, String(n), n + (n === 1 ? " Person" : " Personen")));
+      if (CFG.tel) boxPers.appendChild(el("p", { "class": "res-hinweis" }, "Mehr als " + CFG.max + "? <a href=\"tel:" + CFG.tel + "\">Bitte anrufen<\/a>."));
+    }
+    renderDays(); renderPersons();
+    var firstDay = boxTage.querySelector("input");
+    if (firstDay) { firstDay.checked = true; renderTimes(firstDay.value); } else renderTimes("");
+    var two = boxPers.querySelector('input[value="2"]'); if (two) two.checked = true;
+    boxTage.addEventListener("change", function (e) { if (e.target.name === "datum") { renderTimes(e.target.value); clearError(boxZeiten); } });
+    /* Tischbuch: hat das Restaurant pausiert, sind diese Tage (oder alle) online nicht wählbar */
+    var dienst = CFG.modus === "tischbuch" && CFG.dienst ? CFG.dienst.replace(/\/$/, "") : "";
+    if (dienst) {
+      fetch(dienst + "/t/info?l=" + encodeURIComponent(CFG.lokal), { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (info) {
+        if (!info || (!info.pause_alle && !info.pause_bis)) return;
+        days = info.pause_alle ? [] : days.filter(function (x) { return iso(x.d) > info.pause_bis; });
+        if (info.pause_alle) form.insertBefore(el("p", { "class": "res-hinweis res-pause" }, "Online-Reservierungen sind gerade pausiert." +
+          (CFG.tel ? " Bitte rufen Sie uns an: <a href=\"tel:" + CFG.tel + "\">" + CFG.telText + "<\/a>." : "")), form.firstChild);
+        renderDays();
+        var f1 = boxTage.querySelector("input");
+        if (f1) { f1.checked = true; renderTimes(f1.value); } else renderTimes("");
+      }).catch(function () {});
+    }
+
+    /* Spam-Falle und Felder für den späteren Versand */
+    var trap = el("input", { type: "text", name: "botcheck", tabindex: "-1", autocomplete: "off", "aria-hidden": "true",
+      style: "position:absolute;left:-9999px;width:1px;height:1px;opacity:0" });
+    form.appendChild(trap);
+    var errBox = form.querySelector("[data-reservierung-fehler]");
+    if (!errBox) { errBox = el("p", { "class": "res-fehler" }); var sb0 = form.querySelector('[type="submit"]'); if (sb0) sb0.parentNode.insertBefore(errBox, sb0); else form.appendChild(errBox); }
+    errBox.setAttribute("role", "alert"); errBox.setAttribute("aria-live", "polite");
+    var ok = form.querySelector("[data-reservierung-erfolg]");
+    if (!ok) { // gestaltete Bestätigung direkt neben dem Formular (gleicher Abschnitt) wird ebenfalls genutzt
+      var area = form.closest("section, [id]") || form.parentNode;
+      ok = area ? area.querySelector("[data-reservierung-erfolg]") : null;
+      if (ok && (ok._resForm || ok.closest("form[data-reservierung]"))) ok = null;
+    }
+    var outside = !!ok && !form.contains(ok);
+    if (ok) ok._resForm = form;
+    if (!ok) { ok = el("div", { "class": "res-erfolg", tabindex: "-1" }, "<p><strong>Danke!<\/strong> Ihre Anfrage für <span data-wert=\"datum\"><\/span> um <span data-wert=\"uhrzeit\"><\/span> Uhr (<span data-wert=\"personen\"><\/span>) ist eingegangen.<\/p>"); ok.setAttribute("data-reservierung-erfolg", ""); form.appendChild(ok); }
+    ok.hidden = true; ok.setAttribute("tabindex", "-1");
+    form.noValidate = true;
+    [["name", "name", "text"], ["telefon", "tel", "tel"], ["email", "email", "email"]].forEach(function (x) {
+      var f = form.querySelector('[name="' + x[0] + '"]'); if (!f || f.tagName !== "INPUT") return;
+      if (!f.getAttribute("autocomplete")) f.setAttribute("autocomplete", x[1]);
+      if (x[2] !== "text") { f.type = x[2]; f.setAttribute("inputmode", x[2]); }
+      if (!f.getAttribute("enterkeyhint")) f.setAttribute("enterkeyhint", "next");
+    });
+    function headerOffset() {
+      var h = 16;
+      document.querySelectorAll("header, nav, [data-kopf]").forEach(function (n) {
+        var cs = getComputedStyle(n), r = n.getBoundingClientRect();
+        if ((cs.position === "fixed" || cs.position === "sticky") && r.top <= 1 && r.height < innerHeight / 3) h = Math.max(h, r.bottom + 12);
+      });
+      return h;
+    }
+    /* gewählten Chip in einer wischbaren Reihe sichtbar machen, ohne die Seite zu verschieben */
+    function revealX(input) {
+      var lab = input && (input.closest(".res-option") || input);
+      for (var n = lab && lab.parentNode; n && n !== form; n = n.parentNode) {
+        var ox = getComputedStyle(n).overflowX;
+        if (ox === "auto" || ox === "scroll") {
+          var r = lab.getBoundingClientRect(), b = n.getBoundingClientRect();
+          if (r.left < b.left || r.right > b.right) n.scrollLeft += r.left - b.left - (b.width - r.width) / 2;
+          return;
+        }
+      }
+    }
+
+    /* Mehrschritt: <div data-schritt="1|2|3" data-titel="…"> – immer nur ein Schritt sichtbar */
+    var steps = Array.prototype.slice.call(form.querySelectorAll("[data-schritt]")), cur = 0;
+    var multi = steps.length >= 2, prog = null, sum = null, live = null;
+    var still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function stepTitle(st, i) { var h = st.getAttribute("data-titel") || ((st.querySelector("h2,h3,h4,legend") || {}).textContent || ""); return h.trim() || ["Wann?", "Wie viele?", "Ihre Angaben"][i] || "Schritt " + (i + 1); }
+    function summaryText() {
+      var bits = [];
+      if (val("datum")) { var d = new Date(val("datum") + "T12:00:00"); bits.push(TAGE[d.getDay()] + " " + pad(d.getDate()) + "." + pad(d.getMonth() + 1) + "."); }
+      if (val("uhrzeit")) bits.push(val("uhrzeit") + " Uhr");
+      if (val("personen")) bits.push(val("personen") + (val("personen") === "1" ? " Person" : " Personen"));
+      return bits.join(" · ");
+    }
+    function stepOk(i, mark_) {
+      var st = steps[i], need = [];
+      if (st.querySelector("[data-tage]") && !val("datum")) need.push([boxTage, "Bitte einen Tag wählen."]);
+      if (st.querySelector("[data-zeiten]") && !val("uhrzeit")) need.push([boxZeiten, "Bitte eine Uhrzeit wählen."]);
+      if (st.querySelector("[data-personen]") && !val("personen")) need.push([boxPers, "Bitte die Anzahl der Personen wählen."]);
+      var hint = st.querySelector(".res-schritt-fehler");
+      if (mark_ && hint) hint.textContent = need.map(function (n) { return n[1]; }).join(" ");
+      need.forEach(function (n) { if (mark_) mark(n[0], true); });
+      return !need.length;
+    }
+    function show(i, dir) {
+      cur = Math.max(0, Math.min(steps.length - 1, i));
+      steps.forEach(function (st, k) { st.hidden = k !== cur; st.classList.toggle("res-aktiv", k === cur); });
+      if (prog) Array.prototype.forEach.call(prog.children, function (li, k) {
+        li.classList.toggle("res-erledigt", k < cur); li.classList.toggle("res-jetzt", k === cur);
+        if (k === cur) li.setAttribute("aria-current", "step"); else li.removeAttribute("aria-current");
+      });
+      if (sum) { var t = summaryText(); sum.textContent = cur > 0 ? t : ""; sum.hidden = cur === 0 || !t; }
+      if (live) live.textContent = "Schritt " + (cur + 1) + " von " + steps.length + ": " + stepTitle(steps[cur], cur);
+      var st = steps[cur];
+      if (dir && !still && st.animate) st.animate([{ opacity: 0, transform: "translateX(" + (dir > 0 ? 18 : -18) + "px)" }, { opacity: 1, transform: "none" }],
+        { duration: 280, easing: "cubic-bezier(.2,.7,.2,1)" });
+      if (dir) {
+        var f = st.querySelector("input:checked") || st;
+        if (f === st && !st.hasAttribute("tabindex")) { st.setAttribute("tabindex", "-1"); st.style.outline = "none"; }
+        try { f.focus({ preventScroll: true }); } catch (e) {}
+        revealX(st.querySelector("[data-tage] input:checked"));
+        var off = headerOffset(), top = form.getBoundingClientRect().top;
+        if (top < off - 2 || top > innerHeight * 0.6) scrollTo({ top: scrollY + top - off, behavior: still ? "auto" : "smooth" });
+      }
+    }
+    function next() { if (stepOk(cur, true)) show(cur + 1, 1); }
+    if (multi) {
+      prog = form.querySelector("[data-fortschritt]");
+      if (!prog) { prog = el("ol", { "class": "res-fortschritt" }); prog.setAttribute("data-fortschritt", ""); form.insertBefore(prog, form.firstChild); }
+      prog.innerHTML = "";
+      steps.forEach(function (st, i) {
+        var li = el("li", { "class": "res-punkt" }, "<span class=\"res-nr\">" + (i + 1) + "<\/span><span class=\"res-titel\">" + stepTitle(st, i) + "<\/span>");
+        li.addEventListener("click", function () { if (i < cur) show(i, -1); });
+        prog.appendChild(li);
+      });
+      sum = form.querySelector("[data-zusammenfassung]");
+      if (!sum) { sum = el("p", { "class": "res-zusammenfassung" }); prog.parentNode.insertBefore(sum, prog.nextSibling); }
+      live = el("p", { "class": "res-ansage", "aria-live": "polite", style: "position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)" });
+      form.appendChild(live);
+      var sbx = form.querySelector('[type="submit"]');
+      if (sbx && !steps.some(function (st) { return st.contains(sbx); })) steps[steps.length - 1].appendChild(sbx);
+      steps.forEach(function (st, i) {
+        if (!st.querySelector(".res-schritt-fehler") && i < steps.length - 1) st.appendChild(el("p", { "class": "res-schritt-fehler", role: "alert" }));
+        var back = st.querySelector("[data-zurueck]"), fwd = st.querySelector("[data-weiter]");
+        if (!back && !fwd && (i > 0 || i < steps.length - 1)) {
+          var nav = el("div", { "class": "res-nav" });
+          if (i > 0) { back = el("button", { type: "button", "class": "res-zurueck" }, "Zurück"); back.setAttribute("data-zurueck", ""); nav.appendChild(back); }
+          if (i < steps.length - 1) { fwd = el("button", { type: "button", "class": "res-weiter" }, "Weiter"); fwd.setAttribute("data-weiter", ""); nav.appendChild(fwd); }
+          var sb = st.querySelector('[type="submit"]');
+          if (sb && sb.parentNode) { sb.parentNode.insertBefore(nav, sb); nav.appendChild(sb); } else st.appendChild(nav);
+        }
+      });
+      form.addEventListener("click", function (e) {
+        if (e.target.closest("[data-weiter]")) { e.preventDefault(); next(); }
+        else if (e.target.closest("[data-zurueck]")) { e.preventDefault(); show(cur - 1, -1); }
+      });
+      form.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" || e.target.tagName === "TEXTAREA" || e.target.closest("[data-zurueck]")) return;
+        if (cur < steps.length - 1) { e.preventDefault(); next(); return; }
+        if (e.target.tagName !== "INPUT" || /^(radio|checkbox|submit|button)$/.test(e.target.type)) return;
+        var texts = Array.prototype.slice.call(steps[cur].querySelectorAll("input:not([type=radio]):not([type=checkbox]):not([type=hidden]):not([name=botcheck]), textarea"));
+        var later = texts.slice(texts.indexOf(e.target) + 1).filter(function (t) { return !String(t.value || "").trim(); })[0];
+        if (later) { e.preventDefault(); later.focus(); }
+      });
+      // Nach der Wahl von Uhrzeit bzw. Personen per Tippen/Klick geht es von selbst weiter (Pfeiltasten nicht)
+      var lastPointer = -1e9, lastKey = -1e9;
+      form.addEventListener("pointerdown", function () { lastPointer = performance.now(); });
+      form.addEventListener("keydown", function () { lastKey = performance.now(); }, true);
+      form.addEventListener("change", function (e) {
+        var n = e.target.name, st = steps[cur], at = cur;
+        var t = performance.now(); if (t - lastPointer > 1500 || t - lastKey < 400) return;
+        if ((n === "uhrzeit" && st.querySelector("[data-zeiten]") && !st.querySelector("[data-personen]")) ||
+            (n === "personen" && st.querySelector("[data-personen]") && cur < steps.length - 1)) {
+          var hint = st.querySelector(".res-schritt-fehler"); if (hint) hint.textContent = "";
+          setTimeout(function () { if (cur === at && stepOk(cur, false)) show(cur + 1, 1); }, 320);
+        }
+      });
+      show(0, 0);
+    }
+
+    function field(n) { return form.querySelector('[name="' + n + '"]'); }
+    function val(n) {
+      var f = field(n); if (!f) return "";
+      if (f.type === "radio") { var c = form.querySelector('[name="' + n + '"]:checked'); return c ? c.value : ""; }
+      return f.type === "checkbox" ? f.checked : String(f.value || "").trim();
+    }
+    function mark(target, bad) { if (!target) return; target.setAttribute("aria-invalid", bad ? "true" : "false"); }
+    function clearError(t) { mark(t, false); }
+    function check() {
+      var errs = [], firstBad = null;
+      function need(cond, target, msg) { mark(target, !cond); if (!cond) { errs.push(msg); firstBad = firstBad || target; } }
+      need(!!val("datum"), boxTage, "Bitte einen Tag wählen.");
+      need(!!val("uhrzeit"), boxZeiten, "Bitte eine Uhrzeit wählen.");
+      need(!!val("personen"), boxPers, "Bitte die Anzahl der Personen wählen.");
+      if (field("name")) need(val("name").length >= 2, field("name"), "Bitte Ihren Namen angeben.");
+      if (field("telefon")) need(val("telefon").replace(/\D/g, "").length >= 6, field("telefon"), "Bitte eine Telefonnummer für Rückfragen angeben.");
+      if (field("email") && val("email")) need(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val("email")), field("email"), "Die E-Mail-Adresse sieht unvollständig aus.");
+      if (field("einwilligung")) need(val("einwilligung") === true, field("einwilligung"), "Bitte der Verarbeitung Ihrer Angaben zustimmen.");
+      errBox.textContent = errs.join(" ");
+      if (firstBad && multi) { var k = steps.findIndex(function (st) { return st.contains(firstBad); }); if (k >= 0 && k !== cur) { show(k, -1); stepOk(k, true); } }
+      if (firstBad) { var f = firstBad.matches && firstBad.matches("input,textarea,select") ? firstBad : firstBad.querySelector("input:not(:disabled)"); if (f) f.focus(); }
+      return !errs.length;
+    }
+    ["name", "telefon", "email", "einwilligung"].forEach(function (n) { var f = field(n); if (f) f.addEventListener("input", function () { if (f.getAttribute("aria-invalid") === "true") mark(f, false); }); });
+    boxZeiten.addEventListener("change", function () { mark(boxZeiten, false); });
+    boxPers.addEventListener("change", function () { mark(boxPers, false); });
+
+    function readable() {
+      var d = new Date(val("datum") + "T12:00:00"), p = +val("personen");
+      return { datum: LANG[d.getDay()] + ", " + d.getDate() + ". " + MON[d.getMonth()], uhrzeit: val("uhrzeit"), personen: p + (p === 1 ? " Person" : " Personen"), name: val("name") };
+    }
+    var warten = null;
+    function stand(text, art) {
+      var s = ok.querySelector(".res-status");
+      if (!s) { s = el("p", { "class": "res-hinweis res-status", role: "status" }); ok.appendChild(s); }
+      s.setAttribute("data-stand", art || ""); s.innerHTML = text;
+    }
+    function nachfragen(id, token) {  // solange der Gast auf der Seite ist: zeigt, sobald das Restaurant entschieden hat
+      var n = 0;
+      clearInterval(warten);
+      warten = setInterval(function () {
+        if (++n > 40 || ok.hidden) { clearInterval(warten); return; }
+        fetch(dienst + "/t/status?l=" + encodeURIComponent(CFG.lokal) + "&id=" + encodeURIComponent(id) + "&t=" + encodeURIComponent(token), { cache: "no-store" })
+          .then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+            if (!d || d.status === "offen") return;
+            clearInterval(warten);
+            if (d.status === "bestaetigt") stand("<strong>Bestätigt.<\/strong> Ihr Tisch ist reserviert, wir freuen uns auf Sie." + (d.hinweis ? " " + esc(d.hinweis) : ""), "bestaetigt");
+            else stand("<strong>Leider nicht möglich.<\/strong> " + (d.hinweis ? esc(d.hinweis) + " " : "") + (CFG.tel ? "Rufen Sie uns gern an: <a href=\"tel:" + CFG.tel + "\">" + CFG.telText + "<\/a>." : ""), "abgelehnt");
+          }).catch(function () {});
+      }, 15000);
+    }
+    function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+    function showSuccess(ergebnis) {
+      var r = readable();
+      ok.querySelectorAll("[data-wert]").forEach(function (s) { var k = s.getAttribute("data-wert"); if (r[k] != null) s.textContent = r[k]; });
+      if (ergebnis && ergebnis.status === "bestaetigt") stand("<strong>Bestätigt.<\/strong> Ihr Tisch ist reserviert, wir freuen uns auf Sie.", "bestaetigt");
+      else if (ergebnis) {
+        stand("Ihre Anfrage ist bei " + esc(CFG.name) + ". Sobald sie bestätigt ist, sehen Sie es hier" + (val("email") ? " und bekommen eine E-Mail" : "") +
+              ". <span class=\"res-warten\" aria-hidden=\"true\">·<\/span>", "offen");
+        if (ergebnis.id && ergebnis.token) nachfragen(ergebnis.id, ergebnis.token);
+      }
+      if (CFG.modus === "demo" && !ok.querySelector(".res-demo-hinweis")) {
+        ok.appendChild(el("p", { "class": "res-demo-hinweis" }, "Entwurf: Diese Anfrage wurde nicht übermittelt. In der fertigen Website geht sie sofort an " +
+          CFG.name + "." + (CFG.tel ? " Für eine echte Reservierung bitte <a href=\"tel:" + CFG.tel + "\">anrufen<\/a>." : "")));
+      }
+      if (outside) { form.setAttribute("data-res-vorher", form.hidden ? "1" : "0"); form.hidden = true; }
+      for (var n = ok; !outside && n && n !== form; n = n.parentNode) {
+        var sib = n;
+        Array.prototype.forEach.call(n.parentNode.children, function (c) { if (c !== sib && c !== trap && !c.hasAttribute("data-res-vorher")) { c.setAttribute("data-res-vorher", c.hidden ? "1" : "0"); c.hidden = true; } });
+        if (n.parentNode !== form && n.parentNode.hidden) { n.parentNode.setAttribute("data-res-offen", ""); n.parentNode.hidden = false; }
+      }
+      ok.hidden = false; form.setAttribute("data-status", "gesendet");
+      try { ok.focus({ preventScroll: true }); } catch (e) { ok.focus(); }
+      var off = headerOffset(), top = (outside ? ok : form).getBoundingClientRect().top;
+      if (top < off - 2) scrollTo({ top: scrollY + top - off, behavior: still ? "auto" : "smooth" });
+    }
+    function again(e) {
+      if (!e.target.closest("[data-reservierung-neu]")) return;
+      e.preventDefault(); ok.hidden = true; form.removeAttribute("data-status"); clearInterval(warten);
+      var alt = ok.querySelector(".res-status"); if (alt) alt.remove();
+      if (outside) { form.hidden = form.getAttribute("data-res-vorher") === "1"; form.removeAttribute("data-res-vorher"); }
+      form.querySelectorAll("[data-res-vorher]").forEach(function (c) { c.hidden = c.getAttribute("data-res-vorher") === "1"; c.removeAttribute("data-res-vorher"); });
+      form.querySelectorAll("[data-res-offen]").forEach(function (c) { c.hidden = true; c.removeAttribute("data-res-offen"); });
+      if (multi) show(0, -1);
+    }
+    form.addEventListener("click", again);
+    if (outside) ok.addEventListener("click", again);
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (trap.value) return;
+      if (!check()) return;
+      var btn = form.querySelector('[type="submit"]'), label = btn ? btn.innerHTML : "";
+      if (btn) { btn.disabled = true; btn.setAttribute("aria-busy", "true"); }
+      form.setAttribute("data-status", "sendet");
+      function done(success, ergebnis, text) {
+        if (btn) { btn.disabled = false; btn.removeAttribute("aria-busy"); btn.innerHTML = label; }
+        if (success) showSuccess(ergebnis);
+        else { form.removeAttribute("data-status"); errBox.innerHTML = (text || "Das hat leider nicht geklappt.") + (CFG.tel ? " Bitte rufen Sie an: <a href=\"tel:" + CFG.tel + "\">" + CFG.telText + "<\/a>." : ""); }
+      }
+      if (dienst) {  // eigenes Tischbuch des Restaurants
+        fetch(dienst + "/t/anfrage?l=" + encodeURIComponent(CFG.lokal), { method: "POST", headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ datum: val("datum"), uhrzeit: val("uhrzeit"), personen: +val("personen"), name: val("name"), telefon: val("telefon"),
+                                 email: field("email") ? val("email") : "", nachricht: field("nachricht") ? val("nachricht") : "", hp: trap.value }) })
+          .then(function (res) { return res.json().catch(function () { return {}; }).then(function (d) { return [res.status, d]; }); })
+          .then(function (x) {
+            if (x[0] === 200) done(true, x[1]);
+            else if (x[0] === 409) done(false, null, "Für diesen Tag nimmt " + esc(CFG.name) + " gerade keine Online-Anfragen an.");
+            else done(false);
+          }).catch(function () { done(false); });
+        return;
+      }
+      if (CFG.modus !== "live" || !CFG.ziel) { setTimeout(function () { done(true); }, 650); return; }
+      var r = readable(), fd = new FormData(form);
+      fd.set("datum", r.datum + " (" + val("datum") + ")");
+      fd.set("subject", "Reservierungsanfrage " + r.datum + ", " + r.uhrzeit + " Uhr, " + r.personen);
+      fd.set("restaurant", CFG.name);
+      for (var k in (CFG.extra || {})) fd.set(k, CFG.extra[k]);
+      fetch(CFG.ziel, { method: "POST", body: fd, headers: { Accept: "application/json" } })
+        .then(function (res) { done(res.ok); }).catch(function () { done(false); });
+    });
+  }
+  function run() { document.querySelectorAll("form[data-reservierung]").forEach(init); }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run); else run();
+})();
+</script><!--/agent-res--><!--agent-szenen--><style id="agent-szenen">[data-szene]{position:relative;isolation:isolate}[data-szene="raster-zoom"]{overflow:clip}.szene-nachweis{background:rgba(255,255,255,.9);color:#1a1a1a;border-radius:6px;padding:.15em .5em;width:fit-content}
+.zerlegt-an [data-zerlegt-buehne]{position:relative}.zerlegt-an [data-ebene]{will-change:transform}
+.zerlegt-strich{display:block;height:0;border-top:1.5px solid currentColor;pointer-events:none}
+.zerlegt-strich::before{content:"";position:absolute;top:-4.75px;width:8px;height:8px;border-radius:50%;background:currentColor}
+.zerlegt-strich.rechts::before{left:-4px}.zerlegt-strich.links::before{right:-4px}
+.fenster-an [data-fenster-titel]{display:grid;justify-items:center;align-content:start;padding-top:clamp(.5rem,4vh,2.5rem);text-align:center;pointer-events:none}
+:where(.kapitel-an [data-kapitel]){display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(1.5rem,4vw,4rem);align-items:center;padding:clamp(1rem,4vh,3rem) clamp(1rem,5vw,4rem);box-sizing:border-box}
+:where(.kapitel-an [data-kapitel-bild]){margin:0;overflow:hidden}
+:where(.kapitel-an [data-kapitel-bild] img){width:100%;height:100%;object-fit:cover;display:block}
+@media (max-width:819px){:where(.kapitel-an [data-kapitel]){grid-template-columns:minmax(0,1fr);align-content:start;gap:1rem}}
+.horizontal-an{overflow:hidden}.horizontal-an [data-spur]{overflow:visible!important;flex-wrap:nowrap!important;width:max-content;scroll-snap-type:none!important}
+.horizontal-wisch [data-spur]{flex-wrap:nowrap!important;overflow-x:auto!important;overflow-y:hidden!important;overscroll-behavior-x:contain;scroll-snap-type:x mandatory!important;scrollbar-width:none;-webkit-overflow-scrolling:touch;width:auto!important;max-width:none!important;transform:none!important;box-sizing:border-box}
+.horizontal-wisch [data-spur]::-webkit-scrollbar{display:none}.horizontal-wisch [data-spur]>*{flex-shrink:0!important;scroll-snap-align:start}
+.spur-steuerung{display:none}.horizontal-wisch .spur-steuerung{display:flex}.horizontal-wisch .spur-steuerung.spur-passt{display:none}
+:where(.spur-steuerung){align-items:center;gap:.6rem;margin-top:clamp(.9rem,2.5vh,1.5rem)}
+:where(.spur-leiste){position:relative;flex:1;height:2px;border-radius:2px;background:color-mix(in srgb,currentColor 18%,transparent);overflow:hidden}
+.spur-leiste i{position:absolute;top:0;bottom:0;left:0;width:calc(var(--spur-anteil,.3)*100%);transform:translateX(calc(var(--spur-stand,0)*(1/var(--spur-anteil,.3) - 1)*100%));background:currentColor;border-radius:inherit}
+:where(.spur-zurueck,.spur-weiter){display:inline-grid;place-items:center;width:44px;height:44px;padding:0;border-radius:50%;border:1px solid currentColor;background:transparent;color:inherit;font:inherit;font-size:1.1rem;line-height:1;cursor:pointer;transition:opacity .2s}
+.spur-zurueck:disabled,.spur-weiter:disabled{opacity:.3;cursor:default}
+</style><script>(function () {
+  "use strict";
+  /* Immersive Szenen des Agenten. Die Seite liefert Markup und Gestaltung, der Agent die Bewegung:
+       data-szene="zerlegt"     Gericht öffnet sich beim Scrollen Schicht für Schicht, Linien + Beschriftungen
+       data-szene="raster-zoom" Mittelkachel wächst gepinnt, Seitenkacheln gleiten nach außen
+       data-szene="fenster"     Bild wächst aus einem kleinen Fenster zum Vollbild
+       data-szene="kapitel"     gepinnte Kapitel: Bild wischt herein, Text wechselt
+       data-szene="horizontal"  Desktop: Reihe läuft beim Scrollen seitlich (gepinnt); Handy: wischbare Reihe
+       data-szene="lesen"       Text leuchtet Wort für Wort mit dem Scrollen auf
+       data-schieben            Abschnitt schiebt sich über den vorigen
+       data-tiefe="10…40"       Parallax in mehreren Geschwindigkeiten (+ Maus-Tiefe auf dem Desktop)
+       data-hintergrund         Abschnitt mit Hintergrundbild ([data-hintergrund-bild]): sanfte Parallaxe
+     Ohne Bewegung (prefers-reduced-motion oder ohne GSAP) bleibt alles ruhig und vollständig sichtbar. */
+  var D = document, root = D.documentElement;
+  function qa(s, r) { return Array.prototype.slice.call((r || D).querySelectorAll(s)); }
+  function q(s, r) { return (r || D).querySelector(s); }
+  var G = window.gsap, ST = window.ScrollTrigger;
+  var still = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+  var motion = !!(G && ST) && !still;
+  var MOTION = "(prefers-reduced-motion: no-preference)";
+  if (G && ST) { G.registerPlugin(ST); if (window.SplitText) G.registerPlugin(window.SplitText); ST.config({ ignoreMobileResize: true }); }
+  var mm = motion ? G.matchMedia() : null;
+
+  /* feste Kopfzeile oben und feste Leisten unten (Handy) */
+  function edges() {
+    var top = 0, bottom = 0, vh = innerHeight;
+    qa("body > *, body > * > *, header, nav, [data-kopf]").forEach(function (n) {
+      if (n.offsetWidth < innerWidth * 0.5) return;
+      var cs = getComputedStyle(n);
+      if (cs.position !== "fixed" && cs.position !== "sticky") return;
+      if (cs.visibility === "hidden" || cs.display === "none" || +cs.opacity === 0) return;
+      var r = n.getBoundingClientRect();
+      if (r.height <= 0 || r.height > vh / 3) return;
+      if (cs.position === "sticky") { // klebt beim Scrollen oben (z. B. unter der Hinweisleiste des Agenten)
+        var t = parseFloat(cs.top), par = n.parentElement;
+        if (!isNaN(t) && t < vh / 3 && par && par.offsetHeight > vh * 2) top = Math.max(top, t + r.height);
+        return;
+      }
+      if (r.top <= 1 && r.bottom > 0) top = Math.max(top, r.bottom);
+      else if (cs.position === "fixed" && r.bottom >= vh - 1) bottom = Math.max(bottom, vh - r.top);
+    });
+    return { top: Math.round(top), bottom: Math.round(bottom) };
+  }
+  var E = { top: 0, bottom: 0 };
+  function measureEdges() {
+    E = edges();
+    root.style.setProperty("--szene-kopf", E.top + "px");
+    root.style.setProperty("--szene-unten", E.bottom + "px");
+  }
+  measureEdges();
+  function kopf() { return E.top; }
+  function start() { return "top " + kopf(); }
+  function sichtbar() { measureEdges(); return innerHeight - E.top - E.bottom; }
+  function loaded(imgs, cb) {
+    var left = imgs.length, done = false;
+    function one() { if (--left <= 0 && !done) { done = true; cb(); } }
+    if (!left) return cb();
+    imgs.forEach(function (i) {
+      i.loading = "eager";
+      if (i.complete && i.naturalWidth) one();
+      else { i.addEventListener("load", one, { once: true }); i.addEventListener("error", one, { once: true }); }
+    });
+    setTimeout(function () { if (!done) { done = true; cb(); } }, 6000);
+  }
+  var pending = 0;
+  function styler() {
+    var saved = [];
+    function put(el, props) {
+      if (!el) return;
+      if (!saved.some(function (x) { return x[0] === el; })) saved.push([el, el.getAttribute("style")]);
+      for (var k in props) el.style.setProperty(k, props[k], "important");
+    }
+    function undo() {
+      saved.forEach(function (x) { if (x[1] == null) x[0].removeAttribute("style"); else x[0].setAttribute("style", x[1]); });
+      saved = [];
+    }
+    return { put: put, undo: undo };
+  }
+  function kinder(box, ausser) { // direkte Kinder, die keine der genannten Elemente sind oder enthalten
+    return Array.prototype.slice.call(box.children).filter(function (c) {
+      return !ausser.some(function (a) { return a && (c === a || c.contains(a)); }) && getComputedStyle(c).position !== "absolute";
+    });
+  }
+  /* gepinnte Abschnitte füllen den sichtbaren Bereich: zu kurze Abschnitte bekommen oben und unten gleich viel Luft */
+  var fills = [];
+  function fill(sec) {
+    if (!sec._pad) { var cs = getComputedStyle(sec); sec._pad = [parseFloat(cs.paddingTop) || 0, parseFloat(cs.paddingBottom) || 0]; fills.push(sec); }
+    sec.style.paddingTop = sec._pad[0] + "px"; sec.style.paddingBottom = sec._pad[1] + "px";
+    var extra = sichtbar() - sec.offsetHeight;
+    if (extra > 0) { sec.style.paddingTop = sec._pad[0] + extra / 2 + "px"; sec.style.paddingBottom = sec._pad[1] + extra / 2 + "px"; }
+  }
+  function unfill(sec) { if (sec._pad) { sec.style.paddingTop = ""; sec.style.paddingBottom = ""; } }
+  function refreshSoon() { if (motion && pending <= 0) { ST.sort(); ST.refresh(); } }
+
+  /* ---------------------------------------------------------------- zerlegt */
+  function zerlegt(sec) {
+    var buehne = q("[data-zerlegt-buehne]", sec);
+    if (!buehne) return;
+    var figs = qa("[data-ebene]", buehne).sort(function (a, b) { return (+a.getAttribute("data-ebene")) - (+b.getAttribute("data-ebene")); });
+    if (figs.length < 2) return;
+    var imgs = figs.map(function (f) { return q("img", f); }).filter(Boolean);
+    var caps = figs.map(function (f) { return q("figcaption, [data-ebene-text]", f); });
+    var lines = figs.map(function (f, i) {
+      if (!caps[i]) return null;
+      var s = q(".zerlegt-strich", f);
+      if (!s) { s = D.createElement("i"); s.className = "zerlegt-strich"; s.setAttribute("aria-hidden", "true"); f.appendChild(s); }
+      return s;
+    });
+    sec.classList.add("zerlegt-an");
+    var P = { asm: [], exp: [], w: 0, seite: [], shift: 0, s0: 1 };
+    function ratio(img) { return img && img.naturalWidth ? img.naturalHeight / img.naturalWidth : 0.35; }
+    function inhalt(img) {
+      var v = (img && img.getAttribute("data-inhalt") || "").split(",").map(parseFloat);
+      return v.length === 2 && v[0] >= 0 && v[1] <= 1 && v[1] > v[0] ? v : [0.08, 0.92];
+    }
+    function layout() {
+      measureEdges();
+      var vw = innerWidth, mobil = vw < 820, n = figs.length;
+      buehne.style.position = "relative"; buehne.style.width = "100%";
+      // Höhe so, dass der gepinnte Abschnitt genau in den sichtbaren Bereich passt (Kopf- und Fußleisten abgezogen)
+      var V = Math.max(320, sichtbar());
+      buehne.style.height = V + "px";
+      // Höhe der Bühne = sichtbarer Bereich minus alles, was im gepinnten Abschnitt über bzw. unter ihr liegt
+      var st = getComputedStyle(sec), oben = 0, n0 = buehne;
+      while (n0 && n0 !== sec) { oben += n0.offsetTop; n0 = n0.offsetParent; if (n0 && !sec.contains(n0) && n0 !== sec) { oben = buehne.getBoundingClientRect().top - sec.getBoundingClientRect().top; break; } }
+      var H = Math.max(240, Math.min(V, V - oben - (parseFloat(st.paddingBottom) || 0)));
+      if (!motion) H = Math.min(V, Math.max(H, 420));
+      buehne.style.height = H + "px";
+      var Wb = buehne.clientWidth, R = figs.map(function (f, i) { return ratio(q("img", f)); });
+      var sumR = R.reduce(function (a, b) { return a + b; }, 0), gap = mobil ? 0.075 : 0.1;
+      var w = Math.min(mobil ? Wb * 0.6 : Math.min(Wb * 0.56, 560), (H * 0.95) / (sumR + (n - 1) * gap));
+      var line = mobil ? 18 : Math.max(36, Math.min(90, Wb * 0.06)), minLabel = mobil ? 92 : 140;
+      var wechsel = !mobil && (Wb - w) / 2 - line - 12 >= minLabel, left, labelW;
+      if (wechsel) { left = (Wb - w) / 2; labelW = Math.min(260, (Wb - w) / 2 - line - 12); }
+      else {
+        // Beschriftungen rechts: Platz bis zum Rand der Bühne und nie über den Bildschirm hinaus
+        var edge = Math.min(Wb, innerWidth - 8 - buehne.getBoundingClientRect().left);
+        left = mobil ? 0 : Math.max(0, Math.min(24, edge - w - line - 10 - minLabel));
+        var room = function (x) { return edge - left - x - line - 10; };
+        if (room(w) < minLabel) w = Math.max(Wb * 0.38, w - (minLabel - room(w)));
+        labelW = Math.max(60, Math.min(240, room(w)));
+      }
+      var h = R.map(function (r) { return r * w; }), g = gap * w;
+      var o = h.map(function (x, i) { return i < n - 1 ? Math.min(x, h[i + 1]) * 0.3 : 0; });
+      var Texp = h.reduce(function (a, b) { return a + b; }, 0) + (n - 1) * g;
+      var Tasm = h.reduce(function (a, b) { return a + b; }, 0) - o.reduce(function (a, b) { return a + b; }, 0);
+      var ye = (H - Texp) / 2, ya = (H - Tasm) / 2;
+      P.w = w;
+      // zusammengesetzt steht das Gericht mittig und etwas größer, beim Öffnen rückt es an seinen Platz
+      P.shift = wechsel ? 0 : Math.max(0, (Wb - w) / 2 - left);
+      P.s0 = Math.max(1, Math.min(1.3, (H * 0.9) / Tasm, (Wb * 0.92) / w));
+      figs.forEach(function (f, i) {
+        P.exp[i] = ye; P.asm[i] = ya; ye += h[i] + g; ya += h[i] - o[i];
+        var rechts = !wechsel || i % 2 === 0;
+        P.seite[i] = rechts ? 1 : -1;
+        f.style.cssText += ";position:absolute;top:0;left:" + left + "px;width:" + w + "px;margin:0;z-index:" + (n - i + 1);
+        var img = q("img", f);
+        if (img) img.style.cssText += ";display:block;width:100%;height:auto;max-width:none";
+        var c = caps[i], s = lines[i];
+        if (!c) return;
+        var span = inhalt(img), mid = h[i] / 2;
+        var x0 = rechts ? (span[1] - 0.07) * w : (span[0] + 0.07) * w, x1 = rechts ? w + line : -line;
+        s.className = "zerlegt-strich " + (rechts ? "rechts" : "links");
+        s.style.cssText = "position:absolute;top:" + mid + "px;left:" + Math.min(x0, x1) + "px;width:" + Math.abs(x1 - x0) + "px;" +
+          "transform-origin:" + (rechts ? "0 50%" : "100% 50%");
+        c.style.cssText += ";position:absolute;margin:0;width:" + labelW + "px;" +
+          (rechts ? "left:" + (w + line + 10) + "px;right:auto;text-align:left" : "left:" + (-line - 10 - labelW) + "px;right:auto;text-align:right");
+        c.style.top = "0px";
+        c.style.top = (mid - c.offsetHeight / 2) + "px";
+      });
+      if (!motion) figs.forEach(function (f, i) { f.style.transform = "translateY(" + P.exp[i] + "px)"; });
+    }
+    pending++;
+    loaded(imgs, function () {
+      pending--;
+      layout();
+      if (!motion) { addEventListener("resize", layout); return; }
+      ST.addEventListener("refreshInit", layout);
+      mm.add(MOTION, function () {
+        var n = figs.length, mobil = innerWidth < 820;
+        var tl = G.timeline({ defaults: { ease: "none" }, scrollTrigger: {
+          trigger: sec, start: start, end: function () { return "+=" + Math.round(innerHeight * (mobil ? 0.5 : 0.62) * (n + 1)); },
+          pin: true, scrub: 0.7, anticipatePin: 1, invalidateOnRefresh: true } });
+        figs.forEach(function (f, i) {
+          tl.fromTo(f, { y: function () { return P.asm[i]; }, x: function () { return P.shift; } },
+            { y: function () { return P.exp[i]; }, x: function () { return P.seite[i] * -P.w * 0.02 * (i % 2 ? 1 : -1); }, ease: "power2.inOut", duration: 1 }, i * 0.06);
+          var img = q("img", f);
+          if (img) tl.fromTo(img, { rotation: 0 }, { rotation: (i % 2 ? -1 : 1) * (1.2 + (i % 3) * 0.8), ease: "power2.inOut", duration: 1 }, i * 0.06);
+        });
+        figs.forEach(function (f, i) {
+          var t = 0.42 + i * (0.55 / n);
+          if (lines[i]) tl.fromTo(lines[i], { scaleX: 0 }, { scaleX: 1, duration: 0.22, ease: "power2.out" }, t);
+          if (caps[i]) tl.fromTo(caps[i], { autoAlpha: 0, x: function () { return P.seite[i] * 14; } }, { autoAlpha: 1, x: 0, duration: 0.22 }, t + 0.06);
+        });
+        tl.fromTo(buehne, { scale: function () { return P.s0; } }, { scale: 1, ease: "power2.inOut", duration: 0.9, transformOrigin: "50% 50%" }, 0);
+        qa("[data-tiefe]", sec).forEach(function (el) {
+          tl.fromTo(el, { yPercent: 0 }, { yPercent: -(parseFloat(el.getAttribute("data-tiefe")) || 20) * 1.5, duration: 1.4 }, 0);
+        });
+        tl.to({}, { duration: 0.3 });
+        // Maus-Tiefe: die Schichten folgen dem Zeiger unterschiedlich stark
+        var off = null;
+        if (matchMedia("(pointer: fine)").matches && innerWidth >= 900) {
+          var qs = imgs.map(function (img, i) { return [G.quickTo(img, "x", { duration: 0.6, ease: "power3" }), G.quickTo(img, "y", { duration: 0.6, ease: "power3" }), 4 + i * 2.5]; });
+          var mv = function (e) { var r = sec.getBoundingClientRect(), dx = (e.clientX - r.left) / r.width - 0.5, dy = (e.clientY - r.top) / r.height - 0.5;
+            qs.forEach(function (z) { z[0](dx * z[2] * 2); z[1](dy * z[2]); }); };
+          var lv = function () { qs.forEach(function (z) { z[0](0); z[1](0); }); };
+          sec.addEventListener("mousemove", mv); sec.addEventListener("mouseleave", lv);
+          off = function () { sec.removeEventListener("mousemove", mv); sec.removeEventListener("mouseleave", lv); };
+        }
+        return function () { if (off) off(); };
+      });
+      refreshSoon();
+    });
+  }
+
+  /* ---------------------------------------------------------------- raster-zoom */
+  function rasterZoom(sec) {
+    var mitte = q("[data-mitte]", sec) || q(".mitte", sec);
+    if (!mitte || !motion) return;
+    var tiles = Array.prototype.slice.call(mitte.parentNode.children).filter(function (c) { return c !== mitte; });
+    sec.style.position = sec.style.position || "relative";
+    function pos(el) {
+      var x = 0, y = 0, n = el;
+      while (n && n !== sec) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; if (n && !sec.contains(n)) break; }
+      return { x: x, y: y };
+    }
+    mm.add("(min-width: 900px) and " + MOTION, function () {
+      var C = {};
+      function calc() {
+        fill(sec);
+        var p = pos(mitte), w = mitte.offsetWidth, h = mitte.offsetHeight, V = innerHeight - kopf();
+        C.s = Math.max(1, Math.min(innerWidth * 0.94 / w, V * 0.9 / h));
+        C.x = innerWidth / 2 - (sec.getBoundingClientRect().left + p.x + w / 2);
+        C.y = V / 2 - (p.y + h / 2);
+      }
+      calc();
+      var tl = G.timeline({ scrollTrigger: { trigger: sec, start: start, end: "+=130%", pin: true, scrub: 1, anticipatePin: 1,
+        invalidateOnRefresh: true, onRefreshInit: calc } });
+      tl.to(mitte, { scale: function () { return C.s; }, x: function () { return C.x; }, y: function () { return C.y; }, ease: "power1.inOut", zIndex: 5 }, 0);
+      var img = q("img", mitte);
+      if (img) tl.fromTo(img, { scale: 1.18 }, { scale: 1, ease: "none" }, 0);
+      tiles.forEach(function (t) {
+        var links = t.offsetLeft + t.offsetWidth / 2 < mitte.offsetLeft + mitte.offsetWidth / 2;
+        tl.to(t, { xPercent: links ? -125 : 125, autoAlpha: 0, ease: "power1.in" }, 0);
+      });
+      var txt = q("[data-raster-text]", sec);
+      if (txt) tl.fromTo(txt, { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.3 }, 0.7);
+      // alles andere im Abschnitt (Überschrift, Text) weicht, bevor die Kachel es erreicht; Bildnachweise bleiben sichtbar
+      var S = styler(), weg = [], pfad = [];
+      for (var n = mitte.parentNode; n && n !== sec; n = n.parentNode) pfad.push(n);
+      [sec].concat(pfad).forEach(function (box) {
+        Array.prototype.slice.call(box.children).forEach(function (c) {
+          if (c === mitte || c.contains(mitte) || pfad.indexOf(c) >= 0 || tiles.indexOf(c) >= 0 || c === txt || (txt && c.contains(txt))) return;
+          if (c.matches(".foto-nachweis") || q(".foto-nachweis", c)) { S.put(c, { position: "relative", "z-index": "8" }); c.classList.add("szene-nachweis"); }
+          else weg.push(c);
+        });
+      });
+      if (weg.length) tl.to(weg, { autoAlpha: 0, y: -20, duration: 0.25, ease: "power1.in" }, 0);
+      return function () { unfill(sec); S.undo(); qa(".szene-nachweis", sec).forEach(function (c) { c.classList.remove("szene-nachweis"); }); };
+    });
+    mm.add("(max-width: 899px) and " + MOTION, function () {
+      G.from([mitte].concat(tiles), { clipPath: "inset(14% 14% 14% 14% round 14px)", duration: 1, ease: "power3.out", stagger: 0.12,
+        scrollTrigger: { trigger: sec, start: "top 80%" } });
+    });
+  }
+
+  /* ---------------------------------------------------------------- fenster */
+  function fenster(sec) {
+    var fig = q("[data-fenster]", sec);
+    if (!fig || !motion) return;
+    mm.add(MOTION, function () {
+      sec.classList.add("fenster-an");
+      var S = styler(), mobil = innerWidth < 820, media = q("img, video", fig);
+      var titel = q("[data-fenster-titel]", sec), txt = q("[data-fenster-text]", sec);
+      var rest = kinder(sec, [fig, titel, txt]);  // weitere Inhalte gehören zur Titel-Ebene und weichen mit ihm
+      S.put(sec, { position: "relative", overflow: "hidden", "padding-top": "0px", "padding-bottom": "0px", "min-height": "0px", "max-height": "none" });
+      S.put(fig, { position: "absolute", top: "0px", left: "0px", right: "0px", bottom: "0px", width: "100%", height: "100%",
+        "max-width": "none", "max-height": "none", margin: "0px", "aspect-ratio": "auto", "z-index": "1" });
+      if (media) S.put(media, { width: "100%", height: "100%", "max-width": "none", "max-height": "none", "object-fit": "cover",
+        "aspect-ratio": "auto", display: "block", position: "static" });
+      if (titel) S.put(titel, { position: "absolute", top: "0px", left: "0px", right: "0px", margin: "0px", "z-index": "0" });
+      if (txt) S.put(txt, { position: "absolute", "z-index": "2", top: "auto", margin: "0px" });
+      rest.forEach(function (r) { S.put(r, { position: "relative", "z-index": "0" }); });
+      var C = {};
+      function geo() {
+        var H = sichtbar(), w = sec.clientWidth;
+        sec.style.setProperty("height", H + "px", "important");
+        var oben = H * 0.12;
+        if (titel) oben = Math.max(oben, titel.offsetTop + titel.offsetHeight + 18);
+        rest.forEach(function (r) { oben = Math.max(oben, r.offsetTop + r.offsetHeight + 18); });
+        var unten = Math.max(H * 0.1, E.bottom ? 12 : 0), hoehe = Math.max(H * 0.28, H - oben - unten);
+        var breite = Math.min(w * (mobil ? 0.84 : 0.42), hoehe * (mobil ? 1.1 : 1.5));
+        hoehe = Math.min(hoehe, breite * (mobil ? 1.25 : 0.9));
+        var seite = Math.max(0, (w - breite) / 2), u = Math.max(0, H - oben - hoehe);
+        C.start = "inset(" + oben + "px " + seite + "px " + u + "px " + seite + "px round 28px)";
+        if (txt) { var rand = Math.max(16, w * 0.05); txt.style.setProperty("left", rand + "px", "important");
+          txt.style.setProperty("right", rand + "px", "important");
+          txt.style.setProperty("bottom", (Math.max(24, H * 0.06)) + "px", "important"); }
+      }
+      geo();
+      ST.addEventListener("refreshInit", geo);
+      var tl = G.timeline({ scrollTrigger: { trigger: sec, start: start, end: function () { return "+=" + Math.round(innerHeight * (mobil ? 1.1 : 1.5)); },
+        pin: true, scrub: 0.8, anticipatePin: 1, invalidateOnRefresh: true } });
+      tl.fromTo(fig, { clipPath: function () { return C.start; } },
+        { clipPath: "inset(0px 0px 0px 0px round 0px)", ease: "power2.inOut", duration: 1 }, 0);
+      if (media) tl.fromTo(media, { scale: 1.3 }, { scale: 1, ease: "power2.out", duration: 1 }, 0);
+      var weich = (titel ? [titel] : []).concat(rest);
+      if (weich.length) tl.fromTo(weich, { scale: 1, autoAlpha: 1 }, { scale: 0.9, autoAlpha: 0, duration: 0.4 }, 0.15);
+      if (txt) tl.fromTo(txt, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.3 }, 0.78);
+      tl.to({}, { duration: 0.25 });
+      return function () { ST.removeEventListener("refreshInit", geo); S.undo(); sec.classList.remove("fenster-an"); };
+    });
+  }
+
+  /* ---------------------------------------------------------------- kapitel */
+  function kapitel(sec) {
+    var ks = qa("[data-kapitel]", sec);
+    if (ks.length < 2 || !motion) return;
+    var box = ks[0].parentNode;
+    if (ks.some(function (k) { return k.parentNode !== box; })) return;
+    mm.add(MOTION, function () {
+      sec.classList.add("kapitel-an");
+      var S = styler(), n = ks.length;
+      // was vor den Kapiteln steht (Überschrift), bleibt sichtbar darüber; was danach steht, ruht während der Szene
+      var vor = [], nach = [];
+      kinder(box, ks).forEach(function (c) { (c.compareDocumentPosition(ks[0]) & 4 ? vor : nach).push(c); });
+      S.put(sec, { position: "relative", overflow: "hidden", "min-height": "0px", "max-height": "none" });
+      if (box !== sec) S.put(box, { position: "relative", "min-height": "0px", "max-height": "none" });
+      nach.forEach(function (c) { S.put(c, { display: "none" }); });
+      function geo() {
+        var H = sichtbar(), cs = getComputedStyle(sec), pb = parseFloat(cs.paddingBottom) || 0;
+        sec.style.setProperty("height", H + "px", "important");
+        var boxH = H - pb - (parseFloat(cs.paddingTop) || 0), top = box === sec ? (parseFloat(cs.paddingTop) || 0) : 0;
+        if (box !== sec) {
+          box.style.setProperty("height", "1px", "important");
+          boxH = Math.max(280, H - pb - (box.getBoundingClientRect().top - sec.getBoundingClientRect().top));
+          box.style.setProperty("height", boxH + "px", "important");
+        }
+        vor.forEach(function (v) { top = Math.max(top, v.offsetTop + v.offsetHeight + 16); });
+        var h = Math.max(240, (box === sec ? H - pb : boxH) - top);
+        ks.forEach(function (k, i) {
+          S.put(k, { position: "absolute", left: "0px", right: "0px", bottom: "auto", "margin-top": "0px", "margin-bottom": "0px",
+            width: "auto", "z-index": String(i + 1) });
+          k.style.setProperty("top", top + "px", "important");
+          k.style.setProperty("height", h + "px", "important");
+          // passt ein Kapitel nicht in die Bühne (Handy), wird sein Bild niedriger statt dass etwas überlappt
+          var bild = q("[data-kapitel-bild]", k), img = bild && q("img", bild);
+          if (!bild) return;
+          ["height", "aspect-ratio", "max-height", "width", "justify-self", "margin-left", "margin-right", "flex-shrink"].forEach(function (pr) {
+            if (bild._fit) bild.style.removeProperty(pr); });
+          // Platz für das Bild ausrechnen statt messen: in einem Raster mit fester Höhe schrumpfen die Zeilen und das
+          // Bild ragt sonst oben und unten heraus (über die Überschrift, unter die nächste Section)
+          var cs = getComputedStyle(k), pad = (parseFloat(cs.paddingTop) || 0) + (parseFloat(cs.paddingBottom) || 0);
+          var spalten = cs.display.indexOf("grid") >= 0 ? cs.gridTemplateColumns.trim().split(/\s+/).length
+            : (cs.display.indexOf("flex") >= 0 && cs.flexDirection.indexOf("row") === 0 ? 2 : 1);
+          var rest = 0, abstand = parseFloat(cs.rowGap) || 0;
+          if (spalten < 2) [].forEach.call(k.children, function (c) { if (c !== bild && c.offsetHeight) rest += c.offsetHeight + abstand; });
+          var ist = Math.max(bild.offsetHeight, bild.scrollHeight), frei = Math.floor(h - pad - rest - 4);
+          var over = Math.max(k.scrollHeight - h, ist - frei);
+          if (over > 2) {
+            bild._fit = true;
+            var nh = Math.max(110, ist - over - 6);
+            S.put(bild, { height: nh + "px", "aspect-ratio": "auto", "max-height": "none", "flex-shrink": "0" });
+            // runde Bilder bleiben rund statt zum Oval gequetscht zu werden
+            var rad = getComputedStyle(bild).borderTopLeftRadius;
+            if (rad.indexOf("%") > 0 ? parseFloat(rad) >= 40 : parseFloat(rad) >= bild.offsetWidth * 0.4)
+              S.put(bild, { width: nh + "px", "justify-self": "center", "margin-left": "auto", "margin-right": "auto" });
+            if (img) S.put(img, { width: "100%", height: "100%", "object-fit": "cover" });
+          }
+        });
+      }
+      geo();
+      ST.addEventListener("refreshInit", geo);
+      var aktiv = function (self) { var at = Math.round(self.progress * (n - 1));  // nur das sichtbare Kapitel ist anklickbar
+        ks.forEach(function (k, i) { k.style.pointerEvents = i === at ? "" : "none"; }); };
+      aktiv({ progress: 0 });
+      var tl = G.timeline({ scrollTrigger: { trigger: sec, start: start, end: function () { return "+=" + Math.round(innerHeight * 0.85 * n); },
+        pin: true, scrub: 0.6, anticipatePin: 1, invalidateOnRefresh: true, onUpdate: aktiv, onRefresh: aktiv,
+        snap: { snapTo: 1 / (n - 1), duration: { min: 0.2, max: 0.6 }, delay: 0.08, ease: "power1.inOut" } } });
+      ks.forEach(function (k, i) {
+        if (!i) return;
+        var bild = q("[data-kapitel-bild]", k), img = bild && q("img", bild), text = q("[data-kapitel-text]", k);
+        var vorText = q("[data-kapitel-text]", ks[i - 1]), vorImg = q("[data-kapitel-bild] img", ks[i - 1]), t = i - 1;
+        if (bild) tl.fromTo(bild, { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1, ease: "power2.inOut" }, t);
+        if (img) tl.fromTo(img, { scale: 1.25, yPercent: 6 }, { scale: 1, yPercent: 0, duration: 1, ease: "power2.out" }, t);
+        if (vorImg) tl.to(vorImg, { scale: 1.08, duration: 1 }, t);
+        if (vorText) tl.to(vorText, { autoAlpha: 0, y: -40, duration: 0.4 }, t);
+        if (text) tl.fromTo(text, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.45 }, t + 0.45);
+      });
+      return function () { ST.removeEventListener("refreshInit", geo); S.undo(); sec.classList.remove("kapitel-an");
+        ks.forEach(function (k) { k.style.pointerEvents = ""; }); };
+    });
+  }
+
+  /* ---------------------------------------------------------------- horizontal */
+  /* Desktop mit Maus: gepinnt, die Reihe läuft etwas schneller als gescrollt wird (Pin höchstens ~1,2 Bildschirm-
+     höhen, nie Leerlauf). Handy/Touch und ohne Bewegung: keine Scroll-Entführung, sondern eine wischbare Reihe mit
+     Einrasten, Fortschrittsleiste und Pfeilen, die bis an den Bildschirmrand läuft. */
+  var QUER = "(min-width: 820px) and (hover: hover) and (pointer: fine) and " + MOTION;
+  function wischbar(sec, spur) {
+    sec.classList.add("horizontal-wisch");
+    var bar = D.createElement("div"), knopf = function (cls, label, txt) {
+      var b = D.createElement("button"); b.type = "button"; b.className = cls; b.setAttribute("aria-label", label); b.textContent = txt; return b;
+    };
+    bar.className = "spur-steuerung";
+    var leiste = D.createElement("span"); leiste.className = "spur-leiste"; leiste.setAttribute("aria-hidden", "true");
+    leiste.appendChild(D.createElement("i"));
+    var zur = knopf("spur-zurueck", "Zurück", "←"), vor = knopf("spur-weiter", "Weiter", "→");
+    bar.appendChild(leiste); bar.appendChild(zur); bar.appendChild(vor);
+    spur.parentNode.insertBefore(bar, spur.nextSibling);
+    function schritt() {
+      var k = spur.children[0], cs = getComputedStyle(spur);
+      return k ? k.getBoundingClientRect().width + (parseFloat(cs.columnGap) || parseFloat(cs.gap) || 0) : spur.clientWidth * 0.8;
+    }
+    zur.addEventListener("click", function () { spur.scrollBy({ left: -schritt(), behavior: still ? "auto" : "smooth" }); });
+    vor.addEventListener("click", function () { spur.scrollBy({ left: schritt(), behavior: still ? "auto" : "smooth" }); });
+    function stand() {
+      var max = spur.scrollWidth - spur.clientWidth, p = max > 0 ? spur.scrollLeft / max : 1;
+      bar.classList.toggle("spur-passt", max < 8);
+      zur.disabled = spur.scrollLeft < 4; vor.disabled = spur.scrollLeft > max - 4;
+      leiste.style.setProperty("--spur-anteil", Math.max(0.08, Math.min(1, spur.clientWidth / (spur.scrollWidth || 1))).toFixed(3));
+      leiste.style.setProperty("--spur-stand", p.toFixed(3));
+    }
+    // Reihe läuft bis an den Bildschirmrand, die erste Karte fluchtet trotzdem mit dem Inhalt
+    var KEYS = ["marginLeft", "marginRight", "paddingLeft", "paddingRight", "scrollPaddingLeft", "scrollPaddingRight"];
+    var orig = KEYS.map(function (k) { return spur.style[k]; });
+    function zurueck() { KEYS.forEach(function (k, i) { spur.style[k] = orig[i]; }); }
+    function rand() {
+      if (!sec.classList.contains("horizontal-wisch")) return;
+      zurueck();
+      bar.style.marginLeft = ""; bar.style.marginRight = "";
+      var r = spur.getBoundingClientRect(), cs = getComputedStyle(spur);
+      var l = Math.max(0, Math.round(r.left)), re = Math.max(0, Math.round(D.documentElement.clientWidth - r.right));
+      var pl = parseFloat(cs.paddingLeft) || 0, pr = parseFloat(cs.paddingRight) || 0;
+      // Steuerung fluchtet mit dem Inhalt der Reihe (nie am Bildschirmrand)
+      var b = bar.getBoundingClientRect();
+      bar.style.marginLeft = Math.max(0, Math.round(r.left + pl - b.left)) + "px";
+      bar.style.marginRight = Math.max(0, Math.round(b.right - (r.right - pr))) + "px";
+      spur.style.marginLeft = -l + "px"; spur.style.marginRight = -re + "px";
+      spur.style.paddingLeft = l + pl + "px"; spur.style.paddingRight = re + pr + "px";
+      spur.style.scrollPaddingLeft = l + pl + "px"; spur.style.scrollPaddingRight = re + pr + "px";
+      stand();
+    }
+    spur.addEventListener("scroll", stand, { passive: true });
+    addEventListener("resize", rand);
+    rand();
+    if (D.readyState !== "complete") addEventListener("load", rand, { once: true });
+    return { an: function () { sec.classList.add("horizontal-wisch"); rand(); },
+             aus: function () { sec.classList.remove("horizontal-wisch"); zurueck(); spur.scrollLeft = 0; } };
+  }
+  function horizontal(sec) {
+    var spur = q("[data-spur]", sec);
+    if (!spur) return;
+    var w = wischbar(sec, spur);
+    if (!motion) return;
+    mm.add(QUER, function () {
+      var weg = function () { return Math.max(0, spur.scrollWidth - sec.clientWidth + (parseFloat(getComputedStyle(sec).paddingLeft) || 0)); };
+      w.aus();
+      sec.classList.add("horizontal-an");
+      var LUFT = 20;
+      // passt fast (kaum Bewegung) oder ist die Reihe selbst höher als der sichtbare Bereich: wischbar statt angedockt
+      if (weg() < 60 || spur.offsetHeight + 2 * LUFT > sichtbar()) { sec.classList.remove("horizontal-an"); w.an(); return function () {}; }
+      fill(sec);
+      var refill = function () { fill(sec); };
+      ST.addEventListener("refreshInit", refill);
+      // Andocken je nach Bildschirmhöhe: Ist der Abschnitt höher als der sichtbare Bereich, dockt er erst an, wenn die
+      // Karten unten vollständig zu sehen sind (die Überschrift darf dafür nach oben hinausrutschen), sonst unter dem Kopf
+      var oben = function () {
+        var r = sec.getBoundingClientRect(), s = spur.getBoundingClientRect(), unten = s.bottom;
+        [].forEach.call(sec.children, function (c) {  // auch Hinweise unter der Reihe sollen ganz zu sehen sein
+          var cs = getComputedStyle(c), b = c.getBoundingClientRect();
+          if (cs.position !== "absolute" && cs.position !== "fixed" && b.height > 0) unten = Math.max(unten, b.bottom);
+        });
+        var o = Math.min(kopf(), kopf() + sichtbar() - Math.min(r.height, unten - r.top + LUFT));
+        // passt nicht alles: die Karten haben Vorrang, ihre Oberkante bleibt unter dem Kopf
+        if (o + s.top - r.top < kopf()) o = Math.min(kopf(), kopf() + sichtbar() - (s.bottom - r.top + LUFT));
+        return Math.round(o);
+      };
+      var anfang = function () { var o = oben(); return "top top" + (o < 0 ? "-=" + -o : "+=" + o); };
+      // Pinlänge = Bewegung × 0,75, höchstens 1,2 sichtbare Höhen: die Reihe hängt nie, ohne dass sich etwas tut
+      var dauer = function () { return Math.max(1, Math.round(Math.min(weg() * 0.75, sichtbar() * 1.2))); };
+      G.to(spur, { x: function () { return -weg(); }, ease: "none", scrollTrigger: { trigger: sec, start: anfang,
+        end: function () { return "+=" + dauer(); }, pin: true, scrub: 0.6, anticipatePin: 1, invalidateOnRefresh: true } });
+      return function () { sec.classList.remove("horizontal-an"); ST.removeEventListener("refreshInit", refill); unfill(sec); w.an(); };
+    });
+  }
+
+  /* ---------------------------------------------------------------- lesen */
+  function lesen(el) {
+    if (!motion || !window.SplitText) return;
+    mm.add(MOTION, function () {
+      var s = window.SplitText.create(el, { type: "words" });
+      G.fromTo(s.words, { opacity: 0.16 }, { opacity: 1, stagger: 0.1, ease: "none",
+        scrollTrigger: { trigger: el, start: "top 82%", end: "bottom 42%", scrub: true } });
+      return function () { s.revert(); };
+    });
+  }
+
+  /* ---------------------------------------------------------------- schieben, tiefe */
+  function schieben(el) {
+    if (!motion) return;
+    mm.add(MOTION, function () {
+      G.from(el, { y: innerWidth < 820 ? 48 : 96, ease: "none", scrollTrigger: { trigger: el, start: "top bottom", end: "top 50%", scrub: true } });
+    });
+  }
+  /* ---------------------------------------------------------------- hintergrund */
+  /* Hintergrundbild eines Abschnitts (Grundform in agent-basis): sanfte Parallaxe, ohne Bewegung ruhig */
+  function hintergrund() {
+    if (!motion) return;
+    qa("[data-hintergrund-bild] img").forEach(function (img) {
+      var sec = img.closest("[data-hintergrund]") || img.parentNode;
+      mm.add(MOTION, function () {
+        G.fromTo(img, { yPercent: -6 }, { yPercent: 6, ease: "none", scrollTrigger: { trigger: sec, start: "top bottom",
+          end: "bottom top", scrub: true } });
+      });
+    });
+  }
+  function tiefe() {
+    if (!motion) return;
+    var els = qa("[data-tiefe]").filter(function (el) { return !el.closest('[data-szene="zerlegt"]'); });
+    if (!els.length) return;
+    mm.add(MOTION, function () {
+      els.forEach(function (el) {
+        G.to(el, { yPercent: -(parseFloat(el.getAttribute("data-tiefe")) || 20), ease: "none",
+          scrollTrigger: { trigger: el.closest("section, header, footer") || el, start: "top bottom", end: "bottom top", scrub: true } });
+      });
+    });
+    mm.add("(pointer: fine) and (min-width: 900px) and " + MOTION, function () {
+      var offs = [];
+      qa("section, header").forEach(function (s) {
+        var mine = els.filter(function (el) { return el.closest("section, header") === s; });
+        if (!mine.length) return;
+        var qs = mine.map(function (el) { var t = parseFloat(el.getAttribute("data-tiefe")) || 20;
+          return [G.quickTo(el, "x", { duration: 0.8, ease: "power3" }), G.quickTo(el, "y", { duration: 0.8, ease: "power3" }), t * 0.6]; });
+        var mv = function (e) { var r = s.getBoundingClientRect(), dx = (e.clientX - r.left) / r.width - 0.5, dy = (e.clientY - r.top) / r.height - 0.5;
+          qs.forEach(function (z) { z[0](-dx * z[2]); z[1](-dy * z[2]); }); };
+        s.addEventListener("mousemove", mv);
+        offs.push(function () { s.removeEventListener("mousemove", mv); });
+      });
+      return function () { offs.forEach(function (f) { f(); }); };
+    });
+  }
+
+  function run() {
+    qa('[data-szene="zerlegt"]').forEach(zerlegt);
+    qa('[data-szene="raster-zoom"]').forEach(rasterZoom);
+    qa('[data-szene="fenster"]').forEach(fenster);
+    qa('[data-szene="kapitel"]').forEach(kapitel);
+    qa('[data-szene="horizontal"]').forEach(horizontal);
+    qa('[data-szene="lesen"]').forEach(lesen);
+    qa("[data-schieben]").forEach(schieben);
+    tiefe();
+    hintergrund();
+    refreshSoon();
+    if (motion) {
+      ST.addEventListener("refreshInit", measureEdges);
+      addEventListener("load", function () { ST.sort(); ST.refresh(); });
+    }
+    root.classList.add(motion ? "szenen-bewegt" : "szenen-ruhig");
+  }
+  if (D.readyState === "loading") D.addEventListener("DOMContentLoaded", run); else run();
+})();
+</script><!--/agent-szenen--></body>
+</html>
