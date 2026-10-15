@@ -206,6 +206,7 @@ button, input { font: inherit; color: inherit; }
 .tb-name { min-width: 0; font-size: .98rem; font-weight: 600; line-height: 1.3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .tb-stand { flex: none; margin-left: auto; font-size: .66rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: .18rem .5rem; border-radius: 999px; background: rgba(123,175,255,.12); color: #9CC2FF; }
 .tb-stand.ist-live { background: rgba(75,227,166,.14); color: var(--ok); }
+.tb-stand.ohne { background: rgba(255,255,255,.06); color: var(--ink3); }
 .tb-meta { margin-top: -.35rem; min-width: 0; font-size: .8rem; color: var(--ink2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .tb-meta small { display: block; font-size: .76rem; color: var(--ink3); white-space: normal; }
 .tb-werte { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .35rem; }
@@ -1351,7 +1352,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "de3ac1aa9b";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "d0c7dd2456";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -3990,7 +3991,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     var s = kStand(slug) || {}, live = s.stand === "live", heiss = tbWartet(l), hw = tbHinweise(l);
     var wert = function (n, label, klein, kl) { return '<span class="tb-wert' + (kl ? " " + kl : "") + '"><b>' + (Number(n) || 0) + "</b><span>" + label + (klein ? "<small>" + klein + "</small>" : "") + "</span></span>"; };
     return '<button type="button" class="tb-karte' + (heiss ? " heiss" : hw[0][0] === "warn" ? " warn" : "") + '" data-tb="' + esc(slug) + '">' +
-      '<span class="tb-kopf"><b class="tb-name">' + esc(l.name || tbName(slug)) + "</b>" + (s.stand ? '<span class="tb-stand' + (live ? " ist-live" : "") + '">' + (live ? "Live" : "Vorschau") + "</span>" : "") + "</span>" +
+      '<span class="tb-kopf"><b class="tb-name">' + esc(l.name || tbName(slug)) + "</b>" + '<span class="tb-stand' + (live ? " ist-live" : s.stand ? "" : " ohne") + '">' + (live ? "Live" : s.stand ? "Vorschau" : "Kein Kunde") + "</span></span>" +
       '<span class="tb-meta">' + esc(s.domain ? "www." + s.domain : slug) + "<small>" + esc(l.letzte ? (Number(l.woche) || 0) + (Number(l.woche) === 1 ? " Anfrage" : " Anfragen") + " in 7 Tagen · letzte vor " + tbDauer(Date.now() - Date.parse(l.letzte)) : "noch keine Anfrage") + "</small></span>" +
       '<span class="tb-werte">' + wert(l.offen, "offen", "", l.offen ? "offen" : "") + wert(l.heute_tische, "heute", l.heute_tische ? tbPers(l.heute_personen) : "") +
         wert(l.kommend, "kommend", "bestätigt") + "</span>" +
@@ -4027,18 +4028,17 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       (TB.fehler ? '<p class="tb-stand-zeile">Dienst gerade nicht erreichbar, Stand von ' + esc(TB_FMT.format(new Date(TB.geladen)).slice(11, 16)) + " Uhr.</p>" : "");
     tbBadge(warten);
   }
-  /* Tischbuch ansehen: die echte Oberfläche des Restaurants im Handyrahmen (Reservierungen und Website-Agent), mit
-     ?ansicht=medialyte nur zum Ansehen. Daneben die Lage aus dem Dienst. „beispiel“ zeigt das Beispiel-Tischbuch. */
+  /* Tischbuch ansehen: dieselbe App, die das Restaurant nutzt (Reservierungen und Website-Agent), im Handyrahmen und
+     nur zum Ansehen. Sie liegt beim Cockpit (tischbuch-ansicht/) und bekommt Restaurant und Zugang per Nachricht, die
+     nur innerhalb des Cockpits ankommt; so geht es für jedes Tischbuch im Dienst. Daneben die Lage aus dem Dienst.
+     „beispiel“ zeigt das Beispiel-Tischbuch mit erfundenen Daten. */
   var TB_AUGE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
   var TB_STERN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.7 4.7 1.8-4.7 1.8L12 16l-1.8-4.7-4.7-1.8 4.7-1.8z"/></svg>';
-  function tbAnsichtUrl(link) {  // Link mit Schlüssel (#k=…) → dieselbe Seite als Ansicht für Medialyte
-    try { var u = new URL(link); u.search = "?ansicht=medialyte"; return u.href; } catch (e) { return ""; }
-  }
   function tbOeffnen(slug) {
     var beispiel = slug === "beispiel";
     if (!beispiel && !tbDienst()) { Sound.play("deny"); toast("Tischbücher gehen, sobald der Dienst bei Cloudflare eingerichtet ist."); return; }
     var s = beispiel ? {} : kStand(slug) || {}, frame = $("#tbm-frame"), leer = $("#tbm-leer");
-    var ziel = beispiel ? "tischbuch-beispiel/" : s.tischbuch ? tbAnsichtUrl(s.tischbuch) : "";
+    var ziel = beispiel ? "tischbuch-beispiel/" : "tischbuch-ansicht/?l=" + encodeURIComponent(slug);
     TB.slug = slug; TB.buch = null; TB.zeit = 0;
     if ($("#tbm").hidden) TB.zurueck = document.activeElement;
     $("#tbm-art").className = "tb-nur" + (beispiel ? " beispiel" : "");
@@ -4046,13 +4046,12 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     $("#tbm-name").textContent = beispiel ? "Lokal am Eck" : tbName(slug);
     $("#tbm-text").textContent = beispiel
       ? "So sieht das Tischbuch für deine Kunden aus. Alle Daten sind erfunden, nichts wird gesendet. Probier Bestätigen und Ablehnen, unten den Reiter „Website“ mit dem Agenten und dort „Übernehmen“."
-      : "Genau das, was das Restaurant sieht, auch den Website-Agenten (Reiter „Website“ unten). Bestätigen und Senden sind hier gesperrt; eingreifen kannst du über „Als Restaurant öffnen“.";
+      : "Genau das, was das Restaurant sieht, auch den Website-Agenten (Reiter „Website“ unten). Bestätigen und Senden sind hier gesperrt" +
+        (s.tischbuch ? "; eingreifen kannst du über „Als Restaurant öffnen“." : ".");
     ["#tbm-als", "#tbm-als-klein"].forEach(function (id) { var a = $(id); if (!beispiel && s.tischbuch) { a.href = s.tischbuch; a.hidden = false; } else { a.removeAttribute("href"); a.hidden = true; } });
     $("#tbm-neu").textContent = beispiel ? "Beispiel neu starten" : "Neu laden";
     $("#tbm-lage").innerHTML = ""; $("#tbm-zeit").textContent = "";
-    leer.hidden = !!ziel; frame.hidden = !ziel;
-    if (!ziel) leer.textContent = "Für dieses Restaurant fehlt im Cockpit der Tischbuch-Link. Einmal im Kunden-Fenster „Neu veröffentlichen“, dann geht es.";
-    frame.src = ziel || "about:blank";
+    leer.hidden = true; frame.hidden = false; frame.src = ziel;
     $("#tbm").hidden = false; Sound.play("open");
     setTimeout(function () { $("#tbm-zu").focus({ preventScroll: true }); }, 30);
     clearInterval(TB.timer);
@@ -4098,6 +4097,13 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     if (e.target.closest("#tbm-neu") && TB.slug) { var f = $("#tbm-frame"), src = f.src; f.src = "about:blank"; setTimeout(function () { f.src = src; }, 50); tbLageLaden(); Sound.play("tick"); }
   });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !$("#tbm").hidden) tbSchliessen(); });
+  addEventListener("message", function (e) {  // die Ansicht ist bereit: Restaurant und Lese-Zugang schicken (nur ins Cockpit)
+    var f = $("#tbm-frame"), z = tbDienst(), l = (TB.lokale || {})[TB.slug] || {};
+    if (e.origin !== location.origin || e.source !== f.contentWindow || !e.data || e.data.typ !== "tb-bereit") return;
+    if (!z || !TB.slug || TB.slug === "beispiel" || $("#tbm").hidden) return;
+    f.contentWindow.postMessage({ typ: "tb-zugang", slug: TB.slug, name: tbName(TB.slug), farbe: l.farbe || "", telefon: l.telefon || "",
+                                  dienst: z.url, schluessel: z.schluessel }, location.origin);
+  });
   $("#tischbuecher").addEventListener("click", function (e) {
     var k = e.target.closest("[data-tb]"); if (k) { tbOeffnen(k.dataset.tb); return; }
     if (e.target.closest("[data-tb-neu]")) { TB.fehler = false; renderTischbuecher(); ladeTischbuecher(true); }
