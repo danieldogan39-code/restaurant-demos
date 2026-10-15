@@ -159,6 +159,8 @@ button, input { font: inherit; color: inherit; }
 .nf-links { margin: 0; display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; font-size: .84rem; }
 .nf-links a { display: inline-flex; align-items: center; gap: .4rem; color: var(--ink2); text-decoration: none; }
 .nf-links a svg { width: 14px; height: 14px; }
+.nf-test { border: 0; background: none; padding: .2rem 0; font: inherit; font-size: .82rem; color: var(--ink3); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.nf-test[data-sicher] { color: #FFC56B; }
 @media (hover: hover) and (pointer: fine) { .nf-links a:hover { color: var(--ink); text-decoration: underline; } }
 .nf-leer { border: 1px dashed var(--edge); border-radius: 14px; padding: 1.4rem 1rem; text-align: center; color: var(--ink2); font-size: .9rem; }
 .nf-mehr-btn { margin-top: .6rem; }
@@ -1359,7 +1361,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "7558590825";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "fbdc9599a6";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -2701,7 +2703,8 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
         '<label class="nf-notiz"><span class="nf-label">Notiz</span><textarea data-nf-notiz rows="2" maxlength="1200" placeholder="z. B. Chef ist erst ab 15 Uhr da">' + esc(n.e.notiz || "") + "</textarea><small data-nf-gespeichert></small></label>" +
         '<details class="nf-skript"><summary>Was sage ich am Telefon?</summary><div>' + nfSkript(x, n) + "</div></details>" +
         '<p class="nf-links"><a href="' + esc(x.url.replace(/\/?$/, "/") + "angebot/") + '" target="_blank" rel="noopener">' + EXTERN + "Angebotsseite ansehen</a>" +
-          (n.anfNeu && x.telefon && x.telefon.nummer !== tel.nummer ? ' <a href="tel:' + esc(x.telefon.nummer) + '" data-anruf>' + TEL + "Restaurant: " + esc(x.telefon.text) + "</a>" : "") + "</p>" +
+          (n.anfNeu && x.telefon && x.telefon.nummer !== tel.nummer ? ' <a href="tel:' + esc(x.telefon.nummer) + '" data-anruf>' + TEL + "Restaurant: " + esc(x.telefon.text) + "</a>" : "") +
+          (n.anfNeu ? ' <button class="nf-test" type="button" data-nf-test>War nur ein Test: Rückrufwunsch entfernen</button>' : "") + "</p>" +
         nfVerlauf(x, n) +
       "</div>");
     karte._x = x;
@@ -2848,6 +2851,11 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     if (e.target.closest("[data-nf-link]")) { nfLinkSenden(x); return; }
     if (e.target.closest("[data-nf-brief]")) { openBrief(x); return; }
     if (e.target.closest("[data-kunde]")) { kundeOeffnen(x); return; }
+    var tst = e.target.closest("[data-nf-test]");
+    if (tst) {  // erst nachfragen, dann entfernen
+      if (!tst.dataset.sicher) { tst.dataset.sicher = "1"; tst.textContent = "Wirklich entfernen? Nochmal tippen"; Sound.play("pick"); return; }
+      tst.disabled = true; nfTestEntfernen(x, nfEin(x).anfNeu, tst); return;
+    }
     var st = e.target.closest("[data-st]"); if (st) { if (st.getAttribute("aria-checked") !== "true") nfStatus(x, st.dataset.st); return; }
     var w = e.target.closest("[data-wieder]"); if (w) { nfWieder(x, w.dataset.wieder); return; }
   });
@@ -2863,6 +2871,21 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     var karte = e.target.closest(".nf-karte"), x = karte && karte._x;
     if (x && e.target.matches("[data-nf-notiz]")) { nfNotiz(x, e.target, true); if (nfSpaeter) setTimeout(function () { renderNachfass(DATA); }, 0); }
   });
+  /* Rückrufwunsch, der nur ein Test war (Formular selbst ausprobiert): im Dienst entfernen, samt Aufrufen dabei */
+  function nfTestEntfernen(x, anf, knopf) {
+    var z = ((DATA && DATA.steuerung) || {}).zaehler;
+    if (!z || !z.url || !anf) { if (knopf) knopf.disabled = false; return; }
+    fetch(z.url.replace(/\/$/, "") + "/anfragen", { method: "DELETE", headers: { Authorization: "Bearer " + z.schluessel, "Content-Type": "application/json" },
+                                                   body: JSON.stringify({ slug: x.slug, zeit: anf.zeit }) })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function () {
+        ANF[x.slug] = (ANF[x.slug] || []).filter(function (a) { return a.zeit !== anf.zeit; });
+        if (!ANF[x.slug].length) delete ANF[x.slug];
+        renderNachfass(DATA); ladeAufrufe(true); Sound.play("trash");
+        toast("Test entfernt. " + x.name + " steht wieder wie vorher.");
+      })
+      .catch(function (err) { if (knopf) { knopf.disabled = false; } Sound.play("error"); toast("Hat nicht geklappt (" + err.message + ")."); });
+  }
   /* Zurück vom Telefonat: die Karte geht auf und fragt nach dem Stand */
   document.addEventListener("visibilitychange", function () {
     if (document.hidden || !nfAnruf) return;
