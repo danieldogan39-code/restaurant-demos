@@ -192,6 +192,12 @@ button, input { font: inherit; color: inherit; }
 .tbs { margin-bottom: 1rem; }
 .tb-kopf-rechts { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: .5rem; margin-bottom: .9rem; }
 .tb-kopf-rechts .btn { padding: .45rem .85rem; font-size: .84rem; }
+.tb-kopf-rechts .tb-demo { border-color: rgba(255,87,87,.5); background: rgba(255,87,87,.1); }
+.tb-kopf-rechts .tb-demo svg { width: 15px; height: 15px; color: #FF8C8C; }
+.tb-nur.ist-demo { background: rgba(255,87,87,.14); color: #FF9C9C; }
+.tb-demo-wahl { display: grid; gap: .3rem; margin: .7rem 0 .3rem; font-size: .78rem; font-weight: 600; color: var(--ink3); }
+.tb-demo-wahl select { width: 100%; padding: .6rem .7rem; border-radius: 11px; border: 1px solid var(--edge); background: rgba(0,0,0,.25); color: var(--ink); font: inherit; font-size: .92rem; font-weight: 500; color-scheme: dark; }
+.tb-demo-link { display: inline-block; margin: .2rem 0 .3rem; font-size: .84rem; color: var(--ink2); }
 @media (max-width: 760px) { .tb-kopf-rechts { width: 100%; justify-content: space-between; } }
 .tb-liste { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr)); gap: .6rem; align-items: start; }
 .tb-liste > .nf-leer { grid-column: 1 / -1; }
@@ -265,6 +271,7 @@ button, input { font: inherit; color: inherit; }
   .tb-seite h3 { margin: .3rem 0 0; font-size: 1rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .tb-seite .tb-erklaer, .tb-seite .tb-info, .tb-seite .tb-acts, .tb-seite .tb-zeit, .tb-seite .tb-zahlenreihe { display: none; }
   .tb-seite .k-box { margin: .45rem 0 0; padding: .5rem .7rem; font-size: .8rem; }
+  .tb-demo-wahl { margin: .45rem 0 0; } .tb-demo-wahl span, .tb-demo-link { display: none; }
   .tb-als-klein:not([hidden]) { display: inline-flex !important; }
   .tb-handy { flex: 1; box-sizing: border-box; width: auto; height: auto; min-height: 0; border: 0; border-radius: 0; box-shadow: none; animation: none; }
 }
@@ -1124,7 +1131,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   <section class="panel tbs" style="--d:5" aria-labelledby="tb-title" data-focus="tischbuecher" id="tischbuecher">
     <div class="panel-head">
       <div><h2 id="tb-title">Tischbücher</h2><p class="sub" id="tb-sub">Reservierungen und Website-Agent deiner Kunden, live aus dem Dienst. Nur zum Ansehen: Bestätigen, Absagen und Änderungen bleiben beim Restaurant.</p></div>
-      <div class="tb-kopf-rechts"><div class="nf-zahlen" id="tb-zahlen"></div><button class="btn tb-beispiel" type="button" data-tb="beispiel">Beispiel ansehen</button></div>
+      <div class="tb-kopf-rechts"><div class="nf-zahlen" id="tb-zahlen"></div><button class="btn tb-beispiel" type="button" data-tb="beispiel">Beispiel ansehen</button><button class="btn tb-demo" type="button" data-agent-demo><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.7 4.7 1.8-4.7 1.8L12 16l-1.8-4.7-4.7-1.8 4.7-1.8z"/><path d="M18.5 15l.8 1.9 1.9.8-1.9.8-.8 1.9-.8-1.9-1.9-.8 1.9-.8z"/></svg>Agent ausprobieren</button></div>
     </div>
     <div class="tb-liste" id="tb-liste"></div>
   </section>
@@ -1300,7 +1307,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   <div class="tb-buehne">
     <aside class="tb-seite">
       <div class="tb-seite-kopf">
-        <div><span class="tb-nur" id="tbm-art"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Nur ansehen</span><h3 id="tbm-t">Tischbuch <b id="tbm-name"></b></h3></div>
+        <div><span class="tb-nur" id="tbm-art"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Nur ansehen</span><h3 id="tbm-t"><span id="tbm-vor">Tischbuch</span> <b id="tbm-name"></b></h3></div>
         <a class="btn icon tb-als-klein" id="tbm-als-klein" target="_blank" rel="noopener" hidden aria-label="Als Restaurant öffnen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg></a>
         <button class="btn icon" type="button" data-x id="tbm-zu" aria-label="Schließen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
       </div>
@@ -1352,7 +1359,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "d0c7dd2456";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "7558590825";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -1809,6 +1816,8 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   function zielOeffnen(hash) {
     hash = String(hash || "").replace(/^[^#]*/, "");
     if (!hash || !DATA) return;
+    var agd = hash.match(/^#agent-demo(?:=([\w-]+))?$/);  // Agent ausprobieren
+    if (agd) { tbDemoOeffnen(agd[1]); return; }
     var tbz = hash.match(/^#tischbuch=([\w-]+)/);  // Tischbuch eines Kunden ansehen
     if (tbz) { var tsec = $("#tischbuecher"); if (tsec) scrollTo({ top: tsec.getBoundingClientRect().top + scrollY - 70, behavior: "auto" }); tbOeffnen(tbz[1]); return; }
     var ku = hash.match(/^#kunde=([\w-]+)/);  // Übernahme: Vorschau fertig, Nameserver eintragen, live
@@ -4006,7 +4015,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
                                 : '<div class="nf-leer"><span class="ai-wait"><i></i>Tischbücher werden geladen …</span></div>';
       return;
     }
-    var slugs = Object.keys(TB.lokale);
+    var slugs = Object.keys(TB.lokale).filter(function (s) { return !TB.lokale[s].demo; });
     if (!slugs.length) {
       zahlen.innerHTML = ""; tbBadge(0);
       box.innerHTML = '<div class="nf-leer">Noch kein Restaurant mit Tischbuch. Sobald du für einen Kunden die Vorschau baust, steht sein Tischbuch hier: Anfragen, Reservierungen, der Website-Agent und ob das Restaurant rechtzeitig antwortet.<br><button class="btn" type="button" data-tb="beispiel" style="margin-top:.8rem">Beispiel-Tischbuch ansehen</button></div>';
@@ -4039,8 +4048,9 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     if (!beispiel && !tbDienst()) { Sound.play("deny"); toast("Tischbücher gehen, sobald der Dienst bei Cloudflare eingerichtet ist."); return; }
     var s = beispiel ? {} : kStand(slug) || {}, frame = $("#tbm-frame"), leer = $("#tbm-leer");
     var ziel = beispiel ? "tischbuch-beispiel/" : "tischbuch-ansicht/?l=" + encodeURIComponent(slug);
-    TB.slug = slug; TB.buch = null; TB.zeit = 0;
+    TB.slug = slug; TB.buch = null; TB.zeit = 0; TB.demo = false; TB.name = beispiel ? "Lokal am Eck" : tbName(slug);
     if ($("#tbm").hidden) TB.zurueck = document.activeElement;
+    $("#tbm-vor").textContent = "Tischbuch";
     $("#tbm-art").className = "tb-nur" + (beispiel ? " beispiel" : "");
     $("#tbm-art").innerHTML = beispiel ? TB_STERN + "Beispiel" : TB_AUGE + "Nur ansehen";
     $("#tbm-name").textContent = beispiel ? "Lokal am Eck" : tbName(slug);
@@ -4057,8 +4067,51 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     clearInterval(TB.timer);
     if (!beispiel) { tbLageLaden(); TB.timer = setInterval(function () { if (!document.hidden && !$("#tbm").hidden) tbLageLaden(); }, 30000); }
   }
+  /* Agent ausprobieren: der echte Website-Agent arbeitet an einer Demo-Seite (Tischbuch „demo-<slug>“ im Dienst, vom
+     Cockpit angelegt). Vorschauen sind echt (Pages-Projekt ml-agent-demo), online geht nichts. */
+  var TB_DEMO_MERKEN = "cockpit-agent-demo";
+  function tbDemos() {
+    return ((DATA && DATA.demos) || []).filter(function (d) { return d.slug && /^[a-z0-9-]{3,75}$/.test(d.slug); })
+      .slice().sort(function (a, b) { return String(a.name).localeCompare(String(b.name), "de"); });
+  }
+  function tbSenden(pfad, body) {
+    var z = tbDienst(); if (!z) return Promise.reject(new Error("kein Dienst"));
+    return fetch(z.url.replace(/\/$/, "") + pfad, { method: "POST", headers: { Authorization: "Bearer " + z.schluessel, "Content-Type": "application/json" }, body: JSON.stringify(body) })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); });
+  }
+  function tbDemoOeffnen(demoSlug) {
+    if (!tbDienst()) { Sound.play("deny"); toast("Der Agent geht, sobald der Dienst bei Cloudflare eingerichtet ist."); return; }
+    var demos = tbDemos(), gemerkt = null;
+    if (!demos.length) { Sound.play("deny"); toast("Es gibt gerade keine Demo, an der der Agent arbeiten könnte."); return; }
+    try { gemerkt = localStorage.getItem(TB_DEMO_MERKEN); } catch (e) {}
+    var d = demos.filter(function (x) { return x.slug === (demoSlug || gemerkt); })[0] || demos[0];
+    try { localStorage.setItem(TB_DEMO_MERKEN, d.slug); } catch (e) {}
+    var lokal = "demo-" + d.slug, frame = $("#tbm-frame");
+    if ($("#tbm").hidden) TB.zurueck = document.activeElement;
+    TB.slug = lokal; TB.buch = null; TB.zeit = 0; TB.demo = true; TB.name = d.name || d.slug;
+    clearInterval(TB.timer);
+    $("#tbm-art").className = "tb-nur ist-demo"; $("#tbm-art").innerHTML = TB_STERN + "Agent-Demo";
+    $("#tbm-vor").textContent = "Website-Agent"; $("#tbm-name").textContent = TB.name;
+    $("#tbm-lage").innerHTML = '<label class="tb-demo-wahl"><span>An dieser Demo arbeitet der Agent</span><select id="tbm-demo" aria-label="Demo für den Agenten">' +
+      demos.map(function (x) { return '<option value="' + esc(x.slug) + '"' + (x.slug === d.slug ? " selected" : "") + ">" + esc(x.name + (x.ort ? " · " + x.ort : "")) + "</option>"; }).join("") +
+      "</select></label>" + (d.url ? '<a class="tb-demo-link" href="' + esc(d.url) + '" target="_blank" rel="noopener">Demo-Seite öffnen</a>' : "");
+    $("#tbm-text").textContent = "Schreib im Chat, was sich ändern soll, wie ein Wirt. Der echte Agent arbeitet an dieser Demo: Er fragt nach, wenn etwas unklar ist, und schickt eine echte Vorschau mit Bild und ganzer Seite. Online geht nichts. Jede Nachricht dauert ein bis drei Minuten und kostet geschätzt 20–50 Cent.";
+    ["#tbm-als", "#tbm-als-klein"].forEach(function (id) { var a = $(id); a.removeAttribute("href"); a.hidden = true; });
+    $("#tbm-neu").textContent = "Neu laden"; $("#tbm-zeit").textContent = "";
+    $("#tbm-leer").hidden = true; frame.hidden = false; frame.src = "about:blank";
+    $("#tbm").hidden = false; Sound.play("open");
+    setTimeout(function () { $("#tbm-zu").focus({ preventScroll: true }); }, 30);
+    var lokale = {}; lokale[lokal] = { name: TB.name, demo: true };
+    tbSenden("/t/lokale", { lokale: lokale }).then(function () {
+      if (TB.slug === lokal) frame.src = "tischbuch-ansicht/?l=" + encodeURIComponent(lokal);
+    }).catch(function (err) {
+      if (TB.slug !== lokal) return;
+      frame.hidden = true; $("#tbm-leer").hidden = false; $("#tbm-leer").textContent = "Der Dienst ist gerade nicht erreichbar (" + err.message + "). Bitte gleich nochmal.";
+    });
+  }
+  $("#tbm").addEventListener("change", function (e) { if (e.target.id === "tbm-demo") { tbDemoOeffnen(e.target.value); Sound.play("tick"); } });
   function tbLageLaden() {
-    var slug = TB.slug; if (!slug || slug === "beispiel") return;
+    var slug = TB.slug; if (!slug || slug === "beispiel" || TB.demo) return;
     tbHolen("/t/einsicht?l=" + encodeURIComponent(slug)).then(function (d) {
       if (TB.slug !== slug) return;
       TB.buch = d; TB.heute = d.heute || TB.heute; TB.zeit = Date.now();
@@ -4101,11 +4154,12 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     var f = $("#tbm-frame"), z = tbDienst(), l = (TB.lokale || {})[TB.slug] || {};
     if (e.origin !== location.origin || e.source !== f.contentWindow || !e.data || e.data.typ !== "tb-bereit") return;
     if (!z || !TB.slug || TB.slug === "beispiel" || $("#tbm").hidden) return;
-    f.contentWindow.postMessage({ typ: "tb-zugang", slug: TB.slug, name: tbName(TB.slug), farbe: l.farbe || "", telefon: l.telefon || "",
-                                  dienst: z.url, schluessel: z.schluessel }, location.origin);
+    f.contentWindow.postMessage({ typ: "tb-zugang", slug: TB.slug, name: TB.name || tbName(TB.slug), farbe: l.farbe || "", telefon: l.telefon || "",
+                                  dienst: z.url, schluessel: z.schluessel, demo: TB.demo === true }, location.origin);
   });
   $("#tischbuecher").addEventListener("click", function (e) {
     var k = e.target.closest("[data-tb]"); if (k) { tbOeffnen(k.dataset.tb); return; }
+    if (e.target.closest("[data-agent-demo]")) { tbDemoOeffnen(); return; }
     if (e.target.closest("[data-tb-neu]")) { TB.fehler = false; renderTischbuecher(); ladeTischbuecher(true); }
   });
 

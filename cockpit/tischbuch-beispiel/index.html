@@ -255,7 +255,8 @@ main.wrap { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
   // Beispiel: erfundene Daten, nichts verlässt das Gerät. Ansicht (liegt beim Cockpit): dieselbe Oberfläche für ein
   // beliebiges Restaurant, nur ansehen; Name, Farbe und Zugang schickt das Cockpit, gespeichert wird nichts, kein Push.
   var BEISPIEL = true && !!window.TB_BEISPIEL;
-  var EINSICHT = false, NUR_ANSEHEN = EINSICHT;
+  // Agent-Demo (vom Cockpit mit demo: true): wie die Ansicht, aber der Chat mit dem Agenten lässt sich bedienen.
+  var EINSICHT = false, NUR_ANSEHEN = EINSICHT, DEMO = false;
   var NUR_TEXT = "Nur ansehen. Bestätigen, Ablehnen und Änderungen macht das Restaurant.";
   var TAG = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"], TAGK = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
   var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -284,12 +285,14 @@ main.wrap { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
     band.innerHTML = BEISPIEL ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.7 4.7 1.8-4.7 1.8L12 16l-1.8-4.7-4.7-1.8 4.7-1.8z"/></svg>Beispiel mit erfundenen Daten. Hier wird nichts gesendet.'
                               : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Ansicht für Medialyte. So sieht es das Restaurant, hier nur zum Ansehen.';
   }
-  if (NUR_ANSEHEN) {
+  if (EINSICHT) {
     document.body.classList.add("nur-ansehen");
-    // alles, was etwas ändern oder senden würde, bleibt still (vor allen anderen Klick-Handlern)
+    // alles, was etwas ändern oder senden würde, bleibt still (vor allen anderen Klick-Handlern); in der Agent-Demo
+    // nur das Tischbuch, der Chat mit dem Agenten geht
     document.addEventListener("click", function (e) {
-      var b = e.target.closest("[data-ja], [data-nein], #storno, #nein-los, [data-uebernehmen], [data-verwerfen], [data-zurueck], #senden, [data-foto-waehlen], [data-beispiel], #pause-weg, #push-an, #s-push, #s-auto, [data-zahl], [data-pause]");
-      if (!b) return; e.preventDefault(); e.stopPropagation(); meldung(NUR_TEXT);
+      var b = e.target.closest("[data-ja], [data-nein], #storno, #nein-los, #pause-weg, #push-an, #s-push, #s-auto, [data-zahl], [data-pause]" +
+                               (NUR_ANSEHEN ? ", [data-uebernehmen], [data-verwerfen], [data-zurueck], #senden, [data-foto-waehlen], [data-beispiel]" : ""));
+      if (!b) return; e.preventDefault(); e.stopPropagation(); meldung(DEMO ? "In der Agent-Demo gibt es keine echten Reservierungen." : NUR_TEXT);
     }, true);
   }
   if (BEISPIEL) document.addEventListener("click", function (e) {  // im Beispiel ruft und schreibt niemand
@@ -300,7 +303,7 @@ main.wrap { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
 
   function api(methode, body) {
     if (BEISPIEL) return window.TB_BEISPIEL.buch(methode, body);
-    if (!schluessel || (NUR_ANSEHEN && methode !== "GET")) return Promise.reject(new Error("nur ansehen"));
+    if (!schluessel || (EINSICHT && methode !== "GET")) return Promise.reject(new Error("nur ansehen"));
     return fetch(DIENST + "/t/buch?l=" + encodeURIComponent(SLUG), { method: methode, cache: "no-store",
       headers: { Authorization: "Bearer " + schluessel, "Content-Type": "application/json" }, body: body ? JSON.stringify(body) : undefined })
       .then(function (r) {
@@ -657,6 +660,13 @@ main.wrap { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
       if (e.origin !== location.origin || e.source !== window.parent || !z || z.typ !== "tb-zugang" || !z.slug || !z.schluessel) return;
       NAME = String(z.name || z.slug); SLUG = String(z.slug); DIENST = String(z.dienst || "").replace(/\/$/, ""); TEL = String(z.telefon || "");
       schluessel = String(z.schluessel); D = null; AG = null;
+      DEMO = z.demo === true; NUR_ANSEHEN = !DEMO;
+      feld.readOnly = NUR_ANSEHEN; feld.placeholder = NUR_ANSEHEN ? "Nur ansehen" : "Was soll sich ändern?";
+      if (DEMO) {
+        start = "web";
+        $("#modus-band").innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.7 4.7 1.8-4.7 1.8L12 16l-1.8-4.7-4.7-1.8 4.7-1.8z"/></svg>' +
+          "Agent-Demo mit der Seite von " + esc(NAME) + ". Die Vorschauen sind echt, online geht nichts.";
+      }
       var f = /^#[0-9a-fA-F]{6}$/.test(z.farbe || "") ? z.farbe : "#223C64", n = parseInt(f.slice(1), 16);
       var hell = (0.299 * (n >> 16) + 0.587 * (n >> 8 & 255) + 0.114 * (n & 255)) / 255 > 0.62;
       document.documentElement.style.setProperty("--akzent", f); document.documentElement.style.setProperty("--auf-akzent", hell ? "#15171C" : "#FFFFFF");
