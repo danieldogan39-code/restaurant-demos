@@ -689,6 +689,7 @@ button, input { font: inherit; color: inherit; }
 .c-acts { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .6rem; }
 .c-acts .btn { padding: .32rem .55rem; font-size: .72rem; border-radius: 8px; }
 .toast { position: fixed; left: 50%; bottom: 1.4rem; transform: translate(-50%, 30px); opacity: 0; z-index: 9500; background: #14223A; border: 1px solid var(--edge); border-radius: 12px; padding: .7rem 1rem; font-size: .88rem; box-shadow: 0 18px 40px -18px rgba(0,0,0,.9); transition: opacity .3s, transform .4s var(--spring); width: max-content; max-width: calc(100vw - 2rem); display: flex; gap: .8rem; align-items: center; }
+.toast:not(.on) { pointer-events: none; }  /* ausgeblendet: nichts darunter verdecken */
 .toast.on { opacity: 1; transform: translate(-50%, 0); }
 .toast button { border: 0; background: none; color: var(--coral); font-weight: 700; cursor: pointer; padding: .35rem .5rem; margin: -.35rem -.5rem -.35rem 0; border-radius: 8px; white-space: nowrap; }
 .toast.mit-zeit { overflow: hidden; }
@@ -1366,7 +1367,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "250682c37f";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "46132fbfb4";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
