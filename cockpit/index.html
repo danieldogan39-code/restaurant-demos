@@ -434,6 +434,8 @@ button, input { font: inherit; color: inherit; }
 .mehr-menu .schalter::after { content: ""; position: absolute; top: .18rem; left: .18rem; width: 1.09rem; height: 1.09rem; border-radius: 50%; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,.4); transition: transform .25s var(--ease); }
 .mehr-menu .zeile[aria-checked="true"] .schalter { background: #FF5757; }
 .mehr-menu .zeile[aria-checked="true"] .schalter::after { transform: translateX(1.05rem); }
+.mehr-menu .zwei { display: flex; flex-direction: column; gap: .1rem; min-width: 0; }
+.mehr-menu .zwei small { color: var(--ink2); font-size: .76rem; font-weight: 400; }
 .mehr-menu .neben { margin-left: auto; color: var(--ink2); font-size: .78rem; font-weight: 400; font-variant-numeric: tabular-nums; }
 .mehr-menu hr { border: 0; border-top: 1px solid var(--edge); margin: .3rem .4rem; }
 .einst-wrap #mehr-berichte { display: none; }  /* am Computer gibt es „Berichte“ schon oben */
@@ -1082,6 +1084,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
         <button class="zeile" type="button" role="menuitemcheckbox" id="mehr-snd" data-schalter="snd" aria-checked="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>Töne<span class="schalter" aria-hidden="true"></span></button>
         <button class="zeile" type="button" role="menuitemcheckbox" id="mehr-stimme" data-schalter="stimme" aria-checked="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>Sprachassistent &amp; Intro<span class="schalter" aria-hidden="true"></span></button>
         <button class="zeile" type="button" role="menuitemcheckbox" id="mehr-glocke" data-schalter="glocke" aria-checked="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>Benachrichtigungen<span class="schalter" aria-hidden="true"></span></button>
+        <button class="zeile" type="button" role="menuitemcheckbox" id="mehr-sofort" aria-checked="false" title="Aus: Builds laufen im Sparmodus zum halben Preis und dauern etwas länger. An: sofort, zum vollen Preis."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><span class="zwei">Sofort bauen<small>voller Preis statt Sparmodus</small></span><span class="schalter" aria-hidden="true"></span></button>
         <button class="zeile" type="button" role="menuitem" id="mehr-app" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M12 7v7M9 11l3 3 3-3"/></svg>Als App installieren</button>
         <a class="zeile" role="menuitem" id="mehr-apk" download="medialyte-cockpit.apk" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>Android-App laden<small class="neben" id="mehr-apk-info"></small></a>
         <hr>
@@ -1367,7 +1370,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "c3068f9933";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "92ec28c5d3";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -1688,10 +1691,13 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
 
   /* Einstellungen (Computer) bzw. „Mehr“ (Handy): ein Menü für Musik, Töne, Sprachassistent, Benachrichtigungen und die App.
      Es schaltet die unsichtbaren Knöpfe #mus, #snd, #stimme, #glocke (eine Quelle für den Zustand). */
+  var SOFORT_KEY = "cockpit-sofort";
+  function sofort() { try { return localStorage.getItem(SOFORT_KEY) === "1"; } catch (e) { return false; } }
   (function () {
     var menu = $("#mehr-menu"), knoepfe = [$("#mehr"), $("#einst")], offen = null;
     var PAARE = [["mus", "mehr-mus"], ["snd", "mehr-snd"], ["stimme", "mehr-stimme"], ["glocke", "mehr-glocke"]];
     function sync() {
+      $("#mehr-sofort").setAttribute("aria-checked", sofort() ? "true" : "false");
       var punkte = "";
       PAARE.forEach(function (z) {
         var an = $("#" + z[0]).getAttribute("aria-pressed") === "true";
@@ -1717,6 +1723,14 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       k.addEventListener("click", function (e) { e.stopPropagation(); if (!menu.hidden && offen === k) auf(false); else auf(true, k); });
     });
     menu.addEventListener("click", function (e) {
+      if (e.target.closest("#mehr-sofort")) {
+        e.stopPropagation();
+        var an = !sofort();
+        try { localStorage.setItem(SOFORT_KEY, an ? "1" : "0"); } catch (err) {}
+        sync(); Sound.play("tick");
+        toast(an ? "Sofort bauen: Builds starten ohne Wartezeit, zum vollen Preis." : "Sparmodus: Builds laufen zum halben Preis und dauern etwas länger.");
+        return;
+      }
       var z = e.target.closest("[data-schalter]");
       if (z) { e.stopPropagation(); $("#" + z.dataset.schalter).click(); setTimeout(sync, 60); setTimeout(sync, 1500); return; }
       if (e.target.closest("a")) auf(false);
@@ -3100,19 +3114,22 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     });
     return saving;
   }
-  /* Läufe starten: erst direkt, sonst über eine Befehlsdatei (braucht nur Schreibrecht) */
+  /* Läufe starten: erst direkt, sonst über eine Befehlsdatei (braucht nur Schreibrecht).
+     Ohne „Sofort bauen“ (Einstellungen) läuft der Bau im Sparmodus: halber Preis, dauert etwas länger. */
   function command(name) {
     // Start über eine Befehlsdatei im Repository: funktioniert mit dem Schreibrecht des Cockpit-Schlüssels
     var path = "data/befehle/" + name + ".json";
+    var inhalt = function () { return { befehl: name, zeit: new Date().toISOString(), sofort: sofort() }; };
     return api("/contents/" + path, { allow404: true }).then(function (f) {
-      return writeFile(path, { befehl: name, zeit: new Date().toISOString() }, "Cockpit: " + name + " starten", f && f.sha);
+      return writeFile(path, inhalt(), "Cockpit: " + name + " starten", f && f.sha);
     }).catch(function (e) {
       if (e.status !== 409 && e.status !== 422) throw e;
       return api("/contents/" + path, { allow404: true }).then(function (f) {
-        return writeFile(path, { befehl: name, zeit: new Date().toISOString() }, "Cockpit: " + name + " starten", f && f.sha);
+        return writeFile(path, inhalt(), "Cockpit: " + name + " starten", f && f.sha);
       });
     });
   }
+  function sparHinweis() { return sofort() ? "" : " Sparmodus: halber Preis, dauert etwas länger."; }
   function move(x, col) {
     var st = DATA.steuerung || {};
     if (!st.token) { Sound.play("deny"); toast("Steuerung noch nicht eingerichtet: Es fehlt das Secret COCKPIT_GITHUB_TOKEN."); return; }
@@ -3149,7 +3166,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       }
       RUN.starting = Date.now(); runRender(); renderRanks(DATA);
       return saving.then(function () { return command("bauen", st.workflow, { nur_manuell: "true" }); })
-        .then(function () { Sound.play("start"); toast("Bau gestartet. Die Karten zeigen den Stand, live mit Protokoll in ein bis zwei Minuten."); setTimeout(runCheck, 15000); setTimeout(runCheck, 45000); })
+        .then(function () { Sound.play("start"); toast("Bau gestartet. Die Karten zeigen den Stand, live mit Protokoll in ein bis zwei Minuten." + sparHinweis()); setTimeout(runCheck, 15000); setTimeout(runCheck, 45000); })
         .catch(function (e) { RUN.starting = 0; runRender(); renderRanks(DATA); Sound.play("error"); toast("Start fehlgeschlagen (" + e.message + ")."); });
     }).then(function () { setTimeout(function () { b.disabled = false; runRender(); }, 2500); });
   });
@@ -3270,7 +3287,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
     apply(RAT); card._regen = false; card._wish = ""; paintRate(card); Sound.play("start");
     saveRatings(apply, "Neubau · " + x.name).then(function () { return command("bauen"); }).then(function () {
       if (!busy) { RUN.starting = Date.now(); runRender(); }
-      toast(busy ? x.name + ": Neubau ist eingereiht und startet direkt nach dem laufenden Lauf." : x.name + ": Neubau gestartet. Das Cockpit zeigt ihn gleich live.");
+      toast((busy ? x.name + ": Neubau ist eingereiht und startet direkt nach dem laufenden Lauf." : x.name + ": Neubau gestartet. Das Cockpit zeigt ihn gleich live.") + sparHinweis());
       setTimeout(runCheck, 8000);
     }).catch(function (err) { if (before) RAT.demos[x.slug] = before; else delete RAT.demos[x.slug]; paintRate(card); Sound.play("error"); toast("Neubau nicht gestartet (" + err.message + ")."); });
   }
@@ -4287,7 +4304,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       if (guardRunning()) return;
       RUN.starting = Date.now(); runRender(); Sound.play("start");
       command("lauf", st.workflow, { nur_manuell: "false" })
-        .then(function () { toast("Lauf gestartet. Er erscheint in ein bis zwei Minuten live im Cockpit."); setTimeout(runCheck, 15000); })
+        .then(function () { toast("Lauf gestartet. Er erscheint in ein bis zwei Minuten live im Cockpit." + sparHinweis()); setTimeout(runCheck, 15000); })
         .catch(function (e) { RUN.starting = 0; runRender(); Sound.play("error"); toast("Start fehlgeschlagen (" + e.message + ")."); });
     });
   });
