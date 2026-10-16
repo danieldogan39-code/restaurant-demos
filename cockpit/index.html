@@ -688,9 +688,13 @@ button, input { font: inherit; color: inherit; }
 .c-more .cat em { font-style: normal; text-align: right; font-family: var(--display); color: var(--ink2); }
 .c-acts { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .6rem; }
 .c-acts .btn { padding: .32rem .55rem; font-size: .72rem; border-radius: 8px; }
-.toast { position: fixed; left: 50%; bottom: 1.4rem; transform: translate(-50%, 30px); opacity: 0; z-index: 9500; background: #14223A; border: 1px solid var(--edge); border-radius: 12px; padding: .7rem 1rem; font-size: .88rem; box-shadow: 0 18px 40px -18px rgba(0,0,0,.9); transition: opacity .3s, transform .4s var(--spring); max-width: calc(100vw - 2rem); display: flex; gap: .8rem; align-items: center; }
+.toast { position: fixed; left: 50%; bottom: 1.4rem; transform: translate(-50%, 30px); opacity: 0; z-index: 9500; background: #14223A; border: 1px solid var(--edge); border-radius: 12px; padding: .7rem 1rem; font-size: .88rem; box-shadow: 0 18px 40px -18px rgba(0,0,0,.9); transition: opacity .3s, transform .4s var(--spring); width: max-content; max-width: calc(100vw - 2rem); display: flex; gap: .8rem; align-items: center; }
 .toast.on { opacity: 1; transform: translate(-50%, 0); }
-.toast button { border: 0; background: none; color: var(--coral); font-weight: 700; cursor: pointer; }
+.toast button { border: 0; background: none; color: var(--coral); font-weight: 700; cursor: pointer; padding: .35rem .5rem; margin: -.35rem -.5rem -.35rem 0; border-radius: 8px; white-space: nowrap; }
+.toast.mit-zeit { overflow: hidden; }
+.toast.mit-zeit::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--coral); transform-origin: left; animation: toastZeit var(--toast-dauer, 10s) linear forwards; }
+@keyframes toastZeit { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+@media (prefers-reduced-motion: reduce) { .toast.mit-zeit::after { animation: none; opacity: .6; } }
 @media (max-width: 1100px) { .board { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); } .col.haupt .drop, .col[data-col="demo"] .drop { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 760px) { .board { grid-template-columns: 1fr; } .g-legend .g-tipp { margin-left: 0; } }
 .why { margin: 0 1rem .9rem; font-size: .82rem; }
@@ -1036,6 +1040,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   .mnav a { flex: 1; display: grid; justify-items: center; gap: .15rem; text-decoration: none; color: var(--ink3); font-size: .64rem; font-weight: 600; padding: .25rem 0; border-radius: 10px; }
   .mnav a svg { width: 20px; height: 20px; }
   .mnav a.on { color: #fff; background: rgba(255,87,87,.14); }
+  .toast { bottom: calc(5rem + env(safe-area-inset-bottom)); }  /* über der Leiste unten, Rückgängig gut erreichbar */
   .gal { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; }
   .demo .acts .btn { padding: .45rem .55rem; }
   .demo .acts .regen .lg { display: none; }
@@ -1361,7 +1366,7 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "fbdc9599a6";
+  var STORE = "cockpit-pw", DATA = null, PW = null, VERSION = "250682c37f";
   var fmt = new Intl.NumberFormat("de-DE");
   var dfmt = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   var dshort = new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit" });
@@ -2792,9 +2797,19 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       throw err;
     });
   }
+  var NF_RUECK_MS = 10000;  // so lange lässt sich ein Tipp auf Stand oder Wiedervorlage zurücknehmen
+  function nfRueckgaengig(x, vorher) {  // genau den Stand von vorher wiederherstellen, auch „noch nichts eingetragen“
+    return function () {
+      if (vorher) NF[x.slug] = JSON.parse(JSON.stringify(vorher)); else delete NF[x.slug];
+      saveNf(x.slug, x.name, "rückgängig").catch(function () { Sound.play("error"); toast("Rückgängig hat nicht geklappt. Bitte gleich nochmal."); });
+      renderNachfass(DATA); Sound.play("tick");
+      toast(x.name + " steht wieder wie vorher.");
+    };
+  }
   function nfStatus(x, st) {
     if (!ctl()) return;
     var jetzt = new Date().toISOString(), heute = tagHeute(), alt = NF[x.slug] || {};
+    var vorher = NF[x.slug] ? JSON.parse(JSON.stringify(NF[x.slug])) : null;
     var wieder = st === "nicht_erreicht" ? werktag(tagPlus(heute, 1)) : st === "rueckruf" ? (alt.status === "rueckruf" && alt.wieder > heute ? alt.wieder : werktag(tagPlus(heute, 1)))
                : st === "interesse" ? (alt.wieder && alt.wieder > heute ? alt.wieder : werktag(tagPlus(heute, 3))) : null;
     var verlauf = (alt.verlauf || []).concat([{ zeit: jetzt, status: st, wieder: wieder }]).slice(-30);
@@ -2811,18 +2826,16 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
       kein_interesse: x.name + " abgehakt."
     };
     Sound.play(st === "kunde" ? "done" : st === "kein_interesse" ? "tick" : "pick");
-    toast(texte[st], st === "kein_interesse" || st === "kunde" ? function () {
-      nfSetzen(x, { status: alt.status || "offen", wieder: alt.wieder || null, zeit: alt.zeit || null, verlauf: alt.verlauf || [] }, "zurück").catch(function () {});
-      renderNachfass(DATA);
-    } : null);
+    toast(texte[st], nfRueckgaengig(x, vorher), NF_RUECK_MS);
   }
   function nfWieder(x, tag) {
     if (!ctl() || !tag) return;
-    var e = NF[x.slug] || {}, jetzt = new Date().toISOString();
+    var e = NF[x.slug] || {}, jetzt = new Date().toISOString(), vorher = NF[x.slug] ? JSON.parse(JSON.stringify(NF[x.slug])) : null;
     var verlauf = (e.verlauf || []).concat([{ zeit: jetzt, status: e.status || "rueckruf", wieder: tag }]).slice(-30);
     nfSetzen(x, { wieder: tag, verlauf: verlauf }, "wieder " + tag).catch(function () {});
     renderNachfass(DATA); Sound.play("tick");
-    toast(x.name + ": " + (e.status === "rueckruf" ? "Rückruf" : e.status === "interesse" ? "nachhaken" : "nochmal versuchen") + " " + tagText(tag) + ".");
+    toast(x.name + ": " + (e.status === "rueckruf" ? "Rückruf" : e.status === "interesse" ? "nachhaken" : "nochmal versuchen") + " " + tagText(tag) + ".",
+          nfRueckgaengig(x, vorher), NF_RUECK_MS);
   }
   var nfNotizTimer = {};
   function nfNotiz(x, feld, sofort) {
@@ -3048,9 +3061,11 @@ footer.foot button { background: none; border: 0; padding: 0; color: var(--ink2)
   });
 
   /* Entscheidungen speichern (über GitHub, Schlüssel liegt verschlüsselt in den Cockpit-Daten) */
-  function toast(text, undo) {
-    var t = $("#toast"); t.innerHTML = "<span>" + esc(text) + "</span>"; if (undo) { var b = h("button", { type: "button" }, "Rückgängig"); b.addEventListener("click", function () { undo(); t.classList.remove("on"); }); t.appendChild(b); }
-    t.classList.add("on"); Sound.play("toast"); clearTimeout(toast.t); toast.t = setTimeout(function () { t.classList.remove("on"); }, 5200);
+  function toast(text, undo, dauer) {  // mit „undo“: Knopf Rückgängig, solange der Hinweis steht (Balken zeigt die Zeit)
+    var t = $("#toast"), ms = dauer || (undo ? 10000 : 5200); t.innerHTML = "<span>" + esc(text) + "</span>";
+    if (undo) { var b = h("button", { type: "button" }, "Rückgängig"); b.addEventListener("click", function () { clearTimeout(toast.t); t.classList.remove("on", "mit-zeit"); undo(); }); t.appendChild(b); }
+    t.classList.remove("mit-zeit"); void t.offsetWidth; t.style.setProperty("--toast-dauer", ms + "ms"); t.classList.toggle("mit-zeit", !!undo);
+    t.classList.add("on"); Sound.play("toast"); clearTimeout(toast.t); toast.t = setTimeout(function () { t.classList.remove("on", "mit-zeit"); }, ms);
   }
   function api(path, opts) {
     var st = DATA.steuerung || {}; opts = opts || {};
