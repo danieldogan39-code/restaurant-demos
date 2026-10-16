@@ -3,571 +3,519 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Nour Pizza &amp; More · Pizza, Pide, Burger · Röntgenstraße 15, Hamburg</title>
-<meta name="description" content="Nour Pizza & More in der Röntgenstraße 15, Hamburg: Pizza, Pide, Teigtaschen, Burger, Wraps, Salate, Baklava und Künefe. Mo–Fr 11–22 Uhr, Sa–So 15–22 Uhr. Vor Ort, zum Mitnehmen oder Lieferung bis 8 km.">
-<meta name="theme-color" content="#F5EEE1">
+<title>Nour Pizza &amp; More · Pizza, Pide &amp; Lahmacun · Röntgenstraße 15, Hamburg</title>
+<meta name="description" content="Nour Pizza & More in der Röntgenstraße 15, Hamburg: Pizza und Pide aus dem Ofen, Lahmacun, Burger, Wraps, Künefe, Baklava und Çay. Mo–Fr ab 11, Sa/So ab 15 Uhr, bis 22 Uhr. Vor Ort, zum Mitnehmen, Lieferung.">
+<meta name="theme-color" content="#F6EBD9">
 <link rel="stylesheet" href="fonts/fonts.css">
 <style>
-:root{
---creme:#F5EEE1;--creme2:#ECE1CD;--tinte:#15171D;--grau:#262932;--rot:#C8221A;--rot-hell:#E5392D;--gruen:#17813E;--hgruen:#3DBE6A;--papier:#FFFDF8;
---rand:clamp(1rem,5vw,4rem);--max:1280px;--kopf:68px;
---display:"Rammetto One",Georgia,serif;--text:"Figtree",system-ui,sans-serif;--akzent:"Shrikhand",Georgia,serif;
---ease-out:cubic-bezier(.23,1,.32,1);--ease-in-out:cubic-bezier(.77,0,.175,1);--ease-drawer:cubic-bezier(.32,.72,0,1);
---abstand:clamp(64px,10vw,128px)}
+:root{--creme:#F6EBD9;--papier:#FBF4E8;--kohle:#1E1916;--rot:#C2281C;--pist:#3E6B24;--orange:#E9922E;--linie:rgb(30 25 22/.28);--rand:clamp(1rem,5vw,4rem);--max:1320px;--kopf:68px;--abst:clamp(64px,10vw,128px);--disp:"Lalezar",system-ui,sans-serif;--text:"Instrument Sans",system-ui,sans-serif;--ease-out:cubic-bezier(.23,1,.32,1);--ease-in-out:cubic-bezier(.77,0,.175,1);--ease-drawer:cubic-bezier(.32,.72,0,1);--pide-maske:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0 50C7 16 27 3 50 3S93 16 100 50C93 84 73 97 50 97S7 84 0 50Z'/%3E%3C/svg%3E");--pide:polygon(0% 50%,5% 36%,12% 23%,22% 12%,35% 4%,50% 1%,65% 4%,78% 12%,88% 23%,95% 36%,100% 50%,95% 64%,88% 77%,78% 88%,65% 96%,50% 99%,35% 96%,22% 88%,12% 77%,5% 64%)}
 *,*::before,*::after{box-sizing:border-box}
-[hidden]{display:none!important}
-html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--kopf) + 16px);overflow-x:clip}
-body{margin:0;background:var(--creme);color:var(--tinte);font:400 17px/1.6 var(--text);overflow-x:clip;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--creme);color:var(--kohle);font:400 17px/1.6 var(--text);hyphens:auto;-webkit-tap-highlight-color:transparent}
 img{display:block;max-width:100%}
 a{color:inherit}
-h1,h2,h3{margin:0;font-weight:400;text-wrap:balance}
+h1,h2,h3{font-weight:400;margin:0;text-wrap:balance}
 p{margin:0;text-wrap:pretty}
-:focus-visible{outline:3px solid var(--rot);outline-offset:3px;border-radius:6px}
+section[id]{scroll-margin-top:calc(var(--kopf) + 12px)}
+:focus-visible{outline:3px solid var(--kohle);outline-offset:3px;border-radius:6px}
+.dunkel :focus-visible,.wand :focus-visible,.res :focus-visible,.fuss :focus-visible{outline-color:var(--creme)}
 .wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--rand)}
+.h2{font-family:var(--disp);font-size:clamp(2.2rem,5vw,4.4rem);line-height:1.02;letter-spacing:-.015em}
+.pist{color:var(--pist)}
 .rot{color:var(--rot)}
-.akzent{font-family:var(--akzent);color:var(--gruen);letter-spacing:0}
-.knopf{display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:52px;padding:14px 28px;border-radius:999px;background:var(--rot);color:var(--creme);border:2px solid var(--rot);font:700 17px/1.2 var(--text);text-decoration:none;cursor:pointer;touch-action:manipulation;user-select:none;-webkit-user-select:none;font-variant-numeric:tabular-nums;transition:transform .16s var(--ease-out),background-color .2s var(--ease-out),color .2s var(--ease-out),border-color .2s var(--ease-out)}
+.foto-nachweis{font-size:13px;line-height:1.4;text-decoration:underline;text-underline-offset:2px}
+.knopf{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:14px 28px;border-radius:999px;font:600 16px/1.2 var(--text);text-decoration:none;border:2px solid transparent;cursor:pointer;touch-action:manipulation;user-select:none;-webkit-user-select:none;transition:transform .16s var(--ease-out),background-color .2s var(--ease-out),color .2s var(--ease-out)}
 .knopf:active{transform:scale(.97)}
-.knopf--hell{background:transparent;color:var(--creme);border-color:var(--creme)}
-.knopf--creme{background:var(--creme);color:var(--tinte);border-color:var(--creme)}
-.knopf--klein{min-height:44px;padding:10px 20px;font-size:15px}
-.magnet{display:inline-block}
-.link-unter{display:inline-flex;align-items:center;min-height:44px;font-weight:700;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px;touch-action:manipulation;transition:text-decoration-color .2s var(--ease-out),transform .16s var(--ease-out)}
-.link-unter:active{transform:scale(.97)}
-@media (hover:hover) and (pointer:fine){
-.knopf:hover{background:#A91B14;border-color:#A91B14}
-.knopf--hell:hover{background:var(--creme);color:var(--tinte);border-color:var(--creme)}
-.knopf--creme:hover{background:var(--papier);border-color:var(--papier)}
-.link-unter:hover{text-decoration-color:var(--rot)}}
-.foto-nachweis{font-size:12.5px;line-height:1.3;color:inherit}
-
-.kopf{position:sticky;top:0;z-index:50;height:var(--kopf);background:var(--creme);border-bottom:2px solid var(--tinte)}
-.kopf .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.marke{display:flex;align-items:center;gap:10px;text-decoration:none;min-height:44px}
-.marke img{width:40px;height:40px}
-.marke span{font:400 22px/1 var(--display);letter-spacing:-.01em}
-.kopf nav{display:flex;align-items:center;gap:28px}
-.kopf nav a:not(.knopf){font-weight:700;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;background:linear-gradient(var(--rot),var(--rot)) 0 78%/100% 2px no-repeat;background-size:0 2px;transition:background-size .2s var(--ease-out)}
-@media (hover:hover) and (pointer:fine){.kopf nav a:not(.knopf):hover{background-size:100% 2px}}
-.nur-handy{display:none}
-
-.spots{position:absolute;top:10px;left:0;right:0;display:flex;justify-content:space-around;padding-inline:8%;pointer-events:none}
-.spots i{position:relative;display:block;width:clamp(22px,2.2vw,32px);height:9px;background:#3A3D46;border-radius:3px 3px 999px 999px}
-.spots i::after{content:"";position:absolute;left:28%;right:28%;bottom:-4px;height:4px;background:var(--creme);border-radius:0 0 999px 999px}
-.w1{color:#F04A3E}.w2{color:var(--creme)}.w3{color:var(--hgruen)}
-.blende{position:relative;background:var(--tinte);min-height:clamp(120px,16svh,190px);display:grid;place-items:center;padding:32px 4vw 18px}
-.blende h1{font:400 min(6.2vw,8rem)/1 var(--display);letter-spacing:-.01em;white-space:nowrap;text-transform:uppercase}
-
-.hero-split{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));min-height:0}
-.hero-text{grid-column:1/7;padding:clamp(40px,5vw,72px) var(--rand) clamp(40px,5vw,72px) max(var(--rand),calc((100vw - var(--max))/2 + var(--rand)));display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:24px}
-.status-pille{display:inline-flex;align-items:center;min-height:40px;padding:8px 18px;border:2px solid var(--tinte);border-radius:999px;font-weight:700;font-size:15px;background:var(--papier)}
-.status-pille:has([data-status]:empty){display:none}
-[data-status]::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--rot);margin-right:10px;vertical-align:1px}
-[data-status][data-offen="ja"]::before{background:var(--gruen)}
-.hero-aussage{font:400 clamp(2.4rem,5.2vw,5rem)/1.04 var(--display);letter-spacing:-.02em}
-.maske{display:block;overflow:hidden;padding-block:.08em .32em;margin-block:-.08em -.32em}
-.zeile{display:inline-block;position:relative}
-.strich{position:absolute;left:0;bottom:-.2em;width:100%;height:.28em;overflow:visible}
-.hero-satz{max-width:34em;font-size:18px}
-.aktionen{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px}
-.bewertung{display:inline-grid;place-content:center;justify-items:center;text-align:center;width:112px;height:112px;flex:0 0 112px;aspect-ratio:1;border-radius:50%;background:var(--papier);border:1.5px solid var(--tinte);text-decoration:none;transform:rotate(5deg);padding:14px;gap:2px;touch-action:manipulation;transition:transform .2s var(--ease-out)}
-.bewertung:active{transform:rotate(5deg) scale(.97)}
-.bew-stern{color:var(--rot);font-size:18px;line-height:1}
-.bew-zahl{font:400 26px/1.1 var(--display)}
-.bew-text{font-size:12.5px;line-height:1.25;font-weight:600}
-@media (hover:hover) and (pointer:fine){.bewertung:hover{transform:rotate(0deg) translateY(-2px)}}
-
-.hero-buehne{grid-column:7/13;position:relative;background:var(--tinte);color:var(--creme);padding:clamp(48px,5vw,72px) clamp(32px,4vw,64px) clamp(64px,6vw,88px);display:grid;align-items:center}
-.hero-foto{position:relative;width:100%;max-width:500px;margin-inline:auto;container-type:inline-size}
-.rahmen{position:relative;overflow:hidden;border-radius:20px;background:var(--grau)}
+.knopf-rot{background:var(--rot);color:var(--creme)}
+.knopf-creme{background:var(--creme);color:var(--kohle)}
+.knopf-linie{border-color:var(--creme);color:var(--creme)}
+.magnet{display:inline-flex}
+.kopf{position:sticky;top:0;z-index:60;height:var(--kopf);background:var(--creme);border-bottom:2px solid var(--kohle)}
+.kopf .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.wm{display:inline-flex;align-items:baseline;gap:.32em;font-family:var(--disp);font-size:30px;line-height:1;text-decoration:none;white-space:nowrap;padding-block:10px}
+.wm-nour{color:var(--rot)}
+.wm-rest{font-size:max(18px,.72em);letter-spacing:.01em}
+.i-boot{position:relative;display:inline-block}
+.i-boot::before{content:"";position:absolute;left:50%;top:-.05em;width:.5em;height:.22em;margin-left:-.25em;background:var(--rot);clip-path:var(--pide)}
+.nav{display:flex;align-items:center;gap:clamp(16px,2.4vw,32px)}
+.nav a:not(.knopf){font-weight:600;font-size:16px;text-decoration:none;padding:10px 2px;position:relative}
+.nav a:not(.knopf)::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:2px;background:var(--rot);transform:scaleX(0);transform-origin:left;transition:transform .2s var(--ease-out)}
+.nav .knopf{min-height:44px;padding:12px 22px}
+.nav-anruf{display:none}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:calc(100svh - var(--kopf));overflow-x:clip}
+.hero-text{min-width:0;display:flex;flex-direction:column;justify-content:center;gap:clamp(14px,1.6vw,20px);padding:clamp(24px,3.5vw,48px) clamp(24px,4vw,56px) clamp(32px,4vw,48px) max(var(--rand),calc((100vw - var(--max))/2 + var(--rand)))}
+.status-zeile{font-weight:600;font-size:16px;font-variant-numeric:tabular-nums;min-height:24px}
+[data-status]::before{content:"";display:inline-block;width:14px;height:7px;margin-right:10px;vertical-align:middle;background:var(--rot);clip-path:var(--pide)}
+[data-status][data-offen="nein"]::before{background:var(--kohle)}
+.hero-name{font-family:var(--disp);font-size:clamp(2.6rem,4.6vw,4.6rem);line-height:1.05;white-space:nowrap;letter-spacing:-.01em}
+.hero-titel{font-family:var(--disp);font-size:clamp(3rem,5.6vw,6.6rem);line-height:.92;letter-spacing:-.02em;margin:0}
+.zeile{display:block;overflow:hidden;padding-block:.12em .16em;margin-block:-.12em -.16em}
+.zi{display:block}
+.f{display:inline-block;position:relative;line-height:1;padding:.08em .22em 0;color:var(--creme)}
+.f-rund{background:var(--rot);border-radius:50%;padding-inline:.32em}
+.f-lang,.f-boot{padding-inline:.6em;background-color:var(--kohle);color:var(--creme);-webkit-mask:var(--pide-maske) center/100% 100% no-repeat;mask:var(--pide-maske) center/100% 100% no-repeat}
+.f-boot{background-color:var(--rot);color:var(--creme)}
+.f-kuenefe{background:none;color:var(--kohle);padding:0;border-bottom:.09em solid var(--rot);line-height:.95}
+.hero-satz{max-width:46ch;font-size:18px}
+.hero-aktion{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px}
+.link-route{display:inline-flex;align-items:center;min-height:44px;font-weight:600;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px}
+.bew-sticker{align-self:flex-start;display:inline-flex;align-items:center;min-height:44px;padding:8px 14px;background:var(--papier);color:var(--kohle);border:1.5px solid var(--kohle);border-radius:4px;transform:rotate(-2deg);text-decoration:none;font-size:15px;transition:transform .2s var(--ease-out)}
+.bew-sticker:active{transform:rotate(-2deg) scale(.97)}
+.bew-stern{color:var(--rot);margin-right:4px}
+.bew-zahl{font-weight:700;margin-right:8px;font-variant-numeric:tabular-nums}
+.bew-text::before{content:"· ";}
+.hero-buehne{position:relative;min-width:0;background:var(--rot);color:var(--creme);border-radius:28px 0 0 28px;margin:clamp(16px,2.5vw,32px) 0;padding:clamp(48px,5vw,72px) clamp(24px,4vw,64px) 48px;display:flex;flex-direction:column;justify-content:center}
+.foto-wrap{position:relative;width:min(100%,420px,calc((100svh - 400px)*.8));margin-left:clamp(0px,4vw,48px)}
+.hero-foto{margin:0}
+.rahmen{border-radius:20px;overflow:hidden;background:rgb(30 25 22/.2)}
 .rahmen img{width:100%;height:100%;object-fit:cover}
-.hero-foto .rahmen{aspect-ratio:1/1}
-.hero-foto .rahmen img{object-position:50% 92%}
-.hero-foto figcaption{margin-top:12px;max-width:58%;font-size:13px;line-height:1.4}
-.hero-foto figcaption span{display:block}
-.badge{position:absolute;z-index:3;top:-44px;left:-36px;width:clamp(110px,11vw,160px);height:auto;transform:rotate(-6deg);filter:drop-shadow(4px 4px 0 #15171D)}
-.burger{position:absolute;z-index:2;right:-12px;bottom:-24px;width:38%;margin:0}
-.burger .kreis{aspect-ratio:1;border-radius:50%;overflow:hidden;border:5px solid var(--creme)}
-.burger img{width:100%;height:100%;object-fit:cover}
-.burger .foto-nachweis{display:block;margin-top:6px;margin-left:auto;text-align:right;max-width:100%;white-space:normal}
-.sticker-reihe{display:contents}
-.sticker{position:absolute;display:inline-flex;align-items:center;min-height:44px;padding:10px 18px;border-radius:999px;font-weight:800;font-size:15px;border:2px solid var(--tinte);box-shadow:3px 3px 0 var(--creme);transform:rotate(var(--r,0deg));transition:transform .2s var(--ease-out)}
-.sticker--gruen{background:#136B33;color:var(--creme);top:-22px;right:20px;--r:4deg}
-.sticker--creme{background:var(--creme);color:var(--tinte);top:calc(100cqw - 22px);left:20px;--r:-3deg}
-@media (hover:hover) and (pointer:fine){.sticker:hover{transform:rotate(calc(var(--r) + 3deg)) translateY(-2px)}}
-
-.band{position:relative;background:var(--tinte);overflow:hidden;padding:clamp(30px,4.4vw,52px) 4vw clamp(18px,2.6vw,30px)}
-.band-lauf{display:flex;justify-content:center}
-.band-text{font:400 clamp(1.3rem,3.4vw,3.3rem)/1.1 var(--display);letter-spacing:-.01em;white-space:nowrap;text-transform:uppercase}
-.band-text[aria-hidden]{display:none}
-
-.angebot{padding-block:var(--abstand)}
-.angebot .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,6vw,96px);align-items:stretch}
-.angebot h2,.zeiten h2,.karte-kopf h2,.raster h2,.res-intro h2{font:400 clamp(2.1rem,4.4vw,4.2rem)/1.06 var(--display);letter-spacing:-.02em}
-.angebot h2{margin-bottom:28px}
-.angebot p+p{margin-top:16px}
-.angebot p{max-width:36em}
-.infoliste{margin:36px 0 0;border-top:2px solid var(--tinte)}
-.infoliste div{display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid rgb(21 23 29/.25)}
-.infoliste dt{font-weight:700}
-.infoliste dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}
-.foto-paar{position:relative;margin:0;display:flex;flex-direction:column}
-.foto-paar .gross{flex:1 1 auto;min-height:clamp(420px,46vw,620px)}
-.foto-paar .klein{position:absolute;left:-32px;bottom:-24px;width:44%;aspect-ratio:3/4;border:6px solid var(--creme);border-radius:22px}
-.foto-paar .rahmen .foto-nachweis,.kachel .foto-nachweis,.tafel-bild .foto-nachweis{position:absolute;left:8px;bottom:8px;max-width:calc(100% - 16px);background:rgb(21 23 29/.8);color:var(--creme);padding:4px 9px;border-radius:8px;text-decoration:none}
-
-.karte{padding-block:var(--abstand) calc(var(--abstand) * .8)}
-.karte-kopf{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px 48px;margin-bottom:clamp(28px,4vw,48px)}
-.karte-kopf p{max-width:30em}
-[data-spur]{display:flex;gap:20px;padding-inline:var(--rand);align-items:stretch}
-.tafel{flex:0 0 auto;width:clamp(260px,78vw,340px);background:var(--tinte);color:var(--creme);border:2px solid #4A4E58;border-radius:16px;padding:14px 14px 20px;display:flex;flex-direction:column;transition:border-color .25s var(--ease-out),transform .2s var(--ease-out)}
-@media (hover:hover) and (pointer:fine){.tafel:hover{border-color:var(--creme);transform:translateY(-3px)}}
-.tafel-bild{position:relative;aspect-ratio:4/3;border-radius:10px;overflow:hidden;background:var(--grau);margin:0 0 16px}
-.tafel-bild img{width:100%;height:100%;object-fit:cover}
-.tafel-bild--frei{overflow:visible;background:radial-gradient(60% 70% at 50% 60%,#2C3039,var(--tinte))}
-.tafel-bild--frei img{object-fit:contain;padding:4%;filter:drop-shadow(6px 10px 10px rgb(0 0 0/.5))}
-.tafel h3{font:400 clamp(1.1rem,1.5vw,1.35rem)/1.15 var(--display);letter-spacing:-.01em;display:block;min-height:2.4em;margin:0 2px 10px;overflow-wrap:normal;word-break:normal;hyphens:manual}
-.tafel h3 b{display:block;margin-bottom:8px;font:700 14px/1 var(--text);letter-spacing:.06em;color:var(--hgruen);font-variant-numeric:tabular-nums}
-.tafel ul{list-style:none;margin:0;padding:0 2px}
-.tafel li{padding:10px 0;border-bottom:1.5px dashed rgb(245 238 225/.35);line-height:1.4}
-.tafel .notiz{margin:auto 2px 0;padding-top:14px;font-size:14px;color:#C9C3B8}
-.tafel--gruen{background:var(--gruen);border-color:var(--gruen);justify-content:space-between;padding:24px}
-.tafel--gruen h3{font-size:1.7rem;display:block}
-.tafel--gruen p{margin:12px 0 24px}
-.spur-steuerung{color:var(--tinte);display:flex;align-items:center;gap:12px;padding:20px var(--rand) 0}
-.spur-leiste{flex:1;height:4px;background:rgb(21 23 29/.15);border-radius:4px;overflow:hidden}
-.spur-leiste i{display:block;height:100%;background:var(--rot);transform-origin:left}
-.spur-zurueck,.spur-weiter{width:48px;height:48px;border-radius:50%;border:2px solid var(--tinte);background:var(--creme);color:var(--tinte);font-size:20px;cursor:pointer;touch-action:manipulation;user-select:none;transition:transform .16s var(--ease-out),background-color .2s var(--ease-out)}
-.spur-zurueck:active,.spur-weiter:active{transform:scale(.97)}
-.vorschau{position:fixed;left:0;top:0;z-index:60;width:150px;height:150px;border-radius:50%;overflow:hidden;border:3px solid var(--creme);background:var(--tinte);pointer-events:none;opacity:0}
-.vorschau img{width:100%;height:100%;object-fit:cover}
-
-.zeiten{background:var(--creme2);padding-block:var(--abstand)}
-.zeiten .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(36px,6vw,96px);align-items:start}
-.zeiten h2{margin-bottom:28px;font-size:clamp(2rem,3.6vw,3.4rem)}
-.zeiten .woche{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
-.zeiten .woche-tag{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:104px;text-align:center;background:var(--tinte);color:var(--creme);padding:18px 6px 14px;border-radius:10px;font-size:15px;line-height:1.3;font-variant-numeric:tabular-nums}
-.woche-name{font-weight:700}
-.zeiten .woche-tag[data-heute]{background:var(--rot)}
-.woche-tag[data-heute] .woche-name::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--creme);margin-right:9px;vertical-align:1px}
-.woche-tag[data-heute][data-offen="ja"] .woche-name::before{background:var(--hgruen);box-shadow:0 0 0 2px var(--creme)}
-.woche-tag[data-heute] .woche-name::after{content:"heute";display:block;font-weight:400;font-size:13px}
-.zeitleiste{display:grid;grid-template-columns:56px minmax(0,1fr);gap:10px 12px;margin-top:32px;font-size:14px;font-variant-numeric:tabular-nums}
-.zl-name{font-weight:700;align-self:center}
-.zl-spur{position:relative;height:22px;background:rgb(21 23 29/.12);border-radius:999px}
-.zl-spur i{position:absolute;top:0;bottom:0;left:var(--von);right:calc(100% - var(--bis));background:var(--tinte);border-radius:999px}
-.zl-skala{grid-column:2;position:relative;height:20px}
-.zl-skala span{position:absolute;left:var(--x);transform:translateX(-50%)}
-.zl-linie{grid-column:2;grid-row:1/3;position:relative;pointer-events:none;display:none}
-.mit-jetzt .zl-linie{display:block}
-.zl-linie::before{content:"";position:absolute;top:-8px;bottom:-8px;left:var(--jetzt,0);width:3px;margin-left:-1.5px;background:var(--rot);border-radius:2px}
-.zl-jetzt{grid-column:2;color:var(--rot);font-weight:700;min-height:20px}
-.karte-rahmen{aspect-ratio:4/3;border-radius:20px;overflow:hidden;border:2px solid var(--tinte);background:var(--creme)}
+.r45{aspect-ratio:4/5}
+.hero-foto figcaption{margin-top:10px;font-size:13px;line-height:1.45;max-width:40ch}
+.pide-flug{position:absolute;z-index:3;top:24px;right:clamp(12px,3vw,40px);width:min(38%,340px);pointer-events:none}
+.pide-img{width:100%;height:auto;transform:rotate(-16deg);filter:drop-shadow(0 12px 14px rgb(30 25 22/.38))}
+.wrap-boot{position:absolute;z-index:2;left:-18%;bottom:12%;width:min(260px,62%);margin:0;transform:rotate(6deg);filter:drop-shadow(0 10px 14px rgb(30 25 22/.35))}
+.boot{aspect-ratio:2/1;clip-path:var(--pide);background:var(--creme);padding:6px}
+.boot img{width:100%;height:100%;object-fit:cover;clip-path:var(--pide)}
+.wrap-boot .foto-nachweis{display:table;margin:6px auto 0;padding:3px 10px;border-radius:999px;background:var(--rot);color:var(--creme);white-space:nowrap}
+.sticker-reihe{list-style:none;padding:0;margin:20px 0 0;display:flex;flex-wrap:wrap;gap:12px}
+.sticker{padding:10px 16px;border-radius:6px;font-weight:600;font-size:15px;line-height:1.3;transform:rotate(-2deg);box-shadow:0 3px 0 rgb(30 25 22/.28);transition:transform .2s var(--ease-out)}
+.s-creme{background:var(--creme);color:var(--kohle)}
+.s-pist{background:var(--papier);color:var(--kohle);transform:rotate(2deg)}
+.angebot{padding-block:var(--abst) 64px}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,96px);align-items:start}
+.ang-kopf{position:relative;padding-right:clamp(64px,9vw,120px)}
+.cay{position:absolute;right:0;top:-10%;width:clamp(64px,8vw,110px)}
+.cay img{width:100%;height:auto;filter:drop-shadow(0 8px 8px rgb(30 25 22/.3))}
+.ang-text p{margin-top:24px;max-width:58ch}
+.info{margin:32px 0 0;border-top:2px solid var(--kohle)}
+.info div{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--linie)}
+.info dt{font-weight:600}
+.info dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}
+.ang-bild{position:relative}.ang-stapel{position:relative}.ang-nachweis{margin-top:10px;font-size:13px;line-height:1.4;text-align:right}
+.ang-bild figure{margin:0}
+.ang-bild .gross .foto-nachweis{display:block;text-align:right;margin-top:6px}
+.boot-klein{position:absolute;z-index:2;left:-48px;bottom:24px;width:min(300px,58%);transform:rotate(6deg);filter:drop-shadow(0 12px 16px rgb(30 25 22/.32))}
+.boot-klein .foto-nachweis{display:block;margin:4px 0 0 18%}
+.band{padding-block:clamp(8px,2vw,24px)}
+.band-form{display:grid;place-items:center;min-height:clamp(96px,13vw,200px);margin:0 var(--rand);padding:12px 14%;-webkit-mask:var(--pide-maske) center/100% 100% no-repeat;mask:var(--pide-maske) center/100% 100% no-repeat;background:var(--kohle);color:var(--creme);text-align:center}
+.band-rot .band-form{background:var(--rot)}
+.band-text{font-family:var(--disp);font-size:clamp(1.15rem,4vw,3.6rem);line-height:1.1;letter-spacing:-.01em;text-wrap:balance}
+.ofen{background:var(--kohle);color:var(--creme);padding-block:var(--abst)}
+.ofen-titel{padding-inline:var(--rand);max-width:var(--max);margin:0 auto clamp(24px,4vw,48px)}
+[data-kapitel]{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);align-items:center;max-width:var(--max);margin:0 auto;padding:clamp(16px,3vw,32px) var(--rand)}
+[data-kapitel-bild]{position:relative;margin:0;aspect-ratio:4/5;border-radius:28px;overflow:hidden;background:#2A231F}
+[data-kapitel-bild] img{width:100%;height:100%;object-fit:cover}
+.k-frei{background:radial-gradient(circle at 50% 55%,#4A3A2E,#2A231F 70%)}
+.k-frei img{object-fit:contain;padding:10%;filter:drop-shadow(0 16px 18px rgb(0 0 0/.45))}
+[data-kapitel-bild] .foto-nachweis{position:absolute;left:12px;bottom:12px;background:rgb(30 25 22/.82);color:var(--creme);padding:4px 10px;border-radius:6px}
+.k-nr{font-family:var(--disp);font-size:clamp(3rem,7vw,6rem);line-height:1;color:var(--orange);font-variant-numeric:tabular-nums}
+[data-kapitel-text] h3{font-family:var(--disp);font-size:clamp(2.4rem,5.4vw,5rem);line-height:1;letter-spacing:-.02em}
+[data-kapitel-text] h3 span{color:inherit}
+[data-kapitel-text] p:last-child{margin-top:16px;max-width:42ch;font-size:18px}
+.karte{padding-block:var(--abst);overflow-x:clip}
+.karte-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,80px);align-items:start}
+.karte-kopf p{margin-top:20px;max-width:44ch}
+.zettel{position:relative;background:var(--papier);border-radius:20px;padding:clamp(20px,3vw,40px);box-shadow:0 18px 40px -24px rgb(30 25 22/.5)}
+.zettel::before,.zettel::after{content:"";position:absolute;left:20px;right:20px;border-top:2px dashed var(--linie)}
+.zettel::before{top:12px}.zettel::after{bottom:12px}
+.baklava{position:absolute;z-index:2;right:calc(var(--rand) * -.8);top:-8%;width:clamp(140px,16vw,230px);pointer-events:none}
+.baklava img{width:100%;height:auto;filter:drop-shadow(0 12px 14px rgb(30 25 22/.32))}
+.zettel-kopf{display:flex;justify-content:space-between;gap:12px;font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:8px 0 16px;border-bottom:2px solid var(--kohle);padding-right:clamp(0px,10vw,150px)}
+.reiter{position:relative;display:flex;gap:6px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;margin:16px 0 8px;padding-bottom:16px}
+.reiter::-webkit-scrollbar{display:none}
+.reiter button{flex:0 0 auto;scroll-snap-align:start;min-height:44px;padding:10px 16px;border:0;background:none;font:600 16px/1.2 var(--text);color:var(--kohle);border-radius:999px;cursor:pointer;touch-action:manipulation;user-select:none;-webkit-user-select:none;transition:transform .16s var(--ease-out),color .2s var(--ease-out)}
+.reiter button:active{transform:scale(.97)}
+.reiter button[aria-selected="true"]{color:var(--rot)}
+.reiter-marker{position:absolute;left:0;bottom:2px;width:100px;height:10px;background:var(--rot);clip-path:var(--pide);transform-origin:0 50%;opacity:0;transition:transform .25s var(--ease-out)}
+.js .reiter-marker{opacity:1}
+.panel+.panel{margin-top:24px}
+.panel-titel{font-family:var(--disp);font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.1;margin-bottom:4px}
+.gerichte{list-style:none;margin:0;padding:0}
+.gerichte li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1.5px dashed var(--linie)}
+.gerichte b{font-family:var(--disp);font-weight:400;font-size:clamp(1.3rem,2.2vw,1.7rem);line-height:1.15}
+.gerichte span{text-align:right;color:#4A3F38;font-size:16px}
+.zettel-fuss{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;margin-top:24px;padding-bottom:12px}
+.zettel-fuss p{max-width:34ch;font-weight:600}
+.wand{background:var(--rot);color:var(--creme);padding-block:var(--abst)}
+.wand-titel{max-width:var(--max);margin:0 auto clamp(24px,4vw,40px);padding-inline:var(--rand)}
+.raster{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) minmax(0,1fr);grid-template-rows:1fr 1fr;gap:clamp(10px,1.4vw,18px);height:min(82svh,760px);max-width:var(--max);margin:0 auto;padding-inline:var(--rand)}
+.raster figure{position:relative;margin:0;border-radius:20px;overflow:hidden;background:#2A231F;min-height:0}
+.raster img{width:100%;height:100%;object-fit:cover}
+.raster figure:nth-child(1){grid-area:1/1}.raster figure:nth-child(2){grid-area:2/1}.raster [data-mitte]{grid-area:1/2/3/3}.raster figure:nth-child(4){grid-area:1/3}.raster figure:nth-child(5){grid-area:2/3}
+.raster figcaption{position:absolute;inset:auto 0 0;padding:40px 16px 14px;background:linear-gradient(transparent,rgb(30 25 22/.88));color:var(--creme);font-size:15px;font-weight:600;line-height:1.35}
+.raster figcaption .foto-nachweis{display:block;font-weight:400}
+[data-mitte] figcaption{inset:0 0 auto;padding:14px 16px 40px;background:linear-gradient(rgb(30 25 22/.85),transparent)}
+[data-raster-text]{position:absolute;left:16px;right:16px;bottom:16px;background:var(--kohle);color:var(--creme);padding:16px 20px;border-radius:16px;font-family:var(--disp);font-size:clamp(1.3rem,2.4vw,2rem);line-height:1.15}
+.lage{padding-block:var(--abst)}
+.lage-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,80px);align-items:start}
+.lage .h2{margin-bottom:28px}
+.woche{list-style:none;margin:0;padding:0;border-top:2px solid var(--kohle)}
+.woche-tag{position:relative;display:flex;justify-content:space-between;gap:16px;padding:12px 0 12px 30px;border-bottom:1px dashed var(--linie);font-variant-numeric:tabular-nums}
+.woche-zeit{text-align:right}
+.woche-tag[data-heute]{font-weight:700;color:var(--rot)}
+.woche-tag[data-heute]::before{content:"";position:absolute;left:0;top:50%;width:20px;height:10px;margin-top:-5px;background:var(--rot);clip-path:var(--pide)}
+.woche-tag[data-heute][data-offen="nein"]{color:var(--kohle)}
+.tl-block{margin-top:32px}
+.tl-kopf{display:flex;justify-content:space-between;font-weight:600;font-size:15px;font-variant-numeric:tabular-nums;margin-bottom:10px}
+.tl{position:relative;height:28px;border-radius:999px;background:#E8D8BF}
+.tl-offen{position:absolute;top:0;bottom:0;left:13.333%;right:13.333%;background:var(--kohle);clip-path:var(--pide)}
+.tl-jetzt{position:absolute;top:-6px;bottom:-6px;width:3px;margin-left:-1.5px;background:var(--rot);border-radius:2px;display:none}
+.tl-skala{display:flex;justify-content:space-between;margin-top:8px;font-size:13px;font-variant-numeric:tabular-nums;color:#4A3F38}
+.karte-rahmen{aspect-ratio:4/3;border-radius:28px;overflow:hidden;border:2px solid var(--kohle);background:#E8D8BF}
 .karte-rahmen [data-karte]{width:100%;height:100%}
-.lage-info{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 24px;align-items:end;margin-top:24px}
-.lage-info h3{font:400 1.6rem/1.2 var(--display)}
-.lage-info p{max-width:34em}
-
-.raster{padding-block:var(--abstand);background:var(--tinte);color:var(--creme)}
-.raster h2{margin-bottom:clamp(28px,4vw,48px);max-width:14em}
-.raster-gitter{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) minmax(0,1fr);grid-template-rows:repeat(2,minmax(0,1fr));gap:16px;height:min(76svh,720px)}
-.kachel{position:relative;margin:0;border-radius:16px;overflow:hidden;background:var(--grau)}
-.kachel img{width:100%;height:100%;object-fit:cover}
-.kachel[data-mitte]{grid-column:2;grid-row:1/3}
-.kachel[data-mitte] .foto-nachweis{bottom:auto;top:8px}
-[data-raster-text]{position:absolute;left:12px;right:12px;bottom:12px;background:var(--tinte);color:var(--creme);border-radius:12px;padding:18px 20px}
-[data-raster-text] p:first-child{font:400 1.3rem/1.2 var(--display);margin-bottom:6px}
-
-.lesen{position:relative;padding-block:var(--abstand)}
-.lesen-anker{position:absolute;inset:0 auto 0 0;width:38%;overflow:hidden;pointer-events:none}
-.lesen-anker img{position:absolute;top:50%;right:8%;width:150%;max-width:none;height:auto;transform:translateY(-50%);filter:drop-shadow(14px 18px 16px rgb(21 23 29/.28))}
-.lesen .wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr))}
-.lesen p{grid-column:5/13;font:400 clamp(1.6rem,3.4vw,3.1rem)/1.28 var(--display);letter-spacing:-.015em}
-.lesen em{font-style:normal;color:var(--rot)}
-
-.reservieren{padding-bottom:var(--abstand)}
-.reservieren .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,640px);gap:clamp(32px,6vw,96px);align-items:start;padding-top:clamp(48px,7vw,96px)}
-.res-intro{display:grid;gap:24px;justify-items:start}
-.res-intro p{max-width:28em}
-.res-karte{min-width:0;background:var(--tinte);color:var(--creme);border-radius:24px;padding:clamp(20px,4vw,40px);min-height:0}
-.res-karte h3{font:400 1.7rem/1.15 var(--display);margin-bottom:20px}
-[data-schritt]{min-width:0}
-.res-beschriftung{font-weight:700;font-size:15px;margin:20px 0 10px}
-.res-fortschritt{list-style:none;display:flex;gap:8px;margin:0 0 14px;padding:0}
-.res-punkt{flex:1;display:flex;align-items:center;gap:10px;font-size:14px;min-width:0;color:#A9ABB3}
-.res-punkt::after{content:"";flex:1 1 16px;min-width:12px;height:2px;background:rgb(245 238 225/.25);border-radius:2px}
-.res-punkt:last-child{flex:0 1 auto}.res-punkt:last-child::after{display:none}
-.res-erledigt::after{background:var(--rot)}
-.res-jetzt{color:var(--creme)}
-.res-nr{display:grid;place-items:center;flex:0 0 auto;width:32px;height:32px;margin:0;border-radius:50%;background:#41444E;color:var(--creme);font-weight:800;font-size:12.5px;transition:background-color .3s var(--ease-out),color .3s var(--ease-out)}
-.res-jetzt .res-nr,.res-erledigt .res-nr{background:var(--rot)}
-.res-punkt:last-child.res-jetzt .res-nr{background:var(--hgruen);color:var(--tinte)}
-.res-titel{padding-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.res-jetzt .res-titel{font-weight:800}
-.res-zusammenfassung{margin:0 0 18px;color:var(--hgruen);font-weight:700;font-variant-numeric:tabular-nums;font-size:15px}
-[data-tage]{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;padding:3px;margin:0;min-width:0;max-width:100%;-webkit-mask-image:linear-gradient(90deg,#000 86%,transparent);mask-image:linear-gradient(90deg,#000 86%,transparent)}
+.ort-info{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px 24px;align-items:end;margin-top:24px}
+.ort-info address{font-style:normal;font-size:18px}
+.ort-info address strong{font-family:var(--disp);font-weight:400;font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.1;display:block}
+.weg{margin-top:8px;color:#4A3F38}
+.ort-links{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.res{background:var(--rot);color:var(--creme);padding-block:var(--abst);overflow:clip}
+#reservieren,form[data-reservierung]{scroll-margin-top:96px}
+.res-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,6fr);gap:clamp(32px,5vw,80px);align-items:stretch}
+.res-grid form[data-reservierung]{align-self:start}
+.res-intro{display:flex;flex-direction:column;align-items:flex-start}
+.res-intro p{margin-top:20px;max-width:40ch;font-size:18px}
+.res-intro .bew-sticker{margin-top:24px}
+.res-intro .knopf{margin-top:16px}
+.res-cay{margin:auto 0 calc(var(--abst)*-1 - 48px) 8%;padding-top:32px;width:clamp(180px,20vw,280px)}
+.res-cay img{width:100%;height:auto;filter:drop-shadow(0 18px 22px rgb(30 25 22/.4))}
+form[data-reservierung]{position:relative;min-width:0;width:100%;max-width:640px;justify-self:end;min-height:580px;display:flex;flex-direction:column;background:var(--creme);color:var(--kohle);border-radius:20px;padding:32px clamp(20px,3vw,36px)}
+form[data-reservierung]::before,form[data-reservierung]::after{content:"";position:absolute;left:20px;right:20px;border-top:2px dashed var(--linie)}
+form[data-reservierung]::before{top:12px}form[data-reservierung]::after{bottom:12px}
+.res-fortschritt{list-style:none;display:flex;gap:10px;margin:0 0 12px;padding:0}
+.res-punkt{position:relative;flex:1;min-width:0;padding-top:22px;font-size:14px;display:flex;gap:6px}
+.res-punkt::before,.res-punkt::after{content:"";position:absolute;left:0;right:0;top:0;height:14px;clip-path:var(--pide);background:rgb(30 25 22/.18)}
+.res-punkt::after{background:var(--kohle);opacity:0;transition:opacity .25s var(--ease-out)}
+.res-jetzt::after{opacity:1;background:var(--rot)}
+.res-erledigt::after{opacity:1}
+.res-nr{font-weight:700;font-variant-numeric:tabular-nums}
+.res-titel{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.res-zusammenfassung{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums;min-height:1.5em;margin-bottom:8px}
+[data-schritt]{display:flex;flex-direction:column;gap:14px;flex:1;min-width:0}
+[data-schritt][hidden],[data-reservierung-erfolg][hidden]{display:none}
+.schritt-titel{font-family:var(--disp);font-size:clamp(1.8rem,3.4vw,2.4rem);line-height:1.1}
+.res-gruppe-label,.feld label{display:block;font-weight:600;font-size:15px;margin-bottom:6px}
+[data-tage],[data-zeiten],[data-personen]{min-width:0}
+[data-tage]{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;scroll-padding-inline:0;padding-bottom:4px}
 [data-tage]::-webkit-scrollbar{display:none}
-[data-tage] .res-option{flex:0 0 calc((100% - 40px)/5.5);min-width:76px;scroll-snap-align:start}
-[data-zeiten],.res-zeitreihe{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:8px}
-[data-zeiten]:has(.res-zeitgruppe){grid-template-columns:minmax(0,1fr);gap:16px}
-[data-personen]{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;max-width:400px}
-.res-option{position:relative;display:block;min-width:0;touch-action:manipulation;user-select:none;-webkit-user-select:none}
+[data-tage] .res-option{flex:0 0 92px;scroll-snap-align:start}
+[data-tage] .res-option:nth-child(n+15){display:none}
+[data-zeiten]:not(:has(.res-zeitgruppe)),.res-zeitreihe,[data-personen]{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px}
+.res-zeitgruppe+.res-zeitgruppe{margin-top:10px}
+.res-tageszeit{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.res-option{position:relative;display:block;min-width:0}
 .res-radio{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
-.res-label{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:48px;padding:8px 10px;border:1.5px solid rgb(245 238 225/.55);border-radius:999px;font-weight:700;font-variant-numeric:tabular-nums;text-align:center;line-height:1.2;cursor:pointer;transition:transform .16s var(--ease-out),background-color .2s var(--ease-out),border-color .2s var(--ease-out),color .2s var(--ease-out)}
-.res-label b{font-size:15px}.res-label small{font-size:13px;font-weight:500}
-[data-tage] .res-label{border-radius:16px;min-height:60px}
-[data-personen] .res-label{aspect-ratio:1;border-radius:50%;font:400 1.3rem/1 var(--display)}
+.res-label{position:relative;isolation:isolate;hyphens:none;-webkit-hyphens:none;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:48px;padding:8px 12px;text-align:center;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.2;cursor:pointer;user-select:none;-webkit-user-select:none;touch-action:manipulation;border-radius:12px;transition:transform .16s var(--ease-out),color .2s var(--ease-out)}
 .res-option:active .res-label{transform:scale(.98)}
-.res-radio:checked+.res-label{background:var(--rot);border-color:var(--rot);color:var(--creme)}
-.res-radio:focus-visible+.res-label{outline:3px solid var(--hgruen);outline-offset:2px}
-@media (hover:hover) and (pointer:fine){.res-label:hover{border-color:var(--creme)}}
-[aria-invalid="true"]:is([data-tage],[data-zeiten],[data-personen]){outline:2px dashed #FF8C80;outline-offset:6px;border-radius:12px}
-.res-tageszeit{margin:0 0 8px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#D9D2C5}
-.res-hinweis,.res-demo-hinweis{font-size:14px;color:#D9D2C5;margin-top:14px}
-.res-hinweis a{color:var(--creme);font-weight:700}
-.felder{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.feld{min-width:0}.feld--breit{grid-column:1/-1}
-.feld label{display:block;font-weight:700;font-size:15px;margin-bottom:6px}
-.feld input,.feld textarea{width:100%;min-height:50px;padding:12px 14px;font:16px/1.4 var(--text);color:var(--creme);background:var(--grau);border:1.5px solid rgb(245 238 225/.5);border-radius:12px;transition:border-color .2s var(--ease-out)}
+[data-tage] .res-label{border:2px solid var(--kohle);background:var(--papier)}
+[data-tage] .res-label small{font-weight:400;font-size:13px}
+[data-tage] .res-radio:checked+.res-label{background:var(--kohle);color:var(--creme)}
+[data-zeiten] .res-label::before,[data-personen] .res-label::before,[data-zeiten] .res-label::after,[data-personen] .res-label::after{content:"";position:absolute;inset:0;z-index:-1;clip-path:var(--pide);background:var(--kohle)}
+[data-zeiten] .res-label::after,[data-personen] .res-label::after{inset:2px 3px;background:var(--papier);transition:opacity .2s var(--ease-out)}
+[data-zeiten] .res-radio:checked+.res-label,[data-personen] .res-radio:checked+.res-label{color:var(--creme)}
+[data-zeiten] .res-radio:checked+.res-label::before,[data-personen] .res-radio:checked+.res-label::before{background:var(--kohle)}
+[data-zeiten] .res-radio:checked+.res-label::after,[data-personen] .res-radio:checked+.res-label::after{opacity:0}
+.res-radio:focus-visible+.res-label{outline:3px solid var(--rot);outline-offset:2px}
+[aria-invalid="true"]{outline:2px dashed var(--rot);outline-offset:4px;border-radius:12px}
+.res-hinweis,.res-demo-hinweis{font-size:14px;color:#4A3F38}
+.felder{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.feld-voll{grid-column:1/-1}
+.feld input,.feld textarea{width:100%;min-height:48px;padding:12px 14px;font:16px/1.4 var(--text);color:var(--kohle);background:var(--papier);border:2px solid var(--kohle);border-radius:12px}
 .feld textarea{resize:vertical}
-.feld input:focus-visible,.feld textarea:focus-visible{outline:none;border-color:var(--hgruen)}
-.feld [aria-invalid="true"]{border-color:#FF8C80}
-.einwilligung{grid-column:1/-1;display:flex;gap:12px;align-items:flex-start;padding:12px;margin:0 -12px;border-radius:12px;font-size:15px;cursor:pointer}
-.einwilligung input{flex:0 0 22px;width:22px;height:22px;margin:2px 0 0;accent-color:var(--rot)}
-.einwilligung[aria-invalid="true"],.einwilligung:has([aria-invalid="true"]){outline:2px dashed #FF8C80}
-[data-reservierung-fehler],.res-schritt-fehler{color:#FF9C92;font-weight:700;font-size:15px;margin-top:10px}
+.feld input[aria-invalid="true"],.feld textarea[aria-invalid="true"]{border-color:var(--rot);outline:0}
+.einw{display:flex;gap:12px;align-items:flex-start;min-height:48px;padding:8px 0;font-size:15px;line-height:1.45;cursor:pointer}
+.einw input{flex:0 0 22px;width:22px;height:22px;margin-top:1px;accent-color:var(--kohle)}
+[data-reservierung-fehler],.res-schritt-fehler{color:var(--rot);font-weight:600;font-size:15px}
 [data-reservierung-fehler]:empty,.res-schritt-fehler:empty{display:none}
-.res-nav{display:flex;align-items:center;gap:12px;margin-top:28px;flex-wrap:wrap}
-.res-weiter{margin-left:auto;display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:14px 32px;border-radius:999px;background:var(--rot);color:var(--creme);border:2px solid var(--rot);font:700 17px/1.2 var(--text);cursor:pointer;touch-action:manipulation;user-select:none;-webkit-user-select:none;transition:transform .16s var(--ease-out),background-color .2s var(--ease-out),border-color .2s var(--ease-out)}
-.res-weiter:active{transform:scale(.97)}
-@media (hover:hover) and (pointer:fine){.res-weiter:hover{background:#A91B14;border-color:#A91B14}}
-.res-zurueck{min-height:48px;padding:0 18px;background:transparent;color:var(--creme);border:0;font:700 16px var(--text);text-decoration:underline;text-underline-offset:4px;cursor:pointer;touch-action:manipulation;user-select:none;border-radius:999px;transition:transform .16s var(--ease-out)}
-.res-zurueck:active{transform:scale(.97)}
-.zettel{position:relative;background:var(--creme);color:var(--tinte);border-radius:16px;padding:28px 24px}
-.zettel::before,.zettel::after{content:"";position:absolute;top:96px;width:22px;height:22px;border-radius:50%;background:var(--tinte)}
-.zettel::before{left:-11px}.zettel::after{right:-11px}
-.zettel h3{font-size:1.5rem;min-height:56px;margin:0 0 20px;padding-bottom:20px;border-bottom:2px dashed var(--tinte)}
-.zettel dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 20px;margin:0 0 24px;font-variant-numeric:tabular-nums}
-.zettel dt{font-weight:700}.zettel dd{margin:0}
-.zettel .bewertung{position:absolute;right:16px;bottom:16px;width:104px;height:104px;transform:rotate(-6deg)}
-.zettel .bew-zahl{font-size:20px}.zettel .bew-text{display:none}
-
-[data-schluss]{position:relative;min-height:85svh;background:var(--tinte);color:var(--creme);display:flex;align-items:flex-end;padding:calc(var(--kopf) + 48px) 0 clamp(56px,8vw,96px)}
-[data-schluss] [data-hintergrund-bild]{--schleier:linear-gradient(35deg,rgb(21 23 29/.88),rgb(21 23 29/.55) 45%,rgb(21 23 29/.1) 80%)}
-[data-schluss] .wrap{position:relative;width:100%}
-.schluss-inhalt{max-width:42rem;display:grid;gap:22px;justify-items:start}
-[data-schluss] h2{font:400 clamp(2.6rem,6vw,5.5rem)/1.04 var(--display);letter-spacing:-.025em}
-[data-schluss] .akzent{color:var(--hgruen)}
-[data-schluss] p{font-size:18px;max-width:32em}
-.schluss-status{display:inline-flex;align-items:center;min-height:40px;padding:8px 16px;border-radius:999px;background:rgb(21 23 29/.8);font-weight:700;font-size:15px}
-.schluss-status:has([data-status]:empty){display:none}
-.schluss-status [data-status][data-offen="ja"]::before{background:var(--hgruen)}
-
-footer{position:relative;background:var(--tinte);color:var(--creme);padding:calc(var(--abstand) * .7) 0 calc(var(--szene-unten,0px) + 24px)}
-footer::before{content:"";position:absolute;left:0;right:0;top:0;height:26px;background:linear-gradient(var(--rot),var(--rot)) 0 0/100% 8px no-repeat,radial-gradient(circle at 50% 0,var(--rot) 17px,transparent 17.5px) 0 0/36px 26px repeat-x}
-.fuss-raster{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;align-items:start;padding-block:24px 40px;border-bottom:1px solid rgb(245 238 225/.2)}
-.fuss-raster h2{font:400 1.1rem/1.2 var(--display);margin-bottom:14px}
-.fuss-raster .marke span{font-size:26px}
-.fuss-raster p{margin-top:12px;color:#DCD5C9;max-width:24em}
-footer .woche{list-style:none;margin:0;padding:0;display:grid;gap:4px;max-width:260px}
-footer .woche-tag{display:flex;justify-content:space-between;gap:16px;font-variant-numeric:tabular-nums}
-footer .woche-tag[data-heute]{color:var(--hgruen);font-weight:700}
-footer .woche-tag[data-heute] .woche-name::after{content:none}
-footer address{font-style:normal;line-height:1.8}
-footer address a{display:inline-flex;min-height:44px;align-items:center}
-.rechtliches{padding-top:24px;font-size:13px;color:#C9C3B8;display:grid;gap:6px}
-
+.res-nav{display:flex;gap:10px;margin-top:auto;padding-top:16px}
+.res-weiter,form[data-reservierung] [type="submit"]{flex:1;min-height:52px;padding:14px 24px;border:0;border-radius:999px;background:var(--rot);color:var(--creme);font:600 17px/1.2 var(--text);cursor:pointer;touch-action:manipulation;user-select:none;transition:transform .16s var(--ease-out)}
+.res-zurueck,[data-reservierung-neu]{min-height:52px;padding:14px 20px;border:2px solid var(--kohle);border-radius:999px;background:transparent;color:var(--kohle);font:600 16px/1.2 var(--text);cursor:pointer;touch-action:manipulation;user-select:none;transition:transform .16s var(--ease-out)}
+.res-weiter:active,.res-zurueck:active,form [type="submit"]:active,[data-reservierung-neu]:active{transform:scale(.97)}
+[data-reservierung-erfolg]{flex:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;padding-top:32px;gap:14px;font-variant-numeric:tabular-nums}
+[data-reservierung-erfolg] .stempel{transform-origin:left center;margin-bottom:8px}
+.stempel{font-family:var(--disp);font-size:clamp(2.4rem,6vw,3.6rem);line-height:1;color:var(--pist);border:4px solid var(--pist);border-radius:12px;padding:.14em .4em 0;transform:rotate(-7deg)}
+[data-reservierung-erfolg]:not([hidden]) .stempel{animation:stempel .5s var(--ease-out) both}
+@keyframes stempel{from{opacity:0;transform:rotate(-14deg) scale(1.25)}to{opacity:1;transform:rotate(-7deg) scale(1)}}
+[data-reservierung-erfolg] h3{font-family:var(--disp);font-size:clamp(1.8rem,3.4vw,2.4rem);line-height:1.1}
+.erfolg-daten{font-weight:600;font-size:18px}
+.schluss{position:relative;min-height:80svh;display:flex;align-items:flex-end;background:var(--kohle);color:var(--creme)}
+.schluss-inhalt{position:relative;z-index:2;width:100%;padding-block:clamp(64px,10vw,120px) clamp(56px,8vw,96px)}
+.schluss-titel{font-family:var(--disp);font-size:clamp(3rem,9vw,8rem);line-height:.98;letter-spacing:-.025em;max-width:min(11ch,100%);color:var(--creme)}
+.schluss-status{margin-top:24px;font-weight:600;font-size:18px;min-height:1.6em}
+.schluss .aktion{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.fuss{background:var(--kohle);color:var(--creme);padding:clamp(48px,7vw,80px) 0 calc(var(--szene-unten,0px) + 24px);border-top:1px solid rgb(246 235 217/.18)}
+.fuss-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,4vw,56px);align-items:start}
+.fuss h2{font-family:var(--disp);font-size:20px;line-height:1.2;margin-bottom:12px}
+.fuss .wm{font-size:34px}
+.fuss .wm-nour{color:#F0786C}
+.fuss p,.fuss address{font-style:normal;margin-top:12px;font-size:16px}
+.fuss a{display:inline-flex;align-items:center;min-height:44px}
+.logo-platte{margin-top:16px;width:150px;background:var(--creme);border-radius:14px;padding:10px}
+.logo-platte img{width:100%;height:auto}
+.fuss .woche{border-color:rgb(246 235 217/.5)}
+.fuss .woche-tag{padding-block:6px;border-color:rgb(246 235 217/.22);font-size:15px}
+.fuss .woche-tag[data-heute]{color:#F0786C}
+.fuss .woche-tag[data-heute]::before{background:#F0786C}
+.fuss .woche-tag[data-heute][data-offen="nein"]{color:var(--creme)}
+.rechtliches{margin-top:40px;padding-top:20px;border-top:1px solid rgb(246 235 217/.18);font-size:14px;color:#DCCFBC}
 .handyleiste{display:none}
-
-@media (max-width:1023px){
-.hero-text{grid-column:1/7}.hero-buehne{grid-column:7/13;padding:48px 32px 64px}
-.blende{min-height:13svh}
-.foto-paar .klein{left:-24px}}
-@media (max-width:819px){
-:root{--szene-unten:84px}
-.kopf nav a:not(.knopf),.kopf nav .nur-gross{display:none}
-.nur-handy{display:inline-flex}
-.blende{min-height:12svh;padding:24px 4vw 12px}
-.blende h1{font-size:5.6vw}
-.spots{top:6px}.spots i{width:18px;height:7px}
-.hero-split{grid-template-columns:minmax(0,1fr);min-height:0}
-.hero-buehne{grid-column:1;order:-1;padding:14px 16px 12px}
-.hero-text{grid-column:1;padding:18px var(--rand) calc(96px + env(safe-area-inset-bottom));gap:16px}
-.hero-aussage{font-size:clamp(2rem,9vw,2.6rem)}
-.hero-satz{font-size:16px}
-.hero-foto{max-width:none;container-type:normal}
-.hero-foto .rahmen{aspect-ratio:16/10;max-height:26svh;width:100%}
-.hero-foto .rahmen img{object-position:50% 75%}
-.hero-foto figcaption{max-width:none;margin-top:6px}
-.hero-foto figcaption span{display:none}
-.badge{width:72px;top:12px;left:12px;filter:drop-shadow(3px 3px 0 #15171D)}
-.burger{width:64px;right:12px;top:12px;bottom:auto}
-.burger .kreis{border-width:3px}
-.burger .foto-nachweis{position:absolute;right:0;top:calc(100% + 4px);width:max-content;max-width:60vw;margin:0;padding:3px 8px;border-radius:6px;background:rgb(21 23 29/.85);color:var(--creme);white-space:nowrap;text-decoration:none}
-.sticker-reihe{display:none}
-.aktionen{flex-direction:column;align-items:stretch;width:100%;gap:10px}
-.aktionen .magnet,.aktionen .knopf{width:100%}
-.aktionen .link-unter{justify-content:center;min-height:52px;border:2px solid var(--tinte);border-radius:999px;text-decoration:none}
-.band-text{font-size:clamp(1.15rem,5.4vw,2rem)}
-.band.lang .band-lauf{justify-content:flex-start;width:max-content;animation:laufen 22s linear infinite}
-.band.lang .band-text{padding-right:1.2em}
-.band.lang .band-text[aria-hidden]{display:block}
-.angebot .wrap,.zeiten .wrap,.reservieren .wrap{grid-template-columns:minmax(0,1fr)}
-.foto-paar{margin-left:12%}
-.foto-paar .gross{min-height:0;aspect-ratio:4/5}
-.raster-gitter{grid-template-columns:minmax(0,1fr);grid-template-rows:none;height:auto}
-.kachel{aspect-ratio:4/3}
-.kachel[data-mitte]{grid-column:1;grid-row:auto;aspect-ratio:4/5}
-.lesen{padding-top:calc(var(--abstand) + 40vw)}
-.lesen-anker{inset:0 0 auto auto;width:56vw;height:calc(40vw + 48px)}
-.lesen-anker img{width:62vw;top:auto;bottom:0;right:auto;left:0;transform:none}
-.lesen p{grid-column:1/-1}
-.fuss-raster{grid-template-columns:minmax(0,1fr)}
-.schluss-inhalt .knopf,.schluss-inhalt .magnet{width:100%}
-.schluss-inhalt{justify-items:stretch}
-.schluss-status{justify-self:start}
-[data-schluss]{min-height:72svh;padding-bottom:96px}
-.handyleiste{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:55;background:var(--tinte);padding:10px 10px max(12px,env(safe-area-inset-bottom));border-top:2px solid var(--creme)}
-.handyleiste a{display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:999px;color:var(--creme);font-weight:800;font-size:15px;text-decoration:none;border:2px solid rgb(245 238 225/.5);touch-action:manipulation;user-select:none;transition:transform .16s var(--ease-out)}
+@media (hover:hover) and (pointer:fine){
+.nav a:not(.knopf):hover::after{transform:scaleX(1)}
+.knopf-rot:hover,.res-weiter:hover,form [type="submit"]:hover{background:#A51F15}
+.knopf-creme:hover{background:var(--papier)}
+.knopf-linie:hover{background:var(--creme);color:var(--kohle)}
+.sticker:hover{transform:rotate(-5deg) translateY(-3px)}
+.s-pist:hover{transform:rotate(5deg) translateY(-3px)}
+.bew-sticker:hover{transform:rotate(-4deg) translateY(-2px)}
+.reiter button:hover{color:var(--rot)}
+.res-label:hover{transform:translateY(-2px)}
+.link-route:hover{text-decoration-color:var(--rot)}
+}
+@media (max-width:1100px){.baklava{display:none}.zettel-kopf{padding-right:0}.pide-flug{width:min(38%,160px)}}
+@media (max-width:820px){
+:root{--kopf:60px}
+.nav a:not(.knopf),.nav-res{display:none}
+.nav-anruf{display:inline-flex}
+.wm{font-size:24px}
+.hero{grid-template-columns:minmax(0,1fr);min-height:0;padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+.hero-text{padding:24px var(--rand) 28px;gap:16px}
+.hero-name{font-size:clamp(1.7rem,9.2vw,2.6rem)}
+.hero-titel{font-size:clamp(2.4rem,12.5vw,4.2rem)}
+.hero-satz{font-size:17px}
+.hero-aktion{flex-direction:column;align-items:stretch;gap:10px}
+.hero-aktion .magnet,.hero-aktion .knopf{width:100%}
+.hero-aktion .knopf,.hero-aktion .link-route{min-height:52px;justify-content:center}
+.link-route{border:2px solid var(--kohle);border-radius:999px;text-decoration:none}
+.hero-buehne{margin:0 var(--rand) 48px;border-radius:24px;padding:64px 16px 20px}
+.foto-wrap{width:100%;margin:0}
+.hero-foto .r45{aspect-ratio:16/10}
+.wrap-boot{display:none}
+.pide-flug{top:12px;right:12px;width:min(40%,160px)}
+.pide-img{transform:rotate(-28deg)}
+.sticker-reihe{flex-wrap:wrap;gap:10px;margin-top:16px;padding:4px 4px 8px}
+.sticker{max-width:100%}
+.split,.karte-grid,.lage-grid,.res-grid,.fuss-grid{grid-template-columns:minmax(0,1fr)}
+.ang-bild{max-width:520px}
+.boot-klein{left:auto;right:12px;bottom:-24px;width:min(220px,58%)}.ang-nachweis{margin-top:40px;text-align:left}
+[data-kapitel]{grid-template-columns:minmax(0,1fr)}
+[data-kapitel-bild]{aspect-ratio:4/3}[data-kapitel-text]{padding-top:16px}.k-nr{margin-top:16px}
+.raster{grid-template-columns:minmax(0,1fr);grid-template-rows:none;height:auto}
+.raster figure,.raster [data-mitte]{grid-area:auto!important;aspect-ratio:4/3}
+.raster [data-mitte]{aspect-ratio:4/5}
+.ort-info{grid-template-columns:minmax(0,1fr)}
+.ort-links{align-items:stretch}
+form[data-reservierung]{justify-self:stretch}
+.schluss{min-height:80svh}
+.band-form{min-height:88px;max-height:120px;padding:10px 12%}
+.res-cay{display:none}
+.handyleiste{position:fixed;z-index:70;left:0;right:0;bottom:0;display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:8px;padding:10px 12px max(12px,env(safe-area-inset-bottom));background:var(--kohle);border-top:2px solid var(--rot)}
+.handyleiste a{display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:999px;font-weight:600;font-size:16px;text-decoration:none;color:var(--creme);border:2px solid rgb(246 235 217/.4);touch-action:manipulation;user-select:none;-webkit-user-select:none;transition:transform .16s var(--ease-out)}
 .handyleiste a:first-child{background:var(--rot);border-color:var(--rot)}
-.handyleiste a:active{transform:scale(.97)}}
+.handyleiste a:active{transform:scale(.97)}
+.fuss{padding-bottom:calc(var(--szene-unten,0px) + 96px)}
+.schluss-inhalt{padding-bottom:96px}
+}
 @media (max-width:560px){
-.reservieren .wrap{padding-inline:8px}
-.res-intro{padding-inline:calc(var(--rand) - 8px)}
-.res-karte{padding:18px;border-radius:18px;min-height:0}
-.res-punkt:not(.res-jetzt) .res-titel{display:none}
-.res-punkt:not(.res-jetzt){flex:0 0 auto}
-[data-tage] .res-option{flex-basis:calc((100% - 24px)/3.4)}
-[data-zeiten],.res-zeitreihe,[data-personen]{grid-template-columns:repeat(4,minmax(0,1fr))}
-[data-zeiten]:has(.res-zeitgruppe){grid-template-columns:minmax(0,1fr)}
+form[data-reservierung]{padding:28px 16px 24px;border-radius:18px;min-height:600px}
+.res-wrap{padding-inline:8px}
+.res-punkt:not(.res-jetzt) .res-titel{display:none}.res-jetzt .res-titel{white-space:normal;overflow:visible;text-overflow:clip}
+[data-tage]{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;scroll-padding-inline:0;margin-right:-16px;padding-right:16px}
+[data-tage]::-webkit-scrollbar{display:none}
+[data-tage] .res-option{flex:0 0 88px;scroll-snap-align:start}
+[data-zeiten]:not(:has(.res-zeitgruppe)),.res-zeitreihe,[data-personen]{grid-template-columns:repeat(4,minmax(0,1fr))}
+[data-zeiten] .res-label,[data-personen] .res-label{padding-inline:6px;font-size:15px}
 .felder{grid-template-columns:minmax(0,1fr)}
-.feld input{min-height:48px}
-.res-nav .res-weiter,.res-nav [type="submit"]{flex:1;min-height:52px;margin-left:0}
-.zettel .bewertung{position:static;margin-top:16px}}
-@keyframes laufen{to{transform:translateX(-50%)}}
+.res-zurueck{padding-inline:16px}
+.gerichte li{flex-direction:column;gap:2px}
+.gerichte span{text-align:left}
+}
 @media (prefers-reduced-motion:reduce){
-.band.lang .band-lauf{animation:none;width:auto;justify-content:center}
-.band.lang .band-text[aria-hidden]{display:none}
-.band.lang .band-text{white-space:normal;text-align:center;padding:0}
-.band.lang .band-text span{display:block}
-*{scroll-behavior:auto}}
-.kopf .marke span{color:var(--tinte)}
-.aktionen .bewertung{width:112px;height:112px;flex:0 0 112px}
-.foto-paar .gross img{position:absolute;inset:0}
-.foto-paar .rahmen.gross .foto-nachweis{left:auto;right:8px;top:8px;bottom:auto}
-.tafel--suess li{padding:10px 0}
-.raster h2{color:var(--creme)}
-[data-tage]{scroll-padding-inline:3px}
-@media (max-width:819px){
-.zeiten .woche{grid-template-columns:minmax(0,1fr)}
-.zeiten .woche-tag{flex-direction:row;justify-content:space-between;min-height:0;padding:12px 18px;text-align:left}
-.woche-tag[data-heute] .woche-name::after{content:" · heute";display:inline;font-size:inherit}
-.lage-info{grid-template-columns:minmax(0,1fr)}
-.lage-info h3{font-size:clamp(1.6rem,7vw,2.4rem);overflow-wrap:anywhere;text-wrap:balance}
-.aktionen .bewertung{align-self:flex-start;width:96px;height:96px;flex:0 0 96px}
-.reservieren{padding-bottom:calc(var(--abstand) + 96px + env(safe-area-inset-bottom))}
-.reservieren [type="submit"],.einwilligung{scroll-margin-bottom:calc(110px + env(safe-area-inset-bottom))}
-.hero-text .aktionen{display:contents}
-.hero-text .magnet{order:3;align-self:stretch}
-.hero-text .hero-satz{order:4}
-.hero-text .link-unter{order:5;align-self:stretch}
-.hero-text .bewertung{order:6}
-[data-schluss] .aktionen .link-unter{border-color:var(--creme)}
-.res-karte [type="submit"]{width:100%;margin-top:8px}}
-main>section,section[id]{scroll-margin-top:84px}
-.bewertung{overflow:hidden;line-height:1.15}
-.bewertung .bew-stern{display:inline-block;margin-right:.2em}
-.karte-rahmen{contain:paint;max-width:100%}
-.zeiten .wrap>div,.lage-info>div{min-width:0}
-.lage-info h3{font-size:clamp(1.6rem,2.6vw,2.4rem);overflow-wrap:anywhere;text-wrap:balance}
-@media (max-width:1180px){.lage-info{grid-template-columns:minmax(0,1fr)}.lage-info .knopf{justify-self:start}}
-.res-karte{overflow:hidden;max-width:100%}
-[data-schluss] [data-hintergrund-bild] img{object-position:50% 18%}
-@media (min-width:820px){.hero-foto figcaption{margin-top:34px}.band.lang .band-text{font-size:clamp(1.1rem,2.6vw,2.6rem)}}
-</style>
-<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}:where(:root){--ease-out:cubic-bezier(.23,1,.32,1);--ease-in-out:cubic-bezier(.77,0,.175,1);--ease-drawer:cubic-bezier(.32,.72,0,1)}:where(html){-webkit-tap-highlight-color:transparent}:where(a,button,label,summary,select,[role=button]){touch-action:manipulation}:where(button,.res-option,.spur-steuerung button){-webkit-user-select:none;user-select:none}:where([data-spur],[data-tage]){overscroll-behavior-x:contain}:where(.woche){list-style:none;margin:0;padding:0;display:grid;gap:.4rem}:where(.woche-tag){display:flex;justify-content:space-between;gap:1rem;font-variant-numeric:tabular-nums}:where(.woche-tag[data-heute]){font-weight:700}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}[data-reservierung] [hidden],form[data-reservierung][hidden],[data-reservierung-erfolg][hidden]{display:none!important}:where(img){height:auto}[data-hintergrund]{position:relative;isolation:isolate;overflow:clip}:where([data-hintergrund="dunkel"]){background-color:#15120f;color:#fbf6ee}:where([data-hintergrund="hell"]){background-color:#f3eee6;color:#1b1814}[data-hintergrund-bild]{position:absolute!important;inset:0!important;z-index:-1!important;margin:0!important;padding:0!important;width:auto!important;height:auto!important;max-width:none!important;overflow:hidden!important;border:0!important;transform:none!important}[data-hintergrund-bild] img{position:absolute!important;left:0!important;top:-8%!important;width:100%!important;height:116%!important;max-width:none!important;max-height:none!important;object-fit:cover!important;display:block;border-radius:0!important;margin:0!important}[data-hintergrund-bild]::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:var(--schleier-grund),var(--schleier,linear-gradient(180deg,transparent 30%,rgb(0 0 0/.12)))}[data-hintergrund="dunkel"] [data-hintergrund-bild]{--schleier-grund:linear-gradient(rgb(12 10 8/.5),rgb(12 10 8/.5))}[data-hintergrund="hell"] [data-hintergrund-bild]{--schleier-grund:linear-gradient(rgb(250 247 242/.62),rgb(250 247 242/.62))}[data-hintergrund-bild] .foto-nachweis,[data-hintergrund-bild] figcaption{position:absolute!important;right:12px;bottom:10px;z-index:2;margin:0;color:#fff;opacity:.85;text-shadow:0 1px 3px rgb(0 0 0/.7)}[data-hintergrund="hell"] [data-hintergrund-bild] .foto-nachweis,[data-hintergrund="hell"] [data-hintergrund-bild] figcaption{color:#1b1814;text-shadow:0 1px 3px rgb(255 255 255/.8)}:where([data-bewertung]){display:inline-flex;align-items:baseline;gap:.35em;flex-wrap:wrap}:where(.bew-stern){color:#E3A21A}:where(.bew-zahl){font-weight:700;font-variant-numeric:tabular-nums}:where(.res-fortschritt){list-style:none;display:flex;gap:.75rem;padding:0;margin:0 0 1rem}:where(.res-punkt){display:flex;align-items:center;gap:.45rem;flex:1;opacity:.5}:where(.res-punkt.res-jetzt,.res-punkt.res-erledigt){opacity:1}:where(.res-punkt.res-erledigt){cursor:pointer}:where(.res-nr){display:inline-grid;place-items:center;width:1.7em;height:1.7em;border-radius:50%;border:1px solid currentColor;font-size:.85em;flex:none}:where(.res-zusammenfassung){margin:0 0 1rem;font-size:.92em;opacity:.8}:where(.res-nav){display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin-top:1.25rem}:where(.res-nav .res-weiter,.res-nav [type=submit]){margin-left:auto}:where(.res-nav button){min-height:44px}:where(.res-zeitgruppe){margin:0 0 .75rem}:where(.res-zeitreihe){display:flex;flex-wrap:wrap;gap:.5rem}:where(.res-tageszeit){margin:0 0 .35rem;font-size:.78em;letter-spacing:.08em;text-transform:uppercase;opacity:.7}@media (max-width:560px){:where(.res-punkt:not(.res-jetzt) .res-titel){display:none}:where(.res-punkt:not(.res-jetzt)){flex:none}:where(.res-zeitreihe){display:grid;grid-template-columns:repeat(4,1fr)}:where(.res-nav button){min-height:48px}:where(.res-nav .res-weiter,.res-nav [type=submit]){flex:1}[data-reservierung] input:not([type=radio]):not([type=checkbox]),[data-reservierung] textarea,[data-reservierung] select{font-size:max(16px,1em)!important}}</style><!--agent-lib--><link rel="stylesheet" href="lib/lenis.css"><script src="lib/gsap.min.js"></script><script src="lib/ScrollTrigger.min.js"></script><script src="lib/SplitText.min.js"></script><script src="lib/lenis.min.js"></script><!--/agent-lib--></head>
+html{scroll-behavior:auto}
+*,*::before,*::after{transition-duration:.01ms!important;animation:none!important}
+}
+.res-woche{width:100%;max-width:420px;margin-top:40px}.res-woche-titel{font-weight:600;font-size:16px;margin-bottom:10px}.res .woche{border-top-color:rgb(246 235 217/.7)}.res .woche-tag{border-bottom-color:rgb(246 235 217/.35)}.res .woche-tag[data-heute],.res .woche-tag[data-heute][data-offen="nein"]{color:var(--creme)}.res .woche-tag[data-heute]::before{background:var(--creme)}.res-intro{justify-content:flex-start}form[data-reservierung]:has([data-reservierung-erfolg]:not([hidden])){min-height:0}form[data-reservierung]:has([data-reservierung-erfolg]:not([hidden])) .res-fortschritt,form[data-reservierung]:has([data-reservierung-erfolg]:not([hidden])) .res-zusammenfassung{display:none}.hero-foto figcaption .foto-nachweis{font-size:13px}</style>
+<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}:where(:root){--ease-out:cubic-bezier(.23,1,.32,1);--ease-in-out:cubic-bezier(.77,0,.175,1);--ease-drawer:cubic-bezier(.32,.72,0,1)}:where(html){-webkit-tap-highlight-color:transparent}:where(a,button,label,summary,select,[role=button]){touch-action:manipulation}:where(button,.res-option,.spur-steuerung button){-webkit-user-select:none;user-select:none}:where([data-spur],[data-tage]){overscroll-behavior-x:contain}:where(.woche){list-style:none;margin:0;padding:0;display:grid;gap:.4rem}:where(.woche-tag){display:flex;justify-content:space-between;gap:1rem;font-variant-numeric:tabular-nums}:where(.woche-tag[data-heute]){font-weight:700}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}[data-reservierung] [hidden],form[data-reservierung][hidden],[data-reservierung-erfolg][hidden]{display:none!important}:where(img){height:auto}[data-hintergrund]{position:relative;isolation:isolate;overflow:clip}:where([data-hintergrund="dunkel"]){background-color:#15120f;color:#fbf6ee}:where([data-hintergrund="hell"]){background-color:#f3eee6;color:#1b1814}[data-hintergrund-bild]{position:absolute!important;inset:0!important;z-index:-1!important;margin:0!important;padding:0!important;width:auto!important;height:auto!important;max-width:none!important;overflow:hidden!important;border:0!important;transform:none!important}[data-hintergrund-bild] img{position:absolute!important;left:0!important;top:-8%!important;width:100%!important;height:116%!important;max-width:none!important;max-height:none!important;object-fit:cover!important;display:block;border-radius:0!important;margin:0!important}[data-hintergrund-bild]::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:var(--schleier-grund),var(--schleier,linear-gradient(180deg,transparent 30%,rgb(0 0 0/.12)))}[data-hintergrund="dunkel"] [data-hintergrund-bild]{--schleier-grund:linear-gradient(rgb(12 10 8/.5),rgb(12 10 8/.5))}[data-hintergrund="hell"] [data-hintergrund-bild]{--schleier-grund:linear-gradient(rgb(250 247 242/.62),rgb(250 247 242/.62))}[data-hintergrund-bild] .foto-nachweis,[data-hintergrund-bild] figcaption{position:absolute!important;right:12px;bottom:10px;z-index:2;margin:0;color:#fff;opacity:.85;text-shadow:0 1px 3px rgb(0 0 0/.7)}[data-hintergrund="hell"] [data-hintergrund-bild] .foto-nachweis,[data-hintergrund="hell"] [data-hintergrund-bild] figcaption{color:#1b1814;text-shadow:0 1px 3px rgb(255 255 255/.8)}:where([data-bewertung]){display:inline-flex;align-items:baseline;gap:.35em;flex-wrap:wrap}:where(.bew-stern){color:#E3A21A}:where(.bew-zahl){font-weight:700;font-variant-numeric:tabular-nums}:where(.res-fortschritt){list-style:none;display:flex;gap:.75rem;padding:0;margin:0 0 1rem}:where(.res-punkt){display:flex;align-items:center;gap:.45rem;flex:1;opacity:.5}:where(.res-punkt.res-jetzt,.res-punkt.res-erledigt){opacity:1}:where(.res-punkt.res-erledigt){cursor:pointer}:where(.res-nr){display:inline-grid;place-items:center;width:1.7em;height:1.7em;border-radius:50%;border:1px solid currentColor;font-size:.85em;flex:none}:where(.res-zusammenfassung){margin:0 0 1rem;font-size:.92em;opacity:.8}:where(.res-nav){display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin-top:1.25rem}:where(.res-nav .res-weiter,.res-nav [type=submit]){margin-left:auto}:where(.res-nav button){min-height:44px}:where(.res-zeitgruppe){margin:0 0 .75rem}:where(.res-zeitreihe){display:flex;flex-wrap:wrap;gap:.5rem}:where(.res-tageszeit){margin:0 0 .35rem;font-size:.78em;letter-spacing:.08em;text-transform:uppercase;opacity:.7}@media (max-width:560px){:where(.res-punkt:not(.res-jetzt) .res-titel){display:none}:where(.res-punkt:not(.res-jetzt)){flex:none}:where(.res-zeitreihe){display:grid;grid-template-columns:repeat(4,1fr)}:where(.res-nav button){min-height:48px}:where(.res-nav .res-weiter,.res-nav [type=submit]){flex:1}[data-reservierung] input:not([type=radio]):not([type=checkbox]),[data-reservierung] textarea,[data-reservierung] select{font-size:max(16px,1em)!important}}</style><!--agent-lib--><link rel="stylesheet" href="lib/lenis.css"><script src="lib/gsap.min.js"></script><script src="lib/ScrollTrigger.min.js"></script><script src="lib/lenis.min.js"></script><!--/agent-lib--></head>
 <body><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für Nour Pizza &amp; More. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="angebot/" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">So wird daraus Ihre Website</a> oder <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
 <header class="kopf">
 <div class="wrap">
-<a class="marke" href="#start" aria-label="Nour Pizza &amp; More, zum Seitenanfang"><img src="logo.svg" alt="" width="40" height="40"><span>Nour</span></a>
-<nav aria-label="Hauptnavigation">
-<a href="#karte">Karte</a><a href="#zeiten">Zeiten</a><a href="#lage">Lage</a>
-<a class="knopf knopf--klein nur-gross" href="#reservieren">Reservieren</a>
-<a class="knopf knopf--klein nur-handy" href="tel:+494076494016">Anrufen</a>
+<a class="wm" href="#top" aria-label="Nour Pizza &amp; More, zum Seitenanfang"><span class="wm-nour" aria-hidden="true">Nour</span><span class="wm-rest" aria-hidden="true">P<span class="i-boot">ı</span>zza &amp; More</span></a>
+<nav class="nav" aria-label="Hauptnavigation">
+<a href="#karte">Karte</a>
+<a href="#zeiten">Zeiten</a>
+<a href="#lage">Lage</a>
+<a class="knopf knopf-rot nav-res" href="#reservieren">Reservieren</a>
+<a class="knopf knopf-rot nav-anruf" href="tel:+494076494016">Anrufen</a>
 </nav>
 </div>
 </header>
-
-<main id="start">
-<section class="hero" aria-labelledby="name">
-<div class="blende blende-hero">
-<span class="spots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
-<h1 id="name"><span class="w1">Nour</span> <span class="w2">Pizza &amp;</span> <span class="w3">More</span></h1>
-</div>
-<div class="hero-split">
+<main id="top">
+<section class="hero" aria-labelledby="hero-name">
 <div class="hero-text">
-<p class="status-pille"><span data-status></span></p>
-<p class="hero-aussage"><span class="maske"><span class="zeile">Pizza. Pide.</span></span><span class="maske"><span class="zeile akzent">Und mehr.<svg class="strich" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 16 C 70 6, 160 22, 296 8" fill="none" stroke="#C8221A" stroke-width="5" stroke-linecap="round"/></svg></span></span></p>
-<p class="hero-satz">Pizza, Pide, Burger und Wraps an der Röntgenstraße 15, Hamburg. Mo–Fr 11–22 Uhr, Sa–So 15–22 Uhr. Am Tisch, zum Mitnehmen oder geliefert.</p>
-<div class="aktionen">
-<span class="magnet"><a class="knopf" href="tel:+494076494016">Anrufen · 040 76494016</a></span>
-<a class="link-unter" href="https://www.google.com/maps/dir/?api=1&amp;destination=R%C3%B6ntgenstra%C3%9Fe%2015%2C%2022335%20Hamburg" target="_blank" rel="noopener">Route planen</a>
-<a class="link-unter" href="#reservieren">Tisch reservieren</a>
-<a class="bewertung" href="https://www.google.com/maps/search/?api=1&amp;query=Nour+Pizza+%26+More&amp;query_place_id=ChIJeWO37ZiJsUcRCKpXYApEjZY" target="_blank" rel="noopener"><span data-bewertung aria-label="4,8 von 5 Sternen bei 458 Google-Bewertungen"><span class="bew-stern" aria-hidden="true">★</span><span class="bew-zahl">4,8</span><span class="bew-text">458 Bewertungen auf Google</span></span></a>
+<p class="status-zeile"><span data-status></span></p>
+<h1 class="hero-name" id="hero-name"><span class="rot">Nour</span> Pizza &amp; More</h1>
+<p class="hero-titel">
+<span class="zeile"><span class="zi">Pizza <span class="f f-rund">rund.</span></span></span>
+<span class="zeile"><span class="zi">Pide <span class="f f-lang">lang.</span></span></span>
+<span class="zeile"><span class="zi"><span class="f f-kuenefe">Künefe</span> hinterher.</span></span>
+</p>
+<p class="hero-satz">Pizza, Pide, Lahmacun, Burger und Wraps aus der Röntgenstraße 15 – Mo–Fr ab 11, Sa/So ab 15 Uhr, auch zum Mitnehmen und geliefert.</p>
+<div class="hero-aktion">
+<span class="magnet"><a class="knopf knopf-rot" href="tel:+494076494016">Anrufen · 040 76494016</a></span>
+<a class="link-route" href="https://www.google.com/maps/dir/?api=1&amp;destination=Nour+Pizza+%26+More%2C+R%C3%B6ntgenstra%C3%9Fe+15%2C+22335+Hamburg" target="_blank" rel="noopener">Route zur Röntgenstraße 15</a>
+<a class="bew-sticker" href="https://www.google.com/maps/search/?api=1&amp;query=Nour+Pizza+%26+More&amp;query_place_id=ChIJeWO37ZiJsUcRCKpXYApEjZY" target="_blank" rel="noopener"><span data-bewertung aria-label="4,8 von 5 Sternen bei 460 Google-Bewertungen"><span class="bew-stern" aria-hidden="true">★</span><span class="bew-zahl">4,8</span><span class="bew-text">460 Bewertungen auf Google</span></span></a>
 </div>
 </div>
 <div class="hero-buehne">
-<div class="hero-foto">
-<img class="badge" src="logo.svg" alt="Logo von Nour Pizza &amp; More: rundes Badge mit laufendem Pizzastück" width="160" height="160">
-<figure data-foto style="margin:0">
-<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLcYGhZ5JYh0CXSjea52iTYsn2R6e-9jSoWmX7WaYj0Sht_xaIpUiexGYTeu93mg2OdRS4FtbfGh1GymrkqJXhw7mEBGL4auJQVCGWw2Vm2REL6av6o98xEiiLkj_kDHyM57d6yySw9uPAhK=s4800-w1000" alt="Pizza mit Salami, Champignons und Zwiebeln auf dem Tisch bei Nour" width="766" height="1020" fetchpriority="high" referrerpolicy="no-referrer"></div>
-<figcaption><span>Pizza mit Salami, Champignons und Zwiebeln – im Lokal</span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/105785807405121548998" target="_blank" rel="noopener">Foto: Gergely Kósa · Google Maps</a></figcaption>
+<div class="pide-flug" data-tiefe="25"><img class="pide-img" src="ki-pide-frei.webp" width="1200" height="800" alt="Lange Pide mit Hackfleischfüllung, die Enden spitz zusammengedrückt"></div>
+<div class="foto-wrap">
+<figure class="hero-foto" data-foto>
+<div class="rahmen r45"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLf1rVKuj4nSTDyxQGqc7h06BLgNeDuj74HUZlwqNpz6rmcd_VtRUN3gn90Y0-sW_phErj5gv5kqkhjcB1iHJ0HWLuYD3VCmRgJNCBqXVLhmjY_kuo9JwJXbCfw542YwAiAkVSs4tvXOsZLy=s4800-w1000" width="766" height="1020" alt="Pizza mit Salami, Champignons und Zwiebeln, dahinter eine Flasche Pils" referrerpolicy="no-referrer" fetchpriority="high"></div>
+<figcaption>Pizza mit Salami, Champignons und Zwiebeln, dazu ein Pils; im Schiffchen Wrap-Röllchen. Fotos: <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/105785807405121548998" target="_blank" rel="noopener">Gergely Kósa</a>, <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/100063284804757144834" target="_blank" rel="noopener">Nour Pizza &amp; More</a> · Google Maps</figcaption>
 </figure>
-<figure class="burger" data-foto>
-<div class="kreis"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfQRa-FpPxSeeeln94ZHTbtWlsbGwRrbesR1HbshOFckxSt7S0YGzR6qI2RwNwd-87EbGD-jGVHku-gDccdLt9M5dp73HM6Cl6QBHgub2B0jyv19dWVsqr9xhraWIJH7SUVdve91Q=s4800-w1000" alt="Zwei Burger mit Pommes frites und Dip" width="400" height="266" loading="lazy" referrerpolicy="no-referrer"></div>
-<a class="foto-nachweis" href="https://maps.google.com/maps/contrib/116232885488212283290" target="_blank" rel="noopener">Foto: Thomas · Google Maps</a>
+<figure class="wrap-boot" data-foto>
+<div class="boot"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLeIcoZN0wiQrdLQqHu55BkzHNXGud4r3pbUvR99drZIaRn9zCK-rZAycjWr3Cw2UJNZbP6HNTf68Yz66mrUm3YtYrBIDSwo6HF3ALWa4bheC_-aeN9hgbjREpkphD1h2c6P216ZIh4kIusb=s4800-w1000" width="750" height="1000" alt="Gefüllte Wrap-Röllchen mit Salat und Zitrone" referrerpolicy="no-referrer" loading="lazy"></div>
 </figure>
-<div class="sticker-reihe">
-<span class="sticker sticker--gruen">Lieferung bis 8 km</span>
-<span class="sticker sticker--creme">Mo–Fr Mittagstisch ab 11</span>
 </div>
-</div>
-</div>
+<ul class="sticker-reihe">
+<li class="sticker s-creme">Lieferservice – auch nach Hause</li>
+<li class="sticker s-pist">Draußen sitzen unter roten Schirmen</li>
+</ul>
 </div>
 </section>
 
-<section class="angebot" aria-labelledby="angebot-t">
-<div class="wrap">
-<div>
-<h2 id="angebot-t">Erst Pizza. Dann Pide. Dann <span class="rot">Künefe</span>.</h2>
-<p>Auf der Karte stehen Pizza, Pide und Teigtaschen, Burger mit Pommes, Wraps und Salate – und zum Schluss Baklava oder Künefe, dazu Tee und Kaffee.</p>
-<p>Montag bis Freitag ab 11 Uhr mit Mittagstisch, am Wochenende ab 15 Uhr. Scheint die Sonne, sitzt du draußen unter den roten Schirmen.</p>
-<dl class="infoliste">
-<div><dt>Vor Ort</dt><dd>ja, auch draußen</dd></div>
+<section class="angebot" id="angebot" aria-labelledby="ang-titel">
+<div class="wrap split">
+<div class="ang-text">
+<div class="ang-kopf">
+<h2 class="h2" id="ang-titel">Erst die Pide, dann ein <span class="pist">Çay.</span></h2>
+<div class="cay" data-tiefe="12"><img src="ki-cay-frei.webp" width="800" height="1000" alt="Türkischer Tee im Tulpenglas" loading="lazy"></div>
+</div>
+<p>Aus dem Ofen kommen Pizza und Pide, dazu Lahmacun und Teigtaschen. Wer es anders mag, nimmt Burger mit Pommes, einen Wrap oder Salat – und zum Schluss Künefe oder Baklava mit Tee oder Kaffee. Mittags ab 11 Uhr steht der Ofen schon heiß, abends ist bis 22 Uhr offen, bei gutem Wetter auch draußen.</p>
+<dl class="info">
+<div><dt>Vor Ort</dt><dd>drinnen und draußen</dd></div>
 <div><dt>Zum Mitnehmen</dt><dd>ja</dd></div>
-<div><dt>Lieferung</dt><dd>8 km Umgebung</dd></div>
-<div><dt>Mindestbestellwert</dt><dd>25 €</dd></div>
-<div><dt>Mittagstisch</dt><dd>Mo–Fr</dd></div>
+<div><dt>Lieferung</dt><dd>ja</dd></div>
+<div><dt>Mittagstisch</dt><dd>Mo–Fr ab 11:00</dd></div>
 <div><dt>Vegetarisch</dt><dd>ja</dd></div>
-<div><dt>Reservieren</dt><dd>online oder Telefon</dd></div>
+<div><dt>Tisch reservieren</dt><dd>möglich</dd></div>
 </dl>
 </div>
-<div class="foto-paar">
-<figure class="rahmen gross enthuellen" data-foto style="margin:0"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLdGr3hdfNJoWzPv4Q8ECHYQgX2P6q_f5iXxXOSbsNHoD7cl4VVyt5W86LS4SdJ7v1CvUIR3i2NIYCsbNSk0JOAzgmHIC9PJcGztcYcuVSQgEEqKnrlL_xYt05LFpuUZ9vVsFBb_HBqP-bLU=s4800-w1000" alt="Gastraum bei Nour mit Holztischen, dunklen Polsterstühlen und großen Fenstern" width="540" height="960" loading="lazy" referrerpolicy="no-referrer"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/108620322516948540319" target="_blank" rel="noopener">Foto: Tim K. · Google Maps</a></figure>
-<figure class="rahmen klein enthuellen" data-foto style="margin:0"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLeIcoZN0wiQrdLQqHu55BkzHNXGud4r3pbUvR99drZIaRn9zCK-rZAycjWr3Cw2UJNZbP6HNTf68Yz66mrUm3YtYrBIDSwo6HF3ALWa4bheC_-aeN9hgbjREpkphD1h2c6P216ZIh4kIusb=s4800-w1000" alt="Gefüllte Wrap-Röllchen mit Salat, Zitrone und Dip auf einem Holzbrett" width="600" height="800" loading="lazy" referrerpolicy="no-referrer"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/100063284804757144834" target="_blank" rel="noopener">Foto: Nour Pizza &amp; More · Google Maps</a></figure>
+<div class="ang-bild">
+<div class="ang-stapel">
+<figure class="gross" data-foto>
+<div class="rahmen r45 enthuellen"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLdGr3hdfNJoWzPv4Q8ECHYQgX2P6q_f5iXxXOSbsNHoD7cl4VVyt5W86LS4SdJ7v1CvUIR3i2NIYCsbNSk0JOAzgmHIC9PJcGztcYcuVSQgEEqKnrlL_xYt05LFpuUZ9vVsFBb_HBqP-bLU=s4800-w1000" width="675" height="1200" alt="Gastraum mit Holztischen, dunklen Polsterstühlen und großen Fenstern" referrerpolicy="no-referrer" loading="lazy"></div>
+</figure>
+<figure class="boot-klein" data-foto>
+<div class="boot"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLdSAomgLPkARryM2EsC9VypVZANd5lGzCRtS0GNPOq-7eQq0vkpH7INVIteO0XHcXy-QyXHY94rX7n_voPdP0ZJ-iCqSMQhxSPFFwKyPdwPDlStmv8O-g-6FQHjBTMYo0jocbwhQA=s4800-w1800" width="800" height="532" alt="Zwei Burger mit Pommes frites und Dip" referrerpolicy="no-referrer" loading="lazy"></div>
+</figure>
+</div>
+<p class="ang-nachweis">Fotos: <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/108620322516948540319" target="_blank" rel="noopener">Tim K.</a> (Gastraum), <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/116232885488212283290" target="_blank" rel="noopener">Thomas</a> (Burger) · Google Maps</p>
 </div>
 </div>
 </section>
 
-<div class="band" role="presentation">
-<span class="spots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
-<div class="band-lauf"><p class="band-text"><span class="w1">Pizza</span> <span class="w2">&amp; Pide</span> <span class="w3">&amp; More</span></p><p class="band-text" aria-hidden="true"><span class="w1">Pizza</span> <span class="w2">&amp; Pide</span> <span class="w3">&amp; More</span></p></div>
-</div>
+<section class="band" aria-label="Rund oder lang">
+<p class="band-form"><span class="band-text">Rund oder lang – Hauptsache aus dem Ofen.</span></p>
+</section>
 
-<section class="karte" id="karte" data-szene="horizontal" aria-labelledby="karte-t">
-<div class="wrap karte-kopf">
-<h2 id="karte-t">Die Karte im Leuchtkasten.</h2>
-<p>Was es gibt, Tafel für Tafel. Preise und alle Sorten stehen auf der Karte im Laden – oder du fragst am Telefon.</p>
+<section class="ofen dunkel" data-szene="kapitel" id="ofen" aria-labelledby="ofen-titel">
+<h2 class="h2 ofen-titel" id="ofen-titel">Vier aus dem Ofen</h2>
+<div data-kapitel>
+<figure data-kapitel-bild data-foto><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLf4brF_AYn4_bgxUwdgSd7oAHgfQkY9CWJ1rU32nPwZz7ryMfim0UdudOvw6qEC88yL8TswcEqcCdoU-Sh7gkNHyT3JLwNIAVLvYNzUnw7506er6W4568A2qAfT01HdUtuwjOO0Zm-8mYAX=s4800-w1000" width="786" height="939" alt="Pizza mit Rucola, Auberginen und Tomaten auf einem Holztisch" referrerpolicy="no-referrer" loading="lazy"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/109622314315284024293" target="_blank" rel="noopener">Foto: R. Stoltenberg · Google Maps</a></figure>
+<div data-kapitel-text><p class="k-nr">01</p><h3>Rund <span>– Pizza</span></h3><p>Klassisch oder mit Sucuk. Auf dem Foto: mit Rucola, Aubergine und Tomaten.</p></div>
 </div>
-<div data-spur>
-<article class="tafel">
-<div class="tafel-bild tafel-bild--frei"><img src="ki-sucuk-pizza.webp" alt="Ganze Pizza mit Sucuk und geschmolzenem Käse" width="600" height="600" loading="lazy"></div>
-<h3><b>01</b>Pizza</h3>
-<ul><li>Pizza mit Salami, Champignons und Zwiebeln</li><li data-vorschau="ki-sucuk-pizza.webp">Sucuk-Pizza</li><li>Pizza mit Rucola, Aubergine und Tomaten</li></ul>
-<p class="notiz">Weitere Sorten auf der Karte im Laden.</p>
-</article>
-<article class="tafel">
-<div class="tafel-bild tafel-bild--frei"><img src="ki-pide-fleisch.webp" alt="Pide mit Hackfleisch, Tomate und Paprika" width="800" height="500" loading="lazy"></div>
-<h3><b>02</b>Pide &amp; Teigtaschen</h3>
-<ul><li data-vorschau="ki-pide-fleisch.webp">Pide mit Fleisch</li><li data-vorschau="ki-teigtasche.webp">Teigtasche</li></ul>
-<p class="notiz">Frisch aus dem Ofen.</p>
-</article>
-<article class="tafel">
-<figure class="tafel-bild" data-foto><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfjBCDc8o0_soQDGoypmV-1I1iKv_cTYAr5NxSX-HLivMRENkM8cEwZ4RvkCNTZ8DHjzsXg8hAWLcSlTL7sgl85mhbPG5MkIWADTEL69ZCw4A-BpvoAVF22In-uZ43eWLEf9iLu=s4800-w639" alt="Club-Sandwiches mit Pommes frites und Dip" width="639" height="622" loading="lazy" referrerpolicy="no-referrer"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/100151877210542479623" target="_blank" rel="noopener">Foto: Mohamed H-A · Google Maps</a></figure>
-<h3><b>03</b>Burger &amp; Sandwiches</h3>
-<ul><li>Burger mit Pommes frites</li><li>Club-Sandwich mit Pommes und Dip</li></ul>
-<p class="notiz">Alles auch zum Mitnehmen.</p>
-</article>
-<article class="tafel">
-<figure class="tafel-bild" data-foto><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLeIcoZN0wiQrdLQqHu55BkzHNXGud4r3pbUvR99drZIaRn9zCK-rZAycjWr3Cw2UJNZbP6HNTf68Yz66mrUm3YtYrBIDSwo6HF3ALWa4bheC_-aeN9hgbjREpkphD1h2c6P216ZIh4kIusb=s4800-w1000" alt="Wrap-Röllchen mit Salat und Dip" width="600" height="800" loading="lazy" referrerpolicy="no-referrer" style="object-position:50% 55%"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/100063284804757144834" target="_blank" rel="noopener">Foto: Nour Pizza &amp; More · Google Maps</a></figure>
-<h3><b>04</b>Wraps &amp; Röllchen</h3>
-<ul><li>Wrap-Röllchen mit Salat, Zitrone und Dip</li></ul>
-<p class="notiz">Gut für die Mittagspause.</p>
-</article>
-<article class="tafel">
-<figure class="tafel-bild" data-foto><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLdrsA62Ur_YDZAUO4r0pEzUyzwrLJq7TMZP8E2563pxVbRsqAEtreJWTTnXvAPsyBlmftUkjbu4GRDwz_WrDAPQZHXhSkqWtUa2QEvEVV6jfqHpvAS6ojuRN4fMlKOL-2H-BAnJzmDYMlSs=s4800-w1800" alt="Gemischter Salat mit Feta, Oliven, Tomaten und Paprika" width="800" height="600" loading="lazy" referrerpolicy="no-referrer"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/114534440979484986294" target="_blank" rel="noopener">Foto: Itziar Martin Cia · Google Maps</a></figure>
-<h3><b>05</b>Salate</h3>
-<ul><li>Gemischter Salat mit Feta, Oliven, Tomaten und Paprika</li><li>Vegetarische Gerichte auf der Karte</li></ul>
-</article>
-<article class="tafel tafel--suess">
-<div class="tafel-bild tafel-bild--frei"><img src="ki-kuenefe.webp" alt="Künefe mit Pistazien" width="600" height="600" loading="lazy"></div>
-<h3><b>06</b>Süßes &amp; Tee</h3>
-<ul><li data-vorschau="ki-kuenefe.webp">Künefe</li><li data-vorschau="ki-baklava-tee.webp">Baklava</li><li data-vorschau="ki-baklava-tee.webp">Tee</li><li>Kaffee</li></ul>
-</article>
-<article class="tafel tafel--gruen">
-<div><h3>Die ganze Karte gibt’s im Laden und am Telefon.</h3>
-<p>Mindestbestellwert 25 €, Liefergebiet 8 km – den Rest klären wir am Telefon.</p></div>
-<a class="knopf knopf--creme" href="tel:+494076494016">Anrufen · 040 76494016</a>
-</article>
+<div data-kapitel>
+<figure data-kapitel-bild class="k-frei"><img src="ki-pide-frei.webp" width="1200" height="800" alt="Pide mit Hackfleischfüllung" loading="lazy"></figure>
+<div data-kapitel-text><p class="k-nr">02</p><h3>Lang <span>– Pide</span></h3><p>Das Schiffchen mit den spitzen Enden – auch als Pide mit Fleisch.</p></div>
+</div>
+<div data-kapitel>
+<figure data-kapitel-bild><img src="ki-lahmacun-kapitel.webp" width="1000" height="1000" alt="Dünnes Lahmacun mit Hackfleischbelag, Zitrone und Petersilie" loading="lazy"></figure>
+<div data-kapitel-text><p class="k-nr">03</p><h3>Dünn <span>– Lahmacun</span></h3><p>Dünner Teig, würziges Hack, knuspriger Rand. Hier essen oder eingerollt mitnehmen.</p></div>
+</div>
+<div data-kapitel>
+<figure data-kapitel-bild><img src="ki-kuenefe-kapitel.webp" width="800" height="1000" alt="Künefe mit Kadayif-Kruste und Pistazien in einer runden Kupferform" loading="lazy"></figure>
+<div data-kapitel-text><p class="k-nr">04</p><h3>Heiß <span>– Künefe</span></h3><p>Nach der Pide ist noch Platz? Künefe kommt heiß, der Çay dazu.</p></div>
 </div>
 </section>
-<div class="vorschau" aria-hidden="true"><img src="ki-sucuk-pizza.webp" alt="" width="150" height="150"></div>
 
-<div class="band" role="presentation">
-<span class="spots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
-<div class="band-lauf"><p class="band-text"><span class="w1">Mittags</span> <span class="w2">&amp;</span> <span class="w3">Abends</span></p><p class="band-text" aria-hidden="true"><span class="w1">Mittags</span> <span class="w2">&amp;</span> <span class="w3">Abends</span></p></div>
+<section class="karte" id="karte" aria-labelledby="karte-titel">
+<div class="wrap karte-grid">
+<div class="karte-kopf">
+<h2 class="h2" id="karte-titel">Was auf den <span class="rot">Zettel</span> kommt</h2>
+<p>Ein Auszug aus der Karte. Die ganze Auswahl mit Preisen liegt im Laden aus und wird am Telefon gern vorgelesen.</p>
 </div>
+<div class="zettel">
+<div class="baklava" data-tiefe="15"><img src="ki-baklava-frei.webp" width="1000" height="1000" alt="Drei Stücke Pistazien-Baklava" loading="lazy"></div>
+<div class="zettel-kopf"><span>Bestellzettel</span><span>Röntgenstr. 15</span></div>
+<div class="reiter" role="tablist" aria-label="Kategorien">
+<button type="button" role="tab" id="t1" aria-controls="p1" aria-selected="true">Pizza &amp; Pide</button>
+<button type="button" role="tab" id="t2" aria-controls="p2" aria-selected="false">Lahmacun &amp; Teigtaschen</button>
+<button type="button" role="tab" id="t3" aria-controls="p3" aria-selected="false">Burger, Wraps &amp; Salat</button>
+<button type="button" role="tab" id="t4" aria-controls="p4" aria-selected="false">Süßes &amp; Getränke</button>
+<span class="reiter-marker" aria-hidden="true"></span>
+</div>
+<div class="panel" role="tabpanel" id="p1" aria-labelledby="t1"><h3 class="panel-titel">Pizza &amp; Pide</h3><ul class="gerichte">
+<li><b>Pizza</b><span>rund aus dem Ofen</span></li>
+<li><b>Sucuk Pizza</b><span>mit türkischer Knoblauchwurst</span></li>
+<li><b>Pide</b><span>lang, mit spitzen Enden</span></li>
+<li><b>Pide mit Fleisch</b><span>gefüllt aus dem Ofen</span></li></ul></div>
+<div class="panel" role="tabpanel" id="p2" aria-labelledby="t2"><h3 class="panel-titel">Lahmacun &amp; Teigtaschen</h3><ul class="gerichte">
+<li><b>Lahmacun</b><span>dünn und knusprig</span></li>
+<li><b>Teigtasche</b><span>gefüllt, aus dem Ofen</span></li></ul></div>
+<div class="panel" role="tabpanel" id="p3" aria-labelledby="t3"><h3 class="panel-titel">Burger, Wraps &amp; Salat</h3><ul class="gerichte">
+<li><b>Burger mit Pommes</b><span>mit Dip</span></li>
+<li><b>Wraps</b><span>gerollt, auch zum Mitnehmen</span></li>
+<li><b>Salat</b><span>auch vegetarisch</span></li></ul></div>
+<div class="panel" role="tabpanel" id="p4" aria-labelledby="t4"><h3 class="panel-titel">Süßes &amp; Getränke</h3><ul class="gerichte">
+<li><b>Künefe</b><span>heiß serviert</span></li>
+<li><b>Baklava</b><span>mit Pistazie</span></li>
+<li><b>Tee</b><span>Çay</span></li>
+<li><b>Kaffee</b><span>auch nach dem Essen</span></li>
+<li><b>Bier</b><span>zur Pizza</span></li></ul></div>
+<div class="zettel-fuss">
+<p>Die ganze Karte mit Preisen gibt es im Laden und am Telefon.</p>
+<a class="knopf knopf-rot" href="tel:+494076494016">Anrufen · 040 76494016</a>
+</div>
+</div>
+</div>
+</section>
 
-<section class="zeiten" id="zeiten" aria-labelledby="zeiten-t">
-<div class="wrap">
+<section class="wand" data-szene="raster-zoom" id="fotos" aria-labelledby="wand-titel">
+<h2 class="h2 wand-titel" id="wand-titel">Teller aus der Röntgenstraße</h2>
+<div class="raster">
+<figure data-foto><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLdSAomgLPkARryM2EsC9VypVZANd5lGzCRtS0GNPOq-7eQq0vkpH7INVIteO0XHcXy-QyXHY94rX7n_voPdP0ZJ-iCqSMQhxSPFFwKyPdwPDlStmv8O-g-6FQHjBTMYo0jocbwhQA=s4800-w1800" width="800" height="532" alt="Zwei Burger mit Pommes frites und Dip, dazu Bier" referrerpolicy="no-referrer" loading="lazy"><figcaption>Burger mit Pommes <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/116232885488212283290" target="_blank" rel="noopener">Foto: Thomas · Google Maps</a></figcaption></figure>
+<figure data-foto><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLf4brF_AYn4_bgxUwdgSd7oAHgfQkY9CWJ1rU32nPwZz7ryMfim0UdudOvw6qEC88yL8TswcEqcCdoU-Sh7gkNHyT3JLwNIAVLvYNzUnw7506er6W4568A2qAfT01HdUtuwjOO0Zm-8mYAX=s4800-w1000" width="786" height="939" alt="Pizza mit Rucola, Auberginen und Tomaten" referrerpolicy="no-referrer" loading="lazy"><figcaption>Pizza mit Rucola und Aubergine <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/109622314315284024293" target="_blank" rel="noopener">Foto: R. Stoltenberg · Google Maps</a></figcaption></figure>
+<figure data-foto data-mitte><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLf1rVKuj4nSTDyxQGqc7h06BLgNeDuj74HUZlwqNpz6rmcd_VtRUN3gn90Y0-sW_phErj5gv5kqkhjcB1iHJ0HWLuYD3VCmRgJNCBqXVLhmjY_kuo9JwJXbCfw542YwAiAkVSs4tvXOsZLy=s4800-w1000" width="766" height="1020" alt="Pizza mit Salami, Champignons und Zwiebeln" referrerpolicy="no-referrer" loading="lazy"><figcaption>Salami, Champignons, Zwiebeln <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/105785807405121548998" target="_blank" rel="noopener">Foto: Gergely Kósa · Google Maps</a></figcaption><div data-raster-text>Mo–Fr ab 11, Sa/So ab 15 Uhr – der Ofen ist an bis 22 Uhr.</div></figure>
+<figure data-foto><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLeIcoZN0wiQrdLQqHu55BkzHNXGud4r3pbUvR99drZIaRn9zCK-rZAycjWr3Cw2UJNZbP6HNTf68Yz66mrUm3YtYrBIDSwo6HF3ALWa4bheC_-aeN9hgbjREpkphD1h2c6P216ZIh4kIusb=s4800-w1000" width="750" height="1000" alt="Gefüllte Wrap-Röllchen mit Salat, Zitrone und Dip" referrerpolicy="no-referrer" loading="lazy"><figcaption>Wrap-Röllchen mit Dip <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/100063284804757144834" target="_blank" rel="noopener">Foto: Nour Pizza &amp; More · Google Maps</a></figcaption></figure>
+<figure data-foto><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLdrsA62Ur_YDZAUO4r0pEzUyzwrLJq7TMZP8E2563pxVbRsqAEtreJWTTnXvAPsyBlmftUkjbu4GRDwz_WrDAPQZHXhSkqWtUa2QEvEVV6jfqHpvAS6ojuRN4fMlKOL-2H-BAnJzmDYMlSs=s4800-w1000" width="800" height="600" alt="Salat mit Feta, Oliven, Kirschtomaten und Paprika" referrerpolicy="no-referrer" loading="lazy"><figcaption>Salat mit Feta und Oliven <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/114534440979484986294" target="_blank" rel="noopener">Foto: Itziar Martin Cia · Google Maps</a></figcaption></figure>
+</div>
+</section>
+
+<section class="lage" id="zeiten" aria-labelledby="zeiten-titel">
+<div class="wrap lage-grid">
 <div>
-<h2 id="zeiten-t">Ab elf offen. Am Wochenende ab drei.</h2>
+<h2 class="h2" id="zeiten-titel">Mittags ab 11, am Wochenende ab 15 Uhr.</h2>
 <div data-woche></div>
-<div class="zeitleiste" aria-label="Öffnungszeiten als Tageszeitleiste von 10 bis 23 Uhr">
-<span class="zl-name">Mo–Fr</span><span class="zl-spur"><i style="--von:7.69%;--bis:92.31%"></i></span>
-<span class="zl-name">Sa–So</span><span class="zl-spur"><i style="--von:38.46%;--bis:92.31%"></i></span>
-<span class="zl-linie" aria-hidden="true"></span>
-<span class="zl-skala" aria-hidden="true"><span style="--x:7.69%">11</span><span style="--x:30.77%">14</span><span style="--x:53.85%">17</span><span style="--x:76.92%">20</span><span style="--x:92.31%">22</span></span>
-<span class="zl-jetzt"></span>
+<div class="tl-block">
+<p class="tl-kopf"><span>Heute</span><span class="tl-heute">11:00–22:00</span></p>
+<div class="tl" aria-hidden="true"><span class="tl-offen"></span><span class="tl-jetzt"></span></div>
+<div class="tl-skala" aria-hidden="true"><span>9</span><span>12</span><span>15</span><span>18</span><span>21</span><span>24</span></div>
 </div>
 </div>
 <div id="lage">
-<div class="karte-rahmen"><div data-karte data-stil="warm" data-farbe="#C8221A"></div></div>
-<div class="lage-info">
-<div>
-<h3>Röntgenstraße 15</h3>
-<p>22335 Hamburg. Eingang rechts neben dem Schaufenster, unter dem runden Logo-Schild.</p>
-</div>
-<a class="knopf knopf--klein" href="https://www.google.com/maps/dir/?api=1&amp;destination=R%C3%B6ntgenstra%C3%9Fe%2015%2C%2022335%20Hamburg" target="_blank" rel="noopener">Route planen</a>
+<div class="karte-rahmen"><div data-karte data-stil="warm" data-farbe="#C2281C"></div></div>
+<div class="ort-info">
+<address><strong>Röntgenstraße 15</strong>22335 Hamburg<br><a href="tel:+494076494016">040 76494016</a></address>
+<div class="ort-links">
+<a class="knopf knopf-rot" href="https://www.google.com/maps/dir/?api=1&amp;destination=Nour+Pizza+%26+More%2C+R%C3%B6ntgenstra%C3%9Fe+15%2C+22335+Hamburg" target="_blank" rel="noopener">Route planen</a>
 </div>
 </div>
-</div>
-</section>
-
-<div class="band lang" role="presentation">
-<span class="spots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
-<div class="band-lauf"><p class="band-text"><span class="w1">Drinnen</span> <span class="w2">&amp; Draußen</span> <span class="w3">&amp; zum Mitnehmen</span></p><p class="band-text" aria-hidden="true"><span class="w1">Drinnen</span> <span class="w2">&amp; Draußen</span> <span class="w3">&amp; zum Mitnehmen</span></p></div>
-</div>
-
-<section class="raster" data-szene="raster-zoom" aria-labelledby="raster-t">
-<div class="wrap">
-<h2 id="raster-t">Das „&amp; More“ auf dem Tisch.</h2>
-<div class="raster-gitter">
-<figure class="kachel" data-foto><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfQRa-FpPxSeeeln94ZHTbtWlsbGwRrbesR1HbshOFckxSt7S0YGzR6qI2RwNwd-87EbGD-jGVHku-gDccdLt9M5dp73HM6Cl6QBHgub2B0jyv19dWVsqr9xhraWIJH7SUVdve91Q=s4800-w1000" alt="Zwei Burger mit Pommes frites auf Schieferplatten" width="800" height="532" loading="lazy" referrerpolicy="no-referrer"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/116232885488212283290" target="_blank" rel="noopener">Foto: Thomas · Google Maps</a></figure>
-<figure class="kachel" data-mitte data-foto><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLcYGhZ5JYh0CXSjea52iTYsn2R6e-9jSoWmX7WaYj0Sht_xaIpUiexGYTeu93mg2OdRS4FtbfGh1GymrkqJXhw7mEBGL4auJQVCGWw2Vm2REL6av6o98xEiiLkj_kDHyM57d6yySw9uPAhK=s4800-w1000" alt="Pizza mit Salami, Champignons und Zwiebeln auf dem Holztisch bei Nour" width="766" height="1020" loading="lazy" referrerpolicy="no-referrer" style="object-position:50% 85%"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/105785807405121548998" target="_blank" rel="noopener">Foto: Gergely Kósa · Google Maps</a>
-<div data-raster-text><p>Pizza, Burger, Salat, Röllchen.</p><p>Alles aus einer Küche in der Röntgenstraße. Fotografiert von Gästen.</p></div></figure>
-<figure class="kachel" data-foto><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLdrsA62Ur_YDZAUO4r0pEzUyzwrLJq7TMZP8E2563pxVbRsqAEtreJWTTnXvAPsyBlmftUkjbu4GRDwz_WrDAPQZHXhSkqWtUa2QEvEVV6jfqHpvAS6ojuRN4fMlKOL-2H-BAnJzmDYMlSs=s4800-w1800" alt="Salat mit Feta, Oliven, Tomaten und Paprika" width="800" height="600" loading="lazy" referrerpolicy="no-referrer"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/114534440979484986294" target="_blank" rel="noopener">Foto: Itziar Martin Cia · Google Maps</a></figure>
-<figure class="kachel" data-foto><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLeIcoZN0wiQrdLQqHu55BkzHNXGud4r3pbUvR99drZIaRn9zCK-rZAycjWr3Cw2UJNZbP6HNTf68Yz66mrUm3YtYrBIDSwo6HF3ALWa4bheC_-aeN9hgbjREpkphD1h2c6P216ZIh4kIusb=s4800-w1000" alt="Wrap-Röllchen mit Salat, Zitrone und Dip auf einem Holzbrett" width="600" height="800" loading="lazy" referrerpolicy="no-referrer"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/100063284804757144834" target="_blank" rel="noopener">Foto: Nour Pizza &amp; More · Google Maps</a></figure>
-<figure class="kachel" data-foto><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLdGr3hdfNJoWzPv4Q8ECHYQgX2P6q_f5iXxXOSbsNHoD7cl4VVyt5W86LS4SdJ7v1CvUIR3i2NIYCsbNSk0JOAzgmHIC9PJcGztcYcuVSQgEEqKnrlL_xYt05LFpuUZ9vVsFBb_HBqP-bLU=s4800-w1000" alt="Gastraum mit Holztischen und großen Fenstern" width="540" height="960" loading="lazy" referrerpolicy="no-referrer"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/108620322516948540319" target="_blank" rel="noopener">Foto: Tim K. · Google Maps</a></figure>
+<p class="weg">Zu erkennen an der schwarzen Leuchtblende mit dem roten NOUR und dem runden Logo-Schild, davor die roten Schirme.</p>
 </div>
 </div>
 </section>
 
-<section class="lesen" aria-label="Wann und wo">
-<div class="lesen-anker" aria-hidden="true"><img src="ki-sucuk-pizza.webp" alt="" width="600" height="600" loading="lazy" data-tiefe="24"></div>
-<div class="wrap">
-<p data-szene="lesen">Mittags ab elf, am Wochenende ab drei. <em>Am Holztisch</em>, <em>unter den roten Schirmen</em>, <em>in der Tüte</em> oder <em>an deiner Tür</em> – bis acht Kilometer.</p>
-</div>
+<section class="band band-rot" aria-label="Tisch frei">
+<p class="band-form"><span class="band-text">Tisch frei? Kurz Bescheid sagen.</span></p>
 </section>
 
 <!--agent-bewertungen--><style id="agent-bew-stil">#gaeste-bewertungen{display:block;position:relative;box-sizing:border-box;width:auto;height:auto;min-height:0;
@@ -623,7 +571,7 @@ font-weight:600;line-height:1.2;text-align:center}
 grid-auto-columns:min(84%,360px);overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;
 padding-bottom:10px;scrollbar-width:thin}
 #gaeste-bewertungen .agent-bew-liste>li{scroll-snap-align:start}}
-@media (prefers-reduced-motion:reduce){#gaeste-bewertungen .agent-bew-leer{animation:none}}</style><section id="gaeste-bewertungen" class="agent-bew" aria-labelledby="agent-bew-t" data-quelle="https://medialyte-zaehler.patient-water-7819.workers.dev/g/bewertungen?p=ChIJeWO37ZiJsUcRCKpXYApEjZY&amp;s=ac06dfed244be5554a93"><div class="agent-bew-innen"><div class="agent-bew-kopf"><div><p class="agent-bew-ueber">Google-Bewertungen</p><h2 id="agent-bew-t">Das sagen Gäste auf Google</h2></div><a class="agent-bew-schnitt" data-alle href="https://www.google.com/maps/search/?api=1&amp;query=Nour+Pizza+%26+More&amp;query_place_id=ChIJeWO37ZiJsUcRCKpXYApEjZY" target="_blank" rel="noopener" aria-label="4,8 von 5 Sternen bei 458 Google-Bewertungen. Alle Bewertungen auf Google ansehen"><span class="agent-bew-zahl">4,8</span><span class="agent-bew-rechts"><span class="agent-bew-sterne" style="--p:96.0%" aria-hidden="true">★★★★★</span><span class="agent-bew-anzahl">458 Bewertungen</span></span></a></div><ul class="agent-bew-liste" hidden></ul><div class="agent-bew-fuss"><a class="agent-bew-alle" data-alle href="https://www.google.com/maps/search/?api=1&amp;query=Nour+Pizza+%26+More&amp;query_place_id=ChIJeWO37ZiJsUcRCKpXYApEjZY" target="_blank" rel="noopener">Alle Bewertungen auf Google lesen</a><p class="agent-bew-hinweis" hidden>Eine Auswahl der Bewertungen, die Google-Nutzer hinterlassen haben, angezeigt über <span class="agent-bew-google">Google Maps</span>. Ob die Verfasser hier gegessen haben, prüfen wir nicht.</p></div></div></section><script>(function () {
+@media (prefers-reduced-motion:reduce){#gaeste-bewertungen .agent-bew-leer{animation:none}}</style><section id="gaeste-bewertungen" class="agent-bew" aria-labelledby="agent-bew-t" data-quelle="https://medialyte-zaehler.patient-water-7819.workers.dev/g/bewertungen?p=ChIJeWO37ZiJsUcRCKpXYApEjZY&amp;s=ac06dfed244be5554a93"><div class="agent-bew-innen"><div class="agent-bew-kopf"><div><p class="agent-bew-ueber">Google-Bewertungen</p><h2 id="agent-bew-t">Das sagen Gäste auf Google</h2></div><a class="agent-bew-schnitt" data-alle href="https://www.google.com/maps/search/?api=1&amp;query=Nour+Pizza+%26+More&amp;query_place_id=ChIJeWO37ZiJsUcRCKpXYApEjZY" target="_blank" rel="noopener" aria-label="4,8 von 5 Sternen bei 460 Google-Bewertungen. Alle Bewertungen auf Google ansehen"><span class="agent-bew-zahl">4,8</span><span class="agent-bew-rechts"><span class="agent-bew-sterne" style="--p:96.0%" aria-hidden="true">★★★★★</span><span class="agent-bew-anzahl">460 Bewertungen</span></span></a></div><ul class="agent-bew-liste" hidden></ul><div class="agent-bew-fuss"><a class="agent-bew-alle" data-alle href="https://www.google.com/maps/search/?api=1&amp;query=Nour+Pizza+%26+More&amp;query_place_id=ChIJeWO37ZiJsUcRCKpXYApEjZY" target="_blank" rel="noopener">Alle Bewertungen auf Google lesen</a><p class="agent-bew-hinweis" hidden>Eine Auswahl der Bewertungen, die Google-Nutzer hinterlassen haben, angezeigt über <span class="agent-bew-google">Google Maps</span>. Ob die Verfasser hier gegessen haben, prüfen wir nicht.</p></div></div></section><script>(function () {
   var S = document.getElementById("gaeste-bewertungen");
   if (!S) return;
   var liste = S.querySelector(".agent-bew-liste"), hinweis = S.querySelector(".agent-bew-hinweis");
@@ -766,79 +714,67 @@ padding-bottom:10px;scrollbar-width:thin}
                                       { rootMargin: "900px 0px" });
     io.observe(S);
   } else laden();
-})();</script><!--/agent-bewertungen--><section class="reservieren" id="reservieren" aria-labelledby="res-t">
-<div class="wrap">
+})();</script><!--/agent-bewertungen--><section class="res" id="reservieren" aria-labelledby="res-titel">
+<div class="wrap res-grid res-wrap">
 <div class="res-intro">
-<h2 id="res-t">Tisch? Drei Schritte.</h2>
-<p>Tag und Uhrzeit wählen, Personen angeben, Name und Telefon dazu – fertig. Für mehr als acht Personen ruf lieber kurz an.</p>
-<a class="link-unter" href="tel:+494076494016">Anrufen · 040 76494016</a>
-<a class="bewertung" href="https://www.google.com/maps/search/?api=1&amp;query=Nour+Pizza+%26+More&amp;query_place_id=ChIJeWO37ZiJsUcRCKpXYApEjZY" target="_blank" rel="noopener"><span data-bewertung aria-label="4,8 von 5 Sternen bei 458 Google-Bewertungen"><span class="bew-stern" aria-hidden="true">★</span><span class="bew-zahl">4,8</span><span class="bew-text">458 Bewertungen auf Google</span></span></a>
+<h2 class="h2" id="res-titel">Tisch anfragen</h2>
+<p>Tag, Uhrzeit, Personen – drei kurze Schritte. Für heute Abend geht’s am Telefon am schnellsten.</p>
+<a class="bew-sticker" href="https://www.google.com/maps/search/?api=1&amp;query=Nour+Pizza+%26+More&amp;query_place_id=ChIJeWO37ZiJsUcRCKpXYApEjZY" target="_blank" rel="noopener"><span data-bewertung aria-label="4,8 von 5 Sternen bei 460 Google-Bewertungen"><span class="bew-stern" aria-hidden="true">★</span><span class="bew-zahl">4,8</span><span class="bew-text">460 Bewertungen auf Google</span></span></a>
+<a class="knopf knopf-creme" href="tel:+494076494016">Anrufen · 040 76494016</a>
+<div class="res-woche"><p class="res-woche-titel">Offen diese Woche</p><div data-woche></div></div>
 </div>
-<form class="res-karte" data-reservierung>
+<form data-reservierung novalidate>
 <div data-schritt="1" data-titel="Wann?">
-<h3>Wann?</h3>
-<p class="res-beschriftung">Tag</p>
-<div data-tage></div>
-<p class="res-beschriftung">Uhrzeit</p>
-<div data-zeiten></div>
+<h3 class="schritt-titel">Wann?</h3>
+<div><p class="res-gruppe-label">Tag</p><div data-tage></div></div>
+<div><p class="res-gruppe-label">Uhrzeit</p><div data-zeiten></div></div>
 </div>
 <div data-schritt="2" data-titel="Wie viele?">
-<h3>Wie viele?</h3>
-<p class="res-beschriftung">Personen</p>
-<div data-personen></div>
-<p class="res-hinweis">Mehr als 8? <a href="tel:+494076494016">Ruf an: 040 76494016</a></p>
+<h3 class="schritt-titel">Wie viele?</h3>
+<div><p class="res-gruppe-label">Personen</p><div data-personen></div></div>
 </div>
-<div data-schritt="3" data-titel="Deine Angaben">
-<h3>Deine Angaben</h3>
+<div data-schritt="3" data-titel="Ihre Angaben">
+<h3 class="schritt-titel">Ihre Angaben</h3>
 <div class="felder">
-<div class="feld"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+<div class="feld"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
 <div class="feld"><label for="f-tel">Telefon</label><input id="f-tel" name="telefon" type="tel" autocomplete="tel" required></div>
-<div class="feld feld--breit"><label for="f-mail">E-Mail (optional)</label><input id="f-mail" name="email" type="email" autocomplete="email"></div>
-<div class="feld feld--breit"><label for="f-nachricht">Nachricht (optional)</label><textarea id="f-nachricht" name="nachricht" rows="3"></textarea></div>
-<label class="einwilligung"><input type="checkbox" name="einwilligung" required><span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Reservierung verwendet werden. <a href="https://medialyte.de/datenschutzerklaerung" target="_blank" rel="noopener">Datenschutz</a></span></label>
+<div class="feld feld-voll"><label for="f-mail">E-Mail (optional)</label><input id="f-mail" name="email" type="email" autocomplete="email"></div>
+<div class="feld feld-voll"><label for="f-nachricht">Nachricht (optional)</label><textarea id="f-nachricht" name="nachricht" rows="2"></textarea></div>
 </div>
+<label class="einw"><input type="checkbox" name="einwilligung" required><span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Reservierung verwendet werden. <a href="https://medialyte.de/datenschutzerklaerung" target="_blank" rel="noopener">Datenschutz</a></span></label>
 <p data-reservierung-fehler></p>
-<button class="knopf" type="submit">Tisch anfragen</button>
+<button type="submit">Tisch anfragen</button>
 </div>
 <div data-reservierung-erfolg hidden>
-<div class="zettel">
-<h3>Steht. Bis gleich in der Röntgenstraße.</h3>
-<dl>
-<dt>Tag</dt><dd><span data-wert="datum"></span></dd>
-<dt>Uhrzeit</dt><dd><span data-wert="uhrzeit"></span></dd>
-<dt>Personen</dt><dd><span data-wert="personen"></span></dd>
-<dt>Name</dt><dd><span data-wert="name"></span></dd>
-</dl>
-<button class="knopf" type="button" data-reservierung-neu>Neue Anfrage</button>
-<a class="bewertung" href="https://www.google.com/maps/search/?api=1&amp;query=Nour+Pizza+%26+More&amp;query_place_id=ChIJeWO37ZiJsUcRCKpXYApEjZY" target="_blank" rel="noopener"><span data-bewertung="kurz" aria-label="4,8 von 5 Sternen bei 458 Google-Bewertungen"><span class="bew-stern" aria-hidden="true">★</span><span class="bew-zahl">4,8</span></span></a>
-</div>
+<p class="stempel" aria-hidden="true">Notiert</p>
+<h3>Danke, <span data-wert="name"></span>!</h3>
+<p class="erfolg-daten"><span data-wert="datum"></span> · <span data-wert="uhrzeit"></span> · <span data-wert="personen"></span></p>
+<p>Bis gleich in der Röntgenstraße 15.</p>
+<button type="button" data-reservierung-neu>Neue Anfrage</button>
 </div>
 </form>
 </div>
 </section>
 
-<section data-schluss data-hintergrund="dunkel" aria-labelledby="schluss-t">
-<figure data-hintergrund-bild data-foto><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLf4brF_AYn4_bgxUwdgSd7oAHgfQkY9CWJ1rU32nPwZz7ryMfim0UdudOvw6qEC88yL8TswcEqcCdoU-Sh7gkNHyT3JLwNIAVLvYNzUnw7506er6W4568A2qAfT01HdUtuwjOO0Zm-8mYAX=s4800-w1000" alt="Fassade von Nour Pizza &amp; More am Abend mit beleuchtetem Schild" width="800" height="600" loading="lazy" referrerpolicy="no-referrer"><a class="foto-nachweis" href="https://www.google.com/maps/search/?api=1&amp;query=Nour+Pizza+%26+More&amp;query_place_id=ChIJeWO37ZiJsUcRCKpXYApEjZY" target="_blank" rel="noopener">Foto: Google Maps</a></figure>
-<div class="wrap">
-<div class="schluss-inhalt">
+<section class="schluss" data-schluss data-hintergrund="dunkel" aria-labelledby="schluss-titel">
+<figure data-hintergrund-bild data-foto style="--schleier:linear-gradient(30deg,rgb(30 25 22/.85) 0%,rgb(30 25 22/.5) 42%,rgb(30 25 22/0) 85%)"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLdGr3hdfNJoWzPv4Q8ECHYQgX2P6q_f5iXxXOSbsNHoD7cl4VVyt5W86LS4SdJ7v1CvUIR3i2NIYCsbNSk0JOAzgmHIC9PJcGztcYcuVSQgEEqKnrlL_xYt05LFpuUZ9vVsFBb_HBqP-bLU=s4800-w1000" alt="" referrerpolicy="no-referrer" loading="lazy" width="675" height="1200"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/108620322516948540319" target="_blank" rel="noopener">Foto: Tim K. · Google Maps</a></figure>
+<div class="wrap schluss-inhalt">
+<h2 class="schluss-titel" id="schluss-titel">Der Ofen ist <span class="f f-boot">an.</span> Komm rum.</h2>
 <p class="schluss-status"><span data-status></span></p>
-<h2 id="schluss-t"><span class="akzent">Bis gleich</span> in der Röntgenstraße.</h2>
-<p>Tisch reservieren oder kurz anrufen, dann ist die Pizza schon im Ofen.</p>
-<div class="aktionen">
-<span class="magnet"><a class="knopf" href="#reservieren">Tisch reservieren</a></span>
-<a class="link-unter" href="tel:+494076494016">Anrufen · 040 76494016</a>
-</div>
+<div class="aktion">
+<a class="knopf knopf-rot" href="#reservieren">Tisch reservieren</a>
+<a class="knopf knopf-linie" href="https://www.google.com/maps/dir/?api=1&amp;destination=Nour+Pizza+%26+More%2C+R%C3%B6ntgenstra%C3%9Fe+15%2C+22335+Hamburg" target="_blank" rel="noopener">Route zur Röntgenstraße 15</a>
 </div>
 </div>
 </section>
 </main>
 
-<footer>
+<footer class="fuss">
 <div class="wrap">
-<div class="fuss-raster">
+<div class="fuss-grid">
 <div>
-<a class="marke" href="#start"><img src="logo.svg" alt="" width="40" height="40"><span>Nour</span></a>
-<p>Pizza, Pide, Burger, Wraps und Künefe. Vor Ort, zum Mitnehmen oder geliefert.</p>
+<span class="wm" aria-hidden="true"><span class="wm-nour">Nour</span><span class="wm-rest">P<span class="i-boot">ı</span>zza &amp; More</span></span>
+<p>Pizza und Pide, Lahmacun, Künefe und Çay – vor Ort, zum Mitnehmen und geliefert.</p>
 </div>
 <div>
 <h2>Zeiten</h2>
@@ -846,9 +782,8 @@ padding-bottom:10px;scrollbar-width:thin}
 </div>
 <div>
 <h2>Kontakt</h2>
-<address>Nour Pizza &amp; More<br>Röntgenstraße 15<br>22335 Hamburg<br>
-<a href="tel:+494076494016">040 76494016</a><br>
-<a href="https://www.google.com/maps/dir/?api=1&amp;destination=R%C3%B6ntgenstra%C3%9Fe%2015%2C%2022335%20Hamburg" target="_blank" rel="noopener">Route planen</a></address>
+<address>Nour Pizza &amp; More<br>Röntgenstraße 15<br>22335 Hamburg</address>
+<p><a href="tel:+494076494016">040 76494016</a><br><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Nour+Pizza+%26+More%2C+R%C3%B6ntgenstra%C3%9Fe+15%2C+22335+Hamburg" target="_blank" rel="noopener">Route auf Google Maps</a><br><a href="#reservieren">Tisch anfragen</a></p>
 </div>
 </div>
 <div class="rechtliches"><p>Entwurf von Medialyte, 21147 Hamburg. Adresse und Öffnungszeiten: Google. Fotos: Google Maps, Urheber jeweils am Bild. Einige Bilder und das Logo sind KI-generierte Vorschläge.</p><p><a href="https://medialyte.de/impressum" style="color:inherit;text-decoration:underline">Impressum</a> · <a href="https://medialyte.de/datenschutzerklaerung" style="color:inherit;text-decoration:underline">Datenschutz</a></p></div>
@@ -857,70 +792,101 @@ padding-bottom:10px;scrollbar-width:thin}
 
 <nav class="handyleiste" aria-label="Schnellzugriff">
 <a href="tel:+494076494016">Anrufen</a>
-<a href="https://www.google.com/maps/dir/?api=1&amp;destination=R%C3%B6ntgenstra%C3%9Fe%2015%2C%2022335%20Hamburg" target="_blank" rel="noopener">Route</a>
+<a href="https://www.google.com/maps/dir/?api=1&amp;destination=Nour+Pizza+%26+More%2C+R%C3%B6ntgenstra%C3%9Fe+15%2C+22335+Hamburg" target="_blank" rel="noopener">Route</a>
 <a href="#zeiten">Zeiten</a>
 </nav>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  const zl = document.querySelector(".zeitleiste");
-  if (zl) {
-    const teile = new Intl.DateTimeFormat("de-DE", { timeZone: "Europe/Berlin", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date());
-    const wert = t => +(teile.find(p => p.type === t) || { value: 0 }).value;
-    const h = wert("hour") + wert("minute") / 60;
-    if (h >= 10 && h <= 23) {
-      zl.style.setProperty("--jetzt", ((h - 10) / 13 * 100).toFixed(2) + "%");
-      zl.classList.add("mit-jetzt");
-      zl.querySelector(".zl-jetzt").textContent = "Jetzt " + String(wert("hour")).padStart(2, "0") + ":" + String(wert("minute")).padStart(2, "0") + " Uhr";
-    }
-  }
-  if (!window.gsap) return;
-  gsap.registerPlugin(ScrollTrigger, SplitText);
-  const mm = gsap.matchMedia();
-  mm.add({ bew: "(prefers-reduced-motion: no-preference)", fein: "(hover: hover) and (pointer: fine)", gross: "(min-width: 820px)" }, ctx => {
-    const { bew, fein, gross } = ctx.conditions;
-    if (!bew) return;
-    const schildAn = root => {
-      const tl = gsap.timeline();
-      tl.from(root.querySelectorAll(".spots i"), { scale: .95, opacity: 0, duration: .3, ease: "power3.out", stagger: .04 }, 0);
-      [".w1", ".w2", ".w3"].forEach((s, i) => tl.from(root.querySelectorAll(s), { opacity: 0, duration: .4, ease: "power3.out" }, .1 + i * .08));
-      return tl;
-    };
-    const hero = gsap.timeline();
-    hero.add(schildAn(document.querySelector(".blende-hero")), 0);
-    hero.from(".hero-foto .rahmen", { clipPath: "inset(10% 10% 10% 10% round 20px)", duration: .9, ease: "expo.out" }, .15);
-    hero.from(".hero-aussage .zeile", { yPercent: 110, duration: .9, ease: "expo.out", stagger: .08 }, .3);
-    hero.from(".badge", { scale: .95, opacity: 0, rotation: gross ? 0 : -6, duration: .6, ease: "expo.out" }, .4);
-    hero.from(".hero-text .hero-satz, .hero-text .aktionen, .hero-text .bewertung", { opacity: 0, y: 12, duration: .5, ease: "power3.out", stagger: .06 }, .55);
-    const pfad = document.querySelector(".strich path");
-    if (pfad) {
-      const l = pfad.getTotalLength();
-      gsap.set(pfad, { strokeDasharray: l });
-      hero.from(pfad, { strokeDashoffset: l, duration: .55, ease: "power3.out" }, .8);
-    }
-    gsap.utils.toArray(".band-ohne-animation").forEach(b => {
-      const tl = schildAn(b).pause();
-      ScrollTrigger.create({ trigger: b, start: "top 88%", once: true, onEnter: () => tl.play() });
+  const d = document;
+  d.documentElement.classList.add("js");
+
+  const tabs = [...d.querySelectorAll(".reiter [role=tab]")];
+  const panels = tabs.map(t => d.getElementById(t.getAttribute("aria-controls")));
+  const marker = d.querySelector(".reiter-marker");
+  let aktiv = 0;
+  const setzeMarker = () => {
+    const t = tabs[aktiv];
+    if (t && marker) marker.style.transform = `translateX(${t.offsetLeft}px) scaleX(${t.offsetWidth / 100})`;
+  };
+  const zeige = (i, fokus) => {
+    aktiv = i;
+    tabs.forEach((t, j) => {
+      t.setAttribute("aria-selected", j === i ? "true" : "false");
+      t.tabIndex = j === i ? 0 : -1;
+      panels[j].hidden = j !== i;
     });
-    gsap.utils.toArray(".enthuellen").forEach(el => gsap.from(el, { clipPath: "inset(14% 14% 14% 14% round 20px)", duration: .9, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 85%", once: true } }));
-    if (fein) {
-      document.querySelectorAll(".magnet").forEach(el => {
-        const x = gsap.quickTo(el, "x", { duration: .4, ease: "power3.out" }), y = gsap.quickTo(el, "y", { duration: .4, ease: "power3.out" });
-        el.addEventListener("mousemove", e => { const r = el.getBoundingClientRect(); x((e.clientX - r.left - r.width / 2) * .25); y((e.clientY - r.top - r.height / 2) * .35); });
-        el.addEventListener("mouseleave", () => { x(0); y(0); });
-      });
-      const v = document.querySelector(".vorschau"), vi = v && v.querySelector("img");
-      if (v) {
-        gsap.set(v, { xPercent: -50, yPercent: -120, scale: .95 });
-        const vx = gsap.quickTo(v, "x", { duration: .45, ease: "power3.out" }), vy = gsap.quickTo(v, "y", { duration: .45, ease: "power3.out" });
-        window.addEventListener("mousemove", e => { vx(e.clientX); vy(e.clientY); });
-        document.querySelectorAll("[data-vorschau]").forEach(li => {
-          li.addEventListener("mouseenter", () => { vi.src = li.dataset.vorschau; gsap.to(v, { opacity: 1, scale: 1, duration: .22, ease: "power3.out" }); });
-          li.addEventListener("mouseleave", () => gsap.to(v, { opacity: 0, scale: .95, duration: .15, ease: "power3.out" }));
-        });
+    if (fokus) tabs[i].focus();
+    setzeMarker();
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener("click", () => zeige(i));
+    t.addEventListener("keydown", e => {
+      if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+        e.preventDefault();
+        zeige((i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length, true);
       }
+    });
+  });
+  if (tabs.length) zeige(0);
+  addEventListener("resize", setzeMarker);
+
+  const teile = new Intl.DateTimeFormat("en-US", { timeZone: "Europe/Berlin", weekday: "short", hour: "numeric", minute: "numeric", hourCycle: "h23" }).formatToParts(new Date());
+  const wert = typ => (teile.find(p => p.type === typ) || {}).value;
+  const wochenende = ["Sat", "Sun"].includes(wert("weekday"));
+  const start = wochenende ? 15 : 11, ende = 22;
+  const jetzt = (parseInt(wert("hour"), 10) % 24) + parseInt(wert("minute"), 10) / 60;
+  const offen = d.querySelector(".tl-offen"), strich = d.querySelector(".tl-jetzt"), heute = d.querySelector(".tl-heute");
+  if (offen) { offen.style.left = (start - 9) / 15 * 100 + "%"; offen.style.right = (24 - ende) / 15 * 100 + "%"; }
+  if (heute) heute.textContent = `${start}:00–${ende}:00`;
+  if (strich && jetzt >= 9 && jetzt <= 24) { strich.style.left = (jetzt - 9) / 15 * 100 + "%"; strich.style.display = "block"; }
+
+  if (!window.gsap) return;
+  gsap.registerPlugin(ScrollTrigger);
+  const P = [[0,50],[5,36],[12,23],[22,12],[35,4],[50,1],[65,4],[78,12],[88,23],[95,36],[100,50],[95,64],[88,77],[78,88],[65,96],[50,99],[35,96],[22,88],[12,77],[5,64]];
+  const boot = k => "polygon(" + P.map(([x, y]) => `${(50 + (x - 50) * k).toFixed(2)}% ${y}%`).join(", ") + ")";
+  const mm = gsap.matchMedia();
+
+  mm.add("(prefers-reduced-motion: no-preference)", () => {
+    const klein = matchMedia("(max-width: 820px)").matches;
+    gsap.set(".hero-titel .zi", { yPercent: 110 });
+    gsap.set(".hero-titel .f", { clipPath: "inset(0% 50% 0% 50%)" });
+    (window.nachIntro || (f => f()))(() => {
+      const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
+      tl.from([".status-zeile", ".hero-name"], { opacity: 0, y: 14, duration: .6, stagger: .06 }, 0)
+        .to(".hero-titel .zi", { yPercent: 0, duration: .9, stagger: .08 }, .08)
+        .to(".hero-titel .f", { clipPath: "inset(0% 0% 0% 0%)", duration: .6, stagger: .08 }, .42)
+        .from(".hero-foto .rahmen", { clipPath: "inset(10% 10% 10% 10% round 20px)", duration: .9, ease: "power3.out" }, .1)
+        .from(".pide-img", klein ? { y: -30, opacity: 0, duration: .7 } : { x: 120, y: -120, rotation: "-=4", opacity: 0, duration: .9, ease: "back.out(1.5)" }, .3)
+        .from([".hero-satz", ".hero-aktion", ".bew-sticker", ".sticker"], { opacity: 0, y: 14, duration: .6, stagger: .05 }, .45);
+    });
+
+    gsap.utils.toArray(".band-form").forEach(b => {
+      gsap.timeline({ scrollTrigger: { trigger: b, start: "top 90%", once: true } })
+        .fromTo(b, { clipPath: "inset(0% 46% 0% 46%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: .7, ease: "expo.out", clearProps: "clipPath" })
+        .from(b.querySelector(".band-text"), { opacity: 0, y: 12, duration: .5, ease: "power3.out" }, .1);
+    });
+
+    gsap.utils.toArray(".enthuellen").forEach(el => gsap.from(el, {
+      clipPath: "inset(12% 12% 12% 12% round 20px)", duration: .9, ease: "power3.out",
+      scrollTrigger: { trigger: el, start: "top 85%", once: true }
+    }));
+    gsap.from(".boot-klein", { y: 40, rotation: -4, opacity: 0, duration: .8, ease: "power3.out", scrollTrigger: { trigger: ".ang-bild", start: "top 70%", once: true } });
+
+    if (matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      d.querySelectorAll(".magnet").forEach(m => {
+        const x = gsap.quickTo(m, "x", { duration: .4, ease: "power3.out" });
+        const y = gsap.quickTo(m, "y", { duration: .4, ease: "power3.out" });
+        m.addEventListener("pointermove", e => {
+          const r = m.getBoundingClientRect();
+          x((e.clientX - r.left - r.width / 2) * .25);
+          y((e.clientY - r.top - r.height / 2) * .35);
+        });
+        m.addEventListener("pointerleave", () => { x(0); y(0); });
+      });
     }
   });
+
   if (window.Lenis && matchMedia("(pointer: fine) and (prefers-reduced-motion: no-preference)").matches) {
     const lenis = new Lenis({ autoRaf: false });
     lenis.on("scroll", ScrollTrigger.update);
@@ -929,7 +895,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 </script>
-<div style="padding:16px;font:12px/1.5 system-ui,sans-serif;background:#111;color:#ddd">Fotos: <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/109622314315284024293" target="_blank" rel="noopener">Foto: R. Stoltenberg · Google Maps</a></div><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>[data-karte]{width:100%;height:100%;min-height:260px;position:relative;z-index:0;isolation:isolate}[data-karte] .leaflet-tile-pane{filter:var(--karte-filter)}
 [data-karte] .leaflet-control-attribution{font-size:10px}.karte-pin{position:relative;width:34px;height:34px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
 box-shadow:0 6px 16px rgba(0,0,0,.35);border:3px solid #fff}.karte-pin i{position:absolute;inset:9px;border-radius:50%;background:#fff}</style>
@@ -1950,99 +1916,5 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   }
   if (D.readyState === "loading") D.addEventListener("DOMContentLoaded", run); else run();
 })();
-</script><!--/agent-szenen--><!--agent-angebot-hinweis--><script>(function () {
-  var NAME = "Nour Pizza & More", SLUG = "nour-pizza-more-hamburg-ac10", NACH = 60 * 1000;
-  if (navigator.webdriver) return;
-  var aktiv = 0, letzt = Date.now(), host = null, vorher = null;
-  function tippt() { var a = document.activeElement; return a && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName); }
-  function tick() {
-    var jetzt = Date.now();
-    if (document.visibilityState === "visible") aktiv += Math.min(jetzt - letzt, 2000);
-    letzt = jetzt;
-    if (aktiv >= (window.__angebotNach || NACH) && !tippt()) zeigen(); else setTimeout(tick, 1000);
-  }
-  function zu() {
-    if (!host) return;
-    var h = host; host = null;
-    h.shadowRoot.querySelector(".w").classList.remove("an");
-    document.removeEventListener("keydown", taste, true);
-    setTimeout(function () { h.remove(); }, 260);
-    if (vorher && vorher.focus) try { vorher.focus({ preventScroll: true }); } catch (e) {}
-  }
-  function taste(e) {
-    if (!host) return;
-    if (e.key === "Escape") { e.preventDefault(); zu(); return; }
-    if (e.key === "Tab") {  // Fokus bleibt im Fenster
-      var r = host.shadowRoot, f = [].slice.call(r.querySelectorAll("a,button")), i = f.indexOf(r.activeElement);
-      e.preventDefault();
-      f[(i + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
-    }
-  }
-  function zeigen() {
-    vorher = document.activeElement;
-    host = document.createElement("div");
-    host.id = "medialyte-angebot";
-    host.style.cssText = "all:initial;position:fixed;inset:0;z-index:2147483646";
-    var r = host.attachShadow({ mode: "open" });
-    var haken = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
-    r.innerHTML = '<style>' +
-      ':host{all:initial}*{box-sizing:border-box}' +
-      '.w{position:fixed;inset:0;display:grid;place-items:center;padding:20px;padding-bottom:max(20px,env(safe-area-inset-bottom));' +
-      'font:400 16px/1.55 Poppins,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;overscroll-behavior:contain}' +
-      '.grund{position:absolute;inset:0;background:rgba(8,14,26,.58);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:0;transition:opacity .3s cubic-bezier(.23,1,.32,1)}' +
-      '.k{position:relative;width:min(460px,100%);max-height:calc(100dvh - 40px);overflow:auto;padding:30px 28px 24px;border-radius:24px;background:#0E192A;color:#fff;text-align:center;' +
-      'box-shadow:0 40px 90px -30px rgba(0,0,0,.7);opacity:0;transform:translateY(14px) scale(.96);' +
-      'transition:opacity .25s cubic-bezier(.23,1,.32,1),transform .45s cubic-bezier(.23,1,.32,1)}' +
-      '.w.an .grund,.w.an .k{opacity:1}.w.an .k{transform:none}' +
-      '.k::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:linear-gradient(341deg,#7BAFFF,#FF5757);' +
-      '-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}' +
-      '.dach{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.08);font-size:13px;font-weight:600;color:rgba(255,255,255,.85)}' +
-      '.dach i{width:8px;height:8px;border-radius:50%;background:#FF5757;box-shadow:0 0 0 3px rgba(255,87,87,.25)}' +
-      'h2{margin:16px 0 0;font:600 clamp(24px,6.4vw,30px)/1.18 Poppins,system-ui,sans-serif;letter-spacing:-.015em;text-wrap:balance}' +
-      'p{margin:10px 0 0;color:rgba(255,255,255,.78);font-size:16px;text-wrap:pretty}' +
-      'ul{list-style:none;margin:20px 0 0;padding:16px 18px;border-radius:16px;background:rgba(255,255,255,.06);display:grid;gap:10px;text-align:left}' +
-      'li{display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.4}' +
-      'li span{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:rgba(75,227,166,.16);color:#4BE3A6}' +
-      'li svg{width:14px;height:14px}' +
-      'a.los{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:54px;margin-top:22px;padding:12px 18px;border-radius:15px;' +
-      'background:#fff;color:#0E192A;font:600 17px/1.2 Poppins,system-ui,sans-serif;text-decoration:none;box-shadow:0 14px 30px -14px rgba(255,255,255,.45);' +
-      'transition:transform .16s cubic-bezier(.23,1,.32,1)}' +
-      'a.los:active{transform:scale(.97)}a.los svg{width:20px;height:20px;transition:transform .2s cubic-bezier(.23,1,.32,1)}' +
-      'button{all:unset;cursor:pointer;border-radius:12px;color:rgba(255,255,255,.7);font:500 15px/1.2 Poppins,system-ui,sans-serif}' +
-      'button.weiter{display:block;margin:8px auto 0;padding:12px 16px}' +
-      'button.x{position:absolute;top:12px;right:12px;width:40px;height:40px;display:grid;place-items:center;font-size:24px;line-height:1}' +
-      'small{display:block;margin-top:10px;font-size:12.5px;color:rgba(255,255,255,.5)}.k:focus{outline:none}' +
-      'button:focus-visible,a:focus-visible{outline:3px solid #7BAFFF;outline-offset:3px}' +
-      '@media (hover:hover) and (pointer:fine){a.los:hover svg{transform:translateX(4px)}button:hover{color:#fff;background:rgba(255,255,255,.08)}}' +
-      '@media (max-width:420px){.k{padding:26px 20px 18px}}' +
-      '@media (prefers-reduced-motion:reduce){.k{transform:none;transition:opacity .2s}}' +
-      '@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.grund{background:rgba(8,14,26,.72)}}' +
-      '</style>' +
-      '<div class="w"><div class="grund"></div>' +
-      '<div class="k" role="dialog" aria-modal="true" aria-labelledby="t" aria-describedby="d" tabindex="-1">' +
-      '<button class="x" type="button" aria-label="Schließen">×</button>' +
-      '<div class="dach"><i></i><b id="name"></b></div>' +
-      '<h2 id="t">Gefällt Ihnen der Entwurf?</h2>' +
-      '<p id="d"></p>' +
-      '<ul><li><span>' + haken + '</span>Eigene Adresse, Hosting und SSL</li>' +
-      '<li><span>' + haken + '</span>Ihre Fotos, Ihre Speisekarte, Ihre Wünsche</li>' +
-      '<li><span>' + haken + '</span>Ein Website-Agent für kleine Änderungen</li></ul>' +
-      '<a class="los" href="angebot/">So wird es Ihre Website<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>' +
-      '<small>Unverbindlich. Alles Weitere besprechen wir persönlich.</small>' +
-      '<button class="weiter" type="button">Erst weiter ansehen</button>' +
-      '</div></div>';
-    r.getElementById("name").textContent = "Für " + NAME;
-    r.getElementById("d").textContent = "Aus diesem Entwurf wird die Website von " + NAME + ". Wir kümmern uns um alles.";
-    document.body.appendChild(host);
-    var w = r.querySelector(".w");
-    // Hinter dem Fenster scrollt die Demo nicht weiter
-    ["wheel", "touchmove"].forEach(function (t) { w.addEventListener(t, function (e) { if (!r.querySelector(".k").contains(e.target)) e.preventDefault(); }, { passive: false }); });
-    r.querySelector(".grund").addEventListener("click", zu);
-    r.querySelector(".x").addEventListener("click", zu);
-    r.querySelector(".weiter").addEventListener("click", zu);
-    document.addEventListener("keydown", taste, true);
-    requestAnimationFrame(function () { requestAnimationFrame(function () { w.classList.add("an"); r.querySelector(".k").focus({ preventScroll: true }); }); });
-  }
-  setTimeout(tick, 1000);
-})();</script><!--/agent-angebot-hinweis--></body>
+</script><!--/agent-szenen--></body>
 </html>
