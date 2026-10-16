@@ -550,7 +550,203 @@ form[data-reservierung]{min-height:0}
 
 <div class="band auf-wein" aria-hidden="true"></div>
 
-<section class="res wein" id="reservieren" aria-labelledby="res-titel">
+<!--agent-bewertungen--><style id="agent-bew-stil">#gaeste-bewertungen{display:block;position:relative;box-sizing:border-box;width:auto;height:auto;min-height:0;
+max-width:none;margin:0;padding:clamp(64px,9vw,120px) 0;overflow:visible;color:inherit;background:none;text-align:left;
+transform:none;opacity:1;visibility:visible}
+#gaeste-bewertungen *{box-sizing:border-box}
+#gaeste-bewertungen .agent-bew-innen{width:min(1180px,100% - 2*clamp(16px,4vw,40px));margin:0 auto;padding:0}
+#gaeste-bewertungen .agent-bew-kopf{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:22px 48px}
+#gaeste-bewertungen .agent-bew-ueber{margin:0 0 .7em;font-size:.8rem;line-height:1.3;letter-spacing:.14em;
+text-transform:uppercase;opacity:.75;max-width:none}
+#gaeste-bewertungen h2{margin:0;max-width:18ch;font-size:clamp(1.9rem,4.2vw,3.1rem);line-height:1.05;text-wrap:balance;
+position:static;transform:none;opacity:1}
+#gaeste-bewertungen .agent-bew-schnitt{display:inline-flex;align-items:center;gap:16px;color:inherit;text-decoration:none;
+border-radius:12px;padding:4px 2px}
+#gaeste-bewertungen .agent-bew-schnitt:focus-visible,#gaeste-bewertungen a:focus-visible,
+#gaeste-bewertungen button:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+#gaeste-bewertungen .agent-bew-zahl{font-size:clamp(2.8rem,5vw,3.8rem);line-height:.95;font-weight:700;
+font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+#gaeste-bewertungen .agent-bew-sterne{display:block;font-size:1.3rem;line-height:1.2;letter-spacing:.12em;
+background:linear-gradient(90deg,#E3A21A var(--p,100%),rgb(127 127 127/.35) var(--p,100%));
+-webkit-background-clip:text;background-clip:text;color:transparent;font-family:system-ui,sans-serif}
+#gaeste-bewertungen .agent-bew-anzahl{display:block;margin-top:4px;font-size:.92rem;opacity:.85;text-decoration:underline;
+text-underline-offset:3px;text-decoration-thickness:1px}
+#gaeste-bewertungen .agent-bew-liste{list-style:none;margin:clamp(28px,4vw,48px) 0 0;padding:0;display:grid;
+grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
+#gaeste-bewertungen .agent-bew-liste[hidden]{display:none}
+#gaeste-bewertungen .agent-bew-liste:has(.offen){align-items:start}
+#gaeste-bewertungen .agent-bew-karte{display:flex;flex-direction:column;gap:14px;margin:0;padding:clamp(20px,2.4vw,28px);
+border:1px solid rgb(127 127 127/.28);border:1px solid color-mix(in srgb,currentColor 16%,transparent);border-radius:16px;
+background:rgb(127 127 127/.06);background:color-mix(in srgb,currentColor 5%,transparent);list-style:none}
+#gaeste-bewertungen .agent-bew-k-sterne{margin:0;color:#E3A21A;font-size:1.05rem;line-height:1;letter-spacing:.14em;
+font-family:system-ui,sans-serif}
+#gaeste-bewertungen .agent-bew-k-sterne .aus{color:rgb(127 127 127/.4)}
+#gaeste-bewertungen .agent-bew-k-text{margin:0;font-size:1rem;line-height:1.6;white-space:pre-line;overflow-wrap:anywhere;
+display:-webkit-box;-webkit-line-clamp:6;line-clamp:6;-webkit-box-orient:vertical;overflow:hidden;max-width:none}
+#gaeste-bewertungen .offen .agent-bew-k-text{display:block;-webkit-line-clamp:unset;line-clamp:none;overflow:visible}
+#gaeste-bewertungen .agent-bew-mehr{all:unset;align-self:flex-start;cursor:pointer;font-size:.9rem;text-decoration:underline;
+text-underline-offset:3px;opacity:.85;min-height:32px;display:inline-flex;align-items:center}
+#gaeste-bewertungen .agent-bew-mehr[hidden]{display:none}
+#gaeste-bewertungen .agent-bew-k-autor{margin:auto 0 0;font-size:.875rem;line-height:1.45;opacity:.8;max-width:none}
+#gaeste-bewertungen .agent-bew-k-autor a{color:inherit;text-decoration:underline;text-underline-offset:2px;font-weight:600}
+#gaeste-bewertungen .agent-bew-leer{min-height:210px;border-radius:16px;background:rgb(127 127 127/.1);
+animation:agentBewPuls 1.2s ease-in-out infinite alternate}
+@keyframes agentBewPuls{to{opacity:.45}}
+#gaeste-bewertungen .agent-bew-fuss{margin-top:clamp(22px,3vw,34px);display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px}
+#gaeste-bewertungen .agent-bew-alle{display:inline-flex;align-items:center;justify-content:center;min-height:46px;
+padding:0 22px;border-radius:999px;border:1.5px solid currentColor;color:inherit;background:none;text-decoration:none;
+font-weight:600;line-height:1.2;text-align:center}
+#gaeste-bewertungen .agent-bew-hinweis{margin:0;font-size:.8rem;line-height:1.5;opacity:.72;max-width:52ch}
+#gaeste-bewertungen .agent-bew-hinweis[hidden]{display:none}
+#gaeste-bewertungen .agent-bew-google{font-family:Roboto,Arial,sans-serif;font-weight:500;white-space:nowrap}
+@media (max-width:900px){#gaeste-bewertungen .agent-bew-liste{grid-template-columns:none;grid-auto-flow:column;
+grid-auto-columns:min(84%,360px);overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;
+padding-bottom:10px;scrollbar-width:thin}
+#gaeste-bewertungen .agent-bew-liste>li{scroll-snap-align:start}}
+@media (prefers-reduced-motion:reduce){#gaeste-bewertungen .agent-bew-leer{animation:none}}</style><section id="gaeste-bewertungen" class="agent-bew" aria-labelledby="agent-bew-t" data-quelle="https://medialyte-zaehler.patient-water-7819.workers.dev/g/bewertungen?p=ChIJqShyAqyHsUcRflu6q9I4wqs&amp;s=c555b291d8f9d77dc9b2"><div class="agent-bew-innen"><div class="agent-bew-kopf"><div><p class="agent-bew-ueber">Google-Bewertungen</p><h2 id="agent-bew-t">Das sagen Gäste auf Google</h2></div><a class="agent-bew-schnitt" data-alle href="https://www.google.com/maps/search/?api=1&amp;query=China-Restaurant+Ho&amp;query_place_id=ChIJqShyAqyHsUcRflu6q9I4wqs" target="_blank" rel="noopener" aria-label="4,6 von 5 Sternen bei 876 Google-Bewertungen. Alle Bewertungen auf Google ansehen"><span class="agent-bew-zahl">4,6</span><span class="agent-bew-rechts"><span class="agent-bew-sterne" style="--p:92.0%" aria-hidden="true">★★★★★</span><span class="agent-bew-anzahl">876 Bewertungen</span></span></a></div><ul class="agent-bew-liste" hidden></ul><div class="agent-bew-fuss"><a class="agent-bew-alle" data-alle href="https://www.google.com/maps/search/?api=1&amp;query=China-Restaurant+Ho&amp;query_place_id=ChIJqShyAqyHsUcRflu6q9I4wqs" target="_blank" rel="noopener">Alle Bewertungen auf Google lesen</a><p class="agent-bew-hinweis" hidden>Eine Auswahl der Bewertungen, die Google-Nutzer hinterlassen haben, angezeigt über <span class="agent-bew-google">Google Maps</span>. Ob die Verfasser hier gegessen haben, prüfen wir nicht.</p></div></div></section><script>(function () {
+  var S = document.getElementById("gaeste-bewertungen");
+  if (!S) return;
+  var liste = S.querySelector(".agent-bew-liste"), hinweis = S.querySelector(".agent-bew-hinweis");
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+
+  /* 1) Siegel mit der Google-Note: volle Angabe nur, wenn sie hineinpasst (sonst nur Stern und Note) */
+  function rund(n) {
+    var w = n.offsetWidth, h = n.offsetHeight;
+    if (!w || !h) return false;
+    var r = getComputedStyle(n).borderTopLeftRadius, v = parseFloat(r) || 0;
+    if (/%$/.test(r)) v = v / 100 * Math.min(w, h);
+    return v >= 0.4 * Math.min(w, h) && Math.abs(w - h) <= 0.2 * Math.max(w, h);
+  }
+  function siegel() {
+    var els = document.querySelectorAll("[data-bewertung]:not([data-bewertung=kurz])");
+    for (var i = 0; i < els.length; i++) {
+      var e = els[i], t = e.querySelector(".bew-text");
+      if (!t) continue;
+      t.style.display = "";
+      var kette = [], n = e;
+      for (var k = 0; k < 3 && n && n !== document.body; k++, n = n.parentElement) kette.push(n);
+      var alt = kette.map(function (x) { var a = x.style.transform; x.style.transform = "none"; return a; });
+      var range = document.createRange(); range.selectNodeContents(e);
+      var teile = [].slice.call(range.getClientRects()), schlecht = false;
+      kette.forEach(function (b) {
+        if (schlecht || !b.offsetWidth) return;
+        var cs = getComputedStyle(b), box = b.getBoundingClientRect();
+        if (rund(b)) {
+          var cx = box.left + box.width / 2, cy = box.top + box.height / 2, rad = Math.min(box.width, box.height) / 2 - 1.5;
+          teile.forEach(function (q) {
+            if (!q.width || !q.height) return;
+            [[q.left, q.top], [q.right, q.top], [q.left, q.bottom], [q.right, q.bottom]].forEach(function (p) {
+              if (Math.sqrt((p[0] - cx) * (p[0] - cx) + (p[1] - cy) * (p[1] - cy)) > rad) schlecht = true;
+            });
+          });
+        } else if (/hidden|clip/.test(cs.overflowX + cs.overflowY) && (b.scrollHeight > b.clientHeight + 1 || b.scrollWidth > b.clientWidth + 1)) {
+          schlecht = true;
+        }
+      });
+      kette.forEach(function (x, j) { x.style.transform = alt[j]; });
+      if (schlecht) t.style.display = "none";
+    }
+  }
+
+  /* 2) Schrift der Seite übernehmen (Überschrift, Note) und den Knopf wie die Knöpfe der Seite gestalten */
+  function sichtbar(x) { return x && x.offsetWidth > 0 && !S.contains(x); }
+  function stil() {
+    var hs = document.querySelectorAll("h2"), h = null;
+    for (var i = 0; i < hs.length && !h; i++) if (sichtbar(hs[i])) h = hs[i];
+    if (h) {
+      var c = getComputedStyle(h), mein = S.querySelector("h2"), px = parseFloat(c.fontSize) || 32;
+      var ziel = Math.min(px, Math.max(30, Math.min(52, window.innerWidth * 0.058)));
+      mein.style.fontFamily = c.fontFamily; mein.style.fontWeight = c.fontWeight; mein.style.fontStyle = c.fontStyle;
+      mein.style.textTransform = c.textTransform; mein.style.fontStretch = c.fontStretch;
+      mein.style.fontSize = ziel + "px";
+      var ls = parseFloat(c.letterSpacing); mein.style.letterSpacing = isNaN(ls) ? "normal" : (ls / px) + "em";
+      var lh = parseFloat(c.lineHeight); if (!isNaN(lh)) mein.style.lineHeight = String(Math.max(0.95, Math.min(1.3, lh / px)));
+      var z = S.querySelector(".agent-bew-zahl"); if (z) { z.style.fontFamily = c.fontFamily; z.style.fontStyle = c.fontStyle; }
+    }
+    var ks = document.querySelectorAll("a[class*=knopf],a[class*=btn],a[class*=button],a[class*=cta],button[class*=knopf],button[class*=btn]");
+    for (var j = 0; j < ks.length; j++) {
+      var k = ks[j];
+      if (!sichtbar(k) || k.closest("[data-reservierung]")) continue;
+      var kc = getComputedStyle(k), bg = kc.backgroundColor;
+      if (!bg || bg === "transparent" || /rgba\(.*,\s*0\)$/.test(bg) || kc.backgroundImage !== "none") continue;
+      var a = S.querySelector(".agent-bew-alle");
+      a.style.background = bg; a.style.color = kc.color; a.style.borderColor = kc.borderTopColor === kc.color ? bg : kc.borderTopColor;
+      a.style.borderWidth = kc.borderTopWidth; a.style.borderStyle = kc.borderTopStyle === "none" ? "solid" : kc.borderTopStyle;
+      if (kc.borderTopStyle === "none") a.style.borderColor = bg;
+      a.style.borderRadius = kc.borderTopLeftRadius; a.style.fontFamily = kc.fontFamily; a.style.fontWeight = kc.fontWeight;
+      a.style.textTransform = kc.textTransform; a.style.letterSpacing = kc.letterSpacing;
+      break;
+    }
+  }
+
+  /* 3) Bewertungen live von Google (über den Zähler-Dienst), erst wenn der Bereich in die Nähe kommt */
+  function sterne(n) {
+    var p = el("p", "agent-bew-k-sterne"); p.setAttribute("aria-label", n + " von 5 Sternen"); p.setAttribute("role", "img");
+    p.appendChild(document.createTextNode("★★★★★".slice(0, n)));
+    if (n < 5) p.appendChild(el("span", "aus", "★★★★★".slice(0, 5 - n)));
+    return p;
+  }
+  function karte(b) {
+    var li = el("li", "agent-bew-karte");
+    li.appendChild(sterne(Math.max(1, Math.min(5, b.sterne | 0))));
+    var tx = el("p", "agent-bew-k-text", b.text);
+    if (b.sprache) tx.setAttribute("lang", b.sprache);
+    li.appendChild(tx);
+    var mehr = el("button", "agent-bew-mehr", "Weiterlesen"); mehr.type = "button"; mehr.hidden = true;
+    mehr.addEventListener("click", function () { var auf = li.classList.toggle("offen"); mehr.textContent = auf ? "Weniger" : "Weiterlesen"; mehr.setAttribute("aria-expanded", auf ? "true" : "false"); });
+    li.appendChild(mehr);
+    var au = el("p", "agent-bew-k-autor");
+    if (b.autor_link) { var a = el("a", "", b.autor); a.href = b.autor_link; a.target = "_blank"; a.rel = "noopener nofollow"; au.appendChild(a); }
+    else au.appendChild(el("strong", "", b.autor));
+    var zusatz = [b.wann, b.uebersetzt ? "von Google übersetzt" : ""].filter(Boolean).join(" · ");
+    if (zusatz) au.appendChild(document.createTextNode(" · " + zusatz));
+    li.appendChild(au);
+    return li;
+  }
+  function neuMessen() { if (window.ScrollTrigger && window.ScrollTrigger.refresh) try { window.ScrollTrigger.refresh(); } catch (e) {} }
+  function zeigen(d) {
+    liste.innerHTML = "";
+    var gute = (d && d.bewertungen || []).filter(function (b) { return b && b.text && (b.sterne | 0) >= 4; }).slice(0, 3);
+    if (d && d.schnitt) {
+      var z = S.querySelector(".agent-bew-zahl"), st = S.querySelector(".agent-bew-sterne"), an = S.querySelector(".agent-bew-anzahl");
+      if (z) z.textContent = Number(d.schnitt).toFixed(1).replace(".", ",");
+      if (st) st.style.setProperty("--p", Math.round(Number(d.schnitt) / 5 * 1000) / 10 + "%");
+      if (an && d.anzahl) an.textContent = Number(d.anzahl).toLocaleString("de-DE") + " Bewertungen";
+    }
+    if (d && d.alle) [].forEach.call(S.querySelectorAll("a[data-alle]"), function (a) { a.href = d.alle; });
+    if (!gute.length) { liste.hidden = true; neuMessen(); return; }
+    gute.forEach(function (b) { liste.appendChild(karte(b)); });
+    liste.hidden = false; hinweis.hidden = false;
+    [].forEach.call(liste.querySelectorAll(".agent-bew-karte"), function (li) {
+      var t = li.querySelector(".agent-bew-k-text");
+      li.querySelector(".agent-bew-mehr").hidden = !(t.scrollHeight > t.clientHeight + 2);
+    });
+    neuMessen();
+  }
+  function laden() {
+    var q = S.getAttribute("data-quelle");
+    if (!q || !window.fetch) return;
+    liste.hidden = false;
+    for (var i = 0; i < 3; i++) liste.appendChild(el("li", "agent-bew-leer"));
+    var fertig = false;
+    setTimeout(function () { if (!fertig) { fertig = true; zeigen(null); } }, 9000);
+    fetch(q, { credentials: "omit" }).then(function (r) { return r.ok ? r.json() : null; })
+      .catch(function () { return null; })
+      .then(function (d) { if (!fertig) { fertig = true; zeigen(d); } });
+  }
+
+  var wartet = null;
+  function alles() { try { siegel(); } catch (e) {} try { stil(); } catch (e) {} }
+  window.addEventListener("resize", function () { clearTimeout(wartet); wartet = setTimeout(alles, 200); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(alles);
+  if (document.readyState === "complete") alles(); else window.addEventListener("load", alles);
+  if (navigator.webdriver) return;  /* Prüfungen und Briefbilder: keine Abfrage bei Google */
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (e) { if (e.some(function (x) { return x.isIntersecting; })) { io.disconnect(); laden(); } },
+                                      { rootMargin: "900px 0px" });
+    io.observe(S);
+  } else laden();
+})();</script><!--/agent-bewertungen--><section class="res wein" id="reservieren" aria-labelledby="res-titel">
 <div class="wrap res-gitter">
 <div class="res-intro">
 <h2 id="res-titel">Einen Tisch <em>decken</em> lassen</h2>
