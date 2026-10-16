@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Vasco da Gama – Portugiesische und spanische Küche · Lange Reihe 67, Hamburg-St. Georg</title>
 <meta name="description" content="Restaurante Vasco da Gama an der Langen Reihe 67 in St. Georg: Paella mit Fischfilet, Scampis oder schwarz, Tintenfisch vom Grill, Rumpsteak mit hausgemachtem Aioli, Tapas. Terrasse unter der blauen Markise. Mo–Sa ab 11:30, So ab 12 Uhr.">
-<meta name="theme-color" content="#F4EEE1">
+<meta name="theme-color" content="#F5EBDB">
 <link rel="stylesheet" href="fonts/fonts.css">
 <style>
-:root{--creme:#F4EEE1;--creme2:#EAE1CD;--kobalt:#1E4FA6;--tinte:#1A1D27;--rot:#B3162B;--holz:#3A2418;
+:root{--creme:#F5EBDB;--creme2:#EAD9BF;--kobalt:#A23E1D;--tinte:#231915;--rot:#8C1D24;--holz:#3A2418;--ocker:#D9A13B;
 --ease-out:cubic-bezier(.23,1,.32,1);--ease-in-out:cubic-bezier(.77,0,.175,1);--ease-drawer:cubic-bezier(.32,.72,0,1);
 --display:"Big Shoulders Display","Arial Narrow",sans-serif;--text:"Instrument Sans",system-ui,sans-serif;--akzent:"Fraunces",Georgia,serif;
---rand:clamp(1rem,5vw,4rem);--kopf:72px;--max:1320px;--fuge:rgb(30 79 166/.18);
+--rand:clamp(1rem,5vw,4rem);--kopf:72px;--leiste-h:72px;--max:1320px;--fuge:rgb(162 62 29/.16);
 --viertel:radial-gradient(circle at 50% 50%,var(--kobalt) 0 9%,transparent 9.5% 24%,var(--kobalt) 24.5% 31%,transparent 31.5%),radial-gradient(circle at 0 0,var(--kobalt) 0 20%,transparent 20.5%),radial-gradient(circle at 100% 0,var(--kobalt) 0 20%,transparent 20.5%),radial-gradient(circle at 0 100%,var(--kobalt) 0 20%,transparent 20.5%),radial-gradient(circle at 100% 100%,var(--kobalt) 0 20%,transparent 20.5%)}
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-padding-top:var(--kopf)}
@@ -392,6 +392,70 @@ body{padding-bottom:calc(66px + max(12px,env(safe-area-inset-bottom)))}
 .wand-kopf,.wand-raster{grid-column:1/-1}
 .res-andock .plakette{position:static;width:100%}
 }
+.fakten div{border-top-color:rgb(162 62 29/.35)}
+.fakten div:last-child{border-bottom-color:rgb(162 62 29/.35)}
+form[data-reservierung]{background-color:#FAF2E4;background-image:linear-gradient(rgb(162 62 29/.07) 1px,transparent 1px),linear-gradient(90deg,rgb(162 62 29/.07) 1px,transparent 1px)}
+.res-punkt::after{background:rgb(162 62 29/.3)}
+.res-label{border-color:rgb(162 62 29/.55)}
+.einwilligung{border-color:rgb(162 62 29/.3)}
+.res-radio:checked+.res-label{border-color:var(--kobalt)}
+.zeiten{background:var(--holz)}
+.woche-tag[data-heute]{background:var(--ocker);border-color:var(--ocker);color:var(--tinte)}
+.woche-tag[data-heute][data-offen="ja"]::after{background:var(--tinte)}
+.zl-jetzt{background:var(--ocker)}
+.zl-jetzt b{background:var(--ocker);color:var(--tinte)}
+.hero-muster .m2::before{background:var(--ocker)}
+@media (hover:hover) and (pointer:fine){
+.knopf-rot:hover,.res-weiter:hover,form[data-reservierung] [type=submit]:hover{background:#6F161C}
+.res-label:hover{border-color:var(--kobalt)}
+}
+.band{--t:64px;display:flex;height:calc(var(--t) + 2px);overflow:hidden;background:var(--creme);border-block:1px solid var(--kobalt)}
+.band:empty{background-image:var(--viertel);background-size:var(--t) var(--t);background-color:var(--creme)}
+.band i{position:relative;flex:none;width:var(--t);height:var(--t);transform:none;background:var(--creme);box-shadow:inset 0 0 0 1px var(--fuge);overflow:hidden}
+.band .m1{background:var(--viertel),var(--creme)}
+.band .m2::before{content:"";position:absolute;inset:20%;background:var(--ocker);transform:rotate(45deg)}
+.band .m2::after{content:"";position:absolute;inset:39%;background:var(--creme)}
+.band .m3::before{content:"";position:absolute;left:10%;right:10%;bottom:0;aspect-ratio:2/1;background:var(--kobalt);border-radius:999px 999px 0 0}
+.band .m4,.hero-muster .m4{background:radial-gradient(circle,var(--rot) 0 32%,transparent 33%),var(--creme)}
+.schluss .band{--t:56px}
+.ankommen{align-items:center}
+.ank-text{grid-column:1/7}
+.ank-bilder{grid-column:7/13;position:relative;padding:0 0 48px}
+.ank-gross{margin:0 0 0 18%;aspect-ratio:4/5;border-radius:20px;overflow:hidden}
+.ank-gross img{object-position:50% 40%}
+.ank-klein{position:absolute;left:0;bottom:0;width:40%;aspect-ratio:1;margin:0;border:6px solid var(--creme);border-radius:0 20px 0 0;overflow:hidden}
+.foto-nachweis{left:0;right:0;top:auto;bottom:0;max-width:none;padding:22px 10px 7px;border-radius:0;background:linear-gradient(rgb(35 25 21/0),rgb(35 25 21/.78));color:var(--creme);font-size:13px;text-align:right}
+[data-mitte] .foto-nachweis,.ank-gross .foto-nachweis{top:auto;bottom:0}
+.schluss [data-hintergrund-bild] .foto-nachweis{left:auto;right:12px;bottom:80px;padding:0;background:none;color:var(--creme)}
+.res-andock{display:grid;gap:12px}
+.res-andock .plakette{position:static;order:2;width:100%;aspect-ratio:auto;flex-direction:row;align-items:center;padding:12px 16px}
+.res-andock .plakette [data-bewertung]{flex-wrap:nowrap;align-items:center}
+.res-andock .plakette .bew-text{width:auto;margin:0 0 0 8px}
+.res-punkt::after{height:10px;background:radial-gradient(circle,var(--kobalt) 0 2.5px,transparent 3px) 0 50%/12px 10px repeat-x}
+.res-erledigt::after{background:var(--viertel),var(--creme);background-size:10px 10px}
+.res-nr{width:40px;height:40px;box-shadow:inset 0 0 0 1px var(--fuge)}
+@media (min-width:820px){
+.hero-bild{place-items:stretch;padding:24px}
+.hero-foto{width:100%;max-width:none;height:100%;grid-template-rows:minmax(0,1fr) auto}
+.hero-rahmen{height:100%;aspect-ratio:auto;min-height:420px;max-height:none}
+.hero-rahmen>img{position:absolute;inset:0}
+.hero-mini{width:140px}
+}
+@media (max-width:819px){
+.band,.schluss .band{--t:40px}
+.hero-rahmen{aspect-ratio:2/1}
+.hero-mini{width:84px}
+.ank-bilder{grid-column:1/-1;padding:0}
+.ank-gross{margin:0;width:100%}
+.ank-klein{position:relative;left:auto;bottom:auto;width:45%;margin:-48px 0 0 12px}
+.plakette{justify-content:center}
+.plakette .bew-text::before{content:"· "}
+form[data-reservierung]{min-height:0;scroll-margin-bottom:calc(var(--leiste-h) + 24px + env(safe-area-inset-bottom))}
+.res{padding-bottom:calc(var(--leiste-h) + 48px + env(safe-area-inset-bottom))}
+.res-nav{flex-wrap:wrap}
+.res-weiter,form[data-reservierung] [type=submit]{flex:1 1 100%;width:100%;min-height:52px}
+.res-zurueck{flex:1 1 100%;min-height:48px}
+}
 </style>
 <meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}:where(:root){--ease-out:cubic-bezier(.23,1,.32,1);--ease-in-out:cubic-bezier(.77,0,.175,1);--ease-drawer:cubic-bezier(.32,.72,0,1)}:where(html){-webkit-tap-highlight-color:transparent}:where(a,button,label,summary,select,[role=button]){touch-action:manipulation}:where(button,.res-option,.spur-steuerung button){-webkit-user-select:none;user-select:none}:where([data-spur],[data-tage]){overscroll-behavior-x:contain}:where(.woche){list-style:none;margin:0;padding:0;display:grid;gap:.4rem}:where(.woche-tag){display:flex;justify-content:space-between;gap:1rem;font-variant-numeric:tabular-nums}:where(.woche-tag[data-heute]){font-weight:700}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}[data-reservierung] [hidden],form[data-reservierung][hidden],[data-reservierung-erfolg][hidden]{display:none!important}:where(img){height:auto}[data-hintergrund]{position:relative;isolation:isolate;overflow:clip}:where([data-hintergrund="dunkel"]){background-color:#15120f;color:#fbf6ee}:where([data-hintergrund="hell"]){background-color:#f3eee6;color:#1b1814}[data-hintergrund-bild]{position:absolute!important;inset:0!important;z-index:-1!important;margin:0!important;padding:0!important;width:auto!important;height:auto!important;max-width:none!important;overflow:hidden!important;border:0!important;transform:none!important}[data-hintergrund-bild] img{position:absolute!important;left:0!important;top:-8%!important;width:100%!important;height:116%!important;max-width:none!important;max-height:none!important;object-fit:cover!important;display:block;border-radius:0!important;margin:0!important}[data-hintergrund-bild]::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:var(--schleier-grund),var(--schleier,linear-gradient(180deg,transparent 30%,rgb(0 0 0/.12)))}[data-hintergrund="dunkel"] [data-hintergrund-bild]{--schleier-grund:linear-gradient(rgb(12 10 8/.5),rgb(12 10 8/.5))}[data-hintergrund="hell"] [data-hintergrund-bild]{--schleier-grund:linear-gradient(rgb(250 247 242/.62),rgb(250 247 242/.62))}[data-hintergrund-bild] .foto-nachweis,[data-hintergrund-bild] figcaption{position:absolute!important;right:12px;bottom:10px;z-index:2;margin:0;color:#fff;opacity:.85;text-shadow:0 1px 3px rgb(0 0 0/.7)}[data-hintergrund="hell"] [data-hintergrund-bild] .foto-nachweis,[data-hintergrund="hell"] [data-hintergrund-bild] figcaption{color:#1b1814;text-shadow:0 1px 3px rgb(255 255 255/.8)}:where([data-bewertung]){display:inline-flex;align-items:baseline;gap:.35em;flex-wrap:wrap}:where(.bew-stern){color:#E3A21A}:where(.bew-zahl){font-weight:700;font-variant-numeric:tabular-nums}:where(.res-fortschritt){list-style:none;display:flex;gap:.75rem;padding:0;margin:0 0 1rem}:where(.res-punkt){display:flex;align-items:center;gap:.45rem;flex:1;opacity:.5}:where(.res-punkt.res-jetzt,.res-punkt.res-erledigt){opacity:1}:where(.res-punkt.res-erledigt){cursor:pointer}:where(.res-nr){display:inline-grid;place-items:center;width:1.7em;height:1.7em;border-radius:50%;border:1px solid currentColor;font-size:.85em;flex:none}:where(.res-zusammenfassung){margin:0 0 1rem;font-size:.92em;opacity:.8}:where(.res-nav){display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin-top:1.25rem}:where(.res-nav .res-weiter,.res-nav [type=submit]){margin-left:auto}:where(.res-nav button){min-height:44px}:where(.res-zeitgruppe){margin:0 0 .75rem}:where(.res-zeitreihe){display:flex;flex-wrap:wrap;gap:.5rem}:where(.res-tageszeit){margin:0 0 .35rem;font-size:.78em;letter-spacing:.08em;text-transform:uppercase;opacity:.7}@media (max-width:560px){:where(.res-punkt:not(.res-jetzt) .res-titel){display:none}:where(.res-punkt:not(.res-jetzt)){flex:none}:where(.res-zeitreihe){display:grid;grid-template-columns:repeat(4,1fr)}:where(.res-nav button){min-height:48px}:where(.res-nav .res-weiter,.res-nav [type=submit]){flex:1}[data-reservierung] input:not([type=radio]):not([type=checkbox]),[data-reservierung] textarea,[data-reservierung] select{font-size:max(16px,1em)!important}}</style><!--agent-lib--><link rel="stylesheet" href="lib/lenis.css"><script src="lib/gsap.min.js"></script><script src="lib/ScrollTrigger.min.js"></script><script src="lib/SplitText.min.js"></script><script src="lib/lenis.min.js"></script><!--/agent-lib--></head>
 <body><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für Vasco da Gama. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="angebot/" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">So wird daraus Ihre Website</a> oder <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
@@ -412,20 +476,20 @@ body{padding-bottom:calc(66px + max(12px,env(safe-area-inset-bottom)))}
 <div class="hero-bild">
 <figure class="hero-foto" data-foto>
 <div class="hero-rahmen">
-<img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfRn-ru7X7mtXLfuHs9c_R745Uwcau0K5nT2fBF0zI63AeRADHcxDz9hWz5IyzVktMqwTSfSH-cqJ3JLjUUgB_z8Uchp7Jg6SInKRjqFgNN0k9LFiArAOH3FwEaW-A5Au5e_zzY=s4800-w1000" alt="Terrasse des Vasco da Gama unter der blauen Markise, gedeckte Tische mit Holzstühlen auf dem Gehweg" width="800" height="1000" referrerpolicy="no-referrer" fetchpriority="high">
+<img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfCvGXYl6T2zkvhNOsOmntKoLGYYKNeLrkaUF7Kv4G5BkCrfPS8UkdKt_KRLB7Zrs9je1oKkAaNs3OQHWcbAvTgAmLQay0p1v1LB_vxojl6-Ms1mqAR6aqPXwSfagDrKNarKzQIO3ZlIS3R=s4800-w1000" alt="Pfanne mit Fischfilet, Meeresfrüchten und Gemüse im Vasco da Gama" width="800" height="1000" referrerpolicy="no-referrer" fetchpriority="high">
 <figure class="hero-mini" data-foto>
-<img src="https://lh3.googleusercontent.com/grass-cs/AABkmLeQ-Kda7jaHKV3JPKz8bfTiTeEhOpN6LcLs2Q8IvRjuHcG-KkkkijSCHb1CPj12gfpUUEVS4jiJIv2a6SHvhR-wG5snXvUWthJ9JxPL4jDmq3xM_G6dIHkkUBzhM7tFIJ_yUTMdwwywDFQ=s4800-w1000" alt="Paella mit Garnelen, Paprika und grünen Bohnen" width="180" height="180" referrerpolicy="no-referrer">
+<img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfqK_kQaSS-5Wpncz9951cafHJhDLZfwe4ebee96oU8SWdjRCXLR8MbtO_L4T25JLvHQXBzPFh3ceMA98z-TI1OKzzi506cBP8wtW7Fj6rjYqbz2lk3KkPoDHqq8ZvpzrQ3NVg19oiwze4=s4800-w1000" alt="Paella mit Garnelen, Paprika und grünen Bohnen" width="180" height="180" referrerpolicy="no-referrer">
 </figure>
 </div>
-<figcaption><span>Terrasse an der Langen Reihe 67, St. Georg</span><span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/116191617430962743928" target="_blank" rel="noopener">Foto: René Quint · Google Maps</a> · <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/115118460421274137667" target="_blank" rel="noopener">Paella: S. F. · Google Maps</a></span></figcaption>
+<figcaption><span>Fischpfanne, Vasco da Gama, Lange Reihe 67</span><span><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/116191617430962743928" target="_blank" rel="noopener">Foto: René Quint · Google Maps</a> · <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/115118460421274137667" target="_blank" rel="noopener">Paella: S. F. · Google Maps</a></span></figcaption>
 </figure>
 </div>
 <div class="hero-text">
-<div class="hero-muster" aria-hidden="true"><i class="m1"></i><i class="m2"></i><i class="m3"></i><i class="m1"></i><i class="m2"></i><i class="m3"></i><i class="m1"></i><i class="m2"></i><i class="m3"></i><i class="m1"></i></div>
+<div class="hero-muster" aria-hidden="true"><i class="m1"></i><i class="m2"></i><i class="m3"></i><i class="m4"></i><i class="m1"></i><i class="m2"></i><i class="m3"></i><i class="m4"></i><i class="m1"></i><i class="m2"></i><i class="m3"></i><i class="m4"></i></div>
 <p class="status"><i class="mini" aria-hidden="true"></i><span data-status></span></p>
 <div class="hero-kern">
 <h1 class="hero-name">VASCO DA GAMA</h1>
-<p class="unterzeile">Portugiesisch-spanisch: Paella, Tintenfisch, Rumpsteak – <span class="ak">unter blauer Markise.</span></p>
+<p class="unterzeile">Portugiesisch-spanisch: Paella, Tintenfisch, Rumpsteak – <span class="ak">an der Langen Reihe.</span></p>
 <p class="hero-satz">Portugiesische und spanische Küche in St. Georg, Mo–Sa ab 11:30 Uhr, sonntags ab 12 Uhr – drinnen zwischen Holz und Fliesen oder draußen auf dem Gehweg.</p>
 </div>
 <div class="hero-aktionen">
@@ -456,20 +520,20 @@ body{padding-bottom:calc(66px + max(12px,env(safe-area-inset-bottom)))}
 </div>
 <div class="ank-bilder">
 <figure class="ank-gross enthuellen" data-foto>
-<img src="https://lh3.googleusercontent.com/grass-cs/AABkmLelj3IsiEIvCCBNd315CYpkT-T6t_ykzm9XZ4zXeS5Z6r6HqhkeT9xYeZhwjmnRUSVD1gOERlx1UE_PUBL1Sbea4vE3N6i5dMvUm45NC-9Cou0K25Jsc9dzk0vM2laE-HuaoKeB1VxiI5U=s4800-w1000" alt="Gedeckter Tisch mit Tapas, gebratenen Pimientos, Brot und Getränken am Abend" width="800" height="1000" loading="lazy" referrerpolicy="no-referrer">
-<a class="foto-nachweis" href="https://maps.google.com/maps/contrib/104759272888011848397" target="_blank" rel="noopener">Foto: Michael Volpert · Google Maps</a>
+<img src="https://lh3.googleusercontent.com/grass-cs/AABkmLetj1b5fX9g38gEFJw6cwpPl3byO__ilAV6uJBn3bjPF4DZ1S83jiXQWgz1YkME_foZjKY3Y9GZ0yl9I7AbuAKxOnySqZuLXUTCi64BP1u1eurpyN6S6rE8IPRqaVsKX2wcs5n61CDVizSY=s4800-w1000" alt="Gastraum mit rot-weiß karierten Tischdecken, dunklem Holz und dem Porträt von Vasco da Gama" width="800" height="1000" loading="lazy" referrerpolicy="no-referrer">
+<a class="foto-nachweis" href="https://maps.google.com/maps/contrib/108195231868800886189" target="_blank" rel="noopener">Foto: Piotr · Google Maps</a>
 </figure>
 <figure class="ank-klein enthuellen" data-foto>
 <img src="https://lh3.googleusercontent.com/grass-cs/AABkmLet0nLlQWNUTz7qocgUswPFN0dA0urnMN-L2GqGDMXbrOiUafxoxz_Tf2mJgZDDvHQMkFNiQyfwDMZs1bQfQipDXaIWqsXfOEN2lZfjsuSfW3YeEfukUsE7Y7vXtqYDN2dBvtAvmKkvTb_g=s4800-w1800" alt="Gegrillte Fischfilets mit Meeresfrüchten, Kartoffeln und Karotten in der Pfanne" width="600" height="600" loading="lazy" referrerpolicy="no-referrer">
 <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/101622528113294622283" target="_blank" rel="noopener">Foto: Archi Huang · Google Maps</a>
 </figure>
-<img class="ank-aioli" src="ki-aioli-schale.webp" alt="Schälchen mit hausgemachtem Aioli" width="400" height="400" loading="lazy" data-tiefe="25">
+
 </div>
 </section>
 <section class="wand" data-szene="raster-zoom" aria-labelledby="wand-titel">
 <div class="wand-kopf">
 <h2 id="wand-titel">Die <span class="ak">Wand.</span></h2>
-<p>Fünf Fliesen aus der Langen Reihe: Terrasse, Paella, Gastraum, Fischpfanne, Eintopf aus der Tonschale.</p>
+<p>Fünf Fliesen aus der Langen Reihe: Fischpfanne, Paella, Gastraum, Eintopf aus der Tonschale und die Terrasse unter der Markise.</p>
 <div class="wand-admiral">
 <h3>Unter dem Admiral.</h3>
 <p>Im Gastraum hängt sein Porträt über karierten Decken und dunklem Holz. Daneben ein Fliesenbild mit Schiffen in Kobaltblau.</p>
@@ -477,11 +541,11 @@ body{padding-bottom:calc(66px + max(12px,env(safe-area-inset-bottom)))}
 </div>
 <div class="wand-raster">
 <figure class="kachel" data-foto>
-<img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfRn-ru7X7mtXLfuHs9c_R745Uwcau0K5nT2fBF0zI63AeRADHcxDz9hWz5IyzVktMqwTSfSH-cqJ3JLjUUgB_z8Uchp7Jg6SInKRjqFgNN0k9LFiArAOH3FwEaW-A5Au5e_zzY=s4800-w1000" alt="Terrasse unter der blauen Markise an der Langen Reihe" width="600" height="600" loading="lazy" referrerpolicy="no-referrer">
+<img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfCvGXYl6T2zkvhNOsOmntKoLGYYKNeLrkaUF7Kv4G5BkCrfPS8UkdKt_KRLB7Zrs9je1oKkAaNs3OQHWcbAvTgAmLQay0p1v1LB_vxojl6-Ms1mqAR6aqPXwSfagDrKNarKzQIO3ZlIS3R=s4800-w1000" alt="Pfanne mit Fischfilet, Meeresfrüchten und Gemüse" width="600" height="600" loading="lazy" referrerpolicy="no-referrer">
 <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/116191617430962743928" target="_blank" rel="noopener">Foto: René Quint · Google Maps</a>
 </figure>
 <figure class="kachel" data-foto>
-<img src="https://lh3.googleusercontent.com/grass-cs/AABkmLeQ-Kda7jaHKV3JPKz8bfTiTeEhOpN6LcLs2Q8IvRjuHcG-KkkkijSCHb1CPj12gfpUUEVS4jiJIv2a6SHvhR-wG5snXvUWthJ9JxPL4jDmq3xM_G6dIHkkUBzhM7tFIJ_yUTMdwwywDFQ=s4800-w1000" alt="Paella mit Garnelen und Paprika, daneben ein Glas Weißwein" width="600" height="600" loading="lazy" referrerpolicy="no-referrer">
+<img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfqK_kQaSS-5Wpncz9951cafHJhDLZfwe4ebee96oU8SWdjRCXLR8MbtO_L4T25JLvHQXBzPFh3ceMA98z-TI1OKzzi506cBP8wtW7Fj6rjYqbz2lk3KkPoDHqq8ZvpzrQ3NVg19oiwze4=s4800-w1000" alt="Paella mit Garnelen und Paprika, daneben ein Glas Weißwein" width="600" height="600" loading="lazy" referrerpolicy="no-referrer">
 <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/115118460421274137667" target="_blank" rel="noopener">Foto: S. F. · Google Maps</a>
 </figure>
 <figure class="kachel" data-mitte data-foto>
@@ -490,11 +554,11 @@ body{padding-bottom:calc(66px + max(12px,env(safe-area-inset-bottom)))}
 
 </figure>
 <figure class="kachel" data-foto>
-<img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfCvGXYl6T2zkvhNOsOmntKoLGYYKNeLrkaUF7Kv4G5BkCrfPS8UkdKt_KRLB7Zrs9je1oKkAaNs3OQHWcbAvTgAmLQay0p1v1LB_vxojl6-Ms1mqAR6aqPXwSfagDrKNarKzQIO3ZlIS3R=s4800-w1000" alt="Fischpfanne mit Fischfilet, Garnelen, Tintenfisch, Kartoffeln und Gemüse" width="600" height="600" loading="lazy" referrerpolicy="no-referrer">
+<img src="https://lh3.googleusercontent.com/grass-cs/AABkmLe6h28YkB_1iYoTFg2TwF257zBWCU1kyVClm9odK7J04UPI6huB6aAA0ab5lJrGzP-keMFF1vZeH93cw0a4-dA3SPikU1j76-t9NzZijgUGzP8rNrkdR-SmVf6tFx_iWCvSudBn1G28Wl3Q=s4800-w1000" alt="Portugiesischer Fischeintopf in der Tonschale auf einem Holzbrett" width="600" height="600" loading="lazy" referrerpolicy="no-referrer">
 <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/115118460421274137667" target="_blank" rel="noopener">Foto: S. F. · Google Maps</a>
 </figure>
 <figure class="kachel" data-foto>
-<img src="https://lh3.googleusercontent.com/grass-cs/AABkmLe6h28YkB_1iYoTFg2TwF257zBWCU1kyVClm9odK7J04UPI6huB6aAA0ab5lJrGzP-keMFF1vZeH93cw0a4-dA3SPikU1j76-t9NzZijgUGzP8rNrkdR-SmVf6tFx_iWCvSudBn1G28Wl3Q=s4800-w1000" alt="Portugiesischer Fischeintopf in der Tonschale auf einem Holzbrett" width="600" height="600" loading="lazy" referrerpolicy="no-referrer">
+<img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfRn-ru7X7mtXLfuHs9c_R745Uwcau0K5nT2fBF0zI63AeRADHcxDz9hWz5IyzVktMqwTSfSH-cqJ3JLjUUgB_z8Uchp7Jg6SInKRjqFgNN0k9LFiArAOH3FwEaW-A5Au5e_zzY=s4800-w1000" alt="Terrasse unter der Markise an der Langen Reihe, Tische auf dem Gehweg" width="600" height="600" loading="lazy" referrerpolicy="no-referrer">
 <a class="foto-nachweis" href="https://maps.google.com/maps/contrib/106787869816023086224" target="_blank" rel="noopener">Foto: Torsten Führer · Google Maps</a>
 </figure>
 </div>
@@ -506,17 +570,17 @@ body{padding-bottom:calc(66px + max(12px,env(safe-area-inset-bottom)))}
 <p>Eine Auswahl aus der Karte. Die vollständige Karte und die Tagesgerichte an der Kreidetafel gibt es vor Ort.</p>
 </div>
 <div data-spur>
-<article class="gericht" data-foto><i class="mini ecke" aria-hidden="true"></i>
-<div class="gericht-bild"><img class="voll" src="https://lh3.googleusercontent.com/grass-cs/AABkmLeQ-Kda7jaHKV3JPKz8bfTiTeEhOpN6LcLs2Q8IvRjuHcG-KkkkijSCHb1CPj12gfpUUEVS4jiJIv2a6SHvhR-wG5snXvUWthJ9JxPL4jDmq3xM_G6dIHkkUBzhM7tFIJ_yUTMdwwywDFQ=s4800-w1000" alt="Paella mit Garnelen, Paprika und grünen Bohnen" width="400" height="400" loading="lazy" referrerpolicy="no-referrer"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/115118460421274137667" target="_blank" rel="noopener">Foto: S. F. · Google Maps</a></div>
+<article class="gericht" data-foto>
+<div class="gericht-bild"><img class="voll" src="https://lh3.googleusercontent.com/grass-cs/AABkmLfqK_kQaSS-5Wpncz9951cafHJhDLZfwe4ebee96oU8SWdjRCXLR8MbtO_L4T25JLvHQXBzPFh3ceMA98z-TI1OKzzi506cBP8wtW7Fj6rjYqbz2lk3KkPoDHqq8ZvpzrQ3NVg19oiwze4=s4800-w1000" alt="Paella mit Garnelen, Paprika und grünen Bohnen" width="400" height="400" loading="lazy" referrerpolicy="no-referrer"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/115118460421274137667" target="_blank" rel="noopener">Foto: S. F. · Google Maps</a></div>
 <h3>Paella mit Scampis</h3><p>In der Pfanne an den Tisch, mit Garnelen, Paprika und grünen Bohnen.</p></article>
-<article class="gericht" data-foto><i class="mini ecke" aria-hidden="true"></i>
-<div class="gericht-bild"><img class="voll" src="https://lh3.googleusercontent.com/grass-cs/AABkmLfCvGXYl6T2zkvhNOsOmntKoLGYYKNeLrkaUF7Kv4G5BkCrfPS8UkdKt_KRLB7Zrs9je1oKkAaNs3OQHWcbAvTgAmLQay0p1v1LB_vxojl6-Ms1mqAR6aqPXwSfagDrKNarKzQIO3ZlIS3R=s4800-w1000" alt="Fischpfanne mit Fischfilet, Garnelen, Tintenfisch, Kartoffeln und Gemüse" width="400" height="400" loading="lazy" referrerpolicy="no-referrer"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/115118460421274137667" target="_blank" rel="noopener">Foto: S. F. · Google Maps</a></div>
+<article class="gericht" data-foto>
+<div class="gericht-bild"><img class="voll" src="https://lh3.googleusercontent.com/grass-cs/AABkmLet0nLlQWNUTz7qocgUswPFN0dA0urnMN-L2GqGDMXbrOiUafxoxz_Tf2mJgZDDvHQMkFNiQyfwDMZs1bQfQipDXaIWqsXfOEN2lZfjsuSfW3YeEfukUsE7Y7vXtqYDN2dBvtAvmKkvTb_g=s4800-w1800" alt="Fischpfanne mit gegrilltem Fischfilet, Meeresfrüchten, Kartoffeln und Karotten" width="400" height="400" loading="lazy" referrerpolicy="no-referrer"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/101622528113294622283" target="_blank" rel="noopener">Foto: Archi Huang · Google Maps</a></div>
 <h3>Fischpfanne</h3><p>Fischfilet, Garnelen, Tintenfisch, Kartoffeln und Gemüse aus einer Pfanne.</p></article>
-<article class="gericht" data-foto><i class="mini ecke" aria-hidden="true"></i>
-<div class="gericht-bild"><img class="voll" src="https://lh3.googleusercontent.com/grass-cs/AABkmLe6h28YkB_1iYoTFg2TwF257zBWCU1kyVClm9odK7J04UPI6huB6aAA0ab5lJrGzP-keMFF1vZeH93cw0a4-dA3SPikU1j76-t9NzZijgUGzP8rNrkdR-SmVf6tFx_iWCvSudBn1G28Wl3Q=s4800-w1000" alt="Portugiesischer Fischeintopf in der Tonschale auf einem Holzbrett" width="400" height="400" loading="lazy" referrerpolicy="no-referrer"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/106787869816023086224" target="_blank" rel="noopener">Foto: Torsten Führer · Google Maps</a></div>
+<article class="gericht" data-foto>
+<div class="gericht-bild"><img class="voll" src="https://lh3.googleusercontent.com/grass-cs/AABkmLe6h28YkB_1iYoTFg2TwF257zBWCU1kyVClm9odK7J04UPI6huB6aAA0ab5lJrGzP-keMFF1vZeH93cw0a4-dA3SPikU1j76-t9NzZijgUGzP8rNrkdR-SmVf6tFx_iWCvSudBn1G28Wl3Q=s4800-w1000" alt="Portugiesischer Fischeintopf in der Tonschale auf einem Holzbrett" width="400" height="400" loading="lazy" referrerpolicy="no-referrer"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/115118460421274137667" target="_blank" rel="noopener">Foto: S. F. · Google Maps</a></div>
 <h3>Fischeintopf in der Tonschale</h3><p>Portugiesisch, auf dem Holzbrett serviert.</p></article>
-<article class="gericht" data-foto><i class="mini ecke" aria-hidden="true"></i>
-<div class="gericht-bild"><img class="voll" src="https://lh3.googleusercontent.com/grass-cs/AABkmLelj3IsiEIvCCBNd315CYpkT-T6t_ykzm9XZ4zXeS5Z6r6HqhkeT9xYeZhwjmnRUSVD1gOERlx1UE_PUBL1Sbea4vE3N6i5dMvUm45NC-9Cou0K25Jsc9dzk0vM2laE-HuaoKeB1VxiI5U=s4800-w1000" alt="Tapas mit gebratenen Pimientos, Brot und Getränken auf dem Tisch" width="400" height="400" loading="lazy" referrerpolicy="no-referrer"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/104759272888011848397" target="_blank" rel="noopener">Foto: Michael Volpert · Google Maps</a></div>
+<article class="gericht" data-foto>
+<div class="gericht-bild"><img class="voll" src="" alt="Tapas mit gebratenen Pimientos, Brot und Getränken auf dem Tisch" width="400" height="400" loading="lazy" referrerpolicy="no-referrer"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/104759272888011848397" target="_blank" rel="noopener">Foto: Michael Volpert · Google Maps</a></div>
 <h3>Tapas zum Teilen</h3><p>Pimientos, Oliven, Albondigas, Calamares frittiert, dazu Brot.</p></article>
 <article class="gericht gericht-rest">
 <h3>Außerdem auf der Karte</h3>
@@ -549,7 +613,7 @@ body{padding-bottom:calc(66px + max(12px,env(safe-area-inset-bottom)))}
 </div>
 </div>
 <div class="lage" id="lage">
-<div class="karte-rahmen"><div data-karte data-stil="hell" data-farbe="#B3162B"></div></div>
+<div class="karte-rahmen"><div data-karte data-stil="hell" data-farbe="#8C1D24"></div></div>
 <div class="lage-text">
 <h3>Lange Reihe 67</h3>
 <p>20099 Hamburg-St. Georg. Achte auf die blaue Markise: darunter stehen die Tische auf dem Gehweg, der Eingang liegt direkt dahinter, neben dem Warsteiner-Schild.</p>
@@ -572,7 +636,7 @@ body{padding-bottom:calc(66px + max(12px,env(safe-area-inset-bottom)))}
 <a class="knopf knopf-linie" href="tel:+49402803305">Anrufen · 040 2803305</a>
 <div class="res-andock">
 <a class="plakette" href="https://www.google.com/maps/search/?api=1&amp;query=Restaurante+Vasco+da+Gama&amp;query_place_id=ChIJzdML_eeOsUcRmxSFd9WeXeI" target="_blank" rel="noopener"><span data-bewertung aria-label="4,3 von 5 Sternen bei 1.723 Google-Bewertungen"><span class="bew-stern" aria-hidden="true">★</span><span class="bew-zahl">4,3</span><span class="bew-text">1.723 Bewertungen auf Google</span></span></a>
-<figure class="res-foto" data-foto><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfCvGXYl6T2zkvhNOsOmntKoLGYYKNeLrkaUF7Kv4G5BkCrfPS8UkdKt_KRLB7Zrs9je1oKkAaNs3OQHWcbAvTgAmLQay0p1v1LB_vxojl6-Ms1mqAR6aqPXwSfagDrKNarKzQIO3ZlIS3R=s4800-w1000" alt="Fischpfanne mit Fischfilet, Garnelen und Kartoffeln" width="600" height="750" loading="lazy" referrerpolicy="no-referrer"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/115118460421274137667" target="_blank" rel="noopener">Foto: S. F. · Google Maps</a></figure>
+<figure class="res-foto" data-foto><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLe6h28YkB_1iYoTFg2TwF257zBWCU1kyVClm9odK7J04UPI6huB6aAA0ab5lJrGzP-keMFF1vZeH93cw0a4-dA3SPikU1j76-t9NzZijgUGzP8rNrkdR-SmVf6tFx_iWCvSudBn1G28Wl3Q=s4800-w1000" alt="Portugiesischer Fischeintopf in der Tonschale" width="600" height="750" loading="lazy" referrerpolicy="no-referrer"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/115118460421274137667" target="_blank" rel="noopener">Foto: S. F. · Google Maps</a></figure>
 </div>
 </div>
 <form data-reservierung>
@@ -650,7 +714,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 const kopf=document.querySelector(".kopf");
 const scr=()=>kopf.classList.toggle("ist-gescrollt",scrollY>8);scr();addEventListener("scroll",scr,{passive:true});
 const bands=[...document.querySelectorAll(".band")];
-bands.forEach(b=>{const t=b.clientHeight/2||40,cols=Math.ceil(Math.max(b.clientWidth,innerWidth)/t)+2;let h="";for(let i=0;i<cols*2;i++){const c=i>>1,r=i&1,base=r?(c%2?180:270):(c%2?90:0);h+=`<i style="--r:${base}deg" data-r="${base}"></i>`}b.innerHTML=h});
+bands.forEach(b=>{const t=b.clientHeight||64,cols=Math.ceil(Math.max(b.clientWidth,innerWidth)/t)+1;let h="";for(let c=0;c<cols;c++)h+=`<i class="m${c%4+1}"></i>`;b.innerHTML=h});
 const zl=document.querySelector(".zeitleiste");
 if(zl){const p=Object.fromEntries(new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Berlin",weekday:"short",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(new Date()).map(x=>[x.type,x.value]));
 const so=p.weekday==="Sun",h=+p.hour+ +p.minute/60,auf=so?12:11.5,zu=so?22:23,pos=x=>(x-10)/14*100;
@@ -673,7 +737,7 @@ SplitText.create(".hero-name",{type:"lines",mask:"lines",onSplit:s=>gsap.from(s.
 });
 mm.add("(prefers-reduced-motion: no-preference)",()=>{
 bands.forEach(b=>gsap.from(b.children,{rotation:"-=90",opacity:0,scale:.95,duration:.7,ease:"expo.out",stagger:{amount:.5},scrollTrigger:{trigger:b,start:"top 92%",once:true}}));
-gsap.utils.toArray(".enthuellen").forEach((el,i)=>gsap.fromTo(el,{clipPath:"inset(12% 12% 12% 12%)",opacity:.4},{clipPath:"inset(0% 0% 0% 0%)",opacity:1,duration:.9,delay:i*.08,ease:"power3.out",clearProps:"clipPath,opacity",scrollTrigger:{trigger:el,start:"top 88%",once:true}}));
+gsap.utils.toArray(".enthuellen").forEach((el,i)=>gsap.from(el,{clipPath:"inset(12% 12% 12% 12% round 20px)",duration:.9,delay:i*.08,ease:"power3.out",clearProps:"clipPath",scrollTrigger:{trigger:el,start:"top 88%",once:true}}));
 if(matchMedia("(hover:hover) and (pointer:fine)").matches)document.querySelectorAll(".magnet").forEach(el=>{const x=gsap.quickTo(el,"x",{duration:.4,ease:"power3.out"}),y=gsap.quickTo(el,"y",{duration:.4,ease:"power3.out"});el.addEventListener("pointermove",e=>{const r=el.getBoundingClientRect();x((e.clientX-r.left-r.width/2)*.2);y((e.clientY-r.top-r.height/2)*.3)});el.addEventListener("pointerleave",()=>{x(0);y(0)})});
 });
 if(window.Lenis&&matchMedia("(pointer: fine) and (prefers-reduced-motion: no-preference)").matches){const lenis=new Lenis({autoRaf:false});lenis.on("scroll",ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0)}
@@ -1700,99 +1764,5 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   }
   if (D.readyState === "loading") D.addEventListener("DOMContentLoaded", run); else run();
 })();
-</script><!--/agent-szenen--><!--agent-angebot-hinweis--><script>(function () {
-  var NAME = "Vasco da Gama", SLUG = "vasco-da-gama-hamburg-9711", NACH = 60 * 1000;
-  if (navigator.webdriver) return;
-  var aktiv = 0, letzt = Date.now(), host = null, vorher = null;
-  function tippt() { var a = document.activeElement; return a && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName); }
-  function tick() {
-    var jetzt = Date.now();
-    if (document.visibilityState === "visible") aktiv += Math.min(jetzt - letzt, 2000);
-    letzt = jetzt;
-    if (aktiv >= (window.__angebotNach || NACH) && !tippt()) zeigen(); else setTimeout(tick, 1000);
-  }
-  function zu() {
-    if (!host) return;
-    var h = host; host = null;
-    h.shadowRoot.querySelector(".w").classList.remove("an");
-    document.removeEventListener("keydown", taste, true);
-    setTimeout(function () { h.remove(); }, 260);
-    if (vorher && vorher.focus) try { vorher.focus({ preventScroll: true }); } catch (e) {}
-  }
-  function taste(e) {
-    if (!host) return;
-    if (e.key === "Escape") { e.preventDefault(); zu(); return; }
-    if (e.key === "Tab") {  // Fokus bleibt im Fenster
-      var r = host.shadowRoot, f = [].slice.call(r.querySelectorAll("a,button")), i = f.indexOf(r.activeElement);
-      e.preventDefault();
-      f[(i + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
-    }
-  }
-  function zeigen() {
-    vorher = document.activeElement;
-    host = document.createElement("div");
-    host.id = "medialyte-angebot";
-    host.style.cssText = "all:initial;position:fixed;inset:0;z-index:2147483646";
-    var r = host.attachShadow({ mode: "open" });
-    var haken = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
-    r.innerHTML = '<style>' +
-      ':host{all:initial}*{box-sizing:border-box}' +
-      '.w{position:fixed;inset:0;display:grid;place-items:center;padding:20px;padding-bottom:max(20px,env(safe-area-inset-bottom));' +
-      'font:400 16px/1.55 Poppins,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;overscroll-behavior:contain}' +
-      '.grund{position:absolute;inset:0;background:rgba(8,14,26,.58);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:0;transition:opacity .3s cubic-bezier(.23,1,.32,1)}' +
-      '.k{position:relative;width:min(460px,100%);max-height:calc(100dvh - 40px);overflow:auto;padding:30px 28px 24px;border-radius:24px;background:#0E192A;color:#fff;text-align:center;' +
-      'box-shadow:0 40px 90px -30px rgba(0,0,0,.7);opacity:0;transform:translateY(14px) scale(.96);' +
-      'transition:opacity .25s cubic-bezier(.23,1,.32,1),transform .45s cubic-bezier(.23,1,.32,1)}' +
-      '.w.an .grund,.w.an .k{opacity:1}.w.an .k{transform:none}' +
-      '.k::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:linear-gradient(341deg,#7BAFFF,#FF5757);' +
-      '-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}' +
-      '.dach{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.08);font-size:13px;font-weight:600;color:rgba(255,255,255,.85)}' +
-      '.dach i{width:8px;height:8px;border-radius:50%;background:#FF5757;box-shadow:0 0 0 3px rgba(255,87,87,.25)}' +
-      'h2{margin:16px 0 0;font:600 clamp(24px,6.4vw,30px)/1.18 Poppins,system-ui,sans-serif;letter-spacing:-.015em;text-wrap:balance}' +
-      'p{margin:10px 0 0;color:rgba(255,255,255,.78);font-size:16px;text-wrap:pretty}' +
-      'ul{list-style:none;margin:20px 0 0;padding:16px 18px;border-radius:16px;background:rgba(255,255,255,.06);display:grid;gap:10px;text-align:left}' +
-      'li{display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.4}' +
-      'li span{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:rgba(75,227,166,.16);color:#4BE3A6}' +
-      'li svg{width:14px;height:14px}' +
-      'a.los{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:54px;margin-top:22px;padding:12px 18px;border-radius:15px;' +
-      'background:#fff;color:#0E192A;font:600 17px/1.2 Poppins,system-ui,sans-serif;text-decoration:none;box-shadow:0 14px 30px -14px rgba(255,255,255,.45);' +
-      'transition:transform .16s cubic-bezier(.23,1,.32,1)}' +
-      'a.los:active{transform:scale(.97)}a.los svg{width:20px;height:20px;transition:transform .2s cubic-bezier(.23,1,.32,1)}' +
-      'button{all:unset;cursor:pointer;border-radius:12px;color:rgba(255,255,255,.7);font:500 15px/1.2 Poppins,system-ui,sans-serif}' +
-      'button.weiter{display:block;margin:8px auto 0;padding:12px 16px}' +
-      'button.x{position:absolute;top:12px;right:12px;width:40px;height:40px;display:grid;place-items:center;font-size:24px;line-height:1}' +
-      'small{display:block;margin-top:10px;font-size:12.5px;color:rgba(255,255,255,.5)}.k:focus{outline:none}' +
-      'button:focus-visible,a:focus-visible{outline:3px solid #7BAFFF;outline-offset:3px}' +
-      '@media (hover:hover) and (pointer:fine){a.los:hover svg{transform:translateX(4px)}button:hover{color:#fff;background:rgba(255,255,255,.08)}}' +
-      '@media (max-width:420px){.k{padding:26px 20px 18px}}' +
-      '@media (prefers-reduced-motion:reduce){.k{transform:none;transition:opacity .2s}}' +
-      '@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.grund{background:rgba(8,14,26,.72)}}' +
-      '</style>' +
-      '<div class="w"><div class="grund"></div>' +
-      '<div class="k" role="dialog" aria-modal="true" aria-labelledby="t" aria-describedby="d" tabindex="-1">' +
-      '<button class="x" type="button" aria-label="Schließen">×</button>' +
-      '<div class="dach"><i></i><b id="name"></b></div>' +
-      '<h2 id="t">Gefällt Ihnen der Entwurf?</h2>' +
-      '<p id="d"></p>' +
-      '<ul><li><span>' + haken + '</span>Eigene Adresse, Hosting und SSL</li>' +
-      '<li><span>' + haken + '</span>Ihre Fotos, Ihre Speisekarte, Ihre Wünsche</li>' +
-      '<li><span>' + haken + '</span>Ein Website-Agent für kleine Änderungen</li></ul>' +
-      '<a class="los" href="angebot/">So wird es Ihre Website<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>' +
-      '<small>Unverbindlich. Alles Weitere besprechen wir persönlich.</small>' +
-      '<button class="weiter" type="button">Erst weiter ansehen</button>' +
-      '</div></div>';
-    r.getElementById("name").textContent = "Für " + NAME;
-    r.getElementById("d").textContent = "Aus diesem Entwurf wird die Website von " + NAME + ". Wir kümmern uns um alles.";
-    document.body.appendChild(host);
-    var w = r.querySelector(".w");
-    // Hinter dem Fenster scrollt die Demo nicht weiter
-    ["wheel", "touchmove"].forEach(function (t) { w.addEventListener(t, function (e) { if (!r.querySelector(".k").contains(e.target)) e.preventDefault(); }, { passive: false }); });
-    r.querySelector(".grund").addEventListener("click", zu);
-    r.querySelector(".x").addEventListener("click", zu);
-    r.querySelector(".weiter").addEventListener("click", zu);
-    document.addEventListener("keydown", taste, true);
-    requestAnimationFrame(function () { requestAnimationFrame(function () { w.classList.add("an"); r.querySelector(".k").focus({ preventScroll: true }); }); });
-  }
-  setTimeout(tick, 1000);
-})();</script><!--/agent-angebot-hinweis--></body>
+</script><!--/agent-szenen--></body>
 </html>
