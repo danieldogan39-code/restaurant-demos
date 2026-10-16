@@ -1,0 +1,1953 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SafranGarden · Persisches Restaurant im UG der Perle Passage, Hamburg</title>
+<meta name="description" content="SafranGarden: persische Küche im Untergeschoss der Perle Passage, Spitalerstraße 22, Hamburg. Lammhaxe mit Kräuterreis, Schmorgerichte mit Safranreis, Faloodeh. Mo–Fr 11–20 Uhr, Sa 9–20 Uhr.">
+<meta name="theme-color" content="#1A1B1D">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{
+--schiefer:#1A1B1D;--kachel:#26282C;--schwarz:#0E0E0F;--elfenbein:#F4EEE3;--safran:#F2B01E;--safran-hell:#FFC63F;--beere:#B8323A;--leise:#BDB6AA;--linie:#3A3C40;--rosa:#E58FC0;--fehler:#FF9AA0;
+--display:"Bricolage Grotesque",system-ui,sans-serif;--text:"Hanken Grotesk",system-ui,sans-serif;--serif:"Instrument Serif",Georgia,serif;
+--ease-out:cubic-bezier(.23,1,.32,1);--ease-in-out:cubic-bezier(.77,0,.175,1);--ease-drawer:cubic-bezier(.32,.72,0,1);
+--rand:clamp(1rem,5vw,4rem);--luft:clamp(4rem,9vw,8rem);--r:28px;--max:1320px;--gap:clamp(12px,1.4vw,16px);--kopf:64px}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--kopf) + 16px)}
+body{margin:0;background:var(--schiefer);color:var(--elfenbein);font:400 1.0625rem/1.6 var(--text);overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{margin:0;font-family:var(--display);text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+figure{margin:0}
+em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0}
+:focus-visible{outline:3px solid var(--safran);outline-offset:3px;border-radius:6px}
+.knopf,.res-label,.chip,button{-webkit-tap-highlight-color:transparent;touch-action:manipulation;user-select:none}
+.foto-nachweis{font-size:12.5px;line-height:1.35;color:var(--elfenbein);text-underline-offset:2px}
+.pill-nachweis{background:rgb(14 14 15/.82);padding:4px 10px;border-radius:999px}
+.innen{max-width:var(--max);margin-inline:auto;padding-inline:var(--rand)}
+.titel{font-weight:700;font-size:clamp(2.1rem,4.8vw,4.5rem);line-height:1.02;letter-spacing:-.025em}
+.punkt{display:inline-block;width:.62em;height:.62em;border-radius:50%;background:var(--safran);flex:none}
+.etikett{display:inline-block;background:var(--elfenbein);color:var(--beere);font:italic 700 clamp(.95rem,1.25vw,1.12rem)/1 var(--text);padding:.55em 1.05em;border-radius:999px;transform:rotate(-4deg);white-space:nowrap}
+
+.knopf{display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:48px;padding:14px 28px;border-radius:999px;border:0;font:700 1rem/1.2 var(--text);text-decoration:none;cursor:pointer;transition:transform .16s var(--ease-out),background-color .2s var(--ease-out),color .2s var(--ease-out),border-color .2s var(--ease-out)}
+.knopf:active{transform:scale(.97)}
+.knopf-safran{background:var(--safran);color:var(--schiefer)}
+.knopf-linie{background:transparent;color:var(--elfenbein);border:1.5px solid rgb(244 238 227/.55)}
+.knopf .pfeil{transition:transform .2s var(--ease-out)}
+.link-unter{display:inline-flex;align-items:center;min-height:44px;font-weight:600;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px;transition:color .2s var(--ease-out)}
+@media (hover:hover) and (pointer:fine){
+.knopf-safran:hover{background:var(--safran-hell)}
+.knopf-linie:hover{background:var(--elfenbein);color:var(--schiefer);border-color:var(--elfenbein)}
+.knopf:hover .pfeil,.textlink:hover .pfeil{transform:translateX(4px)}
+.link-unter:hover{color:var(--safran)}}
+
+.kopf{position:sticky;top:0;z-index:50;height:var(--kopf);background:var(--schiefer);border-bottom:1px solid transparent;transition:border-color .25s var(--ease-out),background-color .25s var(--ease-out)}
+.kopf.gescrollt{background:rgb(26 27 29/.96);border-bottom-color:var(--linie)}
+@supports (backdrop-filter:blur(1px)){.kopf.gescrollt{backdrop-filter:saturate(180%) blur(16px);-webkit-backdrop-filter:saturate(180%) blur(16px)}}
+.kopf-innen{height:100%;display:flex;align-items:center;gap:clamp(16px,3vw,40px);max-width:var(--max);margin-inline:auto;padding-inline:var(--rand)}
+.wortmarke-klein{font:800 1.35rem/1 var(--display);letter-spacing:-.03em;text-decoration:none;margin-right:auto;white-space:nowrap;min-height:44px;display:inline-flex;align-items:center}
+.wortmarke-klein span,.wortmarke .s{color:var(--safran)}
+.kopf-nav{display:flex;gap:clamp(12px,2.4vw,32px)}
+.kopf-nav a{font-size:.95rem;font-weight:600;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;position:relative}
+.kopf-nav a::after{content:"";position:absolute;left:0;right:0;bottom:8px;height:2px;background:var(--safran);transform:scaleX(0);transform-origin:left;transition:transform .22s var(--ease-out)}
+@media (hover:hover) and (pointer:fine){.kopf-nav a:hover::after{transform:scaleX(1)}}
+.kopf .knopf{min-height:44px;padding:10px 22px;font-size:.95rem}
+
+.hero{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(24px,3.5vw,56px);row-gap:20px;align-content:center;max-width:var(--max);margin-inline:auto;padding:clamp(24px,4vw,56px) var(--rand) clamp(40px,4vw,56px);min-height:calc(100svh - var(--kopf))}
+.statuszeile{grid-column:1/7;grid-row:1;align-self:end;display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;font-variant-numeric:tabular-nums;min-height:24px}
+.statuszeile:has([data-offen="nein"]) .punkt{background:#7A7C82}
+.hero-text{grid-column:1/7;grid-row:2;min-width:0}
+.marke{position:relative;display:inline-grid;font-size:clamp(2.6rem,5.2vw,5.2rem);padding-top:.62em}
+.lotus{position:absolute;top:0;left:2.98em;width:.56em;height:auto}
+.wortmarke{font-size:1em;font-weight:800;line-height:1;letter-spacing:-.03em;white-space:nowrap;overflow:clip;padding-block:.06em .12em}
+.wortmarke span{display:inline-block}
+.marke .etikett{justify-self:end;margin-top:-.15rem;margin-right:-.4rem}
+.aussage{margin-top:clamp(20px,2.6vw,36px);font-weight:700;font-size:clamp(1.9rem,3.4vw,3.3rem);line-height:1.05;letter-spacing:-.022em}
+.satz{margin-top:18px;max-width:52ch;font-size:1.125rem;color:var(--elfenbein)}
+.adresse{margin-top:22px;padding-top:14px;border-top:1px solid var(--linie);font-size:15px;color:var(--leise);max-width:56ch}
+.aktionen{margin-top:24px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px}
+.magnet{display:inline-block}
+.aktionen .knopf-safran{padding:16px 28px;font-variant-numeric:tabular-nums}
+.textlink{display:inline-flex;gap:.4em;align-items:center;margin-top:6px;min-height:44px;font-size:15px;font-weight:600;color:var(--safran);text-decoration:none}
+.textlink .pfeil{transition:transform .2s var(--ease-out)}
+.hero-bild{grid-column:7/13;grid-row:1/3;align-self:center;min-width:0}
+.buehne{position:relative;background:var(--schwarz);border-radius:var(--r);padding:64px 40px 132px}
+.teller{aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:var(--schwarz)}
+.teller img{width:100%;height:100%;object-fit:contain}
+.teller-cap{position:absolute;left:180px;right:28px;bottom:52px;display:grid;gap:2px;font-size:13px;line-height:1.35;color:var(--leise)}
+.teller-cap b{color:var(--elfenbein);font-weight:600}
+.plakette{position:absolute;top:16px;right:16px;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:8px 14px;border-radius:14px;background:var(--kachel);border:1px solid var(--linie);font-size:13px;text-decoration:none;transition:transform .16s var(--ease-out),border-color .2s var(--ease-out)}
+.plakette:active{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){.plakette:hover{border-color:var(--safran)}}
+.bew-stern{color:var(--safran)}
+.bew-zahl{font-weight:800;font-variant-numeric:tabular-nums}
+.bew-text{color:var(--leise)}
+.tee{position:absolute;left:-24px;bottom:-24px;width:168px}
+.tee-rund{width:168px;aspect-ratio:1/1;border-radius:50%;overflow:hidden;border:6px solid var(--schiefer);background:var(--schiefer)}
+.tee-rund img{width:100%;height:100%;object-fit:cover;object-position:50% 35%}
+.tee figcaption{position:absolute;left:calc(100% + 24px);bottom:46px;white-space:nowrap}
+
+.bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap);max-width:var(--max);margin-inline:auto;padding:0 var(--rand) var(--luft)}
+.kachel{position:relative;background:var(--kachel);border-radius:var(--r);padding:clamp(18px,2vw,26px);min-width:0}
+.k-woche{grid-column:span 4}.k-lage{grid-column:span 3}.k-dessert{grid-column:span 3}.k-res{grid-column:span 2}
+.k-titel{font-size:1.15rem;font-weight:700;letter-spacing:-.01em;margin-bottom:12px}
+.heute-label{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums}
+.tagesbalken{--a:.1818;--b:1;--p:0;position:relative;height:10px;border-radius:99px;background:var(--linie);margin:10px 0 6px}
+.tagesbalken i{position:absolute;inset-block:0;left:calc(var(--a) * 100%);right:calc((1 - var(--b)) * 100%);background:var(--safran);border-radius:inherit}
+.tagesbalken.ruhe i{display:none}
+.tagesbalken b{display:none;position:absolute;top:-6px;bottom:-6px;width:3px;border-radius:2px;background:var(--elfenbein);left:calc(var(--p) * 100%)}
+.tagesbalken.mit-jetzt b{display:block}
+.skala{display:flex;justify-content:space-between;font-size:13px;color:var(--leise);font-variant-numeric:tabular-nums;margin-bottom:12px}
+.woche{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.woche-tag{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:5px 10px;border-radius:10px;font-size:14px;line-height:1.4;color:var(--leise);font-variant-numeric:tabular-nums}
+.woche-name{display:inline-flex;align-items:center;gap:8px;font-weight:600}
+.woche-tag[data-heute]{background:var(--safran);color:var(--schiefer);font-weight:700}
+.woche-tag[data-heute] .woche-name::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--schiefer)}
+.woche-tag[data-heute][data-offen="nein"] .woche-name::before{background:transparent;border:2px solid var(--schiefer)}
+.ug{display:flex;align-items:center;gap:10px;font:800 clamp(2.6rem,4vw,3.6rem)/1 var(--display);letter-spacing:-.03em;color:var(--safran)}
+.ug svg{width:.6em;height:auto}
+.k-lage p{margin-top:12px;font-size:15px;line-height:1.5;hyphens:auto}
+.k-lage .link-unter{font-size:15px;margin-top:6px}
+.k-dessert{overflow:hidden;min-height:300px;background:var(--schwarz);display:flex;flex-direction:column}
+.k-nr{font:800 1.5rem/1 var(--display);color:var(--safran)}
+.k-dessert h3{font-size:1.3rem;font-weight:700;margin-top:8px;position:relative;z-index:1}
+.k-dessert .preis{font-size:15px;font-weight:700;color:var(--safran);font-variant-numeric:tabular-nums;position:relative;z-index:1}
+.k-dessert img{position:absolute;right:-12%;bottom:-16%;width:78%;height:auto;object-fit:contain;filter:drop-shadow(0 16px 18px rgb(0 0 0/.6))}
+.k-res{display:flex;flex-direction:column;justify-content:space-between;background:var(--safran);color:var(--schiefer);text-decoration:none;font:800 clamp(1.25rem,1.7vw,1.6rem)/1.05 var(--display);letter-spacing:-.02em;transition:transform .2s var(--ease-out)}
+.k-res small{font:600 14px/1.4 var(--text);letter-spacing:0}
+.k-res svg{width:44px;height:44px;transition:transform .2s var(--ease-out)}
+.k-res:active{transform:scale(.98)}
+.k-res::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:0 28px 56px -18px rgb(0 0 0/.7);opacity:0;transition:opacity .25s var(--ease-out);pointer-events:none}
+@media (hover:hover) and (pointer:fine){.k-res:hover{transform:translateY(-3px)}.k-res:hover::after{opacity:1}.k-res:hover svg{transform:translate(4px,4px)}}
+
+.angebot{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(24px,4vw,64px);row-gap:48px;align-items:center;padding-block:0 var(--luft)}
+.a-text{grid-column:1/6}
+.a-text .titel{font-size:clamp(2.1rem,4.4vw,4.5rem)}
+.a-text>p{margin-top:24px;max-width:56ch}
+.infoliste{margin:32px 0 0;display:grid}
+.infoliste div{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid var(--linie);font-size:15.5px}
+.infoliste div:last-child{border-bottom:1px solid var(--linie)}
+.infoliste dt{color:var(--leise)}
+.infoliste dd{margin:0;text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+.a-bilder{grid-column:7/13;min-width:0;position:relative}
+.gross{position:relative;background:var(--schwarz);border-radius:var(--r);padding:28px 28px 15%;clip-path:inset(0 0 0 0 round var(--r))}
+.gross .rahmen{aspect-ratio:4/3;border-radius:12px;overflow:hidden}
+.gross img{width:100%;height:100%;object-fit:contain}
+.gross figcaption{position:absolute;right:24px;bottom:18px}
+.klein{position:relative;width:36%;margin:-13% 0 0 -5%;border:6px solid var(--schiefer);border-radius:26px;background:var(--schiefer)}
+.klein .rahmen{aspect-ratio:3/4;border-radius:20px;overflow:hidden}
+.klein img{width:100%;height:100%;object-fit:cover}
+.klein figcaption{position:absolute;left:12px;right:12px;bottom:12px}
+
+.raster{padding:0 var(--rand) var(--luft)}
+.raster-kopf{max-width:var(--max);margin:0 auto clamp(24px,3vw,40px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px}
+.raster-kopf p{max-width:40ch;color:var(--leise)}
+.raster-gitter{max-width:var(--max);margin-inline:auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr) minmax(0,1fr);grid-template-areas:"a m d" "b m e";gap:var(--gap)}
+.r{position:relative;border-radius:22px;overflow:hidden;background:var(--schwarz);aspect-ratio:4/3}
+.r img{width:100%;height:100%;object-fit:cover}
+.r figcaption{position:absolute;left:10px;bottom:10px;right:10px}
+.r:nth-child(1){grid-area:a}.r:nth-child(2){grid-area:b}.r:nth-child(4){grid-area:d}.r:nth-child(5){grid-area:e}
+.r[data-mitte]{grid-area:m;aspect-ratio:auto}
+.r[data-mitte] figcaption{top:12px;bottom:auto}
+[data-raster-text]{position:absolute;left:16px;right:16px;bottom:16px;background:rgb(26 27 29/.92);border-radius:18px;padding:18px 20px}
+[data-raster-text] strong{display:block;font:800 clamp(1.4rem,2.6vw,2.4rem)/1.05 var(--display);letter-spacing:-.02em}
+[data-raster-text] span{display:block;margin-top:6px;font-size:15px;color:var(--leise)}
+
+.karte{padding-bottom:var(--luft)}
+.karte-kopf{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px;align-items:end;margin-bottom:clamp(24px,3vw,40px)}
+.karte-kopf p{color:var(--leise);max-width:46ch}
+.karte-kachel{background:var(--kachel);border-radius:var(--r);padding:clamp(18px,3vw,40px)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.chip{min-height:44px;padding:10px 20px;border-radius:999px;border:1px solid var(--linie);background:var(--schiefer);color:var(--elfenbein);font:600 15px/1 var(--text);cursor:pointer;transition:transform .16s var(--ease-out),background-color .2s var(--ease-out),color .2s var(--ease-out),border-color .2s var(--ease-out)}
+.chip:active{transform:scale(.98)}
+.chip[aria-selected="true"]{background:var(--safran);color:var(--schiefer);border-color:var(--safran)}
+@media (hover:hover) and (pointer:fine){.chip:not([aria-selected="true"]):hover{border-color:var(--elfenbein)}}
+.liste{list-style:none;margin:0;padding:0}
+.gericht{display:grid;grid-template-columns:3.2rem minmax(0,1fr);gap:16px;padding:20px 0;border-top:1px solid var(--linie)}
+.gericht:first-child{border-top:0;padding-top:4px}
+.g-nr{font:800 1.5rem/1.1 var(--display);color:var(--safran);font-variant-numeric:tabular-nums}
+.g-nr .punkt{width:12px;height:12px;margin-top:8px}
+.g-kopf{display:flex;align-items:baseline;gap:12px}
+.g-kopf h3{font-size:clamp(1.15rem,1.8vw,1.5rem);font-weight:600;letter-spacing:-.01em}
+.g-kopf .linie{flex:1;min-width:16px;border-bottom:1px solid var(--linie);transform:translateY(-5px)}
+.g-preis{font-weight:700;font-variant-numeric:tabular-nums;color:var(--safran);white-space:nowrap}
+.gericht p{margin-top:4px;font-size:1rem;color:var(--leise);max-width:60ch}
+.karte-hinweis{margin-top:24px;padding-top:18px;border-top:1px solid var(--linie);font-size:15px;color:var(--leise)}
+.karte-hinweis a{color:var(--elfenbein);font-weight:600}
+.vorschau{position:fixed;left:0;top:0;width:220px;pointer-events:none;z-index:60;opacity:0;transform:scale(.95)}
+.vorschau img{width:100%;height:auto;object-fit:contain;filter:drop-shadow(0 18px 20px rgb(0 0 0/.55))}
+
+.desserts{padding-bottom:var(--luft)}
+.d-kopf{max-width:var(--max);margin:0 auto clamp(24px,3vw,40px);padding-inline:var(--rand);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px}
+.d-kopf .titel{max-width:14ch}
+.d-kopf p{color:var(--leise);max-width:38ch}
+[data-spur]{display:flex;gap:var(--gap);padding-inline:var(--rand)}
+.paneel{flex:0 0 auto;width:clamp(260px,78vw,340px);background:var(--kachel);border-radius:var(--r);padding:12px;display:flex;flex-direction:column}
+.p-bild{position:relative;aspect-ratio:1/1;border-radius:16px;background:var(--schwarz);display:grid;place-items:center;overflow:hidden}
+.p-bild .frei{width:76%;height:auto;object-fit:contain;filter:drop-shadow(0 14px 16px rgb(0 0 0/.6))}
+.p-bild .voll{width:100%;height:100%;object-fit:cover}
+.p-bild figcaption{position:absolute;left:10px;bottom:10px;right:10px}
+.p-nr{position:absolute;top:12px;left:14px;font:800 1.5rem/1 var(--display);color:var(--safran);z-index:1}
+.p-text{padding:16px 8px 8px;display:grid;gap:4px}
+.p-text h3{font-size:1.3rem;font-weight:700;letter-spacing:-.01em}
+.p-text p{font-size:1rem;line-height:1.5;color:var(--leise)}
+.p-text .g-preis{margin-top:4px}
+.spur-steuerung{display:flex;align-items:center;gap:12px;max-width:var(--max);margin:20px auto 0;padding-inline:var(--rand);color:var(--safran)}
+.spur-leiste{flex:1;height:3px;border-radius:3px;background:var(--linie);overflow:hidden}
+.spur-leiste i{display:block;height:100%;background:currentColor;transform-origin:left}
+.spur-zurueck,.spur-weiter{width:44px;height:44px;border-radius:50%;border:1.5px solid currentColor;background:transparent;color:inherit;font:700 1.1rem/1 var(--text);cursor:pointer;transition:transform .16s var(--ease-out)}
+.spur-zurueck:active,.spur-weiter:active{transform:scale(.97)}
+
+.zeiten{padding-bottom:var(--luft)}
+.zeiten .titel{margin-bottom:clamp(24px,3vw,40px);max-width:16ch}
+.z-raster{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap);align-items:start}
+.z-leiste{grid-column:span 6}.z-karte{grid-column:span 3}.z-weg{grid-column:span 3}
+.z-raster>.kachel{clip-path:inset(0 0 0 0 round var(--r))}
+.z-status{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;margin-bottom:8px}
+.z-status:has([data-offen="nein"]) .punkt{background:#7A7C82}
+.zeitleiste{--name:3rem;--zeit:6.6rem;--p:0;position:relative;display:grid;gap:8px;padding-top:30px}
+.z-tag,.z-achse{display:grid;grid-template-columns:var(--name) minmax(0,1fr) var(--zeit);gap:12px;align-items:center}
+.z-tag{min-height:36px;font-size:15px;font-variant-numeric:tabular-nums}
+.z-name{font-weight:700;color:var(--leise)}
+.z-zeit{text-align:right;color:var(--leise)}
+.z-spur{position:relative;height:14px;border-radius:99px;background:#2F3135}
+.z-spur i{position:absolute;inset-block:0;left:calc(var(--a) * 100%);right:calc((1 - var(--b)) * 100%);border-radius:inherit;background:#55585E}
+.z-spur.ruhe{background:repeating-linear-gradient(135deg,#3A3C40 0 6px,#2B2D31 6px 12px)}
+.z-tag.ist-heute .z-name,.z-tag.ist-heute .z-zeit{color:var(--safran)}
+.z-tag.ist-heute .z-spur i{background:var(--safran)}
+.z-tag.ruhetag .z-zeit{color:var(--elfenbein)}
+.z-achse .z-skala{position:relative;height:18px;font-size:13px;color:var(--leise);font-variant-numeric:tabular-nums}
+.z-skala span{position:absolute;transform:translateX(-50%)}
+.z-skala span:last-child{transform:translateX(-100%)}
+.jetzt{display:none;position:absolute;top:0;bottom:30px;width:2px;background:var(--elfenbein);left:calc(var(--name) + 12px + (100% - var(--name) - var(--zeit) - 24px) * var(--p))}
+.jetzt span{position:absolute;top:0;left:50%;transform:translateX(-50%);background:var(--elfenbein);color:var(--schiefer);font-size:12.5px;font-weight:700;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.mit-jetzt .jetzt{display:block}
+.karte-rahmen{aspect-ratio:3/4;border-radius:16px;overflow:hidden;background:var(--schwarz)}
+.karte-rahmen [data-karte]{width:100%;height:100%}
+.z-karte p{margin-top:12px;font-size:14px;color:var(--leise)}
+.z-weg h3{font-size:1.3rem;font-weight:700;margin-bottom:10px}
+.z-weg p{font-size:1rem}
+.z-weg .adr{margin-top:14px;padding-top:12px;border-top:1px solid var(--linie);font-size:15px;color:var(--leise)}
+.z-weg .knopf{margin-top:18px;width:100%}
+
+.res{padding-bottom:var(--luft)}
+.res-raster{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap);align-items:stretch}
+.res-kachel{grid-column:span 8;min-width:0;padding:clamp(18px,3vw,40px)}
+.res-kopf{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:start;gap:16px;margin-bottom:24px}
+.res-kopf .titel{font-size:clamp(1.9rem,3.4vw,3.2rem);max-width:13ch}
+.res-kopf .plakette{position:static}
+.res-unter{color:var(--leise);margin-top:10px;font-size:15px}
+[data-reservierung]{max-width:640px;min-width:0;display:grid;gap:18px;min-height:500px;align-content:start}
+.res-fortschritt{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.res-punkt{position:relative;display:flex;align-items:center;gap:8px;padding-top:14px;font-size:14px;color:var(--leise)}
+.res-punkt::before,.res-punkt::after{content:"";position:absolute;top:0;left:0;right:0;height:4px;border-radius:4px;background:var(--linie)}
+.res-punkt::after{background:var(--safran);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease-out)}
+.res-jetzt::after,.res-erledigt::after{transform:scaleX(1)}
+.res-jetzt{color:var(--elfenbein);font-weight:700}
+.res-nr{font-variant-numeric:tabular-nums;font-weight:700}
+.res-zusammenfassung{margin:0;font-size:14px;font-weight:600;color:var(--safran);font-variant-numeric:tabular-nums;min-height:1.4em}
+[data-schritt]{display:grid;gap:14px;min-width:0}
+.s-titel{font-size:1.4rem;font-weight:700;letter-spacing:-.01em}
+.f-label,.res-tageszeit{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--leise);margin:0}
+[data-tage],[data-zeiten],[data-personen]{min-width:0}
+[data-tage]{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:8px}
+[data-zeiten]{display:grid;gap:16px}
+.res-zeitgruppe{display:grid;gap:8px;min-width:0}
+.res-zeitreihe{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:8px}
+[data-personen]{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+[data-personen] .res-label{min-height:60px;font:800 1.3rem/1 var(--display)}
+.res-option{position:relative;display:block;min-width:0}
+.res-radio{position:absolute;top:0;left:0;width:1px;height:1px;opacity:0;margin:0;pointer-events:none}
+.res-label{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:48px;padding:8px 6px;border-radius:14px;border:1px solid var(--linie);background:var(--schiefer);color:var(--elfenbein);font-size:15px;font-weight:600;font-variant-numeric:tabular-nums;text-align:center;cursor:pointer;transition:transform .16s var(--ease-out),background-color .2s var(--ease-out),border-color .2s var(--ease-out),color .2s var(--ease-out)}
+.res-label b{font-weight:700}
+.res-label small{font-size:13px;color:var(--leise);font-weight:500}
+.res-option:active .res-label{transform:scale(.98)}
+.res-radio:checked+.res-label{background:var(--safran);border-color:var(--safran);color:var(--schiefer)}
+.res-radio:checked+.res-label small{color:var(--schiefer)}
+.res-radio:focus-visible+.res-label{outline:3px solid var(--elfenbein);outline-offset:2px}
+@media (hover:hover) and (pointer:fine){.res-radio:not(:checked)+.res-label:hover{border-color:var(--elfenbein)}}
+[aria-invalid="true"]:is([data-tage],[data-zeiten],[data-personen]){outline:2px dashed var(--fehler);outline-offset:6px;border-radius:14px}
+.res-hinweis,.res-demo-hinweis{font-size:13px;color:var(--leise);margin:0}
+.res-mehr{font-size:14px;color:var(--leise)}
+.res-mehr a{color:var(--elfenbein);font-weight:600}
+.felder-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.feld{display:grid;gap:6px;min-width:0}
+.feld label{font-size:14px;font-weight:600}
+.feld input,.feld textarea{width:100%;font:400 16px/1.4 var(--text);min-height:48px;padding:12px 14px;border-radius:12px;border:1px solid #4A4C52;background:var(--schiefer);color:var(--elfenbein);transition:border-color .2s var(--ease-out)}
+.feld textarea{resize:vertical;min-height:84px}
+.feld input:focus,.feld textarea:focus{outline:none;border-color:var(--elfenbein)}
+.feld input:focus-visible,.feld textarea:focus-visible{outline:2px solid var(--elfenbein);outline-offset:1px}
+.feld [aria-invalid="true"]{border-color:var(--fehler)}
+.einwilligung{display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:12px;background:var(--schiefer);font-size:15px;line-height:1.5;cursor:pointer}
+.einwilligung input{width:22px;height:22px;margin:1px 0 0;flex:none;accent-color:var(--safran)}
+.einwilligung:has([aria-invalid="true"]){outline:2px solid var(--fehler)}
+[data-reservierung-fehler],.res-schritt-fehler{color:var(--fehler);font-size:14px;margin:0}
+.res-nav{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:6px}
+.res-weiter,[data-reservierung] button[type="submit"],[data-reservierung-neu]{flex:1;min-height:52px;padding:14px 28px;border:0;border-radius:999px;background:var(--safran);color:var(--schiefer);font:700 1rem/1.2 var(--text);cursor:pointer;transition:transform .16s var(--ease-out),background-color .2s var(--ease-out)}
+.res-zurueck{min-height:48px;padding:12px 22px;border-radius:999px;border:1px solid #4A4C52;background:transparent;color:var(--elfenbein);font:600 15px/1 var(--text);cursor:pointer;transition:transform .16s var(--ease-out),border-color .2s var(--ease-out)}
+.res-weiter:active,.res-zurueck:active,[data-reservierung] button[type="submit"]:active,[data-reservierung-neu]:active{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){.res-weiter:hover,[data-reservierung] button[type="submit"]:hover,[data-reservierung-neu]:hover{background:var(--safran-hell)}.res-zurueck:hover{border-color:var(--elfenbein)}}
+[data-reservierung-erfolg]:not([hidden]){display:grid;gap:14px;background:var(--schwarz);border-radius:20px;padding:clamp(20px,3vw,32px);position:relative}
+.erfolg-nr{font:800 2rem/1 var(--display);color:var(--safran)}
+[data-reservierung-erfolg] .etikett{justify-self:start}
+[data-reservierung-erfolg] h3{font-size:clamp(1.5rem,2.6vw,2rem);font-weight:700;letter-spacing:-.015em}
+.erfolg-liste{margin:0;display:grid;gap:0}
+.erfolg-liste div{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--linie);font-variant-numeric:tabular-nums}
+.erfolg-liste dt{color:var(--leise)}
+.erfolg-liste dd{margin:0;font-weight:700;text-align:right}
+.res-bild{grid-column:span 4;position:relative;border-radius:var(--r);overflow:hidden;background:var(--schwarz);min-height:420px;clip-path:inset(0 0 0 0 round var(--r))}
+.res-bild img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.res-bild figcaption{position:absolute;left:12px;bottom:12px;right:12px}
+
+.schluss{min-height:min(84svh,820px);display:grid;align-items:end;background:var(--schiefer);color:var(--elfenbein);padding:var(--luft) var(--rand)}
+.schluss-inhalt{max-width:var(--max);width:100%;margin-inline:auto;padding-left:calc((100% - 11 * var(--gap)) / 12 + var(--gap))}
+.schluss h2{font-weight:800;font-size:clamp(2.6rem,7vw,6.5rem);line-height:.98;letter-spacing:-.03em;max-width:11ch;margin-top:20px}
+.schluss .z-status{margin-top:22px}
+.schluss .aktionen{margin-top:20px}
+
+.fuss{background:var(--schiefer);border-top:1px solid var(--linie);padding:clamp(40px,5vw,64px) var(--rand) calc(var(--szene-unten,0px) + 24px)}
+.fuss-raster{max-width:var(--max);margin-inline:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;align-items:start}
+.fuss .wortmarke-klein{font-size:1.8rem;margin:0}
+.fuss .etikett{margin-top:14px;font-size:.95rem}
+.fuss h3{font:700 13px/1.4 var(--text);letter-spacing:.08em;text-transform:uppercase;color:var(--leise);margin-bottom:10px}
+.fuss p,.fuss address{font-style:normal;font-size:15px;line-height:1.65}
+.fuss a{min-height:44px;display:inline-flex;align-items:center}
+.rechtliches{display:grid;gap:8px;font-size:14px;color:var(--leise)}
+.rechtliches p{font-size:14px}
+
+.handyleiste{display:none}
+
+@media (max-width:1100px){
+.k-woche,.k-lage,.k-dessert,.k-res{grid-column:span 6}
+.k-res{min-height:160px}}
+@media (max-width:980px){.kopf-nav{display:none}}
+@media (max-width:820px){
+:root{--kopf:60px}
+body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+.hero{grid-template-columns:minmax(0,1fr);min-height:auto;row-gap:18px;padding-top:16px}
+.statuszeile,.hero-text,.hero-bild{grid-column:1;grid-row:auto}
+.hero-bild{order:0}.statuszeile{order:-1}.hero-text{order:1}
+.buehne{padding:14px 14px 106px;border-radius:24px}
+.teller{border-radius:10px}
+.plakette{top:10px;right:10px;padding:6px 10px;min-height:36px}
+.teller-cap{left:16px;right:118px;bottom:32px}
+.tee{left:auto;right:-6px;bottom:-16px;width:96px}
+.tee-rund{width:96px;border-width:5px}
+.tee figcaption{left:auto;right:calc(100% + 8px);bottom:20px}
+.marke{font-size:clamp(2.6rem,11vw,3.4rem)}
+.marke .etikett{justify-self:start;margin:10px 0 0}
+.aussage{font-size:clamp(1.75rem,7vw,2.2rem)}
+.aktionen{flex-direction:column;align-items:stretch;gap:10px}
+.magnet,.aktionen .knopf{width:100%}
+.aktionen .link-unter{justify-content:center;min-height:48px;padding:12px 24px;border:1.5px solid rgb(244 238 227/.55);border-radius:999px;text-decoration:none}
+.textlink{width:100%;justify-content:center}
+.bento{grid-template-columns:repeat(2,minmax(0,1fr))}
+.k-woche,.k-res{grid-column:span 2}.k-lage,.k-dessert{grid-column:span 1}
+.k-dessert{min-height:260px}
+.k-dessert img{width:96%;right:-22%;bottom:-12%}
+.angebot,.karte-kopf,.z-raster,.res-raster,.fuss-raster{grid-template-columns:minmax(0,1fr)}
+.a-text,.a-bilder,.z-leiste,.z-karte,.z-weg,.res-kachel,.res-bild{grid-column:1}
+.klein{width:44%;margin:-16% 0 0 4%}
+.raster-gitter{grid-template-columns:minmax(0,1fr);grid-template-areas:none}
+.r:nth-child(n){grid-area:auto}
+.r[data-mitte]{aspect-ratio:4/5}
+.karte-rahmen{aspect-ratio:4/3}
+.res-bild{min-height:0;aspect-ratio:4/3;order:-1}
+.schluss{min-height:72svh}
+.schluss-inhalt{padding-left:0}
+.schluss .aktionen .knopf{width:100%}
+.fuss-raster{gap:28px}
+.handyleiste{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:55;padding:10px 12px max(12px,env(safe-area-inset-bottom));background:rgb(26 27 29/.97);border-top:1px solid var(--linie)}
+.handyleiste .knopf{min-height:48px;padding:12px 10px;font-size:15px}}
+@media (max-width:560px){
+.zeitleiste{--name:2.4rem;--zeit:5.4rem}
+.z-tag{font-size:13.5px}
+.res{padding-inline:0}
+.res .innen{padding-inline:8px}
+.res-kachel{padding:18px;border-radius:24px}
+.res-kopf{padding-inline:2px}
+.res-punkt:not(.res-jetzt) .res-titel{display:none}
+[data-tage]{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:0;overscroll-behavior-x:contain;scrollbar-width:none;padding-bottom:2px}
+[data-tage]::-webkit-scrollbar{display:none}
+[data-tage] .res-option{flex:0 0 calc((100% - 24px) / 3.4);scroll-snap-align:start}
+.res-zeitreihe{grid-template-columns:repeat(4,minmax(0,1fr))}
+.res-label{font-size:14px}
+.felder-2{grid-template-columns:minmax(0,1fr)}
+.res-nav .res-zurueck{flex:0 0 auto}
+.res-weiter,[data-reservierung] button[type="submit"]{min-height:52px}
+.gericht{grid-template-columns:2.4rem minmax(0,1fr);gap:12px}
+.g-kopf{flex-wrap:wrap;column-gap:8px}
+.g-kopf .linie{display:none}
+.g-kopf .g-preis{margin-left:auto}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+</style>
+<meta name="robots" content="noindex, nofollow, noarchive"><style id="agent-basis">.foto-nachweis{font:11px/1.3 system-ui,sans-serif;color:inherit;opacity:.8}:where(:root){--ease-out:cubic-bezier(.23,1,.32,1);--ease-in-out:cubic-bezier(.77,0,.175,1);--ease-drawer:cubic-bezier(.32,.72,0,1)}:where(html){-webkit-tap-highlight-color:transparent}:where(a,button,label,summary,select,[role=button]){touch-action:manipulation}:where(button,.res-option,.spur-steuerung button){-webkit-user-select:none;user-select:none}:where([data-spur],[data-tage]){overscroll-behavior-x:contain}:where(.woche){list-style:none;margin:0;padding:0;display:grid;gap:.4rem}:where(.woche-tag){display:flex;justify-content:space-between;gap:1rem;font-variant-numeric:tabular-nums}:where(.woche-tag[data-heute]){font-weight:700}.ki-label{font:11px/1.3 system-ui,sans-serif}.rechtliches a{color:inherit}[data-reservierung] [hidden],form[data-reservierung][hidden],[data-reservierung-erfolg][hidden]{display:none!important}:where(img){height:auto}[data-hintergrund]{position:relative;isolation:isolate;overflow:clip}:where([data-hintergrund="dunkel"]){background-color:#15120f;color:#fbf6ee}:where([data-hintergrund="hell"]){background-color:#f3eee6;color:#1b1814}[data-hintergrund-bild]{position:absolute!important;inset:0!important;z-index:-1!important;margin:0!important;padding:0!important;width:auto!important;height:auto!important;max-width:none!important;overflow:hidden!important;border:0!important;transform:none!important}[data-hintergrund-bild] img{position:absolute!important;left:0!important;top:-8%!important;width:100%!important;height:116%!important;max-width:none!important;max-height:none!important;object-fit:cover!important;display:block;border-radius:0!important;margin:0!important}[data-hintergrund-bild]::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:var(--schleier-grund),var(--schleier,linear-gradient(180deg,transparent 30%,rgb(0 0 0/.12)))}[data-hintergrund="dunkel"] [data-hintergrund-bild]{--schleier-grund:linear-gradient(rgb(12 10 8/.5),rgb(12 10 8/.5))}[data-hintergrund="hell"] [data-hintergrund-bild]{--schleier-grund:linear-gradient(rgb(250 247 242/.62),rgb(250 247 242/.62))}[data-hintergrund-bild] .foto-nachweis,[data-hintergrund-bild] figcaption{position:absolute!important;right:12px;bottom:10px;z-index:2;margin:0;color:#fff;opacity:.85;text-shadow:0 1px 3px rgb(0 0 0/.7)}[data-hintergrund="hell"] [data-hintergrund-bild] .foto-nachweis,[data-hintergrund="hell"] [data-hintergrund-bild] figcaption{color:#1b1814;text-shadow:0 1px 3px rgb(255 255 255/.8)}:where([data-bewertung]){display:inline-flex;align-items:baseline;gap:.35em;flex-wrap:wrap}:where(.bew-stern){color:#E3A21A}:where(.bew-zahl){font-weight:700;font-variant-numeric:tabular-nums}:where(.res-fortschritt){list-style:none;display:flex;gap:.75rem;padding:0;margin:0 0 1rem}:where(.res-punkt){display:flex;align-items:center;gap:.45rem;flex:1;opacity:.5}:where(.res-punkt.res-jetzt,.res-punkt.res-erledigt){opacity:1}:where(.res-punkt.res-erledigt){cursor:pointer}:where(.res-nr){display:inline-grid;place-items:center;width:1.7em;height:1.7em;border-radius:50%;border:1px solid currentColor;font-size:.85em;flex:none}:where(.res-zusammenfassung){margin:0 0 1rem;font-size:.92em;opacity:.8}:where(.res-nav){display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin-top:1.25rem}:where(.res-nav .res-weiter,.res-nav [type=submit]){margin-left:auto}:where(.res-nav button){min-height:44px}:where(.res-zeitgruppe){margin:0 0 .75rem}:where(.res-zeitreihe){display:flex;flex-wrap:wrap;gap:.5rem}:where(.res-tageszeit){margin:0 0 .35rem;font-size:.78em;letter-spacing:.08em;text-transform:uppercase;opacity:.7}@media (max-width:560px){:where(.res-punkt:not(.res-jetzt) .res-titel){display:none}:where(.res-punkt:not(.res-jetzt)){flex:none}:where(.res-zeitreihe){display:grid;grid-template-columns:repeat(4,1fr)}:where(.res-nav button){min-height:48px}:where(.res-nav .res-weiter,.res-nav [type=submit]){flex:1}[data-reservierung] input:not([type=radio]):not([type=checkbox]),[data-reservierung] textarea,[data-reservierung] select{font-size:max(16px,1em)!important}}</style><!--agent-lib--><link rel="stylesheet" href="lib/lenis.css"><script src="lib/gsap.min.js"></script><script src="lib/ScrollTrigger.min.js"></script><script src="lib/lenis.min.js"></script><!--/agent-lib--></head>
+<body><div id="demo-bar" role="note" style="all:initial;display:block;position:relative;z-index:2147483000;background:#111;color:#eee;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;padding:8px 44px 8px 16px">Unverbindlicher Entwurf von Medialyte für SafranGarden. Nicht bei Google auffindbar, wird nach 30 Tagen gelöscht. Gefällt Ihnen der Entwurf? <a href="angebot/" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">So wird daraus Ihre Website</a> oder <a href="tel:01709647532" style="all:unset;color:#fff;font-weight:600;text-decoration:underline;cursor:pointer">0170 9647532</a><button type="button" aria-label="Hinweis schließen" onclick="this.parentNode.remove()" style="all:unset;position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#aaa;font-size:18px;padding:2px 6px">×</button></div>
+<header class="kopf">
+<div class="kopf-innen">
+<a class="wortmarke-klein" href="#start" aria-label="SafranGarden, zum Seitenanfang"><span>Safran</span>Garden</a>
+<nav class="kopf-nav" aria-label="Hauptnavigation">
+<a href="#angebot">Angebot</a><a href="#karte">Karte</a><a href="#desserts">Desserts</a><a href="#zeiten">Zeiten &amp; Lage</a>
+</nav>
+<a class="knopf knopf-safran" href="#reservieren">Reservieren</a>
+</div>
+</header>
+
+<main>
+<section class="hero" id="start" aria-labelledby="h-name">
+<p class="statuszeile"><span class="punkt" aria-hidden="true"></span><span data-status></span></p>
+<div class="hero-bild">
+<div class="buehne">
+<figure class="teller-fig" data-foto>
+<div class="teller"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLdjHFddfFYWaQPOkIMoMEsiYrwW2NluTmBQ8LAgJSH1vSUck0XEZoXIMR93GqhaDTra60sb2p9K-G5-nfpnfbYhLNkfnFWV6RWO7rqgden9Ve6TO-avt1sqhQon7hYtbH9AeLaI9Q=s4800-w1024" alt="Geschmorte Lammhaxe mit Kräuterreis, Safran und Berberitzen auf rundem Schieferteller, von oben" width="1024" height="768" fetchpriority="high" referrerpolicy="no-referrer"></div>
+<figcaption class="teller-cap"><b>Lammhaxe mit Kräuterreis, Safran und Berberitzen</b><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/115360608217669477889" target="_blank" rel="noopener">Foto: SafranGarden · Google Maps</a></figcaption>
+</figure>
+<a class="plakette" href="https://www.google.com/maps/search/?api=1&amp;query=SafranGarden&amp;query_place_id=ChIJQ0uA-fqPsUcRhR23sTMxhP0" target="_blank" rel="noopener"><span data-bewertung aria-label="4,7 von 5 Sternen bei 764 Google-Bewertungen"><span class="bew-stern" aria-hidden="true">★</span><span class="bew-zahl">4,7</span><span class="bew-text">764 Bewertungen auf Google</span></span></a>
+<figure class="tee" data-foto>
+<div class="tee-rund"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLcP7dIhJov5TD-JO6nTw9MYlvN3kKX4v7AwhWW7kS2Osaei8rMftHp4sXQ1QsgkC7hEeziv7z10tQdjt92dQP-WlePAj9vfdKzDly5o0kSdiiE67vNjrbIFeU1_1SHs00di1l8=s4800-w1000" alt="Persischer Tee im Kristallglas mit Safran-Kandisstab" width="300" height="400" loading="lazy" referrerpolicy="no-referrer"></div>
+<figcaption><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/103801100471057721203" target="_blank" rel="noopener">Foto: Nazanin Mirshahi · Google Maps</a></figcaption>
+</figure>
+</div>
+</div>
+<div class="hero-text">
+<div class="marke">
+<svg class="lotus" viewBox="0 0 48 44" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 31C19 25 19 14 24 6c5 8 5 19 0 25z" stroke="#E58FC0"/><path d="M24 31c-7-2-12-8-13-16 7 1 11 6 13 11" stroke="#E58FC0"/><path d="M24 31c7-2 12-8 13-16-7 1-11 6-13 11" stroke="#E58FC0"/><path d="M10 31h28" stroke="#E58FC0"/><path d="M24 33v9" stroke="#3CC63A"/></svg>
+<h1 class="wortmarke" id="h-name"><span class="s">Safran</span><span>Garden</span></h1>
+<span class="etikett">Einfach Persisch!</span>
+</div>
+<h2 class="aussage">Persisch essen, <em>ein Stockwerk tiefer.</em></h2>
+<p class="satz">Lammhaxe mit Kräuterreis, Schmorgerichte mit Safranreis, persischer Tee und Faloodeh. Mo–Fr 11–20 Uhr, Sa ab 9 Uhr mit Frühstück.</p>
+<p class="adresse">Perle Passage, Untergeschoss · Spitalerstraße 22 · 20095 Hamburg</p>
+<div class="aktionen">
+<span class="magnet"><a class="knopf knopf-safran" href="tel:+494053879694">Anrufen · 040 53879694</a></span>
+<a class="link-unter" href="https://www.google.com/maps/dir/?api=1&amp;destination=SafranGarden%2C%20Spitalerstra%C3%9Fe%2022%2C%2020095%20Hamburg" target="_blank" rel="noopener">Route zur Perle Passage</a>
+</div>
+<a class="textlink" href="#reservieren">Tisch reservieren <span class="pfeil" aria-hidden="true">→</span></a>
+</div>
+</section>
+
+<section class="bento" aria-label="Auf einen Blick">
+<div class="kachel k-woche">
+<h3 class="k-titel">Öffnungszeiten</h3>
+<p class="heute-label">Mo–Fr 11–20 · Sa 9–20 Uhr</p>
+<div class="tagesbalken" aria-hidden="true"><i></i><b></b></div>
+<div class="skala" aria-hidden="true"><span>9 Uhr</span><span>20 Uhr</span></div>
+<div data-woche="kurz"></div>
+</div>
+<div class="kachel k-lage">
+<p class="ug" aria-label="Untergeschoss">UG<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M5 13l7 7 7-7"/></svg></p>
+<p>Untergeschoss der Perle Passage, unter dem roten und grünen Leuchtschild.</p>
+<a class="link-unter" href="https://www.google.com/maps/dir/?api=1&amp;destination=SafranGarden%2C%20Spitalerstra%C3%9Fe%2022%2C%2020095%20Hamburg" target="_blank" rel="noopener">Route</a>
+</div>
+<div class="kachel k-dessert">
+<span class="k-nr">32</span>
+<h3>Bastani Sonati</h3>
+<span class="preis">6,50 €</span>
+<img src="ki-bastani-sonati.webp" alt="Safran-Eis Bastani Sonati mit Pistazien im Glas" width="600" height="600" loading="lazy" data-tiefe="15">
+</div>
+<a class="kachel k-res" href="#reservieren"><span>Reser&shy;vieren<small><br>Tisch anfragen</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7l10 10M17 8v9H8"/></svg></a>
+</section>
+
+<section class="angebot innen" id="angebot" aria-labelledby="h-angebot">
+<div class="a-text">
+<h2 class="titel" id="h-angebot">Reis <em>mit Krone.</em> Lamm, das vom Knochen fällt.</h2>
+<p>Unter der Woche ab 11 Uhr Mittag: Lammhaxe mit Kräuterreis, Schmorgerichte mit Safranreis und ein Gemüseeintopf ohne Fleisch. Samstags gibt es ab 9 Uhr iranisches Frühstück. Hier unten essen, mitnehmen oder liefern lassen.</p>
+<dl class="infoliste">
+<div><dt>Mittag</dt><dd>Mo–Sa ab 11 Uhr</dd></div>
+<div><dt>Frühstück</dt><dd>Sa ab 9 Uhr</dd></div>
+<div><dt>Service</dt><dd>Vor Ort, zum Mitnehmen, Lieferung</dd></div>
+<div><dt>Vegetarisch</dt><dd>Ja, z. B. Gemüseeintopf</dd></div>
+<div><dt>Lage</dt><dd>UG Perle Passage</dd></div>
+</dl>
+</div>
+<div class="a-bilder">
+<figure class="gross enthuellen" data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfX6XqMO2LuZV2CjBxFn7cMJwArck3Mpv-lcMVkCe3Fb4y42VIgsM46U1_t_66jmAshIG51kkCGQh1w_TDOnGw5JgVhAMx2fJV5xvrfhPV_DGxoKnNcZNBEnEe8sq5Io7yWIV_scQ=s4800-w1000" alt="Persischer Gemüseeintopf mit Safranreis und Pistazien auf Schieferplatte" width="1024" height="768" loading="lazy" referrerpolicy="no-referrer"></div>
+<figcaption><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/115360608217669477889" target="_blank" rel="noopener">Foto: SafranGarden · Google Maps</a></figcaption>
+</figure>
+<figure class="klein" data-foto>
+<div class="rahmen"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLdOFG7eOHlYMdaRugE2GQhPBW6D67jqfnSv67_72n2aIChJhFl79oiRhceBXbuOzz12AIXr57yeDiGCUZa4BTUvR3jn5_IB8DZSRxxoIWyEjRPig74_6dJdDNGGffBmgt7ukxHycEOoa8U=s4800-w1000" alt="Gastraum mit türkisfarbenen Stühlen und Menü-Bildschirmen über der Theke" width="600" height="800" loading="lazy" referrerpolicy="no-referrer"></div>
+<figcaption><a class="foto-nachweis pill-nachweis" href="https://maps.google.com/maps/contrib/114667619246258448383" target="_blank" rel="noopener">Foto: Ahmad A · Google Maps</a></figcaption>
+</figure>
+</div>
+</section>
+
+<section class="raster" data-szene="raster-zoom" aria-labelledby="h-raster">
+<div class="raster-kopf">
+<h2 class="titel" id="h-raster">Unten angekommen.</h2>
+<p>Teller, Tee und der Raum unter der Bildschirmwand.</p>
+</div>
+<div class="raster-gitter">
+<figure class="r" data-foto><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLcmpnMQABiiKtjdQOeuTSFJ1Qr9vOrWaV2p1p3tuCt5-STsWHjsLs2ysTZMzxm5G5p8hTTGu64xxsHUgoGIZvdHE_pYM9e4LIRSFhcY_tel6sPtnJVYXMsXJ_F62F8Aq2kdUNsD4iPI8a9R=s4800-w1000" alt="Kebab-Platte und Lammhaxe mit Safranreis, Salat Shirazi und Beilagen auf dem Tisch" width="600" height="800" loading="lazy" referrerpolicy="no-referrer"><figcaption><a class="foto-nachweis pill-nachweis" href="https://maps.google.com/maps/contrib/108919345595358283360" target="_blank" rel="noopener">Foto: Parisa parsa · Google Maps</a></figcaption></figure>
+<figure class="r" data-foto><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfX6XqMO2LuZV2CjBxFn7cMJwArck3Mpv-lcMVkCe3Fb4y42VIgsM46U1_t_66jmAshIG51kkCGQh1w_TDOnGw5JgVhAMx2fJV5xvrfhPV_DGxoKnNcZNBEnEe8sq5Io7yWIV_scQ=s4800-w1000" alt="Gemüseeintopf mit Safranreis von oben" width="1024" height="768" loading="lazy" referrerpolicy="no-referrer"><figcaption><a class="foto-nachweis pill-nachweis" href="https://maps.google.com/maps/contrib/115360608217669477889" target="_blank" rel="noopener">Foto: SafranGarden · Google Maps</a></figcaption></figure>
+<figure class="r" data-mitte data-foto><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLdOFG7eOHlYMdaRugE2GQhPBW6D67jqfnSv67_72n2aIChJhFl79oiRhceBXbuOzz12AIXr57yeDiGCUZa4BTUvR3jn5_IB8DZSRxxoIWyEjRPig74_6dJdDNGGffBmgt7ukxHycEOoa8U=s4800-w1000" alt="Gastraum des SafranGarden mit türkisfarbenen Polsterstühlen und Bildschirmwand" width="600" height="800" loading="lazy" referrerpolicy="no-referrer"><figcaption><a class="foto-nachweis pill-nachweis" href="https://maps.google.com/maps/contrib/114667619246258448383" target="_blank" rel="noopener">Foto: Ahmad A · Google Maps</a></figcaption>
+<div data-raster-text><strong>Hier unten wird gegessen.</strong><span>Türkise Polsterstühle, dunkle Holztische und über der Theke die Wand aus Menü-Bildschirmen.</span></div>
+</figure>
+<figure class="r" data-foto><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLdR4L2jNo-hEIdP6i_cZ3JBuIdmgvH7GoHnsVmRYTJpLyKoeqjLSLRMUOT_AbliKNN4hfITouMMKVwGi5IfOT8I4xPDzhgMpFT9UZWlTGQSnBWZdll_Sc3DJQ0UtJZGZAD3gCjmFG7-Dds=s4800-w1000" alt="Persischer Eintopf mit Safranreis und Tee im Glas am Tisch" width="600" height="800" loading="lazy" referrerpolicy="no-referrer"><figcaption><a class="foto-nachweis pill-nachweis" href="https://maps.google.com/maps/contrib/109273457120062780300" target="_blank" rel="noopener">Foto: atish s · Google Maps</a></figcaption></figure>
+<figure class="r" data-foto><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLcP7dIhJov5TD-JO6nTw9MYlvN3kKX4v7AwhWW7kS2Osaei8rMftHp4sXQ1QsgkC7hEeziv7z10tQdjt92dQP-WlePAj9vfdKzDly5o0kSdiiE67vNjrbIFeU1_1SHs00di1l8=s4800-w1000" alt="Persischer Tee im Kristallglas mit Safran-Kandisstab" width="600" height="800" loading="lazy" referrerpolicy="no-referrer"><figcaption><a class="foto-nachweis pill-nachweis" href="https://maps.google.com/maps/contrib/103801100471057721203" target="_blank" rel="noopener">Foto: Nazanin Mirshahi · Google Maps</a></figcaption></figure>
+</div>
+</section>
+
+<section class="karte innen" id="karte" aria-labelledby="h-karte">
+<div class="karte-kopf">
+<h2 class="titel" id="h-karte">Die Karte, Nummer für Nummer.</h2>
+<p>Die Desserts stehen mit Preis. Alles andere hängt komplett über der Theke im Untergeschoss.</p>
+</div>
+<div class="karte-kachel">
+<div class="chips" role="tablist" aria-label="Kategorien">
+<button class="chip" type="button" role="tab" id="t-dessert" data-tab aria-controls="p-dessert" aria-selected="true">Desserts</button>
+<button class="chip" type="button" role="tab" id="t-warm" data-tab aria-controls="p-warm" aria-selected="false">Warme Küche</button>
+<button class="chip" type="button" role="tab" id="t-getraenke" data-tab aria-controls="p-getraenke" aria-selected="false">Getränke</button>
+</div>
+<div id="p-dessert" role="tabpanel" aria-labelledby="t-dessert" data-panel>
+<ol class="liste">
+<li class="gericht" data-vorschau="ki-bastani-sonati.webp"><span class="g-nr">32</span><div><div class="g-kopf"><h3>Bastani Sonati</h3><span class="linie"></span><span class="g-preis">6,50 €</span></div><p>Traditionell persisches Safran-Eis mit gefrorenen Sahnestückchen und Pistazien</p></div></li>
+<li class="gericht" data-vorschau="ki-faloodeh.webp"><span class="g-nr">33</span><div><div class="g-kopf"><h3>Faloodeh</h3><span class="linie"></span><span class="g-preis">6,50 €</span></div><p>Persische Spaghetti-Eisnudeln mit Rosenwasser</p></div></li>
+<li class="gericht" data-vorschau="ki-bastani-faloodeh.webp"><span class="g-nr">34</span><div><div class="g-kopf"><h3>Bastani Faloodeh</h3><span class="linie"></span><span class="g-preis">7,50 €</span></div><p>Persische Spaghetti-Eisnudeln mit Rosenwasser und traditionell persisches Safran-Eis mit gefrorenen Sahnestückchen und Pistazien</p></div></li>
+</ol>
+</div>
+<div id="p-warm" role="tabpanel" aria-labelledby="t-warm" data-panel>
+<ol class="liste">
+<li class="gericht"><span class="g-nr"><span class="punkt"></span></span><div><div class="g-kopf"><h3>Geschmorte Lammhaxe</h3></div><p>Mit Kräuterreis, Safran und Berberitzen</p></div></li>
+<li class="gericht"><span class="g-nr"><span class="punkt"></span></span><div><div class="g-kopf"><h3>Persischer Gemüseeintopf</h3></div><p>Mit Safranreis und Pistazien, vegetarisch</p></div></li>
+<li class="gericht"><span class="g-nr"><span class="punkt"></span></span><div><div class="g-kopf"><h3>Mittagstisch</h3></div><p>Montag bis Samstag ab 11 Uhr</p></div></li>
+<li class="gericht"><span class="g-nr"><span class="punkt"></span></span><div><div class="g-kopf"><h3>Iranisches Frühstück</h3></div><p>Samstags ab 9 Uhr</p></div></li>
+</ol>
+</div>
+<div id="p-getraenke" role="tabpanel" aria-labelledby="t-getraenke" data-panel>
+<ol class="liste">
+<li class="gericht"><span class="g-nr"><span class="punkt"></span></span><div><div class="g-kopf"><h3>Persischer Tee</h3></div><p>Im Glas, mit Safran-Kandisstab</p></div></li>
+<li class="gericht"><span class="g-nr"><span class="punkt"></span></span><div><div class="g-kopf"><h3>Persisches Ayran</h3></div></div></li>
+<li class="gericht"><span class="g-nr"><span class="punkt"></span></span><div><div class="g-kopf"><h3>Kaffee</h3></div></div></li>
+</ol>
+</div>
+<p class="karte-hinweis">Preise der warmen Küche und Getränke stehen auf der Bildschirmwand über der Theke. Fragen zur Karte? Anruf genügt: <a href="tel:+494053879694">040 53879694</a></p>
+</div>
+</section>
+
+<section class="desserts" id="desserts" data-szene="horizontal" aria-labelledby="h-desserts">
+<div class="d-kopf">
+<h2 class="titel" id="h-desserts">Zum Schluss: <em>kalt, rosig, safrangelb.</em></h2>
+<p>Drei Eisdesserts aus der eigenen Karte, dazu Tee im Glas.</p>
+</div>
+<div data-spur>
+<article class="paneel"><div class="p-bild"><span class="p-nr">32</span><img class="frei" src="ki-bastani-sonati.webp" alt="Bastani Sonati: Safran-Eis mit Pistazien im Glas" width="600" height="600" loading="lazy"></div><div class="p-text"><h3>Bastani Sonati</h3><p>Safran-Eis mit gefrorenen Sahnestückchen und Pistazien.</p><span class="g-preis">6,50 €</span></div></article>
+<article class="paneel"><div class="p-bild"><span class="p-nr">33</span><img class="frei" src="ki-faloodeh.webp" alt="Faloodeh: Eisnudeln mit Rosenwasser im Glas" width="600" height="800" loading="lazy"></div><div class="p-text"><h3>Faloodeh</h3><p>Persische Spaghetti-Eisnudeln mit Rosenwasser.</p><span class="g-preis">6,50 €</span></div></article>
+<article class="paneel"><div class="p-bild"><span class="p-nr">34</span><img class="frei" src="ki-bastani-faloodeh.webp" alt="Bastani Faloodeh: Eisnudeln mit einer Kugel Safran-Eis" width="600" height="600" loading="lazy"></div><div class="p-text"><h3>Bastani Faloodeh</h3><p>Eisnudeln mit Rosenwasser und eine Kugel Safran-Eis.</p><span class="g-preis">7,50 €</span></div></article>
+<article class="paneel" data-foto><figure class="p-bild"><img class="voll" src="https://lh3.googleusercontent.com/grass-cs/AABkmLcP7dIhJov5TD-JO6nTw9MYlvN3kKX4v7AwhWW7kS2Osaei8rMftHp4sXQ1QsgkC7hEeziv7z10tQdjt92dQP-WlePAj9vfdKzDly5o0kSdiiE67vNjrbIFeU1_1SHs00di1l8=s4800-w1000" alt="Persischer Tee im Kristallglas mit Safran-Kandisstab" width="600" height="600" loading="lazy" referrerpolicy="no-referrer"><figcaption><a class="foto-nachweis pill-nachweis" href="https://maps.google.com/maps/contrib/103801100471057721203" target="_blank" rel="noopener">Foto: Nazanin Mirshahi · Google Maps</a></figcaption></figure><div class="p-text"><h3>Persischer Tee</h3><p>Im Kristallglas, mit Safran-Kandisstab zum Umrühren.</p></div></article>
+<article class="paneel"><div class="p-bild"><img class="voll" src="ki-berberitzen-pistazien.webp" alt="Getrocknete Berberitzen und Pistazienstifte auf Schieferteller" width="600" height="600" loading="lazy"></div><div class="p-text"><h3>Berberitzen &amp; Pistazien</h3><p>Berberitzen auf der Lammhaxe, Pistazien im Bastani.</p></div></article>
+</div>
+</section>
+
+<section class="zeiten innen" id="zeiten" aria-labelledby="h-zeiten">
+<h2 class="titel" id="h-zeiten">Rein, runter, <em>Platz nehmen.</em></h2>
+<div class="z-raster">
+<div class="kachel z-leiste enthuellen">
+<p class="z-status"><span class="punkt" aria-hidden="true"></span><span data-status></span></p>
+<div class="zeitleiste" role="list" aria-label="Öffnungszeiten pro Tag">
+<div class="z-tag" role="listitem"><span class="z-name">Mo</span><span class="z-spur" style="--a:.1818;--b:1"><i></i></span><span class="z-zeit">11:00–20:00</span></div>
+<div class="z-tag" role="listitem"><span class="z-name">Di</span><span class="z-spur" style="--a:.1818;--b:1"><i></i></span><span class="z-zeit">11:00–20:00</span></div>
+<div class="z-tag" role="listitem"><span class="z-name">Mi</span><span class="z-spur" style="--a:.1818;--b:1"><i></i></span><span class="z-zeit">11:00–20:00</span></div>
+<div class="z-tag" role="listitem"><span class="z-name">Do</span><span class="z-spur" style="--a:.1818;--b:1"><i></i></span><span class="z-zeit">11:00–20:00</span></div>
+<div class="z-tag" role="listitem"><span class="z-name">Fr</span><span class="z-spur" style="--a:.1818;--b:1"><i></i></span><span class="z-zeit">11:00–20:00</span></div>
+<div class="z-tag" role="listitem"><span class="z-name">Sa</span><span class="z-spur" style="--a:0;--b:1"><i></i></span><span class="z-zeit">09:00–20:00</span></div>
+<div class="z-tag ruhetag" role="listitem"><span class="z-name">So</span><span class="z-spur ruhe"></span><span class="z-zeit">Ruhetag</span></div>
+<div class="z-achse" aria-hidden="true"><span></span><span class="z-skala"><span style="left:0;transform:none">9</span><span style="left:27.27%">12</span><span style="left:54.55%">15</span><span style="left:81.82%">18</span><span style="left:100%">20</span></span><span></span></div>
+<div class="jetzt" aria-hidden="true"><span>Jetzt</span></div>
+</div>
+</div>
+<div class="kachel z-karte enthuellen">
+<div class="karte-rahmen"><div data-karte data-stil="dunkel" data-farbe="#F2B01E"></div></div>
+<p>Perle Passage zwischen Spitalerstraße und Mönckebergstraße</p>
+</div>
+<div class="kachel z-weg enthuellen">
+<h3>So finden Sie uns</h3>
+<p>Spitalerstraße 22 rein, ins Untergeschoss, dann den roten und grünen Buchstaben nach.</p>
+<p class="adr">SafranGarden · Perle Passage, Untergeschoss<br>Spitalerstraße 22 · 20095 Hamburg</p>
+<a class="knopf knopf-safran" href="https://www.google.com/maps/dir/?api=1&amp;destination=SafranGarden%2C%20Spitalerstra%C3%9Fe%2022%2C%2020095%20Hamburg" target="_blank" rel="noopener">Route planen <span class="pfeil" aria-hidden="true">→</span></a>
+</div>
+</div>
+</section>
+
+<!--agent-bewertungen--><style id="agent-bew-stil">#gaeste-bewertungen{display:block;position:relative;box-sizing:border-box;width:auto;height:auto;min-height:0;
+max-width:none;margin:0;padding:clamp(64px,9vw,120px) 0;overflow:visible;color:inherit;background:none;text-align:left;
+transform:none;opacity:1;visibility:visible}
+#gaeste-bewertungen *{box-sizing:border-box}
+#gaeste-bewertungen .agent-bew-innen{width:min(1180px,100% - 2*clamp(16px,4vw,40px));margin:0 auto;padding:0}
+#gaeste-bewertungen .agent-bew-kopf{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:22px 48px}
+#gaeste-bewertungen .agent-bew-ueber{margin:0 0 .7em;font-size:.8rem;line-height:1.3;letter-spacing:.14em;
+text-transform:uppercase;opacity:.75;max-width:none}
+#gaeste-bewertungen h2{margin:0;max-width:18ch;font-size:clamp(1.9rem,4.2vw,3.1rem);line-height:1.05;text-wrap:balance;
+position:static;transform:none;opacity:1}
+#gaeste-bewertungen .agent-bew-schnitt{display:inline-flex;align-items:center;gap:16px;color:inherit;text-decoration:none;
+border-radius:12px;padding:4px 2px}
+#gaeste-bewertungen .agent-bew-schnitt:focus-visible,#gaeste-bewertungen a:focus-visible,
+#gaeste-bewertungen button:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+#gaeste-bewertungen .agent-bew-zahl{font-size:clamp(2.8rem,5vw,3.8rem);line-height:.95;font-weight:700;
+font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+#gaeste-bewertungen .agent-bew-sterne{display:block;font-size:1.3rem;line-height:1.2;letter-spacing:.12em;
+background:linear-gradient(90deg,#E3A21A var(--p,100%),rgb(127 127 127/.35) var(--p,100%));
+-webkit-background-clip:text;background-clip:text;color:transparent;font-family:system-ui,sans-serif}
+#gaeste-bewertungen .agent-bew-anzahl{display:block;margin-top:4px;font-size:.92rem;opacity:.85;text-decoration:underline;
+text-underline-offset:3px;text-decoration-thickness:1px}
+#gaeste-bewertungen .agent-bew-liste{list-style:none;margin:clamp(28px,4vw,48px) 0 0;padding:0;display:grid;
+grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
+#gaeste-bewertungen .agent-bew-liste[hidden]{display:none}
+#gaeste-bewertungen .agent-bew-liste:has(.offen){align-items:start}
+#gaeste-bewertungen .agent-bew-karte{display:flex;flex-direction:column;gap:14px;margin:0;padding:clamp(20px,2.4vw,28px);
+border:1px solid rgb(127 127 127/.28);border:1px solid color-mix(in srgb,currentColor 16%,transparent);border-radius:16px;
+background:rgb(127 127 127/.06);background:color-mix(in srgb,currentColor 5%,transparent);list-style:none}
+#gaeste-bewertungen .agent-bew-k-sterne{margin:0;color:#E3A21A;font-size:1.05rem;line-height:1;letter-spacing:.14em;
+font-family:system-ui,sans-serif}
+#gaeste-bewertungen .agent-bew-k-sterne .aus{color:rgb(127 127 127/.4)}
+#gaeste-bewertungen .agent-bew-k-text{margin:0;font-size:1rem;line-height:1.6;white-space:pre-line;overflow-wrap:anywhere;
+display:-webkit-box;-webkit-line-clamp:6;line-clamp:6;-webkit-box-orient:vertical;overflow:hidden;max-width:none}
+#gaeste-bewertungen .offen .agent-bew-k-text{display:block;-webkit-line-clamp:unset;line-clamp:none;overflow:visible}
+#gaeste-bewertungen .agent-bew-mehr{all:unset;align-self:flex-start;cursor:pointer;font-size:.9rem;text-decoration:underline;
+text-underline-offset:3px;opacity:.85;min-height:32px;display:inline-flex;align-items:center}
+#gaeste-bewertungen .agent-bew-mehr[hidden]{display:none}
+#gaeste-bewertungen .agent-bew-k-autor{margin:auto 0 0;font-size:.875rem;line-height:1.45;opacity:.8;max-width:none}
+#gaeste-bewertungen .agent-bew-k-autor a{color:inherit;text-decoration:underline;text-underline-offset:2px;font-weight:600}
+#gaeste-bewertungen .agent-bew-leer{min-height:210px;border-radius:16px;background:rgb(127 127 127/.1);
+animation:agentBewPuls 1.2s ease-in-out infinite alternate}
+@keyframes agentBewPuls{to{opacity:.45}}
+#gaeste-bewertungen .agent-bew-fuss{margin-top:clamp(22px,3vw,34px);display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px}
+#gaeste-bewertungen .agent-bew-alle{display:inline-flex;align-items:center;justify-content:center;min-height:46px;
+padding:0 22px;border-radius:999px;border:1.5px solid currentColor;color:inherit;background:none;text-decoration:none;
+font-weight:600;line-height:1.2;text-align:center}
+#gaeste-bewertungen .agent-bew-hinweis{margin:0;font-size:.8rem;line-height:1.5;opacity:.72;max-width:52ch}
+#gaeste-bewertungen .agent-bew-hinweis[hidden]{display:none}
+#gaeste-bewertungen .agent-bew-google{font-family:Roboto,Arial,sans-serif;font-weight:500;white-space:nowrap}
+@media (max-width:900px){#gaeste-bewertungen .agent-bew-liste{grid-template-columns:none;grid-auto-flow:column;
+grid-auto-columns:min(84%,360px);overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;
+padding-bottom:10px;scrollbar-width:thin}
+#gaeste-bewertungen .agent-bew-liste>li{scroll-snap-align:start}}
+@media (prefers-reduced-motion:reduce){#gaeste-bewertungen .agent-bew-leer{animation:none}}</style><section id="gaeste-bewertungen" class="agent-bew" aria-labelledby="agent-bew-t" data-quelle="https://medialyte-zaehler.patient-water-7819.workers.dev/g/bewertungen?p=ChIJQ0uA-fqPsUcRhR23sTMxhP0&amp;s=61b266a45022e07de5d6"><div class="agent-bew-innen"><div class="agent-bew-kopf"><div><p class="agent-bew-ueber">Google-Bewertungen</p><h2 id="agent-bew-t">Das sagen Gäste auf Google</h2></div><a class="agent-bew-schnitt" data-alle href="https://www.google.com/maps/search/?api=1&amp;query=SafranGarden&amp;query_place_id=ChIJQ0uA-fqPsUcRhR23sTMxhP0" target="_blank" rel="noopener" aria-label="4,7 von 5 Sternen bei 764 Google-Bewertungen. Alle Bewertungen auf Google ansehen"><span class="agent-bew-zahl">4,7</span><span class="agent-bew-rechts"><span class="agent-bew-sterne" style="--p:94.0%" aria-hidden="true">★★★★★</span><span class="agent-bew-anzahl">764 Bewertungen</span></span></a></div><ul class="agent-bew-liste" hidden></ul><div class="agent-bew-fuss"><a class="agent-bew-alle" data-alle href="https://www.google.com/maps/search/?api=1&amp;query=SafranGarden&amp;query_place_id=ChIJQ0uA-fqPsUcRhR23sTMxhP0" target="_blank" rel="noopener">Alle Bewertungen auf Google lesen</a><p class="agent-bew-hinweis" hidden>Eine Auswahl der Bewertungen, die Google-Nutzer hinterlassen haben, angezeigt über <span class="agent-bew-google">Google Maps</span>. Ob die Verfasser hier gegessen haben, prüfen wir nicht.</p></div></div></section><script>(function () {
+  var S = document.getElementById("gaeste-bewertungen");
+  if (!S) return;
+  var liste = S.querySelector(".agent-bew-liste"), hinweis = S.querySelector(".agent-bew-hinweis");
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+
+  /* 1) Siegel mit der Google-Note: volle Angabe nur, wenn sie hineinpasst (sonst nur Stern und Note) */
+  function rund(n) {
+    var w = n.offsetWidth, h = n.offsetHeight;
+    if (!w || !h) return false;
+    var r = getComputedStyle(n).borderTopLeftRadius, v = parseFloat(r) || 0;
+    if (/%$/.test(r)) v = v / 100 * Math.min(w, h);
+    return v >= 0.4 * Math.min(w, h) && Math.abs(w - h) <= 0.2 * Math.max(w, h);
+  }
+  function siegel() {
+    var els = document.querySelectorAll("[data-bewertung]:not([data-bewertung=kurz])");
+    for (var i = 0; i < els.length; i++) {
+      var e = els[i], t = e.querySelector(".bew-text");
+      if (!t) continue;
+      t.style.display = "";
+      var kette = [], n = e;
+      for (var k = 0; k < 3 && n && n !== document.body; k++, n = n.parentElement) kette.push(n);
+      var alt = kette.map(function (x) { var a = x.style.transform; x.style.transform = "none"; return a; });
+      var range = document.createRange(); range.selectNodeContents(e);
+      var teile = [].slice.call(range.getClientRects()), schlecht = false;
+      kette.forEach(function (b) {
+        if (schlecht || !b.offsetWidth) return;
+        var cs = getComputedStyle(b), box = b.getBoundingClientRect();
+        if (rund(b)) {
+          var cx = box.left + box.width / 2, cy = box.top + box.height / 2, rad = Math.min(box.width, box.height) / 2 - 1.5;
+          teile.forEach(function (q) {
+            if (!q.width || !q.height) return;
+            [[q.left, q.top], [q.right, q.top], [q.left, q.bottom], [q.right, q.bottom]].forEach(function (p) {
+              if (Math.sqrt((p[0] - cx) * (p[0] - cx) + (p[1] - cy) * (p[1] - cy)) > rad) schlecht = true;
+            });
+          });
+        } else if (/hidden|clip/.test(cs.overflowX + cs.overflowY) && (b.scrollHeight > b.clientHeight + 1 || b.scrollWidth > b.clientWidth + 1)) {
+          schlecht = true;
+        }
+      });
+      kette.forEach(function (x, j) { x.style.transform = alt[j]; });
+      if (schlecht) t.style.display = "none";
+    }
+  }
+
+  /* 2) Schrift der Seite übernehmen (Überschrift, Note) und den Knopf wie die Knöpfe der Seite gestalten */
+  function sichtbar(x) { return x && x.offsetWidth > 0 && !S.contains(x); }
+  function stil() {
+    var hs = document.querySelectorAll("h2"), h = null;
+    for (var i = 0; i < hs.length && !h; i++) if (sichtbar(hs[i])) h = hs[i];
+    if (h) {
+      var c = getComputedStyle(h), mein = S.querySelector("h2"), px = parseFloat(c.fontSize) || 32;
+      var ziel = Math.min(px, Math.max(30, Math.min(52, window.innerWidth * 0.058)));
+      mein.style.fontFamily = c.fontFamily; mein.style.fontWeight = c.fontWeight; mein.style.fontStyle = c.fontStyle;
+      mein.style.textTransform = c.textTransform; mein.style.fontStretch = c.fontStretch;
+      mein.style.fontSize = ziel + "px";
+      var ls = parseFloat(c.letterSpacing); mein.style.letterSpacing = isNaN(ls) ? "normal" : (ls / px) + "em";
+      var lh = parseFloat(c.lineHeight); if (!isNaN(lh)) mein.style.lineHeight = String(Math.max(0.95, Math.min(1.3, lh / px)));
+      var z = S.querySelector(".agent-bew-zahl"); if (z) { z.style.fontFamily = c.fontFamily; z.style.fontStyle = c.fontStyle; }
+    }
+    var ks = document.querySelectorAll("a[class*=knopf],a[class*=btn],a[class*=button],a[class*=cta],button[class*=knopf],button[class*=btn]");
+    for (var j = 0; j < ks.length; j++) {
+      var k = ks[j];
+      if (!sichtbar(k) || k.closest("[data-reservierung]")) continue;
+      var kc = getComputedStyle(k), bg = kc.backgroundColor;
+      if (!bg || bg === "transparent" || /rgba\(.*,\s*0\)$/.test(bg) || kc.backgroundImage !== "none") continue;
+      var a = S.querySelector(".agent-bew-alle");
+      a.style.background = bg; a.style.color = kc.color; a.style.borderColor = kc.borderTopColor === kc.color ? bg : kc.borderTopColor;
+      a.style.borderWidth = kc.borderTopWidth; a.style.borderStyle = kc.borderTopStyle === "none" ? "solid" : kc.borderTopStyle;
+      if (kc.borderTopStyle === "none") a.style.borderColor = bg;
+      a.style.borderRadius = kc.borderTopLeftRadius; a.style.fontFamily = kc.fontFamily; a.style.fontWeight = kc.fontWeight;
+      a.style.textTransform = kc.textTransform; a.style.letterSpacing = kc.letterSpacing;
+      break;
+    }
+  }
+
+  /* 3) Bewertungen live von Google (über den Zähler-Dienst), erst wenn der Bereich in die Nähe kommt */
+  function sterne(n) {
+    var p = el("p", "agent-bew-k-sterne"); p.setAttribute("aria-label", n + " von 5 Sternen"); p.setAttribute("role", "img");
+    p.appendChild(document.createTextNode("★★★★★".slice(0, n)));
+    if (n < 5) p.appendChild(el("span", "aus", "★★★★★".slice(0, 5 - n)));
+    return p;
+  }
+  function karte(b) {
+    var li = el("li", "agent-bew-karte");
+    li.appendChild(sterne(Math.max(1, Math.min(5, b.sterne | 0))));
+    var tx = el("p", "agent-bew-k-text", b.text);
+    if (b.sprache) tx.setAttribute("lang", b.sprache);
+    li.appendChild(tx);
+    var mehr = el("button", "agent-bew-mehr", "Weiterlesen"); mehr.type = "button"; mehr.hidden = true;
+    mehr.addEventListener("click", function () { var auf = li.classList.toggle("offen"); mehr.textContent = auf ? "Weniger" : "Weiterlesen"; mehr.setAttribute("aria-expanded", auf ? "true" : "false"); });
+    li.appendChild(mehr);
+    var au = el("p", "agent-bew-k-autor");
+    if (b.autor_link) { var a = el("a", "", b.autor); a.href = b.autor_link; a.target = "_blank"; a.rel = "noopener nofollow"; au.appendChild(a); }
+    else au.appendChild(el("strong", "", b.autor));
+    var zusatz = [b.wann, b.uebersetzt ? "von Google übersetzt" : ""].filter(Boolean).join(" · ");
+    if (zusatz) au.appendChild(document.createTextNode(" · " + zusatz));
+    li.appendChild(au);
+    return li;
+  }
+  function neuMessen() { if (window.ScrollTrigger && window.ScrollTrigger.refresh) try { window.ScrollTrigger.refresh(); } catch (e) {} }
+  function zeigen(d) {
+    liste.innerHTML = "";
+    var gute = (d && d.bewertungen || []).filter(function (b) { return b && b.text && (b.sterne | 0) >= 4; }).slice(0, 3);
+    if (d && d.schnitt) {
+      var z = S.querySelector(".agent-bew-zahl"), st = S.querySelector(".agent-bew-sterne"), an = S.querySelector(".agent-bew-anzahl");
+      if (z) z.textContent = Number(d.schnitt).toFixed(1).replace(".", ",");
+      if (st) st.style.setProperty("--p", Math.round(Number(d.schnitt) / 5 * 1000) / 10 + "%");
+      if (an && d.anzahl) an.textContent = Number(d.anzahl).toLocaleString("de-DE") + " Bewertungen";
+    }
+    if (d && d.alle) [].forEach.call(S.querySelectorAll("a[data-alle]"), function (a) { a.href = d.alle; });
+    if (!gute.length) { liste.hidden = true; neuMessen(); return; }
+    gute.forEach(function (b) { liste.appendChild(karte(b)); });
+    liste.hidden = false; hinweis.hidden = false;
+    [].forEach.call(liste.querySelectorAll(".agent-bew-karte"), function (li) {
+      var t = li.querySelector(".agent-bew-k-text");
+      li.querySelector(".agent-bew-mehr").hidden = !(t.scrollHeight > t.clientHeight + 2);
+    });
+    neuMessen();
+  }
+  function laden() {
+    var q = S.getAttribute("data-quelle");
+    if (!q || !window.fetch) return;
+    liste.hidden = false;
+    for (var i = 0; i < 3; i++) liste.appendChild(el("li", "agent-bew-leer"));
+    var fertig = false;
+    setTimeout(function () { if (!fertig) { fertig = true; zeigen(null); } }, 9000);
+    fetch(q, { credentials: "omit" }).then(function (r) { return r.ok ? r.json() : null; })
+      .catch(function () { return null; })
+      .then(function (d) { if (!fertig) { fertig = true; zeigen(d); } });
+  }
+
+  var wartet = null;
+  function alles() { try { siegel(); } catch (e) {} try { stil(); } catch (e) {} }
+  window.addEventListener("resize", function () { clearTimeout(wartet); wartet = setTimeout(alles, 200); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(alles);
+  if (document.readyState === "complete") alles(); else window.addEventListener("load", alles);
+  if (navigator.webdriver) return;  /* Prüfungen und Briefbilder: keine Abfrage bei Google */
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (e) { if (e.some(function (x) { return x.isIntersecting; })) { io.disconnect(); laden(); } },
+                                      { rootMargin: "900px 0px" });
+    io.observe(S);
+  } else laden();
+})();</script><!--/agent-bewertungen--><section class="res" id="reservieren" aria-labelledby="h-res">
+<div class="innen res-raster">
+<div class="kachel res-kachel">
+<div class="res-kopf">
+<div>
+<h2 class="titel" id="h-res">Einen Tisch unter der <em>Bildschirmwand.</em></h2>
+<p class="res-unter">Drei kurze Schritte. Wir rufen zur Bestätigung zurück.</p>
+</div>
+<a class="plakette" href="https://www.google.com/maps/search/?api=1&amp;query=SafranGarden&amp;query_place_id=ChIJQ0uA-fqPsUcRhR23sTMxhP0" target="_blank" rel="noopener"><span data-bewertung="kurz" aria-label="4,7 von 5 Sternen bei 764 Google-Bewertungen"><span class="bew-stern" aria-hidden="true">★</span><span class="bew-zahl">4,7</span></span></a>
+</div>
+<form data-reservierung novalidate>
+<div data-schritt="1" data-titel="Wann?">
+<h3 class="s-titel">Wann?</h3>
+<p class="f-label">Tag</p>
+<div data-tage></div>
+<p class="f-label">Uhrzeit</p>
+<div data-zeiten></div>
+</div>
+<div data-schritt="2" data-titel="Wie viele?">
+<h3 class="s-titel">Wie viele?</h3>
+<p class="f-label">Personen</p>
+<div data-personen></div>
+<p class="res-mehr">Mehr als 8 Personen? Bitte kurz anrufen: <a href="tel:+494053879694">040 53879694</a></p>
+</div>
+<div data-schritt="3" data-titel="Ihre Angaben">
+<h3 class="s-titel">Ihre Angaben</h3>
+<div class="felder-2">
+<div class="feld"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+<div class="feld"><label for="f-tel">Telefon</label><input id="f-tel" name="telefon" type="tel" autocomplete="tel" required></div>
+</div>
+<div class="feld"><label for="f-mail">E-Mail (optional)</label><input id="f-mail" name="email" type="email" autocomplete="email"></div>
+<div class="feld"><label for="f-nachricht">Nachricht (optional)</label><textarea id="f-nachricht" name="nachricht" rows="2"></textarea></div>
+<label class="einwilligung"><input type="checkbox" name="einwilligung" required><span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Reservierung verwendet werden. <a href="https://medialyte.de/datenschutzerklaerung" target="_blank" rel="noopener">Datenschutz</a></span></label>
+<p data-reservierung-fehler></p>
+<button type="submit">Anfrage senden</button>
+</div>
+<div data-reservierung-erfolg hidden>
+<span class="erfolg-nr">35</span>
+<span class="etikett">Notiert!</span>
+<h3>Ihre Anfrage ist unterwegs.</h3>
+<dl class="erfolg-liste">
+<div><dt>Tag</dt><dd><span data-wert="datum"></span></dd></div>
+<div><dt>Uhrzeit</dt><dd><span data-wert="uhrzeit"></span></dd></div>
+<div><dt>Personen</dt><dd><span data-wert="personen"></span></dd></div>
+<div><dt>Name</dt><dd><span data-wert="name"></span></dd></div>
+</dl>
+<p>Wir melden uns telefonisch zur Bestätigung.</p>
+<button type="button" data-reservierung-neu>Neue Anfrage</button>
+</div>
+</form>
+</div>
+<figure class="res-bild enthuellen" data-foto>
+<img src="https://lh3.googleusercontent.com/grass-cs/AABkmLdR4L2jNo-hEIdP6i_cZ3JBuIdmgvH7GoHnsVmRYTJpLyKoeqjLSLRMUOT_AbliKNN4hfITouMMKVwGi5IfOT8I4xPDzhgMpFT9UZWlTGQSnBWZdll_Sc3DJQ0UtJZGZAD3gCjmFG7-Dds=s4800-w1000" alt="Persischer Eintopf mit Safranreis und Tee im Glas am Tisch" width="600" height="800" loading="lazy" referrerpolicy="no-referrer">
+<figcaption><a class="foto-nachweis pill-nachweis" href="https://maps.google.com/maps/contrib/109273457120062780300" target="_blank" rel="noopener">Foto: atish s · Google Maps</a></figcaption>
+</figure>
+</div>
+</section>
+
+<section class="schluss" data-schluss data-hintergrund="dunkel" aria-labelledby="h-schluss">
+<figure data-hintergrund-bild data-foto style="--schleier:linear-gradient(90deg,rgb(26 27 29/.92) 0%,rgb(26 27 29/.75) 45%,rgb(26 27 29/.2) 100%)"><img src="https://lh3.googleusercontent.com/grass-cs/AABkmLcP7dIhJov5TD-JO6nTw9MYlvN3kKX4v7AwhWW7kS2Osaei8rMftHp4sXQ1QsgkC7hEeziv7z10tQdjt92dQP-WlePAj9vfdKzDly5o0kSdiiE67vNjrbIFeU1_1SHs00di1l8=s4800-w1000" alt="" loading="lazy" referrerpolicy="no-referrer"><a class="foto-nachweis" href="https://maps.google.com/maps/contrib/103801100471057721203" target="_blank" rel="noopener">Foto: Nazanin Mirshahi · Google Maps</a></figure>
+<div class="schluss-inhalt">
+<span class="etikett">Einfach Persisch!</span>
+<h2 id="h-schluss">Bis gleich, <em>ein Stockwerk tiefer.</em></h2>
+<p class="z-status"><span class="punkt" aria-hidden="true"></span><span data-status></span></p>
+<div class="aktionen">
+<a class="knopf knopf-safran" href="#reservieren">Tisch reservieren</a>
+<a class="link-unter" href="https://www.google.com/maps/dir/?api=1&amp;destination=SafranGarden%2C%20Spitalerstra%C3%9Fe%2022%2C%2020095%20Hamburg" target="_blank" rel="noopener">Route zur Perle Passage</a>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="fuss">
+<div class="fuss-raster">
+<div>
+<a class="wortmarke-klein" href="#start"><span>Safran</span>Garden</a><br>
+<span class="etikett">Einfach Persisch!</span>
+</div>
+<div>
+<h3>Kontakt</h3>
+<address>Perle Passage, Untergeschoss<br>Spitalerstraße 22, 20095 Hamburg</address>
+<a href="tel:+494053879694">040 53879694</a>
+<p>Mo–Fr 11–20 Uhr · Sa 9–20 Uhr · So Ruhetag</p>
+</div>
+<div>
+<h3>Rechtliches</h3>
+<div class="rechtliches"><p>Entwurf von Medialyte, 21147 Hamburg. Adresse und Öffnungszeiten: Google. Fotos: Google Maps, Urheber jeweils am Bild. Einige Bilder und das Logo sind KI-generierte Vorschläge.</p><p><a href="https://medialyte.de/impressum" style="color:inherit;text-decoration:underline">Impressum</a> · <a href="https://medialyte.de/datenschutzerklaerung" style="color:inherit;text-decoration:underline">Datenschutz</a></p></div>
+</div>
+</div>
+</footer>
+
+<nav class="handyleiste" aria-label="Schnellzugriff">
+<a class="knopf knopf-safran" href="tel:+494053879694">Anrufen</a>
+<a class="knopf knopf-linie" href="https://www.google.com/maps/dir/?api=1&amp;destination=SafranGarden%2C%20Spitalerstra%C3%9Fe%2022%2C%2020095%20Hamburg" target="_blank" rel="noopener">Route</a>
+<a class="knopf knopf-linie" href="#zeiten">Zeiten</a>
+</nav>
+
+<div class="vorschau" aria-hidden="true"><img src="ki-bastani-sonati.webp" alt="" width="600" height="600" loading="lazy"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+const kopf=document.querySelector(".kopf");
+const scrollt=()=>kopf.classList.toggle("gescrollt",scrollY>8);
+scrollt();addEventListener("scroll",scrollt,{passive:true});
+
+const tabs=[...document.querySelectorAll("[data-tab]")],panels=[...document.querySelectorAll("[data-panel]")];
+const wahl=t=>{tabs.forEach(b=>b.setAttribute("aria-selected",b===t));panels.forEach(p=>p.hidden=p.id!==t.getAttribute("aria-controls"))};
+tabs.forEach(t=>t.addEventListener("click",()=>wahl(t)));
+if(tabs[0])wahl(tabs[0]);
+
+const plan=[[11,20],[11,20],[11,20],[11,20],[11,20],[9,20],null];
+const t=Object.fromEntries(new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Berlin",weekday:"short",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(new Date()).map(x=>[x.type,x.value]));
+const tag=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"].indexOf(t.weekday);
+const p=(+t.hour+ +t.minute/60-9)/11;
+const leiste=document.querySelector(".zeitleiste"),balken=document.querySelector(".tagesbalken"),label=document.querySelector(".heute-label");
+const zeile=document.querySelectorAll(".z-tag")[tag];
+if(zeile)zeile.classList.add("ist-heute");
+if(p>=0&&p<=1)[leiste,balken].forEach(e=>{if(e){e.style.setProperty("--p",p.toFixed(4));e.classList.add("mit-jetzt")}});
+const heute=plan[tag];
+if(balken&&tag>-1){if(heute){balken.style.setProperty("--a",(heute[0]-9)/11);balken.style.setProperty("--b",(heute[1]-9)/11);label.textContent=`Heute ${heute[0]}–${heute[1]} Uhr`}else{balken.classList.add("ruhe");label.textContent="Heute Ruhetag"}}
+
+if(!window.gsap)return;
+gsap.registerPlugin(ScrollTrigger);
+const mm=gsap.matchMedia();
+mm.add("(prefers-reduced-motion: no-preference)",()=>{
+(window.nachIntro||(f=>f()))(()=>{
+const tl=gsap.timeline({defaults:{ease:"expo.out"}});
+tl.from(".buehne, .bento > *",{y:24,opacity:0,duration:.9,stagger:.06})
+.from(".wortmarke span",{yPercent:110,duration:.9,stagger:.06},.05)
+.from(".lotus",{y:8,opacity:0,duration:.6},.2)
+.from(".statuszeile, .aussage, .satz, .adresse, .aktionen, .textlink",{y:16,opacity:0,duration:.7,stagger:.05},.12)
+.from(".tee",{scale:.95,opacity:0,duration:.6},.35)
+.from(".marke .etikett",{rotation:0,scale:.95,opacity:0,duration:.4,ease:"back.out(1.4)"},.8);
+});
+gsap.utils.toArray(".enthuellen").forEach(el=>gsap.from(el,{clipPath:"inset(10% 10% 10% 10% round 28px)",duration:.9,ease:"power3.out",scrollTrigger:{trigger:el,start:"top 88%",once:true}}));
+if(leiste&&leiste.classList.contains("mit-jetzt"))gsap.from(".zeitleiste .jetzt",{clipPath:"inset(0 0 100% 0)",duration:.8,ease:"power3.out",scrollTrigger:{trigger:leiste,start:"top 80%",once:true}});
+});
+mm.add({gross:"(min-width: 821px)",klein:"(max-width: 820px)",ruhig:"(prefers-reduced-motion: reduce)"},c=>{
+if(c.conditions.ruhig)return;
+gsap.to(".teller img",{rotation:c.conditions.gross?4:3,scale:c.conditions.gross?1.06:1.03,ease:"none",scrollTrigger:{trigger:".hero",start:"top top",end:"bottom top",scrub:.6}});
+});
+mm.add("(prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine)",()=>{
+const m=document.querySelector(".magnet");
+if(m){const xTo=gsap.quickTo(m,"x",{duration:.4,ease:"power3.out"}),yTo=gsap.quickTo(m,"y",{duration:.4,ease:"power3.out"});
+m.addEventListener("mousemove",e=>{const r=m.getBoundingClientRect();xTo((e.clientX-r.left-r.width/2)*.25);yTo((e.clientY-r.top-r.height/2)*.35)});
+m.addEventListener("mouseleave",()=>{xTo(0);yTo(0)})}
+const v=document.querySelector(".vorschau"),vi=v.querySelector("img");
+const vx=gsap.quickTo(v,"x",{duration:.5,ease:"power3.out"}),vy=gsap.quickTo(v,"y",{duration:.5,ease:"power3.out"});
+document.querySelectorAll("[data-vorschau]").forEach(z=>{
+z.addEventListener("mouseenter",()=>{vi.src=z.dataset.vorschau;gsap.to(v,{opacity:1,scale:1,duration:.25,ease:"power3.out"})});
+z.addEventListener("mouseleave",()=>gsap.to(v,{opacity:0,scale:.95,duration:.18,ease:"power3.out"}));
+z.addEventListener("mousemove",e=>{vx(e.clientX+24);vy(e.clientY-110)});
+});
+});
+if(window.Lenis&&matchMedia("(pointer: fine) and (prefers-reduced-motion: no-preference)").matches){
+const lenis=new Lenis({autoRaf:false});
+lenis.on("scroll",ScrollTrigger.update);
+gsap.ticker.add(x=>lenis.raf(x*1000));gsap.ticker.lagSmoothing(0);
+}
+});
+</script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>[data-karte]{width:100%;height:100%;min-height:260px;position:relative;z-index:0;isolation:isolate}[data-karte] .leaflet-tile-pane{filter:var(--karte-filter)}
+[data-karte] .leaflet-control-attribution{font-size:10px}.karte-pin{position:relative;width:34px;height:34px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+box-shadow:0 6px 16px rgba(0,0,0,.35);border:3px solid #fff}.karte-pin i{position:absolute;inset:9px;border-radius:50%;background:#fff}</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>(function(){var C={"lat": 53.5519588, "lng": 9.9995578, "name": "SafranGarden", "filter": {"hell": "grayscale(1) contrast(1.05) brightness(1.04)", "dunkel": "grayscale(1) invert(1) contrast(.88) brightness(.82)", "warm": "grayscale(1) sepia(.5) contrast(1.02) brightness(1.02)", "kuehl": "grayscale(1) sepia(.35) hue-rotate(175deg) saturate(.55) brightness(1.03)", "mono": "grayscale(1) contrast(1.2)"}};function draw(){if(!window.L)return;document.querySelectorAll('[data-karte]').forEach(function(el){
+if(el._map)return;var st=el.getAttribute('data-stil')||'hell',col=el.getAttribute('data-farbe')||'#c0392b';
+el.style.setProperty('--karte-filter',C.filter[st]||C.filter.hell);
+var m=L.map(el,{scrollWheelZoom:false,zoomControl:true,attributionControl:true}).setView([C.lat,C.lng],16);el._map=m;
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(m);
+var icon=L.divIcon({className:'',html:'<div class="karte-pin" style="background:'+col+'"><i></i></div>',iconSize:[34,34],iconAnchor:[17,34]});
+L.marker([C.lat,C.lng],{icon:icon,title:C.name,alt:C.name}).addTo(m);setTimeout(function(){m.invalidateSize()},300);});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',draw);else draw();window.addEventListener('load',draw);})();</script><script>(function(){
+var P=[[2100, 2640], [3540, 4080], [4980, 5520], [6420, 6960], [7860, 8400], [9180, 9840]];
+function fmt(m){m=((m%1440)+1440)%1440;var h=Math.floor(m/60),mi=m%60;return (h<10?'0':'')+h+':'+(mi<10?'0':'')+mi;}
+function now(){var d=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Berlin'}));return d.getDay()*1440+d.getHours()*60+d.getMinutes();}
+function status(){if(!P.length)return null;var t=now(),W=10080;
+ for(var i=0;i<P.length;i++){var s=P[i][0],e=P[i][1];if((t>=s&&t<e)||(t+W>=s&&t+W<e))return {offen:true,text:'Jetzt geöffnet bis '+fmt(e)};}
+ var best=null;for(var j=0;j<P.length;j++){var d=(P[j][0]-t+W)%W;if(best===null||d<best.d)best={d:d,s:P[j][0]};}
+ var tag=Math.floor(t/1440),ot=Math.floor(best.s/1440)%7,names=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+ var when=best.d<1440&&ot===tag?'heute':(best.d<2880&&ot===(tag+1)%7?'morgen':names[ot]);
+ return {offen:false,text:'Geschlossen · öffnet '+when+' um '+fmt(best.s)};}
+function run(){var s=status();document.querySelectorAll('[data-status]').forEach(function(el){
+ if(!s){el.style.display='none';return;}el.textContent=s.text;el.setAttribute('data-offen',s.offen?'ja':'nein');});}
+document.querySelectorAll('[data-foto] img').forEach(function(img){
+ function hide(){var b=img.closest('[data-foto]');if(b)b.style.display='none';}
+ if(!img.getAttribute('src'))hide();else{img.addEventListener('error',hide);if(img.complete&&img.naturalWidth===0)hide();}});
+function woche(s){var els=document.querySelectorAll('[data-woche]');if(!els.length)return;
+ var lang=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'],kurz=['So','Mo','Di','Mi','Do','Fr','Sa'];
+ var heute=Math.floor(now()/1440)%7,offen=s&&s.offen?'ja':'nein',Q=P.slice().sort(function(a,b){return a[0]-b[0];});
+ els.forEach(function(el){if(!Q.length){el.style.display='none';return;}
+  var k=el.getAttribute('data-woche')==='kurz',key=heute+offen+k;if(el.getAttribute('data-woche-stand')===key)return;
+  var h='<ol class="woche">';
+  for(var i=1;i<=7;i++){var d=i%7,z=[];
+   for(var j=0;j<Q.length;j++){if(Math.floor(Q[j][0]/1440)%7===d)z.push(fmt(Q[j][0])+'–'+fmt(Q[j][1]));}
+   h+='<li class="woche-tag"'+(d===heute?' data-heute data-offen="'+offen+'" aria-current="date"':'')+'><span class="woche-name">'
+     +(k?kurz[d]:lang[d])+'</span><span class="woche-zeit">'+(z.length?z.join(' · '):'Ruhetag')+'</span></li>';}
+  el.innerHTML=h+'</ol>';el.setAttribute('data-woche-stand',key);});}
+var run0=run;run=function(){run0();woche(status());};
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();setInterval(run,60000);
+})();</script><!--agent-res--><script>(function () {
+  /* Reservierung: Tage und Uhrzeiten aus den echten Öffnungszeiten, Personen, Prüfung, Bestätigung.
+     Gestaltung kommt von der Seite, die Logik kommt von hier. CFG und P setzt der Agent ein. */
+  var CFG = {"modus": "demo", "ziel": "", "extra": {}, "slot": 30, "vorlauf": 60, "letzte": 60, "max": 8, "tage": 21, "name": "SafranGarden", "tel": "04053879694", "telText": "040 53879694"}, P = [[2100, 2640], [3540, 4080], [4980, 5520], [6420, 6960], [7860, 8400], [9180, 9840]], W = 10080;
+  var TAGE = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"], LANG = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
+  var MON = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+  function berlin() { return new Date(new Date().toLocaleString("en-US", { timeZone: "Europe/Berlin" })); }
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function hm(m) { return pad(Math.floor(m / 60)) + ":" + pad(m % 60); }
+  function iso(d) { return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()); }
+  function el(tag, attrs, html) { var e = document.createElement(tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (html != null) e.innerHTML = html; return e; }
+
+  /* Uhrzeiten eines Kalendertags (Minuten ab 00:00), aus den Wochen-Intervallen P */
+  function slots(day, isToday, nowMin) {
+    var out = [], start = day.getDay() * 1440, step = CFG.slot, last = CFG.letzte;
+    var sonder = window.AGENT && window.AGENT.sonder && window.AGENT.sonder[iso(day)];  // andere Zeiten an diesem Tag
+    if (sonder) {
+      sonder.forEach(function (p) {
+        for (var t = Math.ceil(p[0] / step) * step; t <= Math.min(p[1] - last, 1439); t += step) {
+          if (isToday && t < nowMin + CFG.vorlauf) continue;
+          if (out.indexOf(t) < 0) out.push(t);
+        }
+      });
+      return out.sort(function (a, b) { return a - b; });
+    }
+    var periods = P.length ? P : [[0, W]];
+    for (var i = 0; i < periods.length; i++) {
+      for (var shift = -W; shift <= W; shift += W) {
+        var s = periods[i][0] + shift, e = periods[i][1] + shift;
+        var from = Math.max(s, start), to = Math.min(e - last, start + 1440 - 1);
+        if (!P.length) { from = start + 11 * 60; to = start + 21 * 60 + 30; }
+        if (to < from && e > start && s < start + 1440 && e - s <= last + step && s >= start) to = from;
+        for (var t = Math.ceil(from / step) * step; t <= to; t += step) {
+          var m = t - start;
+          if (m < 5 * 60 && P.length) continue;              // keine Plätze nach Mitternacht
+          if (isToday && m < nowMin + CFG.vorlauf) continue;  // heute nur mit Vorlauf
+          if (out.indexOf(m) < 0) out.push(m);
+        }
+      }
+    }
+    return out.sort(function (a, b) { return a - b; });
+  }
+
+  function init(form) {
+    if (form._res) return; form._res = true;
+    var now = berlin(), nowMin = now.getHours() * 60 + now.getMinutes();
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var days = [], zu = (window.AGENT && window.AGENT.zu) || [];  // Tage, an denen das Restaurant geschlossen hat (Website-Agent)
+    for (var i = 0; i < CFG.tage; i++) {
+      var d = new Date(today); d.setDate(today.getDate() + i);
+      var s = slots(d, i === 0, nowMin);
+      if (s.length && zu.indexOf(iso(d)) < 0) days.push({ d: d, slots: s, i: i });
+    }
+    var boxTage = form.querySelector("[data-tage]"), boxZeiten = form.querySelector("[data-zeiten]"), boxPers = form.querySelector("[data-personen]");
+    var first = form.querySelector("input, textarea, select, button");
+    function ensure(box, attr, label) {
+      if (box) return box;
+      var wrap = el("fieldset", { "class": "res-gruppe" }, "<legend>" + label + "<\/legend>");
+      var b = el("div", {}); b.setAttribute(attr, ""); wrap.appendChild(b);
+      form.insertBefore(wrap, first && first.parentNode === form ? first : form.firstChild);
+      return b;
+    }
+    boxTage = ensure(boxTage, "data-tage", "Tag");
+    boxZeiten = ensure(boxZeiten, "data-zeiten", "Uhrzeit");
+    boxPers = ensure(boxPers, "data-personen", "Personen");
+    [boxTage, boxZeiten, boxPers].forEach(function (b) { b.setAttribute("role", "radiogroup"); });
+    boxTage.setAttribute("aria-label", "Tag wählen"); boxZeiten.setAttribute("aria-label", "Uhrzeit wählen");
+    boxPers.setAttribute("aria-label", "Anzahl Personen");
+    var uid = "res" + Math.random().toString(36).slice(2, 7);
+
+    function option(name, value, inner, title) {
+      var id = uid + "-" + name + "-" + String(value).replace(/[^a-z0-9]/gi, "");
+      var l = el("label", { "class": "res-option", "for": id, title: title || "" });
+      l.appendChild(el("input", { type: "radio", name: name, value: value, id: id, "class": "res-radio" }));
+      l.appendChild(el("span", { "class": "res-label" }, inner));
+      return l;
+    }
+    function renderDays() {
+      boxTage.innerHTML = "";
+      if (!days.length) { boxTage.appendChild(el("p", { "class": "res-hinweis" }, "In den nächsten Wochen sind online keine Zeiten frei. Bitte rufen Sie an.")); return; }
+      days.forEach(function (x) {
+        var top = x.i === 0 ? "Heute" : x.i === 1 ? "Morgen" : TAGE[x.d.getDay()];
+        boxTage.appendChild(option("datum", iso(x.d), "<b>" + top + "<\/b><small>" + pad(x.d.getDate()) + "." + pad(x.d.getMonth() + 1) + ".<\/small>",
+          LANG[x.d.getDay()] + ", " + x.d.getDate() + ". " + MON[x.d.getMonth()]));
+      });
+    }
+    function renderTimes(dateIso) {
+      boxZeiten.innerHTML = "";
+      var x = days.filter(function (y) { return iso(y.d) === dateIso; })[0];
+      if (!x) { boxZeiten.appendChild(el("p", { "class": "res-hinweis" }, "Bitte zuerst einen Tag wählen.")); return; }
+      if (x.slots.length <= 8) { x.slots.forEach(function (m) { boxZeiten.appendChild(option("uhrzeit", hm(m), hm(m))); }); return; }
+      var parts = [["Morgens", 0, 660], ["Mittags", 660, 870], ["Nachmittags", 870, 1020], ["Abends", 1020, 1440]];
+      // eine einzelne Uhrzeit bekommt keine eigene Gruppe, sie wandert in die nächste (bzw. vorige)
+      var groups = parts.map(function (pt) { return [pt[0], x.slots.filter(function (m) { return m >= pt[1] && m < pt[2]; })]; })
+        .filter(function (g) { return g[1].length; });
+      for (var gi = 0; gi < groups.length && groups.length > 1; gi++) {
+        if (groups[gi][1].length > 1) continue;
+        var to = gi + 1 < groups.length ? gi + 1 : gi - 1;
+        groups[to][1] = to > gi ? groups[gi][1].concat(groups[to][1]) : groups[to][1].concat(groups[gi][1]);
+        groups.splice(gi, 1); gi--;
+      }
+      groups.forEach(function (gr) {
+        var pt = [gr[0]], mins = gr[1];
+        var g = el("div", { "class": "res-zeitgruppe" }), row = el("div", { "class": "res-zeitreihe" });
+        g.appendChild(el("p", { "class": "res-tageszeit" }, pt[0]));
+        mins.forEach(function (m) { row.appendChild(option("uhrzeit", hm(m), hm(m))); });
+        g.appendChild(row); boxZeiten.appendChild(g);
+      });
+    }
+    function renderPersons() {
+      boxPers.innerHTML = "";
+      for (var n = 1; n <= CFG.max; n++) boxPers.appendChild(option("personen", n, String(n), n + (n === 1 ? " Person" : " Personen")));
+      if (CFG.tel) boxPers.appendChild(el("p", { "class": "res-hinweis" }, "Mehr als " + CFG.max + "? <a href=\"tel:" + CFG.tel + "\">Bitte anrufen<\/a>."));
+    }
+    renderDays(); renderPersons();
+    var firstDay = boxTage.querySelector("input");
+    if (firstDay) { firstDay.checked = true; renderTimes(firstDay.value); } else renderTimes("");
+    var two = boxPers.querySelector('input[value="2"]'); if (two) two.checked = true;
+    boxTage.addEventListener("change", function (e) { if (e.target.name === "datum") { renderTimes(e.target.value); clearError(boxZeiten); } });
+    /* Tischbuch: hat das Restaurant pausiert, sind diese Tage (oder alle) online nicht wählbar */
+    var dienst = CFG.modus === "tischbuch" && CFG.dienst ? CFG.dienst.replace(/\/$/, "") : "";
+    if (dienst) {
+      fetch(dienst + "/t/info?l=" + encodeURIComponent(CFG.lokal), { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (info) {
+        if (!info || (!info.pause_alle && !info.pause_bis)) return;
+        days = info.pause_alle ? [] : days.filter(function (x) { return iso(x.d) > info.pause_bis; });
+        if (info.pause_alle) form.insertBefore(el("p", { "class": "res-hinweis res-pause" }, "Online-Reservierungen sind gerade pausiert." +
+          (CFG.tel ? " Bitte rufen Sie uns an: <a href=\"tel:" + CFG.tel + "\">" + CFG.telText + "<\/a>." : "")), form.firstChild);
+        renderDays();
+        var f1 = boxTage.querySelector("input");
+        if (f1) { f1.checked = true; renderTimes(f1.value); } else renderTimes("");
+      }).catch(function () {});
+    }
+
+    /* Spam-Falle und Felder für den späteren Versand */
+    var trap = el("input", { type: "text", name: "botcheck", tabindex: "-1", autocomplete: "off", "aria-hidden": "true",
+      style: "position:absolute;left:-9999px;width:1px;height:1px;opacity:0" });
+    form.appendChild(trap);
+    var errBox = form.querySelector("[data-reservierung-fehler]");
+    if (!errBox) { errBox = el("p", { "class": "res-fehler" }); var sb0 = form.querySelector('[type="submit"]'); if (sb0) sb0.parentNode.insertBefore(errBox, sb0); else form.appendChild(errBox); }
+    errBox.setAttribute("role", "alert"); errBox.setAttribute("aria-live", "polite");
+    var ok = form.querySelector("[data-reservierung-erfolg]");
+    if (!ok) { // gestaltete Bestätigung direkt neben dem Formular (gleicher Abschnitt) wird ebenfalls genutzt
+      var area = form.closest("section, [id]") || form.parentNode;
+      ok = area ? area.querySelector("[data-reservierung-erfolg]") : null;
+      if (ok && (ok._resForm || ok.closest("form[data-reservierung]"))) ok = null;
+    }
+    var outside = !!ok && !form.contains(ok);
+    if (ok) ok._resForm = form;
+    if (!ok) { ok = el("div", { "class": "res-erfolg", tabindex: "-1" }, "<p><strong>Danke!<\/strong> Ihre Anfrage für <span data-wert=\"datum\"><\/span> um <span data-wert=\"uhrzeit\"><\/span> Uhr (<span data-wert=\"personen\"><\/span>) ist eingegangen.<\/p>"); ok.setAttribute("data-reservierung-erfolg", ""); form.appendChild(ok); }
+    ok.hidden = true; ok.setAttribute("tabindex", "-1");
+    form.noValidate = true;
+    [["name", "name", "text"], ["telefon", "tel", "tel"], ["email", "email", "email"]].forEach(function (x) {
+      var f = form.querySelector('[name="' + x[0] + '"]'); if (!f || f.tagName !== "INPUT") return;
+      if (!f.getAttribute("autocomplete")) f.setAttribute("autocomplete", x[1]);
+      if (x[2] !== "text") { f.type = x[2]; f.setAttribute("inputmode", x[2]); }
+      if (!f.getAttribute("enterkeyhint")) f.setAttribute("enterkeyhint", "next");
+    });
+    function headerOffset() {
+      var h = 16;
+      document.querySelectorAll("header, nav, [data-kopf]").forEach(function (n) {
+        var cs = getComputedStyle(n), r = n.getBoundingClientRect();
+        if ((cs.position === "fixed" || cs.position === "sticky") && r.top <= 1 && r.height < innerHeight / 3) h = Math.max(h, r.bottom + 12);
+      });
+      return h;
+    }
+    /* gewählten Chip in einer wischbaren Reihe sichtbar machen, ohne die Seite zu verschieben */
+    function revealX(input) {
+      var lab = input && (input.closest(".res-option") || input);
+      for (var n = lab && lab.parentNode; n && n !== form; n = n.parentNode) {
+        var ox = getComputedStyle(n).overflowX;
+        if (ox === "auto" || ox === "scroll") {
+          var r = lab.getBoundingClientRect(), b = n.getBoundingClientRect();
+          if (r.left < b.left || r.right > b.right) n.scrollLeft += r.left - b.left - (b.width - r.width) / 2;
+          return;
+        }
+      }
+    }
+
+    /* Mehrschritt: <div data-schritt="1|2|3" data-titel="…"> – immer nur ein Schritt sichtbar */
+    var steps = Array.prototype.slice.call(form.querySelectorAll("[data-schritt]")), cur = 0;
+    var multi = steps.length >= 2, prog = null, sum = null, live = null;
+    var still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function stepTitle(st, i) { var h = st.getAttribute("data-titel") || ((st.querySelector("h2,h3,h4,legend") || {}).textContent || ""); return h.trim() || ["Wann?", "Wie viele?", "Ihre Angaben"][i] || "Schritt " + (i + 1); }
+    function summaryText() {
+      var bits = [];
+      if (val("datum")) { var d = new Date(val("datum") + "T12:00:00"); bits.push(TAGE[d.getDay()] + " " + pad(d.getDate()) + "." + pad(d.getMonth() + 1) + "."); }
+      if (val("uhrzeit")) bits.push(val("uhrzeit") + " Uhr");
+      if (val("personen")) bits.push(val("personen") + (val("personen") === "1" ? " Person" : " Personen"));
+      return bits.join(" · ");
+    }
+    function stepOk(i, mark_) {
+      var st = steps[i], need = [];
+      if (st.querySelector("[data-tage]") && !val("datum")) need.push([boxTage, "Bitte einen Tag wählen."]);
+      if (st.querySelector("[data-zeiten]") && !val("uhrzeit")) need.push([boxZeiten, "Bitte eine Uhrzeit wählen."]);
+      if (st.querySelector("[data-personen]") && !val("personen")) need.push([boxPers, "Bitte die Anzahl der Personen wählen."]);
+      var hint = st.querySelector(".res-schritt-fehler");
+      if (mark_ && hint) hint.textContent = need.map(function (n) { return n[1]; }).join(" ");
+      need.forEach(function (n) { if (mark_) mark(n[0], true); });
+      return !need.length;
+    }
+    function show(i, dir) {
+      cur = Math.max(0, Math.min(steps.length - 1, i));
+      steps.forEach(function (st, k) { st.hidden = k !== cur; st.classList.toggle("res-aktiv", k === cur); });
+      if (prog) Array.prototype.forEach.call(prog.children, function (li, k) {
+        li.classList.toggle("res-erledigt", k < cur); li.classList.toggle("res-jetzt", k === cur);
+        if (k === cur) li.setAttribute("aria-current", "step"); else li.removeAttribute("aria-current");
+      });
+      if (sum) { var t = summaryText(); sum.textContent = cur > 0 ? t : ""; sum.hidden = cur === 0 || !t; }
+      if (live) live.textContent = "Schritt " + (cur + 1) + " von " + steps.length + ": " + stepTitle(steps[cur], cur);
+      var st = steps[cur];
+      if (dir && !still && st.animate) st.animate([{ opacity: 0, transform: "translateX(" + (dir > 0 ? 18 : -18) + "px)" }, { opacity: 1, transform: "none" }],
+        { duration: 280, easing: "cubic-bezier(.2,.7,.2,1)" });
+      if (dir) {
+        var f = st.querySelector("input:checked") || st;
+        if (f === st && !st.hasAttribute("tabindex")) { st.setAttribute("tabindex", "-1"); st.style.outline = "none"; }
+        try { f.focus({ preventScroll: true }); } catch (e) {}
+        revealX(st.querySelector("[data-tage] input:checked"));
+        var off = headerOffset(), top = form.getBoundingClientRect().top;
+        if (top < off - 2 || top > innerHeight * 0.6) scrollTo({ top: scrollY + top - off, behavior: still ? "auto" : "smooth" });
+      }
+    }
+    function next() { if (stepOk(cur, true)) show(cur + 1, 1); }
+    if (multi) {
+      prog = form.querySelector("[data-fortschritt]");
+      if (!prog) { prog = el("ol", { "class": "res-fortschritt" }); prog.setAttribute("data-fortschritt", ""); form.insertBefore(prog, form.firstChild); }
+      prog.innerHTML = "";
+      steps.forEach(function (st, i) {
+        var li = el("li", { "class": "res-punkt" }, "<span class=\"res-nr\">" + (i + 1) + "<\/span><span class=\"res-titel\">" + stepTitle(st, i) + "<\/span>");
+        li.addEventListener("click", function () { if (i < cur) show(i, -1); });
+        prog.appendChild(li);
+      });
+      sum = form.querySelector("[data-zusammenfassung]");
+      if (!sum) { sum = el("p", { "class": "res-zusammenfassung" }); prog.parentNode.insertBefore(sum, prog.nextSibling); }
+      live = el("p", { "class": "res-ansage", "aria-live": "polite", style: "position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)" });
+      form.appendChild(live);
+      var sbx = form.querySelector('[type="submit"]');
+      if (sbx && !steps.some(function (st) { return st.contains(sbx); })) steps[steps.length - 1].appendChild(sbx);
+      steps.forEach(function (st, i) {
+        if (!st.querySelector(".res-schritt-fehler") && i < steps.length - 1) st.appendChild(el("p", { "class": "res-schritt-fehler", role: "alert" }));
+        var back = st.querySelector("[data-zurueck]"), fwd = st.querySelector("[data-weiter]");
+        if (!back && !fwd && (i > 0 || i < steps.length - 1)) {
+          var nav = el("div", { "class": "res-nav" });
+          if (i > 0) { back = el("button", { type: "button", "class": "res-zurueck" }, "Zurück"); back.setAttribute("data-zurueck", ""); nav.appendChild(back); }
+          if (i < steps.length - 1) { fwd = el("button", { type: "button", "class": "res-weiter" }, "Weiter"); fwd.setAttribute("data-weiter", ""); nav.appendChild(fwd); }
+          var sb = st.querySelector('[type="submit"]');
+          if (sb && sb.parentNode) { sb.parentNode.insertBefore(nav, sb); nav.appendChild(sb); } else st.appendChild(nav);
+        }
+      });
+      form.addEventListener("click", function (e) {
+        if (e.target.closest("[data-weiter]")) { e.preventDefault(); next(); }
+        else if (e.target.closest("[data-zurueck]")) { e.preventDefault(); show(cur - 1, -1); }
+      });
+      form.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" || e.target.tagName === "TEXTAREA" || e.target.closest("[data-zurueck]")) return;
+        if (cur < steps.length - 1) { e.preventDefault(); next(); return; }
+        if (e.target.tagName !== "INPUT" || /^(radio|checkbox|submit|button)$/.test(e.target.type)) return;
+        var texts = Array.prototype.slice.call(steps[cur].querySelectorAll("input:not([type=radio]):not([type=checkbox]):not([type=hidden]):not([name=botcheck]), textarea"));
+        var later = texts.slice(texts.indexOf(e.target) + 1).filter(function (t) { return !String(t.value || "").trim(); })[0];
+        if (later) { e.preventDefault(); later.focus(); }
+      });
+      // Nach der Wahl von Uhrzeit bzw. Personen per Tippen/Klick geht es von selbst weiter (Pfeiltasten nicht)
+      var lastPointer = -1e9, lastKey = -1e9;
+      form.addEventListener("pointerdown", function () { lastPointer = performance.now(); });
+      form.addEventListener("keydown", function () { lastKey = performance.now(); }, true);
+      form.addEventListener("change", function (e) {
+        var n = e.target.name, st = steps[cur], at = cur;
+        var t = performance.now(); if (t - lastPointer > 1500 || t - lastKey < 400) return;
+        if ((n === "uhrzeit" && st.querySelector("[data-zeiten]") && !st.querySelector("[data-personen]")) ||
+            (n === "personen" && st.querySelector("[data-personen]") && cur < steps.length - 1)) {
+          var hint = st.querySelector(".res-schritt-fehler"); if (hint) hint.textContent = "";
+          setTimeout(function () { if (cur === at && stepOk(cur, false)) show(cur + 1, 1); }, 320);
+        }
+      });
+      show(0, 0);
+    }
+
+    function field(n) { return form.querySelector('[name="' + n + '"]'); }
+    function val(n) {
+      var f = field(n); if (!f) return "";
+      if (f.type === "radio") { var c = form.querySelector('[name="' + n + '"]:checked'); return c ? c.value : ""; }
+      return f.type === "checkbox" ? f.checked : String(f.value || "").trim();
+    }
+    function mark(target, bad) { if (!target) return; target.setAttribute("aria-invalid", bad ? "true" : "false"); }
+    function clearError(t) { mark(t, false); }
+    function check() {
+      var errs = [], firstBad = null;
+      function need(cond, target, msg) { mark(target, !cond); if (!cond) { errs.push(msg); firstBad = firstBad || target; } }
+      need(!!val("datum"), boxTage, "Bitte einen Tag wählen.");
+      need(!!val("uhrzeit"), boxZeiten, "Bitte eine Uhrzeit wählen.");
+      need(!!val("personen"), boxPers, "Bitte die Anzahl der Personen wählen.");
+      if (field("name")) need(val("name").length >= 2, field("name"), "Bitte Ihren Namen angeben.");
+      if (field("telefon")) need(val("telefon").replace(/\D/g, "").length >= 6, field("telefon"), "Bitte eine Telefonnummer für Rückfragen angeben.");
+      if (field("email") && val("email")) need(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val("email")), field("email"), "Die E-Mail-Adresse sieht unvollständig aus.");
+      if (field("einwilligung")) need(val("einwilligung") === true, field("einwilligung"), "Bitte der Verarbeitung Ihrer Angaben zustimmen.");
+      errBox.textContent = errs.join(" ");
+      if (firstBad && multi) { var k = steps.findIndex(function (st) { return st.contains(firstBad); }); if (k >= 0 && k !== cur) { show(k, -1); stepOk(k, true); } }
+      if (firstBad) { var f = firstBad.matches && firstBad.matches("input,textarea,select") ? firstBad : firstBad.querySelector("input:not(:disabled)"); if (f) f.focus(); }
+      return !errs.length;
+    }
+    ["name", "telefon", "email", "einwilligung"].forEach(function (n) { var f = field(n); if (f) f.addEventListener("input", function () { if (f.getAttribute("aria-invalid") === "true") mark(f, false); }); });
+    boxZeiten.addEventListener("change", function () { mark(boxZeiten, false); });
+    boxPers.addEventListener("change", function () { mark(boxPers, false); });
+
+    function readable() {
+      var d = new Date(val("datum") + "T12:00:00"), p = +val("personen");
+      return { datum: LANG[d.getDay()] + ", " + d.getDate() + ". " + MON[d.getMonth()], uhrzeit: val("uhrzeit"), personen: p + (p === 1 ? " Person" : " Personen"), name: val("name") };
+    }
+    var warten = null;
+    function stand(text, art) {
+      var s = ok.querySelector(".res-status");
+      if (!s) { s = el("p", { "class": "res-hinweis res-status", role: "status" }); ok.appendChild(s); }
+      s.setAttribute("data-stand", art || ""); s.innerHTML = text;
+    }
+    function nachfragen(id, token) {  // solange der Gast auf der Seite ist: zeigt, sobald das Restaurant entschieden hat
+      var n = 0;
+      clearInterval(warten);
+      warten = setInterval(function () {
+        if (++n > 40 || ok.hidden) { clearInterval(warten); return; }
+        fetch(dienst + "/t/status?l=" + encodeURIComponent(CFG.lokal) + "&id=" + encodeURIComponent(id) + "&t=" + encodeURIComponent(token), { cache: "no-store" })
+          .then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+            if (!d || d.status === "offen") return;
+            clearInterval(warten);
+            if (d.status === "bestaetigt") stand("<strong>Bestätigt.<\/strong> Ihr Tisch ist reserviert, wir freuen uns auf Sie." + (d.hinweis ? " " + esc(d.hinweis) : ""), "bestaetigt");
+            else stand("<strong>Leider nicht möglich.<\/strong> " + (d.hinweis ? esc(d.hinweis) + " " : "") + (CFG.tel ? "Rufen Sie uns gern an: <a href=\"tel:" + CFG.tel + "\">" + CFG.telText + "<\/a>." : ""), "abgelehnt");
+          }).catch(function () {});
+      }, 15000);
+    }
+    function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+    function showSuccess(ergebnis) {
+      var r = readable();
+      ok.querySelectorAll("[data-wert]").forEach(function (s) { var k = s.getAttribute("data-wert"); if (r[k] != null) s.textContent = r[k]; });
+      if (ergebnis && ergebnis.status === "bestaetigt") stand("<strong>Bestätigt.<\/strong> Ihr Tisch ist reserviert, wir freuen uns auf Sie.", "bestaetigt");
+      else if (ergebnis) {
+        stand("Ihre Anfrage ist bei " + esc(CFG.name) + ". Sobald sie bestätigt ist, sehen Sie es hier" + (val("email") ? " und bekommen eine E-Mail" : "") +
+              ". <span class=\"res-warten\" aria-hidden=\"true\">·<\/span>", "offen");
+        if (ergebnis.id && ergebnis.token) nachfragen(ergebnis.id, ergebnis.token);
+      }
+      if (CFG.modus === "demo" && !ok.querySelector(".res-demo-hinweis")) {
+        ok.appendChild(el("p", { "class": "res-demo-hinweis" }, "Entwurf: Diese Anfrage wurde nicht übermittelt. In der fertigen Website geht sie sofort an " +
+          CFG.name + "." + (CFG.tel ? " Für eine echte Reservierung bitte <a href=\"tel:" + CFG.tel + "\">anrufen<\/a>." : "")));
+      }
+      if (outside) { form.setAttribute("data-res-vorher", form.hidden ? "1" : "0"); form.hidden = true; }
+      for (var n = ok; !outside && n && n !== form; n = n.parentNode) {
+        var sib = n;
+        Array.prototype.forEach.call(n.parentNode.children, function (c) { if (c !== sib && c !== trap && !c.hasAttribute("data-res-vorher")) { c.setAttribute("data-res-vorher", c.hidden ? "1" : "0"); c.hidden = true; } });
+        if (n.parentNode !== form && n.parentNode.hidden) { n.parentNode.setAttribute("data-res-offen", ""); n.parentNode.hidden = false; }
+      }
+      ok.hidden = false; form.setAttribute("data-status", "gesendet");
+      try { ok.focus({ preventScroll: true }); } catch (e) { ok.focus(); }
+      var off = headerOffset(), top = (outside ? ok : form).getBoundingClientRect().top;
+      if (top < off - 2) scrollTo({ top: scrollY + top - off, behavior: still ? "auto" : "smooth" });
+    }
+    function again(e) {
+      if (!e.target.closest("[data-reservierung-neu]")) return;
+      e.preventDefault(); ok.hidden = true; form.removeAttribute("data-status"); clearInterval(warten);
+      var alt = ok.querySelector(".res-status"); if (alt) alt.remove();
+      if (outside) { form.hidden = form.getAttribute("data-res-vorher") === "1"; form.removeAttribute("data-res-vorher"); }
+      form.querySelectorAll("[data-res-vorher]").forEach(function (c) { c.hidden = c.getAttribute("data-res-vorher") === "1"; c.removeAttribute("data-res-vorher"); });
+      form.querySelectorAll("[data-res-offen]").forEach(function (c) { c.hidden = true; c.removeAttribute("data-res-offen"); });
+      if (multi) show(0, -1);
+    }
+    form.addEventListener("click", again);
+    if (outside) ok.addEventListener("click", again);
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (trap.value) return;
+      if (!check()) return;
+      var btn = form.querySelector('[type="submit"]'), label = btn ? btn.innerHTML : "";
+      if (btn) { btn.disabled = true; btn.setAttribute("aria-busy", "true"); }
+      form.setAttribute("data-status", "sendet");
+      function done(success, ergebnis, text) {
+        if (btn) { btn.disabled = false; btn.removeAttribute("aria-busy"); btn.innerHTML = label; }
+        if (success) showSuccess(ergebnis);
+        else { form.removeAttribute("data-status"); errBox.innerHTML = (text || "Das hat leider nicht geklappt.") + (CFG.tel ? " Bitte rufen Sie an: <a href=\"tel:" + CFG.tel + "\">" + CFG.telText + "<\/a>." : ""); }
+      }
+      if (dienst) {  // eigenes Tischbuch des Restaurants
+        fetch(dienst + "/t/anfrage?l=" + encodeURIComponent(CFG.lokal), { method: "POST", headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ datum: val("datum"), uhrzeit: val("uhrzeit"), personen: +val("personen"), name: val("name"), telefon: val("telefon"),
+                                 email: field("email") ? val("email") : "", nachricht: field("nachricht") ? val("nachricht") : "", hp: trap.value }) })
+          .then(function (res) { return res.json().catch(function () { return {}; }).then(function (d) { return [res.status, d]; }); })
+          .then(function (x) {
+            if (x[0] === 200) done(true, x[1]);
+            else if (x[0] === 409) done(false, null, "Für diesen Tag nimmt " + esc(CFG.name) + " gerade keine Online-Anfragen an.");
+            else done(false);
+          }).catch(function () { done(false); });
+        return;
+      }
+      if (CFG.modus !== "live" || !CFG.ziel) { setTimeout(function () { done(true); }, 650); return; }
+      var r = readable(), fd = new FormData(form);
+      fd.set("datum", r.datum + " (" + val("datum") + ")");
+      fd.set("subject", "Reservierungsanfrage " + r.datum + ", " + r.uhrzeit + " Uhr, " + r.personen);
+      fd.set("restaurant", CFG.name);
+      for (var k in (CFG.extra || {})) fd.set(k, CFG.extra[k]);
+      fetch(CFG.ziel, { method: "POST", body: fd, headers: { Accept: "application/json" } })
+        .then(function (res) { done(res.ok); }).catch(function () { done(false); });
+    });
+  }
+  function run() { document.querySelectorAll("form[data-reservierung]").forEach(init); }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run); else run();
+})();
+</script><!--/agent-res--><!--agent-szenen--><style id="agent-szenen">[data-szene]{position:relative;isolation:isolate}[data-szene="raster-zoom"]{overflow:clip}.szene-nachweis{background:rgba(255,255,255,.9);color:#1a1a1a;border-radius:6px;padding:.15em .5em;width:fit-content}
+.zerlegt-an [data-zerlegt-buehne]{position:relative}.zerlegt-an [data-ebene]{will-change:transform}
+.zerlegt-strich{display:block;height:0;border-top:1.5px solid currentColor;pointer-events:none}
+.zerlegt-strich::before{content:"";position:absolute;top:-4.75px;width:8px;height:8px;border-radius:50%;background:currentColor}
+.zerlegt-strich.rechts::before{left:-4px}.zerlegt-strich.links::before{right:-4px}
+.fenster-an [data-fenster-titel]{display:grid;justify-items:center;align-content:start;padding-top:clamp(.5rem,4vh,2.5rem);text-align:center;pointer-events:none}
+:where(.kapitel-an [data-kapitel]){display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(1.5rem,4vw,4rem);align-items:center;padding:clamp(1rem,4vh,3rem) clamp(1rem,5vw,4rem);box-sizing:border-box}
+:where(.kapitel-an [data-kapitel-bild]){margin:0;overflow:hidden}
+:where(.kapitel-an [data-kapitel-bild] img){width:100%;height:100%;object-fit:cover;display:block}
+@media (max-width:819px){:where(.kapitel-an [data-kapitel]){grid-template-columns:minmax(0,1fr);align-content:start;gap:1rem}}
+.horizontal-an{overflow:hidden}.horizontal-an [data-spur]{overflow:visible!important;flex-wrap:nowrap!important;width:max-content;scroll-snap-type:none!important}
+.horizontal-wisch [data-spur]{flex-wrap:nowrap!important;overflow-x:auto!important;overflow-y:hidden!important;overscroll-behavior-x:contain;scroll-snap-type:x mandatory!important;scrollbar-width:none;-webkit-overflow-scrolling:touch;width:auto!important;max-width:none!important;transform:none!important;box-sizing:border-box}
+.horizontal-wisch [data-spur]::-webkit-scrollbar{display:none}.horizontal-wisch [data-spur]>*{flex-shrink:0!important;scroll-snap-align:start}
+.spur-steuerung{display:none}.horizontal-wisch .spur-steuerung{display:flex}.horizontal-wisch .spur-steuerung.spur-passt{display:none}
+:where(.spur-steuerung){align-items:center;gap:.6rem;margin-top:clamp(.9rem,2.5vh,1.5rem)}
+:where(.spur-leiste){position:relative;flex:1;height:2px;border-radius:2px;background:color-mix(in srgb,currentColor 18%,transparent);overflow:hidden}
+.spur-leiste i{position:absolute;top:0;bottom:0;left:0;width:calc(var(--spur-anteil,.3)*100%);transform:translateX(calc(var(--spur-stand,0)*(1/var(--spur-anteil,.3) - 1)*100%));background:currentColor;border-radius:inherit}
+:where(.spur-zurueck,.spur-weiter){display:inline-grid;place-items:center;width:44px;height:44px;padding:0;border-radius:50%;border:1px solid currentColor;background:transparent;color:inherit;font:inherit;font-size:1.1rem;line-height:1;cursor:pointer;transition:opacity .2s}
+.spur-zurueck:disabled,.spur-weiter:disabled{opacity:.3;cursor:default}
+</style><script>(function () {
+  "use strict";
+  /* Immersive Szenen des Agenten. Die Seite liefert Markup und Gestaltung, der Agent die Bewegung:
+       data-szene="zerlegt"     Gericht öffnet sich beim Scrollen Schicht für Schicht, Linien + Beschriftungen
+       data-szene="raster-zoom" Mittelkachel wächst gepinnt, Seitenkacheln gleiten nach außen
+       data-szene="fenster"     Bild wächst aus einem kleinen Fenster zum Vollbild
+       data-szene="kapitel"     gepinnte Kapitel: Bild wischt herein, Text wechselt
+       data-szene="horizontal"  Desktop: Reihe läuft beim Scrollen seitlich (gepinnt); Handy: wischbare Reihe
+       data-szene="lesen"       Text leuchtet Wort für Wort mit dem Scrollen auf
+       data-schieben            Abschnitt schiebt sich über den vorigen
+       data-tiefe="10…40"       Parallax in mehreren Geschwindigkeiten (+ Maus-Tiefe auf dem Desktop)
+       data-hintergrund         Abschnitt mit Hintergrundbild ([data-hintergrund-bild]): sanfte Parallaxe
+     Ohne Bewegung (prefers-reduced-motion oder ohne GSAP) bleibt alles ruhig und vollständig sichtbar. */
+  var D = document, root = D.documentElement;
+  function qa(s, r) { return Array.prototype.slice.call((r || D).querySelectorAll(s)); }
+  function q(s, r) { return (r || D).querySelector(s); }
+  var G = window.gsap, ST = window.ScrollTrigger;
+  var still = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+  var motion = !!(G && ST) && !still;
+  var MOTION = "(prefers-reduced-motion: no-preference)";
+  if (G && ST) { G.registerPlugin(ST); if (window.SplitText) G.registerPlugin(window.SplitText); ST.config({ ignoreMobileResize: true }); }
+  var mm = motion ? G.matchMedia() : null;
+
+  /* feste Kopfzeile oben und feste Leisten unten (Handy) */
+  function edges() {
+    var top = 0, bottom = 0, vh = innerHeight;
+    qa("body > *, body > * > *, header, nav, [data-kopf]").forEach(function (n) {
+      if (n.offsetWidth < innerWidth * 0.5) return;
+      var cs = getComputedStyle(n);
+      if (cs.position !== "fixed" && cs.position !== "sticky") return;
+      if (cs.visibility === "hidden" || cs.display === "none" || +cs.opacity === 0) return;
+      var r = n.getBoundingClientRect();
+      if (r.height <= 0 || r.height > vh / 3) return;
+      if (cs.position === "sticky") { // klebt beim Scrollen oben (z. B. unter der Hinweisleiste des Agenten)
+        var t = parseFloat(cs.top), par = n.parentElement;
+        if (!isNaN(t) && t < vh / 3 && par && par.offsetHeight > vh * 2) top = Math.max(top, t + r.height);
+        return;
+      }
+      if (r.top <= 1 && r.bottom > 0) top = Math.max(top, r.bottom);
+      else if (cs.position === "fixed" && r.bottom >= vh - 1) bottom = Math.max(bottom, vh - r.top);
+    });
+    return { top: Math.round(top), bottom: Math.round(bottom) };
+  }
+  var E = { top: 0, bottom: 0 };
+  function measureEdges() {
+    E = edges();
+    root.style.setProperty("--szene-kopf", E.top + "px");
+    root.style.setProperty("--szene-unten", E.bottom + "px");
+  }
+  measureEdges();
+  function kopf() { return E.top; }
+  function start() { return "top " + kopf(); }
+  function sichtbar() { measureEdges(); return innerHeight - E.top - E.bottom; }
+  function loaded(imgs, cb) {
+    var left = imgs.length, done = false;
+    function one() { if (--left <= 0 && !done) { done = true; cb(); } }
+    if (!left) return cb();
+    imgs.forEach(function (i) {
+      i.loading = "eager";
+      if (i.complete && i.naturalWidth) one();
+      else { i.addEventListener("load", one, { once: true }); i.addEventListener("error", one, { once: true }); }
+    });
+    setTimeout(function () { if (!done) { done = true; cb(); } }, 6000);
+  }
+  var pending = 0;
+  function styler() {
+    var saved = [];
+    function put(el, props) {
+      if (!el) return;
+      if (!saved.some(function (x) { return x[0] === el; })) saved.push([el, el.getAttribute("style")]);
+      for (var k in props) el.style.setProperty(k, props[k], "important");
+    }
+    function undo() {
+      saved.forEach(function (x) { if (x[1] == null) x[0].removeAttribute("style"); else x[0].setAttribute("style", x[1]); });
+      saved = [];
+    }
+    return { put: put, undo: undo };
+  }
+  function kinder(box, ausser) { // direkte Kinder, die keine der genannten Elemente sind oder enthalten
+    return Array.prototype.slice.call(box.children).filter(function (c) {
+      return !ausser.some(function (a) { return a && (c === a || c.contains(a)); }) && getComputedStyle(c).position !== "absolute";
+    });
+  }
+  /* gepinnte Abschnitte füllen den sichtbaren Bereich: zu kurze Abschnitte bekommen oben und unten gleich viel Luft */
+  var fills = [];
+  function fill(sec) {
+    if (!sec._pad) { var cs = getComputedStyle(sec); sec._pad = [parseFloat(cs.paddingTop) || 0, parseFloat(cs.paddingBottom) || 0]; fills.push(sec); }
+    sec.style.paddingTop = sec._pad[0] + "px"; sec.style.paddingBottom = sec._pad[1] + "px";
+    var extra = sichtbar() - sec.offsetHeight;
+    if (extra > 0) { sec.style.paddingTop = sec._pad[0] + extra / 2 + "px"; sec.style.paddingBottom = sec._pad[1] + extra / 2 + "px"; }
+  }
+  function unfill(sec) { if (sec._pad) { sec.style.paddingTop = ""; sec.style.paddingBottom = ""; } }
+  function refreshSoon() { if (motion && pending <= 0) { ST.sort(); ST.refresh(); } }
+
+  /* ---------------------------------------------------------------- zerlegt */
+  function zerlegt(sec) {
+    var buehne = q("[data-zerlegt-buehne]", sec);
+    if (!buehne) return;
+    var figs = qa("[data-ebene]", buehne).sort(function (a, b) { return (+a.getAttribute("data-ebene")) - (+b.getAttribute("data-ebene")); });
+    if (figs.length < 2) return;
+    var imgs = figs.map(function (f) { return q("img", f); }).filter(Boolean);
+    var caps = figs.map(function (f) { return q("figcaption, [data-ebene-text]", f); });
+    var lines = figs.map(function (f, i) {
+      if (!caps[i]) return null;
+      var s = q(".zerlegt-strich", f);
+      if (!s) { s = D.createElement("i"); s.className = "zerlegt-strich"; s.setAttribute("aria-hidden", "true"); f.appendChild(s); }
+      return s;
+    });
+    sec.classList.add("zerlegt-an");
+    var P = { asm: [], exp: [], w: 0, seite: [], shift: 0, s0: 1 };
+    function ratio(img) { return img && img.naturalWidth ? img.naturalHeight / img.naturalWidth : 0.35; }
+    function inhalt(img) {
+      var v = (img && img.getAttribute("data-inhalt") || "").split(",").map(parseFloat);
+      return v.length === 2 && v[0] >= 0 && v[1] <= 1 && v[1] > v[0] ? v : [0.08, 0.92];
+    }
+    function layout() {
+      measureEdges();
+      var vw = innerWidth, mobil = vw < 820, n = figs.length;
+      buehne.style.position = "relative"; buehne.style.width = "100%";
+      // Höhe so, dass der gepinnte Abschnitt genau in den sichtbaren Bereich passt (Kopf- und Fußleisten abgezogen)
+      var V = Math.max(320, sichtbar());
+      buehne.style.height = V + "px";
+      // Höhe der Bühne = sichtbarer Bereich minus alles, was im gepinnten Abschnitt über bzw. unter ihr liegt
+      var st = getComputedStyle(sec), oben = 0, n0 = buehne;
+      while (n0 && n0 !== sec) { oben += n0.offsetTop; n0 = n0.offsetParent; if (n0 && !sec.contains(n0) && n0 !== sec) { oben = buehne.getBoundingClientRect().top - sec.getBoundingClientRect().top; break; } }
+      var H = Math.max(240, Math.min(V, V - oben - (parseFloat(st.paddingBottom) || 0)));
+      if (!motion) H = Math.min(V, Math.max(H, 420));
+      buehne.style.height = H + "px";
+      var Wb = buehne.clientWidth, R = figs.map(function (f, i) { return ratio(q("img", f)); });
+      var sumR = R.reduce(function (a, b) { return a + b; }, 0), gap = mobil ? 0.075 : 0.1;
+      var w = Math.min(mobil ? Wb * 0.6 : Math.min(Wb * 0.56, 560), (H * 0.95) / (sumR + (n - 1) * gap));
+      var line = mobil ? 18 : Math.max(36, Math.min(90, Wb * 0.06)), minLabel = mobil ? 92 : 140;
+      var wechsel = !mobil && (Wb - w) / 2 - line - 12 >= minLabel, left, labelW;
+      if (wechsel) { left = (Wb - w) / 2; labelW = Math.min(260, (Wb - w) / 2 - line - 12); }
+      else {
+        // Beschriftungen rechts: Platz bis zum Rand der Bühne und nie über den Bildschirm hinaus
+        var edge = Math.min(Wb, innerWidth - 8 - buehne.getBoundingClientRect().left);
+        left = mobil ? 0 : Math.max(0, Math.min(24, edge - w - line - 10 - minLabel));
+        var room = function (x) { return edge - left - x - line - 10; };
+        if (room(w) < minLabel) w = Math.max(Wb * 0.38, w - (minLabel - room(w)));
+        labelW = Math.max(60, Math.min(240, room(w)));
+      }
+      var h = R.map(function (r) { return r * w; }), g = gap * w;
+      var o = h.map(function (x, i) { return i < n - 1 ? Math.min(x, h[i + 1]) * 0.3 : 0; });
+      var Texp = h.reduce(function (a, b) { return a + b; }, 0) + (n - 1) * g;
+      var Tasm = h.reduce(function (a, b) { return a + b; }, 0) - o.reduce(function (a, b) { return a + b; }, 0);
+      var ye = (H - Texp) / 2, ya = (H - Tasm) / 2;
+      P.w = w;
+      // zusammengesetzt steht das Gericht mittig und etwas größer, beim Öffnen rückt es an seinen Platz
+      P.shift = wechsel ? 0 : Math.max(0, (Wb - w) / 2 - left);
+      P.s0 = Math.max(1, Math.min(1.3, (H * 0.9) / Tasm, (Wb * 0.92) / w));
+      figs.forEach(function (f, i) {
+        P.exp[i] = ye; P.asm[i] = ya; ye += h[i] + g; ya += h[i] - o[i];
+        var rechts = !wechsel || i % 2 === 0;
+        P.seite[i] = rechts ? 1 : -1;
+        f.style.cssText += ";position:absolute;top:0;left:" + left + "px;width:" + w + "px;margin:0;z-index:" + (n - i + 1);
+        var img = q("img", f);
+        if (img) img.style.cssText += ";display:block;width:100%;height:auto;max-width:none";
+        var c = caps[i], s = lines[i];
+        if (!c) return;
+        var span = inhalt(img), mid = h[i] / 2;
+        var x0 = rechts ? (span[1] - 0.07) * w : (span[0] + 0.07) * w, x1 = rechts ? w + line : -line;
+        s.className = "zerlegt-strich " + (rechts ? "rechts" : "links");
+        s.style.cssText = "position:absolute;top:" + mid + "px;left:" + Math.min(x0, x1) + "px;width:" + Math.abs(x1 - x0) + "px;" +
+          "transform-origin:" + (rechts ? "0 50%" : "100% 50%");
+        c.style.cssText += ";position:absolute;margin:0;width:" + labelW + "px;" +
+          (rechts ? "left:" + (w + line + 10) + "px;right:auto;text-align:left" : "left:" + (-line - 10 - labelW) + "px;right:auto;text-align:right");
+        c.style.top = "0px";
+        c.style.top = (mid - c.offsetHeight / 2) + "px";
+      });
+      if (!motion) figs.forEach(function (f, i) { f.style.transform = "translateY(" + P.exp[i] + "px)"; });
+    }
+    pending++;
+    loaded(imgs, function () {
+      pending--;
+      layout();
+      if (!motion) { addEventListener("resize", layout); return; }
+      ST.addEventListener("refreshInit", layout);
+      mm.add(MOTION, function () {
+        var n = figs.length, mobil = innerWidth < 820;
+        var tl = G.timeline({ defaults: { ease: "none" }, scrollTrigger: {
+          trigger: sec, start: start, end: function () { return "+=" + Math.round(innerHeight * (mobil ? 0.5 : 0.62) * (n + 1)); },
+          pin: true, scrub: 0.7, anticipatePin: 1, invalidateOnRefresh: true } });
+        figs.forEach(function (f, i) {
+          tl.fromTo(f, { y: function () { return P.asm[i]; }, x: function () { return P.shift; } },
+            { y: function () { return P.exp[i]; }, x: function () { return P.seite[i] * -P.w * 0.02 * (i % 2 ? 1 : -1); }, ease: "power2.inOut", duration: 1 }, i * 0.06);
+          var img = q("img", f);
+          if (img) tl.fromTo(img, { rotation: 0 }, { rotation: (i % 2 ? -1 : 1) * (1.2 + (i % 3) * 0.8), ease: "power2.inOut", duration: 1 }, i * 0.06);
+        });
+        figs.forEach(function (f, i) {
+          var t = 0.42 + i * (0.55 / n);
+          if (lines[i]) tl.fromTo(lines[i], { scaleX: 0 }, { scaleX: 1, duration: 0.22, ease: "power2.out" }, t);
+          if (caps[i]) tl.fromTo(caps[i], { autoAlpha: 0, x: function () { return P.seite[i] * 14; } }, { autoAlpha: 1, x: 0, duration: 0.22 }, t + 0.06);
+        });
+        tl.fromTo(buehne, { scale: function () { return P.s0; } }, { scale: 1, ease: "power2.inOut", duration: 0.9, transformOrigin: "50% 50%" }, 0);
+        qa("[data-tiefe]", sec).forEach(function (el) {
+          tl.fromTo(el, { yPercent: 0 }, { yPercent: -(parseFloat(el.getAttribute("data-tiefe")) || 20) * 1.5, duration: 1.4 }, 0);
+        });
+        tl.to({}, { duration: 0.3 });
+        // Maus-Tiefe: die Schichten folgen dem Zeiger unterschiedlich stark
+        var off = null;
+        if (matchMedia("(pointer: fine)").matches && innerWidth >= 900) {
+          var qs = imgs.map(function (img, i) { return [G.quickTo(img, "x", { duration: 0.6, ease: "power3" }), G.quickTo(img, "y", { duration: 0.6, ease: "power3" }), 4 + i * 2.5]; });
+          var mv = function (e) { var r = sec.getBoundingClientRect(), dx = (e.clientX - r.left) / r.width - 0.5, dy = (e.clientY - r.top) / r.height - 0.5;
+            qs.forEach(function (z) { z[0](dx * z[2] * 2); z[1](dy * z[2]); }); };
+          var lv = function () { qs.forEach(function (z) { z[0](0); z[1](0); }); };
+          sec.addEventListener("mousemove", mv); sec.addEventListener("mouseleave", lv);
+          off = function () { sec.removeEventListener("mousemove", mv); sec.removeEventListener("mouseleave", lv); };
+        }
+        return function () { if (off) off(); };
+      });
+      refreshSoon();
+    });
+  }
+
+  /* ---------------------------------------------------------------- raster-zoom */
+  function rasterZoom(sec) {
+    var mitte = q("[data-mitte]", sec) || q(".mitte", sec);
+    if (!mitte || !motion) return;
+    var tiles = Array.prototype.slice.call(mitte.parentNode.children).filter(function (c) { return c !== mitte; });
+    sec.style.position = sec.style.position || "relative";
+    function pos(el) {
+      var x = 0, y = 0, n = el;
+      while (n && n !== sec) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; if (n && !sec.contains(n)) break; }
+      return { x: x, y: y };
+    }
+    mm.add("(min-width: 900px) and " + MOTION, function () {
+      var C = {};
+      function calc() {
+        fill(sec);
+        var p = pos(mitte), w = mitte.offsetWidth, h = mitte.offsetHeight, V = innerHeight - kopf();
+        C.s = Math.max(1, Math.min(innerWidth * 0.94 / w, V * 0.9 / h));
+        C.x = innerWidth / 2 - (sec.getBoundingClientRect().left + p.x + w / 2);
+        C.y = V / 2 - (p.y + h / 2);
+      }
+      calc();
+      var tl = G.timeline({ scrollTrigger: { trigger: sec, start: start, end: "+=130%", pin: true, scrub: 1, anticipatePin: 1,
+        invalidateOnRefresh: true, onRefreshInit: calc } });
+      tl.to(mitte, { scale: function () { return C.s; }, x: function () { return C.x; }, y: function () { return C.y; }, ease: "power1.inOut", zIndex: 5 }, 0);
+      var img = q("img", mitte);
+      if (img) tl.fromTo(img, { scale: 1.18 }, { scale: 1, ease: "none" }, 0);
+      tiles.forEach(function (t) {
+        var links = t.offsetLeft + t.offsetWidth / 2 < mitte.offsetLeft + mitte.offsetWidth / 2;
+        tl.to(t, { xPercent: links ? -125 : 125, autoAlpha: 0, ease: "power1.in" }, 0);
+      });
+      var txt = q("[data-raster-text]", sec);
+      if (txt) tl.fromTo(txt, { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.3 }, 0.7);
+      // alles andere im Abschnitt (Überschrift, Text) weicht, bevor die Kachel es erreicht; Bildnachweise bleiben sichtbar
+      var S = styler(), weg = [], pfad = [];
+      for (var n = mitte.parentNode; n && n !== sec; n = n.parentNode) pfad.push(n);
+      [sec].concat(pfad).forEach(function (box) {
+        Array.prototype.slice.call(box.children).forEach(function (c) {
+          if (c === mitte || c.contains(mitte) || pfad.indexOf(c) >= 0 || tiles.indexOf(c) >= 0 || c === txt || (txt && c.contains(txt))) return;
+          if (c.matches(".foto-nachweis") || q(".foto-nachweis", c)) { S.put(c, { position: "relative", "z-index": "8" }); c.classList.add("szene-nachweis"); }
+          else weg.push(c);
+        });
+      });
+      if (weg.length) tl.to(weg, { autoAlpha: 0, y: -20, duration: 0.25, ease: "power1.in" }, 0);
+      return function () { unfill(sec); S.undo(); qa(".szene-nachweis", sec).forEach(function (c) { c.classList.remove("szene-nachweis"); }); };
+    });
+    mm.add("(max-width: 899px) and " + MOTION, function () {
+      G.from([mitte].concat(tiles), { clipPath: "inset(14% 14% 14% 14% round 14px)", duration: 1, ease: "power3.out", stagger: 0.12,
+        scrollTrigger: { trigger: sec, start: "top 80%" } });
+    });
+  }
+
+  /* ---------------------------------------------------------------- fenster */
+  function fenster(sec) {
+    var fig = q("[data-fenster]", sec);
+    if (!fig || !motion) return;
+    mm.add(MOTION, function () {
+      sec.classList.add("fenster-an");
+      var S = styler(), mobil = innerWidth < 820, media = q("img, video", fig);
+      var titel = q("[data-fenster-titel]", sec), txt = q("[data-fenster-text]", sec);
+      var rest = kinder(sec, [fig, titel, txt]);  // weitere Inhalte gehören zur Titel-Ebene und weichen mit ihm
+      S.put(sec, { position: "relative", overflow: "hidden", "padding-top": "0px", "padding-bottom": "0px", "min-height": "0px", "max-height": "none" });
+      S.put(fig, { position: "absolute", top: "0px", left: "0px", right: "0px", bottom: "0px", width: "100%", height: "100%",
+        "max-width": "none", "max-height": "none", margin: "0px", "aspect-ratio": "auto", "z-index": "1" });
+      if (media) S.put(media, { width: "100%", height: "100%", "max-width": "none", "max-height": "none", "object-fit": "cover",
+        "aspect-ratio": "auto", display: "block", position: "static" });
+      if (titel) S.put(titel, { position: "absolute", top: "0px", left: "0px", right: "0px", margin: "0px", "z-index": "0" });
+      if (txt) S.put(txt, { position: "absolute", "z-index": "2", top: "auto", margin: "0px" });
+      rest.forEach(function (r) { S.put(r, { position: "relative", "z-index": "0" }); });
+      var C = {};
+      function geo() {
+        var H = sichtbar(), w = sec.clientWidth;
+        sec.style.setProperty("height", H + "px", "important");
+        var oben = H * 0.12;
+        if (titel) oben = Math.max(oben, titel.offsetTop + titel.offsetHeight + 18);
+        rest.forEach(function (r) { oben = Math.max(oben, r.offsetTop + r.offsetHeight + 18); });
+        var unten = Math.max(H * 0.1, E.bottom ? 12 : 0), hoehe = Math.max(H * 0.28, H - oben - unten);
+        var breite = Math.min(w * (mobil ? 0.84 : 0.42), hoehe * (mobil ? 1.1 : 1.5));
+        hoehe = Math.min(hoehe, breite * (mobil ? 1.25 : 0.9));
+        var seite = Math.max(0, (w - breite) / 2), u = Math.max(0, H - oben - hoehe);
+        C.start = "inset(" + oben + "px " + seite + "px " + u + "px " + seite + "px round 28px)";
+        if (txt) { var rand = Math.max(16, w * 0.05); txt.style.setProperty("left", rand + "px", "important");
+          txt.style.setProperty("right", rand + "px", "important");
+          txt.style.setProperty("bottom", (Math.max(24, H * 0.06)) + "px", "important"); }
+      }
+      geo();
+      ST.addEventListener("refreshInit", geo);
+      var tl = G.timeline({ scrollTrigger: { trigger: sec, start: start, end: function () { return "+=" + Math.round(innerHeight * (mobil ? 1.1 : 1.5)); },
+        pin: true, scrub: 0.8, anticipatePin: 1, invalidateOnRefresh: true } });
+      tl.fromTo(fig, { clipPath: function () { return C.start; } },
+        { clipPath: "inset(0px 0px 0px 0px round 0px)", ease: "power2.inOut", duration: 1 }, 0);
+      if (media) tl.fromTo(media, { scale: 1.3 }, { scale: 1, ease: "power2.out", duration: 1 }, 0);
+      var weich = (titel ? [titel] : []).concat(rest);
+      if (weich.length) tl.fromTo(weich, { scale: 1, autoAlpha: 1 }, { scale: 0.9, autoAlpha: 0, duration: 0.4 }, 0.15);
+      if (txt) tl.fromTo(txt, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.3 }, 0.78);
+      tl.to({}, { duration: 0.25 });
+      return function () { ST.removeEventListener("refreshInit", geo); S.undo(); sec.classList.remove("fenster-an"); };
+    });
+  }
+
+  /* ---------------------------------------------------------------- kapitel */
+  function kapitel(sec) {
+    var ks = qa("[data-kapitel]", sec);
+    if (ks.length < 2 || !motion) return;
+    var box = ks[0].parentNode;
+    if (ks.some(function (k) { return k.parentNode !== box; })) return;
+    mm.add(MOTION, function () {
+      sec.classList.add("kapitel-an");
+      var S = styler(), n = ks.length;
+      // was vor den Kapiteln steht (Überschrift), bleibt sichtbar darüber; was danach steht, ruht während der Szene
+      var vor = [], nach = [];
+      kinder(box, ks).forEach(function (c) { (c.compareDocumentPosition(ks[0]) & 4 ? vor : nach).push(c); });
+      S.put(sec, { position: "relative", overflow: "hidden", "min-height": "0px", "max-height": "none" });
+      if (box !== sec) S.put(box, { position: "relative", "min-height": "0px", "max-height": "none" });
+      nach.forEach(function (c) { S.put(c, { display: "none" }); });
+      function geo() {
+        var H = sichtbar(), cs = getComputedStyle(sec), pb = parseFloat(cs.paddingBottom) || 0;
+        sec.style.setProperty("height", H + "px", "important");
+        var boxH = H - pb - (parseFloat(cs.paddingTop) || 0), top = box === sec ? (parseFloat(cs.paddingTop) || 0) : 0;
+        if (box !== sec) {
+          box.style.setProperty("height", "1px", "important");
+          boxH = Math.max(280, H - pb - (box.getBoundingClientRect().top - sec.getBoundingClientRect().top));
+          box.style.setProperty("height", boxH + "px", "important");
+        }
+        vor.forEach(function (v) { top = Math.max(top, v.offsetTop + v.offsetHeight + 16); });
+        var h = Math.max(240, (box === sec ? H - pb : boxH) - top);
+        ks.forEach(function (k, i) {
+          S.put(k, { position: "absolute", left: "0px", right: "0px", bottom: "auto", "margin-top": "0px", "margin-bottom": "0px",
+            width: "auto", "z-index": String(i + 1) });
+          k.style.setProperty("top", top + "px", "important");
+          k.style.setProperty("height", h + "px", "important");
+          // passt ein Kapitel nicht in die Bühne (Handy), wird sein Bild niedriger statt dass etwas überlappt
+          var bild = q("[data-kapitel-bild]", k), img = bild && q("img", bild);
+          if (!bild) return;
+          ["height", "aspect-ratio", "max-height", "width", "justify-self", "margin-left", "margin-right", "flex-shrink"].forEach(function (pr) {
+            if (bild._fit) bild.style.removeProperty(pr); });
+          // Platz für das Bild ausrechnen statt messen: in einem Raster mit fester Höhe schrumpfen die Zeilen und das
+          // Bild ragt sonst oben und unten heraus (über die Überschrift, unter die nächste Section)
+          var cs = getComputedStyle(k), pad = (parseFloat(cs.paddingTop) || 0) + (parseFloat(cs.paddingBottom) || 0);
+          var spalten = cs.display.indexOf("grid") >= 0 ? cs.gridTemplateColumns.trim().split(/\s+/).length
+            : (cs.display.indexOf("flex") >= 0 && cs.flexDirection.indexOf("row") === 0 ? 2 : 1);
+          var rest = 0, abstand = parseFloat(cs.rowGap) || 0;
+          if (spalten < 2) [].forEach.call(k.children, function (c) { if (c !== bild && c.offsetHeight) rest += c.offsetHeight + abstand; });
+          var ist = Math.max(bild.offsetHeight, bild.scrollHeight), frei = Math.floor(h - pad - rest - 4);
+          var over = Math.max(k.scrollHeight - h, ist - frei);
+          if (over > 2) {
+            bild._fit = true;
+            var nh = Math.max(110, ist - over - 6);
+            S.put(bild, { height: nh + "px", "aspect-ratio": "auto", "max-height": "none", "flex-shrink": "0" });
+            // runde Bilder bleiben rund statt zum Oval gequetscht zu werden
+            var rad = getComputedStyle(bild).borderTopLeftRadius;
+            if (rad.indexOf("%") > 0 ? parseFloat(rad) >= 40 : parseFloat(rad) >= bild.offsetWidth * 0.4)
+              S.put(bild, { width: nh + "px", "justify-self": "center", "margin-left": "auto", "margin-right": "auto" });
+            if (img) S.put(img, { width: "100%", height: "100%", "object-fit": "cover" });
+          }
+        });
+      }
+      geo();
+      ST.addEventListener("refreshInit", geo);
+      var aktiv = function (self) { var at = Math.round(self.progress * (n - 1));  // nur das sichtbare Kapitel ist anklickbar
+        ks.forEach(function (k, i) { k.style.pointerEvents = i === at ? "" : "none"; }); };
+      aktiv({ progress: 0 });
+      var tl = G.timeline({ scrollTrigger: { trigger: sec, start: start, end: function () { return "+=" + Math.round(innerHeight * 0.85 * n); },
+        pin: true, scrub: 0.6, anticipatePin: 1, invalidateOnRefresh: true, onUpdate: aktiv, onRefresh: aktiv,
+        snap: { snapTo: 1 / (n - 1), duration: { min: 0.2, max: 0.6 }, delay: 0.08, ease: "power1.inOut" } } });
+      ks.forEach(function (k, i) {
+        if (!i) return;
+        var bild = q("[data-kapitel-bild]", k), img = bild && q("img", bild), text = q("[data-kapitel-text]", k);
+        var vorText = q("[data-kapitel-text]", ks[i - 1]), vorImg = q("[data-kapitel-bild] img", ks[i - 1]), t = i - 1;
+        if (bild) tl.fromTo(bild, { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1, ease: "power2.inOut" }, t);
+        if (img) tl.fromTo(img, { scale: 1.25, yPercent: 6 }, { scale: 1, yPercent: 0, duration: 1, ease: "power2.out" }, t);
+        if (vorImg) tl.to(vorImg, { scale: 1.08, duration: 1 }, t);
+        if (vorText) tl.to(vorText, { autoAlpha: 0, y: -40, duration: 0.4 }, t);
+        if (text) tl.fromTo(text, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.45 }, t + 0.45);
+      });
+      return function () { ST.removeEventListener("refreshInit", geo); S.undo(); sec.classList.remove("kapitel-an");
+        ks.forEach(function (k) { k.style.pointerEvents = ""; }); };
+    });
+  }
+
+  /* ---------------------------------------------------------------- horizontal */
+  /* Desktop mit Maus: gepinnt, die Reihe läuft etwas schneller als gescrollt wird (Pin höchstens ~1,2 Bildschirm-
+     höhen, nie Leerlauf). Handy/Touch und ohne Bewegung: keine Scroll-Entführung, sondern eine wischbare Reihe mit
+     Einrasten, Fortschrittsleiste und Pfeilen, die bis an den Bildschirmrand läuft. */
+  var QUER = "(min-width: 820px) and (hover: hover) and (pointer: fine) and " + MOTION;
+  function wischbar(sec, spur) {
+    sec.classList.add("horizontal-wisch");
+    var bar = D.createElement("div"), knopf = function (cls, label, txt) {
+      var b = D.createElement("button"); b.type = "button"; b.className = cls; b.setAttribute("aria-label", label); b.textContent = txt; return b;
+    };
+    bar.className = "spur-steuerung";
+    var leiste = D.createElement("span"); leiste.className = "spur-leiste"; leiste.setAttribute("aria-hidden", "true");
+    leiste.appendChild(D.createElement("i"));
+    var zur = knopf("spur-zurueck", "Zurück", "←"), vor = knopf("spur-weiter", "Weiter", "→");
+    bar.appendChild(leiste); bar.appendChild(zur); bar.appendChild(vor);
+    spur.parentNode.insertBefore(bar, spur.nextSibling);
+    function schritt() {
+      var k = spur.children[0], cs = getComputedStyle(spur);
+      return k ? k.getBoundingClientRect().width + (parseFloat(cs.columnGap) || parseFloat(cs.gap) || 0) : spur.clientWidth * 0.8;
+    }
+    zur.addEventListener("click", function () { spur.scrollBy({ left: -schritt(), behavior: still ? "auto" : "smooth" }); });
+    vor.addEventListener("click", function () { spur.scrollBy({ left: schritt(), behavior: still ? "auto" : "smooth" }); });
+    function stand() {
+      var max = spur.scrollWidth - spur.clientWidth, p = max > 0 ? spur.scrollLeft / max : 1;
+      bar.classList.toggle("spur-passt", max < 8);
+      zur.disabled = spur.scrollLeft < 4; vor.disabled = spur.scrollLeft > max - 4;
+      leiste.style.setProperty("--spur-anteil", Math.max(0.08, Math.min(1, spur.clientWidth / (spur.scrollWidth || 1))).toFixed(3));
+      leiste.style.setProperty("--spur-stand", p.toFixed(3));
+    }
+    // Reihe läuft bis an den Bildschirmrand, die erste Karte fluchtet trotzdem mit dem Inhalt
+    var KEYS = ["marginLeft", "marginRight", "paddingLeft", "paddingRight", "scrollPaddingLeft", "scrollPaddingRight"];
+    var orig = KEYS.map(function (k) { return spur.style[k]; });
+    function zurueck() { KEYS.forEach(function (k, i) { spur.style[k] = orig[i]; }); }
+    function rand() {
+      if (!sec.classList.contains("horizontal-wisch")) return;
+      zurueck();
+      bar.style.marginLeft = ""; bar.style.marginRight = "";
+      var r = spur.getBoundingClientRect(), cs = getComputedStyle(spur);
+      var l = Math.max(0, Math.round(r.left)), re = Math.max(0, Math.round(D.documentElement.clientWidth - r.right));
+      var pl = parseFloat(cs.paddingLeft) || 0, pr = parseFloat(cs.paddingRight) || 0;
+      // Steuerung fluchtet mit dem Inhalt der Reihe (nie am Bildschirmrand)
+      var b = bar.getBoundingClientRect();
+      bar.style.marginLeft = Math.max(0, Math.round(r.left + pl - b.left)) + "px";
+      bar.style.marginRight = Math.max(0, Math.round(b.right - (r.right - pr))) + "px";
+      spur.style.marginLeft = -l + "px"; spur.style.marginRight = -re + "px";
+      spur.style.paddingLeft = l + pl + "px"; spur.style.paddingRight = re + pr + "px";
+      spur.style.scrollPaddingLeft = l + pl + "px"; spur.style.scrollPaddingRight = re + pr + "px";
+      stand();
+    }
+    spur.addEventListener("scroll", stand, { passive: true });
+    addEventListener("resize", rand);
+    rand();
+    if (D.readyState !== "complete") addEventListener("load", rand, { once: true });
+    return { an: function () { sec.classList.add("horizontal-wisch"); rand(); },
+             aus: function () { sec.classList.remove("horizontal-wisch"); zurueck(); spur.scrollLeft = 0; } };
+  }
+  function horizontal(sec) {
+    var spur = q("[data-spur]", sec);
+    if (!spur) return;
+    var w = wischbar(sec, spur);
+    if (!motion) return;
+    mm.add(QUER, function () {
+      var weg = function () { return Math.max(0, spur.scrollWidth - sec.clientWidth + (parseFloat(getComputedStyle(sec).paddingLeft) || 0)); };
+      w.aus();
+      sec.classList.add("horizontal-an");
+      var LUFT = 20;
+      // passt fast (kaum Bewegung) oder ist die Reihe selbst höher als der sichtbare Bereich: wischbar statt angedockt
+      if (weg() < 60 || spur.offsetHeight + 2 * LUFT > sichtbar()) { sec.classList.remove("horizontal-an"); w.an(); return function () {}; }
+      fill(sec);
+      var refill = function () { fill(sec); };
+      ST.addEventListener("refreshInit", refill);
+      // Andocken je nach Bildschirmhöhe: Ist der Abschnitt höher als der sichtbare Bereich, dockt er erst an, wenn die
+      // Karten unten vollständig zu sehen sind (die Überschrift darf dafür nach oben hinausrutschen), sonst unter dem Kopf
+      var oben = function () {
+        var r = sec.getBoundingClientRect(), s = spur.getBoundingClientRect(), unten = s.bottom;
+        [].forEach.call(sec.children, function (c) {  // auch Hinweise unter der Reihe sollen ganz zu sehen sein
+          var cs = getComputedStyle(c), b = c.getBoundingClientRect();
+          if (cs.position !== "absolute" && cs.position !== "fixed" && b.height > 0) unten = Math.max(unten, b.bottom);
+        });
+        var o = Math.min(kopf(), kopf() + sichtbar() - Math.min(r.height, unten - r.top + LUFT));
+        // passt nicht alles: die Karten haben Vorrang, ihre Oberkante bleibt unter dem Kopf
+        if (o + s.top - r.top < kopf()) o = Math.min(kopf(), kopf() + sichtbar() - (s.bottom - r.top + LUFT));
+        return Math.round(o);
+      };
+      var anfang = function () { var o = oben(); return "top top" + (o < 0 ? "-=" + -o : "+=" + o); };
+      // Pinlänge = Bewegung × 0,75, höchstens 1,2 sichtbare Höhen: die Reihe hängt nie, ohne dass sich etwas tut
+      var dauer = function () { return Math.max(1, Math.round(Math.min(weg() * 0.75, sichtbar() * 1.2))); };
+      G.to(spur, { x: function () { return -weg(); }, ease: "none", scrollTrigger: { trigger: sec, start: anfang,
+        end: function () { return "+=" + dauer(); }, pin: true, scrub: 0.6, anticipatePin: 1, invalidateOnRefresh: true } });
+      return function () { sec.classList.remove("horizontal-an"); ST.removeEventListener("refreshInit", refill); unfill(sec); w.an(); };
+    });
+  }
+
+  /* ---------------------------------------------------------------- lesen */
+  function lesen(el) {
+    if (!motion || !window.SplitText) return;
+    mm.add(MOTION, function () {
+      var s = window.SplitText.create(el, { type: "words" });
+      G.fromTo(s.words, { opacity: 0.16 }, { opacity: 1, stagger: 0.1, ease: "none",
+        scrollTrigger: { trigger: el, start: "top 82%", end: "bottom 42%", scrub: true } });
+      return function () { s.revert(); };
+    });
+  }
+
+  /* ---------------------------------------------------------------- schieben, tiefe */
+  function schieben(el) {
+    if (!motion) return;
+    mm.add(MOTION, function () {
+      G.from(el, { y: innerWidth < 820 ? 48 : 96, ease: "none", scrollTrigger: { trigger: el, start: "top bottom", end: "top 50%", scrub: true } });
+    });
+  }
+  /* ---------------------------------------------------------------- hintergrund */
+  /* Hintergrundbild eines Abschnitts (Grundform in agent-basis): sanfte Parallaxe, ohne Bewegung ruhig */
+  function hintergrund() {
+    if (!motion) return;
+    qa("[data-hintergrund-bild] img").forEach(function (img) {
+      var sec = img.closest("[data-hintergrund]") || img.parentNode;
+      mm.add(MOTION, function () {
+        G.fromTo(img, { yPercent: -6 }, { yPercent: 6, ease: "none", scrollTrigger: { trigger: sec, start: "top bottom",
+          end: "bottom top", scrub: true } });
+      });
+    });
+  }
+  function tiefe() {
+    if (!motion) return;
+    var els = qa("[data-tiefe]").filter(function (el) { return !el.closest('[data-szene="zerlegt"]'); });
+    if (!els.length) return;
+    mm.add(MOTION, function () {
+      els.forEach(function (el) {
+        G.to(el, { yPercent: -(parseFloat(el.getAttribute("data-tiefe")) || 20), ease: "none",
+          scrollTrigger: { trigger: el.closest("section, header, footer") || el, start: "top bottom", end: "bottom top", scrub: true } });
+      });
+    });
+    mm.add("(pointer: fine) and (min-width: 900px) and " + MOTION, function () {
+      var offs = [];
+      qa("section, header").forEach(function (s) {
+        var mine = els.filter(function (el) { return el.closest("section, header") === s; });
+        if (!mine.length) return;
+        var qs = mine.map(function (el) { var t = parseFloat(el.getAttribute("data-tiefe")) || 20;
+          return [G.quickTo(el, "x", { duration: 0.8, ease: "power3" }), G.quickTo(el, "y", { duration: 0.8, ease: "power3" }), t * 0.6]; });
+        var mv = function (e) { var r = s.getBoundingClientRect(), dx = (e.clientX - r.left) / r.width - 0.5, dy = (e.clientY - r.top) / r.height - 0.5;
+          qs.forEach(function (z) { z[0](-dx * z[2]); z[1](-dy * z[2]); }); };
+        s.addEventListener("mousemove", mv);
+        offs.push(function () { s.removeEventListener("mousemove", mv); });
+      });
+      return function () { offs.forEach(function (f) { f(); }); };
+    });
+  }
+
+  function run() {
+    qa('[data-szene="zerlegt"]').forEach(zerlegt);
+    qa('[data-szene="raster-zoom"]').forEach(rasterZoom);
+    qa('[data-szene="fenster"]').forEach(fenster);
+    qa('[data-szene="kapitel"]').forEach(kapitel);
+    qa('[data-szene="horizontal"]').forEach(horizontal);
+    qa('[data-szene="lesen"]').forEach(lesen);
+    qa("[data-schieben]").forEach(schieben);
+    tiefe();
+    hintergrund();
+    refreshSoon();
+    if (motion) {
+      ST.addEventListener("refreshInit", measureEdges);
+      addEventListener("load", function () { ST.sort(); ST.refresh(); });
+    }
+    root.classList.add(motion ? "szenen-bewegt" : "szenen-ruhig");
+  }
+  if (D.readyState === "loading") D.addEventListener("DOMContentLoaded", run); else run();
+})();
+</script><!--/agent-szenen--></body>
+</html>
