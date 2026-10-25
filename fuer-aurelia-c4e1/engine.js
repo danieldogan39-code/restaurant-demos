@@ -5,7 +5,7 @@
    für Zustand/Positionen, zuverlässiger Kanal für Ereignisse und Aktionen. */
 (() => {
 'use strict';
-const VERSION = '4.0';
+const VERSION = '5.0';
 const CFG = window.ZL_CONFIG;
 const W = 600, H = 1000, R = 18, VMAX = 470, TAU = Math.PI * 2, HUDH = 64;
 const $ = id => document.getElementById(id);
@@ -37,7 +37,7 @@ const CTRL = {
 document.querySelectorAll('[data-n]').forEach(el => el.textContent = nm(el.dataset.n));
 
 /* ---------- Einstellungen (pro Gerät) ---------- */
-const SET = Object.assign({ctrl: 'swipe', mute: false, vib: true}, (() => { try { return JSON.parse(localStorage.getItem('zl-set')) || {}; } catch (e) { return {}; } })());
+const SET = Object.assign({ctrl: 'swipe', mute: false, vib: true, fx: true}, (() => { try { return JSON.parse(localStorage.getItem('zl-set')) || {}; } catch (e) { return {}; } })());
 if (!CTRL[SET.ctrl]) SET.ctrl = 'swipe';
 const saveSet = () => { try { localStorage.setItem('zl-set', JSON.stringify(SET)); } catch (e) {} };
 
@@ -56,7 +56,7 @@ const diff = () => S.diff || 1;
 /* ---------- Canvas ---------- */
 const cv = $('cv'), ctx = cv.getContext('2d');
 const fog = document.createElement('canvas'), fctx = fog.getContext('2d');
-let cw = 0, ch = 0, dpr = 1, sc = 1, ox = 0, oy = 0, amb = {}, quality = 1;
+let cw = 0, ch = 0, dpr = 1, sc = 1, ox = 0, oy = 0, amb = {}, quality = 1, shakeAmt = 0;
 
 /* ---------- Hilfen für Level ---------- */
 function place(n, minD, box, avoid = []) {
@@ -148,6 +148,7 @@ function burst(x, y, c, n, sp = 140, size = 3) {
 function fx(e) {
   const c = COL[e.o] || CG, mineEv = e.o === me;
   const L = curL(); if (L && L.fx) { try { L.fx(e); } catch (er) {} }
+  if (['win', 'meet'].includes(e.k)) shakeAmt = Math.max(shakeAmt, .5); else if (['lost', 'caught', 'wrong'].includes(e.k) || (e.k === 'fizz' && mineEv)) shakeAmt = Math.max(shakeAmt, .35);
   switch (e.k) {
     case 'toast': toast(e.txt); break;
     case 'chime': case 'bubble': tone(NOTES[(Math.random() * 6) | 0] * (e.o === 'd' ? .5 : 1), .7); burst(e.x, e.y, e.k === 'bubble' ? [190, 235, 255] : c, 12); if (mineEv) buzz(12); break;
@@ -200,9 +201,9 @@ function glowSprite(c) {
 }
 function glow(x, y, r, c, a) {
   if (r <= 0 || a <= 0) return;
-  const ga = ctx.globalAlpha; ctx.globalAlpha = ga * Math.min(1, a);
+  const ga = ctx.globalAlpha, op = ctx.globalCompositeOperation; ctx.globalAlpha = ga * Math.min(1, a * .9); ctx.globalCompositeOperation = 'lighter';
   ctx.drawImage(glowSprite(c), x - r, y - r, 2 * r, 2 * r);
-  ctx.globalAlpha = ga;
+  ctx.globalAlpha = ga; ctx.globalCompositeOperation = op;
 }
 function dotW(x, y, r) { ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fill(); }
 function label(txt, x, y, c, size = 15, weight = 600) {
@@ -330,7 +331,8 @@ cv.addEventListener('pointerdown', e => {
   IN.acc.x = IN.acc.y = 0;
   if (L && L.ctrl === 'tap') { IN.taps.push(w); return; }
   if (SET.ctrl === 'stick') IN.stick = {ox: e.clientX, oy: e.clientY, x: e.clientX, y: e.clientY};
-  if (SET.ctrl === 'tap') {
+  if (SET.ctrl === 'tap' && L && L.three) { const d = dirOf(e.clientX - cw / 2, e.clientY - ch * .55); if (d) IN.dirs.push(d); IN.heading = null; }
+  else if (SET.ctrl === 'tap') {
     IN.target = w;
     const d = dirOf(w.x - mine.x, w.y - mine.y); if (d) IN.dirs.push(d);
     IN.heading = Math.atan2(w.y - mine.y, w.x - mine.x);
@@ -541,12 +543,75 @@ function disposeTree(obj) {
   });
 }
 
+/* ---------- Grafik-Pipeline: Leuchten (Bloom), Farbabstimmung, Vignette ---------- */
+const FX = {ready: false, off2D: false, w: 0, h: 0};
+function fxSetup() {
+  const T = window.THREE; if (!T || FX.ready || !SET.fx) return;
+  try {
+    const R = renderer3D(); if (!R) return;
+    const vs = 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy, 0., 1.); }';
+    const mk = (fs, u) => new T.ShaderMaterial({vertexShader: vs, fragmentShader: fs, uniforms: u, depthTest: false, depthWrite: false});
+    FX.qs = new T.Scene(); FX.cam = new T.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    FX.quad = new T.Mesh(new T.PlaneGeometry(2, 2)); FX.quad.frustumCulled = false; FX.qs.add(FX.quad);
+    FX.bright = mk('uniform sampler2D t; uniform float th; varying vec2 vUv; void main(){ vec3 c = texture2D(t, vUv).rgb; float l = max(c.r, max(c.g, c.b)); gl_FragColor = vec4(c * smoothstep(th, th + .3, l), 1.); }', {t: {value: null}, th: {value: .5}});
+    FX.blur = mk('uniform sampler2D t; uniform vec2 d; varying vec2 vUv; void main(){ vec3 c = texture2D(t, vUv).rgb * .227; c += (texture2D(t, vUv + d * 1.385).rgb + texture2D(t, vUv - d * 1.385).rgb) * .316; c += (texture2D(t, vUv + d * 3.231).rgb + texture2D(t, vUv - d * 3.231).rgb) * .07; gl_FragColor = vec4(c, 1.); }', {t: {value: null}, d: {value: new T.Vector2()}});
+    FX.comp = mk(`uniform sampler2D t; uniform sampler2D b1; uniform sampler2D b2; uniform float s; uniform float tm; uniform float vig; varying vec2 vUv;
+      float h(vec2 p){ return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453); }
+      void main(){
+        vec3 c = texture2D(t, vUv).rgb;
+        vec3 b = texture2D(b1, vUv).rgb * .9 + texture2D(b2, vUv).rgb * 1.3;
+        c += b * s;
+        c = c / (1. + max(c - .85, 0.) * .9);
+        float l = dot(c, vec3(.299, .587, .114)); c = mix(vec3(l), c, 1.14);
+        c = (c - .5) * 1.06 + .5;
+        vec2 q = vUv - .5; c *= 1. - dot(q, q) * vig;
+        c += (h(vUv * 917. + tm) - .5) * .018;
+        gl_FragColor = vec4(clamp(c, 0., 1.), 1.);
+      }`, {t: {value: null}, b1: {value: null}, b2: {value: null}, s: {value: .9}, tm: {value: 0}, vig: {value: .7}});
+    FX.tex2D = new T.CanvasTexture(cv); FX.tex2D.minFilter = T.LinearFilter; FX.tex2D.magFilter = T.LinearFilter; FX.tex2D.generateMipmaps = false;
+    FX.ready = true; fxSize();
+  } catch (e) { console.error(e); FX.ready = false; }
+}
+function fxSize() {
+  const T = window.THREE; if (!FX.ready || !gl) return;
+  const v = new T.Vector2(); gl.getDrawingBufferSize(v);
+  if (FX.w === v.x && FX.h === v.y) return;
+  FX.w = v.x; FX.h = v.y;
+  ['scene', 'a', 'b', 'c', 'd'].forEach(k => { if (FX[k]) FX[k].dispose(); });
+  const rt = (w, h, o) => new T.WebGLRenderTarget(Math.max(1, w | 0), Math.max(1, h | 0), Object.assign({minFilter: T.LinearFilter, magFilter: T.LinearFilter, depthBuffer: false}, o));
+  FX.scene = rt(v.x, v.y, {depthBuffer: true, samples: gl.capabilities.isWebGL2 ? 4 : 0});
+  FX.a = rt(v.x / 4, v.y / 4); FX.b = rt(v.x / 4, v.y / 4); FX.c = rt(v.x / 8, v.y / 8); FX.d = rt(v.x / 8, v.y / 8);
+}
+function fxPass(mat, target) { FX.quad.material = mat; gl.setRenderTarget(target); gl.render(FX.qs, FX.cam); }
+function fxBloom(src, strength, th, vig) {
+  FX.bright.uniforms.t.value = src; FX.bright.uniforms.th.value = th; fxPass(FX.bright, FX.a);
+  const B = FX.blur.uniforms;
+  B.t.value = FX.a.texture; B.d.value.set(1 / FX.a.width, 0); fxPass(FX.blur, FX.b);
+  B.t.value = FX.b.texture; B.d.value.set(0, 1 / FX.a.height); fxPass(FX.blur, FX.a);
+  B.t.value = FX.a.texture; B.d.value.set(1 / FX.c.width, 0); fxPass(FX.blur, FX.c);
+  B.t.value = FX.c.texture; B.d.value.set(0, 1 / FX.c.height); fxPass(FX.blur, FX.d);
+  B.t.value = FX.d.texture; B.d.value.set(2 / FX.c.width, 0); fxPass(FX.blur, FX.c);
+  B.t.value = FX.c.texture; B.d.value.set(0, 2 / FX.c.height); fxPass(FX.blur, FX.d);
+  const C = FX.comp.uniforms;
+  C.t.value = src; C.b1.value = FX.a.texture; C.b2.value = FX.d.texture; C.s.value = strength; C.tm.value = (performance.now() / 1000) % 100; C.vig.value = vig;
+  fxPass(FX.comp, null);
+}
+function render3D(scene, cam, opts = {}) {
+  const R = renderer3D(); if (!R) return;
+  if (SET.fx && FX.ready) {
+    fxSize();
+    R.setRenderTarget(FX.scene); R.render(scene, cam);
+    fxBloom(FX.scene.texture, opts.bloom != null ? opts.bloom : 1.1, opts.th != null ? opts.th : .55, .8);
+  } else { R.setRenderTarget(null); R.render(scene, cam); }
+}
+const fx2DActive = () => SET.fx && FX.ready && !FX.off2D;
+
 /* ---------- API für Level-Pakete ---------- */
 const API = {
   S, LOC, ctx, W, H, R, TAU, VMAX, COL, CA, CD, CG, NOTES, SONG_NOTES, rgba, dist, rnd, clamp, nm, OTH, fmt, lerpA,
   place, START, drift, stunStep, emit, finish, failRestart, teleport, act, hostNow, tone, buzz, toast, diff,
   glow, dotW, label, line2, heartPath, rr, defaultMove, inputX, desiredDir, desiredHeading, speedMul, mine, ghost, pend,
-  need3D, renderer3D, disposeTree, SKINS, partner: () => partnerAt(performance.now()),
+  need3D, renderer3D, render3D, disposeTree, SKINS, shake: a => { shakeAmt = Math.max(shakeAmt, a); }, partner: () => partnerAt(performance.now()),
   screen: () => ({cw, ch, ox, oy, sc, dpr}),
   get me() { return me; }, get other() { return other; }, get role() { return role; }, get SET() { return SET; }
 };
@@ -983,6 +1048,7 @@ function openMenu() {
   $('mCal').hidden = SET.ctrl !== 'tilt';
   $('mSound').textContent = SET.mute ? 'Ton: aus' : 'Ton: an';
   $('mVib').textContent = SET.vib ? 'Vibration: an' : 'Vibration: aus';
+  $('mFx').textContent = SET.fx ? 'Grafik: Hoch' : 'Grafik: Einfach';
   $('mPause').hidden = !(S.ok && S.phase === 'play');
   $('mRestart').hidden = !(S.ok && S.lv >= 0 && ['play', 'count', 'intro'].includes(S.phase));
   $('mMC').hidden = role !== 'host' || !S.ok;
@@ -994,6 +1060,7 @@ $('mClose').onclick = () => $('ovMenu').hidden = true;
 $('ovMenu').addEventListener('click', e => { if (e.target.id === 'ovMenu') $('ovMenu').hidden = true; });
 $('mSound').onclick = () => { SET.mute = !SET.mute; saveSet(); openMenu(); };
 $('mVib').onclick = () => { SET.vib = !SET.vib; saveSet(); openMenu(); };
+$('mFx').onclick = () => { SET.fx = !SET.fx; FX.off2D = false; saveSet(); if (SET.fx) need3D(); openMenu(); };
 $('mCal').onclick = () => { IN.tilt.cal = null; toast('Neigung neu ausgerichtet'); };
 $('mPause').onclick = () => { act({k: 'pause', v: 1}); $('ovMenu').hidden = true; };
 $('mRestart').onclick = () => { if (confirm('Dieses Level für euch beide neu starten?')) { act({k: 'restart'}); $('ovMenu').hidden = true; } };
@@ -1293,10 +1360,15 @@ function drawButtons(L) {
   btn(Z.j, b.held, z => { ctx.font = '700 15px Karla, system-ui'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('Springen', z.x, z.y); ctx.textBaseline = 'alphabetic'; });
 }
 function render(now) {
+  const L = curL(), three = !!(L && L.three && S.ok && S.lv >= 0 && S.phase !== 'quiz');
+  renderScene(now, L, three);
+  const post = !three && fx2DActive();
+  if (post) { try { FX.tex2D.needsUpdate = true; fxSize(); fxBloom(FX.tex2D, .85, .5, .7); } catch (e) { console.error(e); FX.off2D = true; } }
+  $('gl').hidden = !(three || post);
+  cv.classList.toggle('fxhide', post);
+}
+function renderScene(now, L, three) {
   const t = now / 1000;
-  const L = curL();
-  const three = L && L.three && S.ok && S.lv >= 0 && S.phase !== 'quiz';
-  $('gl').hidden = !three;
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   if (three) {
     ctx.clearRect(0, 0, cw, ch);
@@ -1307,7 +1379,8 @@ function render(now) {
     drawBg(theme(), t);
     if (!S.ok) return;
     const cy = camY(), cx = camX();
-    const world = () => ctx.setTransform(dpr * sc, 0, 0, dpr * sc, dpr * (ox - cx * sc), dpr * (oy - cy * sc));
+    const shx = shakeAmt > 0 ? (Math.random() - .5) * shakeAmt * 14 : 0, shy = shakeAmt > 0 ? (Math.random() - .5) * shakeAmt * 14 : 0;
+    const world = () => ctx.setTransform(dpr * sc, 0, 0, dpr * sc, dpr * (ox - cx * sc + shx), dpr * (oy - cy * sc + shy));
     ctx.setTransform(dpr * sc, 0, 0, dpr * sc, dpr * ox, dpr * oy);
     const arc = theme() === 'arcade';
     ctx.fillStyle = arc ? 'rgba(7,6,20,.8)' : 'rgba(255,255,255,.02)'; ctx.strokeStyle = arc ? 'rgba(160,120,255,.35)' : 'rgba(255,255,255,.07)'; ctx.lineWidth = 1.5;
@@ -1328,8 +1401,9 @@ function render(now) {
     if (!(L && L.hidePlayers)) { player(other, ghost.x, ghost.y, S.p[other], t); player(me, mine.x, mine.y, S.p[me], t); }
     if (L && L.drawTop) { try { L.drawTop(t, pos); } catch (e) {} }
     if (S.phase === 'end') skyLanterns(t);
-    for (const p of parts) { ctx.globalAlpha = Math.max(0, p.life); ctx.fillStyle = rgba(p.c, 1); ctx.beginPath(); ctx.arc(p.x, p.y, p.s * (.5 + p.life * .5), 0, TAU); ctx.fill(); }
-    ctx.globalAlpha = 1;
+    ctx.globalCompositeOperation = 'lighter';
+    for (const p of parts) { const a = Math.max(0, p.life), r = p.s * (.5 + p.life * .5); ctx.globalAlpha = a * .35; ctx.fillStyle = rgba(p.c, 1); ctx.beginPath(); ctx.arc(p.x, p.y, r * 2.6, 0, TAU); ctx.fill(); ctx.globalAlpha = a; ctx.fillStyle = 'rgba(255,255,255,.9)'; ctx.beginPath(); ctx.arc(p.x, p.y, r * .7, 0, TAU); ctx.fill(); ctx.fillStyle = rgba(p.c, 1); ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, TAU); ctx.fill(); }
+    ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1;
     ctx.restore();
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     if (L && (L.camY || L.camX) && S.phase === 'play') {
@@ -1343,7 +1417,7 @@ function render(now) {
       }
     }
   }
-  vignette();
+  if (!fx2DActive() && !three) vignette();
   drawButtons(L);
   if (SET.ctrl === 'stick' && IN.stick && S.phase === 'play' && !(L && L.ctrl === 'buttons')) {
     const s = IN.stick, dx = s.x - s.ox, dy = s.y - s.oy, m = Math.hypot(dx, dy), k = m > 55 ? 55 / m : 1;
@@ -1380,7 +1454,11 @@ function startLoop() { wake(); if (loopOn) return; loopOn = true; last = perform
 function frame(now) {
   const raw = now - last, dt = Math.min(.05, Math.max(0, raw / 1000)); last = now;
   if (raw < 200) { ftAvg = ftAvg * .95 + raw * .05; qT += dt; }
-  if (qT > 3) { qT = 0; if (ftAvg > 24 && quality > .6) { quality = Math.max(.6, quality - .2); resize(); } else if (ftAvg < 15 && quality < 1) { quality = Math.min(1, quality + .2); resize(); } }
+  shakeAmt = Math.max(0, shakeAmt - dt * 1.6);
+  if (window.THREE && SET.fx && !FX.ready) fxSetup();
+  if (qT > 3) { qT = 0;
+    if (ftAvg > 27 && fx2DActive() && quality <= .8 && S.ok) { FX.off2D = true; toast('Grafik-Effekte reduziert, damit es flüssig bleibt'); }
+    else if (ftAvg > 24 && quality > .6) { quality = Math.max(.6, quality - .2); resize(); } else if (ftAvg < 15 && quality < 1) { quality = Math.min(1, quality + .2); resize(); } }
   const inp = readInput(dt);
   if (S.ok) {
     if (S.sid !== lastSid) {
@@ -1423,5 +1501,6 @@ function frame(now) {
   syncUI(now);
   requestAnimationFrame(frame);
 }
+setTimeout(() => { if (SET.fx) need3D(); }, 600);
 (function idle(now) { if (loopOn) return; try { render(now); } catch (e) {} requestAnimationFrame(idle); })(performance.now());
 })();

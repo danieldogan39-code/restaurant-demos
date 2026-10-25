@@ -23,6 +23,7 @@ button{font:inherit;color:inherit}
 [hidden]{display:none!important}
 #cv,#gl{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none}
 #gl{z-index:0}#cv{z-index:1}
+#cv.fxhide{opacity:0}
 #mcBtn{display:none}body.host #mcBtn{display:flex}
 .mcrow{display:flex;justify-content:space-between;gap:10px;padding:9px 2px;border-bottom:1px solid var(--faint);font-size:14px}.mcrow span{color:var(--mute)}.mcrow b{text-align:right}
 .seg3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
@@ -222,7 +223,7 @@ input.code-in:focus{border-color:var(--gold)}
       <button class="btn ghost small" id="mCal" style="margin-top:8px" hidden>Neigung neu ausrichten</button></div>
     <div class="sec"><small>Spiel</small><div class="mrow">
       <button class="btn ghost small" id="mPause">Pause</button><button class="btn ghost small" id="mRestart">Level neu starten</button>
-      <button class="btn ghost small" id="mMC">Master Control</button><button class="btn ghost small" id="mSound">Ton</button>
+      <button class="btn ghost small" id="mMC">Master Control</button><button class="btn ghost small" id="mSound">Ton</button><button class="btn ghost small" id="mFx">Grafik</button>
       <button class="btn ghost small" id="mVib">Vibration</button></div></div>
     <div class="sec"><small>Verbindung</small><p class="net" id="mNet"></p></div>
     <button class="btn" id="mClose">Zurück zum Spiel</button>
@@ -270,10 +271,12 @@ input.code-in:focus{border-color:var(--gold)}
 </div>
 
 <script src="peerjs.min.js?v=155"></script>
-<script src="config.js?v=4"></script>
-<script src="levels-classic.js?v=4"></script>
-<script src="levels-arcade.js?v=4"></script>
-<script src="levels-adventure.js?v=4"></script>
-<script src="engine.js?v=4"></script>
+<script src="config.js?v=5"></script>
+<script src="kit3d.js?v=5"></script>
+<script src="levels-classic.js?v=5"></script>
+<script src="levels-arcade.js?v=5"></script>
+<script src="levels-adventure.js?v=5"></script>
+<script src="levels-race.js?v=5"></script>
+<script src="engine.js?v=5"></script>
 </body>
 </html>

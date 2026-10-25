@@ -367,8 +367,9 @@ const cellOf = p => ({c: Math.round((p.x - MX0 - MC / 2) / MC), r: Math.round((p
 const DX = {l: -1, r: 1, u: 0, d: 0}, DY = {l: 0, r: 0, u: -1, d: 1}, OPP = {l: 'r', r: 'l', u: 'd', d: 'u'};
 const mazeStart = k => cen(k === 'a' ? 4 : 6, 13);
 const irrgarten = {
-  id: 'irrgarten', w: 3, n: 'Irrgarten', ic: '•', t3: 100, t2: 165, ctrl: 'grid', noClamp: true,
-  h: () => 'Sammelt alle Lichtpunkte im Irrgarten. Graue Wolken jagen euch – ein Liebesbrief in der Ecke dreht den Spieß für ein paar Sekunden um.',
+  id: 'irrgarten', w: 3, n: 'Irrgarten', ic: '•', t3: 100, t2: 165, ctrl: 'grid', noClamp: true, three: true, hidePlayers: true, hideNames: true,
+  skinName: () => `Prinzessin ${nm('a')} · Prinz ${nm('d')}`,
+  h: () => `Prinzessin ${nm('a')} und Prinz ${nm('d')} im verwunschenen Heckenlabyrinth: Sammelt gemeinsam alle Lichtpunkte. Graue Wolken streifen durch die Gänge – die Karte oben rechts zeigt, wo sie sind. Ein Liebesbrief (Herz) in den Ecken lässt sie ein paar Sekunden vor euch fliehen.`,
   start: k => mazeStart(k),
   setup() {
     let dots = '', total = 0;
@@ -460,6 +461,138 @@ const irrgarten = {
     if (pw) label('Liebesbrief-Zeit!', W / 2, 140, CA, 16, 700);
   }
 };
+/* ---- Irrgarten in 3D: begehbares Labyrinth mit Figuren ---- */
+const MX = px => (px - MX0) / MC * 2 - NC, MZ = py => (py - MY0) / MC * 2 - NR;
+function buildMaze(T) {
+  const K = window.ZL_KIT(API), scene = new T.Scene();
+  scene.fog = new T.FogExp2(0x120a2c, .045);
+  scene.add(K.sky(T, 0x03030f, 0x1d1040, 0x0a0618, 200));
+  const cam = new T.PerspectiveCamera(60, 1, .1, 400);
+  const hemi = new T.HemisphereLight(0x9c8cff, 0x1a1030, .55); scene.add(hemi);
+  scene.add(new T.AmbientLight(0xffffff, .12));
+  const moon = new T.DirectionalLight(0xc8d0ff, .35); moon.position.set(-8, 20, -6); scene.add(moon);
+  const sn = 500, sp = new Float32Array(sn * 3);
+  for (let i = 0; i < sn; i++) { const a = rnd(0, TAU), e = rnd(.2, 1.5), r = 150; sp[i * 3] = Math.cos(a) * Math.cos(e) * r; sp[i * 3 + 1] = Math.sin(e) * r; sp[i * 3 + 2] = Math.sin(a) * Math.cos(e) * r; }
+  const sg = new T.BufferGeometry(); sg.setAttribute('position', new T.BufferAttribute(sp, 3));
+  scene.add(new T.Points(sg, new T.PointsMaterial({color: 0xffffff, size: 1.5, sizeAttenuation: false, fog: false})));
+  const tex = (w, h, draw, rx, ry) => { const c = document.createElement('canvas'); c.width = w; c.height = h; draw(c.getContext('2d'), w, h); const t = new T.CanvasTexture(c); t.wrapS = t.wrapT = T.RepeatWrapping; if (rx) t.repeat.set(rx, ry); t.anisotropy = 4; return t; };
+  // Boden: Pflaster mit Moos
+  const floorT = tex(256, 256, (g, w, h) => {
+    g.fillStyle = '#1b1530'; g.fillRect(0, 0, w, h);
+    for (let y = 0; y < 4; y++) for (let x = 0; x < 4; x++) { const v = 34 + Math.random() * 14; g.fillStyle = `rgb(${v},${v - 6},${v + 22})`; g.fillRect(x * 64 + 3, y * 64 + 3, 58, 58); }
+    for (let i = 0; i < 300; i++) { g.fillStyle = `rgba(90,160,110,${Math.random() * .25})`; g.fillRect(Math.random() * w, Math.random() * h, 3, 3); }
+  }, NC * 2, NR * 2);
+  const floor = new T.Mesh(new T.PlaneGeometry(NC * 2 + 40, NR * 2 + 40), new T.MeshStandardMaterial({map: floorT, roughness: .85, metalness: .05}));
+  floorT.repeat.set((NC * 2 + 40) / 2, (NR * 2 + 40) / 2);
+  floor.rotation.x = -Math.PI / 2; scene.add(floor);
+  // Hecken-Mauern mit Lichterkante
+  const wallT = tex(128, 128, (g, w, h) => {
+    g.fillStyle = '#1d3a2c'; g.fillRect(0, 0, w, h);
+    for (let i = 0; i < 520; i++) { const v = Math.random(); g.fillStyle = v < .5 ? `rgba(60,120,80,${.5 + Math.random() * .5})` : `rgba(20,50,35,${.6})`; g.beginPath(); g.arc(Math.random() * w, Math.random() * h, 2 + Math.random() * 5, 0, TAU); g.fill(); }
+    for (let i = 0; i < 10; i++) { g.fillStyle = ['#ffb6cf', '#ffe2a0', '#cfe0ff'][i % 3]; g.beginPath(); g.arc(Math.random() * w, Math.random() * h, 2.2, 0, TAU); g.fill(); }
+  });
+  const WH = 1.6, walls = [];
+  for (let r = 0; r < NR; r++) for (let c = 0; c < NC; c++) if (MAZE[r][c] === '#') walls.push([c, r]);
+  const wim = new T.InstancedMesh(new T.BoxGeometry(2, WH, 2), new T.MeshStandardMaterial({map: wallT, roughness: .9, emissive: 0x0c2a1a, emissiveIntensity: .6}), walls.length);
+  const capT = tex(64, 64, (g, w, h) => { g.fillStyle = '#2c5a40'; g.fillRect(0, 0, w, h); g.strokeStyle = 'rgba(255,215,140,.9)'; g.lineWidth = 2.5; g.strokeRect(1.5, 1.5, w - 3, h - 3); });
+  const cim = new T.InstancedMesh(new T.BoxGeometry(2.08, .14, 2.08), new T.MeshStandardMaterial({map: capT, emissive: 0xffd28c, emissiveMap: capT, emissiveIntensity: .28, roughness: .6}), walls.length);
+  const o = new T.Object3D();
+  walls.forEach(([c, r], i) => {
+    o.position.set(2 * c - 10, WH / 2, 2 * r - 14); o.scale.set(1, 1, 1); o.rotation.set(0, 0, 0); o.updateMatrix(); wim.setMatrixAt(i, o.matrix);
+    o.position.y = WH + .04; o.updateMatrix(); cim.setMatrixAt(i, o.matrix);
+  });
+  scene.add(wim); scene.add(cim);
+  // Laternen an den Außenecken
+  const lampM = new T.MeshBasicMaterial({color: 0xffe2b0});
+  for (const [c, r] of [[0, 0], [NC - 1, 0], [0, NR - 1], [NC - 1, NR - 1], [0, 7], [NC - 1, 7]]) {
+    const b = new T.Mesh(new T.SphereGeometry(.3, 10, 8), lampM); b.position.set(2 * c - 10, WH + .8, 2 * r - 14); scene.add(b);
+    const s = K.sprite(T, 0xffd8a0, 5, .8); s.position.copy(b.position); scene.add(s);
+  }
+  // Wolkenhaus in der Mitte
+  const pen = new T.Mesh(new T.RingGeometry(1.2, 1.5, 40), new T.MeshBasicMaterial({color: 0x9a8cff, transparent: true, opacity: .55, side: T.DoubleSide}));
+  pen.rotation.x = -Math.PI / 2; pen.position.set(0, .03, 0); scene.add(pen);
+  // Lichtpunkte & Liebesbriefe
+  const cells = [], dg = new T.SphereGeometry(.17, 12, 8);
+  const dim = new T.InstancedMesh(dg, new T.MeshStandardMaterial({color: 0xffe2a8, emissive: 0xffc870, emissiveIntensity: 1.6}), NC * NR);
+  const hearts = {}, hgeo = K.heartGeo(T, .42, .18), hm = new T.MeshStandardMaterial({color: 0xff8fb4, emissive: 0xff5f96, emissiveIntensity: 1.2, metalness: .2, roughness: .3});
+  for (let r = 0; r < NR; r++) for (let c = 0; c < NC; c++) {
+    const ch = MAZE[r][c]; if (ch !== '.' && ch !== 'o') continue;
+    const i = r * NC + c;
+    if (ch === 'o') { const m = new T.Mesh(hgeo, hm); m.position.set(2 * c - 10, .9, 2 * r - 14); m.add(K.sprite(T, 0xff9ec4, 3.2, .8)); scene.add(m); hearts[i] = m; }
+    else cells.push(i);
+  }
+  dim.count = cells.length; scene.add(dim);
+  const fig = {a: K.princess(T), d: K.prince(T)}; scene.add(fig.a); scene.add(fig.d);
+  const lights = {};
+  for (const k of ['a', 'd']) { const l = new T.PointLight(k === 'a' ? 0xffc0d4 : 0xc4dcff, 1.6, 9, 1.6); scene.add(l); lights[k] = l; }
+  const clouds = [0, 1, 2].map(() => { const c = K.cloud(T); c.scale.setScalar(.85); c.userData.mat.transparent = true; scene.add(c); return c; });
+  return {scene, cam, dim, cells, hearts, fig, lights, clouds, hemi, pen, last: '', camPos: null, prev: {}, head: {a: 0, d: 0}};
+}
+irrgarten.render3d = function (t, part) {
+  const T = window.THREE; if (!T || !API.renderer3D()) return;
+  const A = S.aux; if (!A.dots) return;
+  if (!LOC.m3) { LOC.m3 = buildMaze(T); LOC.__dispose = () => API.disposeTree(LOC.m3.scene); }
+  const M = LOC.m3, K = window.ZL_KIT(API), sc = API.screen(), dt = Math.min(.05, M.lt ? t - M.lt : .016); M.lt = t;
+  const pw = A.power > hostNow();
+  // Punkte aktualisieren, wenn sich etwas geändert hat
+  if (M.last !== A.dots) {
+    const o = new T.Object3D();
+    M.cells.forEach((i, k) => { const c = i % NC, r = (i / NC) | 0, on = A.dots[i] === '1'; o.position.set(2 * c - 10, .55, 2 * r - 14); o.scale.setScalar(on ? 1 : 0); o.updateMatrix(); M.dim.setMatrixAt(k, o.matrix); });
+    M.dim.instanceMatrix.needsUpdate = true;
+    for (const i in M.hearts) M.hearts[i].visible = A.dots[i] === '2';
+    M.last = A.dots;
+  }
+  for (const i in M.hearts) { const h = M.hearts[i]; h.rotation.y = t * 2; h.position.y = .9 + Math.sin(t * 3 + +i) * .15; }
+  // Figuren
+  const meK = API.me, oK = API.other;
+  const pos = {[meK]: {x: MX(mine.x), z: MZ(mine.y)}, [oK]: {x: MX(part.x), z: MZ(part.y)}};
+  for (const k of ['a', 'd']) {
+    const f = M.fig[k], p = pos[k], pr = M.prev[k] || p, vx = p.x - pr.x, vz = p.z - pr.z, mv = Math.hypot(vx, vz) > .004 && Math.hypot(vx, vz) < 1.5;
+    if (mv) M.head[k] = API.lerpA(M.head[k], Math.atan2(-vx, -vz), Math.min(1, dt * 14));
+    f.position.set(p.x, 0, p.z); f.rotation.y = M.head[k]; f.scale.setScalar(1);
+    K.animFigure(f, t + (k === 'a' ? 0 : 1.3), mv);
+    const inv = S.p[k].inv > 0 && S.phase === 'play'; f.visible = !inv || Math.sin(t * 22) > -.3;
+    M.lights[k].position.set(p.x, 2.2, p.z);
+    M.prev[k] = p;
+  }
+  // Wolken (geglättet)
+  if (!LOC.cs) LOC.cs = {};
+  A.cl.forEach((cl, i) => {
+    const s = LOC.cs[cl.id] || (LOC.cs[cl.id] = {x: cl.x, y: cl.y, h: 0});
+    if (Math.hypot(cl.x - s.x, cl.y - s.y) > 60) { s.x = cl.x; s.y = cl.y; } else { s.x += (cl.x - s.x) * Math.min(1, dt * 14); s.y += (cl.y - s.y) * Math.min(1, dt * 14); }
+    const c = M.clouds[i]; if (!c) return;
+    if (cl.dir) s.h = API.lerpA(s.h, Math.atan2(-DX[cl.dir], -DY[cl.dir]), Math.min(1, dt * 10));
+    c.position.set(MX(s.x) + (pw ? Math.sin(t * 30 + i) * .06 : 0), 1.1 + Math.sin(t * 2.4 + i) * .15, MZ(s.y)); c.rotation.y = s.h;
+    const waiting = hostNow() < cl.wait, m = c.userData.mat;
+    m.color.set(pw ? 0x9cc4ff : 0xa7a3c0); m.emissive.set(pw ? 0x3050a0 : 0x201c30); m.opacity = waiting ? .45 : 1;
+  });
+  M.hemi.color.set(pw ? 0xffa8cc : 0x9c8cff); M.scene.fog.color.set(pw ? 0x2a0e2a : 0x120a2c);
+  M.pen.material.opacity = .35 + Math.sin(t * 2) * .2;
+  // Kamera folgt der eigenen Figur (Blickrichtung fest nach „oben“, damit die Steuerung passt)
+  const me3 = pos[meK], port = sc.cw < sc.ch;
+  const want = new T.Vector3(me3.x, port ? 9.6 : 8.2, me3.z + (port ? 5.4 : 6.2));
+  if (!M.camPos || M.camPos.distanceTo(want) > 12) M.camPos = want.clone(); M.camPos.lerp(want, Math.min(1, dt * 6));
+  M.cam.position.copy(M.camPos); M.cam.lookAt(me3.x, .6, me3.z - 1.6);
+  M.cam.aspect = sc.cw / sc.ch; M.cam.fov = port ? 64 : 55; M.cam.updateProjectionMatrix();
+  API.render3D(M.scene, M.cam, {bloom: 1, th: .58});
+  // Namen
+  for (const k of [oK, meK]) { const p = K.proj(M.cam, new T.Vector3(pos[k].x, 3.1, pos[k].z)); if (p.ok) K.nameTag(nm(k), p.x, p.y, COL[k]); }
+  // Karte
+  const cs = Math.min(9, (sc.cw * .3) / NC), mw = NC * cs, mh = NR * cs, mx = sc.cw - mw - 14, my = 66;
+  ctx.fillStyle = 'rgba(10,8,24,.62)'; rr(mx - 6, my - 6, mw + 12, mh + 12, 10); ctx.fill();
+  for (let r = 0; r < NR; r++) for (let c = 0; c < NC; c++) {
+    const v = MAZE[r][c];
+    if (v === '#') { ctx.fillStyle = 'rgba(110,190,140,.55)'; ctx.fillRect(mx + c * cs, my + r * cs, cs, cs); continue; }
+    const d = A.dots[r * NC + c];
+    if (d === '1') { ctx.fillStyle = 'rgba(255,215,150,.85)'; ctx.fillRect(mx + c * cs + cs / 2 - 1, my + r * cs + cs / 2 - 1, 2, 2); }
+    else if (d === '2') { ctx.fillStyle = '#ff8fb4'; heartPath(mx + c * cs + cs / 2, my + r * cs + cs / 2, cs * .4); ctx.fill(); }
+  }
+  const toM = (x, z) => [mx + (x + NC) / 2 * cs, my + (z + NR) / 2 * cs];
+  A.cl.forEach(cl => { const s = LOC.cs[cl.id]; if (!s) return; const [a, b] = toM(MX(s.x), MZ(s.y)); ctx.fillStyle = pw ? '#9cc4ff' : '#c9c4dc'; ctx.beginPath(); ctx.arc(a, b, cs * .42, 0, TAU); ctx.fill(); });
+  for (const k of [oK, meK]) { const [a, b] = toM(pos[k].x, pos[k].z); ctx.fillStyle = rgba(COL[k], 1); ctx.beginPath(); ctx.arc(a, b, cs * .48, 0, TAU); ctx.fill(); ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.2; ctx.stroke(); }
+  if (pw) { ctx.textAlign = 'center'; ctx.font = '700 18px Karla, system-ui'; ctx.fillStyle = rgba(CA, 1); ctx.fillText(`Liebesbrief-Zeit! ${Math.ceil(A.power - hostNow())}`, sc.cw / 2, sc.ch - 120); }
+};
+
 function letter(x, y, s) {
   ctx.save(); ctx.translate(x, y); ctx.scale(s, s);
   ctx.fillStyle = '#fff4ea'; rr(-12, -8, 24, 16, 3); ctx.fill();
