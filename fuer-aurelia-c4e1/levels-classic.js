@@ -679,10 +679,10 @@ const L = [
 ];
 
 const byId = {}; L.forEach(l => byId[l.id] = l);
-const SEA = {a: 'turtle', d: 'octopus'}, ROYAL = {a: 'princess', d: 'prince'};
-for (const id of ['perlen', 'echo']) { byId[id].skin = SEA; byId[id].skinScale = 1.35; byId[id].skinName = () => `${nm('a')}: Schildkröte · ${nm('d')}: Oktopus`; }
+const SEA = {a: 'turtle', d: 'sponge'}, ROYAL = {a: 'princess', d: 'prince'};
+for (const id of ['perlen', 'echo']) { byId[id].skin = SEA; byId[id].skinScale = 1.35; byId[id].skinName = () => `${nm('a')}: Schildkröte · ${nm('d')}: Schwamm`; }
 byId.tor.skin = ROYAL; byId.tor.nameDY = 46; byId.tor.skinScale = 1.3; byId.tor.skinAnchor = 0; byId.tor.skinName = () => `${nm('a')}: Prinzessin · ${nm('d')}: Prinz`;
-byId.perlen.h = () => `Schildkröte ${nm('a')} und Oktopus ${nm('d')} tauchen nach Perlen: Wer auf der Seeanemone steht, öffnet die Muschel – der andere holt die Perle. Quallen betäuben!`;
+byId.perlen.h = () => `Schildkröte ${nm('a')} und Schwamm ${nm('d')} tauchen nach Perlen: Wer auf der Seeanemone steht, öffnet die Muschel – der andere holt die Perle. Quallen betäuben!`;
 byId.echo.h = () => `Die Muscheln singen eine Melodie. Merkt sie euch – ${nm('a')} tippt die rosa, ${nm('d')} die blauen Muscheln.`;
 byId.tor.h = () => `Prinzessin ${nm('a')} und Prinz ${nm('d')} im Schlossgarten: Trittsteine öffnen die Tore. Lasst euch gegenseitig durch – bis zum Rosenbogen. Bienen stechen!`;
 byId.flammen.h = () => `Hol die Flamme an der Blessing-Light-Kerze – sie hält nur kurz. Brennende Laternen und ${nm(API.other)} geben dir neues Feuer.`;

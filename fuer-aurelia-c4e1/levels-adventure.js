@@ -142,7 +142,7 @@ function lever(x, on, txt, c) {
 }
 
 /* =====================================================================
-   KORALLENFLUG – 3D unter Wasser: Schildkröte & Oktopus
+   KORALLENFLUG – 3D unter Wasser: Schildkröte & Schwamm
    ===================================================================== */
 const KLEN = 820;
 const pathC = d => ({x: Math.sin(d * .018) * 14 + Math.sin(d * .0071) * 9, y: Math.sin(d * .011) * 4});
@@ -163,7 +163,8 @@ function causticTex(T) {
 function buildReef(T) {
   const K = KIT(), scene = new T.Scene();
   scene.fog = new T.FogExp2(0x0b5574, .022);
-  scene.add(K.sky(T, 0x1f86ad, 0x0a4a6a, 0x03182a, 300));
+  scene.add(K.sky(T, 0x1f86ad, 0x0a4a6a, 0x03182a, 120));
+  scene.environment = K.env(T, 'sea2', 0x145a78, 0x0a3a54, 0x020c16, [[0, 50, 0, 30, 30, 0x4a8aa8]]);
   const cam = new T.PerspectiveCamera(62, 1, .1, 130);
   scene.add(new T.HemisphereLight(0xbff2ff, 0x0a2a3a, .95));
   const dl = new T.DirectionalLight(0xfff4e0, .65); dl.position.set(6, 30, 8); scene.add(dl);
@@ -173,7 +174,7 @@ function buildReef(T) {
   for (let i = 0; i < pa.count; i++) { const z = pa.getZ(i) - KLEN / 2, x = pa.getX(i); pa.setZ(i, z); pa.setY(i, Math.sin(x * .3) * .6 + Math.cos(z * .2) * .5 + Math.random() * .35 + Math.max(0, Math.abs(x) - 26) * .25); pa.setX(i, x + pathC(-z).x); }
   fg.computeVertexNormals();
   const ctex = causticTex(T); ctex.repeat.set(10, 60);
-  const sand = new T.MeshStandardMaterial({color: 0x8a7552, roughness: .95, emissive: 0x9fe8ff, emissiveMap: ctex, emissiveIntensity: .3});
+  const sand = new T.MeshStandardMaterial({color: 0x8a7552, roughness: .95, emissive: 0x9fe8ff, emissiveMap: ctex, emissiveIntensity: .3, envMapIntensity: .25});
   const floor = new T.Mesh(fg, sand); floor.position.y = -13; scene.add(floor);
   // Korallen: Fächer, Kugeln, Röhren, leuchtende Anemonen
   const cols = [0xf48aa3, 0xf6a85c, 0xb88cf0, 0x5fd0c0, 0xffd27a, 0xff7a8a];
@@ -246,7 +247,7 @@ function buildReef(T) {
   const pearl = new T.Mesh(new T.SphereGeometry(2.1, 28, 20), new T.MeshStandardMaterial({color: 0xfff6ee, emissive: 0xffe6d0, emissiveIntensity: .9, roughness: .15, metalness: .3}));
   pearl.position.y = 1.2; pearl.add(K.sprite(T, 0xffd9e6, 22, .9)); shellG.add(pearl);
   shellG.position.set(ce.x, ce.y - 3, -KLEN - 14); shellG.rotation.y = Math.PI; scene.add(shellG);
-  const turtle = K.turtle(T), octo = K.octopus(T); scene.add(turtle); scene.add(octo);
+  const turtle = K.turtle(T), octo = K.sponge(T); octo.scale.setScalar(1.15); scene.add(turtle); scene.add(octo);
   // Lichtschweife der beiden
   const trails = {};
   for (const k of ['a', 'd']) {
@@ -262,8 +263,8 @@ function buildReef(T) {
 const korallen = {
   id: 'korallen', n: 'Korallenflug', ic: '◯', t3: 0, t2: 0, ctrl: 'fly', three: true, noTimer: true, noClamp: true, hidePlayers: true,
   staticAux: ['jel'],
-  skinName: () => `${nm('a')}: Schildkröte · ${nm('d')}: Oktopus`,
-  h: () => `Schildkröte ${nm('a')} und Oktopus ${nm('d')} schwimmen durchs Korallenriff. Schwimmt durch die Ringe eurer Farbe – goldene darf jeder nehmen. Quallen bremsen euch kurz aus. Am Ende wartet die große Perle.`,
+  skinName: () => `${nm('a')}: Schildkröte · ${nm('d')}: Schwamm`,
+  h: () => `Schildkröte ${nm('a')} und Schwamm ${nm('d')} schwimmen durchs Korallenriff. Schwimmt durch die Ringe eurer Farbe – goldene darf jeder nehmen. Quallen bremsen euch kurz aus. Am Ende wartet die große Perle.`,
   start: k => ({x: k === 'a' ? -2.5 : 2.5, y: 0}),
   note: () => `${S.count} von ${S.total} Ringen`,
   posExtra: () => [Math.round((LOC.sw ? LOC.sw.d : 0) * 100) / 100],
@@ -318,7 +319,7 @@ const korallen = {
     }
     meM.rotation.z += -lean; meM.rotation.x = climb;
     K.turtle.userData.fl.forEach(f => { f.pv.rotation.z = Math.sin(t * 6) * .5 * f.s; f.pv.rotation.y = f.x * .3; });
-    K.octo.userData.ten.forEach(o => { o.pv.rotation.x = o.bx + Math.sin(t * 5 + o.i) * .3; });
+    KK.animSponge(K.octo, t, true);
     for (const it of S.items) { const m = K.rings[it.id]; if (!m) continue; m.visible = !it.got && !m.userData.far; m.rotation.z = t * .6 + it.id; const s = 1 + Math.sin(t * 3 + it.id) * .05; m.scale.setScalar(s); }
     K.jel.forEach((j, i) => { j.visible = !j.userData.far; if (!j.visible) return; const s = 1 + Math.sin(t * 3 + i) * .14; j.scale.set(s, 1 / s, s); j.position.y += Math.sin(t * 1.3 + i) * .01; j.userData.ten.forEach((tt, k) => { tt.rotation.x = Math.sin(t * 3 + k + i) * .25; }); });
     K.kelp.forEach(m => { m.visible = !m.userData.far; m.rotation.z = Math.sin(t * 1.2 + m.userData.ph) * .18; });
@@ -354,7 +355,7 @@ const korallen = {
     API.render3D(K.scene, K.cam, {bloom: .95, th: .62});
     for (const [M, k] of [[meM, API.me], [paM, API.other]]) {
       const p = KK.proj(K.cam, M.position.clone().add(new T.Vector3(0, 1.9, 0)));
-      if (p.ok) KK.nameTag(`${nm(k)} ${k === 'a' ? '🐢' : '🐙'}`, p.x, p.y, COL[k]);
+      if (p.ok) KK.nameTag(`${nm(k)} ${k === 'a' ? '🐢' : '🧽'}`, p.x, p.y, COL[k]);
     }
     const bw = sc.cw - 60, by = sc.ch - 34;
     ctx.fillStyle = 'rgba(10,8,24,.5)'; rr(30, by - 6, bw, 12, 6); ctx.fill();

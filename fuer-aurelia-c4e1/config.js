@@ -7,7 +7,7 @@ window.ZL_CONFIG = {
   a: 'Aurelia',
   d: 'Daniel',
 
-  welcome: 'Sechs Welten, zwanzig kleine Abenteuer – mal als Lichter, mal als Schildkröte und Oktopus, mal als Prinzessin und Prinz. Keins davon schafft man allein. Bereit für unsere Reise?',
+  welcome: 'Sechs Welten, zwanzig kleine Abenteuer – mal als Lichter, mal als Schildkröte und Schwamm, mal als Prinzessin und Prinz. Keins davon schafft man allein. Bereit für unsere Reise?',
 
   // Kurzer Satz nach jedem Level (Schlüssel = Level-Kennung)
   lines: {

@@ -71,13 +71,13 @@ function makeCar(T, kind) {
     const stripe = new T.Mesh(new T.BoxGeometry(.32, .02, 4.6), new T.MeshStandardMaterial({color: 0xffffff, metalness: .3, roughness: .3})); stripe.position.set(0, 1.01, .1); body.add(stripe);
     const lip = new T.Mesh(new T.BoxGeometry(W + .1, .08, .5), trim); lip.position.set(0, .32, -2.45); body.add(lip);
   }
-  const hl = new T.MeshBasicMaterial({color: 0xfff6dc}), tl = new T.MeshBasicMaterial({color: 0xff2d55});
+  const hl = new T.MeshBasicMaterial({color: 0xfff6dc}), tl = new T.MeshBasicMaterial({color: 0xb0122e});
   const fy = suv ? 1.08 : .72, fz = suv ? 2.56 : 2.66, rz = suv ? 2.56 : 2.62;
   for (const s of [-1, 1]) {
     const a = new T.Mesh(new T.BoxGeometry(.55, .16, .06), hl); a.position.set(s * (W / 2 - .38), fy, -fz); body.add(a);
     const b = new T.Mesh(new T.BoxGeometry(.6, .14, .06), tl); b.position.set(s * (W / 2 - .38), fy + .05, rz); body.add(b);
   }
-  const bar = new T.Mesh(new T.BoxGeometry(W - .9, .06, .06), tl); bar.position.set(0, fy + .05, rz); body.add(bar);
+  const bar = new T.Mesh(new T.BoxGeometry(W - .9, .035, .05), tl); bar.position.set(0, fy + .05, rz); body.add(bar);
   const wheels = [], r = suv ? .5 : .42, wx = W / 2 + .02, wz = suv ? 1.55 : 1.6;
   const tire = new T.MeshStandardMaterial({color: 0x0c0c10, roughness: .85}), rim = new T.MeshStandardMaterial({color: 0xdfe2ea, metalness: .95, roughness: .18});
   for (const sx of [-1, 1]) for (const sz of [-1, 1]) {
@@ -96,7 +96,7 @@ function makeCar(T, kind) {
   const flames = [];
   for (const s of [-1, 1]) {
     const hg = K.sprite(T, 0xfff2c8, 2.6, .9); hg.position.set(s * (W / 2 - .38), fy, -fz - .3); g.add(hg);
-    const tg = K.sprite(T, 0xff3355, 1.3, .45); tg.position.set(s * (W / 2 - .38), fy + .05, rz + .25); g.add(tg);
+    const tg = K.sprite(T, 0xff3355, 1.1, .3); tg.position.set(s * (W / 2 - .38), fy + .05, rz + .25); g.add(tg);
     const f = K.sprite(T, suv ? 0xff8fb4 : 0x7fc0ff, 2.4, 0); f.position.set(s * .5, .5, rz + .9); g.add(f); flames.push(f);
   }
   g.userData = {wheels, flames, body, under};
@@ -109,6 +109,7 @@ function buildScene(T) {
   const K = KIT(), scene = new T.Scene();
   scene.fog = new T.FogExp2(0x1a0f2e, .0042);
   scene.add(K.sky(T, 0x05061a, 0x4a1c5a, 0x0a0614));
+  scene.environment = K.env(T, 'race', 0x0a0820, 0x5a2070, 0x0a0614, [[40, 14, -30, 40, 6, 0xff5fa2], [-40, 14, 30, 40, 6, 0x5fb8ff], [0, 60, 0, 50, 50, 0x8a7aa8], [30, 8, 40, 20, 4, 0xffd27a]]);
   const cam = new T.PerspectiveCamera(66, 1, .3, 1400);
   scene.add(new T.HemisphereLight(0xb8c4ff, 0x2a1a30, .9));
   scene.add(new T.AmbientLight(0xffffff, .18));
