@@ -21,7 +21,11 @@
 html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:var(--sans);overflow:hidden;overscroll-behavior:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 button{font:inherit;color:inherit}
 [hidden]{display:none!important}
-#cv{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none}
+#cv,#gl{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none}
+#gl{z-index:0}#cv{z-index:1}
+#mcBtn{display:none}body.host #mcBtn{display:flex}
+.mcrow{display:flex;justify-content:space-between;gap:10px;padding:9px 2px;border-bottom:1px solid var(--faint);font-size:14px}.mcrow span{color:var(--mute)}.mcrow b{text-align:right}
+.seg3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 
 /* Overlays */
 .ov{position:fixed;inset:0;z-index:10;display:flex;align-items:center;justify-content:center;padding:calc(env(safe-area-inset-top) + 16px) 14px calc(14px + env(safe-area-inset-bottom));background:radial-gradient(120% 80% at 50% 15%,rgba(70,45,120,.35),transparent 70%),rgba(8,6,20,.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);overflow-y:auto}
@@ -150,11 +154,13 @@ input.code-in:focus{border-color:var(--gold)}
 </style>
 </head>
 <body>
+<canvas id="gl" hidden></canvas>
 <canvas id="cv" aria-label="Spielfeld"></canvas>
 
 <div id="hud" hidden>
   <div class="pill l"><span id="lvl">Willkommen</span></div>
   <div class="pill"><span id="cnt"></span><span id="tmr"></span><span class="dot good" id="net" title="Verbindung"></span>
+    <button class="ib" id="mcBtn" aria-label="Master Control" title="Master Control"><svg viewBox="0 0 24 24"><path d="M4 18h16M5 16l-1-9 5 4 3-6 3 6 5-4-1 9z"/></svg></button>
     <button class="ib" id="menuBtn" aria-label="Menü"><svg viewBox="0 0 24 24"><path d="M5 7h14M5 12h14M5 17h14"/></svg></button></div>
 </div>
 <div id="progW"><div id="prog"></div></div>
@@ -165,7 +171,7 @@ input.code-in:focus{border-color:var(--gold)}
     <p class="kicker">Ein Spiel für zwei</p>
     <h1>Zwei Lichter</h1>
     <p class="kicker" style="margin:8px 0 0;letter-spacing:.32em">Die Reise</p>
-    <p class="sub"><span data-n="a"></span> <span class="amp">&amp;</span> <span data-n="d"></span> – fünf Welten, neunzehn Level, zwei Handys.</p>
+    <p class="sub"><span data-n="a"></span> <span class="amp">&amp;</span> <span data-n="d"></span> – sechs Welten, zwanzig Level, zwei Handys.</p>
     <button class="btn blue" id="bHost">Ich bin <span data-n="d"></span> – Raum öffnen</button>
     <button class="btn" id="bGuest">Ich bin <span data-n="a"></span> – Raum beitreten</button>
   </div>
@@ -216,20 +222,24 @@ input.code-in:focus{border-color:var(--gold)}
       <button class="btn ghost small" id="mCal" style="margin-top:8px" hidden>Neigung neu ausrichten</button></div>
     <div class="sec"><small>Spiel</small><div class="mrow">
       <button class="btn ghost small" id="mPause">Pause</button><button class="btn ghost small" id="mRestart">Level neu starten</button>
-      <button class="btn ghost small" id="mMap">Reisekarte</button><button class="btn ghost small" id="mSound">Ton</button>
+      <button class="btn ghost small" id="mMC">Master Control</button><button class="btn ghost small" id="mSound">Ton</button>
       <button class="btn ghost small" id="mVib">Vibration</button></div></div>
     <div class="sec"><small>Verbindung</small><p class="net" id="mNet"></p></div>
     <button class="btn" id="mClose">Zurück zum Spiel</button>
   </div>
 </div>
 
-<div class="ov sheetov" id="ovMap" hidden>
+<div class="ov sheetov" id="ovMC" hidden>
   <div class="sheet">
     <div class="handle"></div>
-    <h3>Reisekarte</h3>
-    <p class="hint">Tippe ein Level an, um direkt dorthin zu springen. <span data-n="a"></span> kommt automatisch mit.</p>
-    <div id="mapList"></div>
-    <button class="btn ghost" id="mapClose">Schließen</button>
+    <h3>Master Control</h3>
+    <div class="sec"><small>Jetzt</small><div id="mcNow"></div></div>
+    <div class="sec"><small>Steuern</small><div class="mrow">
+      <button class="btn small" id="mcStart">Sofort starten</button><button class="btn ghost small" id="mcPause">Pause</button>
+      <button class="btn ghost small" id="mcRestart">Level neu starten</button><button class="btn ghost small" id="mcSkip">Level überspringen</button></div></div>
+    <div class="sec"><small>Schwierigkeit</small><div class="seg seg3" id="mcDiff"></div></div>
+    <div class="sec"><small>Level wählen – <span data-n="a"></span> kommt automatisch mit</small><div id="mapList"></div></div>
+    <div class="mrow"><button class="btn ghost small" id="mcReset">Sterne zurücksetzen</button><button class="btn small" id="mcClose">Schließen</button></div>
   </div>
 </div>
 
@@ -259,10 +269,11 @@ input.code-in:focus{border-color:var(--gold)}
   </div>
 </div>
 
-<script src="https://unpkg.com/peerjs@1.5.5/dist/peerjs.min.js"></script>
-<script src="config.js?v=3"></script>
-<script src="levels-classic.js?v=3"></script>
-<script src="levels-arcade.js?v=3"></script>
-<script src="engine.js?v=3"></script>
+<script src="peerjs.min.js?v=155"></script>
+<script src="config.js?v=4"></script>
+<script src="levels-classic.js?v=4"></script>
+<script src="levels-arcade.js?v=4"></script>
+<script src="levels-adventure.js?v=4"></script>
+<script src="engine.js?v=4"></script>
 </body>
 </html>

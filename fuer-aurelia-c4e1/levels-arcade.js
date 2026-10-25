@@ -10,7 +10,7 @@ const toast = t => API.toast(t);
 const PADY = {a: 925, d: 120}, PW = 120;
 function inHeart(u, v) { const x = u * 1.22, y = -v * 1.18 + .14, a = x * x + y * y - 1; return a * a * a - x * x * y * y * y <= 0; }
 function serve(k) {
-  const p = S.p[k], sp = 360, an = rnd(-.5, .5);
+  const p = S.p[k], sp = 360 * API.diff(), an = rnd(-.5, .5);
   S.aux.balls.push({x: clamp(p.x, 40, W - 40), y: k === 'a' ? PADY.a - 30 : PADY.d + 30, vx: Math.sin(an) * sp, vy: (k === 'a' ? -1 : 1) * Math.cos(an) * sp, sp});
   emit({k: 'pad', o: k});
 }
@@ -43,7 +43,7 @@ const mauer = {
           const py = PADY[k], px = S.p[k].x, down = k === 'a';
           if ((down ? b.vy > 0 : b.vy < 0) && Math.abs(b.y - py) < 15 && Math.abs(b.x - px) < PW / 2 + 18) {
             const off = clamp((b.x - px) / (PW / 2), -1, 1);
-            b.sp = Math.min(b.sp * 1.025, 560);
+            b.sp = Math.min(b.sp * 1.025, 560 * API.diff());
             b.vx = Math.sin(off) * b.sp; b.vy = (down ? -1 : 1) * Math.cos(off) * b.sp;
             b.y = down ? py - 15 : py + 15;
             emit({k: 'pad', o: k});
@@ -281,7 +281,7 @@ const LANES = {
   13: {v: 85, len: 150, per: 280, off: 40}
 };
 function objs(i, t) {
-  const L = LANES[i], base = ((L.v * t + L.off) % L.per + L.per) % L.per, out = [];
+  const L = LANES[i], base = ((L.v * API.diff() * t + L.off) % L.per + L.per) % L.per, out = [];
   for (let x = base - L.per; x < W + L.per; x += L.per) out.push(x);
   return out;
 }
@@ -294,7 +294,7 @@ function frogDie(msg) {
 }
 const strasse = {
   id: 'strasse', w: 3, n: 'Hafenstraße', ic: '⇡', t3: 75, t2: 130, ctrl: 'hop', noThread: true,
-  h: () => 'Hüpft gemeinsam über Straßen und Kanäle bis zum Ziel. Auf dem Wasser nur auf die Boote! Wer erwischt wird, startet am letzten sicheren Streifen.',
+  h: () => `${nm('a')} und ${nm('d')} hüpfen gemeinsam über Hafenstraßen und Kanäle bis zum Ziel. Auf dem Wasser nur auf die Boote! Wer erwischt wird, startet am letzten sicheren Streifen.`,
   start: k => ({x: k === 'a' ? 210 : 390, y: 940}),
   countText: () => `Reihe ${S.count}/14`,
   move(dt, inp) {
@@ -319,7 +319,7 @@ const strasse = {
     if (type === 'safe' || type === 'goal') { F.safe = F.row; return; }
     if (F.inv > 0) return;
     if (type === 'water') {
-      if (onBoat(F.row, mine.x, t)) { mine.x += LANES[F.row].v * dt; if (mine.x < 12 || mine.x > W - 12) frogDie('Abgetrieben!'); }
+      if (onBoat(F.row, mine.x, t)) { mine.x += LANES[F.row].v * API.diff() * dt; if (mine.x < 12 || mine.x > W - 12) frogDie('Abgetrieben!'); }
       else frogDie('Platsch! Ins Wasser gefallen.');
     } else if (type === 'road' && carHit(F.row, mine.x, t)) frogDie('Autsch! Angefahren.');
   },
@@ -402,7 +402,7 @@ const irrgarten = {
       if (v === '2') { A.power = S.t + 7; emit({k: 'power', x: cc.x, y: cc.y}); emit({k: 'toast', txt: 'Liebesbrief! Die Wolken fliehen – jetzt könnt ihr sie verscheuchen.'}); }
       else emit({k: 'dot', o: k});
     }
-    const spd = (pw ? 95 : 128 + 40 * S.count / S.total) * dt;
+    const spd = (pw ? 95 : 128 + 40 * S.count / S.total) * API.diff() * dt;
     for (const cl of A.cl) {
       if (S.t < cl.wait) continue;
       const {c, r} = cellOf(cl), cc = cen(c, r), key = c + ',' + r;
@@ -534,8 +534,9 @@ const lied = {
     if (!A.ev && S.t > nT(LAST) + 1.6) {
       A.ev = 1;
       const pct = S.count / S.total;
-      if (pct >= .6) finish(1.2, pct >= .9 ? 3 : pct >= .75 ? 2 : 1);
-      else failRestart(`${Math.round(pct * 100)} % getroffen – ihr braucht 60 %. Nochmal!`);
+      const need = API.diff() < 1 ? .5 : API.diff() > 1 ? .7 : .6;
+      if (pct >= need) finish(1.2, pct >= .9 ? 3 : pct >= .75 ? 2 : 1);
+      else failRestart(`${Math.round(pct * 100)} % getroffen – ihr braucht ${Math.round(need * 100)} %. Nochmal!`);
     }
   },
   draw(t) {

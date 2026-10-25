@@ -3,7 +3,7 @@
 'use strict';
 const {S, LOC, ctx, W, H, R, TAU, COL, CA, CD, CG, rgba, dist, rnd, clamp, nm, OTH, place, START, drift, stunStep, emit, finish, glow, dotW, label, line2} = API;
 
-const mkJelly = (y, dir) => ({x: rnd(90, W - 90), by: y, y, vx: dir * rnd(45, 70), ph: rnd(0, TAU), r: 26});
+const mkJelly = (y, dir) => ({x: rnd(90, W - 90), by: y, y, vx: dir * rnd(45, 70) * API.diff(), ph: rnd(0, TAU), r: 26});
 function jellyStep(js, dt) {
   for (const j of js) {
     j.x += j.vx * dt;
@@ -187,7 +187,7 @@ function candle(x, y, t) {
   ctx.strokeStyle = '#d8b26a'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(x, y - 18, 10, 0, TAU); ctx.stroke();
   ctx.fillStyle = '#e2bd73'; ctx.fillRect(x - 1.2, y - 25, 2.4, 14); ctx.fillRect(x - 5, y - 21, 10, 2.4);
   flame(x, y - 62, 1, t);
-  label('Kerze', x, y + 44, CG, 13);
+  label('Blessing Light', x, y + 44, CG, 13);
 }
 function flame(x, y, s, t) {
   const f = 1 + Math.sin(t * 17) * .08 + Math.sin(t * 29) * .05;
@@ -243,7 +243,7 @@ const L = [
       const opts = ['a', 'd'].filter(k => A.got[k] < A.need);
       if (opts.length) {
         const o = opts[(Math.random() * opts.length) | 0], left = Math.random() < .5;
-        S.items.push({id: A.id++, o, x: left ? -40 : W + 40, y: rnd(150, 640), vx: (left ? 1 : -1) * rnd(210, 290), vy: rnd(60, 150), got: 0});
+        S.items.push({id: A.id++, o, x: left ? -40 : W + 40, y: rnd(150, 640), vx: (left ? 1 : -1) * rnd(210, 290) * API.diff(), vy: rnd(60, 150), got: 0});
       }
       A.spawnT = S.t + rnd(.65, 1.15);
     }
@@ -573,7 +573,7 @@ const L = [
   speed: p => p.carry > 0 ? .62 : 1,
   h: () => 'Hol die Flamme an der Kerze – sie hält nur kurz. Brennende Laternen und dein Schatz geben neues Feuer.',
   setup() {
-    S.aux = {candle: {x: 300, y: 905}, FL: 2.2};
+    S.aux = {candle: {x: 300, y: 905}, FL: 2.2 / API.diff()};
     const pts = place(12, 125, [70, 160, 530, 760]);
     S.items = pts.map((p, i) => ({id: i, x: p.x, y: p.y, lit: 0}));
     S.total = S.items.length;
@@ -679,6 +679,13 @@ const L = [
 ];
 
 const byId = {}; L.forEach(l => byId[l.id] = l);
+const SEA = {a: 'turtle', d: 'octopus'}, ROYAL = {a: 'princess', d: 'prince'};
+for (const id of ['perlen', 'echo']) { byId[id].skin = SEA; byId[id].skinScale = 1.35; byId[id].skinName = () => `${nm('a')}: Schildkröte · ${nm('d')}: Oktopus`; }
+byId.tor.skin = ROYAL; byId.tor.nameDY = 46; byId.tor.skinScale = 1.3; byId.tor.skinAnchor = 0; byId.tor.skinName = () => `${nm('a')}: Prinzessin · ${nm('d')}: Prinz`;
+byId.perlen.h = () => `Schildkröte ${nm('a')} und Oktopus ${nm('d')} tauchen nach Perlen: Wer auf der Seeanemone steht, öffnet die Muschel – der andere holt die Perle. Quallen betäuben!`;
+byId.echo.h = () => `Die Muscheln singen eine Melodie. Merkt sie euch – ${nm('a')} tippt die rosa, ${nm('d')} die blauen Muscheln.`;
+byId.tor.h = () => `Prinzessin ${nm('a')} und Prinz ${nm('d')} im Schlossgarten: Trittsteine öffnen die Tore. Lasst euch gegenseitig durch – bis zum Rosenbogen. Bienen stechen!`;
+byId.flammen.h = () => `Hol die Flamme an der Blessing-Light-Kerze – sie hält nur kurz. Brennende Laternen und ${nm(API.other)} geben dir neues Feuer.`;
 byId.saeen.drawCarry = (k, x, y, p) => {
   if (!p.carry) return;
   if (k === 'a') { ctx.fillStyle = '#c99a6a'; [-6, 0, 6].forEach(o => { ctx.beginPath(); ctx.ellipse(x + o, y - R - 12, 3, 4.5, 0, 0, TAU); ctx.fill(); }); }
