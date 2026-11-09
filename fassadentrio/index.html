@@ -7,17 +7,16 @@
 <meta name="description" content="Fassadenreinigung mit Langzeitschutz: bis zu 70 % günstiger als ein Neuanstrich, 5 Jahre Garantie vor Wiederbefall, kostenlose Probefläche. Deutschlandweit im Einsatz.">
 <!-- Entwurf: nicht in Suchmaschinen aufnehmen. Vor dem Livegang auf der Kundendomain entfernen. -->
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#F2F3EF">
+<meta name="theme-color" content="#07090B">
 <meta property="og:type" content="website">
 <meta property="og:title" content="FassadenTrio | Der Neuanstrich kann warten">
 <meta property="og:description" content="Fassadenreinigung mit Langzeitschutz: bis zu 70 % günstiger als ein Neuanstrich, 5 Jahre Garantie vor Wiederbefall, kostenlose Probefläche. Deutschlandweit im Einsatz.">
-<meta property="og:image" content="https://entwurf.medialyte.de/fassadentrio/img/r04-nachher.jpg">
+<meta property="og:image" content="https://entwurf.medialyte.de/fassadentrio/img/r05-nachher.jpg">
 <meta property="og:locale" content="de_DE">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' fill='none' stroke-width='3'%3E%3Crect x='13.5' y='2.5' width='24' height='24' stroke='%23545C5E'/%3E%3Crect x='7.5' y='7.5' width='24' height='24' stroke='%237A1418'/%3E%3Crect x='2.5' y='13' width='24' height='24' stroke='%23545C5E'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900&display=swap">
-<link rel="preload" as="image" href="img/r04-nachher.jpg">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Inter+Tight:wght@500..800&display=swap">
 <style>img{max-width:100%}[hidden]{display:none!important}</style>
 <style>
 /* Layout: Rahmen, die ineinandergreifen (wie die drei Rahmen im Logo). Jedes Foto sitzt in einem
@@ -420,6 +419,158 @@ h3{font-size:clamp(1.3rem, 1.9vw, 1.6rem); font-stretch:88%; font-weight:700; li
   html{scroll-behavior:auto}
   *,*::before,*::after{transition-duration:.01ms !important; animation-duration:.01ms !important}
 }
+
+/* ============ Fassung 3: Apple-Klarheit trifft 3D-Bühne ============ */
+:root{
+  --putz:#F5F5F7; --weiss:#FFFFFF; --graphit:#101214; --graphit-2:#1A1D20;
+  --stein:#636368; --nebel:#A3A7AC; --linie:#D8D8DD; --linie-d:#2A2E33;
+  --bordeaux:#8C181D; --bordeaux-t:#6B1014;
+  --licht:#7FE3F0;                 /* Leuchtakzent: Wasser und Schutzschicht */
+  --nacht:#07090B;                 /* Bühne */
+  --f:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fd:"Inter Tight", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --r-rahmen:32px; --r-karte:20px;
+  --sanft:cubic-bezier(.2,.7,.2,1);
+}
+body{color:#1D1D1F; font-size:1.0625rem; letter-spacing:-.006em}
+h1,h2,h3,.zahl,.ergebnis output,.geldfeld input,.geldfeld span,.logo__name,.btn,.vergleich thead th,.stimmen__text strong,.faq summary,.galerie__info strong,.zusagen strong,.vorteile strong,.ursachen strong,.lasche{font-family:var(--fd); font-stretch:normal}
+h1{font-size:clamp(3rem, 7vw, 6.4rem); font-weight:700; letter-spacing:-.045em; line-height:.98}
+h2{font-size:clamp(2.4rem, 5.6vw, 4.8rem); font-weight:700; letter-spacing:-.04em; line-height:1.02}
+h3{font-weight:650; letter-spacing:-.018em}
+.zahl{font-weight:700; letter-spacing:-.05em}
+.sek{padding-block:clamp(88px, 12vw, 188px)}
+.sek--dunkel{background:radial-gradient(70% 55% at 85% 0%, rgba(90,215,235,.10), transparent 62%), var(--graphit); color:#F5F5F7}
+.kopfzeile{margin-bottom:clamp(40px, 6vw, 88px); row-gap:24px}
+.kopfzeile h2{grid-column:1 / span 10}
+.kopfzeile p{grid-column:1 / span 7; align-self:start; font-size:clamp(1.1rem, 1.5vw, 1.35rem); line-height:1.45; max-width:54ch}
+
+/* Knöpfe */
+.btn{font-weight:600; letter-spacing:-.01em; transition:background .2s ease, transform .2s var(--sanft), box-shadow .3s ease}
+.btn:hover{box-shadow:0 10px 34px rgba(140,24,29,.38)}
+.btn:active{transform:scale(.97); transition-duration:.1s}
+.btn--hell{background:#F5F5F7; color:#101214}
+.btn--hell:hover{background:#fff; box-shadow:0 0 0 1px rgba(127,227,240,.5), 0 10px 40px rgba(127,227,240,.35)}
+.btn--linie:hover{box-shadow:inset 0 0 0 1.5px var(--graphit)}
+
+/* Kopfzeile als durchscheinende Ebene */
+.kopf{background:rgba(245,245,247,.78); -webkit-backdrop-filter:saturate(180%) blur(20px); backdrop-filter:saturate(180%) blur(20px); transition:background .3s ease, color .3s ease, border-color .3s ease}
+.kopf.auf-dunkel{background:rgba(7,9,11,.55); color:#F5F5F7; border-bottom-color:transparent}
+.kopf.auf-dunkel .logo__name{color:#fff}
+.kopf.auf-dunkel .logo__name b,.kopf.auf-dunkel .logo__zusatz{color:#B9BEC2}
+.kopf.auf-dunkel .logo svg rect{stroke:#C9CDD0}
+.kopf.auf-dunkel .logo svg rect:nth-child(2){stroke:#E0555C}
+.kopf.auf-dunkel .nav a:hover{border-bottom-color:#fff}
+.kopf.auf-dunkel .menue{border-color:#F5F5F7; color:#F5F5F7}
+.kopf.auf-dunkel .mobilnav{border-top-color:#2A2E33}
+.kopf.auf-dunkel .mobilnav a{border-bottom-color:#2A2E33}
+.kopf.auf-dunkel .btn--klein{background:#F5F5F7; color:#101214}
+body::before{background:var(--nacht)}
+@media (prefers-reduced-transparency: reduce){
+  .kopf{background:var(--putz); -webkit-backdrop-filter:none; backdrop-filter:none}
+  .kopf.auf-dunkel{background:var(--nacht)}
+}
+
+/* ---------- Bühne: 3D-Erzählung ---------- */
+.story{position:relative; background:var(--nacht); color:#F5F5F7; --cut:var(--nacht)}
+.story__buehne{position:relative; overflow:hidden}
+#szene,.story__licht,.story__fortschritt,.story__hinweis{display:none}
+.story__inhalt{position:relative; z-index:2; display:flex; flex-direction:column; gap:clamp(56px, 8vw, 96px); padding-block:clamp(48px, 7vw, 96px)}
+.akt{max-width:36rem; display:flex; flex-direction:column; gap:22px}
+.akt h2{font-size:clamp(2.3rem, 4.8vw, 4.2rem)}
+.akt p{color:#B9BEC2; font-size:clamp(1.05rem, 1.35vw, 1.25rem); line-height:1.5; max-width:30em}
+.akt p.akt__wer{color:#8E9499; font-weight:600; font-size:1rem}
+.akt p.akt__phase{font-family:var(--fd); font-weight:650; font-size:.95rem; color:var(--licht); letter-spacing:.01em; text-shadow:0 0 18px rgba(127,227,240,.55)}
+.akt p.akt__klein{font-size:.8125rem; color:#70767B}
+.akt__cta{display:flex; flex-wrap:wrap; align-items:center; gap:16px 26px; margin-top:6px}
+.akt__link{color:#F5F5F7; font-weight:600; text-underline-offset:5px}
+.akt__beleg{display:flex; align-items:center; gap:14px; margin-top:6px}
+.akt__beleg img{width:148px; height:96px; object-fit:cover; border-radius:14px}
+.akt__beleg figcaption{font-size:.875rem; color:#8E9499; max-width:20ch; line-height:1.4}
+.story .hero__google{color:#A1A6AA; align-self:auto}
+.story .hero__google strong{color:#fff}
+.story__anker{position:absolute; left:0; top:22%; width:1px; height:1px}
+
+html.hat-3d .story{height:560vh}
+html.hat-3d .story__buehne{position:sticky; top:0; height:100vh; height:100svh}
+html.hat-3d #szene{display:block; position:absolute; inset:0; width:100%; height:100%}
+html.hat-3d .story__licht{display:block; position:absolute; inset:0; pointer-events:none; opacity:0; background:radial-gradient(46% 52% at 66% 48%, rgba(90,215,235,.26), transparent 70%)}
+html.hat-3d .story__inhalt{position:absolute; inset:0; display:block; padding-block:0; pointer-events:none}
+html.hat-3d .story__buehne::before{content:""; position:absolute; z-index:1; inset:0; background:linear-gradient(90deg, rgba(7,9,11,.94) 0%, rgba(7,9,11,.82) 30%, rgba(7,9,11,0) 60%); pointer-events:none}
+html.hat-3d .akt{position:absolute; left:var(--rand); top:50%; width:min(34rem, 35vw); max-width:none; opacity:0; transform:translate3d(0, calc(-50% + 40px), 0); transition:opacity .5s ease, transform .9s var(--sanft); pointer-events:none}
+html.hat-3d .akt.ist-da{opacity:1; transform:translate3d(0, -50%, 0); pointer-events:auto}
+html.hat-3d .story__fortschritt{display:flex; flex-direction:column; gap:10px; position:absolute; z-index:3; right:var(--rand-r); top:50%; transform:translateY(-50%)}
+.story__fortschritt span{width:3px; height:30px; border-radius:2px; background:rgba(255,255,255,.16); transition:background .3s ease, box-shadow .3s ease}
+.story__fortschritt span.ist-da{background:var(--licht); box-shadow:0 0 14px var(--licht)}
+html.hat-3d .story__hinweis{display:flex; flex-direction:column; align-items:center; gap:10px; position:absolute; z-index:3; left:50%; bottom:calc(26px + env(safe-area-inset-bottom, 0px)); transform:translateX(-50%); font-size:.8125rem; color:#8E9499; letter-spacing:.04em; transition:opacity .4s ease}
+.story__hinweis::after{content:""; width:1px; height:38px; background:linear-gradient(#8E9499, transparent); animation:tropfen 1.8s var(--sanft) infinite; transform-origin:top}
+@keyframes tropfen{0%{transform:scaleY(0)}60%{transform:scaleY(1)}100%{transform:scaleY(1); opacity:0}}
+
+/* ---------- Zahlen ---------- */
+.zahlen{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:clamp(20px, 3vw, 48px)}
+.zahlen li{display:flex; flex-direction:column; gap:14px; padding-top:22px; border-top:1px solid #1D1D1F}
+.zahlen .zahl{font-size:clamp(2.7rem, 5.3vw, 4.9rem); line-height:.9; white-space:nowrap}
+.zahlen .zahl small{display:block; font-size:max(.2em, .8125rem); letter-spacing:-.01em; font-weight:600; color:var(--stein); margin-bottom:.5em}
+.zahlen p{color:var(--stein); max-width:20ch; line-height:1.4}
+
+/* ---------- Leuchtakzente ---------- */
+.vn__griff::before{box-shadow:0 0 0 1px rgba(16,18,20,.12), 0 0 22px rgba(127,227,240,.9)}
+.vn__knauf{transition:transform .25s var(--sanft)}
+.vn:active .vn__knauf{transform:scale(.92)}
+.film{box-shadow:0 40px 120px rgba(0,0,0,.5)}
+.film .lasche{padding-left:18px}
+.fortschritt span{box-shadow:0 0 12px rgba(140,24,29,.6)}
+.formular{box-shadow:0 0 0 1px rgba(127,227,240,.18), 0 40px 120px rgba(0,0,0,.45), 0 0 90px rgba(90,215,235,.10)}
+.zusagen svg{color:var(--licht); filter:drop-shadow(0 0 8px rgba(127,227,240,.6))}
+.ergebnis output{letter-spacing:-.045em; font-weight:700}
+.geldfeld input{font-weight:700; letter-spacing:-.04em}
+
+/* ---------- Objekte als Karussell ---------- */
+.objekte{display:flex; gap:clamp(14px, 1.8vw, 24px); overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; margin-left:calc(var(--rand) * -1); margin-right:calc(var(--rand-r) * -1); padding-left:var(--rand); padding-right:var(--rand-r); scroll-padding-left:var(--rand)}
+.objekte::-webkit-scrollbar{display:none}
+.objekt,.objekt--breit,.objekt--halb{flex:0 0 min(80vw, 780px); height:clamp(260px, 44vw, 520px); scroll-snap-align:start}
+.pfeile{display:flex; justify-content:flex-end; gap:10px; margin-top:22px}
+.pfeile button{width:48px; height:48px; border-radius:50%; border:0; background:#E8E8ED; color:#1D1D1F; display:grid; place-items:center; cursor:pointer; transition:background .2s ease, transform .2s var(--sanft)}
+.pfeile button:hover{background:#DCDCE2}
+.pfeile button:active{transform:scale(.94)}
+.pfeile svg{width:20px; height:20px}
+
+/* ---------- Einblenden beim Scrollen ---------- */
+.ein{opacity:0; transform:translate3d(0, 34px, 0); transition:opacity .8s ease, transform 1s var(--sanft); transition-delay:var(--warte, 0s)}
+.ein.ist-drin{opacity:1; transform:none}
+
+/* ---------- Zeiger-Begleiter ---------- */
+.zeiger{position:fixed; left:0; top:0; z-index:90; width:38px; height:38px; margin:-19px 0 0 -19px; border-radius:50%; border:1.5px solid rgba(127,227,240,.9); box-shadow:0 0 18px rgba(127,227,240,.45); pointer-events:none; opacity:0; display:grid; place-items:center; font-family:var(--fd); font-size:.7rem; font-weight:650; color:#07090B; transition:opacity .3s ease, width .3s var(--sanft), height .3s var(--sanft), margin .3s var(--sanft), background .3s ease}
+.zeiger.ist-an{opacity:1}
+.zeiger.ist-gross{width:84px; height:84px; margin:-42px 0 0 -42px; background:rgba(127,227,240,.92); border-color:transparent}
+.zeiger span{opacity:0; transition:opacity .2s ease}
+.zeiger.ist-gross span{opacity:1}
+
+@media (max-width: 1080px){
+  .kopfzeile h2{grid-column:1 / -1}
+  .kopfzeile p{grid-column:1 / span 10}
+}
+@media (max-width: 900px){
+  .zahlen{grid-template-columns:repeat(2, minmax(0,1fr)); row-gap:36px}
+  .akt__beleg{display:none}
+  html.hat-3d .story{height:520vh}
+  html.hat-3d .story__buehne::before{display:none}
+  html.hat-3d .story__buehne::after{content:""; position:absolute; z-index:1; inset:auto 0 0 0; height:66%; background:linear-gradient(transparent, rgba(7,9,11,.9) 34%, rgba(7,9,11,.97) 60%); pointer-events:none}
+  html.hat-3d .akt p.akt__wer{display:none}
+  html.hat-3d .akt{left:var(--rand); right:var(--rand-r); width:auto; top:auto; bottom:calc(34px + env(safe-area-inset-bottom, 0px)); gap:16px; transform:translate3d(0, 36px, 0)}
+  html.hat-3d .akt.ist-da{transform:none}
+  html.hat-3d .story__fortschritt,html.hat-3d .story__hinweis{display:none}
+  .akt h1{font-size:clamp(2.6rem, 11.5vw, 4rem)}
+  .akt h2{font-size:clamp(2rem, 8.6vw, 3rem)}
+  .objekt,.objekt--breit,.objekt--halb{flex-basis:84vw; height:clamp(220px, 60vw, 380px)}
+}
+@media (max-width: 560px){
+  .kopfzeile p{grid-column:1 / -1}
+  .akt__cta .btn{width:100%}
+}
+@media (prefers-reduced-motion: reduce){
+  .ein{opacity:1; transform:none}
+  .story__hinweis::after{animation:none}
+}
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "FassadenTrio", "description": "Professionelle Fassadenreinigung mit Langzeitschutz und 5 Jahren Garantie vor Wiederbefall.", "telephone": "+49 178 8120873", "email": "info@fassaden-trio.de", "address": {"@type": "PostalAddress", "streetAddress": "Robert-Bosch-Straße 47", "postalCode": "46354", "addressLocality": "Südlohn", "addressCountry": "DE"}, "openingHours": "Mo-Fr 08:00-16:00", "areaServed": ["DE", "NL"], "sameAs": ["https://www.instagram.com/fassadentrio/", "https://www.facebook.com/p/FassadenTrio-61555656579016/"]}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Wird meine Fassade bei der Reinigung beschädigt?", "acceptedAnswer": {"@type": "Answer", "text": "Nein. Wir arbeiten mit wenig Wasserdruck. Das Reinigungsmittel löst Algen, Schimmel und Pilze, danach spülen wir sie mit klarem Wasser ab. Der Putz bleibt unbeschädigt."}}, {"@type": "Question", "name": "Muss ein Gerüst aufgebaut werden?", "acceptedAnswer": {"@type": "Answer", "text": "Nein. Unsere Techniker arbeiten mit bis zu 10 Meter langen Teleskoplanzen vom Boden aus. Bei höheren Gebäuden setzen wir eine Hubarbeitsbühne ein. Gerüstkosten fallen nicht an."}}, {"@type": "Question", "name": "Wie lange bleibt die Fassade sauber?", "acceptedAnswer": {"@type": "Answer", "text": "Nach der Reinigung tragen wir einen transparenten Langzeitschutz auf. Wir geben 5 Jahre Garantie vor Wiederbefall. Der Schutz kann jederzeit erneut aufgetragen werden."}}, {"@type": "Question", "name": "Was kostet die Probefläche?", "acceptedAnswer": {"@type": "Answer", "text": "Nichts. Die Probefläche ist kostenlos und Sie können sie jederzeit anfordern. Auch das Angebot und die Anfahrt berechnen wir nicht."}}, {"@type": "Question", "name": "Was kostet die Reinigung?", "acceptedAnswer": {"@type": "Answer", "text": "Eine Fassadenreinigung ist bis zu 70 % günstiger als ein Neuanstrich. Den Preis für Ihr Gebäude nennen wir Ihnen in einem kostenlosen Angebot."}}, {"@type": "Question", "name": "Wie läuft die Probefläche ab?", "acceptedAnswer": {"@type": "Answer", "text": "Sie fordern die Probefläche über das Formular oder am Telefon an. Wir reinigen ein kleines Stück Ihrer Fassade. Sie sehen das Ergebnis an Ihrem eigenen Haus und entscheiden danach, ob wir die ganze Fassade reinigen."}}, {"@type": "Question", "name": "Warum nicht einfach neu streichen?", "acceptedAnswer": {"@type": "Answer", "text": "Weil die Reinigung bis zu 70 % günstiger ist und den Neuanstrich um viele Jahre verzögert. Sie ist außerdem umweltfreundlicher als ein kompletter Anstrich."}}, {"@type": "Question", "name": "Kann ich die Fassade selbst mit dem Hochdruckreiniger säubern?", "acceptedAnswer": {"@type": "Answer", "text": "Davon raten wir ab. Hoher Wasserdruck kann den Putz beschädigen. Unser Verfahren arbeitet deshalb mit wenig Druck, und der Langzeitschutz verzögert neuen Befall."}}, {"@type": "Question", "name": "Für welche Gebäude ist die Reinigung geeignet?", "acceptedAnswer": {"@type": "Answer", "text": "Wir reinigen Einfamilienhäuser, Mehrfamilienhäuser, Wohnkomplexe, Unternehmensgebäude, Seniorenheime und Plattenbauten. Auf Wunsch reinigen wir anschließend auch die Fenster."}}, {"@type": "Question", "name": "Wo ist FassadenTrio im Einsatz?", "acceptedAnswer": {"@type": "Answer", "text": "Unser Sitz ist in Südlohn im Münsterland. Im Einsatz sind wir in ganz Deutschland und in den Niederlanden."}}]}]</script>
 </head>
@@ -466,49 +617,68 @@ h3{font-size:clamp(1.3rem, 1.9vw, 1.6rem); font-stretch:88%; font-weight:700; li
 
 <main id="inhalt">
 
-<section class="hero" id="start">
-  <div class="wrap hero__raster">
-    <div class="hero__text">
-      <p class="hero__wer">Professionelle Fassadenreinigung, deutschlandweit</p>
-      <h1>Der Neuanstrich kann warten.</h1>
-      <p class="hero__lead">Wir entfernen Algen, Pilze und Schmutz mit sanftem Wasserdruck und schützen Ihre Fassade danach bis zu 5&nbsp;Jahre vor neuem Befall. Das kostet bis zu 70&nbsp;% weniger als ein neuer Anstrich.</p>
-      <div class="hero__cta">
-        <a class="btn" href="#kontakt">Kostenlose Probefläche anfordern</a>
-        <p class="hero__tel"><a href="tel:+491788120873">+49 178 812 08 73</a><span>Mo. bis Fr., 8–16 Uhr</span></p>
+<section class="story" id="start" aria-label="Das FassadenTrio-Verfahren in drei Phasen">
+  <span class="story__anker" id="verfahren"></span>
+  <div class="story__buehne">
+    <canvas id="szene" aria-hidden="true"></canvas>
+    <div class="story__licht" id="story-licht" aria-hidden="true"></div>
+    <div class="wrap story__inhalt">
+      <div class="akt ist-da">
+        <p class="akt__wer">Professionelle Fassadenreinigung, deutschlandweit</p>
+        <h1>Der Neuanstrich kann warten.</h1>
+        <p>Wir entfernen Algen, Pilze und Schmutz mit sanftem Wasserdruck und schützen Ihre Fassade danach bis zu 5&nbsp;Jahre vor neuem Befall.</p>
+        <div class="akt__cta">
+          <a class="btn btn--hell" href="#kontakt">Kostenlose Probefläche anfordern</a>
+          <!-- Bewertungsstand vom 10.11.2026 laut Google-Unternehmensprofil; bei Änderungen anpassen -->
+          <a class="hero__google" href="https://www.google.com/maps/search/?api=1&amp;query=FassadenTrio%20Fassadenreinigung&amp;query_place_id=ChIJw_nfDeU3RI0R9pdzlnXRb9g" target="_blank" rel="noopener"><span class="sterne" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.6 6.1 20.7l1.2-6.6L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.6 6.1 20.7l1.2-6.6L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.6 6.1 20.7l1.2-6.6L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.6 6.1 20.7l1.2-6.6L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.6 6.1 20.7l1.2-6.6L2.5 9.5l6.6-.9z"/></svg></span><span class="hero__google-text"><strong>5,0</strong> bei 35 Google-Bewertungen</span></a>
+        </div>
       </div>
-      <!-- Bewertungsstand vom 10.11.2026 laut Google-Unternehmensprofil; bei Änderungen anpassen -->
-      <a class="hero__google" href="https://www.google.com/maps/search/?api=1&amp;query=FassadenTrio%20Fassadenreinigung&amp;query_place_id=ChIJw_nfDeU3RI0R9pdzlnXRb9g" target="_blank" rel="noopener"><span class="sterne" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.6 6.1 20.7l1.2-6.6L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.6 6.1 20.7l1.2-6.6L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.6 6.1 20.7l1.2-6.6L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.6 6.1 20.7l1.2-6.6L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.6 6.1 20.7l1.2-6.6L2.5 9.5l6.6-.9z"/></svg></span><span class="hero__google-text"><strong>5,0</strong> bei 35 Google-Bewertungen</span></a>
-      <figure class="hero__klein">
-        <img src="img/schritt1.jpg" alt="Ein FassadenTrio-Techniker trägt mit einer langen Teleskoplanze Reinigungsmittel auf eine Hausfassade auf" width="1400" height="760">
-        <figcaption><strong>Ohne Gerüst</strong>Unsere Techniker arbeiten mit bis zu 10 Meter langen Teleskoplanzen.</figcaption>
-      </figure>
-    </div>
-    <div class="buehne">
-      <div class="vn" data-vn data-auftakt style="--pos:46%">
-        <img src="img/r04-nachher.jpg" alt="Mehrfamilienhaus nach der Reinigung: die gelbe Putzfassade ist gleichmäßig sauber" width="1080" height="671">
-        <div class="vn__vor"><img src="img/r04-vorher.jpg" alt="Dasselbe Haus vor der Reinigung: grauer und grüner Belag auf der Fassade" width="1080" height="671"></div>
-        <span class="vn__marke vn__marke--vor">Vorher</span>
-        <span class="vn__marke vn__marke--nach">Nachher</span>
-        <input class="vn__regler" id="regler-hero" type="range" min="0" max="100" value="46" aria-label="Vergleich vorher und nachher: Anteil des Vorher-Bildes in Prozent">
-        <div class="vn__griff" aria-hidden="true"><span class="vn__knauf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span></div>
+      <div class="akt">
+        <p class="akt__phase">Phase 1 von 3</p>
+        <h2>Reinigungsmittel auftragen</h2>
+        <p>Unser eigens für Fassaden entwickeltes Reinigungsmittel wird großflächig aufgetragen, mit bis zu 10 Meter langen Teleskoplanzen vom Boden aus. Ein Gerüst braucht es dafür nicht.</p>
+        <figure class="akt__beleg"><img src="img/schritt1.jpg" alt="Ein FassadenTrio-Techniker trägt mit der Teleskoplanze Reinigungsmittel auf eine Hausfassade auf" width="1400" height="760" loading="lazy"><figcaption>So sieht Phase 1 im echten Einsatz aus.</figcaption></figure>
       </div>
-      <p class="lasche"><strong>Gleiches Haus, gleiche Farbe</strong><span>Nicht gestrichen, nur gereinigt. Ziehen Sie den Regler über das Bild.</span></p>
+      <div class="akt">
+        <p class="akt__phase">Phase 2 von 3</p>
+        <h2>Fassade abspülen</h2>
+        <p>Sobald sich Algen, Schimmel und Pilze gelöst haben, spülen wir sie mit klarem Wasser ab. Der Druck ist so niedrig, dass der Putz unbeschädigt bleibt.</p>
+        <figure class="akt__beleg"><img src="img/schritt2.jpg" alt="Ein Techniker spült die Fassade mit klarem Wasser ab" width="1400" height="804" loading="lazy"><figcaption>So sieht Phase 2 im echten Einsatz aus.</figcaption></figure>
+      </div>
+      <div class="akt">
+        <p class="akt__phase">Phase 3 von 3</p>
+        <h2>Langzeitschutz auftragen</h2>
+        <p>Der transparente Schutz dringt porentief ein und verzögert neuen Befall, garantiert bis zu 5&nbsp;Jahre. Er lässt sich jederzeit erneuern.</p>
+        <figure class="akt__beleg"><img src="img/schritt3.jpg" alt="Ein Techniker trägt den transparenten Langzeitschutz auf die gereinigte Fassade auf" width="1400" height="801" loading="lazy"><figcaption>So sieht Phase 3 im echten Einsatz aus.</figcaption></figure>
+      </div>
+      <div class="akt">
+        <p class="akt__phase">Ergebnis</p>
+        <h2>Wie am ersten Tag. Ohne neue Farbe.</h2>
+        <p>Bis zu 70&nbsp;% günstiger als ein Neuanstrich, mit 5&nbsp;Jahren Garantie vor Wiederbefall.</p>
+        <div class="akt__cta">
+          <a class="btn btn--hell" href="#kontakt">Kostenlose Probefläche anfordern</a>
+          <a class="akt__link" href="#ergebnisse">Echte Fassaden ansehen</a>
+        </div>
+        <p class="akt__klein">Das Haus ist ein 3D-Modell. Fotos echter Einsätze folgen direkt darunter.</p>
+      </div>
     </div>
+    <div class="story__fortschritt" id="story-fortschritt" aria-hidden="true"><span class="ist-da"></span><span></span><span></span><span></span><span></span></div>
+    <p class="story__hinweis" id="story-hinweis" aria-hidden="true">Scrollen</p>
   </div>
 </section>
 
-<section class="fakten" aria-label="Das Wichtigste in Zahlen">
+<section class="sek sek--weiss" aria-label="Das Wichtigste in Zahlen">
   <div class="wrap">
-    <ul class="fakten__liste">
-      <li><span class="zahl num"><small>bis zu</small>70&nbsp;%</span><p>günstiger als ein Neuanstrich</p></li>
-      <li><span class="zahl num">5&nbsp;Jahre</span><p>Garantie vor Wiederbefall</p></li>
-      <li><span class="zahl num"><small>bis zu</small>10&nbsp;m</span><p>lange Teleskoplanzen statt Gerüst</p></li>
-      <li><span class="zahl num">0&nbsp;€</span><p>für Probefläche, Angebot und Anfahrt</p></li>
+    <ul class="zahlen">
+      <li><span class="zahl num"><small>bis zu</small><span data-zaehl="70">70</span>&nbsp;%</span><p>günstiger als ein Neuanstrich</p></li>
+      <li><span class="zahl num"><small>Garantie</small><span data-zaehl="5">5</span>&nbsp;Jahre</span><p>Schutz vor Wiederbefall</p></li>
+      <li><span class="zahl num"><small>bis zu</small><span data-zaehl="10">10</span>&nbsp;m</span><p>lange Teleskoplanzen statt Gerüst</p></li>
+      <li><span class="zahl num"><small>Kosten</small>0&nbsp;€</span><p>für Probefläche, Angebot und Anfahrt</p></li>
     </ul>
   </div>
 </section>
 
-<section class="sek sek--weiss" id="ergebnisse">
+<section class="sek" id="ergebnisse">
   <div class="wrap">
     <div class="kopfzeile">
       <h2>Acht Fassaden, vorher und nachher</h2>
@@ -550,7 +720,7 @@ h3{font-size:clamp(1.3rem, 1.9vw, 1.6rem); font-stretch:88%; font-weight:700; li
   </div>
 </section>
 
-<section class="sek" id="einsatz">
+<section class="sek sek--dunkel" id="einsatz">
   <div class="wrap">
     <div class="kopfzeile">
       <h2>Ein Einsatz in 30 Sekunden</h2>
@@ -560,50 +730,6 @@ h3{font-size:clamp(1.3rem, 1.9vw, 1.6rem); font-stretch:88%; font-weight:700; li
       <video id="film" preload="none" playsinline muted poster="img/einsatz-poster.jpg" aria-label="Video: FassadenTrio reinigt die gelbe Fassade eines mehrgeschossigen Gebäudes von einer Hubarbeitsbühne aus"><source src="img/einsatz.mp4" type="video/mp4"></video>
       <button class="film__start" id="film-start" type="button" aria-label="Video abspielen"><span class="film__knauf"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 3.5v17l14-8.5z"/></svg></span></button>
       <p class="lasche" id="film-marke">Video ohne Ton, 30 Sekunden</p>
-    </div>
-  </div>
-</section>
-
-<section class="sek sek--dunkel" id="verfahren">
-  <div class="wrap">
-    <div class="kopfzeile">
-      <h2>Drei Phasen bis zur sauberen Fassade</h2>
-      <p>Das FassadenTrio®-Verfahren reinigt in kurzer Zeit und verzögert den teuren Neuanstrich um viele Jahre.</p>
-    </div>
-    <div class="verfahren__raster">
-      <div class="verfahren__bild" aria-hidden="true">
-        <img class="ist-aktiv" src="img/schritt1.jpg" alt="" width="1400" height="760">
-        <img src="img/schritt2.jpg" alt="" width="1400" height="804" loading="lazy">
-        <img src="img/schritt3.jpg" alt="" width="1400" height="801" loading="lazy">
-        <img src="img/schritt4.jpg" alt="" width="1029" height="1029" loading="lazy">
-        <p class="lasche" id="verfahren-marke">Phase 1 von 3</p>
-      </div>
-      <ol class="schritte">
-        <li class="schritt ist-aktiv" data-marke="Phase 1 von 3">
-          <img src="img/schritt1.jpg" alt="Techniker trägt mit der Teleskoplanze Reinigungsmittel auf die Fassade auf" width="1400" height="760" loading="lazy">
-          <span class="schritt__nr" aria-hidden="true">1</span>
-          <h3>Reinigungsmittel auftragen</h3>
-          <p>Unser eigens für Fassaden entwickeltes Reinigungsmittel wird großflächig aufgetragen. Die Techniker arbeiten dabei mit bis zu 10 Meter langen Teleskoplanzen vom Boden aus. Ein Gerüst brauchen sie dafür nicht.</p>
-        </li>
-        <li class="schritt" data-marke="Phase 2 von 3">
-          <img src="img/schritt2.jpg" alt="Techniker spült die Fassade mit klarem Wasser ab" width="1400" height="804" loading="lazy">
-          <span class="schritt__nr" aria-hidden="true">2</span>
-          <h3>Fassade abspülen</h3>
-          <p>Sobald sich Algen, Schimmel und Pilze gelöst haben, spülen wir sie mit klarem Wasser ab. Der Wasserdruck ist so niedrig, dass der Putz unbeschädigt bleibt. Abgetragen wird nur der Schmutz.</p>
-        </li>
-        <li class="schritt" data-marke="Phase 3 von 3">
-          <img src="img/schritt3.jpg" alt="Techniker trägt den transparenten Langzeitschutz auf die gereinigte Fassade auf" width="1400" height="801" loading="lazy">
-          <span class="schritt__nr" aria-hidden="true">3</span>
-          <h3>Langzeitschutz auftragen</h3>
-          <p>Zum Schluss tragen wir unseren transparenten Langzeitschutz auf. Er dringt porentief ein und verzögert einen neuen Befall garantiert bis zu 5 Jahre. Der Schutz lässt sich jederzeit erneuern.</p>
-        </li>
-        <li class="schritt" data-marke="Fertig">
-          <img src="img/schritt4.jpg" alt="Die gereinigte, helle Giebelfassade eines Wohnhauses" width="1029" height="1029" loading="lazy">
-          <span class="schritt__haken" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5.2 5.2L20 6.8"/></svg></span>
-          <h3>Fertig</h3>
-          <p>Ihre Fassade sieht wieder aus wie am ersten Tag, ohne neue Farbe und ohne Gerüst vor dem Haus.</p>
-        </li>
-      </ol>
     </div>
   </div>
 </section>
@@ -717,6 +843,10 @@ h3{font-size:clamp(1.3rem, 1.9vw, 1.6rem); font-stretch:88%; font-weight:700; li
       <li class="objekt objekt--halb"><img src="img/objekt-untern.jpg" alt="Bürogebäude eines Unternehmens mit weißer Fassade" width="1300" height="731" loading="lazy"><p class="lasche">Unternehmen</p></li>
       <li class="objekt objekt--halb"><img src="img/objekt-senior.jpg" alt="Seniorenheim mit heller Fassade und Gartenanlage" width="1300" height="709" loading="lazy"><p class="lasche">Seniorenheime</p></li>
     </ul>
+    <div class="pfeile">
+      <button type="button" id="obj-zurueck" aria-label="Vorheriges Objekt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button type="button" id="obj-weiter" aria-label="Nächstes Objekt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
     <div class="gruppen">
       <div><h3>Für Eigentümer</h3><ul><li>Kostenlose Probefläche am eigenen Haus</li><li>Bis zu 70&nbsp;% günstiger als ein Neuanstrich</li><li>5 Jahre Garantie vor Wiederbefall</li></ul></div>
       <div><h3>Für Hausverwaltungen und WEGs</h3><ul><li>Probefläche als Grundlage für die Entscheidung der Eigentümer</li><li>Wohnkomplexe jeder Größe, zuverlässig und termingerecht</li><li>Beratung, Planung und Ausführung aus einer Hand</li></ul></div>
@@ -927,6 +1057,7 @@ h3{font-size:clamp(1.3rem, 1.9vw, 1.6rem); font-stretch:88%; font-weight:700; li
   <a class="btn" href="#kontakt">Kostenlose Probefläche</a>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 (function () {
   'use strict';
@@ -959,22 +1090,6 @@ h3{font-size:clamp(1.3rem, 1.9vw, 1.6rem); font-stretch:88%; font-weight:700; li
     });
   });
 
-  /* Auftakt: der Regler fährt einmal über das Titelbild */
-  var auftakt = document.querySelector('[data-auftakt]');
-  if (auftakt && !ruhig && window.requestAnimationFrame) {
-    var von = 94, bis = 46, dauer = 1900, start = null;
-    var lauf = function (zeit) {
-      if (auftakt.beruehrt) return;
-      if (start === null) start = zeit;
-      var p = Math.min(1, (zeit - start) / dauer);
-      var e = 1 - Math.pow(1 - p, 4);
-      auftakt.setze(von + (bis - von) * e);
-      if (p < 1) requestAnimationFrame(lauf);
-    };
-    auftakt.setze(von);
-    setTimeout(function () { requestAnimationFrame(lauf); }, 650);
-  }
-
   /* Galerie */
   var gVn = document.getElementById('galerie-vn');
   var gVor = document.getElementById('galerie-vor');
@@ -995,23 +1110,6 @@ h3{font-size:clamp(1.3rem, 1.9vw, 1.6rem); font-stretch:88%; font-weight:700; li
       gVn.setze(50);
     });
   });
-
-  /* Verfahren: Bild folgt dem Schritt in der Bildschirmmitte */
-  var schritte = Array.prototype.slice.call(document.querySelectorAll('.schritt'));
-  var bilder = Array.prototype.slice.call(document.querySelectorAll('.verfahren__bild img'));
-  var marke = document.getElementById('verfahren-marke');
-  if (kannBeobachten && schritte.length) {
-    var seher = new IntersectionObserver(function (eintraege) {
-      eintraege.forEach(function (ein) {
-        if (!ein.isIntersecting) return;
-        var i = schritte.indexOf(ein.target);
-        schritte.forEach(function (s, n) { s.classList.toggle('ist-aktiv', n === i); });
-        bilder.forEach(function (b, n) { b.classList.toggle('ist-aktiv', n === i); });
-        marke.textContent = ein.target.getAttribute('data-marke');
-      });
-    }, { rootMargin: '-48% 0px -48% 0px' });
-    schritte.forEach(function (s) { seher.observe(s); });
-  }
 
   /* Rechner */
   var feld = document.getElementById('anstrich');
@@ -1060,15 +1158,6 @@ h3{font-size:clamp(1.3rem, 1.9vw, 1.6rem); font-stretch:88%; font-weight:700; li
   }
   menueKnopf.addEventListener('click', function () { menue(mobilnav.hidden); });
   mobilnav.addEventListener('click', function (e) { if (e.target.tagName === 'A') menue(false); });
-
-  /* Feste Leiste ausblenden, sobald das Formular zu sehen ist */
-  var leiste = document.getElementById('leiste');
-  var kontakt = document.getElementById('kontakt');
-  if (kannBeobachten) {
-    new IntersectionObserver(function (e) {
-      leiste.classList.toggle('ist-weg', e[0].isIntersecting);
-    }, { threshold: 0.12 }).observe(kontakt);
-  }
 
   /* Film */
   var film = document.getElementById('film');
@@ -1156,6 +1245,397 @@ h3{font-size:clamp(1.3rem, 1.9vw, 1.6rem); font-stretch:88%; font-weight:700; li
     }
     meldung.textContent = 'Entwurf: Ihre Angaben sind vollständig, wurden aber noch nicht versendet. Auf der fertigen Website geht die Anfrage an info@fassaden-trio.de.';
   });
+})();
+</script>
+<script>
+(function () {
+  'use strict';
+  var ruhig = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var kannBeobachten = 'IntersectionObserver' in window;
+  var story = document.getElementById('start');
+  var kopf = document.getElementById('kopf');
+  var leiste = document.getElementById('leiste');
+  var kontakt = document.getElementById('kontakt');
+  function klemme(x) { return Math.max(0, Math.min(1, x)); }
+  function rampe(x, a, b) { return klemme((x - a) / (b - a)); }
+  function weich(t) { return t * t * (3 - 2 * t); }
+
+  /* Kopfzeile: dunkel, solange sie über der Bühne liegt */
+  function kopfFarbe() {
+    kopf.classList.toggle('auf-dunkel', story.getBoundingClientRect().bottom > kopf.getBoundingClientRect().bottom);
+  }
+  window.addEventListener('scroll', kopfFarbe, { passive: true });
+  window.addEventListener('resize', kopfFarbe);
+  kopfFarbe();
+
+  /* Feste Handy-Leiste: aus, solange Bühne oder Formular zu sehen sind */
+  if (kannBeobachten && leiste) {
+    var zuSehen = { start: true, kontakt: false };
+    leiste.classList.add('ist-weg');
+    var lSeher = new IntersectionObserver(function (eintraege) {
+      eintraege.forEach(function (e) { zuSehen[e.target.id] = e.isIntersecting; });
+      leiste.classList.toggle('ist-weg', zuSehen.start || zuSehen.kontakt);
+    }, { threshold: 0.08 });
+    lSeher.observe(story);
+    lSeher.observe(kontakt);
+  }
+
+  /* Einblenden beim Scrollen: nur was unterhalb des ersten Bildschirms liegt */
+  if (kannBeobachten && !ruhig) {
+    var einSeher = new IntersectionObserver(function (eintraege) {
+      eintraege.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('ist-drin'); einSeher.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -4% 0px', threshold: 0 });
+    var auswahl = '.kopfzeile, .zahlen li, .galerie, .stimmen, .film, .vergleich, .rechner, .zeichnung, .vorteile li, .objekte, .gruppen > div, .befall, .wissen > div, .faq details, .zusagen li, .kontakt__links, .formular';
+    Array.prototype.forEach.call(document.querySelectorAll(auswahl), function (el) {
+      if (el.getBoundingClientRect().top < window.innerHeight * 0.92) return;
+      var platz = Array.prototype.indexOf.call(el.parentNode.children, el);
+      el.style.setProperty('--warte', (Math.min(platz, 7) * 70) + 'ms');
+      el.classList.add('ein');
+      einSeher.observe(el);
+    });
+  }
+
+  /* Zahlen zählen hoch */
+  if (kannBeobachten && !ruhig) {
+    var zSeher = new IntersectionObserver(function (eintraege) {
+      eintraege.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        zSeher.unobserve(e.target);
+        var el = e.target, ende = +el.getAttribute('data-zaehl'), beginn = null;
+        (function lauf(zeit) {
+          if (beginn === null) beginn = zeit;
+          var t = klemme((zeit - beginn) / 1400);
+          el.textContent = Math.round(ende * (1 - Math.pow(1 - t, 4)));
+          if (t < 1) requestAnimationFrame(lauf);
+        })(performance.now());
+      });
+    }, { threshold: 0.6 });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-zaehl]'), function (el) { zSeher.observe(el); });
+  }
+
+  /* Objekt-Karussell: Pfeile und Ziehen mit der Maus */
+  var bahn = document.querySelector('.objekte');
+  if (bahn) {
+    var schritt = function (r) {
+      var karte = bahn.querySelector('.objekt');
+      bahn.scrollBy({ left: r * (karte.offsetWidth + 20), behavior: ruhig ? 'auto' : 'smooth' });
+    };
+    document.getElementById('obj-zurueck').addEventListener('click', function () { schritt(-1); });
+    document.getElementById('obj-weiter').addEventListener('click', function () { schritt(1); });
+    var zieh = null;
+    bahn.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse' || e.button) return;
+      zieh = { x: e.clientX, links: bahn.scrollLeft };
+      bahn.style.scrollSnapType = 'none';
+      bahn.setPointerCapture(e.pointerId);
+    });
+    bahn.addEventListener('pointermove', function (e) { if (zieh) bahn.scrollLeft = zieh.links - (e.clientX - zieh.x); });
+    ['pointerup', 'pointercancel'].forEach(function (t) {
+      bahn.addEventListener(t, function () { if (zieh) { zieh = null; bahn.style.scrollSnapType = ''; } });
+    });
+  }
+
+  /* Zeiger-Begleiter (nur mit Maus) */
+  if (!ruhig && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    var zeiger = document.createElement('div');
+    zeiger.className = 'zeiger';
+    zeiger.setAttribute('aria-hidden', 'true');
+    var zText = document.createElement('span');
+    zeiger.appendChild(zText);
+    document.body.appendChild(zeiger);
+    var zx = 0, zy = 0, mx = 0, my = 0, laeuft = false;
+    var folge = function () {
+      zx += (mx - zx) * 0.2; zy += (my - zy) * 0.2;
+      zeiger.style.transform = 'translate3d(' + zx.toFixed(1) + 'px,' + zy.toFixed(1) + 'px,0)';
+      if (Math.abs(mx - zx) + Math.abs(my - zy) > 0.3) requestAnimationFrame(folge); else laeuft = false;
+    };
+    document.addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'mouse') return;
+      mx = e.clientX; my = e.clientY;
+      if (!zeiger.classList.contains('ist-an')) { zx = mx; zy = my; zeiger.classList.add('ist-an'); }
+      var ziel = e.target.closest ? e.target.closest('.film__start, .objekte') : null;
+      zeiger.classList.toggle('ist-gross', !!ziel);
+      if (ziel) zText.textContent = ziel.classList.contains('objekte') ? 'Ziehen' : 'Play';
+      if (!laeuft) { laeuft = true; requestAnimationFrame(folge); }
+    }, { passive: true });
+    document.documentElement.addEventListener('pointerleave', function () { zeiger.classList.remove('ist-an'); });
+  }
+
+  /* ---------- 3D-Bühne ---------- */
+  var canvas = document.getElementById('szene');
+  var akte = Array.prototype.slice.call(story.querySelectorAll('.akt'));
+  var marken = Array.prototype.slice.call(document.querySelectorAll('#story-fortschritt span'));
+  var lichtEbene = document.getElementById('story-licht');
+  var hinweis = document.getElementById('story-hinweis');
+  var GRENZEN = [0, 0.11, 0.37, 0.65, 0.85];
+
+  function starte3D() {
+    if (ruhig || !window.THREE || !canvas) return;
+    var THREE = window.THREE, renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: false, powerPreference: 'high-performance' });
+    } catch (fehler) { return; }
+    document.documentElement.classList.add('hat-3d');
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, window.innerWidth < 900 ? 1.5 : 1.75));
+    renderer.outputEncoding = THREE.sRGBEncoding;
+
+    var W = 9, H = 5.6, D = 7, R = 3.2, TOP = H + R;
+    var scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x07090b);
+    scene.fog = new THREE.Fog(0x07090b, 30, 72);
+    var cam = new THREE.PerspectiveCamera(30, 1, 0.1, 200);
+    scene.add(new THREE.HemisphereLight(0xdfe9f2, 0x0a0c0e, 0.8));
+    var sonne = new THREE.DirectionalLight(0xfff4e6, 1.2); sonne.position.set(8, 12, 10); scene.add(sonne);
+    var gegen = new THREE.DirectionalLight(0x7fe3f0, 0.9); gegen.position.set(-10, 6, -8); scene.add(gegen);
+
+    /* Putz mit Belag, Schaum, Reinigungsfront und Schutzschicht */
+    var u = {
+      uFoam: { value: 0 }, uClean: { value: 0 }, uShield: { value: 0 }, uRuhe: { value: 0 }, uTime: { value: 0 },
+      uTop: { value: TOP }, uH: { value: H }, uLight: { value: new THREE.Vector3(8, 12, 10).normalize() }
+    };
+    var wand = new THREE.ShaderMaterial({
+      uniforms: u, side: THREE.DoubleSide,
+      vertexShader: [
+        'varying vec3 vW; varying vec3 vN;',
+        'void main(){ vec4 w = modelMatrix * vec4(position, 1.0); vW = w.xyz; vN = normalize(mat3(modelMatrix) * normal); gl_Position = projectionMatrix * viewMatrix * w; }'
+      ].join('\n'),
+      fragmentShader: [
+        'precision highp float;',
+        'uniform float uFoam, uClean, uShield, uRuhe, uTime, uTop, uH; uniform vec3 uLight;',
+        'varying vec3 vW; varying vec3 vN;',
+        'float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }',
+        'float rausch(vec2 p){ vec2 i = floor(p), f = fract(p); f = f*f*(3.0-2.0*f); return mix(mix(hash(i), hash(i+vec2(1.0,0.0)), f.x), mix(hash(i+vec2(0.0,1.0)), hash(i+vec2(1.0,1.0)), f.x), f.y); }',
+        'float fbm(vec2 p){ float a = 0.5, s = 0.0; for(int i=0;i<5;i++){ s += a*rausch(p); p *= 2.03; a *= 0.5; } return s; }',
+        'void main(){',
+        '  vec3 n = normalize(vN);',
+        '  float seite = step(0.5, abs(n.x));',
+        '  float lauf = mix(vW.x, vW.z, seite) + n.x*13.7 + n.z*5.1;',
+        '  float hoehe = vW.y;',
+        '  float korn = rausch(vec2(lauf, hoehe)*36.0)*0.5 + rausch(vec2(lauf, hoehe)*88.0)*0.5;',
+        '  vec3 sauber = vec3(0.965, 0.955, 0.925) * (0.93 + 0.09*korn);',
+        '  float laeufer = smoothstep(0.40, 0.74, fbm(vec2(lauf*1.9, hoehe*0.2 + 3.0))) * smoothstep(-2.0, uTop, hoehe + 1.0);',
+        '  float schleier = fbm(vec2(lauf*0.5 + 7.0, hoehe*0.6));',
+        '  float gruen = smoothstep(0.46, 0.78, fbm(vec2(lauf*0.9 - 4.0, hoehe*0.5 + 9.0)));',
+        '  vec3 belagFarbe = mix(vec3(0.33, 0.36, 0.31), vec3(0.23, 0.33, 0.17), gruen);',
+        '  float belag = clamp(laeufer*0.8 + schleier*0.6 + gruen*0.4, 0.0, 0.9);',
+        '  float linie = mix(uTop + 0.7, -0.7, uClean);',
+        '  float welle = (rausch(vec2(lauf*1.6, uTime*0.35)) - 0.5) * 0.6;',
+        '  float frei = smoothstep(linie - 0.3, linie + 0.05, hoehe + welle);',
+        '  belag *= (1.0 - frei);',
+        '  vec3 farbe = mix(sauber, belagFarbe, belag);',
+        '  float sLinie = mix(-0.9, uTop + 0.9, uFoam);',
+        '  float schaumZone = (1.0 - smoothstep(sLinie - 0.6, sLinie, hoehe + welle)) * (1.0 - frei);',
+        '  float blasen = smoothstep(0.42, 0.8, fbm(vec2(lauf*5.0, hoehe*5.0 - uTime*0.3)));',
+        '  farbe = mix(farbe, vec3(0.93, 0.97, 0.98), schaumZone * (0.25 + 0.5*blasen));',
+        '  float diff = max(dot(n, normalize(uLight)), 0.0);',
+        '  vec3 hell = farbe * (0.40 + 0.74*diff);',
+        '  hell *= mix(1.0, mix(0.72, 1.0, smoothstep(uH + 0.05, uH - 1.3, hoehe)), seite);',
+        '  hell *= mix(0.78, 1.0, smoothstep(0.5, 1.5, hoehe));',
+        '  float aktiv = step(0.002, uClean) * step(uClean, 0.998);',
+        '  float kante = exp(-pow((hoehe + welle - linie) * 3.0, 2.0)) * aktiv;',
+        '  hell += vec3(0.45, 0.9, 1.0) * kante * 0.6;',
+        '  float sKante = exp(-pow((hoehe + welle - sLinie) * 3.0, 2.0)) * step(0.002, uFoam) * step(uFoam, 0.998);',
+        '  hell += vec3(0.9, 0.97, 1.0) * sKante * 0.25;',
+        '  vec3 blick = normalize(cameraPosition - vW);',
+        '  float fres = pow(1.0 - max(dot(n, blick), 0.0), 3.0);',
+        '  float sY = mix(-0.9, uTop + 1.0, uShield);',
+        '  float unter = smoothstep(sY + 0.15, sY - 0.25, hoehe);',
+        '  float sAktiv = step(0.002, uShield) * step(uShield, 0.998);',
+        '  float sLicht = exp(-pow((hoehe - sY) * 2.6, 2.0)) * sAktiv;',
+        '  float spur = exp(-max(sY - hoehe, 0.0) * 1.1) * unter * sAktiv;',
+        '  vec2 wabe = vec2(lauf, hoehe) * 5.0;',
+        '  float raster = smoothstep(0.95, 0.998, max(abs(sin(wabe.x * 3.14159)), abs(sin(wabe.y * 3.14159))));',
+        '  float mitte = mod(uTime * 1.6, 26.0) - 8.0;',
+        '  float band = exp(-pow((lauf * 0.6 + hoehe - mitte) * 0.9, 2.0));',
+        '  vec3 cyan = vec3(0.45, 0.9, 1.0);',
+        '  hell += cyan * (sLicht * 0.85 + spur * raster * 0.4 + spur * 0.12);',
+        '  hell += cyan * unter * uShield * (1.0 - 0.45 * uRuhe) * (fres * 0.35 + band * 0.26 + raster * band * 0.12 + 0.02);',
+        '  gl_FragColor = vec4(hell, 1.0);',
+        '}'
+      ].join('\n')
+    });
+
+    var haus = new THREE.Group(); scene.add(haus);
+    var koerper = new THREE.Mesh(new THREE.BoxGeometry(W, H, D), wand); koerper.position.y = H / 2; haus.add(koerper);
+    var form = new THREE.Shape(); form.moveTo(-W / 2, 0); form.lineTo(W / 2, 0); form.lineTo(0, R); form.closePath();
+    var giebelGeo = new THREE.ShapeGeometry(form);
+    var g1 = new THREE.Mesh(giebelGeo, wand); g1.position.set(0, H, D / 2); haus.add(g1);
+    var g2 = new THREE.Mesh(giebelGeo, wand); g2.position.set(0, H, -D / 2); g2.rotation.y = Math.PI; haus.add(g2);
+
+    var winkel = Math.atan2(R, W / 2), laenge = Math.sqrt(R * R + W * W / 4) + 0.65;
+    var dachM = new THREE.MeshStandardMaterial({ color: 0x15181b, roughness: 0.6, metalness: 0.15 });
+    [1, -1].forEach(function (s) {
+      var d = new THREE.Mesh(new THREE.BoxGeometry(laenge, 0.2, D + 1.1), dachM);
+      d.position.set(s * Math.cos(winkel) * laenge / 2, TOP - Math.sin(winkel) * laenge / 2 + 0.15, 0);
+      d.rotation.z = -s * winkel;
+      haus.add(d);
+    });
+    var sockel = new THREE.Mesh(new THREE.BoxGeometry(W + 0.14, 0.6, D + 0.14), new THREE.MeshStandardMaterial({ color: 0x5a2a22, roughness: 0.9 }));
+    sockel.position.y = 0.3; haus.add(sockel);
+
+    var rahmenM = new THREE.MeshStandardMaterial({ color: 0xf2f2f0, roughness: 0.5 });
+    var glasM = new THREE.MeshStandardMaterial({ color: 0x121a22, roughness: 0.12, metalness: 0.7, emissive: 0xffc98a, emissiveIntensity: 0 });
+    function fenster(x, y, z, b, h, drehung) {
+      var g = new THREE.Group();
+      g.add(new THREE.Mesh(new THREE.BoxGeometry(b + 0.2, h + 0.2, 0.1), rahmenM));
+      g.add(new THREE.Mesh(new THREE.BoxGeometry(b, h, 0.14), glasM));
+      g.add(new THREE.Mesh(new THREE.BoxGeometry(0.06, h, 0.16), rahmenM));
+      var bank = new THREE.Mesh(new THREE.BoxGeometry(b + 0.36, 0.07, 0.3), rahmenM); bank.position.set(0, -h / 2 - 0.12, 0.1); g.add(bank);
+      g.position.set(x, y, z); g.rotation.y = drehung || 0; haus.add(g);
+    }
+    [-2.2, 2.2].forEach(function (x) { fenster(x, 2.1, D / 2 + 0.03, 1.3, 1.5); fenster(x, 4.25, D / 2 + 0.03, 1.3, 1.5); });
+    fenster(0, 6.5, D / 2 + 0.03, 1.0, 1.1);
+    [-2.1, 0, 2.1].forEach(function (z) {
+      fenster(W / 2 + 0.03, 2.1, z, 1.2, 1.5, Math.PI / 2); fenster(W / 2 + 0.03, 4.25, z, 1.2, 1.5, Math.PI / 2);
+      fenster(-W / 2 - 0.03, 2.1, z, 1.2, 1.5, -Math.PI / 2); fenster(-W / 2 - 0.03, 4.25, z, 1.2, 1.5, -Math.PI / 2);
+    });
+
+    /* Bühnenboden: Raster, Lichtinsel, Schatten */
+    var boden = new THREE.Mesh(new THREE.CircleGeometry(72, 64), new THREE.MeshStandardMaterial({ color: 0x06080a, roughness: 0.9, metalness: 0.1 }));
+    boden.rotation.x = -Math.PI / 2; scene.add(boden);
+    var gitter = new THREE.GridHelper(144, 144, 0x2a6a78, 0x17282e);
+    gitter.position.y = 0.01; gitter.material.transparent = true; gitter.material.opacity = 0.75; scene.add(gitter);
+    function scheibe(innen, aussen, groesse, mischung) {
+      var c = document.createElement('canvas'); c.width = c.height = 256;
+      var x = c.getContext('2d'), g = x.createRadialGradient(128, 128, 0, 128, 128, 128);
+      g.addColorStop(0, innen); g.addColorStop(1, aussen); x.fillStyle = g; x.fillRect(0, 0, 256, 256);
+      var m = new THREE.Mesh(new THREE.PlaneGeometry(groesse, groesse), new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(c), transparent: true, depthWrite: false, blending: mischung }));
+      m.rotation.x = -Math.PI / 2; scene.add(m); return m;
+    }
+    scheibe('rgba(110,190,215,0.13)', 'rgba(110,190,215,0)', 34, THREE.AdditiveBlending).position.y = 0.02;
+    var schatten = scheibe('rgba(0,0,0,0.8)', 'rgba(0,0,0,0)', 20, THREE.NormalBlending); schatten.position.y = 0.03;
+
+    /* Techniker, Lanze, Sprühnebel */
+    var figurM = new THREE.MeshStandardMaterial({ color: 0x14171a, roughness: 0.65 });
+    var hautM = new THREE.MeshStandardMaterial({ color: 0xcaa68c, roughness: 0.8 });
+    var figur = new THREE.Group();
+    function glied(von, bis, dick, mat) {
+      var a = new THREE.Vector3(von[0], von[1], von[2]), b = new THREE.Vector3(bis[0], bis[1], bis[2]);
+      var m = new THREE.Mesh(new THREE.CylinderGeometry(dick, dick, a.distanceTo(b), 12), mat);
+      m.position.copy(a).add(b).multiplyScalar(0.5);
+      m.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), b.clone().sub(a).normalize());
+      figur.add(m);
+    }
+    glied([-0.11, 0, 0], [-0.1, 0.9, 0], 0.075, figurM);
+    glied([0.11, 0, 0], [0.1, 0.9, 0], 0.075, figurM);
+    var rumpf = new THREE.Mesh(new THREE.CylinderGeometry(0.21, 0.17, 0.62, 16), figurM); rumpf.position.y = 1.2; figur.add(rumpf);
+    var haupt = new THREE.Mesh(new THREE.SphereGeometry(0.115, 20, 16), hautM); haupt.position.y = 1.68; figur.add(haupt);
+    glied([-0.2, 1.44, 0], [-0.08, 1.3, -0.3], 0.05, figurM);
+    glied([0.2, 1.44, 0], [0.02, 1.42, -0.34], 0.05, figurM);
+    figur.position.set(2.6, 0, D / 2 + 2.7); scene.add(figur);
+    var HAND = new THREE.Vector3(2.57, 1.36, D / 2 + 2.38);
+    var lanze = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 1, 10), new THREE.MeshStandardMaterial({ color: 0xa9b2b7, roughness: 0.35, metalness: 0.8 }));
+    scene.add(lanze);
+    var spitze = new THREE.Mesh(new THREE.SphereGeometry(0.075, 12, 10), new THREE.MeshBasicMaterial({ color: 0xaaf3fb })); scene.add(spitze);
+    var N = 260, orte = new Float32Array(N * 3), saat = [];
+    for (var i = 0; i < N; i++) saat.push([Math.random(), Math.random() * 2 - 1, Math.random() * 2 - 1, 0.6 + Math.random() * 0.8]);
+    var nebelGeo = new THREE.BufferGeometry(); nebelGeo.setAttribute('position', new THREE.BufferAttribute(orte, 3));
+    var nebelM = new THREE.PointsMaterial({ color: 0xbff4fb, size: 0.085, transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending });
+    var nebel = new THREE.Points(nebelGeo, nebelM); nebel.frustumCulled = false; scene.add(nebel);
+    var OBEN = new THREE.Vector3(0, 1, 0), zielPunkt = new THREE.Vector3(), ende = new THREE.Vector3(), richtung = new THREE.Vector3();
+
+    /* Kamerafahrt */
+    var KF = [
+      { p: 0, ort: [15, 5.6, 20.5], blick: [0, 3.9, 0] },
+      { p: 0.24, ort: [11, 4.4, 21.5], blick: [0, 4.0, 1.5] },
+      { p: 0.5, ort: [4.5, 5, 23.5], blick: [0, 4.2, 1.5] },
+      { p: 0.75, ort: [13, 4, 20], blick: [0.3, 4.0, 1] },
+      { p: 1, ort: [17, 8.5, 23], blick: [0, 3.6, 0] }
+    ];
+    var ort = new THREE.Vector3(), blick = new THREE.Vector3(), hoch = false;
+    function groesse() {
+      var b = canvas.clientWidth, h = canvas.clientHeight;
+      if (!b || !h) return;
+      renderer.setSize(b, h, false);
+      hoch = b / h < 1;
+      cam.aspect = b / h; cam.fov = hoch ? 42 : 30;
+      if (hoch) cam.setViewOffset(b, h, 0, h * 0.17, b, h); else cam.setViewOffset(b, h, -b * 0.25, 0, b, h);
+      cam.updateProjectionMatrix();
+    }
+    window.addEventListener('resize', groesse);
+    groesse();
+
+    var p = 0, zeit = 0, letzte = performance.now(), aktNr = 0, laeuft3D = false, maus = { x: 0, y: 0 }, mz = { x: 0, y: 0 }, lichtAlt = -1;
+    window.addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'mouse') return;
+      maus.x = e.clientX / window.innerWidth - 0.5; maus.y = e.clientY / window.innerHeight - 0.5;
+    }, { passive: true });
+    function fortschritt() {
+      var b = story.getBoundingClientRect(), weg = b.height - window.innerHeight;
+      return weg > 0 ? klemme(-b.top / weg) : 0;
+    }
+    function bild() {
+      if (!laeuft3D) return;
+      requestAnimationFrame(bild);
+      var jetzt = performance.now(), dt = Math.min(0.05, (jetzt - letzte) / 1000); letzte = jetzt; zeit += dt;
+      p += (fortschritt() - p) * (1 - Math.exp(-dt * 7));
+
+      var schaum = weich(rampe(p, 0.12, 0.34)), rein = weich(rampe(p, 0.38, 0.63)), schutz = weich(rampe(p, 0.66, 0.79));
+      var ausklang = rampe(p, 0.9, 1);
+      u.uFoam.value = schaum; u.uClean.value = rein; u.uShield.value = schutz; u.uRuhe.value = ausklang; u.uTime.value = zeit;
+      glasM.emissiveIntensity = 0.95 * weich(rampe(p, 0.84, 0.96));
+      var lichtNeu = Math.round(schutz * (1 - 0.45 * ausklang) * 50) / 50;
+      if (lichtNeu !== lichtAlt) { lichtEbene.style.opacity = lichtNeu; lichtAlt = lichtNeu; }
+
+      var a = 0; while (a < GRENZEN.length - 1 && p >= GRENZEN[a + 1]) a++;
+      if (a !== aktNr) {
+        akte.forEach(function (el, n) { el.classList.toggle('ist-da', n === a); });
+        marken.forEach(function (el, n) { el.classList.toggle('ist-da', n === a); });
+        aktNr = a;
+      }
+      hinweis.style.opacity = p < 0.015 ? 1 : 0;
+
+      /* Lanze folgt der jeweiligen Arbeitslinie */
+      var arbeitet = p > 0.115 && p < 0.81, zy, zx, halb;
+      if (p < 0.36) zy = 0.6 + (TOP - 1.0) * schaum;
+      else if (p < 0.645) zy = (TOP - 0.4) - (TOP - 0.9) * rein;
+      else zy = 3.4 + Math.sin(zeit * 0.9) * 2.2;
+      halb = zy <= H ? W / 2 - 0.5 : Math.max(0.2, (TOP - zy) / R * W / 2 - 0.4);
+      zx = Math.sin(zeit * 1.6) * halb * 0.85;
+      zielPunkt.set(zx, zy, D / 2 + 0.06);
+      richtung.copy(zielPunkt).sub(HAND);
+      var gesamt = richtung.length(); richtung.normalize();
+      var lang = Math.max(0.5, gesamt - 0.9);
+      ende.copy(HAND).addScaledVector(richtung, lang);
+      lanze.visible = spitze.visible = arbeitet;
+      lanze.position.copy(HAND).addScaledVector(richtung, lang / 2);
+      lanze.scale.set(1, lang, 1);
+      lanze.quaternion.setFromUnitVectors(OBEN, richtung);
+      spitze.position.copy(ende);
+      nebelM.opacity += ((arbeitet ? 0.85 : 0) - nebelM.opacity) * 0.12;
+      if (nebelM.opacity > 0.01) {
+        for (var k = 0; k < N; k++) {
+          var s = saat[k], t = (zeit * s[3] * 1.5 + s[0]) % 1, breit = t * 0.75;
+          orte[k * 3] = ende.x + richtung.x * t * 0.95 + s[1] * breit;
+          orte[k * 3 + 1] = ende.y + richtung.y * t * 0.95 + s[2] * breit - t * t * 0.25;
+          orte[k * 3 + 2] = Math.min(D / 2 + 0.02 + (1 - t) * 0.9, ende.z + richtung.z * t * 0.95);
+        }
+        nebelGeo.attributes.position.needsUpdate = true;
+      }
+
+      /* Kamera */
+      var n1 = 0; while (n1 < KF.length - 2 && p > KF[n1 + 1].p) n1++;
+      var k0 = KF[n1], k1 = KF[n1 + 1], t2 = weich(rampe(p, k0.p, k1.p));
+      ort.set(k0.ort[0] + (k1.ort[0] - k0.ort[0]) * t2, k0.ort[1] + (k1.ort[1] - k0.ort[1]) * t2, k0.ort[2] + (k1.ort[2] - k0.ort[2]) * t2);
+      blick.set(k0.blick[0] + (k1.blick[0] - k0.blick[0]) * t2, k0.blick[1] + (k1.blick[1] - k0.blick[1]) * t2, k0.blick[2] + (k1.blick[2] - k0.blick[2]) * t2);
+      if (hoch) ort.sub(blick).multiplyScalar(1.22).add(blick);
+      mz.x += (maus.x - mz.x) * 0.05; mz.y += (maus.y - mz.y) * 0.05;
+      ort.x += mz.x * 1.1; ort.y -= mz.y * 0.6;
+      cam.position.copy(ort); cam.lookAt(blick);
+      renderer.render(scene, cam);
+    }
+    function an(ja) {
+      if (ja && !laeuft3D) { laeuft3D = true; letzte = performance.now(); requestAnimationFrame(bild); }
+      if (!ja) laeuft3D = false;
+    }
+    if (kannBeobachten) {
+      new IntersectionObserver(function (e) { an(e[0].isIntersecting); }, { threshold: 0 }).observe(story);
+    } else an(true);
+    kopfFarbe();
+  }
+  starte3D();
 })();
 </script>
 
