@@ -67,6 +67,17 @@
   const film = $('[data-film]');
   let filmBild = null;
 
+  /* Aussage: Wörter einzeln einblenden */
+  const aussage = ruhig ? null : $('[data-worte]');
+  let worte = [], wortStand = -1;
+  if (aussage) {
+    const text = aussage.textContent.trim();
+    aussage.innerHTML = '<span class="sr"></span>' + text.split(/\s+/).map(w => '<span class="wort" aria-hidden="true">' + w + '</span>').join(' ');
+    aussage.firstChild.textContent = text;
+    worte = $$('.wort', aussage);
+  }
+  const wachsen = ruhig ? [] : $$('[data-wachsen]');
+
   if (film && !ruhig) {
     film.dataset.film = 'an';
     const stufen = $$('.stufe', film), n = stufen.length;
@@ -119,6 +130,19 @@
       el.style.transform = `translate3d(0,${(klemme(mitte, -1, 1) * parseFloat(el.dataset.parallax) * -innerHeight).toFixed(1)}px,0)`;
     });
     if (filmBild) filmBild();
+    if (worte.length) {
+      const r = aussage.getBoundingClientRect();
+      if (r.bottom > -200 && r.top < innerHeight + 200) {
+        const n = Math.round(klemme((innerHeight * .86 - r.top) / (r.height + innerHeight * .4), 0, 1) * worte.length);
+        if (n !== wortStand) { wortStand = n; worte.forEach((w, i) => w.classList.toggle('an', i < n)); }
+      }
+    }
+    wachsen.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > innerHeight) return;
+      const p = klemme((innerHeight - r.top) / (innerHeight * .8), 0, 1);
+      el.style.transform = `scale(${(.9 + .1 * p).toFixed(4)})`;
+    });
   };
   const anstossen = () => { if (!wartet) { wartet = true; requestAnimationFrame(beiScroll); } };
   addEventListener('scroll', anstossen, { passive: true });
@@ -127,7 +151,7 @@
 
   /* ---------- Einblenden beim Scrollen ---------- */
   if (!ruhig && 'IntersectionObserver' in window) {
-    const ziele = $$('.kopfzeile, .zusage, .karte, .stimmen figure, .meldung, .tor, .treffer, .finder-regler, .wagen, .stall, .stationen li, .kat-kopf, .rampe-innen > *, .preisfeld, .fakten, .rechner, .anruf > *, .hof-teil, .bahn-kopf, .kachel, .bildraster, .masse, .formular, .kontaktwege');
+    const ziele = $$('.kopfzeile, .zusage, .bento > *, .karte, .stimmen figure, .meldung, .tor, .finder-liste, .finder-regler, .wagen, .stall, .stationen li, .kat-kopf, .rampe-text > *, .rampe-bild, .preisfeld, .fakten, .rechner, .anruf > *, .hof-teil, .bahn-kopf, .kachel, .bildraster, .formular, .kontaktwege, .seitenkopf-bild, .tabelle-huelle');
     const io = new IntersectionObserver(es => es.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('ist-da'); io.unobserve(e.target); }
     }), { rootMargin: '0px 0px -8% 0px' });
@@ -139,6 +163,22 @@
       el.style.setProperty('--d', Math.min(k, 5));
       el.classList.add('ein'); io.observe(el);
     });
+  }
+
+  /* ---------- Zahlen hochzählen ---------- */
+  if (!ruhig && 'IntersectionObserver' in window) {
+    const zo = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      zo.unobserve(e.target);
+      const el = e.target, ziel = parseFloat(el.dataset.zaehle), st = parseInt(el.dataset.stellen || '0', 10), t0 = performance.now();
+      const schritt = t => {
+        const p = klemme((t - t0) / 1400, 0, 1);
+        el.textContent = (ziel * weich(p)).toFixed(st).replace('.', ',');
+        if (p < 1) requestAnimationFrame(schritt);
+      };
+      requestAnimationFrame(schritt);
+    }), { threshold: .6 });
+    $$('[data-zaehle]').forEach(el => zo.observe(el));
   }
 
   /* ---------- Lichtkegel auf Tafeln ---------- */
