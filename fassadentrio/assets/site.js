@@ -215,6 +215,7 @@ window.ftLang = document.documentElement.lang || 'de';
     if (offen) {
       kopf.dataset.warDunkel = kopf.classList.contains('auf-dunkel') ? '1' : '0';
       kopf.classList.add('auf-dunkel');
+      blatt.style.setProperty('--oben', Math.round(kopf.querySelector('.kopf__in').getBoundingClientRect().bottom + 6) + 'px');
       blatt.hidden = false;
       void blatt.offsetWidth;
       blatt.classList.add('ist-offen');
@@ -617,21 +618,45 @@ window.ftLang = document.documentElement.lang || 'de';
   filme.forEach(function (v) { io.observe(v); });
 })();
 
-/* ===== Fassung 8: Sprachauswahl ===== */
+/* ===== Fassung 9: Sprachauswahl (öffnet als details auch ohne dieses Skript) ===== */
 (function () {
   'use strict';
-  var box = document.querySelector('[data-sprache]');
+  var box = document.querySelector('details[data-sprache]');
   if (!box) return;
-  var knopf = box.querySelector('button'), liste = box.querySelector('.sprache__menue');
-  function zu() { liste.hidden = true; knopf.setAttribute('aria-expanded', 'false'); }
-  knopf.addEventListener('click', function () {
-    var auf = liste.hidden;
-    liste.hidden = !auf;
-    knopf.setAttribute('aria-expanded', auf ? 'true' : 'false');
-    if (auf) { var hier = liste.querySelector('[aria-current]'); if (hier) hier.focus({ preventScroll: true }); }
+  var knopf = box.querySelector('summary'), links = Array.prototype.slice.call(box.querySelectorAll('a'));
+  var menue = document.getElementById('menue-knopf'), oben = 0;
+  function zu(fokus) { if (!box.open) return; box.open = false; if (fokus) knopf.focus(); }
+  box.addEventListener('toggle', function () {
+    if (!box.open) return;
+    oben = window.scrollY;
+    if (menue && menue.getAttribute('aria-expanded') === 'true') menue.click();   // Handy-Menü schließen
   });
-  document.addEventListener('click', function (e) { if (!box.contains(e.target)) zu(); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !liste.hidden) { zu(); knopf.focus(); } });
+  if (menue) menue.addEventListener('click', function () { if (menue.getAttribute('aria-expanded') === 'true') zu(); });
+  document.addEventListener('click', function (e) { if (!box.contains(e.target) && !(menue && menue.contains(e.target))) zu(); });
+  document.addEventListener('keydown', function (e) {
+    if (!box.open) return;
+    if (e.key === 'Escape') { zu(true); return; }
+    var i = links.indexOf(document.activeElement), n = links.length, schritt = 0;
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') schritt = 1;
+    else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') schritt = -1;
+    else if (e.key === 'Home') { e.preventDefault(); links[0].focus(); return; }
+    else if (e.key === 'End') { e.preventDefault(); links[n - 1].focus(); return; }
+    if (schritt) { e.preventDefault(); links[(i + schritt + n) % n].focus(); }
+  });
+  window.addEventListener('scroll', function () { if (box.open && Math.abs(window.scrollY - oben) > 140) zu(); }, { passive: true });
   /* Sprungmarke beim Sprachwechsel mitnehmen */
-  liste.addEventListener('click', function (e) { var a = e.target.closest('a'); if (a && location.hash && a.getAttribute('href').indexOf('#') < 0) a.href = a.getAttribute('href') + location.hash; });
+  links.forEach(function (a) { a.addEventListener('click', function () { if (location.hash && a.getAttribute('href').indexOf('#') < 0) a.href = a.getAttribute('href') + location.hash; }); });
+})();
+
+/* ===== Fassung 10: Gebäudetypen im Handy-Menü aufklappen ===== */
+(function () {
+  'use strict';
+  var auf = document.querySelector('.blatt__auf');
+  if (!auf) return;
+  var unter = document.getElementById(auf.getAttribute('aria-controls'));
+  auf.addEventListener('click', function () {
+    var offen = auf.getAttribute('aria-expanded') !== 'true';
+    auf.setAttribute('aria-expanded', offen ? 'true' : 'false');
+    unter.hidden = !offen;
+  });
 })();
