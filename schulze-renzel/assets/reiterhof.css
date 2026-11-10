@@ -220,11 +220,50 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--wald);box-s
 .ergebnis pre{margin:0;padding:14px;border-radius:8px;background:#fff;font-family:ui-monospace,Menlo,monospace;font-size:.8125rem;white-space:pre-wrap;overflow-wrap:anywhere}
 .kopieren{font-weight:600;color:var(--wald);text-decoration:underline;text-underline-offset:.22em}
 
+/* ---------- Anfrage in Schritten ---------- */
+.schritt-anzeige{display:flex;gap:8px;margin-bottom:4px}
+.schritt-anzeige li{position:relative;flex:1;display:flex;align-items:center;gap:10px;padding:8px 0 14px;font-size:.875rem;font-weight:600;color:var(--leise)}
+.schritt-anzeige li::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;border-radius:2px;background:var(--linie);transition:background-color .3s}
+.schritt-anzeige span{display:grid;place-items:center;flex:none;width:28px;height:28px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--linie-2);font-family:var(--ft);font-size:1rem;transition:background-color .3s,color .3s}
+.schritt-anzeige li[data-fertig],.schritt-anzeige li[aria-current=step]{color:var(--tinte)}
+.schritt-anzeige li[data-fertig]::after{background:var(--wald)}
+.schritt-anzeige li[data-fertig] span{background:var(--wald);color:#F7F2E7;box-shadow:none}
+.schritt-anzeige li[aria-current=step]::after{background:var(--leder)}
+.schritt-anzeige li[aria-current=step] span{background:var(--leder);color:#fff;box-shadow:none}
+.schritt{display:grid;gap:18px;min-width:0;margin:0;padding:0;border:0}
+.schritt legend{padding:0;margin-bottom:2px}
+.schritt:not([hidden]){animation:schritt .5s var(--aus) both}
+@keyframes schritt{from{opacity:0;transform:translateX(16px)}}
+.schritt-knoepfe{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:4px}
+.schritt-knoepfe .knopf:only-child{margin-left:auto}
+.wahlkarten{display:grid;gap:10px}
+@media (min-width:560px){.wahlkarten{grid-template-columns:1fr 1fr}}
+.wahlkarte{position:relative;display:grid;gap:3px;align-content:start;padding:15px 44px 15px 16px;border-radius:12px;background:var(--karte);box-shadow:inset 0 0 0 1.5px var(--linie-2);cursor:pointer;transition:box-shadow .2s,background-color .2s}
+.wahlkarte input{position:absolute;opacity:0;pointer-events:none;min-height:0;width:auto}
+.wahlkarte strong{font-family:var(--ft);font-size:1.2rem;font-weight:480;letter-spacing:-.01em}
+.wahlkarte small{font-size:.8125rem;line-height:1.4;color:var(--leise)}
+.wahlkarte::after{content:"";position:absolute;right:14px;top:16px;width:20px;height:20px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--linie-2);transition:box-shadow .2s}
+.wahlkarte:has(input:checked){background:#fff;box-shadow:inset 0 0 0 2px var(--wald)}
+.wahlkarte:has(input:checked)::after{box-shadow:inset 0 0 0 6px var(--wald)}
+.wahlkarte:has(input:focus-visible){outline:2px solid var(--leder);outline-offset:3px}
+.ergebnis .kopieren{font:inherit;font-weight:600}
+
 /* ---------- Fuß ---------- */
-.fuss{background:var(--tinte);color:#B9BFB2;font-size:.875rem;padding:36px 0}
-.fuss-innen{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 28px}
-.fuss ul{display:flex;flex-wrap:wrap;gap:8px 24px}
-.fuss a:hover{color:#fff}
+.fuss{background:var(--tinte);color:#B9BFB2;font-size:.9375rem;padding:clamp(48px,6vw,84px) 0 28px}
+.fuss-kopf{display:grid;gap:22px;align-items:center;padding-bottom:clamp(32px,4vw,52px);border-bottom:1px solid rgba(244,238,226,.14)}
+@media (min-width:900px){.fuss-kopf{grid-template-columns:auto minmax(0,1fr) auto;gap:48px}}
+.marke--hell{color:#F4EEE2;margin-right:0;font-size:1.6rem}
+.marke--hell svg{width:38px;height:38px;color:var(--heu)}
+.marke--hell b{color:#B9BFB2}
+.fuss-satz{font-family:var(--ft);font-style:italic;font-size:clamp(1.15rem,1.8vw,1.45rem);line-height:1.35;color:#E4E6DC;max-width:30em}
+.fuss-spalten{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 28px;padding-block:clamp(32px,4vw,52px)}
+@media (min-width:760px){.fuss-spalten{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.fuss-spalten ul{display:grid;gap:.6rem}
+.fuss h2{margin-bottom:1rem;font-family:var(--fs);font-size:.75rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--heu)}
+.fuss-spalten a{color:#E4E6DC;overflow-wrap:anywhere}
+.fuss-ende{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;padding-top:22px;border-top:1px solid rgba(244,238,226,.14);font-size:.8125rem}
+.fuss-ende ul{display:flex;gap:22px}
+@media (hover:hover) and (pointer:fine){.fuss a:hover{color:var(--heu)}.fuss .knopf--hell:hover{color:var(--wald-tief)}}
 
 /* ---------- Lichtkasten ---------- */
 .lichtkasten{width:100vw;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:rgba(24,28,20,.94);color:#F4EEE2}

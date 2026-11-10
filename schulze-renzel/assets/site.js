@@ -77,6 +77,7 @@
     worte = $$('.wort', aussage);
   }
   const wachsen = ruhig ? [] : $$('[data-wachsen]');
+  const grund = ruhig ? null : $('.grund');
 
   if (film && !ruhig) {
     film.dataset.film = 'an';
@@ -137,6 +138,7 @@
         if (n !== wortStand) { wortStand = n; worte.forEach((w, i) => w.classList.toggle('an', i < n)); }
       }
     }
+    if (grund) grund.style.transform = `translate3d(0,${(-(y * .28) % 1800).toFixed(1)}px,0)`;
     wachsen.forEach(el => {
       const r = el.getBoundingClientRect();
       if (r.bottom < 0 || r.top > innerHeight) return;
@@ -320,11 +322,16 @@
     if (k) kopiere(k.dataset.kopie || ($(k.dataset.ziel) || {}).textContent || '', k);
   });
 
-  /* ---------- Anfrageformular ---------- */
+  /* ---------- Anfrage in drei Schritten ---------- */
   const form = $('#anfrage');
   if (form) {
     const wahl = $('#k-maschine');
     wahl.addEventListener('change', () => { if (wahl.value && !liste.hat(wahl.value)) liste.wechseln(wahl.value); wahl.value = ''; });
+    const schritte = $$('.schritt', form), anzeige = $$('.schritt-anzeige li', form), nachricht = $('#k-nachricht');
+    const anliegen = () => (form.elements.anliegen.value || 'maschine');
+    const titel = { maschine: 'Maschine mieten', planwagen: 'Planwagenfahrt', frage: 'Allgemeine Frage' };
+    let stand = 0;
+    if (liste.lesen().length && liste.lesen().every(s => s.startsWith('planwagen'))) form.elements.anliegen.value = 'planwagen';
     const pruefen = f => {
       const leer = !f.value.trim(), mail = f.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value.trim());
       const meldung = leer ? 'Bitte ausfüllen.' : mail ? 'Bitte eine gültige E-Mail-Adresse eintragen, zum Beispiel name@beispiel.de.' : '';
@@ -332,25 +339,57 @@
       $('#' + f.id + '-fehler').textContent = meldung;
       return !meldung;
     };
+    const gueltig = teil => {
+      const pflicht = $$('[required]', teil).filter(f => !f.closest('[hidden]')), ok = pflicht.map(pruefen);
+      if (ok.includes(false)) { pflicht[ok.indexOf(false)].focus(); return false; }
+      return true;
+    };
+    const anpassen = () => {
+      const a = anliegen();
+      $$('[data-fuer]', form).forEach(el => { el.hidden = !el.dataset.fuer.split(' ').includes(a); });
+      const pflicht = a === 'frage';
+      nachricht.required = pflicht;
+      $('[data-pflicht]', form).hidden = !pflicht;
+      if (!pflicht) { nachricht.removeAttribute('aria-invalid'); $('#k-nachricht-fehler').textContent = ''; }
+    };
+    const zeige = (i, fokus) => {
+      stand = i;
+      schritte.forEach((s, k) => { s.hidden = k !== i; });
+      anzeige.forEach((li, k) => {
+        if (k === i) li.setAttribute('aria-current', 'step'); else li.removeAttribute('aria-current');
+        li.toggleAttribute('data-fertig', k < i);
+      });
+      if (fokus) { const ziel = $('legend', schritte[i]); ziel.tabIndex = -1; ziel.focus({ preventScroll: true }); form.scrollIntoView({ block: 'nearest' }); }
+    };
+    $$('input[name=anliegen]', form).forEach(r => r.addEventListener('change', anpassen));
+    $$('[data-weiter]', form).forEach(b => b.addEventListener('click', () => { anpassen(); if (gueltig(schritte[stand])) zeige(stand + 1, true); }));
+    $$('[data-zurueck]', form).forEach(b => b.addEventListener('click', () => zeige(stand - 1, true)));
     form.addEventListener('submit', e => {
       e.preventDefault();
-      const pflicht = $$('[required]', form), ok = pflicht.map(pruefen);
-      if (ok.includes(false)) { pflicht[ok.indexOf(false)].focus(); return; }
-      const v = id => $('#' + id).value.trim();
-      const gewaehlt = liste.lesen().map(s => namen[s] || s);
+      if (!gueltig(schritte[stand])) return;
+      const v = id => $('#' + id).value.trim(), a = anliegen();
+      const gewaehlt = a === 'frage' ? [] : liste.lesen().map(s => namen[s] || s);
       const zeilen = ['Guten Tag,', '', 'ich möchte anfragen:', '',
+        'Anliegen: ' + titel[a],
         'Name: ' + v('k-name'), 'E-Mail: ' + v('k-mail'),
         v('k-tel') ? 'Telefon: ' + v('k-tel') : null,
-        v('k-zeit') ? 'Wunschzeitraum: ' + v('k-zeit') : null,
-        gewaehlt.length ? 'Mietmaschinen: ' + gewaehlt.join(', ') : null,
-        ($('#k-reiterhof') || {}).checked ? 'Die Anfrage bezieht sich auf den Reiterhof (Stallanfrage).' : null,
-        '', 'Nachricht:', v('k-nachricht')].filter(z => z !== null);
+        gewaehlt.length ? (a === 'planwagen' ? 'Auswahl: ' : 'Mietmaschinen: ') + gewaehlt.join(', ') : null,
+        a === 'maschine' && v('k-zeit') ? 'Wunschzeitraum: ' + v('k-zeit') : null,
+        a === 'maschine' && v('k-ort') ? 'Einsatzort: ' + v('k-ort') : null,
+        a === 'planwagen' && v('k-datum') ? 'Datum der Fahrt: ' + v('k-datum') : null,
+        a === 'planwagen' && v('k-personen') ? 'Personenzahl: ' + v('k-personen') : null,
+        a === 'planwagen' && v('k-strecke') ? 'Start und Ziel: ' + v('k-strecke') : null,
+        v('k-nachricht') ? '' : null, v('k-nachricht') ? 'Nachricht:' : null, v('k-nachricht') || null].filter(z => z !== null);
       const text = zeilen.join('\n');
-      const betreff = 'Anfrage' + (gewaehlt.length ? ': ' + gewaehlt.join(', ') : '');
+      const betreff = 'Anfrage ' + titel[a] + (gewaehlt.length ? ': ' + gewaehlt.join(', ') : '');
       $('#anfrage-text').textContent = text;
       $('#anfrage-mail').href = `mailto:${form.dataset.mail}?subject=${encodeURIComponent(betreff)}&body=${encodeURIComponent(text)}`;
+      schritte.forEach(s => { s.hidden = true; });
+      anzeige.forEach(li => { li.removeAttribute('aria-current'); li.setAttribute('data-fertig', ''); });
       const erg = $('#anfrage-ergebnis'); erg.hidden = false; erg.scrollIntoView({ block: 'nearest' }); erg.focus();
     });
-    $$('[required]', form).forEach(f => f.addEventListener('blur', () => { if (f.getAttribute('aria-invalid') === 'true') pruefen(f); }));
+    $('[data-neu]', form).addEventListener('click', () => { $('#anfrage-ergebnis').hidden = true; zeige(0, true); });
+    $$('#k-name, #k-mail, #k-nachricht', form).forEach(f => f.addEventListener('blur', () => { if (f.getAttribute('aria-invalid') === 'true') pruefen(f); }));
+    anpassen();
   }
 })();

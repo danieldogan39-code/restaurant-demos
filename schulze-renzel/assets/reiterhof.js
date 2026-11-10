@@ -64,9 +64,11 @@
     }));
   });
 
-  /* ---------- Stallanfrage ---------- */
+  /* ---------- Stallanfrage in drei Schritten ---------- */
   const form = $('#stallanfrage');
   if (form) {
+    const schritte = $$('.schritt', form), anzeige = $$('.schritt-anzeige li', form);
+    let stand = 0;
     const pruefen = f => {
       const leer = !f.value.trim(), mail = f.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value.trim());
       const meldung = leer ? 'Bitte ausfüllen.' : mail ? 'Bitte eine gültige E-Mail-Adresse eintragen, zum Beispiel name@beispiel.de.' : '';
@@ -74,22 +76,40 @@
       $('#' + f.id + '-fehler').textContent = meldung;
       return !meldung;
     };
+    const gueltig = teil => {
+      const pflicht = $$('[required]', teil), ok = pflicht.map(pruefen);
+      if (ok.includes(false)) { pflicht[ok.indexOf(false)].focus(); return false; }
+      return true;
+    };
+    const zeige = (i, fokus) => {
+      stand = i;
+      schritte.forEach((s, k) => { s.hidden = k !== i; });
+      anzeige.forEach((li, k) => {
+        if (k === i) li.setAttribute('aria-current', 'step'); else li.removeAttribute('aria-current');
+        li.toggleAttribute('data-fertig', k < i);
+      });
+      if (fokus) { const ziel = $('legend', schritte[i]); ziel.tabIndex = -1; ziel.focus({ preventScroll: true }); form.scrollIntoView({ block: 'nearest' }); }
+    };
+    $$('[data-weiter]', form).forEach(b => b.addEventListener('click', () => { if (gueltig(schritte[stand])) zeige(stand + 1, true); }));
+    $$('[data-zurueck]', form).forEach(b => b.addEventListener('click', () => zeige(stand - 1, true)));
     form.addEventListener('submit', e => {
       e.preventDefault();
-      const pflicht = $$('[required]', form), ok = pflicht.map(pruefen);
-      if (ok.includes(false)) { pflicht[ok.indexOf(false)].focus(); return; }
-      const v = id => $('#' + id).value.trim();
+      if (!gueltig(schritte[stand])) return;
+      const v = id => $('#' + id).value.trim(), stall = form.elements.stallart.value;
       const zeilen = ['Guten Tag,', '', 'ich interessiere mich für einen Pensionsplatz auf dem Reiterhof:', '',
         'Name: ' + v('r-name'), 'E-Mail: ' + v('r-mail'),
         v('r-tel') ? 'Telefon: ' + v('r-tel') : null,
-        v('r-stall') ? 'Wunsch-Stallart: ' + v('r-stall') : null,
+        'Wunsch-Stallart: ' + (stall || 'noch offen'),
         v('r-zeit') ? 'Gewünschter Zeitpunkt: ' + v('r-zeit') : null,
         '', 'Nachricht:', v('r-nachricht')].filter(z => z !== null);
       const text = zeilen.join('\n');
       $('#stallanfrage-text').textContent = text;
       $('#stallanfrage-mail').href = `mailto:${form.dataset.mail}?subject=${encodeURIComponent('Stallanfrage Reiterhof')}&body=${encodeURIComponent(text)}`;
+      schritte.forEach(s => { s.hidden = true; });
+      anzeige.forEach(li => { li.removeAttribute('aria-current'); li.setAttribute('data-fertig', ''); });
       const erg = $('#stallanfrage-ergebnis'); erg.hidden = false; erg.scrollIntoView({ block: 'nearest' }); erg.focus();
     });
+    $('[data-neu]', form).addEventListener('click', () => { $('#stallanfrage-ergebnis').hidden = true; zeige(0, true); });
     $$('[required]', form).forEach(f => f.addEventListener('blur', () => { if (f.getAttribute('aria-invalid') === 'true') pruefen(f); }));
     const kopie = $('#stallanfrage-kopie');
     if (kopie) kopie.addEventListener('click', async () => {

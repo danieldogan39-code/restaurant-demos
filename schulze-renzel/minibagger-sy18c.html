@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
+<div class="grund" aria-hidden="true"></div>
 <a class="sprung" href="#inhalt">Zum Inhalt springen</a>
 <header class="kopf">
   <div class="kopf-innen">
@@ -97,51 +98,77 @@
       <div class="knopfreihe" style="margin-top:2.5rem"><a class="knopf knopf--blau" href="maschinen.html"><span>Alle Maschinen</span></a></div>
     </div></section>
 <section class="band band--tief">
-  <div class="rahmen anruf">
-    <h2 class="h2">Fragen zur Minibagger Sany SY18C?</h2>
-    <p class="einstieg">Nennen Sie uns Zeitraum und Einsatzort, wir melden uns mit einem Angebot.</p>
-    <a class="anruf-nummer" href="tel:+491772631728" id="anruf-nummer">0177-2631728</a>
-    <div class="anruf-zeile">
-      <button class="kopieren" type="button" data-kopie="0177-2631728" data-ziel="#anruf-nummer">Nummer kopieren</button>
-      <a class="verweis verweis--pfeil" href="kontakt.html">Lieber schreiben: zum Anfrageformular</a>
-      <a class="verweis" href="mailto:info@schulze-renzel.de?subject=Anfrage%3A%20Minibagger%20Sany%20SY18C&body=">info@schulze-renzel.de</a>
+  <div class="rahmen">
+    <div class="kopfzeile"><span class="vorzeile">Kontakt</span><h2 class="h2">Fragen zur Minibagger Sany SY18C?</h2></div>
+    <div class="anruf">
+      <div class="anruf-kachel licht">
+        <span class="anruf-art">Anrufen</span>
+        <a class="anruf-nummer" href="tel:+491772631728" id="anruf-nummer">0177-2631728</a>
+        <p>Nennen Sie uns Zeitraum und Einsatzort, wir melden uns mit einem Angebot.</p>
+        <div class="knopfreihe"><a class="knopf" href="tel:+491772631728"><span>Jetzt anrufen</span></a><button class="kopieren" type="button" data-kopie="0177-2631728" data-ziel="#anruf-nummer">Nummer kopieren</button></div>
+      </div>
+      <div class="anruf-kachel licht">
+        <span class="anruf-art">Schreiben</span>
+        <p class="anruf-gross">Anfrage in drei Schritten</p>
+        <ol class="anruf-schritte"><li>Anliegen</li><li>Details</li><li>Kontakt</li></ol>
+        <div class="knopfreihe"><a class="knopf knopf--linie" href="kontakt.html"><span>Anfrage starten</span></a><a class="verweis" href="mailto:info@schulze-renzel.de?subject=Anfrage%3A%20Minibagger%20Sany%20SY18C&body=">info@schulze-renzel.de</a></div>
+      </div>
     </div>
   </div>
 </section>
 </main>
 <footer class="fuss">
   <div class="rahmen">
-    <div class="fuss-raster">
-      <div>
-        <img src="assets/img/site/logo-msr-hell.webp" width="480" height="124" alt="MSR Maschinenvermietung" loading="lazy">
-        <p>Maschinenvermietung und Planwagenfahrten vom Hof Schulze-Renzel in Rhede-Krommert.</p>
+    <div class="fuss-karte">
+      <div class="fuss-kopf">
+        <div class="fuss-marke">
+          <img src="assets/img/site/logo-msr-hell.webp" width="480" height="124" alt="MSR Maschinenvermietung" loading="lazy">
+          <p>Maschinenvermietung und Planwagenfahrten vom Hof Schulze-Renzel in Rhede-Krommert.</p>
+        </div>
+        <div class="fuss-aktion">
+          <a class="knopf" href="kontakt.html"><span>Anfrage senden</span></a>
+          <a class="hof-knopf hof-knopf--gross" href="reiterhof/"><svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M8 29C3.300 23 2 17 2 12.500 2 6.300 7.800 2 16 2s14 4.300 14 10.500c0 4.500-1.300 10.500-6 16.500h-5.200c3.700-5.600 5.400-11.200 5.400-16 0-3.800-3.200-6-8.200-6s-8.200 2.200-8.200 6c0 4.800 1.700 10.400 5.400 16z"/></svg>Zum Reiterhof</a>
+        </div>
       </div>
-      <div>
-        <h2>Kontakt</h2>
-        <p>Hof Schulze-Renzel<br>Renzelhook 7<br>46414 Rhede-Krommert</p>
-        <p style="margin-top:.8rem"><a class="zahl" href="tel:+491772631728">0177-2631728</a><br><a href="mailto:info@schulze-renzel.de">info@schulze-renzel.de</a></p>
+      <nav class="fuss-spalten" aria-label="Fußnavigation">
+        <div>
+          <h2>Mietpark</h2>
+          <ul>
+            <li><a href="maschinen.html#arbeitsbuehnen">Arbeitsbühnen</a></li>
+            <li><a href="maschinen.html#bagger-bau">Bagger, Bau &amp; Garten</a></li>
+            <li><a href="maschinen.html#anhaenger">Anhänger &amp; Transport</a></li>
+            <li><a href="planwagen.html">Planwagen &amp; Events</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Unternehmen</h2>
+          <ul>
+            <li><a href="ueber-uns.html">Über uns</a></li>
+            <li><a href="aktuelles.html">Aktuelles</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+            <li><a href="downloads/msr-flyer-2026-09.pdf">Flyer (PDF)</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Kontakt</h2>
+          <ul>
+            <li><a class="zahl" href="tel:+491772631728">0177-2631728</a></li>
+            <li><a href="mailto:info@schulze-renzel.de">info@schulze-renzel.de</a></li>
+            <li><a href="https://www.openstreetmap.org/search?query=Renzelhook%207%2C%2046414%20Rhede" rel="noopener">Renzelhook 7, 46414 Rhede-Krommert</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Folgen</h2>
+          <ul>
+            <li><a href="https://www.instagram.com/maschinenvermietung_sr/" rel="noopener">Instagram</a></li>
+            <li><a href="https://m.facebook.com/MaschinenvermietungSchulzeRenzel/" rel="noopener">Facebook</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="fuss-ende">
+        <span>© 2026 Hof Schulze-Renzel · Markus Schulze-Renzel</span>
+        <ul><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li></ul>
       </div>
-      <div>
-        <h2>Angebot</h2>
-        <ul>
-          <li><a href="maschinen.html#arbeitsbuehnen">Arbeitsbühnen</a></li>
-          <li><a href="maschinen.html#bagger-bau">Bagger, Bau &amp; Garten</a></li>
-          <li><a href="maschinen.html#anhaenger">Anhänger &amp; Transport</a></li>
-          <li><a href="planwagen.html">Planwagen &amp; Events</a></li>
-          <li><a href="reiterhof/">Zum Reiterhof (eigene Seite)</a></li>
-        </ul>
-      </div>
-      <div>
-        <h2>Folgen</h2>
-        <ul>
-          <li><a href="https://m.facebook.com/MaschinenvermietungSchulzeRenzel/" rel="noopener">Facebook</a></li>
-          <li><a href="https://www.instagram.com/maschinenvermietung_sr/" rel="noopener">Instagram</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="fuss-ende">
-      <span>© 2026 Hof Schulze-Renzel</span>
-      <ul><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li></ul>
     </div>
   </div>
 </footer>
