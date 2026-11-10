@@ -343,7 +343,7 @@
         v('k-tel') ? 'Telefon: ' + v('k-tel') : null,
         v('k-zeit') ? 'Wunschzeitraum: ' + v('k-zeit') : null,
         gewaehlt.length ? 'Mietmaschinen: ' + gewaehlt.join(', ') : null,
-        $('#k-reiterhof').checked ? 'Die Anfrage bezieht sich auf den Reiterhof (Stallanfrage).' : null,
+        ($('#k-reiterhof') || {}).checked ? 'Die Anfrage bezieht sich auf den Reiterhof (Stallanfrage).' : null,
         '', 'Nachricht:', v('k-nachricht')].filter(z => z !== null);
       const text = zeilen.join('\n');
       const betreff = 'Anfrage' + (gewaehlt.length ? ': ' + gewaehlt.join(', ') : '');

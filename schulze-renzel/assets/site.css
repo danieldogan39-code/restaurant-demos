@@ -111,7 +111,11 @@ html:not(.js) .kopf{background:rgba(22,22,24,.94)}
 .haupt-nav a{display:block;padding:8px 12px;border-radius:999px;font-size:.875rem;color:rgba(245,245,247,.82);transition:color .2s,background-color .2s}
 .haupt-nav a[aria-current=page]{color:#fff;background:rgba(255,255,255,.12)}
 .haupt-nav a[aria-current=page]::before{content:"";display:inline-block;width:5px;height:5px;margin-right:7px;border-radius:50%;background:var(--sand);vertical-align:.16em}
-.nav-tel{display:none!important}
+.nav-tel,.nav-hof{display:none!important}
+.hof-knopf{display:inline-flex;align-items:center;gap:7px;min-height:36px;padding:0 14px 0 11px;border-radius:999px;background:linear-gradient(180deg,rgba(239,192,123,.2),rgba(239,192,123,.07));box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 0 0 1px rgba(239,192,123,.5);color:#F6DDB4;font-size:.875rem;font-weight:500;white-space:nowrap;transition:transform .2s var(--aus)}
+.hof-knopf svg,.nav-hof svg{width:15px;height:15px;flex:none;color:var(--sand)}
+.hof-knopf:active{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){.hof-knopf:hover{background:linear-gradient(180deg,rgba(239,192,123,.32),rgba(239,192,123,.14));color:#fff}}
 .kopf-aktion{display:flex;align-items:center;gap:14px;margin-left:auto}
 .kopf-tel{font-size:.875rem;color:rgba(245,245,247,.82);white-space:nowrap}
 .menue-knopf{display:none;position:relative;width:40px;height:40px;border-radius:50%}
@@ -129,6 +133,8 @@ html:not(.js) .kopf{background:rgba(22,22,24,.94)}
   .kopf[data-offen] .haupt-nav{opacity:1;visibility:visible;transform:none;transition:opacity .25s var(--hin),transform .45s var(--aus),visibility 0s}
   .haupt-nav ul{flex-direction:column;gap:0}
   .haupt-nav a{padding:13px 14px;font-size:1.5rem;font-weight:600;letter-spacing:-.03em;color:#f5f5f7;border-radius:16px}
+  .hof-knopf{display:none}
+  .nav-hof{display:flex!important;align-items:center;gap:10px;margin-top:8px;padding:14px!important;border-radius:16px!important;background:linear-gradient(180deg,rgba(239,192,123,.18),rgba(239,192,123,.06))!important;box-shadow:inset 0 0 0 1px rgba(239,192,123,.45);font-size:1.0625rem!important;font-weight:500!important;letter-spacing:-.01em!important;color:#F6DDB4!important}
   .nav-tel{display:block!important;margin-top:10px;padding:16px 14px 6px!important;border-top:1px solid rgba(255,255,255,.12);border-radius:0!important;font-size:1.0625rem!important;font-weight:500!important;letter-spacing:-.01em!important;color:var(--sand)!important}
   html.menue-offen body::after{content:"";position:fixed;inset:0;z-index:90;background:rgba(0,0,0,.5)}
 }
@@ -388,6 +394,12 @@ input[type=range]::-moz-range-thumb{width:28px;height:28px;border:0;border-radiu
 .tor-bild{margin:auto 10px 10px;border-radius:26px;overflow:hidden;aspect-ratio:16/10}
 .tor-bild img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--aus)}
 @media (hover:hover) and (pointer:fine){.tor:hover .tor-bild img{transform:scale(1.03)}}
+@media (min-width:900px){.tor--breit{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center}.tor--breit .tor-bild{margin:10px;aspect-ratio:16/11;align-self:stretch}}
+.hof-hinweis{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 28px;margin-top:20px;padding:22px clamp(22px,3vw,34px);border-radius:var(--r);background:var(--ka);box-shadow:var(--glas)}
+.hof-hinweis>div{display:flex;align-items:center;gap:16px;min-width:0}
+.hof-hinweis svg{flex:none;width:30px;height:30px;color:var(--sand)}
+.hof-hinweis p{color:var(--tx2);font-size:.9375rem;line-height:1.4}
+.hof-hinweis strong{display:block;color:var(--tx);font-size:1.0625rem;font-weight:600;letter-spacing:-.015em}
 .masse{display:flex;flex-wrap:wrap;gap:14px clamp(20px,3vw,40px);margin-top:1.3rem}
 .masse dt{font-size:.8125rem;color:var(--tx2)}
 .masse dd{font-size:clamp(1.25rem,2vw,1.6rem);font-weight:600;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
@@ -395,6 +407,8 @@ input[type=range]::-moz-range-thumb{width:28px;height:28px;border:0;border-radiu
 /* ---------- Stimmen und Meldungen ---------- */
 .stimmen{display:grid;gap:16px}
 @media (min-width:900px){.stimmen{grid-template-columns:1fr 1.25fr 1fr}}
+.stimmen--eins{grid-template-columns:minmax(0,1fr)!important;max-width:860px}
+.stimmen--eins blockquote{font-size:clamp(1.5rem,3vw,2.3rem)!important;line-height:1.22!important;letter-spacing:-.03em!important;font-weight:600!important}
 .stimmen figure{display:flex;flex-direction:column;gap:22px;padding:clamp(24px,2.8vw,34px);border-radius:var(--r);background:var(--ka)}
 .stimmen blockquote{font-size:clamp(1.1rem,1.5vw,1.3rem);font-weight:500;line-height:1.36;letter-spacing:-.02em}
 .stimmen blockquote::before{content:"“";display:block;height:1.7rem;font-size:3.4rem;font-weight:600;line-height:1;color:var(--sand)}
