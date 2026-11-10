@@ -906,3 +906,40 @@ html.mit-intro .kino h1 .z > span{animation-delay:calc(var(--n) * 120ms + 2.15s)
 .pruefen strong{font-family:var(--fd); font-size:1.1rem; color:#1D1D1F}
 .pruefen p,.pruefen li{font-size:.97rem; color:#3A3A3F}
 mark.offen{background:#FFE98A; color:inherit; padding:.08em .3em; border-radius:5px; -webkit-box-decoration-break:clone; box-decoration-break:clone}
+
+/* ============ Fassung 7: Reportage mit Ton ============ */
+.kino__knoepfe{display:flex; flex-direction:column; align-items:flex-end; gap:12px}
+.kino__report{display:inline-flex; align-items:center; gap:14px; padding:8px 26px 8px 8px; border:0; border-radius:999px; background:rgba(245,245,247,.16); -webkit-backdrop-filter:blur(18px) saturate(160%); backdrop-filter:blur(18px) saturate(160%); color:#F5F5F7; font:inherit; text-align:left; cursor:pointer; transition:background .25s ease, transform .3s var(--sanft)}
+.kino__report:hover{background:rgba(245,245,247,.28); transform:translateY(-2px)}
+.kino__report:active{transform:scale(.98)}
+.kino__report-kreis{flex:none; width:52px; height:52px; border-radius:50%; background:#F5F5F7; color:var(--graphit); display:grid; place-items:center; position:relative}
+.kino__report-kreis::after{content:""; position:absolute; inset:0; border-radius:50%; box-shadow:0 0 0 0 rgba(245,245,247,.5); animation:report-puls 2.6s ease-out infinite}
+@keyframes report-puls{to{box-shadow:0 0 0 16px rgba(245,245,247,0)}}
+.kino__report-kreis svg{width:18px; height:18px; margin-left:3px}
+.kino__report-text{display:flex; flex-direction:column; gap:3px; line-height:1.15}
+.kino__report-text strong{font-family:var(--fd); font-weight:650; font-size:1.06rem; letter-spacing:-.01em}
+.kino__report-text small{font-size:.84rem; color:#C9CDD0}
+.saal{width:min(1120px, calc(100vw - 24px)); max-height:calc(100svh - 24px); margin:auto; padding:0; border:0; border-radius:28px; background:var(--nacht); color:#F5F5F7; overflow:auto; box-shadow:0 0 0 1px rgba(245,245,247,.12), 0 50px 140px rgba(0,0,0,.6)}
+.saal::backdrop{background:rgba(7,9,11,.82); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px)}
+.saal[open]{animation:saal-auf .45s var(--sanft) both}
+@keyframes saal-auf{from{opacity:0; transform:translate3d(0, 24px, 0) scale(.97)}}
+.saal__kopf{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 14px 14px 24px}
+.saal__marke{display:inline-flex; align-items:center; gap:10px; font-weight:650; font-size:.8rem; letter-spacing:.14em; text-transform:uppercase; color:#C9CDD0}
+.saal__marke i{width:9px; height:9px; border-radius:50%; background:#C9363C}
+.saal__zu{flex:none; width:44px; height:44px; border:0; border-radius:50%; background:rgba(245,245,247,.12); color:#F5F5F7; display:grid; place-items:center; cursor:pointer; transition:background .2s ease}
+.saal__zu:hover{background:rgba(245,245,247,.24)}
+.saal__zu svg{width:18px; height:18px}
+.saal video{display:block; width:100%; height:auto; aspect-ratio:16 / 9; background:#000}
+.saal__unten{padding:16px 24px 20px; display:flex; flex-direction:column; gap:10px}
+.saal__klein{color:#AEB5B7; font-size:.875rem; line-height:1.5}
+.saal details summary{cursor:pointer; font-weight:600; font-size:.9rem; color:#E3E5E8; min-height:32px; display:inline-flex; align-items:center}
+.saal details p{margin-top:8px; color:#C9CDD0; font-size:.95rem; line-height:1.6; max-width:70ch}
+.saal :focus-visible{outline-color:#F5F5F7}
+@media (max-width: 900px){
+  .kino__knoepfe{flex-direction:row; flex-wrap:wrap; align-items:center; justify-content:flex-start}
+  .kino__report{background:#2A2E33; -webkit-backdrop-filter:none; backdrop-filter:none}
+  .saal{border-radius:20px}
+  .saal__kopf{padding:10px 10px 10px 18px}
+  .saal__unten{padding:14px 18px 18px}
+}
+@media (prefers-reduced-motion: reduce){ .kino__report-kreis::after,.saal[open]{animation:none} }

@@ -562,3 +562,29 @@
   } else zeige('wunsch', false, false);
   stufen[jetzt].classList.remove('kommt');
 })();
+
+/* ===== Fassung 7: Reportage mit Ton im Dialog ===== */
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var saal = $('saal'), auf = $('saal-auf'), v = $('saal-film'), titel = $('film');
+  if (!saal || !auf || !v) return;
+  if (!saal.showModal) { auf.hidden = true; return; }
+  var lief = false;
+  auf.addEventListener('click', function () {
+    if (!v.getAttribute('src')) v.src = v.getAttribute('data-src');
+    lief = !!(titel && !titel.paused);
+    if (lief) titel.pause();
+    saal.showModal();
+    var p = v.play();
+    if (p && p.catch) p.catch(function () {});
+  });
+  saal.addEventListener('click', function (e) {
+    if (e.target === saal || (e.target.closest && e.target.closest('[data-saal-zu]'))) saal.close();
+  });
+  saal.addEventListener('close', function () {
+    v.pause();
+    if (lief && titel) { var p = titel.play(); if (p && p.catch) p.catch(function () {}); }
+    auf.focus();
+  });
+})();
