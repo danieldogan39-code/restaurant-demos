@@ -1,4 +1,4 @@
-# Gilt erst auf der Kundendomain im Hauptverzeichnis. Im Entwurf sind alle Seiten zusätzlich per Meta-Angabe gesperrt.
+# Entwurf: Alle Seiten sind per Meta-Angabe (noindex) für Suchmaschinen gesperrt. Entfällt beim Bau mit FT_LIVE=1.
 User-agent: *
 Allow: /
 
