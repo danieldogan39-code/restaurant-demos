@@ -1095,5 +1095,68 @@ h1,h2,h3{overflow-wrap:break-word}
 /* ---------- Untere Leiste auf dem Handy: Telefon links, Probefläche in der Mitte, WhatsApp rechts ---------- */
 .leiste{gap:8px}
 .leiste a.leiste__wa{display:grid; place-items:center; width:46px; height:46px; flex:none; border-radius:50%; background:#E3E3E8; color:inherit}
-.leiste__wa svg{width:22px; height:22px}
+.leiste__wa img{display:block; width:24px; height:24px}
 .leiste .btn{padding-left:10px; padding-right:10px}
+
+/* ============ Anfrage, Fassung 2: ruhiger Kopf, Auswahl als Zeilen, klare Felder ============ */
+.anfrage{position:relative; gap:22px; min-height:0; padding:clamp(22px, 2.6vw, 40px); border-radius:28px}
+.anfrage__kopf{grid-template-columns:auto minmax(0,1fr); grid-template-areas:"zurueck zahl" "lauf lauf"; gap:8px 16px; min-height:0}
+.anfrage__zurueck{grid-area:zurueck}
+.anfrage__zahl{grid-area:zahl; justify-self:end; font-weight:600; font-size:.875rem}
+.anfrage__lauf{grid-area:lauf}
+.anfrage__lauf li{height:5px; border-radius:3px}
+.a-frage{font-size:clamp(1.6rem, 2.4vw, 2.15rem)}
+.a-stufe{gap:20px}
+.anfrage__fuss{display:flex; align-items:center; gap:10px; margin-top:auto; padding-top:18px; border-top:1px solid #ECECEF; color:var(--stein); font-size:.9rem; line-height:1.35}
+.anfrage__fuss svg{flex:none; width:18px; height:18px; color:var(--bordeaux)}
+.anfrage:has(.a-stufe[data-id="kontakt"]:not([hidden])) .anfrage__fuss,.anfrage:has(.a-stufe[data-id="fertig"]:not([hidden])) .anfrage__fuss{display:none}
+.a-unten{position:absolute; right:clamp(22px, 2.6vw, 40px); bottom:clamp(14px, 2vw, 30px); margin:0; min-height:0}
+.a-weiter{background:var(--graphit); color:#fff}
+/* Felder: weiß mit Rand statt grauer Fläche */
+.anfrage .feld label{font-size:.9rem; color:#2B3236}
+.anfrage .feld input,.anfrage .feld textarea{background:#fff; box-shadow:inset 0 0 0 1.5px #D2D5D9}
+.anfrage .feld input:hover,.anfrage .feld textarea:hover{box-shadow:inset 0 0 0 1.5px #9AA0A5}
+.anfrage .feld input:focus,.anfrage .feld textarea:focus{box-shadow:inset 0 0 0 2px var(--graphit)}
+.anfrage .feld.ist-falsch input{box-shadow:inset 0 0 0 2px var(--bordeaux); background:#FDF6F6}
+.anfrage .feld textarea{min-height:104px}
+.anfrage .feld input[type=file]{padding:9px; background:#F5F5F7; box-shadow:none; border:1.5px dashed #C4C7CB; color:var(--stein); font-size:.92rem; cursor:pointer}
+.anfrage .feld input[type=file]:hover{border-color:#8E9499; box-shadow:none}
+.anfrage .feld input[type=file]::file-selector-button{margin-right:14px; min-height:40px; padding:0 18px; border:0; border-radius:999px; background:var(--graphit); color:#fff; font:inherit; font-weight:600; font-size:.9rem; cursor:pointer}
+.a-chips{gap:8px}
+.a-chips button{min-height:36px; padding:0 12px 0 14px; background:#F2F3EF}
+.a-chips button::after{content:""; flex:none; width:13px; height:13px; opacity:.5; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E2326' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 20h4L19 9l-4-4L4 16z'/%3E%3C/svg%3E") center/contain no-repeat}
+.a-chips button:hover::after{opacity:.9}
+.a-senden{min-height:60px}
+.a-fertig{align-items:center; text-align:center; padding:28px 0 16px}
+.a-fertig p{max-width:44ch}
+@media (min-width:561px){
+  /* Auswahl als Zeilen mit Symbol links und Pfeil rechts */
+  .karten,.karten--3{grid-template-columns:repeat(2, minmax(0,1fr)); gap:12px}
+  .a-stufe[data-id="wunsch"] .karten,.a-stufe[data-id="hoehe"] .karten{grid-template-columns:minmax(0,1fr)}
+  .karte{flex-direction:row; align-items:center; gap:16px; min-height:84px; padding:16px 56px 16px 16px; border-radius:18px}
+  .a-stufe[data-id="hoehe"] .karte,.a-stufe[data-id="gebaeude"] .karte{min-height:76px}
+  .karte__icon{width:52px; height:52px; border-radius:15px}
+  .karte__icon svg{width:26px; height:26px}
+  .karte strong{font-size:1.12rem}
+  .karte small{font-size:.92rem}
+  .karte::before{content:""; position:absolute; right:20px; top:50%; width:20px; height:20px; margin-top:-10px; opacity:.38; transition:opacity .2s ease, transform .3s var(--sanft); background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E2326' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center/contain no-repeat}
+  .karte:hover{transform:none; background:#EFF0F2}
+  .karte:hover::before{opacity:.9; transform:translateX(4px)}
+  .karte:has(input:checked)::before{display:none}
+  .karte:has(input:checked)::after{top:50%; right:17px; margin-top:-13px}
+  .a-felder{grid-template-columns:repeat(6, minmax(0,1fr)); gap:16px 14px}
+  .a-felder .feld{grid-column:span 3}
+  .a-felder .feld--voll{grid-column:1 / -1}
+  .a-felder .feld:has(#f-plz){grid-column:span 2}
+  .a-felder .feld:has(#f-ort){grid-column:span 4}
+}
+@media (min-width:901px){
+  .kontakt{grid-template-columns:minmax(0,4.5fr) minmax(0,7.5fr); gap:clamp(36px, 5vw, 84px)}
+  .kontakt__links{position:sticky; top:calc(var(--kopf) + 40px)}
+}
+@media (max-width:560px){
+  .a-felder{grid-template-columns:repeat(3, minmax(0,1fr)); gap:14px 10px}
+  .a-felder .feld{grid-column:1 / -1}
+  .a-felder .feld:has(#f-plz){grid-column:span 1}
+  .a-felder .feld:has(#f-ort){grid-column:span 2}
+}
