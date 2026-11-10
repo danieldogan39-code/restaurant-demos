@@ -201,12 +201,41 @@
     }));
   });
 
+  /* ---------- Untere Leiste (Handy) ---------- */
+  const dock = $('#dock'), dockAus = $$('[data-dock-aus], #anfrage');
+  if (dock && 'IntersectionObserver' in window) {
+    const sichtbar = new Set();
+    const io = new IntersectionObserver(es => {
+      es.forEach(e => { if (e.isIntersecting) sichtbar.add(e.target); else sichtbar.delete(e.target); });
+      dock.toggleAttribute('data-weg', sichtbar.size > 0);
+    }, { rootMargin: '0px 0px -12% 0px' });
+    dockAus.forEach(el => io.observe(el));
+  }
+
   /* ---------- Bühnenfinder ---------- */
   const finder = $('#finder-form');
   if (finder) {
     const regler = $('#finder-hoehe'), aus = $('#finder-wert'), stand = $('#finder-stand'), leer = $('#finder-leer');
-    const zeilen = $$('.treffer');
+    const zeilen = $$('.treffer'), liste = $('.finder-liste'), rest = $('.finder-rest', liste);
     const de = n => String(n).replace('.', ',');
+    const zahl = (z, k) => parseFloat(z.dataset[k]);
+    let erst = true;
+    /* Passende Bühnen nach oben, günstigste zuerst; die Karten gleiten an ihren neuen Platz */
+    const ordne = (passend, uebrig) => {
+      const folge = [...passend, rest, ...uebrig], ist = Array.from(liste.children);
+      rest.hidden = !passend.length || !uebrig.length;
+      if (folge.every((el, i) => ist[i] === el)) return;
+      const bewegt = !ruhig && !erst && typeof liste.animate === 'function';
+      const vorher = bewegt ? new Map(zeilen.map(z => [z, z.getBoundingClientRect().top])) : null;
+      if (bewegt) zeilen.forEach(z => z.getAnimations().forEach(a => { if (a.id === 'ordnen') a.cancel(); }));
+      folge.forEach(el => liste.append(el));
+      if (!bewegt) return;
+      zeilen.forEach(z => {
+        const weg = vorher.get(z) - z.getBoundingClientRect().top;
+        if (Math.abs(weg) > 1) z.animate([{ transform: `translateY(${weg}px)` }, { transform: 'translateY(0)' }],
+          { duration: 460, easing: 'cubic-bezier(.22,.9,.24,1)', id: 'ordnen' });
+      });
+    };
     const rechne = () => {
       const soll = parseFloat(regler.value);
       const filter = $$('input[type=checkbox]:checked', finder).map(c => c.value);
@@ -221,13 +250,15 @@
         if (ok) { passend.push(z); if (!beste || parseFloat(z.dataset.preis) < parseFloat(beste.dataset.preis)) beste = z; }
       });
       if (beste && passend.length > 1) beste.setAttribute('data-beste', '');
+      const nachPreis = (a, b) => zahl(a, 'preis') - zahl(b, 'preis') || zahl(a, 'hoehe') - zahl(b, 'hoehe');
+      ordne(passend.sort(nachPreis), zeilen.filter(z => z.hasAttribute('data-aus')));
       stand.textContent = passend.length === 0 ? '' : passend.length === 1
         ? `1 von ${zeilen.length} Bühnen passt.` : `${passend.length} von ${zeilen.length} Bühnen passen.`;
       leer.hidden = passend.length > 0;
     };
     finder.addEventListener('input', rechne);
     finder.addEventListener('submit', e => e.preventDefault());
-    rechne();
+    rechne(); erst = false;
   }
 
   /* ---------- Lichtkasten ---------- */
