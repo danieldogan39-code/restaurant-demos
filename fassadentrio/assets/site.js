@@ -8,11 +8,12 @@
 
   /* Kopfzeile: dunkel über dem Seitenkopf, hell darunter */
   var kopf = $('kopf');
-  var dunkel = document.querySelector('[data-kopf-dunkel]');
+  var dunkle = alle('[data-kopf-dunkel], .sek--dunkel, .band, .fuss');
   function kopfStand() {
     kopf.classList.toggle('ist-unterwegs', window.scrollY > 8);
     if (kopf.classList.contains('ist-menue')) return;
-    kopf.classList.toggle('auf-dunkel', !!dunkel && dunkel.getBoundingClientRect().bottom > kopf.getBoundingClientRect().bottom);
+    var k = kopf.getBoundingClientRect(), mitte = (k.top + k.bottom) / 2;
+    kopf.classList.toggle('auf-dunkel', dunkle.some(function (el) { var b = el.getBoundingClientRect(); return b.top <= mitte && b.bottom > mitte; }));
   }
   window.addEventListener('scroll', kopfStand, { passive: true });
   window.addEventListener('resize', kopfStand);
@@ -190,61 +191,6 @@
     bahn.addEventListener('click', function (e) { if (gezogen) { e.preventDefault(); gezogen = false; } }, true);
     bahn.addEventListener('dragstart', function (e) { e.preventDefault(); });
   }
-
-  /* Anfrage in drei Schritten: im Entwurf wird nichts versendet */
-  var formular = $('anfrage');
-  if (!formular) return;
-  var meldung = $('meldung'), stufen = alle('.stufe', formular), aktuell = 0;
-  var FELDER = {
-    'Probefläche': ['f-name', 'f-strasse', 'f-plz', 'f-ort', 'f-tel', 'f-mail', 'f-foto', 'f-text'],
-    'Rückruf': ['f-name', 'f-tel', 'f-text'],
-    'Infoblatt': ['f-name', 'f-mail']
-  };
-  var PFLICHT = {
-    'Probefläche': ['f-name', 'f-strasse', 'f-plz', 'f-ort', 'f-tel', 'f-mail'],
-    'Rückruf': ['f-name', 'f-tel'],
-    'Infoblatt': ['f-name', 'f-mail']
-  };
-  function gewaehlt(name) { var e = formular.querySelector('input[name="' + name + '"]:checked'); return e ? e.value : ''; }
-  function zeigeStufe(n, mitFokus) {
-    aktuell = n;
-    stufen.forEach(function (st, i) { st.hidden = i !== n; });
-    $('stufen-titel').textContent = stufen[n].getAttribute('data-titel');
-    $('stufen-zahl').textContent = 'Schritt ' + (n + 1) + ' von ' + stufen.length;
-    $('fortschritt').style.width = ((n + 1) / stufen.length * 100) + '%';
-    $('zurueck').hidden = n === 0;
-    $('weiter').textContent = n < stufen.length - 1 ? 'Weiter' : 'Anfrage senden';
-    $('ende-hinweis').textContent = n < stufen.length - 1
-      ? 'Drei kurze Schritte. Ihre Angaben helfen uns, den Einsatz zu planen.'
-      : 'Ein Kundenbetreuer meldet sich bei Ihnen und kümmert sich um Ihr Anliegen.';
-    meldung.hidden = true;
-    if (n === stufen.length - 1) {
-      var wunsch = gewaehlt('wunsch'), auswahl = $('auswahl');
-      alle('.feld', stufen[n]).forEach(function (f) { f.hidden = FELDER[wunsch].indexOf(f.querySelector('input, textarea').id) < 0; });
-      auswahl.textContent = '';
-      var fett = document.createElement('strong'); fett.textContent = wunsch; auswahl.appendChild(fett);
-      auswahl.appendChild(document.createTextNode(' für: ' + gewaehlt('gebaeude') + ', ' + gewaehlt('hoehe') + ', Belag: ' + gewaehlt('befall')));
-    }
-    if (mitFokus) $('stufen-titel').focus();
-  }
-  $('zurueck').addEventListener('click', function () { zeigeStufe(aktuell - 1, true); });
-  formular.addEventListener('submit', function (e) {
-    e.preventDefault();
-    if (aktuell < stufen.length - 1) { zeigeStufe(aktuell + 1, true); return; }
-    var wunsch = gewaehlt('wunsch'), fehlt = null;
-    PFLICHT[wunsch].forEach(function (id) { var f = $(id); if (!fehlt && !f.value.trim()) fehlt = f; });
-    meldung.hidden = false;
-    if (fehlt) {
-      meldung.textContent = 'Bitte füllen Sie noch das Feld „' + formular.querySelector('label[for="' + fehlt.id + '"]').textContent + '“ aus.';
-      fehlt.focus(); return;
-    }
-    var mail = $('f-mail');
-    if (PFLICHT[wunsch].indexOf('f-mail') >= 0 && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail.value.trim())) {
-      meldung.textContent = 'Bitte prüfen Sie Ihre E-Mail-Adresse. Sie braucht die Form name@beispiel.de.';
-      mail.focus(); return;
-    }
-    meldung.textContent = 'Entwurf: Ihre Angaben sind vollständig, wurden aber noch nicht versendet. Auf der fertigen Website geht die Anfrage an info@fassaden-trio.de.';
-  });
 })();
 
 /* ===== Fassung 5: Menü, Suche, Bürozeiten, Fassaden-Check ===== */
@@ -454,7 +400,7 @@
         punkt(liste, +G.value <= 2 ? 'Bei 1 bis 2 Geschossen arbeiten unsere Techniker in der Regel mit Teleskoplanzen vom Boden aus. Ein Gerüst braucht es nicht.'
           : (+G.value <= 4 ? 'Bei 3 bis 4 Geschossen arbeiten wir je nach Höhe mit Teleskoplanzen oder von der Hubarbeitsbühne. Ein Gerüst braucht es nicht.'
             : 'Hohe Fassaden wie Ihre reinigen wir von der Hubarbeitsbühne. Ein Gerüst wird nicht aufgebaut.'));
-        punkt(liste, 'Die Reinigung kostet bis zu 70 % weniger als ein Neuanstrich. Der Langzeitschutz kommt mit 5 Jahren Garantie vor Wiederbefall.');
+        punkt(liste, 'Die Reinigung kostet bis zu 70 % weniger als ein Neuanstrich. Der Langzeitschutz verzögert neuen Befall bis zu 5 Jahre.');
       }
       if (risse) punkt(liste, 'Risse und abblätternde Farbe: Eine Reinigung entfernt Belag, sie repariert keinen Putz. Lassen Sie diese Stellen fachlich prüfen.');
       punkt(liste, 'Geschätzte Fassadenfläche: ca. ' + flaeche() + ' m² (' + gebaeude() + ', ' + hoehe() + ').');
@@ -477,6 +423,7 @@
     check.addEventListener('submit', function (e) {
       e.preventDefault();
       if (nr === 0 && !befall().length) { fehler.hidden = false; fehler.textContent = 'Bitte wählen Sie mindestens eine Antwort aus.'; return; }
+      if (nr === 1 && !gebaeude()) { fehler.hidden = false; fehler.textContent = 'Bitte wählen Sie einen Gebäudetyp aus.'; return; }
       if (nr < stufen.length - 1) { zeige(nr + 1, true); return; }
       try {
         sessionStorage.setItem('ft-check', JSON.stringify({ befall: befall(), gebaeude: gebaeude(), hoehe: hoehe(), flaeche: flaeche() }));
@@ -484,21 +431,134 @@
       location.href = wurzel + 'probeflaeche/#kontakt';
     });
   }
+})();
 
-  /* ---------- Angaben aus dem Fassaden-Check ins Formular übernehmen ---------- */
-  var anfrage = $('anfrage');
-  if (anfrage) {
-    var daten = null;
-    try { daten = JSON.parse(sessionStorage.getItem('ft-check') || 'null'); sessionStorage.removeItem('ft-check'); } catch (fehlerLesen) {}
-    if (daten && daten.gebaeude) {
-      alle('input[name="gebaeude"], input[name="hoehe"]', anfrage).forEach(function (r) {
-        if (r.value === daten.gebaeude || r.value === daten.hoehe) r.checked = true;
-      });
-      var satz = 'Aus dem Fassaden-Check: ' + daten.befall.join(', ') + '; ' + daten.gebaeude + ', ' + daten.hoehe + '; Fassadenfläche ca. ' + daten.flaeche + ' m² (Schätzung).';
-      var nachricht = $('f-text');
-      if (nachricht && !nachricht.value) nachricht.value = satz;
-      var hinweis = neu('p', 'auswahl', 'Ihre Angaben aus dem Fassaden-Check sind übernommen. Sie können sie in den nächsten Schritten ändern.');
-      anfrage.insertBefore(hinweis, anfrage.querySelector('.stufe'));
-    }
+/* ===== Fassung 6: Anfrage Frage für Frage, Eingangsanimation ===== */
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var alle = function (sel, von) { return Array.prototype.slice.call((von || document).querySelectorAll(sel)); };
+  var ruhig = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Eingangsanimation ---------- */
+  var intro = $('intro'), html = document.documentElement;
+  if (intro && html.classList.contains('mit-intro')) {
+    var fertig = function () { if (intro.parentNode) intro.parentNode.removeChild(intro); html.classList.remove('mit-intro'); };
+    intro.addEventListener('animationend', function (e) { if (e.target === intro) fertig(); });
+    var ueberspringen = function () {
+      intro.style.animation = 'intro-weg2 .5s cubic-bezier(.7,0,.2,1) both';
+      ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach(function (t) { window.removeEventListener(t, ueberspringen); });
+    };
+    ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach(function (t) { window.addEventListener(t, ueberspringen, { passive: true }); });
+    setTimeout(fertig, 4200);
   }
+
+  /* ---------- Sofort weiter, sobald per Maus oder Finger gewählt wurde ---------- */
+  function sofortWeiter(karten, weiter) {
+    var zeit = 0, timer = null;
+    karten.forEach(function (k) {
+      k.addEventListener('pointerdown', function () { zeit = Date.now(); });
+      k.addEventListener('click', function () {
+        if (Date.now() - zeit > 1200) return;           // Tastatur: nicht von selbst weiter
+        clearTimeout(timer);
+        timer = setTimeout(function () { zeit = 0; weiter(); }, ruhig ? 0 : 320);
+      });
+    });
+  }
+  var check = $('check');
+  if (check) sofortWeiter(alle('input[name="c-gebaeude"]', check).map(function (i) { return i.parentNode; }), function () {
+    var stufe = check.querySelector('input[name="c-gebaeude"]').closest('.check__stufe');
+    if (!stufe.hidden) $('check-weiter').click();
+  });
+
+  /* ---------- Anfrage ---------- */
+  var af = $('anfrage');
+  if (!af) return;
+  var stufen = {};
+  alle('.a-stufe', af).forEach(function (s) { stufen[s.getAttribute('data-id')] = s; });
+  var PFAD = { 'Probefläche': ['wunsch', 'gebaeude', 'hoehe', 'befall', 'kontakt'], 'Rückruf': ['wunsch', 'kontakt'], 'Infoblatt': ['wunsch', 'kontakt'] };
+  var FELDER = {
+    'Probefläche': ['f-name', 'f-strasse', 'f-plz', 'f-ort', 'f-tel', 'f-mail', 'f-foto', 'f-text'],
+    'Rückruf': ['f-name', 'f-tel', 'f-text'],
+    'Infoblatt': ['f-name', 'f-mail']
+  };
+  var PFLICHT = {
+    'Probefläche': ['f-name', 'f-strasse', 'f-plz', 'f-ort', 'f-tel', 'f-mail'],
+    'Rückruf': ['f-name', 'f-tel'],
+    'Infoblatt': ['f-name', 'f-mail']
+  };
+  var KONTAKT = { 'Probefläche': 'Wohin dürfen wir kommen?', 'Rückruf': 'Unter welcher Nummer erreichen wir Sie?', 'Infoblatt': 'Wohin dürfen wir das Infoblatt senden?' };
+  var jetzt = 'wunsch', lauf = $('a-lauf'), zurueck = $('a-zurueck'), meldung = $('a-meldung');
+  function wahl(name) { var e = af.querySelector('input[name="' + name + '"]:checked'); return e ? e.value : ''; }
+  function pfad() { return PFAD[wahl('wunsch')] || PFAD['Probefläche']; }
+  function zeige(id, rueckwaerts, fokus) {
+    var weg = pfad(), n = weg.indexOf(id);
+    jetzt = id;
+    Object.keys(stufen).forEach(function (k) { stufen[k].hidden = k !== id; stufen[k].classList.remove('kommt', 'kommt-zurueck'); });
+    void stufen[id].offsetWidth;
+    stufen[id].classList.add(rueckwaerts ? 'kommt-zurueck' : 'kommt');
+    lauf.textContent = '';
+    weg.forEach(function (s, i) { var li = document.createElement('li'); if (id === 'fertig' || i <= n) li.className = 'ist-voll'; lauf.appendChild(li); });
+    $('a-zahl').textContent = id === 'fertig' ? 'Fertig' : 'Schritt ' + (n + 1) + ' von ' + weg.length;
+    zurueck.disabled = id === 'wunsch' || id === 'fertig';
+    $('a-unten').hidden = id === 'kontakt' || id === 'fertig';
+    meldung.hidden = true;
+    if (id === 'kontakt') {
+      var wunsch = wahl('wunsch') || 'Probefläche';
+      $('a-kontaktfrage').textContent = KONTAKT[wunsch];
+      alle('.feld', stufen.kontakt).forEach(function (f) { f.hidden = FELDER[wunsch].indexOf(f.querySelector('input, textarea').id) < 0; f.classList.remove('ist-falsch'); });
+      var chips = $('a-chips'); chips.textContent = '';
+      weg.slice(0, -1).forEach(function (s) {
+        var wert = wahl(s); if (!wert) return;
+        var b = document.createElement('button'); b.type = 'button'; b.textContent = wert;
+        b.setAttribute('aria-label', wert + ' ändern');
+        b.addEventListener('click', function () { zeige(s, true, true); });
+        chips.appendChild(b);
+      });
+    }
+    if (fokus) { var f = stufen[id].querySelector('.a-frage'); if (f) f.focus({ preventScroll: true }); }
+  }
+  function weiter() {
+    if (jetzt === 'kontakt' || jetzt === 'fertig') return;
+    if (!wahl(jetzt)) { meldung.hidden = false; meldung.textContent = 'Bitte wählen Sie eine Antwort aus.'; return; }
+    var weg = pfad();
+    zeige(weg[weg.indexOf(jetzt) + 1], false, true);
+  }
+  sofortWeiter(alle('.karte', af), weiter);
+  zurueck.addEventListener('click', function () { var weg = pfad(), n = weg.indexOf(jetzt); if (n > 0) zeige(weg[n - 1], true, true); });
+  $('a-neu').addEventListener('click', function () { af.reset(); zeige('wunsch', true, true); });
+  af.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (jetzt !== 'kontakt') { weiter(); return; }
+    var wunsch = wahl('wunsch') || 'Probefläche', fehlt = null;
+    alle('.feld', stufen.kontakt).forEach(function (f) { f.classList.remove('ist-falsch'); });
+    PFLICHT[wunsch].forEach(function (id) {
+      var f = $(id), leer = !f.value.trim();
+      if (id === 'f-mail' && !leer && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.value.trim())) leer = true;
+      if (leer) { f.closest('.feld').classList.add('ist-falsch'); if (!fehlt) fehlt = f; }
+    });
+    if (fehlt) {
+      meldung.hidden = false;
+      meldung.textContent = fehlt.id === 'f-mail' && fehlt.value.trim()
+        ? 'Bitte prüfen Sie Ihre E-Mail-Adresse. Sie braucht die Form name@beispiel.de.'
+        : 'Bitte füllen Sie noch das Feld „' + af.querySelector('label[for="' + fehlt.id + '"]').textContent + '“ aus.';
+      fehlt.focus();
+      return;
+    }
+    zeige('fertig', false, true);
+  });
+
+  /* Angaben aus dem Fassaden-Check übernehmen und gleich zu den Kontaktdaten springen */
+  var daten = null;
+  try { daten = JSON.parse(sessionStorage.getItem('ft-check') || 'null'); sessionStorage.removeItem('ft-check'); } catch (fehlerLesen) {}
+  if (daten && daten.gebaeude) {
+    alle('input[name="wunsch"], input[name="gebaeude"], input[name="hoehe"]', af).forEach(function (r) {
+      if (r.value === 'Probefläche' || r.value === daten.gebaeude || r.value === daten.hoehe) r.checked = true;
+    });
+    $('f-text').value = 'Aus dem Fassaden-Check: ' + daten.befall.join(', ') + '; Fassadenfläche ca. ' + daten.flaeche + ' m² (Schätzung).';
+    PFAD['Probefläche'] = ['wunsch', 'gebaeude', 'hoehe', 'kontakt'];
+    zeige('kontakt', false, false);
+    $('a-hinweis').hidden = false;
+  } else zeige('wunsch', false, false);
+  stufen[jetzt].classList.remove('kommt');
 })();

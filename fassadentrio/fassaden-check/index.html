@@ -22,9 +22,11 @@
 <link rel="preload" href="../assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../assets/site.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://entwurf.medialyte.de/fassadentrio/"}, {"@type": "ListItem", "position": 2, "name": "Fassaden-Check", "item": "https://entwurf.medialyte.de/fassadentrio/fassaden-check/"}]}]}</script>
+<script>(function(){try{if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;var r=document.referrer;if(r&&r.indexOf(new URL("../",location.href).href)===0)return;document.documentElement.classList.add("mit-intro")}catch(e){}})()</script>
 </head>
 <body>
 <a class="skip" href="#inhalt">Zum Inhalt springen</a>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro__alt"><div class="intro__marke"><svg viewBox="0 0 40 40" fill="none" stroke-width="2.2"><rect x="13.5" y="2.5" width="24" height="24"/><rect x="7.5" y="7.5" width="24" height="24"/><rect x="2.5" y="13" width="24" height="24"/></svg><span class="intro__wort"><span class="intro__name">FASSADEN<b>TRIO</b></span><span class="intro__zusatz">ALGENENTFERNUNG</span></span></div></div><div class="intro__neu"><div class="intro__halt"><div class="intro__marke"><svg viewBox="0 0 40 40" fill="none" stroke-width="2.2"><rect x="13.5" y="2.5" width="24" height="24"/><rect x="7.5" y="7.5" width="24" height="24"/><rect x="2.5" y="13" width="24" height="24"/></svg><span class="intro__wort"><span class="intro__name">FASSADEN<b>TRIO</b></span><span class="intro__zusatz">ALGENENTFERNUNG</span></span></div></div></div><span class="intro__kante"></span></div>
 <div class="lauf" aria-hidden="true"></div>
 <!-- Entwurfshinweis: vor dem Livegang diesen Block entfernen -->
 <div class="entwurf"><p class="wrap">Entwurf von Medialyte für FassadenTrio. Diese Seite ist noch nicht die offizielle Website.</p></div>
@@ -66,7 +68,7 @@
     
   </div>
 </section>
-<section class="sek sek--weiss">
+<section class="sek">
   <div class="wrap">
 <form class="check" id="check" novalidate data-leiste-aus>
   <div class="fortschritt" aria-hidden="true"><span id="check-lauf"></span></div>
@@ -84,15 +86,8 @@
   </div>
 
   <div class="check__stufe" data-titel="Um welches Gebäude geht es?" hidden>
-    <fieldset class="wahl">
-      <legend>Gebäudetyp</legend>
-      <label><input type="radio" name="c-gebaeude" id="cg-efh" value="Einfamilienhaus" checked>Einfamilienhaus</label>
-      <label><input type="radio" name="c-gebaeude" id="cg-mfh" value="Mehrfamilienhaus">Mehrfamilienhaus</label>
-      <label><input type="radio" name="c-gebaeude" id="cg-wohn" value="Wohnanlage">Wohnanlage</label>
-      <label><input type="radio" name="c-gebaeude" id="cg-gew" value="Firmengebäude">Firmengebäude</label>
-      <label><input type="radio" name="c-gebaeude" id="cg-heim" value="Seniorenheim">Seniorenheim</label>
-      <label><input type="radio" name="c-gebaeude" id="cg-sonst" value="Anderes Gebäude">Anderes Gebäude</label>
-    </fieldset>
+    <div class="karten"><label class="karte"><input type="radio" name="c-gebaeude" id="cg-efh" value="Einfamilienhaus"><span class="karte__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span><span class="karte__text"><strong>Einfamilienhaus</strong></span></label><label class="karte"><input type="radio" name="c-gebaeude" id="cg-mfh" value="Mehrfamilienhaus"><span class="karte__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V5h10v16"/><path d="M15 10h4v11"/><path d="M8 9h1.5M11 9h1.5M8 13h1.5M11 13h1.5M8 17h1.5M11 17h1.5"/></svg></span><span class="karte__text"><strong>Mehrfamilienhaus</strong></span></label><label class="karte"><input type="radio" name="c-gebaeude" id="cg-wohn" value="Wohnanlage"><span class="karte__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 21h20"/><path d="M3 21V10h5v11M9.5 21V5h5v16M16 21V12h5v9"/></svg></span><span class="karte__text"><strong>Wohnanlage</strong></span></label><label class="karte"><input type="radio" name="c-gebaeude" id="cg-gew" value="Firmengebäude"><span class="karte__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21V9l5 3.5V9l5 3.5V4h8v17z"/><path d="M16 9h2M16 13h2M16 17h2M7 17h3"/></svg></span><span class="karte__text"><strong>Firmengebäude</strong></span></label><label class="karte"><input type="radio" name="c-gebaeude" id="cg-heim" value="Seniorenheim"><span class="karte__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M12 17.5s-3-1.9-3-3.9a1.7 1.7 0 0 1 3-1 1.7 1.7 0 0 1 3 1c0 2-3 3.9-3 3.9z"/></svg></span><span class="karte__text"><strong>Seniorenheim</strong></span></label><label class="karte"><input type="radio" name="c-gebaeude" id="cg-sonst" value="Anderes Gebäude"><span class="karte__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="18" cy="12" r="1.4"/></svg></span><span class="karte__text"><strong>Anderes Gebäude</strong></span></label></div>
+
   </div>
 
   <div class="check__stufe" data-titel="Wie groß ist das Gebäude ungefähr?" hidden>
@@ -122,7 +117,7 @@
 </form>
   </div>
 </section>
-<section class="sek">
+<section class="sek sek--weiss">
   <div class="wrap">
 <div class="inhalt"><div class="prosa"><h2>Was der Fassaden-Check kann</h2>
 <p>Der Check ordnet ein, was Sie an Ihrer Fassade sehen. Grüner Belag, dunkle Läufer und grauer Schleier entstehen meist durch Algen und Pilze. Rund 90&nbsp;% aller Fassadenverschmutzungen gehen auf solche Mikroorganismen zurück. Sie sitzen auf der Oberfläche, und dort setzt die Reinigung an.</p>
@@ -132,7 +127,7 @@
 <p>Wie Ihre Fassade nach der Reinigung aussieht, zeigt nur ein Test an Ihrer Fassade. Die <a href="../probeflaeche/">Probefläche</a> ist kostenlos. Ihre Angaben aus dem Check übernehmen wir auf Wunsch gleich in die Anfrage.</p>
 <p>Mehr zum Thema: <a href="../ratgeber/fassade-reinigen-oder-streichen/">Fassade reinigen oder streichen?</a></p></div><aside class="blick" aria-label="Auf einen Blick">
   <h2>Auf einen Blick</h2>
-  <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.2 5.2L20 6.8"/></svg><span>Kostenlose Probefläche am eigenen Gebäude</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.2 5.2L20 6.8"/></svg><span>Bis zu 70&nbsp;% günstiger als ein Neuanstrich</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.2 5.2L20 6.8"/></svg><span>5 Jahre Garantie vor Wiederbefall</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.2 5.2L20 6.8"/></svg><span>Kein Gerüst nötig</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.2 5.2L20 6.8"/></svg><span>Angebot und Anfahrt kostenlos</span></li></ul>
+  <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.2 5.2L20 6.8"/></svg><span>Kostenlose Probefläche am eigenen Gebäude</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.2 5.2L20 6.8"/></svg><span>Bis zu 70&nbsp;% günstiger als ein Neuanstrich</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.2 5.2L20 6.8"/></svg><span>Bis zu 5 Jahre Schutz vor Wiederbefall</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.2 5.2L20 6.8"/></svg><span>Kein Gerüst nötig</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.2 5.2L20 6.8"/></svg><span>Angebot und Anfahrt kostenlos</span></li></ul>
   <a class="btn" href="../probeflaeche/">Probefläche anfordern</a>
   <p class="blick__tel">oder anrufen: <a href="tel:+491788120873">+49 178 812 08 73</a></p>
   <button class="teilen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3M8 7l4-4 4 4M5 12v7a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-7"/></svg><span>Seite teilen</span></button>
@@ -154,7 +149,7 @@
           <svg viewBox="0 0 40 40" fill="none" stroke-width="2.2" aria-hidden="true"><rect x="13.5" y="2.5" width="24" height="24" stroke="#AEB5B7"/><rect x="7.5" y="7.5" width="24" height="24" stroke="#C9363C"/><rect x="2.5" y="13" width="24" height="24" stroke="#AEB5B7"/></svg>
           <span class="logo__wort"><span class="logo__name">FASSADEN<b>TRIO</b></span><span class="logo__zusatz">ALGENENTFERNUNG</span></span>
         </a>
-        <p style="margin-top:18px; max-width:30ch">Professionelle Fassadenreinigung mit Langzeitschutz und 5 Jahren Garantie vor Wiederbefall.</p>
+        <p style="margin-top:18px; max-width:30ch">Professionelle Fassadenreinigung mit Langzeitschutz, der neuen Befall bis zu 5 Jahre verzögert.</p>
         <p style="margin-top:14px">Robert-Bosch-Straße 47<br>46354 Südlohn<br>+49 178 812 08 73<br>info@fassaden-trio.de<br>Mo. bis Fr., 8–16 Uhr</p>
       </div>
       <div><h3>Leistungen</h3><ul><li><a href="../leistungen/einfamilienhaus/">Einfamilienhäuser</a></li><li><a href="../leistungen/mehrfamilienhaus/">Mehrfamilienhäuser</a></li><li><a href="../leistungen/wohnanlagen-hausverwaltung/">Wohnanlagen und WEGs</a></li><li><a href="../leistungen/unternehmen/">Unternehmen</a></li><li><a href="../leistungen/seniorenheime/">Seniorenheime</a></li><li><a href="../leistungen/plattenbauten/">Plattenbauten</a></li></ul></div><div><h3>Wissen</h3><ul><li><a href="../verfahren/">Verfahren</a></li><li><a href="../kosten/">Kosten</a></li><li><a href="../referenzen/">Referenzen</a></li><li><a href="../ratgeber/">Ratgeber</a></li><li><a href="../faq/">Häufige Fragen</a></li></ul></div><div><h3>Unternehmen</h3><ul><li><a href="../einsatzgebiet/">Einsatzgebiet</a></li><li><a href="../einsatzgebiet/kreis-borken/">Kreis Borken</a></li><li><a href="../fassaden-check/">Fassaden-Check</a></li><li><a href="../probeflaeche/">Probefläche</a></li><li><a href="../kontakt/">Kontakt</a></li></ul></div>

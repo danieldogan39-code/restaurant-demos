@@ -784,3 +784,116 @@ html.kein-scroll{overflow:hidden}
   .lauf{display:none}
   .blatt__haupt > li{opacity:1; transform:none}
 }
+
+/* ============ Fassung 6: Anfrage als Frage-für-Frage-Strecke, Eingangsanimation ============ */
+
+/* Anfrage */
+.anfrage{background:#fff; color:#1D1D1F; border-radius:var(--r-rahmen); padding:clamp(22px, 3vw, 44px); display:flex; flex-direction:column; gap:26px; min-height:clamp(500px, 44vw, 580px); box-shadow:0 0 0 1px rgba(127,227,240,.18), 0 40px 120px rgba(0,0,0,.45), 0 0 90px rgba(90,215,235,.10); overflow:hidden}
+.anfrage :focus-visible{outline-color:var(--graphit)}
+.anfrage__kopf{display:grid; grid-template-columns:minmax(92px, auto) minmax(0,1fr) auto; align-items:center; gap:16px; min-height:44px}
+.anfrage__zurueck{justify-self:start; display:inline-flex; align-items:center; gap:6px; min-height:44px; padding:0 14px 0 8px; margin-left:-8px; border:0; border-radius:999px; background:none; font:inherit; font-weight:600; font-size:.95rem; color:var(--stein); cursor:pointer; transition:background .2s ease, color .2s ease, opacity .2s ease}
+.anfrage__zurueck:hover{background:#F0F0F3; color:#1D1D1F}
+.anfrage__zurueck[disabled]{opacity:0; pointer-events:none}
+.anfrage__zurueck svg{width:18px; height:18px}
+.anfrage__lauf{display:flex; gap:6px}
+.anfrage__lauf li{flex:1; height:4px; border-radius:2px; background:#E3E3E8; position:relative; overflow:hidden}
+.anfrage__lauf li::after{content:""; position:absolute; inset:0; background:var(--bordeaux); transform:scaleX(0); transform-origin:0 50%; transition:transform .6s var(--sanft)}
+.anfrage__lauf li.ist-voll::after{transform:scaleX(1)}
+.anfrage__zahl{color:var(--stein); font-size:.875rem; font-variant-numeric:tabular-nums; white-space:nowrap}
+.a-stufe{display:flex; flex-direction:column; gap:22px; flex:1}
+.a-stufe.kommt{animation:a-kommt .55s var(--sanft) both}
+.a-stufe.kommt-zurueck{animation:a-zurueck .55s var(--sanft) both}
+@keyframes a-kommt{from{opacity:0; transform:translate3d(40px, 0, 0)}}
+@keyframes a-zurueck{from{opacity:0; transform:translate3d(-40px, 0, 0)}}
+.a-frage{font-family:var(--fd); font-weight:700; font-size:clamp(1.6rem, 2.7vw, 2.3rem); letter-spacing:-.032em; line-height:1.1; text-wrap:balance}
+.a-frage:focus{outline:none}
+.a-hilfe{color:var(--stein); margin-top:-12px}
+.karten{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:12px}
+.karten--3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.karte{position:relative; display:flex; flex-direction:column; gap:14px; padding:18px 18px 20px; border-radius:20px; background:#F5F5F7; box-shadow:inset 0 0 0 1.5px transparent; cursor:pointer; transition:background .25s ease, color .25s ease, box-shadow .2s ease, transform .3s var(--sanft)}
+.karte:hover{box-shadow:inset 0 0 0 1.5px #1D1D1F; transform:translateY(-2px)}
+.karte:active{transform:scale(.98); transition-duration:.1s}
+.karte input{position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; cursor:pointer}
+.karte__icon{flex:none; width:46px; height:46px; border-radius:14px; background:#fff; display:grid; place-items:center; color:var(--bordeaux); transition:background .25s ease, color .25s ease}
+.karte__icon svg{width:24px; height:24px}
+.karte__text{display:flex; flex-direction:column; gap:4px; min-width:0}
+.karte strong{font-family:var(--fd); font-weight:650; font-size:1.08rem; letter-spacing:-.012em; line-height:1.2}
+.karte small{color:var(--stein); font-size:.9rem; line-height:1.4}
+.karte:has(input:checked){background:var(--graphit); color:#F5F5F7; box-shadow:none}
+.karte:has(input:checked) .karte__icon{background:rgba(255,255,255,.12); color:var(--licht)}
+.karte:has(input:checked) small{color:#B9BEC2}
+.karte:has(input:checked)::after{content:""; position:absolute; top:14px; right:14px; width:26px; height:26px; border-radius:50%; background:var(--licht) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23101214' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12.5l5.2 5.2L20 6.8'/%3E%3C/svg%3E") center / 13px no-repeat; animation:a-haken .35s var(--sanft) both}
+@keyframes a-haken{from{transform:scale(.4); opacity:0}}
+.karte:has(input:focus-visible){outline:3px solid var(--graphit); outline-offset:3px}
+.a-unten{display:flex; justify-content:flex-end; margin-top:auto; min-height:44px}
+.a-weiter{display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:0 16px; border:0; border-radius:999px; background:#F0F0F3; font:inherit; font-weight:600; color:#1D1D1F; cursor:pointer; opacity:0; pointer-events:none; transition:opacity .2s ease}
+.a-weiter svg{width:18px; height:18px}
+.anfrage:has(.karte input:focus-visible) .a-weiter,.a-weiter:focus-visible{opacity:1; pointer-events:auto}
+.a-chips{display:flex; flex-wrap:wrap; gap:8px}
+.a-chips button{display:inline-flex; align-items:center; gap:8px; min-height:38px; padding:0 14px; border:0; border-radius:999px; background:#F0F0F3; font:inherit; font-size:.875rem; font-weight:600; color:#1D1D1F; cursor:pointer; transition:background .2s ease}
+.a-chips button:hover{background:#E3E3E8}
+.a-chips svg{width:14px; height:14px; color:var(--stein)}
+.a-felder{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:16px}
+.anfrage .feld label{font-weight:600; font-size:.9rem; color:#3A3A3F}
+.anfrage .feld input,.anfrage .feld textarea{border:0; background:#F5F5F7; border-radius:14px; min-height:54px; padding:14px 16px; box-shadow:inset 0 0 0 1.5px transparent; transition:box-shadow .2s ease, background .2s ease}
+.anfrage .feld textarea{min-height:96px}
+.anfrage .feld input:focus,.anfrage .feld textarea:focus{outline:none; background:#fff; box-shadow:inset 0 0 0 2px var(--graphit)}
+.anfrage .feld.ist-falsch input{background:#fff; box-shadow:inset 0 0 0 2px var(--bordeaux)}
+.anfrage .feld input[type=file]{min-height:0; padding:12px 14px}
+.anfrage .meldung{background:#FBF1F1; border:0; box-shadow:inset 0 0 0 1.5px var(--bordeaux); color:#1D1D1F}
+.a-senden{width:100%; min-height:58px; font-size:1.1rem; gap:10px}
+.a-senden svg{width:20px; height:20px; transition:transform .25s var(--sanft)}
+.a-senden:hover svg{transform:translateX(4px)}
+.a-klein{color:var(--stein); font-size:.875rem; line-height:1.45}
+.a-klein a{color:inherit}
+.a-fertig{justify-content:center; align-items:flex-start; gap:18px}
+.a-fertig__kreis{width:68px; height:68px; border-radius:50%; background:var(--graphit); color:var(--licht); display:grid; place-items:center}
+.a-fertig__kreis svg{width:30px; height:30px}
+.a-fertig__kreis path{stroke-dasharray:30; stroke-dashoffset:30; animation:a-zeichne .6s var(--sanft) .25s both}
+@keyframes a-zeichne{to{stroke-dashoffset:0}}
+.a-fertig p{color:var(--stein); max-width:40ch}
+@media (max-width: 560px){
+  .anfrage{min-height:0; gap:22px}
+  .anfrage__kopf{grid-template-columns:auto minmax(0,1fr) auto; gap:12px}
+  .karten,.karten--3,.a-felder{grid-template-columns:minmax(0,1fr)}
+  .karte{flex-direction:row; align-items:center; padding:14px 48px 14px 14px}
+  .karte:has(input:checked)::after{top:50%; margin-top:-13px}
+}
+
+/* Eingangsanimation: der Bildschirm wird sauber gewischt, das Logo steht in seinen echten Farben da */
+.intro{display:none}
+html.mit-intro .intro{display:block; position:fixed; inset:0; z-index:200; overflow:hidden; animation:intro-weg .75s cubic-bezier(.7,0,.2,1) 2s both}
+@keyframes intro-weg{to{transform:translate3d(0, -100%, 0)}}
+@keyframes intro-weg2{to{transform:translate3d(0, -100%, 0)}}
+.intro__alt,.intro__halt{position:absolute; inset:0; display:grid; place-items:center}
+.intro__alt{background:#C9CDBE}
+.intro__neu{position:absolute; inset:0; overflow:hidden; background:#F5F5F7; transform:translate3d(-100%, 0, 0); animation:intro-wisch 1s cubic-bezier(.65,0,.25,1) .65s both}
+.intro__halt{transform:translate3d(100%, 0, 0); animation:intro-wisch 1s cubic-bezier(.65,0,.25,1) .65s both}
+.intro__kante{position:absolute; inset:0; transform:translate3d(-100%, 0, 0); animation:intro-wisch 1s cubic-bezier(.65,0,.25,1) .65s both; pointer-events:none}
+.intro__kante::before{content:""; position:absolute; right:-2px; top:0; bottom:0; width:3px; background:#fff; box-shadow:0 0 16px 2px rgba(127,227,240,.85)}
+@keyframes intro-wisch{to{transform:none}}
+.intro__marke{display:flex; align-items:center; gap:clamp(14px, 2.2vw, 28px); animation:intro-drift 2.8s linear both}
+@keyframes intro-drift{from{transform:scale(1.05)}to{transform:scale(1)}}
+.intro__marke svg{flex:none; width:clamp(60px, 9vw, 124px); height:auto}
+.intro__wort{display:flex; flex-direction:column; line-height:1}
+.intro__name{font-family:var(--fd); font-weight:800; font-size:clamp(1.9rem, 6.2vw, 4.6rem); letter-spacing:.004em}
+.intro__zusatz{font-size:clamp(.56rem, 1.5vw, 1.06rem); font-weight:500; letter-spacing:.36em; margin-top:.5em}
+.intro__alt .intro__marke{color:#8E957F}
+.intro__alt rect{stroke:#8E957F; stroke-dasharray:96; stroke-dashoffset:96; animation:intro-zieh .75s cubic-bezier(.2,.7,.2,1) both}
+.intro__alt rect:nth-child(2){animation-delay:.1s}
+.intro__alt rect:nth-child(3){animation-delay:.2s}
+@keyframes intro-zieh{to{stroke-dashoffset:0}}
+.intro__alt .intro__wort{animation:intro-wort .7s cubic-bezier(.2,.7,.2,1) .15s both}
+@keyframes intro-wort{from{opacity:0; filter:blur(10px); transform:translate3d(18px, 0, 0)}}
+.intro__neu rect{stroke:#545C5E}
+.intro__neu rect:nth-child(2){stroke:#7A1418}
+.intro__neu .intro__name{color:#7A1418}
+.intro__neu .intro__name b{font-weight:800; color:#545C5E}
+.intro__neu .intro__zusatz{color:#545C5E}
+.intro__alt .intro__name b{font-weight:800}
+html.mit-intro .kino h1 .z > span{animation-delay:calc(var(--n) * 120ms + 2.15s)}
+
+/* Fassaden-Check im selben Stil */
+.check{background:#fff; box-shadow:0 30px 90px rgba(16,18,20,.09)}
+.check .bildwahl label,.check .mass__bild,.check .befund li{background:#F5F5F7}
+.check .check__fehler{background:#FBF1F1; border:0; box-shadow:inset 0 0 0 1.5px var(--bordeaux)}
