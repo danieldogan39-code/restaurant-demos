@@ -588,3 +588,24 @@
     auf.focus();
   });
 })();
+
+/* ===== Kurzfilme in den Phasen-Karten: laden und spielen nur, solange sie zu sehen sind ===== */
+(function () {
+  'use strict';
+  var filme = Array.prototype.slice.call(document.querySelectorAll('.phase__film'));
+  if (!filme.length || !('IntersectionObserver' in window)) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    filme.forEach(function (v) { v.controls = true; v.addEventListener('play', function () { if (!v.getAttribute('src')) v.src = v.getAttribute('data-src'); }, { once: true }); v.src = v.getAttribute('data-src'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      var v = e.target;
+      if (e.isIntersecting) {
+        if (!v.getAttribute('src')) v.src = v.getAttribute('data-src');
+        var p = v.play(); if (p && p.catch) p.catch(function () {});
+      } else if (!v.paused) v.pause();
+    });
+  }, { threshold: 0.35 });
+  filme.forEach(function (v) { io.observe(v); });
+})();

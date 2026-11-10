@@ -943,3 +943,7 @@ mark.offen{background:#FFE98A; color:inherit; padding:.08em .3em; border-radius:
   .saal__unten{padding:14px 18px 18px}
 }
 @media (prefers-reduced-motion: reduce){ .kino__report-kreis::after,.saal[open]{animation:none} }
+
+/* Phasen-Karten mit Kurzfilm */
+.phase__film{display:block; width:100%; height:auto; aspect-ratio:16 / 11; object-fit:cover; background:#D9DAD6}
+.phasen__hinweis{margin-top:18px; color:var(--stein)}
