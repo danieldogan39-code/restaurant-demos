@@ -947,3 +947,23 @@ mark.offen{background:#FFE98A; color:inherit; padding:.08em .3em; border-radius:
 /* Phasen-Karten mit Kurzfilm */
 .phase__film{display:block; width:100%; height:auto; aspect-ratio:16 / 11; object-fit:cover; background:#D9DAD6}
 .phasen__hinweis{margin-top:18px; color:var(--stein)}
+
+/* Vergleich auf dem Handy: statt einer breiten Tabelle zum Wischen eine Karte je Kriterium, alle drei Wege untereinander */
+@media (max-width: 760px){
+  .vergleich{overflow:visible; border-top:0}
+  .vergleich table{display:block; min-width:0; font-size:1rem}
+  .vergleich thead{position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap}
+  .vergleich tbody{display:flex; flex-direction:column; gap:14px}
+  .vergleich tbody tr{display:block; background:var(--weiss); border-radius:24px; padding:20px 16px 8px}
+  .sek--weiss .vergleich tbody tr{background:var(--putz)}
+  .vergleich tbody th{display:block; width:auto; padding:0 4px 14px; border:0; font-family:var(--fd); font-weight:700; font-size:1.2rem; letter-spacing:-.015em; line-height:1.2; color:var(--graphit)}
+  .vergleich tbody td{display:grid; grid-template-columns:minmax(0, 6.6rem) minmax(0, 1fr); gap:4px 14px; align-items:baseline; padding:12px 4px; border:0; border-top:1px solid var(--linie); line-height:1.4}
+  .vergleich tbody td::before{content:attr(data-label); font-weight:600; font-size:.84rem; line-height:1.3; color:var(--stein); hyphens:manual; overflow-wrap:anywhere}
+  .vergleich tbody td.wir{background:var(--putz); border-top:0; border-radius:16px; padding:14px 14px 15px; margin-bottom:2px}
+  .sek--weiss .vergleich tbody td.wir{background:var(--weiss)}
+  .vergleich tbody td.wir::before{color:var(--bordeaux); font-weight:700}
+  .vergleich tbody td.wir + td{border-top:0}
+}
+@media (max-width: 380px){
+  .vergleich tbody td{grid-template-columns:minmax(0, 1fr)}
+}
