@@ -6,15 +6,19 @@
   const daten = (() => { try { return JSON.parse($('#msr-daten').textContent); } catch (e) { return {}; } })();
   const namen = daten.namen || {};
 
-  /* ---------- Menü ---------- */
+  /* ---------- Menü und Kopfzeile ---------- */
   const kopf = $('.kopf'), menue = $('.menue-knopf');
+  const ruhig = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (kopf && menue) {
-    menue.addEventListener('click', () => {
-      const offen = kopf.toggleAttribute('data-offen');
+    const setze = offen => {
+      kopf.toggleAttribute('data-offen', offen);
       menue.setAttribute('aria-expanded', String(offen));
-    });
+      document.documentElement.classList.toggle('menue-offen', offen);
+    };
+    menue.addEventListener('click', () => setze(!kopf.hasAttribute('data-offen')));
+    $$('.haupt-nav a', kopf).forEach(a => a.addEventListener('click', () => setze(false)));
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && kopf.hasAttribute('data-offen')) { kopf.removeAttribute('data-offen'); menue.setAttribute('aria-expanded', 'false'); menue.focus(); }
+      if (e.key === 'Escape' && kopf.hasAttribute('data-offen')) { setze(false); menue.focus(); }
     });
   }
 
@@ -56,28 +60,104 @@
   });
   zeichnen();
 
-  /* ---------- Höhenprofil im Hero ---------- */
-  const profil = $('.profil');
-  if (profil) {
-    const saeulen = $$('.saeule', profil);
-    const feld = n => $(`[data-anz="${n}"]`, profil);
-    const waehlen = s => {
-      saeulen.forEach(x => x.toggleAttribute('data-aktiv', x === s));
-      const d = s.dataset;
-      feld('name').textContent = d.name;
-      feld('art').textContent = d.art;
-      feld('hoehe').textContent = d.hoehe;
-      feld('preis').textContent = d.preis;
-      const l = feld('link'); l.href = d.href; l.firstElementChild.textContent = d.name + ' ansehen';
+  /* ---------- Scroll: Kopfzeile, Parallaxe, Aufstieg ---------- */
+  const klemme = (x, a, b) => Math.min(b, Math.max(a, x));
+  const weich = t => 1 - Math.pow(1 - t, 3);
+  const parallaxen = ruhig ? [] : $$('[data-parallax]');
+  const film = $('[data-film]');
+  let filmBild = null;
+
+  if (film && !ruhig) {
+    film.dataset.film = 'an';
+    const stufen = $$('.stufe', film), n = stufen.length;
+    const hoehen = stufen.map(s => parseFloat(s.dataset.hoehe));
+    const zahl = $('[data-film-zahl]', film), name = $('[data-film-name]', film);
+    const marke = $('.skala-marke', film), fuellung = $('.skala-fuellung', film), leiste = $('.skala-leiste', film);
+    const halte = $$('.skala-halt', film), punkte = $$('.aufstieg-punkte button', film), stand = $('[data-film-stand]', film);
+    film.style.setProperty('--n', n);
+    let aktiv = -1, letzte = '';
+    const sprung = i => {
+      const r = film.getBoundingClientRect(), weg = r.height - innerHeight;
+      scrollTo({ top: scrollY + r.top + (i + .75) / n * weg, behavior: 'smooth' });
     };
-    const fein = window.matchMedia('(hover:hover) and (pointer:fine)');
-    saeulen.forEach(s => {
-      const a = $('a', s);
-      s.addEventListener('pointerenter', () => { if (fein.matches) waehlen(s); });
-      a.addEventListener('focus', () => waehlen(s));
-      a.addEventListener('click', e => { if (!s.hasAttribute('data-aktiv')) { e.preventDefault(); waehlen(s); } });
+    halte.forEach((h, i) => h.addEventListener('click', () => sprung(i)));
+    punkte.forEach((h, i) => h.addEventListener('click', () => sprung(i)));
+    filmBild = () => {
+      const r = film.getBoundingClientRect(), weg = r.height - innerHeight;
+      if (r.bottom < 0 || r.top > innerHeight) return;
+      const x = klemme(-r.top / weg, 0, 1) * n, i = Math.min(n - 1, Math.floor(x)), f = x - i;
+      const von = i === 0 ? 0 : hoehen[i - 1];
+      const h = von + (hoehen[i] - von) * weich(klemme(f / .5, 0, 1));
+      const text = h.toFixed(2).replace('.', ',');
+      if (text !== letzte) { zahl.textContent = text; letzte = text; }
+      if (leiste) {
+        const anteil = h / 25;
+        marke.style.transform = `translate3d(0,${-anteil * leiste.clientHeight}px,0)`;
+        fuellung.style.transform = `scaleY(${anteil})`;
+      }
+      const jetzt = (i > 0 && f < .42) ? i - 1 : i;
+      if (jetzt !== aktiv) {
+        aktiv = jetzt;
+        stufen.forEach((s, k) => s.classList.toggle('ist-aktiv', k === aktiv));
+        halte.forEach((s, k) => s.toggleAttribute('data-da', k <= aktiv));
+        punkte.forEach((s, k) => { s.toggleAttribute('data-da', k < aktiv); s.setAttribute('aria-current', String(k === aktiv)); });
+        if (stand) stand.textContent = `${aktiv + 1} / ${n}`;
+        if (name) name.textContent = stufen[aktiv].dataset.name;
+      }
+    };
+  }
+
+  let wartet = false;
+  const beiScroll = () => {
+    wartet = false;
+    const y = scrollY;
+    if (kopf) kopf.toggleAttribute('data-fest', y > 24);
+    parallaxen.forEach(el => {
+      const r = el.parentElement.getBoundingClientRect();
+      if (r.bottom < -100 || r.top > innerHeight + 100) return;
+      const mitte = (r.top + r.height / 2 - innerHeight / 2) / innerHeight;
+      el.style.transform = `translate3d(0,${(klemme(mitte, -1, 1) * parseFloat(el.dataset.parallax) * -innerHeight).toFixed(1)}px,0)`;
+    });
+    if (filmBild) filmBild();
+  };
+  const anstossen = () => { if (!wartet) { wartet = true; requestAnimationFrame(beiScroll); } };
+  addEventListener('scroll', anstossen, { passive: true });
+  addEventListener('resize', anstossen);
+  beiScroll();
+
+  /* ---------- Einblenden beim Scrollen ---------- */
+  if (!ruhig && 'IntersectionObserver' in window) {
+    const ziele = $$('.kopfzeile, .zusage, .karte, .stimmen figure, .meldung, .tor, .treffer, .finder-regler, .wagen, .stall, .stationen li, .kat-kopf, .rampe-innen > *, .preisfeld, .fakten, .rechner, .anruf > *, .hof-teil, .bahn-kopf, .kachel, .bildraster, .masse, .formular, .kontaktwege');
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('ist-da'); io.unobserve(e.target); }
+    }), { rootMargin: '0px 0px -8% 0px' });
+    const gruppe = new Map();
+    ziele.forEach(el => {
+      if (el.getBoundingClientRect().top < innerHeight * .92) return;   // schon sichtbar: nichts verstecken
+      const k = gruppe.get(el.parentElement) || 0;
+      gruppe.set(el.parentElement, k + 1);
+      el.style.setProperty('--d', Math.min(k, 5));
+      el.classList.add('ein'); io.observe(el);
     });
   }
+
+  /* ---------- Lichtkegel auf Tafeln ---------- */
+  if (window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
+    $$('.licht').forEach(el => el.addEventListener('pointermove', e => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    }));
+  }
+
+  /* ---------- Bahn: waagerecht blättern ---------- */
+  $$('[data-bahn]').forEach(b => {
+    const spur = $('.bahn', b);
+    $$('[data-bahn-pfeil]', b).forEach(p => p.addEventListener('click', () => {
+      const karte = $('.kachel', spur), schritt = karte ? karte.getBoundingClientRect().width + 20 : 320;
+      spur.scrollBy({ left: schritt * (p.dataset.bahnPfeil === 'vor' ? 1 : -1), behavior: ruhig ? 'auto' : 'smooth' });
+    }));
+  });
 
   /* ---------- Bühnenfinder ---------- */
   const finder = $('#finder-form');
