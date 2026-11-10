@@ -967,3 +967,33 @@ mark.offen{background:#FFE98A; color:inherit; padding:.08em .3em; border-radius:
 @media (max-width: 380px){
   .vergleich tbody td{grid-template-columns:minmax(0, 1fr)}
 }
+
+/* ---------- Sprachauswahl ---------- */
+.sprache{position:relative; flex:none}
+.sprache__knopf{display:inline-flex; align-items:center; gap:8px; height:44px; padding:0 14px 0 12px; border:0; border-radius:999px; background:rgba(16,18,20,.07); color:inherit; font:inherit; font-weight:600; font-size:.9rem; letter-spacing:.03em; cursor:pointer; transition:background .2s ease}
+.kopf.auf-dunkel .sprache__knopf{background:rgba(255,255,255,.14)}
+.sprache__knopf:hover{background:rgba(127,127,127,.28)}
+.flagge{flex:none; display:block; width:22px; height:15px; border-radius:3px; box-shadow:0 0 0 1px rgba(127,127,127,.4); overflow:hidden}
+.sprache__menue{position:absolute; right:0; top:calc(100% + 14px); z-index:6; display:grid; min-width:230px; max-height:min(72vh, 520px); overflow:auto; padding:8px; border-radius:20px; background:#fff; color:#101214; border:1px solid rgba(16,18,20,.08); box-shadow:0 24px 60px rgba(0,0,0,.24); animation:sprache-auf .18s ease both}
+.sprache__menue[hidden]{display:none}
+.sprache__menue a{display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:12px; min-height:44px; padding:8px 12px; border-radius:12px; color:inherit; text-decoration:none; font-size:.97rem}
+.sprache__menue a b{font-weight:500}
+.sprache__menue a span{color:#596166; font-size:.78rem; font-weight:600; letter-spacing:.05em}
+.sprache__menue a:hover,.sprache__menue a[aria-current="true"]{background:#F2F3EF}
+.sprache__menue a[aria-current="true"] b{font-weight:700}
+@keyframes sprache-auf{from{opacity:0; transform:translateY(-6px)}to{opacity:1; transform:none}}
+@media (prefers-reduced-motion: reduce){.sprache__menue{animation:none}}
+@media (max-width:560px){
+  .sprache__knopf{width:44px; padding:0; justify-content:center; border-radius:50%}
+  .sprache__knopf span{display:none}
+  .sprache__menue{position:fixed; left:12px; right:12px; top:76px; min-width:0}
+}
+
+/* Lange Wörter in Überschriften: auf schmalen Bildschirmen trennen statt überlaufen (wichtig für die Sprachfassungen) */
+h1,h2,h3{overflow-wrap:break-word}
+@media (max-width:640px){
+  h1,h2,h3,.btn,summary{-webkit-hyphens:auto; hyphens:auto}
+}
+/* Schaltflächen mit längeren Texten (Sprachfassungen): sauber zweizeilig */
+.btn{text-align:center; line-height:1.22; padding-top:9px; padding-bottom:9px}
+.btn--klein,.leiste .btn{padding-top:6px; padding-bottom:6px}

@@ -1,3 +1,6 @@
+/* Übersetzungen: window.FT_W wird in den Sprachfassungen vor dieses Skript gesetzt */
+window.ftT = window.ftT || function (s, werte) { var w = window.FT_W, t = (w && w[s]) || s; if (werte) for (var k in werte) t = t.replace('{' + k + '}', werte[k]); return t; };
+window.ftLang = document.documentElement.lang || 'de';
 (function () {
   'use strict';
   var ruhig = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -25,7 +28,7 @@
     var pauseText = pause.querySelector('span');
     var zeige = function (laeuft) {
       pause.setAttribute('aria-pressed', laeuft ? 'false' : 'true');
-      pauseText.textContent = laeuft ? 'Film anhalten' : 'Film abspielen';
+      pauseText.textContent = ftT(laeuft ? 'Film anhalten' : 'Film abspielen');
       pause.querySelector('.ic-pause').style.display = laeuft ? '' : 'none';
       pause.querySelector('.ic-play').style.display = laeuft ? 'none' : '';
     };
@@ -80,10 +83,10 @@
       var vor = $('galerie-vor'), nach = $('galerie-nach');
       vor.src = vor.getAttribute('src').replace(/r\d\d-vorher/, 'r' + id + '-vorher');
       nach.src = nach.getAttribute('src').replace(/r\d\d-nachher/, 'r' + id + '-nachher');
-      vor.alt = titel + ' vor der Reinigung';
-      nach.alt = titel + ' nach der Reinigung';
+      vor.alt = ftT('{t} vor der Reinigung', { t: titel });
+      nach.alt = ftT('{t} nach der Reinigung', { t: titel });
       $('galerie-titel').textContent = titel;
-      $('galerie-zaehler').textContent = (i + 1) + ' von ' + knoepfe.length;
+      $('galerie-zaehler').textContent = ftT('{a} von {b}', { a: i + 1, b: knoepfe.length });
       gVn.setze(50);
     });
   });
@@ -91,12 +94,12 @@
   /* Rechner */
   var feld = $('anstrich'), schieber = $('anstrich-regler');
   if (feld && schieber) {
-    var euro = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 });
+    var euro = new Intl.NumberFormat(ftLang === 'de' ? 'de-DE' : ftLang, { maximumFractionDigits: 0 });
     var rechne = function (wert) {
       if (!isFinite(wert) || wert <= 0) return;
       $('aus-anstrich').textContent = euro.format(wert) + ' €';
-      $('aus-reinigung').textContent = 'ab ' + euro.format(wert * 0.3) + ' €';
-      $('aus-ersparnis').textContent = 'bis zu ' + euro.format(wert * 0.7) + ' €';
+      $('aus-reinigung').textContent = ftT('ab {x} €', { x: euro.format(wert * 0.3) });
+      $('aus-ersparnis').textContent = ftT('bis zu {x} €', { x: euro.format(wert * 0.7) });
     };
     feld.addEventListener('input', function () {
       var w = parseFloat(feld.value);
@@ -206,7 +209,7 @@
   function menue(offen) {
     clearTimeout(zuTimer);
     knopf.setAttribute('aria-expanded', offen ? 'true' : 'false');
-    knopf.setAttribute('aria-label', offen ? 'Menü schließen' : 'Menü öffnen');
+    knopf.setAttribute('aria-label', ftT(offen ? 'Menü schließen' : 'Menü öffnen'));
     document.documentElement.classList.toggle('kein-scroll', offen);
     kopf.classList.toggle('ist-menue', offen);
     if (offen) {
@@ -261,15 +264,15 @@
     } catch (fehler) { return null; }
     var jetzt = new Date(Date.UTC(teile.year, teile.month - 1, teile.day, teile.hour % 24, teile.minute));
     var std = jetzt.getUTCHours();
-    if (werktag(jetzt) && std >= 8 && std < 16) return { offen: true, kurz: 'Jetzt geöffnet', lang: 'Büro jetzt geöffnet, bis 16 Uhr' };
+    if (werktag(jetzt) && std >= 8 && std < 16) return { offen: true, kurz: ftT('Jetzt geöffnet'), lang: ftT('Büro jetzt geöffnet, bis 16 Uhr') };
     var wann;
-    if (werktag(jetzt) && std < 8) wann = 'heute ab 8 Uhr';
+    if (werktag(jetzt) && std < 8) wann = ftT('heute ab 8 Uhr');
     else {
       var t = new Date(jetzt.getTime()), n = 0;
       do { t = new Date(t.getTime() + 86400000); n++; } while (!werktag(t) && n < 10);
-      wann = n === 1 ? 'morgen ab 8 Uhr' : 'am ' + ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'][t.getUTCDay()] + ' ab 8 Uhr';
+      wann = ftT(n === 1 ? 'morgen ab 8 Uhr' : ['am Sonntag ab 8 Uhr', 'am Montag ab 8 Uhr', 'am Dienstag ab 8 Uhr', 'am Mittwoch ab 8 Uhr', 'am Donnerstag ab 8 Uhr', 'am Freitag ab 8 Uhr', 'am Samstag ab 8 Uhr'][t.getUTCDay()]);
     }
-    return { offen: false, kurz: 'Gerade geschlossen', lang: 'Büro geschlossen. Wieder erreichbar ' + wann };
+    return { offen: false, kurz: ftT('Gerade geschlossen'), lang: ftT('Büro geschlossen. Wieder erreichbar {wann}', { wann: wann }) };
   }
   var stand = buero();
   if (stand) {
@@ -280,14 +283,18 @@
   /* ---------- Suche über Seiten und Antworten ---------- */
   var dlg = $('suche'), sFeld = $('suche-feld'), sListe = $('suche-liste'), index = null;
   function norm(s) {
-    return s.toLowerCase().replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss').replace(/[^a-z0-9]+/g, ' ');
+    s = s.toLowerCase();
+    if (ftLang === 'de') s = s.replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue');
+    s = s.replace(/ß/g, 'ss').replace(/ø/g, 'o').replace(/æ/g, 'ae').replace(/œ/g, 'oe').replace(/ł/g, 'l').replace(/đ/g, 'd');
+    if (s.normalize) s = s.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    return s.replace(/[^a-z0-9]+/g, ' ');
   }
   function zeigeTreffer(q) {
     sListe.textContent = '';
     var worte = norm(q).split(' ').filter(function (w) { return w.length > 1; }), treffer;
     if (!worte.length) {
       treffer = index.filter(function (e) { return e.v; });
-      sListe.appendChild(neu('p', 'suche__titel', 'Häufig gesucht'));
+      sListe.appendChild(neu('p', 'suche__titel', ftT('Häufig gesucht')));
     } else {
       treffer = index.map(function (e) {
         var punkte = 0, alleDa = true;
@@ -300,13 +307,13 @@
       }).filter(function (x) { return x.p > 0; }).sort(function (x, y) { return y.p - x.p; }).slice(0, 7).map(function (x) { return x.e; });
     }
     if (!treffer.length) {
-      sListe.appendChild(neu('p', 'suche__leer', 'Dazu haben wir nichts gefunden. Rufen Sie uns gern an: +49 178 812 08 73.'));
+      sListe.appendChild(neu('p', 'suche__leer', ftT('Dazu haben wir nichts gefunden. Rufen Sie uns gern an: +49 178 812 08 73.')));
       return;
     }
     treffer.forEach(function (e) {
       var a = neu('a', 'treffer');
       a.href = wurzel + e.u;
-      a.appendChild(neu('i', '', e.a === 'f' ? 'Antwort' : 'Seite'));
+      a.appendChild(neu('i', '', ftT(e.a === 'f' ? 'Antwort' : 'Seite')));
       a.appendChild(neu('b', '', e.t));
       a.appendChild(neu('span', '', e.d));
       sListe.appendChild(a);
@@ -323,7 +330,7 @@
     fetch(wurzel + 'assets/suche.json').then(function (r) { return r.json(); }).then(function (daten) {
       index = daten.map(function (e) { e.nt = norm(e.t); e.nd = norm(e.d); e.nk = norm(e.k || ''); return e; });
       zeigeTreffer(sFeld.value);
-    }).catch(function () { sListe.appendChild(neu('p', 'suche__leer', 'Die Suche ist gerade nicht erreichbar. Alle Antworten finden Sie auf der Seite „Häufige Fragen“.')); });
+    }).catch(function () { sListe.appendChild(neu('p', 'suche__leer', ftT('Die Suche ist gerade nicht erreichbar. Alle Antworten finden Sie auf der Seite „Häufige Fragen“.'))); });
   }
   if (dlg) {
     alle('[data-suche]').forEach(function (k) { k.addEventListener('click', sucheAuf); });
@@ -346,7 +353,7 @@
     k.addEventListener('click', function () {
       var wort = k.querySelector('span');
       if (navigator.share) { navigator.share({ title: document.title, url: location.href }).catch(function () {}); return; }
-      if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(function () { wort.textContent = 'Link kopiert'; }, function () { wort.textContent = location.href; });
+      if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(function () { wort.textContent = ftT('Link kopiert'); }, function () { wort.textContent = location.href; });
       else wort.textContent = location.href;
     });
   });
@@ -379,8 +386,8 @@
       bild.appendChild(form('path', { d: 'M' + px + ' ' + (y0 - p + p * 0.18) + 'V' + (y0 - p * 0.42) + 'M' + px + ' ' + (y0 - p * 0.42) + 'l' + (-p * 0.14) + ' ' + (p * 0.42) + 'M' + px + ' ' + (y0 - p * 0.42) + 'l' + (p * 0.14) + ' ' + (p * 0.42), stroke: '#8C181D', 'stroke-width': 1.5, fill: 'none', 'stroke-linecap': 'round' }));
       $('m-laenge-aus').textContent = l + ' m';
       $('m-breite-aus').textContent = B.value + ' m';
-      $('m-geschosse-aus').textContent = g === 1 ? '1 Geschoss' : g + ' Geschosse';
-      $('m-flaeche').textContent = 'ca. ' + flaeche() + ' m²';
+      $('m-geschosse-aus').textContent = g === 1 ? ftT('1 Geschoss') : ftT('{n} Geschosse', { n: g });
+      $('m-flaeche').textContent = ftT('ca. {f} m²', { f: flaeche() });
     };
     [L, B, G].forEach(function (r) { r.addEventListener('input', zeichne); });
     zeichne();
@@ -393,37 +400,37 @@
     var ergebnis = function () {
       var b = befall(), risse = b.indexOf('Risse oder abblätternde Farbe') >= 0, belag = b.filter(function (x) { return x.indexOf('Risse') < 0; });
       var feld = $('check-ergebnis'); feld.textContent = '';
-      feld.appendChild(neu('h3', '', belag.length ? 'Das spricht für eine Reinigung.' : 'Hier hilft eine Reinigung allein nicht.'));
+      feld.appendChild(neu('h3', '', ftT(belag.length ? 'Das spricht für eine Reinigung.' : 'Hier hilft eine Reinigung allein nicht.')));
       var liste = neu('ul');
       if (belag.length) {
-        punkt(liste, belag.join(', ') + ': Solche Beläge entstehen meist durch Algen und Pilze. Sie sitzen auf der Oberfläche und lassen sich entfernen, ohne dass neu gestrichen wird.');
-        punkt(liste, +G.value <= 2 ? 'Bei 1 bis 2 Geschossen arbeiten unsere Techniker in der Regel mit Teleskoplanzen vom Boden aus. Ein Gerüst braucht es nicht.'
+        punkt(liste, ftT('{belag}: Solche Beläge entstehen meist durch Algen und Pilze. Sie sitzen auf der Oberfläche und lassen sich entfernen, ohne dass neu gestrichen wird.', { belag: belag.map(function (x) { return ftT(x); }).join(', ') }));
+        punkt(liste, ftT(+G.value <= 2 ? 'Bei 1 bis 2 Geschossen arbeiten unsere Techniker in der Regel mit Teleskoplanzen vom Boden aus. Ein Gerüst braucht es nicht.'
           : (+G.value <= 4 ? 'Bei 3 bis 4 Geschossen arbeiten wir je nach Höhe mit Teleskoplanzen oder von der Hubarbeitsbühne. Ein Gerüst braucht es nicht.'
-            : 'Hohe Fassaden wie Ihre reinigen wir von der Hubarbeitsbühne. Ein Gerüst wird nicht aufgebaut.'));
-        punkt(liste, 'Die Reinigung kostet bis zu 70 % weniger als ein Neuanstrich. Der Langzeitschutz verzögert neuen Befall bis zu 5 Jahre.');
+            : 'Hohe Fassaden wie Ihre reinigen wir von der Hubarbeitsbühne. Ein Gerüst wird nicht aufgebaut.')));
+        punkt(liste, ftT('Die Reinigung kostet bis zu 70 % weniger als ein Neuanstrich. Der Langzeitschutz verzögert neuen Befall bis zu 5 Jahre.'));
       }
-      if (risse) punkt(liste, 'Risse und abblätternde Farbe: Eine Reinigung entfernt Belag, sie repariert keinen Putz. Lassen Sie diese Stellen fachlich prüfen.');
-      punkt(liste, 'Geschätzte Fassadenfläche: ca. ' + flaeche() + ' m² (' + gebaeude() + ', ' + hoehe() + ').');
+      if (risse) punkt(liste, ftT('Risse und abblätternde Farbe: Eine Reinigung entfernt Belag, sie repariert keinen Putz. Lassen Sie diese Stellen fachlich prüfen.'));
+      punkt(liste, ftT('Geschätzte Fassadenfläche: ca. {f} m² ({g}, {h}).', { f: flaeche(), g: ftT(gebaeude()), h: ftT(hoehe()) }));
       feld.appendChild(liste);
-      feld.appendChild(neu('p', 'klein', 'Das ist eine erste Einschätzung aus Ihren Angaben und kein Gutachten. Wie Ihre Fassade nach der Reinigung aussieht, zeigt die kostenlose Probefläche.'));
+      feld.appendChild(neu('p', 'klein', ftT('Das ist eine erste Einschätzung aus Ihren Angaben und kein Gutachten. Wie Ihre Fassade nach der Reinigung aussieht, zeigt die kostenlose Probefläche.')));
     };
     var zeige = function (n, fokus) {
       nr = n;
       stufen.forEach(function (st, i) { st.hidden = i !== n; });
       $('check-titel').textContent = stufen[n].getAttribute('data-titel');
-      $('check-zahl').textContent = 'Schritt ' + (n + 1) + ' von ' + stufen.length;
+      $('check-zahl').textContent = ftT('Schritt {a} von {b}', { a: n + 1, b: stufen.length });
       $('check-lauf').style.width = ((n + 1) / stufen.length * 100) + '%';
       zurueck.hidden = n === 0;
       fehler.hidden = true;
-      weiter.textContent = n === stufen.length - 1 ? 'Mit diesen Angaben Probefläche anfordern' : (n === stufen.length - 2 ? 'Einschätzung anzeigen' : 'Weiter');
+      weiter.textContent = ftT(n === stufen.length - 1 ? 'Mit diesen Angaben Probefläche anfordern' : (n === stufen.length - 2 ? 'Einschätzung anzeigen' : 'Weiter'));
       if (n === stufen.length - 1) ergebnis();
       if (fokus) $('check-titel').focus();
     };
     zurueck.addEventListener('click', function () { zeige(nr - 1, true); });
     check.addEventListener('submit', function (e) {
       e.preventDefault();
-      if (nr === 0 && !befall().length) { fehler.hidden = false; fehler.textContent = 'Bitte wählen Sie mindestens eine Antwort aus.'; return; }
-      if (nr === 1 && !gebaeude()) { fehler.hidden = false; fehler.textContent = 'Bitte wählen Sie einen Gebäudetyp aus.'; return; }
+      if (nr === 0 && !befall().length) { fehler.hidden = false; fehler.textContent = ftT('Bitte wählen Sie mindestens eine Antwort aus.'); return; }
+      if (nr === 1 && !gebaeude()) { fehler.hidden = false; fehler.textContent = ftT('Bitte wählen Sie einen Gebäudetyp aus.'); return; }
       if (nr < stufen.length - 1) { zeige(nr + 1, true); return; }
       try {
         sessionStorage.setItem('ft-check', JSON.stringify({ befall: befall(), gebaeude: gebaeude(), hoehe: hoehe(), flaeche: flaeche() }));
@@ -499,19 +506,19 @@
     stufen[id].classList.add(rueckwaerts ? 'kommt-zurueck' : 'kommt');
     lauf.textContent = '';
     weg.forEach(function (s, i) { var li = document.createElement('li'); if (id === 'fertig' || i <= n) li.className = 'ist-voll'; lauf.appendChild(li); });
-    $('a-zahl').textContent = id === 'fertig' ? 'Fertig' : 'Schritt ' + (n + 1) + ' von ' + weg.length;
+    $('a-zahl').textContent = id === 'fertig' ? ftT('Fertig') : ftT('Schritt {a} von {b}', { a: n + 1, b: weg.length });
     zurueck.disabled = id === 'wunsch' || id === 'fertig';
     $('a-unten').hidden = id === 'kontakt' || id === 'fertig';
     meldung.hidden = true;
     if (id === 'kontakt') {
       var wunsch = wahl('wunsch') || 'Probefläche';
-      $('a-kontaktfrage').textContent = KONTAKT[wunsch];
+      $('a-kontaktfrage').textContent = ftT(KONTAKT[wunsch]);
       alle('.feld', stufen.kontakt).forEach(function (f) { f.hidden = FELDER[wunsch].indexOf(f.querySelector('input, textarea').id) < 0; f.classList.remove('ist-falsch'); });
       var chips = $('a-chips'); chips.textContent = '';
       weg.slice(0, -1).forEach(function (s) {
         var wert = wahl(s); if (!wert) return;
-        var b = document.createElement('button'); b.type = 'button'; b.textContent = wert;
-        b.setAttribute('aria-label', wert + ' ändern');
+        var b = document.createElement('button'); b.type = 'button'; b.textContent = ftT(wert);
+        b.setAttribute('aria-label', ftT('{wert} ändern', { wert: ftT(wert) }));
         b.addEventListener('click', function () { zeige(s, true, true); });
         chips.appendChild(b);
       });
@@ -520,7 +527,7 @@
   }
   function weiter() {
     if (jetzt === 'kontakt' || jetzt === 'fertig') return;
-    if (!wahl(jetzt)) { meldung.hidden = false; meldung.textContent = 'Bitte wählen Sie eine Antwort aus.'; return; }
+    if (!wahl(jetzt)) { meldung.hidden = false; meldung.textContent = ftT('Bitte wählen Sie eine Antwort aus.'); return; }
     var weg = pfad();
     zeige(weg[weg.indexOf(jetzt) + 1], false, true);
   }
@@ -540,8 +547,8 @@
     if (fehlt) {
       meldung.hidden = false;
       meldung.textContent = fehlt.id === 'f-mail' && fehlt.value.trim()
-        ? 'Bitte prüfen Sie Ihre E-Mail-Adresse. Sie braucht die Form name@beispiel.de.'
-        : 'Bitte füllen Sie noch das Feld „' + af.querySelector('label[for="' + fehlt.id + '"]').textContent + '“ aus.';
+        ? ftT('Bitte prüfen Sie Ihre E-Mail-Adresse. Sie braucht die Form name@beispiel.de.')
+        : ftT('Bitte füllen Sie noch das Feld „{feld}“ aus.', { feld: af.querySelector('label[for="' + fehlt.id + '"]').textContent });
       fehlt.focus();
       return;
     }
@@ -555,7 +562,7 @@
     alle('input[name="wunsch"], input[name="gebaeude"], input[name="hoehe"]', af).forEach(function (r) {
       if (r.value === 'Probefläche' || r.value === daten.gebaeude || r.value === daten.hoehe) r.checked = true;
     });
-    $('f-text').value = 'Aus dem Fassaden-Check: ' + daten.befall.join(', ') + '; Fassadenfläche ca. ' + daten.flaeche + ' m² (Schätzung).';
+    $('f-text').value = ftT('Aus dem Fassaden-Check: {befall}; Fassadenfläche ca. {f} m² (Schätzung).', { befall: daten.befall.map(function (x) { return ftT(x); }).join(', '), f: daten.flaeche });
     PFAD['Probefläche'] = ['wunsch', 'gebaeude', 'hoehe', 'kontakt'];
     zeige('kontakt', false, false);
     $('a-hinweis').hidden = false;
@@ -608,4 +615,23 @@
     });
   }, { threshold: 0.35 });
   filme.forEach(function (v) { io.observe(v); });
+})();
+
+/* ===== Fassung 8: Sprachauswahl ===== */
+(function () {
+  'use strict';
+  var box = document.querySelector('[data-sprache]');
+  if (!box) return;
+  var knopf = box.querySelector('button'), liste = box.querySelector('.sprache__menue');
+  function zu() { liste.hidden = true; knopf.setAttribute('aria-expanded', 'false'); }
+  knopf.addEventListener('click', function () {
+    var auf = liste.hidden;
+    liste.hidden = !auf;
+    knopf.setAttribute('aria-expanded', auf ? 'true' : 'false');
+    if (auf) { var hier = liste.querySelector('[aria-current]'); if (hier) hier.focus({ preventScroll: true }); }
+  });
+  document.addEventListener('click', function (e) { if (!box.contains(e.target)) zu(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !liste.hidden) { zu(); knopf.focus(); } });
+  /* Sprungmarke beim Sprachwechsel mitnehmen */
+  liste.addEventListener('click', function (e) { var a = e.target.closest('a'); if (a && location.hash && a.getAttribute('href').indexOf('#') < 0) a.href = a.getAttribute('href') + location.hash; });
 })();
