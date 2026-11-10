@@ -648,15 +648,16 @@ window.ftLang = document.documentElement.lang || 'de';
   links.forEach(function (a) { a.addEventListener('click', function () { if (location.hash && a.getAttribute('href').indexOf('#') < 0) a.href = a.getAttribute('href') + location.hash; }); });
 })();
 
-/* ===== Fassung 10: Gebäudetypen im Handy-Menü aufklappen ===== */
+/* ===== Fassung 11: Untermenü „Leistungen“ im Handy-Menü ===== */
 (function () {
   'use strict';
-  var auf = document.querySelector('.blatt__auf');
+  var auf = document.querySelector('button.blatt__zeile');
   if (!auf) return;
   var unter = document.getElementById(auf.getAttribute('aria-controls'));
   auf.addEventListener('click', function () {
     var offen = auf.getAttribute('aria-expanded') !== 'true';
     auf.setAttribute('aria-expanded', offen ? 'true' : 'false');
     unter.hidden = !offen;
+    if (offen && auf.scrollIntoView) auf.scrollIntoView({ block: 'start', behavior: 'smooth' });
   });
 })();

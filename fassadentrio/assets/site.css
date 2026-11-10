@@ -1043,19 +1043,20 @@ h1,h2,h3{overflow-wrap:break-word}
 .blatt__suche span{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
 .blatt__nav{flex:1; min-height:0; overflow-y:auto; overscroll-behavior:contain; padding:6px var(--rand-r) 18px var(--rand); -webkit-mask-image:linear-gradient(#000 calc(100% - 24px), transparent); mask-image:linear-gradient(#000 calc(100% - 24px), transparent)}
 .blatt__haupt > li{transition-delay:calc(var(--i) * 30ms + 40ms)}
-.blatt__haupt > li > a,.blatt__zeile > a{display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:52px; padding:6px 0; font-family:var(--fd); font-weight:650; font-size:1.45rem; letter-spacing:-.028em; line-height:1.12; text-decoration:none}
+.blatt__haupt > li > a,.blatt__zeile{display:flex; align-items:center; justify-content:space-between; gap:12px; width:100%; min-height:52px; padding:6px 0; border:0; background:none; color:inherit; font-family:var(--fd); font-weight:650; font-size:1.45rem; letter-spacing:-.028em; line-height:1.12; text-align:left; text-decoration:none; cursor:pointer}
 .blatt__haupt > li > a small{margin-left:auto}
 .blatt__haupt .pf{flex:none; width:18px; height:18px; opacity:.4}
-.blatt__zeile{display:flex; align-items:center}
-.blatt__zeile > a{flex:1; min-width:0}
-.blatt__haupt > li > a[aria-current="page"],.blatt__zeile > a[aria-current="page"]{color:var(--licht)}
-.blatt__auf{flex:none; width:44px; height:44px; margin-right:-13px; border:0; border-radius:50%; background:none; color:inherit; display:grid; place-items:center; cursor:pointer}
-.blatt__auf:hover{background:rgba(255,255,255,.1)}
-.blatt__auf svg{width:18px; height:18px; opacity:.7; transition:transform .3s ease}
-.blatt__auf[aria-expanded="true"] svg{transform:rotate(180deg)}
-.blatt__unter{display:grid; grid-template-columns:1fr 1fr; gap:6px; overflow:visible; margin:0; padding:2px 0 14px}
+.blatt__zeile svg{flex:none; width:18px; height:18px; opacity:.55; transition:transform .3s ease}
+.blatt__zeile[aria-expanded="true"] svg{transform:rotate(180deg); opacity:.9}
+.blatt__haupt > li > a[aria-current="page"],.blatt__zeile.ist-hier{color:var(--licht)}
+/* Untermenü: klappt unter „Leistungen“ auf, eingerückte Liste statt Wischleiste */
+.blatt__unter{display:block; overflow:visible; margin:0 0 12px; padding:0 0 4px 16px; border-left:2px solid rgba(255,255,255,.16); list-style:none}
 .blatt__unter[hidden]{display:none}
-.blatt__unter a{display:flex; align-items:center; min-height:44px; padding:6px 10px; border-radius:12px; background:rgba(255,255,255,.08); font-size:.86rem; font-weight:500; letter-spacing:-.005em; line-height:1.2; white-space:normal; text-decoration:none; overflow-wrap:break-word; -webkit-hyphens:auto; hyphens:auto}
+.blatt__unter li{border:0}
+.blatt__unter a{display:flex; align-items:center; min-height:44px; padding:4px 0; border-radius:0; background:none; color:#D9DCDF; font-family:var(--f); font-size:1.06rem; font-weight:500; letter-spacing:0; line-height:1.25; white-space:normal; text-decoration:none}
+.blatt__unter a:hover,.blatt__unter a[aria-current="page"]{color:#fff}
+.blatt__unter a[aria-current="page"]{font-weight:650}
+.blatt__unter li:first-child a{color:#fff; font-weight:600}
 .blatt__fuss{flex:none; gap:8px; padding:12px var(--rand-r) calc(14px + env(safe-area-inset-bottom, 0px)) var(--rand); border-top:1px solid rgba(255,255,255,.1); background:rgba(7,9,11,.5)}
 .blatt__fuss .btn{min-height:48px}
 .blatt__zeit{order:-1; flex-direction:row; flex-wrap:wrap; align-items:center; gap:2px 12px; margin:0 0 2px; font-size:.8rem; line-height:1.3}
@@ -1064,11 +1065,12 @@ h1,h2,h3{overflow-wrap:break-word}
 .blatt__tel:hover{background:rgba(255,255,255,.08)}
 .blatt__tel svg{flex:none; width:17px; height:17px; opacity:.85}
 @media (max-height:740px){
-  .blatt__haupt > li > a,.blatt__zeile > a{min-height:45px; font-size:1.3rem}
+  .blatt__haupt > li > a,.blatt__zeile{min-height:45px; font-size:1.3rem}
+  .blatt__unter a{min-height:42px; font-size:1rem}
   .blatt__nav{padding-top:2px; padding-bottom:12px}
 }
 @media (max-height:600px){
-  .blatt__haupt > li > a,.blatt__zeile > a{min-height:42px; font-size:1.2rem}
+  .blatt__haupt > li > a,.blatt__zeile{min-height:42px; font-size:1.2rem}
   .blatt__suche{height:44px}
   .blatt__fuss{padding-top:10px}
 }
@@ -1089,3 +1091,9 @@ h1,h2,h3{overflow-wrap:break-word}
 
 /* 320-Pixel-Handys: Befall-Leiste darf das Raster nicht aufdrücken */
 .wissen > *{min-width:0}
+
+/* ---------- Untere Leiste auf dem Handy: Telefon links, Probefläche in der Mitte, WhatsApp rechts ---------- */
+.leiste{gap:8px}
+.leiste a.leiste__wa{display:grid; place-items:center; width:46px; height:46px; flex:none; border-radius:50%; background:#E3E3E8; color:inherit}
+.leiste__wa svg{width:22px; height:22px}
+.leiste .btn{padding-left:10px; padding-right:10px}
