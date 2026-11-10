@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kontakt und Anfrage | Schulze-Renzel</title>
+<meta name="description" content="Kontakt zu Hof Schulze-Renzel, Renzelhook 7, 46414 Rhede-Krommert. Telefon 0177-2631728 oder Anfrageformular.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0068B3">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="Kontakt und Anfrage | Schulze-Renzel">
+<meta property="og:description" content="Kontakt zu Hof Schulze-Renzel, Renzelhook 7, 46414 Rhede-Krommert. Telefon 0177-2631728 oder Anfrageformular.">
+<meta property="og:image" content="assets/img/site/einfahrt.webp">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/archivo-latin-wdth-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="sprung" href="#inhalt">Zum Inhalt springen</a>
+<header class="kopf">
+  <div class="rahmen kopf-innen">
+    <a class="logo" href="index.html" aria-label="MSR Maschinenvermietung, Hof Schulze-Renzel, zur Startseite"><img src="assets/img/site/logo-msr.webp" width="480" height="124" alt="MSR Maschinenvermietung"></a>
+    <button class="menue-knopf" type="button" aria-expanded="false" aria-controls="haupt-nav"><i aria-hidden="true"></i>Menü</button>
+    <nav class="haupt-nav" id="haupt-nav" aria-label="Hauptmenü"><ul><li><a href="maschinen.html">Maschinen</a></li><li><a href="planwagen.html">Planwagen</a></li><li><a href="reiterhof.html">Reiterhof</a></li><li><a href="ueber-uns.html">Über uns</a></li><li><a href="aktuelles.html">Aktuelles</a></li><li><a href="kontakt.html" aria-current="page">Kontakt</a></li></ul><a class="nav-tel zahl" href="tel:+491772631728">0177-2631728 anrufen</a></nav>
+    <div class="kopf-aktion">
+      <a class="kopf-tel zahl" href="tel:+491772631728">0177-2631728</a>
+      <a class="knopf knopf--klein" href="kontakt.html"><span>Anfragen <b class="merk-zaehler" data-merk-zaehler hidden aria-label="Maschinen auf der Anfrageliste">0</b></span></a>
+    </div>
+  </div>
+</header>
+<main id="inhalt">
+<nav class="rahmen" aria-label="Brotkrumen"><ol class="pfad"><li><a href="index.html">Start</a></li><li aria-current="page">Kontakt</li></ol></nav>
+<section class="seitenkopf">
+  <div class="rahmen seitenkopf-raster">
+    <div class="seitenkopf-text">
+      <h1 class="h1">Kontakt</h1>
+      <p class="einstieg">Rufen Sie an oder schreiben Sie uns. Bitte nennen Sie bei Mietanfragen Maschine, Zeitraum und Einsatzort.</p>
+    </div>
+    <div class="kontaktwege">
+      <a href="tel:+491772631728"><span>Mobil</span><strong class="zahl">0177-2631728</strong></a>
+      <a href="mailto:info@schulze-renzel.de"><span>E-Mail</span><strong>info@schulze-renzel.de</strong></a>
+      <a href="https://www.openstreetmap.org/search?query=Renzelhook%207%2C%2046414%20Rhede" rel="noopener"><span>Adresse, Route planen</span><strong>Renzelhook 7, 46414 Rhede-Krommert</strong></a>
+    </div>
+  </div>
+</section>
+<section class="band band--papier">
+  <div class="rahmen detail">
+    <div>
+      <div class="kopfzeile" style="margin-bottom:1.75rem"><h2 class="h2">Anfrage senden</h2><p>Felder mit * brauchen wir, alles andere hilft uns beim Angebot.</p></div>
+      <form class="formular" id="anfrage" novalidate data-mail="info@schulze-renzel.de">
+        <div class="feld-paar">
+          <div class="feld"><label class="feldname" for="k-name">Name *</label><input id="k-name" name="name" autocomplete="name" required aria-describedby="k-name-fehler"><span class="fehler" id="k-name-fehler" aria-live="polite"></span></div>
+          <div class="feld"><label class="feldname" for="k-mail">E-Mail *</label><input id="k-mail" name="email" type="email" autocomplete="email" required aria-describedby="k-mail-fehler"><span class="fehler" id="k-mail-fehler" aria-live="polite"></span></div>
+        </div>
+        <div class="feld-paar">
+          <div class="feld"><label class="feldname" for="k-tel">Telefon</label><input id="k-tel" name="telefon" type="tel" autocomplete="tel"></div>
+          <div class="feld"><label class="feldname" for="k-zeit">Wunschzeitraum</label><input id="k-zeit" name="zeitraum" aria-describedby="k-zeit-hilfe"><span class="klein" id="k-zeit-hilfe">Freitext, zum Beispiel ein Datum oder eine Woche</span></div>
+        </div>
+        <div class="feld">
+          <label class="feldname" for="k-maschine">Bitte wählen Sie Ihre Mietmaschine</label>
+          <select id="k-maschine" name="maschine"><option value="">Maschine hinzufügen …</option><optgroup label="Arbeitsbühnen"><option value="multitel-mje250">Multitel MJE250, 25 m</option><option value="ruthmann-rs200">Ruthmann RS200, 20 m</option><option value="multitel-mt162ex">Multitel MT162EX, 16 m</option><option value="cmc-s20">CMC S20, 20 m</option><option value="cmc-s15">CMC S15, 15 m</option><option value="niftylift-120t">Niftylift 120T, 12 m</option><option value="genie-gs-3246">Genie GS-3246, 12 m</option><option value="haulotte-star-10">Haulotte Star 10, 10 m</option><option value="sinoboom-1932me">Sinoboom 1932ME, 8 m</option></optgroup><optgroup label="Bagger, Bau &amp; Garten"><option value="minibagger-sy18c">Minibagger Sany SY18C</option><option value="mikrobagger-sy10u">Mikrobagger Sany SY10U</option><option value="holzhaecksler">Holzhäcksler Schliesing MX235</option><option value="fahrplatten">Mobile Fahrstraße Securatec V:tec</option></optgroup><optgroup label="Anhänger &amp; Transport"><option value="autoanhaenger">Autoanhänger Humbaur</option></optgroup><optgroup label="Planwagen &amp; Events"><option value="planwagen-20">Planwagen 20 Personen</option><option value="planwagen-28">Planwagen 28 Personen</option><option value="planwagen-34">Planwagen 34 Personen</option></optgroup></select>
+          <ul class="merkliste" id="k-merkliste" aria-label="Ihre Anfrageliste"></ul>
+          <span class="klein" id="k-merkliste-leer">Noch keine Maschine gewählt. Sie können mehrere Maschinen in einer Anfrage sammeln.</span>
+        </div>
+        <div class="wahl"><label><input type="checkbox" id="k-reiterhof" name="reiterhof">Meine Anfrage bezieht sich auf den Reiterhof (Stallanfrage)</label></div>
+        <div class="feld"><label class="feldname" for="k-nachricht">Nachricht *</label><textarea id="k-nachricht" name="nachricht" required aria-describedby="k-nachricht-fehler"></textarea><span class="fehler" id="k-nachricht-fehler" aria-live="polite"></span></div>
+        <p class="klein">Wir nutzen Ihre Angaben nur, um Ihre Anfrage zu beantworten. Mehr dazu in der <a class="verweis" href="datenschutz.html">Datenschutzerklärung</a>.</p>
+        <div class="knopfreihe"><button class="knopf" type="submit"><span>Anfrage vorbereiten</span></button></div>
+        <div class="ergebnis" id="anfrage-ergebnis" hidden tabindex="-1">
+          <h3 class="h3">Ihre Anfrage ist vorbereitet</h3>
+          <p>Senden Sie den Text mit Ihrem E-Mail-Programm ab oder kopieren Sie ihn an info@schulze-renzel.de.</p>
+          <pre id="anfrage-text"></pre>
+          <div class="knopfreihe"><a class="knopf knopf--blau" id="anfrage-mail" href="mailto:info@schulze-renzel.de"><span>E-Mail-Programm öffnen</span></a><button class="kopieren" type="button" data-kopie="" data-ziel="#anfrage-text">Text kopieren</button></div>
+        </div>
+      </form>
+    </div>
+    <aside class="detail-seite" style="display:grid;gap:2.25rem">
+      <div class="abschnitt"><h2 class="h3">Anfrage schnell gemacht</h2>
+        <ul class="liste"><li>Maschinenvermietung: Maschine, Zeitraum, Einsatzort</li><li>Planwagenfahrt: Datum, Personenzahl, Start und Ziel</li><li>Pferdepension: Wunsch-Stallart und Zeitpunkt</li></ul>
+        <p>Eilt es? Rufen Sie einfach an: <a class="verweis zahl" href="tel:+491772631728">0177-2631728</a>.</p></div>
+      <div class="abschnitt" style="margin-top:0"><h2 class="h3">Folgen Sie uns</h2><p>Aktuelle Einsätze und Neuzugänge zeigen wir auf Facebook und Instagram.</p>
+        <div class="knopfreihe" style="padding-left:0"><a class="verweis" href="https://www.instagram.com/maschinenvermietung_sr/" rel="noopener">Instagram</a><a class="verweis" href="https://m.facebook.com/MaschinenvermietungSchulzeRenzel/" rel="noopener">Facebook</a></div></div>
+      <div class="hof-teil"><div class="bild"><img src="assets/img/reiterhof/3-5-hofschild-e1647173778862-k.webp" srcset="assets/img/reiterhof/3-5-hofschild-e1647173778862-k.webp 640w, assets/img/reiterhof/3-5-hofschild-e1647173778862.webp 1400w" sizes="(min-width:1000px) 35vw, 100vw" width="1400" height="868" alt="Hofschild Reiterhof Schulze-Renzel" loading="lazy" decoding="async"></div></div>
+    </aside>
+  </div>
+</section>
+</main>
+<footer class="fuss">
+  <div class="rahmen">
+    <div class="fuss-raster">
+      <div>
+        <img src="assets/img/site/logo-msr.webp" width="480" height="124" alt="MSR Maschinenvermietung" loading="lazy">
+        <p>Maschinenvermietung, Planwagenfahrten und Pferdepension auf dem Hof Schulze-Renzel in Rhede-Krommert.</p>
+      </div>
+      <div>
+        <h2>Kontakt</h2>
+        <p>Hof Schulze-Renzel<br>Renzelhook 7<br>46414 Rhede-Krommert</p>
+        <p style="margin-top:.8rem"><a class="zahl" href="tel:+491772631728">0177-2631728</a><br><a href="mailto:info@schulze-renzel.de">info@schulze-renzel.de</a></p>
+      </div>
+      <div>
+        <h2>Angebot</h2>
+        <ul>
+          <li><a href="maschinen.html#arbeitsbuehnen">Arbeitsbühnen</a></li>
+          <li><a href="maschinen.html#bagger-bau">Bagger, Bau &amp; Garten</a></li>
+          <li><a href="maschinen.html#anhaenger">Anhänger &amp; Transport</a></li>
+          <li><a href="planwagen.html">Planwagen &amp; Events</a></li>
+          <li><a href="reiterhof.html">Reiterhof &amp; Pferdepension</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Folgen</h2>
+        <ul>
+          <li><a href="https://m.facebook.com/MaschinenvermietungSchulzeRenzel/" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com/maschinenvermietung_sr/" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fuss-ende">
+      <span>© 2026 Hof Schulze-Renzel</span>
+      <ul><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li></ul>
+    </div>
+  </div>
+</footer>
+<script type="application/json" id="msr-daten">{"namen": {"multitel-mje250": "Multitel MJE250, 25 m", "ruthmann-rs200": "Ruthmann RS200, 20 m", "multitel-mt162ex": "Multitel MT162EX, 16 m", "cmc-s20": "CMC S20, 20 m", "cmc-s15": "CMC S15, 15 m", "niftylift-120t": "Niftylift 120T, 12 m", "genie-gs-3246": "Genie GS-3246, 12 m", "haulotte-star-10": "Haulotte Star 10, 10 m", "sinoboom-1932me": "Sinoboom 1932ME, 8 m", "minibagger-sy18c": "Minibagger Sany SY18C", "mikrobagger-sy10u": "Mikrobagger Sany SY10U", "holzhaecksler": "Holzhäcksler Schliesing MX235", "fahrplatten": "Mobile Fahrstraße Securatec V:tec", "autoanhaenger": "Autoanhänger Humbaur", "planwagen-20": "Planwagen 20 Personen", "planwagen-28": "Planwagen 28 Personen", "planwagen-34": "Planwagen 34 Personen"}}</script>
+<script src="assets/site.js" defer></script>
+</body>
+</html>
