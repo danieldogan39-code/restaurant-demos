@@ -26,27 +26,42 @@
 </head>
 <body>
 <a class="skip" href="#inhalt">Zum Inhalt springen</a>
+<div class="lauf" aria-hidden="true"></div>
 <!-- Entwurfshinweis: vor dem Livegang diesen Block entfernen -->
 <div class="entwurf"><p class="wrap">Entwurf von Medialyte für FassadenTrio. Diese Seite ist noch nicht die offizielle Website.</p></div>
 <header class="kopf auf-dunkel" id="kopf">
-  <div class="wrap kopf__in">
+  <div class="kopf__in">
     <a class="logo" href="./" aria-label="FassadenTrio, zur Startseite">
       <svg viewBox="0 0 40 40" fill="none" stroke-width="2.2" aria-hidden="true"><rect x="13.5" y="2.5" width="24" height="24" stroke="#545C5E"/><rect x="7.5" y="7.5" width="24" height="24" stroke="#7A1418"/><rect x="2.5" y="13" width="24" height="24" stroke="#545C5E"/></svg>
       <span class="logo__wort"><span class="logo__name">FASSADEN<b>TRIO</b></span><span class="logo__zusatz">ALGENENTFERNUNG</span></span>
     </a>
     <nav class="nav" aria-label="Hauptnavigation"><a href="leistungen/">Leistungen</a><a href="verfahren/">Verfahren</a><a href="kosten/">Kosten</a><a href="referenzen/">Referenzen</a><a href="ratgeber/">Ratgeber</a><a href="kontakt/">Kontakt</a></nav>
+    <button class="rund" type="button" data-suche aria-label="Suche öffnen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></button>
     <a class="btn btn--klein" href="#kontakt">Probefläche anfordern</a>
-    <button class="menue" type="button" id="menue-knopf" aria-expanded="false" aria-controls="mobilnav">Menü</button>
+    <button class="menue" type="button" id="menue-knopf" aria-expanded="false" aria-controls="blatt" aria-label="Menü öffnen"><span></span><span></span></button>
   </div>
-  <nav class="mobilnav wrap" id="mobilnav" aria-label="Navigation" hidden><a href="leistungen/">Leistungen</a><a href="verfahren/">Verfahren</a><a href="kosten/">Kosten</a><a href="referenzen/">Referenzen</a><a href="ratgeber/">Ratgeber</a><a href="kontakt/">Kontakt</a><a href="probeflaeche/">Probefläche anfordern</a></nav>
 </header>
+<div class="blatt" id="blatt" role="dialog" aria-modal="true" aria-label="Menü" hidden>
+  <div class="blatt__in">
+    <nav aria-label="Navigation"><ul class="blatt__haupt"><li style="--i:0"><a href="leistungen/">Leistungen</a><ul class="blatt__unter"><li><a href="leistungen/einfamilienhaus/">Einfamilienhäuser</a></li><li><a href="leistungen/mehrfamilienhaus/">Mehrfamilienhäuser</a></li><li><a href="leistungen/wohnanlagen-hausverwaltung/">Wohnanlagen und WEGs</a></li><li><a href="leistungen/unternehmen/">Unternehmen</a></li><li><a href="leistungen/seniorenheime/">Seniorenheime</a></li><li><a href="leistungen/plattenbauten/">Plattenbauten</a></li></ul></li><li style="--i:1"><a href="verfahren/">Verfahren</a></li><li style="--i:2"><a href="kosten/">Kosten</a></li><li style="--i:3"><a href="referenzen/">Referenzen</a></li><li style="--i:4"><a href="ratgeber/">Ratgeber</a></li><li style="--i:5"><a href="kontakt/">Kontakt</a></li><li style="--i:6"><a href="fassaden-check/">Fassaden-Check <small>1 Minute</small></a></li></ul></nav>
+    <div class="blatt__fuss">
+      <a class="btn btn--hell" href="probeflaeche/">Kostenlose Probefläche anfordern</a>
+      <a class="blatt__tel" href="tel:+491788120873">+49 178 812 08 73</a>
+      <p class="blatt__zeit"><span>Mo. bis Fr., 8–16 Uhr</span><span data-buero></span></p>
+    </div>
+  </div>
+</div>
+<dialog class="suche" id="suche" aria-label="Suche">
+  <div class="suche__kopf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg><label class="sr" for="suche-feld">Seite oder Frage suchen</label><input id="suche-feld" type="search" placeholder="Seite oder Frage suchen" autocomplete="off" enterkeyhint="search"><button class="suche__zu" id="suche-zu" type="button">Schließen</button></div>
+  <div class="suche__liste" id="suche-liste" aria-live="polite"></div>
+</dialog>
 <main id="inhalt">
 <section class="kino" id="start" data-kopf-dunkel data-leiste-aus>
   <video class="kino__film" id="film" muted loop playsinline preload="none" poster="img/film-poster.webp" data-gross="img/film.mp4" data-klein="img/film-klein.mp4" data-poster-hoch="img/film-poster-hoch.webp" aria-label="Film: FassadenTrio reinigt die Fassade eines mehrgeschossigen Gebäudes von der Hubarbeitsbühne aus"></video>
   <div class="wrap kino__in">
     <div class="kino__text">
       <p class="kino__wer">Professionelle Fassadenreinigung, deutschlandweit</p>
-      <h1>Der Neuanstrich kann warten.</h1>
+      <h1><span class="z" style="--n:0"><span>Der Neuanstrich</span></span><span class="z" style="--n:1"><span>kann warten.</span></span></h1>
       <p class="kino__lead">Wir entfernen Algen, Pilze und Schmutz mit sanftem Wasserdruck und schützen Ihre Fassade danach bis zu 5&nbsp;Jahre vor neuem Befall. Das kostet bis zu 70&nbsp;% weniger als ein neuer Anstrich.</p>
       <div class="kino__cta">
         <a class="btn btn--hell" href="#kontakt">Kostenlose Probefläche anfordern</a>
@@ -58,13 +73,15 @@
   </div>
 </section>
 
-<section class="sek sek--weiss" aria-label="Das Wichtigste in Zahlen">
+<section class="sek sek--weiss" aria-label="Das Wichtigste auf einen Blick">
   <div class="wrap">
-    <ul class="zahlen">
-      <li><span class="zahl num"><small>bis zu</small><span data-zaehl="70">70</span>&nbsp;%</span><p>günstiger als ein Neuanstrich</p></li>
+    <ul class="bento">
+      <li class="bento__a"><span class="zahl num"><small>bis zu</small><span data-zaehl="70">70</span>&nbsp;%</span><p>günstiger als ein Neuanstrich. Die Reinigung verzögert ihn um viele Jahre.</p><a class="mehr" href="kosten/">Kosten vergleichen<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
       <li><span class="zahl num"><small>Garantie</small><span data-zaehl="5">5</span>&nbsp;Jahre</span><p>Schutz vor Wiederbefall</p></li>
       <li><span class="zahl num"><small>bis zu</small><span data-zaehl="10">10</span>&nbsp;m</span><p>lange Teleskoplanzen statt Gerüst</p></li>
       <li><span class="zahl num"><small>Kosten</small>0&nbsp;€</span><p>für Probefläche, Angebot und Anfahrt</p></li>
+      <li><span class="zahl num"><small>Google</small>5,0</span><span class="sterne" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.6 6.1 20.7l1.2-6.6L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.6 6.1 20.7l1.2-6.6L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.6 6.1 20.7l1.2-6.6L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.6 6.1 20.7l1.2-6.6L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.6 6.1 20.7l1.2-6.6L2.5 9.5l6.6-.9z"/></svg></span><p>bei 35 Bewertungen</p><a class="mehr" href="https://www.google.com/maps/search/?api=1&amp;query=FassadenTrio%20Fassadenreinigung&amp;query_place_id=ChIJw_nfDeU3RI0R9pdzlnXRb9g" target="_blank" rel="noopener">Bewertungen lesen<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li class="bento__f"><p data-buero-gross>Büro: Mo. bis Fr., 8–16 Uhr</p><a class="bento__tel" href="tel:+491788120873">+49 178 812 08 73</a><p>Rufen Sie an, oder schätzen Sie Ihre Fassade in einer Minute selbst ein.</p><a class="mehr" href="fassaden-check/">Fassaden-Check starten<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
     </ul>
   </div>
 </section>
@@ -345,7 +362,7 @@
       <dl class="daten">
         <dt>Telefon</dt><dd><a href="tel:+491788120873">+49 178 812 08 73</a></dd>
         <dt>E-Mail</dt><dd><a href="mailto:info@fassaden-trio.de">info@fassaden-trio.de</a></dd>
-        <dt>Bürozeiten</dt><dd>Mo. bis Fr., 8–16 Uhr</dd>
+        <dt>Bürozeiten</dt><dd>Mo. bis Fr., 8–16 Uhr <span data-buero></span></dd>
         <dt>Anschrift</dt><dd>Robert-Bosch-Straße 47, 46354 Südlohn</dd>
       </dl>
     </div>
@@ -421,7 +438,7 @@
         <p style="margin-top:18px; max-width:30ch">Professionelle Fassadenreinigung mit Langzeitschutz und 5 Jahren Garantie vor Wiederbefall.</p>
         <p style="margin-top:14px">Robert-Bosch-Straße 47<br>46354 Südlohn<br>+49 178 812 08 73<br>info@fassaden-trio.de<br>Mo. bis Fr., 8–16 Uhr</p>
       </div>
-      <div><h3>Leistungen</h3><ul><li><a href="leistungen/einfamilienhaus/">Einfamilienhäuser</a></li><li><a href="leistungen/mehrfamilienhaus/">Mehrfamilienhäuser</a></li><li><a href="leistungen/wohnanlagen-hausverwaltung/">Wohnanlagen und WEGs</a></li><li><a href="leistungen/unternehmen/">Unternehmen</a></li><li><a href="leistungen/seniorenheime/">Seniorenheime</a></li><li><a href="leistungen/plattenbauten/">Plattenbauten</a></li></ul></div><div><h3>Wissen</h3><ul><li><a href="verfahren/">Verfahren</a></li><li><a href="kosten/">Kosten</a></li><li><a href="referenzen/">Referenzen</a></li><li><a href="ratgeber/">Ratgeber</a></li><li><a href="faq/">Häufige Fragen</a></li></ul></div><div><h3>Unternehmen</h3><ul><li><a href="einsatzgebiet/">Einsatzgebiet</a></li><li><a href="einsatzgebiet/kreis-borken/">Kreis Borken</a></li><li><a href="probeflaeche/">Probefläche</a></li><li><a href="kontakt/">Kontakt</a></li></ul></div>
+      <div><h3>Leistungen</h3><ul><li><a href="leistungen/einfamilienhaus/">Einfamilienhäuser</a></li><li><a href="leistungen/mehrfamilienhaus/">Mehrfamilienhäuser</a></li><li><a href="leistungen/wohnanlagen-hausverwaltung/">Wohnanlagen und WEGs</a></li><li><a href="leistungen/unternehmen/">Unternehmen</a></li><li><a href="leistungen/seniorenheime/">Seniorenheime</a></li><li><a href="leistungen/plattenbauten/">Plattenbauten</a></li></ul></div><div><h3>Wissen</h3><ul><li><a href="verfahren/">Verfahren</a></li><li><a href="kosten/">Kosten</a></li><li><a href="referenzen/">Referenzen</a></li><li><a href="ratgeber/">Ratgeber</a></li><li><a href="faq/">Häufige Fragen</a></li></ul></div><div><h3>Unternehmen</h3><ul><li><a href="einsatzgebiet/">Einsatzgebiet</a></li><li><a href="einsatzgebiet/kreis-borken/">Kreis Borken</a></li><li><a href="fassaden-check/">Fassaden-Check</a></li><li><a href="probeflaeche/">Probefläche</a></li><li><a href="kontakt/">Kontakt</a></li></ul></div>
       <div><h3>Folgen</h3><ul><li><a href="https://www.instagram.com/fassadentrio/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.facebook.com/p/FassadenTrio-61555656579016/" target="_blank" rel="noopener">Facebook</a></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=FassadenTrio%20Fassadenreinigung&amp;query_place_id=ChIJw_nfDeU3RI0R9pdzlnXRb9g" target="_blank" rel="noopener">Google-Bewertungen</a></li></ul></div>
     </div>
     <div class="fuss__unten">

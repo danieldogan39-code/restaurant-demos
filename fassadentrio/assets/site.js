@@ -11,21 +11,12 @@
   var dunkel = document.querySelector('[data-kopf-dunkel]');
   function kopfStand() {
     kopf.classList.toggle('ist-unterwegs', window.scrollY > 8);
+    if (kopf.classList.contains('ist-menue')) return;
     kopf.classList.toggle('auf-dunkel', !!dunkel && dunkel.getBoundingClientRect().bottom > kopf.getBoundingClientRect().bottom);
   }
   window.addEventListener('scroll', kopfStand, { passive: true });
   window.addEventListener('resize', kopfStand);
   kopfStand();
-
-  /* Handy-Menü */
-  var menueKnopf = $('menue-knopf'), mobilnav = $('mobilnav');
-  function menue(offen) {
-    mobilnav.hidden = !offen;
-    menueKnopf.setAttribute('aria-expanded', offen ? 'true' : 'false');
-    menueKnopf.textContent = offen ? 'Schließen' : 'Menü';
-  }
-  menueKnopf.addEventListener('click', function () { menue(mobilnav.hidden); });
-  mobilnav.addEventListener('click', function (e) { if (e.target.tagName === 'A') menue(false); });
 
   /* Titelfilm: läuft von selbst, lässt sich anhalten */
   var film = $('film'), pause = $('film-pause');
@@ -254,4 +245,260 @@
     }
     meldung.textContent = 'Entwurf: Ihre Angaben sind vollständig, wurden aber noch nicht versendet. Auf der fertigen Website geht die Anfrage an info@fassaden-trio.de.';
   });
+})();
+
+/* ===== Fassung 5: Menü, Suche, Bürozeiten, Fassaden-Check ===== */
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var alle = function (sel, von) { return Array.prototype.slice.call((von || document).querySelectorAll(sel)); };
+  var wurzel = ((document.currentScript && document.currentScript.src) || '').replace(/assets\/site\.js.*$/, '');
+  function neu(tag, klasse, text) { var e = document.createElement(tag); if (klasse) e.className = klasse; if (text) e.textContent = text; return e; }
+
+  /* ---------- Menü ---------- */
+  var kopf = $('kopf'), knopf = $('menue-knopf'), blatt = $('blatt'), zuTimer = null;
+  function menue(offen) {
+    clearTimeout(zuTimer);
+    knopf.setAttribute('aria-expanded', offen ? 'true' : 'false');
+    knopf.setAttribute('aria-label', offen ? 'Menü schließen' : 'Menü öffnen');
+    document.documentElement.classList.toggle('kein-scroll', offen);
+    kopf.classList.toggle('ist-menue', offen);
+    if (offen) {
+      kopf.dataset.warDunkel = kopf.classList.contains('auf-dunkel') ? '1' : '0';
+      kopf.classList.add('auf-dunkel');
+      blatt.hidden = false;
+      void blatt.offsetWidth;
+      blatt.classList.add('ist-offen');
+    } else {
+      blatt.classList.remove('ist-offen');
+      if (kopf.dataset.warDunkel === '0') kopf.classList.remove('auf-dunkel');
+      zuTimer = setTimeout(function () { blatt.hidden = true; }, 360);
+    }
+  }
+  if (knopf && blatt) {
+    knopf.addEventListener('click', function () { menue(knopf.getAttribute('aria-expanded') !== 'true'); });
+    blatt.addEventListener('click', function (e) { if (e.target.closest('a')) menue(false); });
+    document.addEventListener('keydown', function (e) {
+      if (knopf.getAttribute('aria-expanded') !== 'true') return;
+      if (e.key === 'Escape') { menue(false); knopf.focus(); return; }
+      if (e.key !== 'Tab') return;
+      var ziele = [knopf].concat(alle('a, button', blatt));
+      var erstes = ziele[0], letztes = ziele[ziele.length - 1];
+      if (e.shiftKey && document.activeElement === erstes) { e.preventDefault(); letztes.focus(); }
+      else if (!e.shiftKey && document.activeElement === letztes) { e.preventDefault(); erstes.focus(); }
+      else if (ziele.indexOf(document.activeElement) < 0) { e.preventDefault(); erstes.focus(); }
+    });
+    window.addEventListener('resize', function () { if (window.innerWidth > 1080 && knopf.getAttribute('aria-expanded') === 'true') menue(false); });
+  }
+
+  /* ---------- Bürozeiten live (Mo. bis Fr., 8–16 Uhr, Feiertage in NRW) ---------- */
+  function ostern(j) {
+    var a = j % 19, b = Math.floor(j / 100), c = j % 100, d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25);
+    var g = Math.floor((b - f + 1) / 3), h = (19 * a + b - d - g + 15) % 30, i = Math.floor(c / 4), k = c % 4;
+    var l = (32 + 2 * e + 2 * i - h - k) % 7, m = Math.floor((a + 11 * h + 22 * l) / 451);
+    var monat = Math.floor((h + l - 7 * m + 114) / 31), tag = ((h + l - 7 * m + 114) % 31) + 1;
+    return Date.UTC(j, monat - 1, tag);
+  }
+  function feiertag(t) {
+    var j = t.getUTCFullYear(), m = t.getUTCMonth() + 1, d = t.getUTCDate(), o = ostern(j), TAG = 86400000;
+    var fest = ['1.1', '1.5', '3.10', '1.11', '25.12', '26.12'];
+    if (fest.indexOf(d + '.' + m) >= 0) return true;
+    var heute = Date.UTC(j, m - 1, d);
+    return [-2, 1, 39, 50, 60].some(function (n) { return heute === o + n * TAG; });
+  }
+  function werktag(t) { var w = t.getUTCDay(); return w >= 1 && w <= 5 && !feiertag(t); }
+  function buero() {
+    var teile = {};
+    try {
+      new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Berlin', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: false })
+        .formatToParts(new Date()).forEach(function (p) { teile[p.type] = parseInt(p.value, 10); });
+    } catch (fehler) { return null; }
+    var jetzt = new Date(Date.UTC(teile.year, teile.month - 1, teile.day, teile.hour % 24, teile.minute));
+    var std = jetzt.getUTCHours();
+    if (werktag(jetzt) && std >= 8 && std < 16) return { offen: true, kurz: 'Jetzt geöffnet', lang: 'Büro jetzt geöffnet, bis 16 Uhr' };
+    var wann;
+    if (werktag(jetzt) && std < 8) wann = 'heute ab 8 Uhr';
+    else {
+      var t = new Date(jetzt.getTime()), n = 0;
+      do { t = new Date(t.getTime() + 86400000); n++; } while (!werktag(t) && n < 10);
+      wann = n === 1 ? 'morgen ab 8 Uhr' : 'am ' + ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'][t.getUTCDay()] + ' ab 8 Uhr';
+    }
+    return { offen: false, kurz: 'Gerade geschlossen', lang: 'Büro geschlossen. Wieder erreichbar ' + wann };
+  }
+  var stand = buero();
+  if (stand) {
+    alle('[data-buero]').forEach(function (el) { el.textContent = stand.kurz; el.classList.add('status'); el.classList.toggle('ist-offen', stand.offen); });
+    alle('[data-buero-gross]').forEach(function (el) { el.textContent = stand.lang; el.classList.add('status'); el.classList.toggle('ist-offen', stand.offen); });
+  }
+
+  /* ---------- Suche über Seiten und Antworten ---------- */
+  var dlg = $('suche'), sFeld = $('suche-feld'), sListe = $('suche-liste'), index = null;
+  function norm(s) {
+    return s.toLowerCase().replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss').replace(/[^a-z0-9]+/g, ' ');
+  }
+  function zeigeTreffer(q) {
+    sListe.textContent = '';
+    var worte = norm(q).split(' ').filter(function (w) { return w.length > 1; }), treffer;
+    if (!worte.length) {
+      treffer = index.filter(function (e) { return e.v; });
+      sListe.appendChild(neu('p', 'suche__titel', 'Häufig gesucht'));
+    } else {
+      treffer = index.map(function (e) {
+        var punkte = 0, alleDa = true;
+        worte.forEach(function (w) {
+          var p = (e.nt.indexOf(w) >= 0 ? 5 : 0) + (e.nk.indexOf(w) >= 0 ? 4 : 0) + (e.nd.indexOf(w) >= 0 ? 2 : 0);
+          if (!p) alleDa = false;
+          punkte += p;
+        });
+        return { e: e, p: alleDa ? punkte + 3 : punkte };
+      }).filter(function (x) { return x.p > 0; }).sort(function (x, y) { return y.p - x.p; }).slice(0, 7).map(function (x) { return x.e; });
+    }
+    if (!treffer.length) {
+      sListe.appendChild(neu('p', 'suche__leer', 'Dazu haben wir nichts gefunden. Rufen Sie uns gern an: +49 178 812 08 73.'));
+      return;
+    }
+    treffer.forEach(function (e) {
+      var a = neu('a', 'treffer');
+      a.href = wurzel + e.u;
+      a.appendChild(neu('i', '', e.a === 'f' ? 'Antwort' : 'Seite'));
+      a.appendChild(neu('b', '', e.t));
+      a.appendChild(neu('span', '', e.d));
+      sListe.appendChild(a);
+    });
+  }
+  function sucheAuf() {
+    if (!dlg || !dlg.showModal) { location.href = wurzel + 'faq/'; return; }
+    if (knopf && knopf.getAttribute('aria-expanded') === 'true') menue(false);
+    dlg.showModal();
+    sFeld.value = '';
+    sFeld.focus();
+    if (index) { zeigeTreffer(''); return; }
+    sListe.textContent = '';
+    fetch(wurzel + 'assets/suche.json').then(function (r) { return r.json(); }).then(function (daten) {
+      index = daten.map(function (e) { e.nt = norm(e.t); e.nd = norm(e.d); e.nk = norm(e.k || ''); return e; });
+      zeigeTreffer(sFeld.value);
+    }).catch(function () { sListe.appendChild(neu('p', 'suche__leer', 'Die Suche ist gerade nicht erreichbar. Alle Antworten finden Sie auf der Seite „Häufige Fragen“.')); });
+  }
+  if (dlg) {
+    alle('[data-suche]').forEach(function (k) { k.addEventListener('click', sucheAuf); });
+    sFeld.addEventListener('input', function () { if (index) zeigeTreffer(sFeld.value); });
+    sFeld.addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter') return;
+      e.preventDefault();
+      var erster = sListe.querySelector('.treffer');
+      if (erster) erster.click();
+    });
+    $('suche-zu').addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+    document.addEventListener('keydown', function (e) {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); if (dlg.open) dlg.close(); else sucheAuf(); }
+    });
+  }
+
+  /* ---------- Seite teilen ---------- */
+  alle('.teilen').forEach(function (k) {
+    k.addEventListener('click', function () {
+      var wort = k.querySelector('span');
+      if (navigator.share) { navigator.share({ title: document.title, url: location.href }).catch(function () {}); return; }
+      if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(function () { wort.textContent = 'Link kopiert'; }, function () { wort.textContent = location.href; });
+      else wort.textContent = location.href;
+    });
+  });
+
+  /* ---------- Fassaden-Check ---------- */
+  var check = $('check');
+  if (check) {
+    var stufen = alle('.check__stufe', check), nr = 0;
+    var fehler = $('check-fehler'), weiter = $('check-weiter'), zurueck = $('check-zurueck');
+    var L = $('m-laenge'), B = $('m-breite'), G = $('m-geschosse'), bild = $('m-bild');
+    var NS = 'http://www.w3.org/2000/svg';
+    var form = function (tag, attr) { var e = document.createElementNS(NS, tag); for (var k in attr) e.setAttribute(k, attr[k]); return e; };
+    var befall = function () { return alle('input[name="c-befall"]:checked', check).map(function (e) { return e.value; }); };
+    var gebaeude = function () { var e = check.querySelector('input[name="c-gebaeude"]:checked'); return e ? e.value : ''; };
+    var hoehe = function () { var g = +G.value; return g <= 2 ? '1 bis 2 Geschosse' : (g <= 4 ? '3 bis 4 Geschosse' : '5 Geschosse und mehr'); };
+    var flaeche = function () { return Math.round(2 * (+L.value + +B.value) * +G.value * 2.8 / 10) * 10; };
+    var zeichne = function () {
+      var l = +L.value, g = +G.value, h = g * 2.8, dach = g <= 3 ? Math.min(l * 0.28, 4) : 0;
+      var s = Math.min(300 / l, 170 / (h + dach)), w = l * s, x0 = 60 + (300 - w) / 2, y0 = 210, hh = h * s;
+      bild.textContent = '';
+      bild.appendChild(form('path', { d: 'M20 ' + y0 + 'H380', stroke: 'currentColor', 'stroke-width': 1.5, fill: 'none' }));
+      bild.appendChild(form('rect', { x: x0, y: y0 - hh, width: w, height: hh, fill: '#F5F5F7', stroke: 'currentColor', 'stroke-width': 1.5 }));
+      if (dach) bild.appendChild(form('path', { d: 'M' + (x0 - 5) + ' ' + (y0 - hh) + 'L' + (x0 + w / 2) + ' ' + (y0 - hh - dach * s) + 'L' + (x0 + w + 5) + ' ' + (y0 - hh) + 'Z', fill: '#DADADF', stroke: 'currentColor', 'stroke-width': 1.5, 'stroke-linejoin': 'round' }));
+      var spalten = Math.max(2, Math.round(l / 3.5)), fb = Math.min(1.3 * s, w / spalten * 0.5), fh = 1.4 * s;
+      for (var e = 0; e < g; e++) for (var c = 0; c < spalten; c++) {
+        bild.appendChild(form('rect', { x: x0 + (c + 0.5) * w / spalten - fb / 2, y: y0 - (e + 1) * 2.8 * s + 0.6 * s, width: fb, height: fh, fill: '#fff', stroke: 'currentColor', 'stroke-width': 1 }));
+      }
+      var p = 1.8 * s, px = Math.max(26, x0 - 22);
+      bild.appendChild(form('circle', { cx: px, cy: y0 - p + p * 0.09, r: p * 0.09, fill: 'none', stroke: '#8C181D', 'stroke-width': 1.5 }));
+      bild.appendChild(form('path', { d: 'M' + px + ' ' + (y0 - p + p * 0.18) + 'V' + (y0 - p * 0.42) + 'M' + px + ' ' + (y0 - p * 0.42) + 'l' + (-p * 0.14) + ' ' + (p * 0.42) + 'M' + px + ' ' + (y0 - p * 0.42) + 'l' + (p * 0.14) + ' ' + (p * 0.42), stroke: '#8C181D', 'stroke-width': 1.5, fill: 'none', 'stroke-linecap': 'round' }));
+      $('m-laenge-aus').textContent = l + ' m';
+      $('m-breite-aus').textContent = B.value + ' m';
+      $('m-geschosse-aus').textContent = g === 1 ? '1 Geschoss' : g + ' Geschosse';
+      $('m-flaeche').textContent = 'ca. ' + flaeche() + ' m²';
+    };
+    [L, B, G].forEach(function (r) { r.addEventListener('input', zeichne); });
+    zeichne();
+
+    var punkt = function (liste, textinhalt) {
+      var li = neu('li'), haken = form('svg', { viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', 'stroke-width': 2.4, 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'aria-hidden': 'true' });
+      haken.appendChild(form('path', { d: 'M4 12.5l5.2 5.2L20 6.8' }));
+      li.appendChild(haken); li.appendChild(neu('span', '', textinhalt)); liste.appendChild(li);
+    };
+    var ergebnis = function () {
+      var b = befall(), risse = b.indexOf('Risse oder abblätternde Farbe') >= 0, belag = b.filter(function (x) { return x.indexOf('Risse') < 0; });
+      var feld = $('check-ergebnis'); feld.textContent = '';
+      feld.appendChild(neu('h3', '', belag.length ? 'Das spricht für eine Reinigung.' : 'Hier hilft eine Reinigung allein nicht.'));
+      var liste = neu('ul');
+      if (belag.length) {
+        punkt(liste, belag.join(', ') + ': Solche Beläge entstehen meist durch Algen und Pilze. Sie sitzen auf der Oberfläche und lassen sich entfernen, ohne dass neu gestrichen wird.');
+        punkt(liste, +G.value <= 2 ? 'Bei 1 bis 2 Geschossen arbeiten unsere Techniker in der Regel mit Teleskoplanzen vom Boden aus. Ein Gerüst braucht es nicht.'
+          : (+G.value <= 4 ? 'Bei 3 bis 4 Geschossen arbeiten wir je nach Höhe mit Teleskoplanzen oder von der Hubarbeitsbühne. Ein Gerüst braucht es nicht.'
+            : 'Hohe Fassaden wie Ihre reinigen wir von der Hubarbeitsbühne. Ein Gerüst wird nicht aufgebaut.'));
+        punkt(liste, 'Die Reinigung kostet bis zu 70 % weniger als ein Neuanstrich. Der Langzeitschutz kommt mit 5 Jahren Garantie vor Wiederbefall.');
+      }
+      if (risse) punkt(liste, 'Risse und abblätternde Farbe: Eine Reinigung entfernt Belag, sie repariert keinen Putz. Lassen Sie diese Stellen fachlich prüfen.');
+      punkt(liste, 'Geschätzte Fassadenfläche: ca. ' + flaeche() + ' m² (' + gebaeude() + ', ' + hoehe() + ').');
+      feld.appendChild(liste);
+      feld.appendChild(neu('p', 'klein', 'Das ist eine erste Einschätzung aus Ihren Angaben und kein Gutachten. Wie Ihre Fassade nach der Reinigung aussieht, zeigt die kostenlose Probefläche.'));
+    };
+    var zeige = function (n, fokus) {
+      nr = n;
+      stufen.forEach(function (st, i) { st.hidden = i !== n; });
+      $('check-titel').textContent = stufen[n].getAttribute('data-titel');
+      $('check-zahl').textContent = 'Schritt ' + (n + 1) + ' von ' + stufen.length;
+      $('check-lauf').style.width = ((n + 1) / stufen.length * 100) + '%';
+      zurueck.hidden = n === 0;
+      fehler.hidden = true;
+      weiter.textContent = n === stufen.length - 1 ? 'Mit diesen Angaben Probefläche anfordern' : (n === stufen.length - 2 ? 'Einschätzung anzeigen' : 'Weiter');
+      if (n === stufen.length - 1) ergebnis();
+      if (fokus) $('check-titel').focus();
+    };
+    zurueck.addEventListener('click', function () { zeige(nr - 1, true); });
+    check.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (nr === 0 && !befall().length) { fehler.hidden = false; fehler.textContent = 'Bitte wählen Sie mindestens eine Antwort aus.'; return; }
+      if (nr < stufen.length - 1) { zeige(nr + 1, true); return; }
+      try {
+        sessionStorage.setItem('ft-check', JSON.stringify({ befall: befall(), gebaeude: gebaeude(), hoehe: hoehe(), flaeche: flaeche() }));
+      } catch (fehlerSpeicher) {}
+      location.href = wurzel + 'probeflaeche/#kontakt';
+    });
+  }
+
+  /* ---------- Angaben aus dem Fassaden-Check ins Formular übernehmen ---------- */
+  var anfrage = $('anfrage');
+  if (anfrage) {
+    var daten = null;
+    try { daten = JSON.parse(sessionStorage.getItem('ft-check') || 'null'); sessionStorage.removeItem('ft-check'); } catch (fehlerLesen) {}
+    if (daten && daten.gebaeude) {
+      alle('input[name="gebaeude"], input[name="hoehe"]', anfrage).forEach(function (r) {
+        if (r.value === daten.gebaeude || r.value === daten.hoehe) r.checked = true;
+      });
+      var satz = 'Aus dem Fassaden-Check: ' + daten.befall.join(', ') + '; ' + daten.gebaeude + ', ' + daten.hoehe + '; Fassadenfläche ca. ' + daten.flaeche + ' m² (Schätzung).';
+      var nachricht = $('f-text');
+      if (nachricht && !nachricht.value) nachricht.value = satz;
+      var hinweis = neu('p', 'auswahl', 'Ihre Angaben aus dem Fassaden-Check sind übernommen. Sie können sie in den nächsten Schritten ändern.');
+      anfrage.insertBefore(hinweis, anfrage.querySelector('.stufe'));
+    }
+  }
 })();
