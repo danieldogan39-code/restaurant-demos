@@ -897,3 +897,12 @@ html.mit-intro .kino h1 .z > span{animation-delay:calc(var(--n) * 120ms + 2.15s)
 .check{background:#fff; box-shadow:0 30px 90px rgba(16,18,20,.09)}
 .check .bildwahl label,.check .mass__bild,.check .befund li{background:#F5F5F7}
 .check .check__fehler{background:#FBF1F1; border:0; box-shadow:inset 0 0 0 1.5px var(--bordeaux)}
+
+/* Impressum, Datenschutz */
+.prosa--recht{max-width:46rem}
+.prosa--recht h2{font-size:clamp(1.3rem, 2vw, 1.6rem); letter-spacing:-.02em; line-height:1.2; margin-top:clamp(14px, 2vw, 24px)}
+.prosa--recht p,.prosa--recht li{font-size:1.03rem; overflow-wrap:anywhere}
+.pruefen{background:#FFF8DC; border-radius:20px; padding:22px 24px; box-shadow:inset 0 0 0 1.5px #E6C84A; display:flex; flex-direction:column; gap:10px; margin-bottom:8px}
+.pruefen strong{font-family:var(--fd); font-size:1.1rem; color:#1D1D1F}
+.pruefen p,.pruefen li{font-size:.97rem; color:#3A3A3F}
+mark.offen{background:#FFE98A; color:inherit; padding:.08em .3em; border-radius:5px; -webkit-box-decoration-break:clone; box-decoration-break:clone}
