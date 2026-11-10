@@ -1,0 +1,5 @@
+# Gilt erst auf der Kundendomain im Hauptverzeichnis. Im Entwurf sind alle Seiten zusätzlich per Meta-Angabe gesperrt.
+User-agent: *
+Allow: /
+
+Sitemap: https://entwurf.medialyte.de/fassadentrio/sitemap.xml
