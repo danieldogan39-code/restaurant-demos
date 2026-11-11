@@ -319,3 +319,4 @@ input[type=range]::-moz-range-thumb{width:30px;height:30px;border:var(--kontur);
   .karte-abriss::after{bottom:-15.5px;clip-path:inset(-4px -4px 50% -4px)}
   .hero-raster{grid-template-columns:minmax(0,.94fr) minmax(0,1.06fr)}
 }
+.feld{align-content:start}
