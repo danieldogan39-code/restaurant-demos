@@ -546,7 +546,7 @@
       const erg = $('#anfrage-ergebnis'); erg.hidden = false; erg.scrollIntoView({ block: 'nearest' }); erg.focus();
     });
     $('[data-neu]', form).addEventListener('click', () => { $('#anfrage-ergebnis').hidden = true; zeige(0, true); });
-    $$('#k-name, #k-mail, #k-nachricht', form).forEach(f => f.addEventListener('blur', () => { if (f.getAttribute('aria-invalid') === 'true') pruefen(f); }));
+    $$('#k-name, #k-mail, #k-nachricht', form).forEach(f => f.addEventListener('input', () => { if (f.getAttribute('aria-invalid') === 'true') pruefen(f); }));
     anpassen();
   }
 })();

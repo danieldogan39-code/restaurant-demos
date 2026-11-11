@@ -121,7 +121,7 @@
       const erg = $('#stallanfrage-ergebnis'); erg.hidden = false; erg.scrollIntoView({ block: 'nearest' }); erg.focus();
     });
     $('[data-neu]', form).addEventListener('click', () => { $('#stallanfrage-ergebnis').hidden = true; zeige(0, true); });
-    $$('[required]', form).forEach(f => f.addEventListener('blur', () => { if (f.getAttribute('aria-invalid') === 'true') pruefen(f); }));
+    $$('[required]', form).forEach(f => f.addEventListener('input', () => { if (f.getAttribute('aria-invalid') === 'true') pruefen(f); }));
     const kopie = $('#stallanfrage-kopie');
     if (kopie) kopie.addEventListener('click', async () => {
       const alt = kopie.textContent;
