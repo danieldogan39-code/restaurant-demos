@@ -276,7 +276,7 @@ html:not(.js) .kopf{background:rgba(22,22,24,.94)}
 [data-film=an] .aufstieg-kopf{grid-area:kopf;margin:0}
 [data-film=an] .aufstieg-kopf .h2{font-size:clamp(1.25rem,2.2vw,1.75rem);letter-spacing:-.03em}
 [data-film=an] .aufstieg-kopf .einstieg{display:none}
-[data-film=an] .aufstieg-zaehler{display:block;grid-area:zahl;font-size:clamp(4rem,min(17vw,13vh),6rem);font-weight:600;letter-spacing:-.055em;line-height:.9;font-variant-numeric:tabular-nums;background:var(--verlauf);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;padding-bottom:.06em}
+[data-film=an] .aufstieg-zaehler,[data-film=wisch] .aufstieg-zaehler{display:block;grid-area:zahl;font-size:clamp(4rem,min(17vw,13vh),6rem);font-weight:600;letter-spacing:-.055em;line-height:.9;font-variant-numeric:tabular-nums;background:var(--verlauf);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;padding-bottom:.06em}
 .aufstieg-zaehler .einheit{font-size:.36em;letter-spacing:-.02em;margin-left:.14em}
 [data-film=an] .aufstieg-flaeche{display:block;grid-area:bild;border-radius:var(--r)}
 [data-film=an] .stufe{display:contents}
@@ -399,7 +399,7 @@ input[type=range]::-moz-range-thumb{width:28px;height:28px;border:0;border-radiu
 .kachel--alle{justify-content:flex-end;background:var(--blau);color:#fff;padding:26px}
 .kachel--alle .kachel-text{padding:0}
 .kachel--alle .kachel-name{font-size:1.7rem;letter-spacing:-.035em;line-height:1.1}
-.kachel--alle .kachel-art{color:rgba(255,255,255,.82)}
+.kachel--alle .kachel-art{color:#fff}
 @media (hover:hover) and (pointer:fine){.kachel:hover .kachel-bild img,.karte:hover .karte-bild img{transform:scale(1.045)}}
 @media (max-width:640px){.bahn-pfeile{display:none}}
 
@@ -731,3 +731,172 @@ input:not([type=range]):not([type=checkbox]):focus,select:focus,textarea:focus{o
 }
 @media (prefers-reduced-motion:reduce){.dock{transition:opacity .2s}.dock[data-weg],.menue-offen .dock{transform:none}}
 @media (prefers-reduced-transparency:reduce){.dock{background:#222226;-webkit-backdrop-filter:none;backdrop-filter:none}}
+
+/* ---------- Aufstieg zum Wischen (Handy, Tablet, reduzierte Bewegung): waagerecht blättern, die Seite scrollt normal weiter ---------- */
+.nur-film,.nur-wisch,.lineal,.aufstieg-pfeile{display:none}
+[data-film=an] .stufen-bahn{display:contents}
+[data-film=wisch] .nur-wisch{display:inline}
+[data-film=wisch]{padding-block:clamp(64px,10vw,110px);overflow:clip}
+[data-film=wisch] .aufstieg-kopf{margin-bottom:6px}
+[data-film=wisch] .aufstieg-kopf .h2{font-size:clamp(1.375rem,3vw,2rem);letter-spacing:-.03em}
+[data-film=wisch] .aufstieg-kopf .einstieg{margin-top:.4rem;font-size:.9375rem;color:var(--tx2)}
+[data-film=wisch] .aufstieg-zaehler{font-size:clamp(4.4rem,22vw,8rem);margin-top:18px}
+[data-film=wisch] .lineal{display:block}
+.lineal{position:relative;height:40px;margin:16px 2px 18px}
+.lineal::before,.lineal-fuellung{content:"";position:absolute;left:0;right:0;top:8px;height:3px;border-radius:2px}
+.lineal::before{background:var(--ln)}
+.lineal-fuellung{background:linear-gradient(90deg,#2B7FE0,#9CD0FF);transform-origin:0 50%;transform:scaleX(0)}
+.lineal-halt{position:absolute;top:5.5px;width:8px;height:8px;margin-left:-4px;border-radius:50%;background:#000;box-shadow:inset 0 0 0 1.5px #6e6e73;transition:background-color .25s,box-shadow .25s}
+.lineal-halt[data-da]{background:#9CD0FF;box-shadow:inset 0 0 0 1.5px #9CD0FF}
+.lineal-marke{position:absolute;left:0;top:0;width:3px;height:19px;margin-left:-1.5px;border-radius:2px;background:var(--sand);box-shadow:0 0 14px rgba(239,192,123,.85)}
+.lineal-zahl{position:absolute;top:22px;transform:translateX(-50%);font-family:var(--mono);font-size:.6875rem;color:var(--tx2)}
+.lineal-zahl:first-of-type{transform:none}
+.lineal-einheit{position:absolute;right:0;top:22px;font-family:var(--mono);font-size:.6875rem;color:var(--sand-t)}
+.lineal-zahl:nth-of-type(6){display:none}
+[data-film=wisch] .stufen-bahn{--kw:min(74vw,380px);position:relative;display:flex;gap:12px;width:100vw;margin-left:calc(50% - 50vw);padding:6px calc(50vw - var(--kw)/2) 30px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+[data-film=wisch] .stufen-bahn::-webkit-scrollbar{display:none}
+[data-film=wisch] .stufe{flex:0 0 var(--kw);scroll-snap-align:center;scroll-snap-stop:always;display:flex;flex-direction:column;align-items:stretch;gap:0;padding:8px 8px 20px;border:0;border-radius:var(--r);background:var(--ka);box-shadow:inset 0 1px 0 rgba(255,255,255,.24),inset 0 0 0 1px rgba(255,255,255,.075);opacity:.5;transform:scale(.955);transition:opacity .35s var(--hin),transform .55s var(--aus)}
+[data-film=wisch] .stufe.ist-aktiv{opacity:1;transform:none}
+[data-film=wisch] .stufe-bild{aspect-ratio:1/.92;border-radius:21px}
+[data-film=wisch] .stufe-info{padding:16px 12px 0}
+[data-film=wisch] .stufe-name{font-size:1.5rem}
+[data-film=wisch] .stufe-daten{gap:4px 20px;margin-top:.8rem;padding-top:.8rem}
+[data-film=wisch] .stufe-daten div:nth-child(n+3){display:none}
+[data-film=wisch] .stufe-zeile{justify-content:space-between;margin-top:1rem}
+[data-film=wisch] .stufe-preis small{display:block;margin:0}
+[data-film=wisch] .aufstieg-punkte{display:flex;align-items:center;gap:6px;margin-top:-6px}
+[data-film=wisch] .aufstieg-punkte button:not(.pfeil){height:32px}
+[data-film=wisch] .aufstieg-punkte button:not(.pfeil)::before{top:15px}
+@media (hover:hover) and (pointer:fine){[data-film=wisch] .aufstieg-pfeile{display:flex;gap:8px;margin-left:14px}}
+@media (min-width:700px){[data-film=wisch] .stufen{max-width:none}[data-film=wisch] .aufstieg-kopf,[data-film=wisch] .aufstieg-zaehler{text-align:center}[data-film=wisch] .lineal{max-width:640px;margin-inline:auto}}
+
+/* =====================================================================
+   Überarbeitung 9: Feinschliff auf allen Ebenen
+   ===================================================================== */
+@property --mx{syntax:"<length>";inherits:false;initial-value:0px}
+@property --my{syntax:"<length>";inherits:false;initial-value:0px}
+/* Seitenwechsel: weiches Überblenden, das Maschinenbild wandert mit */
+::view-transition-old(root),::view-transition-new(root){animation-duration:.28s;animation-timing-function:var(--hin)}
+::view-transition-group(maschine){animation-duration:.5s;animation-timing-function:var(--aus)}
+.detail-buehne img{view-transition-name:maschine}
+@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}
+
+/* Kategorienleiste: läuft unter der Kopfleiste mit */
+.kat-leiste{position:sticky;top:calc(max(12px,env(safe-area-inset-top)) + var(--kopf-h) + 10px);z-index:30;display:flex;gap:4px;width:fit-content;max-width:100%;margin:0 0 clamp(2rem,4vw,3.2rem);padding:5px;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,.66));-webkit-backdrop-filter:blur(22px) saturate(180%);backdrop-filter:blur(22px) saturate(180%);box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(0,0,0,.06),0 10px 30px rgba(24,36,68,.14);overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain}
+.kat-leiste::-webkit-scrollbar{display:none}
+.kat-leiste a{flex:none;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 15px;border-radius:999px;font-size:.9375rem;font-weight:500;color:var(--tx2);white-space:nowrap;transition:background-color .25s var(--hin),color .25s var(--hin)}
+.kat-leiste b{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:rgba(0,0,0,.07);color:var(--tx);font-size:.75rem;font-weight:600;transition:background-color .25s var(--hin)}
+.kat-leiste a[aria-current=true]{background:#1d1d1f;color:#fff}
+.kat-leiste a[aria-current=true] b{background:var(--sand);color:#1d1d1f}
+.kat-leiste-fremd{color:var(--sand-t)!important}
+@media (hover:hover) and (pointer:fine){.kat-leiste a:not([aria-current=true]):hover{color:var(--tx);background:rgba(0,0,0,.05)}}
+.kat{scroll-margin-top:150px}
+
+/* Startseite: Neuigkeiten als Bildkarten */
+@media (min-width:900px){
+  .meldungen--karten{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+  .meldungen--karten .meldung{grid-template-columns:minmax(0,1fr);grid-template-areas:"bild" "zeit" "text";grid-template-rows:auto auto 1fr;gap:0;padding:10px 10px 24px}
+  .meldungen--karten .meldung-bild{aspect-ratio:16/10.5;border-radius:20px;align-self:stretch}
+  .meldungen--karten time{padding:20px 14px 0}
+  .meldungen--karten .meldung>div:not(.meldung-bild){display:flex;flex-direction:column;padding:8px 14px 0}
+  .meldungen--karten .h3{font-size:1.25rem;line-height:1.2}
+  .meldungen--karten .verweis{margin-top:auto}
+  .meldungen--karten .meldung-bild img{transition:transform .8s var(--aus)}
+}
+@media (hover:hover) and (pointer:fine) and (min-width:900px){.meldungen--karten .meldung:hover .meldung-bild img{transform:scale(1.04)}}
+
+/* Handy: Maschinenkarten als kompakte Zeilen, damit die Liste überschaubar bleibt */
+@media (max-width:640px){
+  .karten{gap:10px}
+  .karten .karte{display:grid;grid-template-columns:104px minmax(0,1fr);align-items:center;gap:0 14px;padding:8px 14px 8px 8px;border-radius:24px}
+  .karten .karte-bild{aspect-ratio:1/1.12;border-radius:17px}
+  .karten .karte-bild img{left:9%;top:16%;width:82%;height:76%}
+  .karten .karte-hoehe{left:6px;top:6px;padding:3px 8px;font-size:.625rem}
+  .karten .karte-text{padding:6px 0}
+  .karten .karte-name{font-size:1.0625rem;line-height:1.2}
+  .karten .karte-art{font-size:.8125rem;line-height:1.35}
+  .karten .karte-daten{display:flex;flex-wrap:wrap;gap:1px 12px;margin:.45rem 0 .5rem;font-size:.75rem}
+  .karten .karte-daten div{display:block;padding:0;border:0}
+  .karten .karte-daten dt,.karten .karte-daten dd{display:inline}
+  .karten .karte-daten dd{margin-left:.3em}
+  .karten .karte-daten div:nth-child(n+3){display:none}
+  .karten .karte-preis{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 8px}
+  .karten .karte-preis .zahl{font-size:1.25rem}
+  .karten .karte-preis small{margin:0;font-size:.6875rem}
+  .karten .karte-name a::after{border-radius:24px}
+  .kat-kopf .h2{font-size:1.75rem}
+  .fakten{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .fakten div:last-child:nth-child(odd){grid-column:1/-1}
+  .fakten div{padding:16px 18px}
+  .kat-leiste{margin-inline:calc(-1*var(--rand) + 8px);max-width:none;width:auto;border-radius:22px}
+}
+
+/* Tippflächen und kleine Verweise */
+.pfad a{display:inline-block;padding:9px 0;margin:-9px 0}
+a.zahl.verweis,.fuss-spalten a,.fuss-ende a{display:inline-block;padding-block:5px}
+.dock-haupt[data-anfragen]{font-size:.9375rem;padding:0 8px}
+
+/* ---------- Vergleich: Knopf an der Karte, Ablage unten, Dialog ---------- */
+.vgl-knopf{position:absolute;z-index:2;right:20px;top:20px;display:inline-flex;align-items:center;gap:7px;min-height:32px;padding:0 12px 0 9px;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.86),rgba(255,255,255,.5));-webkit-backdrop-filter:blur(10px) saturate(170%);backdrop-filter:blur(10px) saturate(170%);box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(255,255,255,.6),0 4px 12px rgba(24,36,68,.1);font-size:.75rem;font-weight:500;color:#1d1d1f;transition:transform .16s var(--aus),opacity .2s}
+.vgl-knopf i{position:relative;width:16px;height:16px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #86868b}
+.vgl-knopf i::before,.vgl-knopf i::after{content:"";position:absolute;left:4.5px;top:7.25px;width:7px;height:1.5px;border-radius:1px;background:#6e6e73;transition:transform .25s var(--aus)}
+.vgl-knopf i::after{transform:rotate(90deg)}
+.vgl-knopf[aria-pressed=true]{color:#6b4308}
+.vgl-knopf[aria-pressed=true] i{background:var(--sand);box-shadow:none}
+.vgl-knopf[aria-pressed=true] i::before{left:4px;top:8px;width:4px;background:#1d1d1f;transform:rotate(45deg)}
+.vgl-knopf[aria-pressed=true] i::after{left:6px;top:7.2px;width:7px;background:#1d1d1f;transform:rotate(-45deg)}
+.vgl-knopf:active{transform:scale(.95)}
+.vgl-knopf:disabled{opacity:.35;cursor:default}
+.vgl-ablage{position:fixed;z-index:95;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:flex;align-items:center;gap:12px;max-width:calc(100vw - 24px);padding:7px 8px 7px 10px;border-radius:999px;background:linear-gradient(180deg,rgba(70,70,76,.72),rgba(24,24,27,.82));-webkit-backdrop-filter:blur(26px) saturate(190%);backdrop-filter:blur(26px) saturate(190%);box-shadow:inset 0 1px 0 rgba(255,255,255,.36),inset 0 0 0 1px rgba(255,255,255,.11),0 16px 40px rgba(0,0,0,.42);color:#f5f5f7;color-scheme:dark;animation:vgl-auf .45s var(--aus)}
+@keyframes vgl-auf{from{opacity:0;transform:translate(-50%,24px)}}
+.vgl-bilder{display:flex}
+.vgl-bilder img{flex:none;width:38px;height:38px;margin-left:-8px;padding:5px;border-radius:50%;object-fit:contain;background:radial-gradient(120% 85% at 50% 0%,#fff,#dfe4ec);box-shadow:0 0 0 2px #2a2a2d}
+.vgl-bilder img:first-child{margin-left:0}
+.vgl-text{font-size:.875rem;white-space:nowrap}
+.vgl-ablage .knopf:disabled{opacity:.4;cursor:default}
+.vgl-leeren{flex:none;width:36px;height:36px;border-radius:50%;font-size:1.25rem;line-height:1;color:#a1a1a6}
+@media (max-width:860px){.vgl-ablage{bottom:calc(76px + env(safe-area-inset-bottom,0px))}.vgl-text{display:none}}
+.vgl{width:min(100vw - 24px,980px);max-height:min(100dvh - 24px,860px);margin:auto;padding:0;border:0;border-radius:var(--r-g);background:#f5f5f7;color:var(--tx);box-shadow:0 40px 120px rgba(0,0,0,.5);overflow:auto;overscroll-behavior:contain}
+.vgl::backdrop{background:rgba(0,0,0,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.vgl[open]{animation:vgl-da .4s var(--aus)}
+@keyframes vgl-da{from{opacity:0;transform:translateY(18px) scale(.98)}}
+.vgl-kopf{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 16px 16px 26px;background:linear-gradient(180deg,#f5f5f7 70%,rgba(245,245,247,0))}
+.vgl-raster{display:grid;grid-template-columns:repeat(var(--n,2),minmax(0,1fr));gap:0 12px;padding:4px 22px 26px}
+.vgl-kopfzelle{display:flex;flex-direction:column;padding-bottom:16px}
+.vgl-kopfzelle .buehne{aspect-ratio:1/.8;border-radius:22px;margin-bottom:14px}
+.vgl-kopfzelle .buehne img{position:absolute;left:12%;top:12%;width:76%;height:78%;object-fit:contain;object-position:50% 60%}
+.vgl-kopfzelle strong{font-size:1.125rem;font-weight:600;letter-spacing:-.025em;line-height:1.2}
+.vgl-kopfzelle span{margin-top:.2rem;font-size:.8125rem;color:var(--tx2);line-height:1.35}
+.vgl-titel{grid-column:1/-1;margin-top:4px;padding:12px 0 2px;border-top:1px solid var(--ln);font-family:var(--mono);font-size:.6875rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--sand-t)}
+.vgl-wert{padding:2px 0 10px;font-size:1rem;font-weight:500;font-variant-numeric:tabular-nums;line-height:1.3}
+.vgl-wert b{display:block;font-size:1.5rem;font-weight:600;letter-spacing:-.035em}
+.vgl-wert small{display:block;font-size:.75rem;font-weight:400;color:var(--tx2)}
+.vgl-wert i{font-style:normal;font-weight:400;color:var(--tx2)}
+.vgl-fuss{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-top:8px;padding-top:16px;border-top:1px solid var(--ln)}
+.vgl-fuss .merken{font-size:.8125rem}
+@media (max-width:640px){
+  .vgl-raster{gap:0 10px;padding:0 14px 22px}
+  .vgl-kopf{padding:12px 12px 12px 18px}
+  .vgl-kopfzelle strong{font-size:1rem}
+  .vgl-wert{font-size:.9375rem}
+  .karten .vgl-knopf{right:10px;top:auto;bottom:10px;min-height:34px;padding:0 9px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+  .karten .vgl-knopf span{display:none}
+  .karten .karte:has(.vgl-knopf) .karte-preis{padding-right:44px}
+}
+@media (max-width:380px){.karten .karte{grid-template-columns:88px minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){.vgl-ablage,.vgl[open]{animation:none}}
+
+/* ---------- Zusagen: gleiche Fluchtlinie in jeder Kachel ---------- */
+.zusage{min-height:0}
+.zusage>:first-child{flex:none;display:flex;align-items:center;height:52px;margin-bottom:0}
+.zusage svg{width:46px;height:46px!important;padding:11px;border-radius:15px;background:var(--gk);box-shadow:var(--gkante)}
+.zusage .h3{margin-top:1.5rem}
+@media (max-width:560px){.zusage>:first-child{margin-bottom:0}.zusage .h3{margin-top:1rem}}
+/* ---------- Handy: Tippen ohne grauen Blitz, Felder ohne Zoom, Knöpfe nicht markierbar ---------- */
+a,button,label,summary,input,select,textarea{-webkit-tap-highlight-color:transparent}
+.knopf,.pfeil,.dock,.kat-leiste,.vgl-knopf,.schritt-anzeige,.wahlkarte{-webkit-user-select:none;user-select:none}
+@media (max-width:860px){input,select,textarea{font-size:max(1rem,16px)!important}}
+.blaettern a,.fuss-ende a,.fuss-spalten a{display:inline-block;padding-block:10px;margin-block:-4px}
+a.zahl{display:inline-block;padding-block:8px}
+/* Zwei dunkle Abschnitte hintereinander: nur ein Abstand statt zwei */
+.band:not(.band--papier):not(.band--blau)+.band:not(.band--papier):not(.band--blau){padding-top:0}

@@ -14,6 +14,17 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && kopf.hasAttribute('data-offen')) { setze(false); menue.focus(); } });
   }
 
+  /* ---------- Untere Leiste (Handy): weg, wo Kontakt ohnehin im Bild ist ---------- */
+  const dock = $('#dock');
+  if (dock && 'IntersectionObserver' in window) {
+    const sichtbar = new Set();
+    const io = new IntersectionObserver(es => {
+      es.forEach(e => { if (e.isIntersecting) sichtbar.add(e.target); else sichtbar.delete(e.target); });
+      dock.toggleAttribute('data-weg', sichtbar.size > 0);
+    }, { rootMargin: '0px 0px -12% 0px' });
+    $$('[data-dock-aus]').forEach(el => io.observe(el));
+  }
+
   /* ---------- Einblenden ---------- */
   if (!ruhig && 'IntersectionObserver' in window) {
     const io = new IntersectionObserver(es => es.forEach(e => {

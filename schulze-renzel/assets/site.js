@@ -79,44 +79,95 @@
   const wachsen = ruhig ? [] : $$('[data-wachsen]');
   const grund = ruhig ? null : $('.grund');
 
-  if (film && !ruhig) {
-    film.dataset.film = 'an';
+  if (film) {
     const stufen = $$('.stufe', film), n = stufen.length;
     const hoehen = stufen.map(s => parseFloat(s.dataset.hoehe));
-    const zahl = $('[data-film-zahl]', film), name = $('[data-film-name]', film);
+    const zahl = $('[data-film-zahl]', film), name = $('[data-film-name]', film), bahn = $('.stufen-bahn', film);
     const marke = $('.skala-marke', film), fuellung = $('.skala-fuellung', film), leiste = $('.skala-leiste', film);
-    const halte = $$('.skala-halt', film), punkte = $$('.aufstieg-punkte button', film), stand = $('[data-film-stand]', film);
+    const lineal = $('.lineal', film), lFuell = $('.lineal-fuellung', film), lMarke = $('.lineal-marke', film), lHalte = $$('.lineal-halt', film);
+    const halte = $$('.skala-halt', film), punkte = $$('.aufstieg-punkte button:not(.pfeil)', film), stand = $('[data-film-stand]', film);
+    /* Mit der Maus: Film beim Scrollen. Am Handy, Tablet und bei reduzierter Bewegung: waagerecht wischen, die Seite scrollt normal weiter. */
+    const eng = matchMedia('(max-width: 899px), (pointer: coarse)');
+    let modus = '', aktiv = -1, letzte = '', ruhe = [], gezaehlt = false;
     film.style.setProperty('--n', n);
-    let aktiv = -1, letzte = '';
+    /* Eine Anzeige für beide Arten: Höhe h (in Metern) und die gerade aktive Bühne */
+    const zeige = (h, jetzt) => {
+      const text = h.toFixed(2).replace('.', ',');
+      if (text !== letzte) { zahl.textContent = text; letzte = text; }
+      const anteil = h / 25;
+      if (modus === 'an') {
+        marke.style.transform = `translate3d(0,${-anteil * leiste.clientHeight}px,0)`;
+        fuellung.style.transform = `scaleY(${anteil})`;
+      } else {
+        lMarke.style.transform = `translate3d(${anteil * lineal.clientWidth}px,0,0)`;
+        lFuell.style.transform = `scaleX(${anteil})`;
+      }
+      if (jetzt === aktiv) return;
+      aktiv = jetzt;
+      stufen.forEach((s, k) => s.classList.toggle('ist-aktiv', k === aktiv));
+      halte.forEach((s, k) => s.toggleAttribute('data-da', k <= aktiv));
+      lHalte.forEach((s, k) => s.toggleAttribute('data-da', hoehen[k] <= hoehen[aktiv]));
+      punkte.forEach((s, k) => { s.toggleAttribute('data-da', k < aktiv); s.setAttribute('aria-current', String(k === aktiv)); });
+      if (stand) stand.textContent = `${aktiv + 1} / ${n}`;
+      if (name) name.textContent = stufen[aktiv].dataset.name;
+    };
+    const messen = () => { ruhe = stufen.map(s => s.offsetLeft + s.offsetWidth / 2 - bahn.clientWidth / 2); };
+    const wischBild = () => {
+      if (modus !== 'wisch' || !gezaehlt) return;
+      const x = bahn.scrollLeft; let i = 0;
+      while (i < n - 2 && x > ruhe[i + 1]) i++;
+      const f = klemme((x - ruhe[i]) / ((ruhe[i + 1] - ruhe[i]) || 1), 0, 1);
+      zeige(hoehen[i] + (hoehen[i + 1] - hoehen[i]) * f, f < .5 ? i : i + 1);
+    };
     const sprung = i => {
+      i = klemme(i, 0, n - 1);
+      if (modus === 'wisch') { bahn.scrollTo({ left: ruhe[i], behavior: ruhig ? 'auto' : 'smooth' }); return; }
       const r = film.getBoundingClientRect(), weg = r.height - innerHeight;
       scrollTo({ top: scrollY + r.top + (i + .75) / n * weg, behavior: 'smooth' });
     };
     halte.forEach((h, i) => h.addEventListener('click', () => sprung(i)));
     punkte.forEach((h, i) => h.addEventListener('click', () => sprung(i)));
+    $$('[data-film-pfeil]', film).forEach(b => b.addEventListener('click', () => sprung(aktiv + Number(b.dataset.filmPfeil))));
+    let bahnWartet = false;
+    bahn.addEventListener('scroll', () => { if (!bahnWartet) { bahnWartet = true; requestAnimationFrame(() => { bahnWartet = false; wischBild(); }); } }, { passive: true });
     filmBild = () => {
+      if (modus !== 'an') return;
       const r = film.getBoundingClientRect(), weg = r.height - innerHeight;
       if (r.bottom < 0 || r.top > innerHeight) return;
       const x = klemme(-r.top / weg, 0, 1) * n, i = Math.min(n - 1, Math.floor(x)), f = x - i;
       const von = i === 0 ? 0 : hoehen[i - 1];
-      const h = von + (hoehen[i] - von) * weich(klemme(f / .5, 0, 1));
-      const text = h.toFixed(2).replace('.', ',');
-      if (text !== letzte) { zahl.textContent = text; letzte = text; }
-      if (leiste) {
-        const anteil = h / 25;
-        marke.style.transform = `translate3d(0,${-anteil * leiste.clientHeight}px,0)`;
-        fuellung.style.transform = `scaleY(${anteil})`;
-      }
-      const jetzt = (i > 0 && f < .42) ? i - 1 : i;
-      if (jetzt !== aktiv) {
-        aktiv = jetzt;
-        stufen.forEach((s, k) => s.classList.toggle('ist-aktiv', k === aktiv));
-        halte.forEach((s, k) => s.toggleAttribute('data-da', k <= aktiv));
-        punkte.forEach((s, k) => { s.toggleAttribute('data-da', k < aktiv); s.setAttribute('aria-current', String(k === aktiv)); });
-        if (stand) stand.textContent = `${aktiv + 1} / ${n}`;
-        if (name) name.textContent = stufen[aktiv].dataset.name;
-      }
+      zeige(von + (hoehen[i] - von) * weich(klemme(f / .5, 0, 1)), (i > 0 && f < .42) ? i - 1 : i);
     };
+    /* Beim ersten Erscheinen zählt die Anzeige einmal von 0 auf die erste Bühne hoch */
+    const hochzaehlen = () => {
+      if (ruhig) { gezaehlt = true; wischBild(); return; }
+      const t0 = performance.now(), dauer = 900;
+      const schritt = t => {
+        const p = klemme((t - t0) / dauer, 0, 1);
+        if (bahn.scrollLeft > 4 || modus !== 'wisch') { gezaehlt = true; wischBild(); return; }
+        zeige(hoehen[0] * weich(p), 0);
+        if (p < 1) requestAnimationFrame(schritt); else gezaehlt = true;
+      };
+      requestAnimationFrame(schritt);
+    };
+    const stelle = () => {
+      const neu = (ruhig || eng.matches) ? 'wisch' : 'an';
+      if (neu === modus) { if (modus === 'wisch') { messen(); wischBild(); } return; }
+      modus = neu; film.dataset.film = modus; aktiv = -1; letzte = '';
+      if (modus === 'wisch') {
+        messen();
+        if (gezaehlt) wischBild(); else {
+          zeige(0, 0);
+          if ('IntersectionObserver' in window) {
+            const io = new IntersectionObserver(es => { if (es[0].isIntersecting) { io.disconnect(); hochzaehlen(); } }, { threshold: .35 });
+            io.observe(film);
+          } else { gezaehlt = true; wischBild(); }
+        }
+      } else filmBild();
+    };
+    stelle();
+    eng.addEventListener('change', stelle);
+    addEventListener('resize', stelle);
   }
 
   let wartet = false;
@@ -201,6 +252,81 @@
     }));
   });
 
+  /* ---------- Seitenwechsel: das Maschinenbild wandert von der Karte auf die Bühne der Maschinenseite ---------- */
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href$=".html"]');
+    if (!a || ruhig) return;
+    const huelle = a.closest('.karte, .kachel, .treffer, .stufe, .reihe li, .rampe-raster');
+    const img = huelle && huelle.querySelector('.buehne img, .rampe-bild img, a > img');
+    if (!img) return;
+    $$('[style*="view-transition-name"]').forEach(x => { x.style.viewTransitionName = ''; });
+    img.style.viewTransitionName = 'maschine';
+  });
+
+  /* ---------- Kategorienleiste: zeigt, in welchem Abschnitt man gerade ist ---------- */
+  const katLeiste = $('[data-kat-leiste]');
+  if (katLeiste && 'IntersectionObserver' in window) {
+    const marken = $$('a[href^="#"]', katLeiste), ziele = marken.map(a => $(a.getAttribute('href')));
+    const setze = i => marken.forEach((a, k) => {
+      if (k !== i) { a.removeAttribute('aria-current'); return; }
+      if (a.getAttribute('aria-current') === 'true') return;
+      a.setAttribute('aria-current', 'true');
+      katLeiste.scrollTo({ left: a.offsetLeft - 12, behavior: ruhig ? 'auto' : 'smooth' });
+    });
+    const io = new IntersectionObserver(() => {
+      const mitte = innerHeight * .4;
+      let i = -1;
+      ziele.forEach((z, k) => { if (z && z.getBoundingClientRect().top < mitte) i = k; });
+      setze(i);
+    }, { rootMargin: '-39% 0px -60% 0px' });
+    ziele.forEach(z => z && io.observe(z));
+  }
+
+  /* ---------- Arbeitsbühnen vergleichen (bis zu drei) ---------- */
+  const vglQuelle = $('#vergleich-daten');
+  if (vglQuelle) {
+    const daten = JSON.parse(vglQuelle.textContent), wahl = [];
+    const knoepfe = $$('[data-vergleich]'), ablage = $('#vgl-ablage'), dialog = $('#vgl'), raster = $('.vgl-raster', dialog);
+    const bilder = $('.vgl-bilder', ablage), text = $('.vgl-text', ablage), auf = $('[data-vgl-auf]', ablage);
+    const esc = s => String(s).replace(/[&<>"]/g, z => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[z]));
+    const stand = () => {
+      knoepfe.forEach(k => {
+        const an = wahl.includes(k.dataset.vergleich);
+        k.setAttribute('aria-pressed', String(an));
+        k.disabled = !an && wahl.length >= 3;
+        $('span', k).textContent = an ? 'Im Vergleich' : 'Vergleichen';
+      });
+      ablage.hidden = wahl.length === 0;
+      document.documentElement.classList.toggle('vgl-aktiv', wahl.length > 0);
+      bilder.innerHTML = wahl.map(s => `<img src="${esc(daten[s].bild)}" alt="">`).join('');
+      text.textContent = wahl.length === 1 ? 'Noch eine Bühne wählen' : `${wahl.length} Bühnen gewählt`;
+      auf.disabled = wahl.length < 2;
+    };
+    const zeile = (titel, wert) => `<div class="vgl-titel">${esc(titel)}</div>` + wahl.map(s => `<div class="vgl-wert">${wert(daten[s])}</div>`).join('');
+    const oeffnen = () => {
+      const schluessel = [];
+      wahl.forEach(s => daten[s].fakten.forEach(f => { if (!schluessel.includes(f[0])) schluessel.push(f[0]); }));
+      raster.style.setProperty('--n', wahl.length);
+      raster.innerHTML =
+        wahl.map(s => `<div class="vgl-kopfzelle"><div class="buehne"><img src="${esc(daten[s].bild)}" alt=""></div><strong>${esc(daten[s].name)}</strong><span>${esc(daten[s].kurz)}</span></div>`).join('') +
+        zeile('Preis', d => `<b>${esc(d.preis)}</b><small>${esc(d.zusatz)}</small>`) +
+        schluessel.map(k => zeile(k, d => { const f = d.fakten.find(x => x[0] === k); return f ? esc(f[1]) : '<i>keine Angabe</i>'; })).join('') +
+        wahl.map(s => `<div class="vgl-fuss"><a class="knopf knopf--klein" href="${esc(s)}.html"><span>Ansehen</span></a><button class="merken" type="button" data-merken="${esc(s)}" aria-pressed="false">Auf die Anfrageliste</button></div>`).join('');
+      zeichnen();
+      if (typeof dialog.showModal === 'function') dialog.showModal(); else dialog.setAttribute('open', '');
+    };
+    knoepfe.forEach(k => k.addEventListener('click', () => {
+      const s = k.dataset.vergleich, i = wahl.indexOf(s);
+      if (i >= 0) wahl.splice(i, 1); else if (wahl.length < 3) wahl.push(s);
+      stand();
+    }));
+    auf.addEventListener('click', oeffnen);
+    $('[data-vgl-leeren]', ablage).addEventListener('click', () => { wahl.length = 0; stand(); });
+    $('[data-vgl-zu]', dialog).addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
+    stand();
+  }
+
   /* ---------- Untere Leiste (Handy) ---------- */
   const dock = $('#dock'), dockAus = $$('[data-dock-aus], #anfrage');
   if (dock && 'IntersectionObserver' in window) {
@@ -253,7 +379,7 @@
       const nachPreis = (a, b) => zahl(a, 'preis') - zahl(b, 'preis') || zahl(a, 'hoehe') - zahl(b, 'hoehe');
       ordne(passend.sort(nachPreis), zeilen.filter(z => z.hasAttribute('data-aus')));
       stand.textContent = passend.length === 0 ? '' : passend.length === 1
-        ? `1 von ${zeilen.length} Bühnen passt.` : `${passend.length} von ${zeilen.length} Bühnen passen.`;
+        ? `1 von ${zeilen.length} Bühnentypen passt.` : `${passend.length} von ${zeilen.length} Bühnentypen passen.`;
       leer.hidden = passend.length > 0;
     };
     finder.addEventListener('input', rechne);
