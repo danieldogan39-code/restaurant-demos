@@ -320,3 +320,19 @@ input[type=range]::-moz-range-thumb{width:30px;height:30px;border:var(--kontur);
   .hero-raster{grid-template-columns:minmax(0,.94fr) minmax(0,1.06fr)}
 }
 .feld{align-content:start}
+.js .ein{opacity:0;transform:translateY(16px)}
+.js .ein.ist-da{opacity:1;transform:none;transition:opacity .5s var(--aus) calc(var(--d,0)*45ms),transform .65s var(--aus) calc(var(--d,0)*45ms)}
+@media (prefers-reduced-motion:reduce){.js .ein,.js .ein.ist-da{opacity:1;transform:none;transition:none}}
+
+/* ---------- Überarbeitung: Checkup ---------- */
+@media (min-width:700px){.halte--3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:1100px){.halte--4{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.halte--3 li{padding:24px}
+.halte--3 p{font-size:1.0625rem}
+.nav a[aria-current]{text-decoration-color:var(--rot)}
+@media (max-width:759px){.fuss-spalten>div:nth-child(2){grid-column:1/-1;order:3}}
+.lichtkasten figure{overflow:hidden;touch-action:pan-y pinch-zoom}
+.lichtkasten figure img{-webkit-user-drag:none;-webkit-user-select:none;user-select:none}
+
+@media (max-width:359px){.fuss-spalten{grid-template-columns:minmax(0,1fr)}}
+.stempel{max-width:380px}

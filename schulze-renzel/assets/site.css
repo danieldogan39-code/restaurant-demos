@@ -921,3 +921,35 @@ a.zahl:not(.kopf-tel){display:inline-block;padding-block:8px}
 .bahn.ein{transform:none}
 .pfeil:disabled{opacity:.32;cursor:default}
 .stufen-bahn,.kat-leiste{overflow-y:hidden}
+
+/* =====================================================================
+   Überarbeitung 10: ruhiges, leichtes Scrollen auf der ganzen Maschinenseite
+   Gemessen: eine fest stehende, mitgeschobene Hintergrund-Ebene und Glas-Unschärfen im Inhalt
+   kosteten beim Scrollen am meisten. Der Hintergrund liegt jetzt im Seitenfluss, Glas bleibt
+   dort, wo es über bewegtem Inhalt schwebt (Kopfleiste, untere Leiste, Kategorienleiste).
+   ===================================================================== */
+body{background-color:#000;background-image:radial-gradient(min(980px,130vw) 520px at 90% 540px,rgba(10,114,209,.3),transparent 70%),radial-gradient(min(900px,120vw) 500px at 4% 1290px,rgba(10,114,209,.2),transparent 70%);background-size:100% 1800px;background-repeat:repeat-y}
+.kopf{-webkit-backdrop-filter:blur(18px) saturate(180%);backdrop-filter:blur(18px) saturate(180%)}
+.knopf--linie,.reihe-hinweis,.finder-regler,.karte-hoehe,.preisfeld,.vgl-knopf{-webkit-backdrop-filter:none;backdrop-filter:none}
+.reihe-hinweis,.karte-hoehe,.vgl-knopf{background:linear-gradient(180deg,rgba(255,255,255,.94),rgba(255,255,255,.78))}
+/* Film: bewegte Bilder ohne Filter, der Schatten liegt als Fläche auf der Bühne */
+[data-film=an] .stufe-bild img{filter:none}
+[data-film=an] .aufstieg-flaeche{background-image:radial-gradient(38% 7% at 50% 91%,rgba(18,32,58,.2),transparent 72%),radial-gradient(120% 85% at 50% 0%,#fff 0%,#eef1f6 48%,#d7dde8 100%)}
+/* Höhenwähler zum Wischen: Karten bleiben beim Wischen gleich groß, Einrasten nur bei Fingerbedienung */
+[data-film=wisch] .stufe{transform:none;scroll-snap-stop:normal;transition:opacity .3s var(--hin)}
+[data-film=wisch] .stufe.ist-aktiv{transform:none}
+@media (hover:hover) and (pointer:fine){[data-film=wisch] .stufen-bahn{scroll-snap-type:none}}
+/* Einblenden: kürzer und näher, damit beim schnellen Scrollen nichts hinterherhinkt */
+.ein{opacity:0;transform:translateY(16px)}
+.ein.ist-da{opacity:1;transform:none;transition:opacity .5s var(--aus) calc(var(--d,0)*45ms),transform .65s var(--aus) calc(var(--d,0)*45ms)}
+.bahn.ein{transform:none}
+
+/* ---------- Überarbeitung 11: Checkup ---------- */
+.stimmen figcaption{display:flex;flex-direction:column;gap:4px}
+.stimmen figcaption small{font-size:.8125rem;color:var(--tx2)}
+.stimmen--eins figcaption{align-items:flex-start;gap:10px;padding:0;border-radius:0;background:none;box-shadow:none;font-weight:400}
+.stimmen--eins .stimme-art{display:inline-flex;padding:6px 13px;border-radius:999px;background:var(--gk);box-shadow:var(--gkante);color:var(--sand-t);font-weight:600}
+a.verweis,.karte .h3 a{padding-block:4px}
+@media (max-width:519px){.fuss-spalten>div:nth-child(3){grid-column:1/-1}}
+.lichtkasten figure{overflow:hidden;touch-action:pan-y pinch-zoom}
+.lichtkasten figure img{-webkit-user-drag:none;-webkit-user-select:none;user-select:none}

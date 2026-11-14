@@ -22,21 +22,23 @@
     const io = new IntersectionObserver(es => {
       es.forEach(e => { if (e.isIntersecting) sichtbar.add(e.target); else sichtbar.delete(e.target); });
       dock.toggleAttribute('data-weg', sichtbar.size > 0);
-    }, { rootMargin: '0px 0px -12% 0px' });
+    }, { rootMargin: '-96px 0px -12% 0px'   /* was unter der festen Kopfzeile liegt, zählt nicht mehr als sichtbar */ });
     $$('[data-dock-aus]').forEach(el => io.observe(el));
   }
 
   /* ---------- Einblenden ---------- */
   if (!ruhig && 'IntersectionObserver' in window) {
     const io = new IntersectionObserver(es => es.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('ist-da'); io.unobserve(e.target); }
-    }), { rootMargin: '0px 0px -8% 0px' });
+      if (!e.isIntersecting) return;
+      const el = e.target; io.unobserve(el); el.classList.add('ist-da');
+      setTimeout(() => el.classList.remove('ein', 'ist-da'), 1100);   // danach gelten wieder die eigenen Übergänge des Elements
+    }), { rootMargin: '0px 0px -4% 0px' });
     const gruppe = new Map();
     $$('.kopfzeile, .karte, .rechner-felder, .fahrkarte, .halte li, .stempel, .haken--gross li, .formular, .wege a').forEach(el => {
       if (el.getBoundingClientRect().top < innerHeight * .92) return;
       const k = gruppe.get(el.parentElement) || 0;
       gruppe.set(el.parentElement, k + 1);
-      el.style.setProperty('--d', Math.min(k, 6));
+      el.style.setProperty('--d', Math.min(k, 4));
       el.classList.add('ein'); io.observe(el);
     });
   }
@@ -58,7 +60,66 @@
     fahre();
   }
 
+
+  /* ---------- Menü zeigt den Abschnitt, in dem man gerade liest ---------- */
+  if ('IntersectionObserver' in window) {
+    const paare = $$('.kopf .nav ul a[href^="#"]').map(a => [a, document.getElementById(a.getAttribute('href').slice(1))]).filter(p => p[1]);
+    const imBild = new Set();
+    const io = new IntersectionObserver(es => {
+      es.forEach(e => { if (e.isIntersecting) imBild.add(e.target); else imBild.delete(e.target); });
+      const aktiv = paare.filter(p => imBild.has(p[1])).pop();
+      paare.forEach(p => { if (aktiv && p === aktiv) p[0].setAttribute('aria-current', 'true'); else p[0].removeAttribute('aria-current'); });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    paare.forEach(p => io.observe(p[1]));
+  }
+
   /* ---------- Lichtkasten: je Wagen eine eigene Bildfolge ---------- */
+  /* Wischen im Lichtkasten: Das Foto folgt dem Finger und kippt ab einem Fünftel der Breite oder mit Schwung zum nächsten.
+     Senkrechtes Wischen und Zoomen mit zwei Fingern bleiben beim Browser. */
+  function wischbar(kasten, blaettern, anzahl) {
+    const fig = $('figure', kasten), img = $('img', fig);
+    let id = null, x0 = 0, y0 = 0, dx = 0, t0 = 0, quer = null, zuletzt = 0;
+    const weich = an => { img.style.transition = an ? 'transform .26s cubic-bezier(.22,1,.36,1), opacity .26s' : 'none'; };
+    const ruhe = () => { weich(true); img.style.transform = ''; img.style.opacity = ''; };
+    img.draggable = false;
+    fig.addEventListener('pointerdown', e => {
+      if (anzahl() < 2 || (e.pointerType === 'mouse' && e.button !== 0)) return;
+      id = e.pointerId; x0 = e.clientX; y0 = e.clientY; dx = 0; t0 = e.timeStamp; quer = null;
+    });
+    fig.addEventListener('pointermove', e => {
+      if (e.pointerId !== id) return;
+      dx = e.clientX - x0;
+      if (quer === null) {
+        const dy = e.clientY - y0;
+        if (Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
+        quer = Math.abs(dx) > Math.abs(dy);
+        if (quer) { try { fig.setPointerCapture(id); } catch (f) {} weich(false); }
+      }
+      if (!quer || ruhig) return;
+      img.style.transform = `translate3d(${dx.toFixed(1)}px,0,0)`;
+      img.style.opacity = String(1 - Math.min(.55, Math.abs(dx) / fig.clientWidth));
+    });
+    const ende = e => {
+      if (e.pointerId !== id) return;
+      id = null;
+      if (!quer) return;
+      zuletzt = e.timeStamp;
+      const tempo = dx / Math.max(1, e.timeStamp - t0);
+      if (e.type !== 'pointerup' || (Math.abs(dx) < fig.clientWidth * .2 && Math.abs(tempo) < .45)) return ruhe();
+      const r = dx < 0 ? 1 : -1;
+      if (ruhig) return blaettern(r);
+      weich(true); img.style.transform = `translate3d(${-r * fig.clientWidth * .45}px,0,0)`; img.style.opacity = '0';
+      setTimeout(async () => {
+        blaettern(r);
+        weich(false); img.style.transform = `translate3d(${r * 56}px,0,0)`;
+        try { await img.decode(); } catch (f) {}
+        requestAnimationFrame(() => requestAnimationFrame(ruhe));
+      }, 150);
+    };
+    fig.addEventListener('pointerup', ende);
+    fig.addEventListener('pointercancel', ende);
+    return e => e.timeStamp - zuletzt < 400;   // true: dieser Klick gehört noch zum Wischen und schließt nichts
+  }
   let kasten, bilder = [], stelle = 0;
   function bauen() {
     kasten = document.createElement('dialog');
@@ -70,18 +131,11 @@
     $('[data-lk="zu"]', kasten).addEventListener('click', () => kasten.close());
     $('[data-lk="zurueck"]', kasten).addEventListener('click', () => zeigen(stelle - 1));
     $('[data-lk="weiter"]', kasten).addEventListener('click', () => zeigen(stelle + 1));
-    kasten.addEventListener('click', e => { if (e.target === kasten || e.target.tagName === 'FIGURE') kasten.close(); });
+    const gewischt = wischbar(kasten, r => zeigen(stelle + r), () => bilder.length);
+    kasten.addEventListener('click', e => { if (gewischt(e)) return; if (e.target === kasten || e.target.tagName === 'FIGURE') kasten.close(); });
     kasten.addEventListener('keydown', e => {
       if (e.key === 'ArrowLeft') zeigen(stelle - 1);
       if (e.key === 'ArrowRight') zeigen(stelle + 1);
-    });
-    /* Wischen am Handy */
-    let x0 = null;
-    kasten.addEventListener('pointerdown', e => { x0 = e.clientX; });
-    kasten.addEventListener('pointerup', e => {
-      if (x0 === null) return;
-      const weg = e.clientX - x0; x0 = null;
-      if (Math.abs(weg) > 48) zeigen(stelle + (weg < 0 ? 1 : -1));
     });
   }
   function zeigen(i) {
@@ -90,6 +144,7 @@
     img.src = b.src; img.alt = b.alt;
     $('figcaption', kasten).textContent = b.alt;
     $('[data-lk="stand"]', kasten).textContent = `${stelle + 1} / ${bilder.length}`;
+    if (bilder.length > 1) [stelle + 1, stelle - 1].forEach(k => { new Image().src = bilder[(k + bilder.length) % bilder.length].src; });
   }
   $$('[data-galerie]').forEach(g => {
     const knoepfe = $$('button[data-voll]', g);
