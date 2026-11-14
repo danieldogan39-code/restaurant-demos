@@ -204,13 +204,14 @@
 
   /* ---------- Einblenden beim Scrollen ---------- */
   if (!ruhig && 'IntersectionObserver' in window) {
-    const ziele = $$('.kopfzeile, .zusage, .bento > *, .karte, .stimmen figure, .meldung, .tor, .finder-liste, .finder-regler, .wagen, .stall, .stationen li, .kat-kopf, .rampe-text > *, .rampe-bild, .preisfeld, .fakten, .rechner, .anruf > *, .hof-teil, .bahn-kopf, .kachel, .bildraster, .formular, .kontaktwege, .seitenkopf-bild, .tabelle-huelle');
+    const ziele = $$('.kopfzeile, .zusage, .bento > *, .karte, .stimmen figure, .meldung, .tor, .finder-liste, .finder-regler, .wagen, .stall, .stationen li, .kat-kopf, .rampe-text > *, .rampe-bild, .preisfeld, .fakten, .rechner, .anruf > *, .hof-teil, .bahn-kopf, .bahn, .bildraster, .formular, .kontaktwege, .seitenkopf-bild, .tabelle-huelle');
     const io = new IntersectionObserver(es => es.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('ist-da'); io.unobserve(e.target); }
     }), { rootMargin: '0px 0px -8% 0px' });
     const gruppe = new Map();
     ziele.forEach(el => {
       if (el.getBoundingClientRect().top < innerHeight * .92) return;   // schon sichtbar: nichts verstecken
+      if (el.closest('.stufen-bahn') || (el !== el.closest('.bahn') && el.closest('.bahn'))) return;   // in Leisten zum Wischen nichts verschieben
       const k = gruppe.get(el.parentElement) || 0;
       gruppe.set(el.parentElement, k + 1);
       el.style.setProperty('--d', Math.min(k, 5));
@@ -243,13 +244,87 @@
     }));
   }
 
-  /* ---------- Bahn: waagerecht blättern ---------- */
+  /* ---------- Bahn: waagerecht blättern mit Trackpad, Maus-Ziehen, Finger, Pfeilen und Tastatur ----------
+     Am Handy rastet die Leiste über CSS ein (scroll-snap). Mit Maus und Trackpad läuft sie frei, damit nichts zurückfedert;
+     Pfeile und Ziehen landen trotzdem genau auf einer Kartenkante. */
   $$('[data-bahn]').forEach(b => {
-    const spur = $('.bahn', b);
-    $$('[data-bahn-pfeil]', b).forEach(p => p.addEventListener('click', () => {
-      const karte = $('.kachel', spur), schritt = karte ? karte.getBoundingClientRect().width + 20 : 320;
-      spur.scrollBy({ left: schritt * (p.dataset.bahnPfeil === 'vor' ? 1 : -1), behavior: ruhig ? 'auto' : 'smooth' });
+    const spur = $('.bahn', b), karten = Array.from(spur.children), pfeile = $$('[data-bahn-pfeil]', b);
+    const fein = matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const ende = () => spur.scrollWidth - spur.clientWidth;
+    const halte = () => { const r = parseFloat(getComputedStyle(spur).scrollPaddingLeft) || 0; return karten.map(k => klemme(k.offsetLeft - r, 0, ende())); };
+    const stelle = (h, x) => h.reduce((bester, wert, i) => Math.abs(wert - x) < Math.abs(h[bester] - x) ? i : bester, 0);
+    let lauf = 0, ziel = null;
+    const stopp = () => { if (lauf) cancelAnimationFrame(lauf); lauf = 0; ziel = null; };
+    const gleite = wohin => {
+      stopp();
+      if (ruhig || !fein) { spur.scrollTo({ left: wohin, behavior: ruhig ? 'auto' : 'smooth' }); return; }
+      ziel = wohin;
+      let zuletzt = performance.now(), x = spur.scrollLeft;
+      const schritt = t => {
+        const dt = Math.min(48, t - zuletzt); zuletzt = t;
+        x += (ziel - x) * (1 - Math.exp(-dt / 105));
+        if (Math.abs(ziel - x) < .5) { spur.scrollLeft = ziel; lauf = 0; ziel = null; return; }
+        spur.scrollLeft = x; lauf = requestAnimationFrame(schritt);
+      };
+      lauf = requestAnimationFrame(schritt);
+    };
+    const stand = () => { const x = spur.scrollLeft, e = ende(); pfeile.forEach(p => { p.disabled = p.dataset.bahnPfeil === 'vor' ? x >= e - 2 : x <= 2; }); };
+    pfeile.forEach(p => p.addEventListener('click', () => {
+      const h = halte(), breite = karten[0].getBoundingClientRect().width + 20;
+      const weite = Math.max(1, Math.floor(spur.clientWidth / breite) - 1);
+      const i = stelle(h, ziel === null ? spur.scrollLeft : ziel);
+      gleite(h[klemme(i + (p.dataset.bahnPfeil === 'vor' ? weite : -weite), 0, h.length - 1)]);
     }));
+    /* Während die Leiste rollt, reagieren die Karten nicht auf den Zeiger: kein Aufflackern der Hover-Vergrößerung */
+    let ruhe = 0, wartet = false;
+    spur.addEventListener('scroll', () => {
+      if (!spur.hasAttribute('data-rollt')) spur.setAttribute('data-rollt', '');
+      clearTimeout(ruhe); ruhe = setTimeout(() => spur.removeAttribute('data-rollt'), 140);
+      if (!wartet) { wartet = true; requestAnimationFrame(() => { wartet = false; stand(); }); }
+    }, { passive: true });
+    spur.addEventListener('wheel', stopp, { passive: true });
+    spur.addEventListener('touchstart', stopp, { passive: true });
+    /* Bilder der Leiste laden, bevor sie ins Bild kommt, damit beim Wischen nichts nachlädt */
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(es => { if (es[0].isIntersecting) { io.disconnect(); $$('img[loading=lazy]', spur).forEach(i => { i.loading = 'eager'; }); } }, { rootMargin: '900px 0px' });
+      io.observe(spur);
+    }
+    /* Mit der Maus ziehen: 1:1 mit dem Zeiger, beim Loslassen mit Schwung auf die nächste Kartenkante */
+    if (fein) {
+      let zug = null, gezogen = false;
+      spur.addEventListener('pointerdown', e => {
+        gezogen = false;
+        if (e.pointerType !== 'mouse' || e.button !== 0) return;
+        stopp();
+        zug = { id: e.pointerId, x0: e.clientX, s0: spur.scrollLeft, zieht: false, weg: [[e.timeStamp, e.clientX]] };
+      });
+      spur.addEventListener('pointermove', e => {
+        if (!zug || e.pointerId !== zug.id) return;
+        const dx = e.clientX - zug.x0;
+        if (!zug.zieht) {
+          if (Math.abs(dx) < 6) return;
+          zug.zieht = true; spur.setPointerCapture(e.pointerId); spur.setAttribute('data-zieht', '');
+        }
+        spur.scrollLeft = zug.s0 - dx;
+        zug.weg.push([e.timeStamp, e.clientX]); if (zug.weg.length > 8) zug.weg.shift();
+      });
+      const los = e => {
+        if (!zug || e.pointerId !== zug.id) return;
+        const z = zug; zug = null;
+        if (!z.zieht) return;
+        gezogen = true; spur.removeAttribute('data-zieht');
+        const letzt = z.weg[z.weg.length - 1], frueh = z.weg.find(p => letzt[0] - p[0] <= 100) || z.weg[0];
+        const tempo = letzt[0] > frueh[0] ? (letzt[1] - frueh[1]) / (letzt[0] - frueh[0]) * 1000 : 0;   // px je Sekunde
+        const h = halte();
+        gleite(h[stelle(h, spur.scrollLeft - tempo * .32)]);
+      };
+      spur.addEventListener('pointerup', los);
+      spur.addEventListener('pointercancel', los);
+      spur.addEventListener('click', e => { if (gezogen) { e.preventDefault(); e.stopPropagation(); gezogen = false; } }, true);
+      spur.addEventListener('dragstart', e => e.preventDefault());
+    }
+    addEventListener('resize', stand);
+    stand();
   });
 
   /* ---------- Seitenwechsel: das Maschinenbild wandert von der Karte auf die Bühne der Maschinenseite ---------- */

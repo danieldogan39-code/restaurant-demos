@@ -33,6 +33,7 @@
     const gruppe = new Map();
     $$('.kopfzeile, .plan, .anlage-liste li, .stall, .spalte, .futter, .stimmen figure, .galerie button, .hof-bild, .zeit li, .formular, .wege a').forEach(el => {
       if (el.getBoundingClientRect().top < innerHeight * .92) return;
+      if (el.classList.contains('stall') && getComputedStyle(el.parentElement).overflowX !== 'visible') return;   // in der Leiste zum Wischen nichts verschieben
       const k = gruppe.get(el.parentElement) || 0;
       gruppe.set(el.parentElement, k + 1);
       el.style.setProperty('--d', Math.min(k, 6));

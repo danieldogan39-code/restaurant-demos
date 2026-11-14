@@ -309,3 +309,4 @@ a,button,label,summary,input,select,textarea{-webkit-tap-highlight-color:transpa
 @media (max-width:860px){input,select,textarea{font-size:max(1rem,16px)!important}}
 .fuss-spalten a,.fuss-ende a,.oben a{display:inline-block;padding-block:10px;margin-block:-5px}
 .feld{align-content:start;align-self:start}
+@media (max-width:639px){.staelle{overflow-y:hidden;-webkit-overflow-scrolling:touch}}
