@@ -340,3 +340,18 @@ a,button,label,summary,input,select,textarea{-webkit-tap-highlight-color:transpa
 .stall-wahl{position:relative}
 
 @media (max-width:359px){.fuss-spalten{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- Flyer zum Mitnehmen ---------- */
+.flyer{display:grid;gap:clamp(28px,5vw,64px);align-items:center}
+@media (min-width:900px){.flyer{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}}
+.flyer .knopfreihe{align-items:center}
+.flyer-bild{position:relative;display:block;padding:0 0 9% 14%}
+.flyer-innen{display:block;width:100%;height:auto}
+.flyer-titel{position:absolute;left:0;bottom:0;width:24%;height:auto;transform:rotate(-4deg);transition:transform .35s cubic-bezier(.22,1,.36,1)}
+@media (hover:hover) and (pointer:fine){.flyer-bild:hover .flyer-titel{transform:rotate(-1deg) translateY(-6px)}}
+@media (prefers-reduced-motion:reduce){.flyer-titel{transition:none}}
+.flyer .kopfzeile{margin-bottom:1.25rem}
+.flyer .knopfreihe{display:flex;flex-wrap:wrap;gap:14px 18px;margin-top:1.75rem}
+.flyer-info{font-size:.875rem;color:var(--leise)}
+.flyer-innen{border-radius:12px;box-shadow:0 26px 54px -24px rgba(34,39,30,.5),0 0 0 1px var(--linie)}
+.flyer-titel{border-radius:9px;box-shadow:0 20px 40px -16px rgba(34,39,30,.55),0 0 0 1px var(--linie)}

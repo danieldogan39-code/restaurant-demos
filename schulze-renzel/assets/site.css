@@ -953,3 +953,23 @@ a.verweis,.karte .h3 a{padding-block:4px}
 @media (max-width:519px){.fuss-spalten>div:nth-child(3){grid-column:1/-1}}
 .lichtkasten figure{overflow:hidden;touch-action:pan-y pinch-zoom}
 .lichtkasten figure img{-webkit-user-drag:none;-webkit-user-select:none;user-select:none}
+
+/* ---------- Flyer zum Mitnehmen ---------- */
+.flyer{display:grid;gap:clamp(28px,5vw,64px);align-items:center}
+@media (min-width:900px){.flyer{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}}
+.flyer .knopfreihe{align-items:center}
+.flyer-bild{position:relative;display:block;padding:0 0 9% 14%}
+.flyer-innen{display:block;width:100%;height:auto}
+.flyer-titel{position:absolute;left:0;bottom:0;width:24%;height:auto;transform:rotate(-4deg);transition:transform .35s cubic-bezier(.22,1,.36,1)}
+@media (hover:hover) and (pointer:fine){.flyer-bild:hover .flyer-titel{transform:rotate(-1deg) translateY(-6px)}}
+@media (prefers-reduced-motion:reduce){.flyer-titel{transition:none}}
+.flyer-info{font-size:.875rem;color:var(--tx2)}
+.flyer-innen{border-radius:14px;box-shadow:0 30px 60px -24px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.08)}
+.flyer-titel{border-radius:10px;box-shadow:0 24px 48px -16px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.12)}
+.flyer-text{display:flex;flex-direction:column;align-items:flex-start;gap:1.1rem}
+.flyer-text .vorzeile{margin:0}
+.flyer-text .h2{margin:0;font-size:clamp(2rem,3.5vw,3.1rem);overflow-wrap:normal;hyphens:manual}
+.flyer-satz{margin:0;max-width:30em;font-size:1.0625rem;line-height:1.55;color:var(--tx2)}
+.flyer-text .knopfreihe{margin-top:.6rem}
+.flyer-bild{padding:15% 0 9% 13%}
+.flyer-titel{width:22%}
