@@ -1,0 +1,26 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<meta name="color-scheme" content="only dark"><meta name="darkreader-lock"><meta name="theme-color" content="#0E192A"><title>Dunkelmodus-Test C</title>
+<style>:root{color-scheme:only dark}@media (prefers-color-scheme:dark){:root{--dunkel:1}}
+*{box-sizing:border-box}html{background:#0E192A}body{margin:0;padding:18px 16px 40px;background:#0E192A;color:#C3CDDC;font:400 16px/1.5 system-ui,-apple-system,Roboto,Arial,sans-serif}
+h1{margin:0 0 2px;color:#F3F5F9;font-size:26px;letter-spacing:-.02em}h2{margin:22px 0 8px;color:#F3F5F9;font-size:15px;font-weight:600}
+.s{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.s div{height:64px;border-radius:10px;display:grid;place-items:end start;padding:6px 8px;font-size:11px}
+canvas{display:block;width:100%;height:64px}
+.k{margin-top:10px;padding:16px;border-radius:16px;background:#14223A;border:1px solid rgba(170,190,220,.19)}.k b{color:#F3F5F9}
+.b{display:inline-block;margin-top:12px;padding:12px 18px;border-radius:999px;background:#F44C4C;color:#fff;font-weight:600;text-decoration:none}
+img{display:block;width:100%;border-radius:12px;margin-top:10px}pre{white-space:pre-wrap;word-break:break-all;font-size:11px;color:#8A9BB4;margin:8px 0 0}
+nav{display:flex;gap:8px;margin:14px 0 0}nav a{flex:1;text-align:center;padding:10px 0;border-radius:10px;background:#1A2A45;color:#F3F5F9;text-decoration:none;font-weight:600}nav a.an{background:#F3F5F9;color:#0E192A}
+</style></head><body>
+<h1>Test C</h1><div>ausschließlich dunkel</div>
+<nav><a href="./">A</a><a href="b.html">B</a><a href="c.html" class="an">C</a><a href="d.html">D</a></nav>
+<h2>Soll: so sind die Farben gemeint</h2><canvas id="c" width="800" height="128"></canvas>
+<h2>Ist: so zeigt sie dieser Browser</h2>
+<div class="s"><div style="background:#0E192A;color:#F3F5F9;border:1px solid rgba(170,190,220,.32)">Grund</div><div style="background:#14223A;color:#F3F5F9">Fläche</div><div style="background:#F44C4C;color:#fff">Koralle</div><div style="background:#F3F5F9;color:#0E192A">Weiß</div></div>
+<div class="k"><b>Wie gut ist Ihre Website wirklich?</b><br>Normaler Fließtext in Hellgrau auf der dunkelblauen Fläche.<br><a class="b" href="#">Kostenlos prüfen</a></div>
+<img src="bild.jpg" alt="Beispielbild">
+<pre id="i"></pre>
+<script>
+var x=document.getElementById("c").getContext("2d"),f=["#0E192A","#14223A","#F44C4C","#F3F5F9"];
+f.forEach(function(c,i){x.fillStyle=c;x.beginPath();x.roundRect(i*204,0,188,128,20);x.fill()});x.strokeStyle="rgba(170,190,220,.32)";x.lineWidth=2;x.beginPath();x.roundRect(1,1,186,126,20);x.stroke();
+var m=navigator.userAgent.match(/SamsungBrowser\/[\d.]+/);
+document.getElementById("i").textContent="Browser: "+(m?m[0]:"kein Samsung Internet")+"\nSystem meldet dunkel: "+(matchMedia("(prefers-color-scheme: dark)").matches?"ja":"nein")+"\n"+navigator.userAgent;
+</script></body></html>
