@@ -7,7 +7,7 @@ window.ZL_CONFIG = {
   a: 'Aurelia',
   d: 'Daniel',
 
-  welcome: 'Sechs Welten, zwanzig kleine Abenteuer – mal als Lichter, mal als Schildkröte und Schwamm, mal als Prinzessin und Prinz. Keins davon schafft man allein. Bereit für unsere Reise?',
+  welcome: 'Sechs Welten, dreiundzwanzig kleine Abenteuer – mal als Lichter, mal als Schildkröte und Schwamm, mal als Prinzessin und Prinz. Keins davon schafft man allein. Bereit für unsere Reise?',
 
   // Kurzer Satz nach jedem Level (Schlüssel = Level-Kennung)
   lines: {
@@ -19,6 +19,7 @@ window.ZL_CONFIG = {
     echo: 'Du hast ein gutes Gedächtnis. Vergiss nur nie, wie lieb ich dich hab.',
     saeen: 'Was wir zusammen pflanzen, wächst.',
     schmetterlinge: 'Manches Glück fängt man nur zu zweit.',
+    netz: 'Was uns verbindet, hält mehr als nur Glühwürmchen.',
     tor: 'Du hältst mir Türen auf – und ich dir.',
     mauer: 'Zusammen halten wir alles in der Luft – sogar einen Ball aus Licht.',
     kette: 'Wie eine Lichterkette: Erst zusammen leuchtet es richtig.',
@@ -27,9 +28,11 @@ window.ZL_CONFIG = {
     lied: 'Unser erstes gemeinsames Lied. Ich hoffe, es folgen noch viele.',
     memory: 'Die schönsten Erinnerungen sind die, die wir zusammen machen.',
     zueinander: 'Egal wie viele Tore zwischen uns stehen – wir finden immer zueinander.',
+    kugel: 'Zu zweit wird sogar das Schwerste ganz leicht.',
     rennen: 'Wer auch gewonnen hat: Am schönsten ist es, wenn wir zusammen ankommen.',
     flammen: 'Wenn mein Licht mal ausgeht, gibst du mir neues Feuer.',
-    wege: 'Selbst im Dunkeln finde ich zu dir, wenn ich deine Stimme höre.'
+    wege: 'Selbst im Dunkeln finde ich zu dir, wenn ich deine Stimme höre.',
+    teppich: 'Überall, wo wir beide waren, leuchtet es golden.'
   },
 
   // Nach jeder Welt: ein Gedanke und eine Frage zum Reden
@@ -57,7 +60,7 @@ window.ZL_CONFIG = {
 
   finale: {
     title: 'Unser Herz',
-    text: 'Sechs Welten, zwanzig Level – und am Ende ein Herz, das wir nur zusammen anzünden konnten. Egal wie weit du gerade weg bist: Wir leuchten zusammen. Ich liebe dich.',
+    text: 'Sechs Welten, dreiundzwanzig Level – und am Ende ein Herz, das wir nur zusammen anzünden konnten. Egal wie weit du gerade weg bist: Wir leuchten zusammen. Ich liebe dich.',
     sign: '– Dein Daniel'
   }
 };

@@ -221,6 +221,8 @@ const L = [
   update(dt) {
     for (const it of S.items) {
       if (it.got) continue; drift(it, dt);
+      if (it.o !== 'g') { const p = S.p[it.o], dd = dist(p, it); if (dd < 110 && dd > 1) { const k = (110 - dd) / 110 * 260 * dt; it.x += (p.x - it.x) / dd * k; it.y += (p.y - it.y) / dd * k; } }
+      else if (dist(S.p.a, it) < 130 && dist(S.p.d, it) < 130) { const mx = (S.p.a.x + S.p.d.x) / 2, my = (S.p.a.y + S.p.d.y) / 2, dd = Math.hypot(mx - it.x, my - it.y); if (dd > 1) { it.x += (mx - it.x) / dd * 120 * dt; it.y += (my - it.y) / dd * 120 * dt; } }
       if (it.o === 'g') {
         if (dist(S.p.a, it) < 66 && dist(S.p.d, it) < 66) { it.got = 1; S.count++; emit({k: 'gold', x: it.x, y: it.y}); }
       } else if (dist(S.p[it.o], it) < R + 22) { it.got = 1; S.count++; emit({k: 'chime', x: it.x, y: it.y, o: it.o}); }
@@ -263,6 +265,8 @@ const L = [
       ctx.beginPath(); ctx.moveTo(tx, ty); ctx.lineTo(m.x, m.y); ctx.stroke();
       glow(m.x, m.y, 30, c, .6);
       ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(m.x, m.y, 4.5, 0, TAU); ctx.fill();
+      if (Math.random() < .45) API.spark(m.x - m.vx * .03, m.y - m.vy * .03, c, 1, 50, 2);
+      API.light(m.x, m.y, c, 110, .55);
     }
     const A = S.aux;
     ctx.font = '600 16px Karla, system-ui'; ctx.textAlign = 'center';
@@ -357,6 +361,7 @@ const L = [
       ctx.beginPath(); ctx.moveTo(it.bx, it.by); ctx.lineTo(it.x, it.y); ctx.stroke(); ctx.restore();
       anemone(it.bx, it.by, COL[it.bo], pressed, t);
       shell(it.x, it.y, it.open, t);
+      if (it.open) API.light(it.x, it.y, [255, 255, 255], 110, .5);
     }
     S.aux.jelly.forEach(j => jelly(j, t));
   }
@@ -600,6 +605,8 @@ const L = [
   },
   draw(t) {
     candle(S.aux.candle.x, S.aux.candle.y, t);
+    API.light(S.aux.candle.x, S.aux.candle.y - 70, [255, 190, 110], 230, .9);
+    S.items.forEach(l => { if (l.lit) API.light(l.x, l.y, [255, 170, 90], 120, .45); });
     S.items.forEach((l, i) => lantern(l.x, l.y, l.lit, t, i));
   }
 },
@@ -649,7 +656,7 @@ const L = [
       S.cur++; S.count = S.cur;
       const s = S.items[st[0]];
       emit({k: 'pairlit', x: s.x, y: s.y, i: S.cur});
-      if (S.cur >= S.aux.steps.length) finish(2.8);
+      if (S.cur >= S.aux.steps.length) { emit({k: 'fireworks', dur: 6000}); emit({k: 'meet', x: W / 2, y: 300}); finish(4.2); }
     }
   },
   draw(t, pos) {
@@ -658,7 +665,7 @@ const L = [
     ctx.beginPath(); st.forEach((s, i) => i ? ctx.lineTo(s.x, s.y) : ctx.moveTo(s.x, s.y)); ctx.closePath(); ctx.stroke(); ctx.setLineDash([]);
     ctx.lineWidth = 2.5; ctx.lineCap = 'round';
     for (let j = 0; j < 16; j++) { const a = st[j], b = st[(j + 1) % 16]; if (a.lit && b.lit) line2(a, b, .85); }
-    if (S.cur >= 9) glow(W / 2, 300, 330, CA, .14 + Math.sin(t * 1.5) * .04);
+    if (S.cur >= 9) { glow(W / 2, 300, 330, CA, .14 + Math.sin(t * 1.5) * .04); API.light(W / 2, 300, CA, 320, .9); }
     const cur = S.aux.steps[S.cur] || [];
     st.forEach(s => {
       const c = COL[s.o];

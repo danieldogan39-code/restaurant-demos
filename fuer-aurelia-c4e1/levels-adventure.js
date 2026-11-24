@@ -22,6 +22,8 @@ const L1 = {x: 1905}, L2 = {x: 1300};
 const CPS = {a: [60, 560, 950, 1260], d: [2930, 2800, 2330, 1880]};
 const mpX = t => 2560 + (Math.sin(t * 1.1) * .5 + .5) * 110;
 const MPY = 842, MPW = 90;
+const SHROOMS = [1380, 1640, 392];
+const SHY = 836;
 const over = (x, y, r) => x + HW > r[0] && x - HW < r[0] + r[2] && y + FEET > r[1] && y - FEET < r[1] + r[3];
 function solidsNow() {
   const out = SOLIDS.slice();
@@ -38,24 +40,25 @@ const zueinander = {
   id: 'zueinander', noDeco: true, n: 'Zueinander', ic: '♥', t3: 75, t2: 130, ctrl: 'buttons', noClamp: true, noThread: true,
   skin: {a: 'princess', d: 'prince'}, nameDY: 48, skinScale: 1.4, skinAnchor: 22,
   skinName: () => `${nm('a')}: Prinzessin · ${nm('d')}: Prinz`,
-  h: () => `Prinzessin ${nm('a')} startet in ihrem Schloss links, Prinz ${nm('d')} rechts. Zwei Tore trennen euch – jeder findet den Hebel, der das Tor des anderen öffnet. Sammelt Herzen und findet zueinander!`,
+  h: () => `Prinzessin ${nm('a')} startet in ihrem Schloss links, Prinz ${nm('d')} rechts. Zwei Tore trennen euch – jeder findet den Hebel, der das Tor des anderen öffnet. Rosa Sprungpilze katapultieren euch zu den Herzen hoch oben. Findet zueinander!`,
   start: k => k === 'a' ? {x: 60, y: 860 - FEET} : {x: 2930, y: 860 - FEET},
   camX: () => clamp(mine.x - W / 2, 0, LW - W),
   setup() {
-    const hs = [[300, 690], [160, 570], [695, 700], [1000, 800], [2475, 680], [2660, 595], [2890, 660], [2235, 760]];
+    const hs = [[300, 690], [160, 570], [695, 700], [1000, 800], [2475, 680], [2660, 595], [2890, 660], [2235, 760], [1380, 500], [1640, 500], [392, 485]];
     S.items = hs.map(([x, y], i) => ({id: i, x, y, got: 0}));
     S.total = S.items.length;
     S.aux = {g1: 0, g2: 0};
   },
   move(dt, inp) {
-    if (!LOC.pl) LOC.pl = {vx: 0, vy: 0, ground: false, coy: 0, buf: 0, cp: null, onMP: false, mpLast: 0};
+    if (!LOC.pl) LOC.pl = {vx: 0, vy: 0, ground: false, coy: 0, buf: 0, cp: null, onMP: false, mpLast: 0, boost: false};
     const P = LOC.pl, b = inp.btn || {}, t = hostNow();
     const dir = (b.r ? 1 : 0) - (b.l ? 1 : 0);
     P.vx += (dir * 290 - P.vx) * Math.min(1, dt * (P.ground ? 14 : 7));
     if (b.jump) P.buf = .14; else P.buf -= dt;
     P.coy = P.ground ? .1 : P.coy - dt;
     if (P.buf > 0 && P.coy > 0) { P.vy = -840; P.buf = 0; P.coy = 0; P.ground = false; tone(API.me === 'a' ? 784 : 587, .1, .035, 'square'); }
-    if (!b.held && P.vy < -320) P.vy = -320;
+    if (P.vy >= 0) P.boost = false;
+    if (!b.held && P.vy < -320 && !P.boost) P.vy = -320;
     P.vy = Math.min(P.vy + 2150 * dt, 1200);
     const sol = solidsNow();
     if (P.onMP) mine.x += mpX(t) - P.mpLast;
@@ -70,6 +73,11 @@ const zueinander = {
     const mx = mpX(t);
     if (P.vy >= 0 && prevFeet <= MPY + 6 && mine.y + FEET >= MPY && mine.x > mx - 8 && mine.x < mx + MPW + 8) { mine.y = MPY - FEET; P.vy = 0; P.ground = true; P.onMP = true; }
     P.mpLast = mx;
+    // Sprungpilze
+    for (const sx of SHROOMS) if (P.vy >= 0 && prevFeet <= SHY + 8 && mine.y + FEET >= SHY && Math.abs(mine.x - sx) < 28) {
+      mine.y = SHY - FEET; P.vy = -1260; P.ground = false; P.boost = true; LOC.mb = {x: sx, t: performance.now()};
+      tone(260, .25, .06); tone(520, .3, .04, 'sine', .05); buzz(15);
+    }
     const cps = CPS[API.me];
     for (const c of cps) if (API.me === 'a' ? mine.x >= c : mine.x <= c) P.cp = c;
     if (mine.y > 1060) respawn('Hoppla – runtergefallen!');
@@ -93,17 +101,44 @@ const zueinander = {
     // Schlösser an beiden Enden
     castle(60, 860, [244, 168, 184], `Schloss ${nm('a')}`);
     castle(2930, 860, [156, 199, 255], `Schloss ${nm('d')}`);
-    // Hügel im Hintergrund
-    ctx.fillStyle = 'rgba(80,40,90,.35)';
-    for (let x = -100; x < LW + 200; x += 340) { ctx.beginPath(); ctx.ellipse(x, 900, 260, 180, 0, Math.PI, 0); ctx.fill(); }
+    const cx = clamp(mine.x - W / 2, 0, LW - W);
+    // ferne Berge, Hügel und Bäume, die langsamer mitlaufen (Tiefe)
+    for (const [pf, col, h, step, y0] of [[.2, 'rgba(116,66,128,.78)', 270, 420, 860], [.45, 'rgba(84,46,96,.88)', 170, 300, 885], [.7, 'rgba(56,30,70,.94)', 110, 230, 905]]) {
+      const s0 = Math.floor((cx * pf - 120) / 20) * 20, off = cx * (1 - pf);
+      ctx.fillStyle = col; ctx.beginPath(); ctx.moveTo(s0 + off, 1000);
+      for (let sx = s0; sx <= cx * pf + W + 140; sx += 20) { const k = Math.sin(sx / step * 2.1) * .5 + Math.sin(sx / step * 5.3 + 1) * .25; ctx.lineTo(sx + off, y0 - h * (.6 + k * .5)); }
+      ctx.lineTo(cx * pf + W + 140 + off, 1000); ctx.closePath(); ctx.fill();
+    }
+    for (let i = Math.floor((cx * .6 - 120) / 170); i <= Math.ceil((cx * .6 + W + 120) / 170); i++) {
+      const x = i * 170 + cx * .4, y = 900 - (((i % 3) + 3) % 3) * 16, r0 = 22 + ((i % 2) + 2) % 2 * 6;
+      ctx.fillStyle = 'rgba(40,24,50,.75)'; ctx.fillRect(x - 3, y - 40, 6, 40); ctx.beginPath(); ctx.arc(x, y - 52, r0, 0, TAU); ctx.arc(x - 12, y - 42, 15, 0, TAU); ctx.arc(x + 13, y - 44, 16, 0, TAU); ctx.fill();
+    }
     for (const r of SOLIDS) {
       if (r[0] < 0 || r[0] >= LW) continue;
       const big = r[3] > 40;
-      ctx.fillStyle = big ? '#5a3b4e' : '#7a5a6a'; rr(r[0], r[1], r[2], r[3], big ? 4 : 8); ctx.fill();
-      ctx.fillStyle = '#7fcf8c'; rr(r[0], r[1] - 3, r[2], big ? 12 : 9, 5); ctx.fill();
-      if (big) { ctx.fillStyle = 'rgba(255,255,255,.06)'; for (let x = r[0] + 14; x < r[0] + r[2] - 10; x += 38) ctx.fillRect(x, r[1] + 30 + (x % 3) * 18, 18, 9); }
+      const g = ctx.createLinearGradient(0, r[1], 0, r[1] + r[3]); g.addColorStop(0, big ? '#6b4658' : '#8a6676'); g.addColorStop(1, big ? '#2e1c2a' : '#5a3d4c');
+      ctx.fillStyle = g; rr(r[0], r[1], r[2], r[3], big ? 6 : 9); ctx.fill();
+      if (big) { ctx.fillStyle = 'rgba(255,255,255,.05)'; for (let x = r[0] + 14; x < r[0] + r[2] - 10; x += 38) { ctx.beginPath(); ctx.ellipse(x + 9, r[1] + 34 + (x % 3) * 20, 11, 6, 0, 0, TAU); ctx.fill(); } }
+      ctx.fillStyle = '#6fc07f'; rr(r[0] - 2, r[1] - 4, r[2] + 4, big ? 13 : 10, 6); ctx.fill();
+      ctx.fillStyle = '#9be3a8'; for (let x = r[0] + 4; x < r[0] + r[2] - 2; x += 7) { const h = 5 + (x * 13 % 7); ctx.fillRect(x, r[1] - 3 - h, 2, h); }
+      if (big) for (let x = r[0] + 24; x < r[0] + r[2] - 10; x += 67) { const c = ['#f48aa3', '#ffd0dc', '#f3c98f', '#b8c8ff'][(x / 67 | 0) % 4]; ctx.fillStyle = c; for (let i = 0; i < 5; i++) { const a = i / 5 * TAU + t * .4; ctx.beginPath(); ctx.arc(x + Math.cos(a) * 4, r[1] - 12 + Math.sin(a) * 4, 3, 0, TAU); ctx.fill(); } ctx.fillStyle = '#ffe28a'; ctx.beginPath(); ctx.arc(x, r[1] - 12, 2.2, 0, TAU); ctx.fill(); }
     }
-    for (const r of SPIKES) { ctx.fillStyle = '#d9d2e6'; ctx.beginPath(); for (let x = r[0]; x < r[0] + r[2]; x += 12.5) { ctx.moveTo(x, r[1] + r[3]); ctx.lineTo(x + 6.25, r[1]); ctx.lineTo(x + 12.5, r[1] + r[3]); } ctx.fill(); }
+    for (const r of SPIKES) {
+      ctx.fillStyle = '#3a2440'; ctx.beginPath(); for (let x = r[0]; x < r[0] + r[2]; x += 12.5) { ctx.moveTo(x, r[1] + r[3]); ctx.lineTo(x + 6.25, r[1] - 2); ctx.lineTo(x + 12.5, r[1] + r[3]); } ctx.fill();
+      ctx.strokeStyle = '#d9a8c8'; ctx.lineWidth = 1.2; ctx.beginPath(); for (let x = r[0]; x < r[0] + r[2]; x += 12.5) { ctx.moveTo(x + 6.25, r[1] - 2); ctx.lineTo(x + 6.25, r[1] + 6); } ctx.stroke();
+      glow(r[0] + r[2] / 2, r[1] + 8, 40, [255, 110, 140], .2);
+    }
+    // Sprungpilze
+    for (const sx of SHROOMS) {
+      const mb = LOC.mb && LOC.mb.x === sx ? (performance.now() - LOC.mb.t) / 400 : 1, sq = mb < 1 ? 1 + Math.sin(mb * Math.PI * 3) * .25 * (1 - mb) : 1 + Math.sin(t * 3 + sx) * .03;
+      glow(sx, SHY - 10, 60, CA, .35); API.light(sx, SHY - 12, CA, 110, .5);
+      ctx.fillStyle = '#efe2d2'; rr(sx - 8, SHY - 4, 16, 28, 5); ctx.fill();
+      ctx.save(); ctx.translate(sx, SHY); ctx.scale(sq, 1 / sq);
+      const g = ctx.createRadialGradient(-6, -12, 2, 0, -6, 30); g.addColorStop(0, '#ffd6e2'); g.addColorStop(.6, '#f27d9f'); g.addColorStop(1, '#c4507a');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(0, 0, 30, 20, 0, Math.PI, 0); ctx.closePath(); ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,.85)'; for (const [dx, dy, r] of [[-14, -8, 4], [2, -14, 5], [15, -6, 3.5]]) { ctx.beginPath(); ctx.arc(dx, dy, r, 0, TAU); ctx.fill(); }
+      ctx.restore();
+    }
     const mx = mpX(hostNow());
     ctx.fillStyle = '#c9a36a'; rr(mx, MPY, MPW, 16, 6); ctx.fill(); ctx.fillStyle = 'rgba(255,255,255,.25)'; ctx.fillRect(mx + 6, MPY + 4, MPW - 12, 3);
     gateDraw(G1, A.g1, t); gateDraw(G2, A.g2, t);
@@ -114,13 +149,22 @@ const zueinander = {
   }
 };
 function castle(x, gy, c, txt) {
-  ctx.fillStyle = rgba(c, .5);
-  ctx.fillRect(x - 50, gy - 150, 100, 150);
-  ctx.fillRect(x - 70, gy - 210, 34, 210); ctx.fillRect(x + 36, gy - 210, 34, 210);
-  ctx.fillStyle = rgba(c, .8);
-  for (const tx of [x - 53, x + 53]) { ctx.beginPath(); ctx.moveTo(tx - 22, gy - 210); ctx.lineTo(tx, gy - 260); ctx.lineTo(tx + 22, gy - 210); ctx.fill(); }
-  ctx.fillStyle = 'rgba(40,20,40,.6)'; ctx.beginPath(); ctx.arc(x, gy - 40, 22, Math.PI, 0); ctx.lineTo(x + 22, gy); ctx.lineTo(x - 22, gy); ctx.fill();
-  label(txt, x, gy - 270, c, 14, 700);
+  const t = performance.now() / 1000;
+  glow(x, gy - 120, 190, c, .22);
+  const wall = ctx.createLinearGradient(0, gy - 210, 0, gy); wall.addColorStop(0, '#cdb2c9'); wall.addColorStop(1, '#7a5c7c');
+  ctx.fillStyle = wall;
+  ctx.fillRect(x - 52, gy - 150, 104, 150);
+  ctx.fillRect(x - 74, gy - 215, 36, 215); ctx.fillRect(x + 38, gy - 215, 36, 215);
+  for (let i = 0; i < 4; i++) ctx.fillRect(x - 52 + i * 30, gy - 164, 16, 14);
+  ctx.fillStyle = rgba(c, 1);
+  for (const tx of [x - 56, x + 56]) { ctx.beginPath(); ctx.moveTo(tx - 24, gy - 215); ctx.lineTo(tx, gy - 272); ctx.lineTo(tx + 24, gy - 215); ctx.fill();
+    ctx.strokeStyle = '#8a7a8a'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(tx, gy - 272); ctx.lineTo(tx, gy - 300); ctx.stroke();
+    ctx.fillStyle = rgba(c, 1); ctx.beginPath(); ctx.moveTo(tx, gy - 300); ctx.quadraticCurveTo(tx + 12, gy - 296 + Math.sin(t * 4 + tx) * 3, tx + 22, gy - 293 + Math.sin(t * 4 + tx + 1) * 4); ctx.lineTo(tx, gy - 286); ctx.fill(); }
+  for (const [wx, wy] of [[x - 56, gy - 170], [x + 56, gy - 170], [x - 56, gy - 110], [x + 56, gy - 110], [x - 18, gy - 110], [x + 18, gy - 110]]) {
+    glow(wx, wy, 22, [255, 210, 140], .45); ctx.fillStyle = '#ffd890'; ctx.beginPath(); ctx.arc(wx, wy - 4, 5, Math.PI, 0); ctx.lineTo(wx + 5, wy + 8); ctx.lineTo(wx - 5, wy + 8); ctx.fill(); }
+  ctx.fillStyle = '#5a3a46'; ctx.beginPath(); ctx.arc(x, gy - 40, 22, Math.PI, 0); ctx.lineTo(x + 22, gy); ctx.lineTo(x - 22, gy); ctx.fill();
+  ctx.strokeStyle = rgba(CG, .7); ctx.lineWidth = 2; ctx.stroke();
+  label(txt, x, gy - 312, c, 14, 700);
 }
 function gateDraw(r, open, t) {
   const lift = open ? 260 : 0;
@@ -166,7 +210,7 @@ function buildReef(T) {
   scene.add(K.sky(T, 0x1f86ad, 0x0a4a6a, 0x03182a, 120));
   scene.environment = K.env(T, 'sea2', 0x145a78, 0x0a3a54, 0x020c16, [[0, 50, 0, 30, 30, 0x4a8aa8]]);
   const cam = new T.PerspectiveCamera(62, 1, .1, 130);
-  scene.add(new T.HemisphereLight(0xbff2ff, 0x0a2a3a, .95));
+  scene.add(new T.HemisphereLight(0xbff2ff, 0x0a2a3a, .75));
   const dl = new T.DirectionalLight(0xfff4e0, .65); dl.position.set(6, 30, 8); scene.add(dl);
   // Sandboden mit wandernden Lichtnetzen (Kaustik)
   const fg = new T.PlaneGeometry(120, KLEN + 220, 30, 120); fg.rotateX(-Math.PI / 2);
@@ -220,13 +264,13 @@ function buildReef(T) {
   scene.add(bubbles);
   // Ringe
   const rings = {}, torus = new T.TorusGeometry(3, .28, 12, 40);
-  const rmat = {a: new T.MeshStandardMaterial({color: 0xf4a8b8, emissive: 0xf47aa0, emissiveIntensity: 1, metalness: .3, roughness: .3}),
-    d: new T.MeshStandardMaterial({color: 0x9cc7ff, emissive: 0x6aa8ff, emissiveIntensity: 1, metalness: .3, roughness: .3}),
-    g: new T.MeshStandardMaterial({color: 0xf3c98f, emissive: 0xf3b060, emissiveIntensity: 1, metalness: .6, roughness: .25})};
+  const rmat = {a: new T.MeshStandardMaterial({color: 0xf4a8b8, emissive: 0xf47aa0, emissiveIntensity: .5, metalness: .3, roughness: .3}),
+    d: new T.MeshStandardMaterial({color: 0x9cc7ff, emissive: 0x6aa8ff, emissiveIntensity: .5, metalness: .3, roughness: .3}),
+    g: new T.MeshStandardMaterial({color: 0xf3c98f, emissive: 0xf3b060, emissiveIntensity: .5, metalness: .6, roughness: .25})};
   for (const it of S.items) {
     const c = pathC(it.d), m = new T.Mesh(torus, rmat[it.o]);
     m.position.set(c.x + it.x, c.y + it.y, -it.d); m.rotation.y = pathYaw(it.d);
-    m.add(K.sprite(T, it.o === 'a' ? 0xf4a8b8 : it.o === 'd' ? 0x9cc7ff : 0xf3c98f, 9, .5));
+    m.add(K.sprite(T, it.o === 'a' ? 0xf4a8b8 : it.o === 'd' ? 0x9cc7ff : 0xf3c98f, 8, .22));
     scene.add(m); rings[it.id] = m;
   }
   // Quallen
@@ -244,7 +288,7 @@ function buildReef(T) {
   const shm = new T.MeshStandardMaterial({color: 0xffd6e2, roughness: .35, metalness: .2, emissive: 0x6a3040, emissiveIntensity: .3, side: T.DoubleSide});
   const lower = new T.Mesh(new T.SphereGeometry(5, 28, 12, 0, Math.PI, 0, Math.PI / 2), shm); lower.rotation.x = Math.PI; shellG.add(lower);
   const upper = new T.Mesh(new T.SphereGeometry(5, 28, 12, 0, Math.PI, 0, Math.PI / 2), shm); upper.rotation.x = -.9; upper.position.z = 0; shellG.add(upper);
-  const pearl = new T.Mesh(new T.SphereGeometry(2.1, 28, 20), new T.MeshStandardMaterial({color: 0xfff6ee, emissive: 0xffe6d0, emissiveIntensity: .9, roughness: .15, metalness: .3}));
+  const pearl = new T.Mesh(new T.SphereGeometry(2.1, 28, 20), new T.MeshStandardMaterial({color: 0xfff6ee, emissive: 0xffe6d0, emissiveIntensity: .55, roughness: .15, metalness: .3}));
   pearl.position.y = 1.2; pearl.add(K.sprite(T, 0xffd9e6, 22, .9)); shellG.add(pearl);
   shellG.position.set(ce.x, ce.y - 3, -KLEN - 14); shellG.rotation.y = Math.PI; scene.add(shellG);
   const turtle = K.turtle(T), octo = K.sponge(T); octo.scale.setScalar(1.15); scene.add(turtle); scene.add(octo);

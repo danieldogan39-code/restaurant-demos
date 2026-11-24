@@ -8,6 +8,7 @@ const toast = t => API.toast(t);
 
 /* ================= Herzmauer (Schläger & Ball) ================= */
 const PADY = {a: 925, d: 120}, PW = 120;
+const padW = (k, t) => S.aux.wide && S.aux.wide[k] > t ? 185 : PW;
 function inHeart(u, v) { const x = u * 1.22, y = -v * 1.18 + .14, a = x * x + y * y - 1; return a * a * a - x * x * y * y * y <= 0; }
 function serve(k) {
   const p = S.p[k], sp = 360 * API.diff(), an = rnd(-.5, .5);
@@ -16,7 +17,7 @@ function serve(k) {
 }
 const mauer = {
   id: 'mauer', w: 3, n: 'Herzmauer', ic: '▦', t3: 95, t2: 160, ctrl: 'paddle', noThread: true,
-  h: () => `Haltet den Lichtball im Spiel – ${nm('a')} unten, ${nm('d')} oben – und brecht die Herzmauer auf. Ihr habt fünf Bälle.`,
+  h: () => `Haltet den Lichtball im Spiel – ${nm('a')} unten, ${nm('d')} oben – und brecht die Herzmauer auf. Ihr habt fünf Bälle. Neu: Manche Steine lassen Kapseln fallen – ↔ macht deinen Schläger breit, ✦ bringt einen Extraball.`,
   start: k => ({x: W / 2, y: PADY[k]}), lock: k => PADY[k],
   setup() {
     const cols = 10, rows = 10, bw = 54, bh = 24, x0 = (W - cols * bw) / 2, y0 = 335;
@@ -27,7 +28,7 @@ const mauer = {
       S.items.push({id: id++, x: x0 + c * bw + 2, y: y0 + r * bh + 2, w: bw - 4, h: bh - 4, o: gold ? 'g' : r < rows / 2 ? 'a' : 'd', hp: gold ? 2 : 1, dead: 0});
     }
     S.total = S.items.length;
-    S.aux = {lives: 5, balls: [], serveT: S.t + .9, serveTo: 'a', second: 0};
+    S.aux = {lives: 5, balls: [], serveT: S.t + .9, serveTo: 'a', second: 0, caps: [], wide: {a: 0, d: 0}, cid: 0};
   },
   update(dt) {
     const A = S.aux;
@@ -41,8 +42,8 @@ const mauer = {
         if (b.x > W - 10) { b.x = W - 10; b.vx = -Math.abs(b.vx); }
         for (const k of ['a', 'd']) {
           const py = PADY[k], px = S.p[k].x, down = k === 'a';
-          if ((down ? b.vy > 0 : b.vy < 0) && Math.abs(b.y - py) < 15 && Math.abs(b.x - px) < PW / 2 + 18) {
-            const off = clamp((b.x - px) / (PW / 2), -1, 1);
+          if ((down ? b.vy > 0 : b.vy < 0) && Math.abs(b.y - py) < 15 && Math.abs(b.x - px) < padW(k, S.t) / 2 + 18) {
+            const off = clamp((b.x - px) / (padW(k, S.t) / 2), -1, 1);
             b.sp = Math.min(b.sp * 1.025, 560 * API.diff());
             b.vx = Math.sin(off) * b.sp; b.vy = (down ? -1 : 1) * Math.cos(off) * b.sp;
             b.y = down ? py - 15 : py + 15;
@@ -57,17 +58,36 @@ const mauer = {
           else if (Math.abs(dx) > Math.abs(dy)) b.vx = dx > 0 ? Math.abs(b.vx) : -Math.abs(b.vx);
           else b.vy = dy > 0 ? Math.abs(b.vy) : -Math.abs(b.vy);
           br.hp--;
-          if (br.hp <= 0) { br.dead = 1; S.count++; emit({k: 'brick', x: br.x + br.w / 2, y: br.y + br.h / 2, o: br.o}); }
+          if (br.hp <= 0) {
+            br.dead = 1; S.count++; emit({k: 'brick', x: br.x + br.w / 2, y: br.y + br.h / 2, o: br.o});
+            if (A.caps.length < 3 && Math.random() < (br.o === 'g' ? 1 : .16)) {
+              const to = br.o === 'a' ? 'a' : br.o === 'd' ? 'd' : (b.vy > 0 ? 'a' : 'd');
+              A.caps.push({id: A.cid++, x: br.x + br.w / 2, y: br.y + br.h / 2, to, kind: br.o === 'g' || Math.random() < .45 ? 'multi' : 'wide', vy: to === 'a' ? 175 : -175});
+            }
+          }
           else emit({k: 'pad', o: 'x'});
           break;
         }
       }
       if (b.y > H + 10 || b.y < -10) b.gone = 1;
     }
+    for (const c of A.caps) {
+      c.y += c.vy * dt;
+      const p = S.p[c.to];
+      if (Math.abs(c.y - PADY[c.to]) < 18 && Math.abs(c.x - p.x) < padW(c.to, S.t) / 2 + 14) {
+        c.got = 1;
+        if (c.kind === 'wide') { A.wide[c.to] = S.t + 12; emit({k: 'toast', txt: `${nm(c.to)}s Schläger ist jetzt extra breit!`}); }
+        else if (A.balls.length < 3) { serve(c.to); emit({k: 'toast', txt: 'Extraball!'}); }
+        emit({k: 'capsule', x: c.x, y: c.y, o: c.to});
+      }
+      if (c.y > H + 30 || c.y < -30) c.got = 1;
+    }
+    if (A.caps.some(c => c.got)) A.caps = A.caps.filter(c => !c.got);
     const gone = A.balls.filter(b => b.gone);
     if (gone.length) {
       A.balls = A.balls.filter(b => !b.gone);
-      for (const b of gone) { A.lives--; emit({k: 'lost'}); A.serveTo = b.y > H / 2 ? 'a' : 'd'; }
+      if (!A.balls.length) { const b = gone[gone.length - 1]; A.lives--; emit({k: 'lost'}); A.serveTo = b.y > H / 2 ? 'a' : 'd'; }
+      else emit({k: 'puff', x: W / 2, y: gone[0].y > H / 2 ? H - 40 : 40});
       if (A.lives <= 0) { failRestart('Alle Bälle verloren – nochmal von vorn!'); return; }
       if (!A.balls.length) { A.serveT = S.t + 1.2; emit({k: 'toast', txt: `Noch ${A.lives} ${A.lives === 1 ? 'Ball' : 'Bälle'}`}); }
     }
@@ -77,17 +97,27 @@ const mauer = {
     const A = S.aux; if (!A.balls) return;
     for (const br of S.items) {
       if (br.dead) continue;
-      const c = COL[br.o];
+      const c = br.o === 'a' ? [214, 96, 132] : br.o === 'd' ? [86, 132, 220] : [222, 168, 86];
       const g = ctx.createLinearGradient(0, br.y, 0, br.y + br.h);
-      g.addColorStop(0, rgba(c, br.hp > 1 ? 1 : .95)); g.addColorStop(1, rgba(c, .55));
+      g.addColorStop(0, rgba(c, br.hp > 1 ? 1 : .92)); g.addColorStop(1, rgba(c, .6));
       ctx.fillStyle = g; rr(br.x, br.y, br.w, br.h, 6); ctx.fill();
       ctx.strokeStyle = 'rgba(255,255,255,.35)'; ctx.lineWidth = 1; ctx.stroke();
       if (br.hp > 1) { ctx.fillStyle = 'rgba(255,255,255,.7)'; ctx.beginPath(); ctx.arc(br.x + br.w / 2, br.y + br.h / 2, 3, 0, TAU); ctx.fill(); }
     }
+    const tn = hostNow();
     for (const k of ['a', 'd']) {
-      const x = clamp(pos[k].x, PW / 2, W - PW / 2), y = PADY[k], c = COL[k];
-      glow(x, y, 90, c, .25);
-      ctx.fillStyle = rgba(c, .9); rr(x - PW / 2, y - 7, PW, 14, 7); ctx.fill();
+      const pw = padW(k, tn), x = clamp(pos[k].x, pw / 2, W - pw / 2), y = PADY[k], c = COL[k];
+      glow(x, y, 90 + pw * .3, c, .3); API.light(x, y, c, 140, .55);
+      const g = ctx.createLinearGradient(0, y - 8, 0, y + 8); g.addColorStop(0, '#fff'); g.addColorStop(.35, rgba(c, 1)); g.addColorStop(1, rgba(c, .75));
+      ctx.fillStyle = g; rr(x - pw / 2, y - 8, pw, 16, 8); ctx.fill();
+      if (pw > PW) { ctx.strokeStyle = rgba(CG, .6 + .3 * Math.sin(t * 8)); ctx.lineWidth = 2; rr(x - pw / 2 - 3, y - 11, pw + 6, 22, 11); ctx.stroke(); }
+    }
+    for (const c of A.caps || []) {
+      const cy = c.y + c.vy * clamp(tn - S.t, 0, .2), col = COL[c.to];
+      glow(c.x, cy, 40, col, .55);
+      ctx.fillStyle = rgba(col, .95); rr(c.x - 22, cy - 11, 44, 22, 11); ctx.fill();
+      ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.stroke();
+      label(c.kind === 'wide' ? '↔' : '✦', c.x, cy + 6, [40, 24, 60], 16, 700);
     }
     const ex = hostNow() - S.t;
     for (const b of A.balls) {
@@ -96,6 +126,7 @@ const mauer = {
       const g = ctx.createLinearGradient(tx, ty, x, y); g.addColorStop(0, 'rgba(255,255,255,0)'); g.addColorStop(1, 'rgba(255,255,255,.7)');
       ctx.strokeStyle = g; ctx.lineWidth = 8; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(tx, ty); ctx.lineTo(x, y); ctx.stroke();
       glow(x, y, 30, CG, .6); ctx.fillStyle = '#fffaf0'; ctx.beginPath(); ctx.arc(x, y, 8, 0, TAU); ctx.fill();
+      API.light(x, y, CG, 120, .7);
     }
     for (let i = 0; i < 5; i++) { ctx.globalAlpha = i < A.lives ? 1 : .2; ctx.fillStyle = rgba(CA, 1); heartPath(W / 2 - 48 + i * 24, 978, 7); ctx.fill(); }
     ctx.globalAlpha = 1;

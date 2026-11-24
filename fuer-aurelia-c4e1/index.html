@@ -46,6 +46,9 @@ h2{font-size:33px;margin-bottom:10px}
 .sign{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--a);margin:-4px 0 12px}
 .stars{font-size:40px;letter-spacing:.12em;color:var(--gold);margin:2px 0;text-shadow:0 0 22px rgba(243,201,143,.5)}
 .stars .off{color:rgba(255,255,255,.16);text-shadow:none}
+.stars .st{display:inline-block;animation:pop .55s cubic-bezier(.2,1.7,.4,1) both}
+@keyframes pop{from{transform:scale(0) rotate(-50deg);opacity:0}to{transform:none;opacity:1}}
+.chip.new{color:#22183a;background:linear-gradient(135deg,var(--gold),var(--a));border-color:transparent}
 .time{color:var(--mute);font-size:14px;margin:0 0 12px}
 .time b,.gold{color:var(--gold)}
 .q{border:1px solid var(--line);border-radius:16px;padding:13px 14px;margin:0 0 12px;background:rgba(255,255,255,.03);text-align:left}
@@ -172,7 +175,7 @@ input.code-in:focus{border-color:var(--gold)}
     <p class="kicker">Ein Spiel für zwei</p>
     <h1>Zwei Lichter</h1>
     <p class="kicker" style="margin:8px 0 0;letter-spacing:.32em">Die Reise</p>
-    <p class="sub"><span data-n="a"></span> <span class="amp">&amp;</span> <span data-n="d"></span> – sechs Welten, zwanzig Level, zwei Handys.</p>
+    <p class="sub"><span data-n="a"></span> <span class="amp">&amp;</span> <span data-n="d"></span> – sechs Welten, dreiundzwanzig Level, zwei Handys.</p>
     <button class="btn blue" id="bHost">Ich bin <span data-n="d"></span> – Raum öffnen</button>
     <button class="btn" id="bGuest">Ich bin <span data-n="a"></span> – Raum beitreten</button>
   </div>
@@ -223,7 +226,7 @@ input.code-in:focus{border-color:var(--gold)}
       <button class="btn ghost small" id="mCal" style="margin-top:8px" hidden>Neigung neu ausrichten</button></div>
     <div class="sec"><small>Spiel</small><div class="mrow">
       <button class="btn ghost small" id="mPause">Pause</button><button class="btn ghost small" id="mRestart">Level neu starten</button>
-      <button class="btn ghost small" id="mMC">Master Control</button><button class="btn ghost small" id="mSound">Ton</button><button class="btn ghost small" id="mFx">Grafik</button>
+      <button class="btn ghost small" id="mMC">Master Control</button><button class="btn ghost small" id="mSound">Ton</button><button class="btn ghost small" id="mMusic">Musik</button><button class="btn ghost small" id="mFx">Grafik</button>
       <button class="btn ghost small" id="mVib">Vibration</button></div></div>
     <div class="sec"><small>Verbindung</small><p class="net" id="mNet"></p></div>
     <button class="btn" id="mClose">Zurück zum Spiel</button>
@@ -271,12 +274,13 @@ input.code-in:focus{border-color:var(--gold)}
 </div>
 
 <script src="peerjs.min.js?v=155"></script>
-<script src="config.js?v=6"></script>
-<script src="kit3d.js?v=6"></script>
-<script src="levels-classic.js?v=6"></script>
-<script src="levels-arcade.js?v=6"></script>
-<script src="levels-adventure.js?v=6"></script>
-<script src="levels-race.js?v=6"></script>
-<script src="engine.js?v=6"></script>
+<script src="config.js?v=7"></script>
+<script src="kit3d.js?v=7"></script>
+<script src="levels-classic.js?v=7"></script>
+<script src="levels-arcade.js?v=7"></script>
+<script src="levels-adventure.js?v=7"></script>
+<script src="levels-neu.js?v=7"></script>
+<script src="levels-race.js?v=7"></script>
+<script src="engine.js?v=7"></script>
 </body>
 </html>
