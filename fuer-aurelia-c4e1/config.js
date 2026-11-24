@@ -7,10 +7,14 @@ window.ZL_CONFIG = {
   a: 'Aurelia',
   d: 'Daniel',
 
-  welcome: 'Sechs Welten, dreiundzwanzig kleine Abenteuer – mal als Lichter, mal als Schildkröte und Schwamm, mal als Prinzessin und Prinz. Keins davon schafft man allein. Bereit für unsere Reise?',
+  welcome: 'Vier Kapitel, elf Abenteuer: Wir paddeln zusammen über einen See, knacken ein Schloss voller Rätsel und finden uns im Nebelwald. Keins davon schafft man allein. Bereit für unsere Reise?',
 
   // Kurzer Satz nach jedem Level (Schlüssel = Level-Kennung)
   lines: {
+    see: 'Allein dreht man sich im Kreis. Mit dir komme ich an.',
+    zimmer: 'Egal welche Wand zwischen uns steht – wir finden immer einen Weg zueinander.',
+    spiegel: 'Du lenkst mein Licht dorthin, wo ich allein nie hingekommen wäre.',
+    wald: 'Wenn ich im Nebel stehe, ist deine Stimme mein Licht.',
     funken: 'Gold gibt es nur zu zweit. Wie so vieles Schöne.',
     schnuppen: 'Mein Wunsch bei jeder Sternschnuppe? Du.',
     immer: '∞ – so lange möchte ich mit dir zusammen leuchten.',
@@ -37,16 +41,12 @@ window.ZL_CONFIG = {
 
   // Nach jeder Welt: ein Gedanke und eine Frage zum Reden
   worlds: [
-    { msg: 'Die erste Welt ist geschafft. Danke, dass du dir heute Abend Zeit für uns nimmst.',
+    { msg: 'Wir haben abgelegt – und sind zusammen angekommen. Danke, dass du dir heute Abend Zeit für uns nimmst.',
+      question: 'Wohin würdest du mit mir am liebsten einfach losfahren?' },
+    { msg: 'Kein Schloss, kein Rätsel und kein Irrgarten hält uns voneinander fern.',
       question: 'Was ist bisher dein schönster Moment mit uns beiden?' },
-    { msg: 'Selbst in der Tiefe finden wir zusammen den Weg nach oben.',
-      question: 'Wovon träumst du gerade am meisten?' },
-    { msg: 'Mit dir blüht so vieles auf – auch in mir.',
-      question: 'Was wollen wir unbedingt machen, wenn wir uns das nächste Mal sehen?' },
-    { msg: 'Die Spielhalle ist geschafft – wir sind ein richtig gutes Team.',
-      question: 'Welches Spiel aus deiner Kindheit hast du am liebsten gespielt?' },
-    { msg: 'Prinzessin und Prinz haben sich gefunden – und das Rennen haben wir auch überlebt.',
-      question: 'Wohin würdest du mit mir am liebsten einfach losfahren?' }
+    { msg: 'Selbst in der dunkelsten Nacht finde ich zu dir.',
+      question: 'Was wollen wir unbedingt machen, wenn wir uns das nächste Mal sehen?' }
   ],
 
   // „Dies oder Das“ zwischen den Welten (je 4 Paare pro Pause)
@@ -60,7 +60,7 @@ window.ZL_CONFIG = {
 
   finale: {
     title: 'Unser Herz',
-    text: 'Sechs Welten, dreiundzwanzig Level – und am Ende ein Herz, das wir nur zusammen anzünden konnten. Egal wie weit du gerade weg bist: Wir leuchten zusammen. Ich liebe dich.',
+    text: 'Vier Kapitel, elf Abenteuer – über den See, durchs Schloss und durch die Nacht. Und am Ende ein Herz, das wir nur zusammen anzünden konnten. Egal wie weit du gerade weg bist: Wir leuchten zusammen. Ich liebe dich.',
     sign: '– Dein Daniel'
   }
 };

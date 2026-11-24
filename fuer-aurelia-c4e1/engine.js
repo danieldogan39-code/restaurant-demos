@@ -5,7 +5,7 @@
    für Zustand/Positionen, zuverlässiger Kanal für Ereignisse und Aktionen. */
 (() => {
 'use strict';
-const VERSION = '7.0';
+const VERSION = '8.0';
 const CFG = window.ZL_CONFIG;
 const W = 600, H = 1000, R = 18, VMAX = 470, TAU = Math.PI * 2, HUDH = 64;
 const $ = id => document.getElementById(id);
@@ -20,14 +20,10 @@ const nm = k => CFG[k];
 const OTH = k => k === 'a' ? 'd' : 'a';
 const fmt = s => { s = Math.max(0, Math.floor(s)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
-const WORLDS = [
-  {n: 'Sternennacht', th: 'nacht'}, {n: 'Tiefsee', th: 'meer'}, {n: 'Frühlingsgarten', th: 'garten'},
-  {n: 'Spielhalle', th: 'arcade'}, {n: 'Abenteuer', th: 'schloss'}, {n: 'Laternenfest', th: 'laternen'}
-];
-/* Die 23 Level in Spielreihenfolge – [Kennung, Welt] */
-const ORDER = [['funken', 0], ['schnuppen', 0], ['immer', 0], ['perlen', 1], ['echo', 1], ['korallen', 1],
-  ['saeen', 2], ['schmetterlinge', 2], ['netz', 2], ['tor', 2], ['mauer', 3], ['kette', 3], ['strasse', 3], ['irrgarten', 3], ['lied', 3], ['memory', 3],
-  ['zueinander', 4], ['kugel', 4], ['rennen', 4], ['flammen', 5], ['wege', 5], ['teppich', 5], ['herz', 5]];
+const WORLDS = [{n: 'Aufbruch', th: 'meer'}, {n: 'Das alte Schloss', th: 'schloss'}, {n: 'Die Nacht', th: 'nacht'}, {n: 'Zueinander', th: 'laternen'}];
+/* Die 11 Spiele in Reihenfolge – [Kennung, Kapitel] */
+const ORDER = [['see', 0], ['korallen', 0], ['zimmer', 1], ['spiegel', 1], ['irrgarten', 1], ['wald', 2], ['lied', 2], ['rennen', 2],
+  ['kugel', 3], ['zueinander', 3], ['herz', 3]];
 const CTRL = {
   swipe: {n: 'Wischen', d: 'Finger irgendwo auflegen und ziehen'},
   stick: {n: 'Joystick', d: 'Daumen auflegen – dort erscheint ein Stick'},
@@ -276,6 +272,11 @@ function fx(e) {
     case 'gust': tone(90, 1.2, .05, 'sawtooth'); break;
     case 'capsule': [659.25, 880, 1174.66].forEach((f, i) => tone(f, .5, .05, 'square', i * .06)); burst(e.x, e.y, c, 16, 170, 3); break;
     case 'boing': tone(260, .25, .06, 'sine'); tone(520, .3, .04, 'sine', .05); break;
+    case 'stroke': tone(170, .28, .05, 'triangle'); tone(85, .45, .035, 'sine', .04); if (mineEv) buzz(8); break;
+    case 'sync': tone(783.99, .35, .035); tone(1174.66, .5, .03, 'sine', .07); break;
+    case 'click': tone(880, .05, .035, 'square'); tone(440, .08, .02, 'triangle', .02); if (mineEv) buzz(6); break;
+    case 'creak': tone(140, .9, .04, 'sawtooth'); tone(105, 1.1, .03, 'sawtooth', .2); tone(523.25, .8, .03, 'sine', .5); break;
+    case 'lit': [659.25, 987.77, 1318.5].forEach((f, i) => tone(f, .9, .04, 'sine', i * .07)); buzz(15); break;
     case 'fireworks': FW.until = performance.now() + (e.dur || 4500); break;
     case 'toast': toast(e.txt); break;
     case 'chime': case 'bubble': tone(NOTES[(Math.random() * 6) | 0] * (e.o === 'd' ? .5 : 1), .7); burst(e.x, e.y, e.k === 'bubble' ? [190, 235, 255] : c, 12); if (mineEv) buzz(12); break;
@@ -456,7 +457,7 @@ const SKINS = {princess: skinPrincess, prince: skinPrince, turtle: skinTurtle, o
 const SKN = {a: {lx: 0, ly: 0, ang: -Math.PI / 2, face: 1, mv: 0}, d: {lx: 0, ly: 0, ang: -Math.PI / 2, face: -1, mv: 0}};
 
 /* ---------- Eingabe ---------- */
-const IN = {ptr: null, tp: new Map(), drag: {x: 0, y: 0}, acc: {x: 0, y: 0}, target: null, dirs: [], taps: [], heading: null,
+const IN = {look: {x: 0, y: 0}, taps3: [], useBtn: false, ptr: null, tp: new Map(), drag: {x: 0, y: 0}, acc: {x: 0, y: 0}, target: null, dirs: [], taps: [], heading: null,
   stick: null, stickDir: null, stickT: 0, prevJump: false, tilt: {x: 0, y: 0, on: false, cal: null, listening: false}};
 const keys = new Set();
 const KEYMAP = {arrowleft: 'l', a: 'l', arrowright: 'r', d: 'r', arrowup: 'u', w: 'u', arrowdown: 'd', s: 'd'};
@@ -465,10 +466,12 @@ const DANG = {r: 0, d: Math.PI / 2, l: Math.PI, u: -Math.PI / 2};
 function camY() { const L = curL(); return L && L.camY ? (L.camY() || 0) : 0; }
 function camX() { const L = curL(); return L && L.camX ? (L.camX() || 0) : 0; }
 function toWorld(cx, cy) { return {x: (cx - ox) / sc + camX(), y: (cy - oy) / sc + camY()}; }
-const ownPointers = L => L && (L.ctrl === 'buttons');
+const ownPointers = L => L && (L.ctrl === 'buttons' || L.ctrl === 'fps');
+const useZone = () => ({x: cw - 66, y: ch - 122, r: 46});
 addEventListener('keydown', e => {
   if (document.activeElement && document.activeElement.tagName === 'INPUT') return;
   const k = e.key.toLowerCase();
+  if ((k === ' ' || k === 'enter' || k === 'e') && curL() && curL().ctrl === 'fps' && !e.repeat) IN.useBtn = true;
   if (k === ' ' || k === 'enter') { keys.add(' '); if (curL() && curL().ctrl === 'hop' && !e.repeat) IN.dirs.push('u'); if (k === ' ') e.preventDefault(); return; }
   if (!KEYMAP[k]) return;
   e.preventDefault();
@@ -481,8 +484,13 @@ cv.addEventListener('pointerdown', e => {
   audio();
   if (SET.ctrl === 'tilt' && !IN.tilt.listening) enableTilt();
   try { cv.setPointerCapture(e.pointerId); } catch (er) {}
-  IN.tp.set(e.pointerId, {x: e.clientX, y: e.clientY, sx: e.clientX, sy: e.clientY});
-  const L = curL();
+  const L = curL(), T0 = {x: e.clientX, y: e.clientY, sx: e.clientX, sy: e.clientY, t0: performance.now(), moved: 0, side: e.clientX < cw * .45 ? 'L' : 'R'};
+  if (L && L.ctrl === 'fps') {
+    const Z = useZone();
+    if (LOC.useLabel && Math.hypot(e.clientX - Z.x, e.clientY - Z.y) < Z.r + 8) { T0.side = 'B'; IN.useBtn = true; }
+    else if (T0.side === 'L') for (const o of IN.tp.values()) if (o.side === 'L') T0.side = 'R';
+  }
+  IN.tp.set(e.pointerId, T0);
   if (ownPointers(L)) return;
   if (IN.ptr) return;
   const w = toWorld(e.clientX, e.clientY);
@@ -498,7 +506,7 @@ cv.addEventListener('pointerdown', e => {
   }
 });
 cv.addEventListener('pointermove', e => {
-  const T = IN.tp.get(e.pointerId); if (T) { T.x = e.clientX; T.y = e.clientY; }
+  const T = IN.tp.get(e.pointerId); if (T) { const mx = e.clientX - T.x, my = e.clientY - T.y; T.moved += Math.hypot(mx, my); if (T.side === 'R') { IN.look.x += mx; IN.look.y += my; } T.x = e.clientX; T.y = e.clientY; }
   const P = IN.ptr; if (!P || e.pointerId !== P.id) return;
   const dx = e.clientX - P.x, dy = e.clientY - P.y; P.x = e.clientX; P.y = e.clientY; P.moved += Math.hypot(dx, dy);
   const L = curL(); if (L && L.ctrl === 'tap') return;
@@ -514,6 +522,8 @@ cv.addEventListener('pointermove', e => {
   else if (SET.ctrl === 'tap') { const w = toWorld(e.clientX, e.clientY); IN.target = w; IN.heading = Math.atan2(w.y - mine.y, w.x - mine.x); }
 });
 function endPtr(e) {
+  const T9 = IN.tp.get(e.pointerId), L9 = curL();
+  if (T9 && L9 && L9.ctrl === 'fps' && T9.side !== 'B' && T9.moved < 14 && performance.now() - T9.t0 < 350 && e.type === 'pointerup') IN.taps3.push({x: e.clientX, y: e.clientY});
   IN.tp.delete(e.pointerId);
   const P = IN.ptr; if (!P || e.pointerId !== P.id) return;
   const L = curL();
@@ -589,6 +599,16 @@ function readInput(dt) {
     }
     inp.steer = s; inp.brake = keys.has('arrowdown') || keys.has('s');
   }
+  if (L && L.ctrl === 'fps') {
+    let mx = 0, my = 0;
+    for (const T of IN.tp.values()) if (T.side === 'L') { mx = (T.x - T.sx) / 46; my = -(T.y - T.sy) / 46; }
+    const m = Math.hypot(mx, my); if (m > 1) { mx /= m; my /= m; } if (m < .14) mx = my = 0;
+    if (keys.has('a')) mx -= 1; if (keys.has('d')) mx += 1; if (keys.has('w')) my += 1; if (keys.has('s')) my -= 1;
+    let lx = IN.look.x, ly = IN.look.y;
+    if (keys.has('arrowleft')) lx -= 420 * dt; if (keys.has('arrowright')) lx += 420 * dt; if (keys.has('arrowup')) ly -= 300 * dt; if (keys.has('arrowdown')) ly += 300 * dt;
+    inp.fps = {mx: clamp(mx, -1, 1), my: clamp(my, -1, 1), lx, ly, taps: IN.taps3.splice(0), use: IN.useBtn};
+  }
+  IN.look.x = IN.look.y = 0; IN.useBtn = false; IN.taps3.length = 0;
   if (L && L.ctrl === 'fly' && SET.ctrl === 'tap' && IN.ptr) inp.center = {x: clamp((IN.ptr.x - cw / 2) / (cw * .35), -1, 1), y: clamp((IN.ptr.y - ch / 2) / (ch * .28), -1, 1)};
   return inp;
 }
@@ -690,6 +710,7 @@ function renderer3D() {
   if (!gl) {
     gl = new T.WebGLRenderer({canvas: $('gl'), antialias: (window.devicePixelRatio || 1) < 2, powerPreference: 'high-performance'});
     gl.setClearColor(0x000000, 1);
+    gl.shadowMap.enabled = true; gl.shadowMap.type = T.PCFSoftShadowMap;
   }
   const pr = Math.min(1.75, window.devicePixelRatio || 1) * quality;
   if (gl._pr !== pr || gl._w !== cw || gl._h !== ch) { gl.setPixelRatio(pr); gl.setSize(cw, ch, false); gl._pr = pr; gl._w = cw; gl._h = ch; }
@@ -698,7 +719,8 @@ function renderer3D() {
 function disposeTree(obj) {
   obj.traverse(o => {
     if (o.geometry) o.geometry.dispose();
-    if (o.material) (Array.isArray(o.material) ? o.material : [o.material]).forEach(m => { if (m.map) m.map.dispose(); m.dispose(); });
+    if (o.material) (Array.isArray(o.material) ? o.material : [o.material]).forEach(m => { for (const k of ['map', 'normalMap', 'roughnessMap', 'emissiveMap', 'alphaMap']) if (m[k]) m[k].dispose(); m.dispose(); });
+    if (o.isLight && o.shadow && o.shadow.map) o.shadow.map.dispose();
   });
 }
 
@@ -988,8 +1010,10 @@ const ALL = {}; (window.ZL_PACKS || []).flatMap(f => f(API)).forEach(l => ALL[l.
 const LV = ORDER.filter(([id]) => ALL[id]).map(([id, w]) => Object.assign(ALL[id], {w}));
 const IDX = {}; LV.forEach((l, i) => IDX[l.id] = i);
 /* Musik: eigene Stimmung für einzelne Level, Ruhe bei Musik-Level */
-Object.entries({rennen: 'arcade', irrgarten: 'nacht', korallen: 'meer'}).forEach(([id, m]) => { if (ALL[id]) ALL[id].music = m; });
+Object.entries({rennen: 'arcade', irrgarten: 'garten', korallen: 'meer', see: 'meer', zimmer: 'nacht', spiegel: 'schloss', wald: 'nacht'}).forEach(([id, m]) => { if (ALL[id]) ALL[id].music = m; });
 ['lied', 'echo'].forEach(id => { if (ALL[id]) ALL[id].noMusic = true; });
+Object.entries({lied: 'arcade', kugel: 'garten', zueinander: 'schloss', herz: 'laternen'}).forEach(([id, th]) => { if (ALL[id]) ALL[id].theme = th; });
+if (ALL.kugel) ALL.kugel.isNew = false;
 
 /* ---------- Spielablauf (rechnet beim Gastgeber) ---------- */
 function mkP(k, L) {
@@ -1320,11 +1344,12 @@ function ctrlText(L) {
     grid: {swipe: 'Wische in die Richtung, in die du abbiegen willst.', stick: 'Joystick in die neue Richtung.', tap: 'Tippe in die Richtung, in die du willst.', tilt: 'Neige in die neue Richtung.'},
     drive: {swipe: 'Gas gibt das Auto selbst. Finger auflegen und nach links/rechts ziehen zum Lenken.', stick: 'Lenk mit dem Joystick.', tap: 'Linke oder rechte Bildschirmhälfte halten zum Lenken.', tilt: 'Lenk durch Kippen – wie ein Lenkrad.'},
     fly: {swipe: 'Du schwimmst von selbst. Wische, um nach oben, unten und zur Seite zu steuern.', stick: 'Steuer mit dem Joystick.', tap: 'Halte den Finger in die Richtung, in die du schwimmen willst.', tilt: 'Neige das Handy zum Steuern.'},
+    fps: (t => ({swipe: t, stick: t, tap: t, tilt: t}))('Linker Daumen: laufen. Rechter Daumen: umsehen. Dinge tippst du einfach an.'),
     buttons: {swipe: 'Unten links: ◀ ▶ laufen · unten rechts: springen.', stick: 'Unten links: ◀ ▶ laufen · unten rechts: springen.', tap: 'Unten links: ◀ ▶ laufen · unten rechts: springen.', tilt: 'Neigen zum Laufen · rechts unten tippen zum Springen.'}
   }[L.ctrl || 'free'];
   return (base && base[m]) || '';
 }
-const CTRL_ICON = L => L.ctrl === 'tap' ? 'tap' : L.ctrl === 'buttons' ? 'pad' : L.ctrl === 'drive' ? 'wheel' : SET.ctrl;
+const CTRL_ICON = L => L.ctrl === 'tap' ? 'tap' : L.ctrl === 'buttons' ? 'pad' : L.ctrl === 'fps' ? 'stick' : L.ctrl === 'drive' ? 'wheel' : SET.ctrl;
 function buildCard() {
   const box = $('cardBox');
   if (S.phase === 'quiz') { buildQuiz(box); return; }
@@ -1332,22 +1357,22 @@ function buildCard() {
   const L = curL();
   if (S.phase === 'end') {
     const tot = Object.values(S.stars).reduce((s, v) => s + (v || 0), 0);
-    html = `<p class="kicker">Alle Welten geschafft</p><h2>${esc(CFG.finale.title)}</h2>
+    html = `<p class="kicker">Alle Kapitel geschafft</p><h2>${esc(CFG.finale.title)}</h2>
       <p class="msg">${esc(CFG.finale.text)}</p><p class="sign">${esc(CFG.finale.sign)}</p>
       <p class="time">Eure Sterne: <b>${tot} von ${LV.length * 3}</b></p>
       ${role === 'host' ? '<button class="btn" id="cBtn">Nochmal spielen</button><button class="btn ghost" id="cMC">Master Control</button>' : `<p class="hint">${esc(nm('d'))} kann jederzeit eine neue Runde starten.</p>`}`;
   } else if (S.phase === 'intro' && L) {
     const sk = (L.isNew ? '<span class="chip new">Neu ✨</span>' : '') + (L.skinName ? `<span class="chip">${esc(L.skinName())}</span>` : '');
-    html = `<div class="chips"><span class="chip">Welt ${L.w + 1} · ${WORLDS[L.w].n}</span><span class="chip">Level ${S.lv + 1}/${LV.length}</span>${sk}</div>
+    html = `<div class="chips"><span class="chip">Kapitel ${L.w + 1} · ${WORLDS[L.w].n}</span><span class="chip">Spiel ${S.lv + 1}/${LV.length}</span>${sk}</div>
       <h2>${esc(L.n)}</h2><p class="hint big">${esc(L.h(me))}</p>
-      <div class="ctrl"><span class="cico">${ICON[CTRL_ICON(L)] || ''}</span><span>${esc(ctrlText(L))}</span>${['tap', 'buttons'].includes(L.ctrl) ? '' : '<button class="link" id="cCtrl">ändern</button>'}</div>
+      <div class="ctrl"><span class="cico">${ICON[CTRL_ICON(L)] || ''}</span><span>${esc(ctrlText(L))}</span>${['tap', 'buttons', 'fps'].includes(L.ctrl) ? '' : '<button class="link" id="cCtrl">ändern</button>'}</div>
       <div class="who" id="cWho"></div>
       <button class="btn" id="cBtn">Bereit</button>`;
   } else if (S.card === 'welcome') {
     const resume = (S.startLv || 0) > 0;
     html = `<p class="kicker">Ihr seid verbunden 💛</p><h2>${resume ? 'Willkommen zurück' : 'Hallo ' + esc(nm('a'))}</h2>
       <p class="msg">${resume ? `Weiter geht's mit „${esc(LV[S.startLv].n)}“.` : esc(CFG.welcome)}</p>${legend()}
-      <p class="hint">${LV.length} Level in ${WORLDS.length} Welten – mit wechselnden Figuren und Steuerungen. Vor jedem Level drückt ihr beide auf „Bereit“, dann zählt ein Countdown runter.</p>
+      <p class="hint">${LV.length} Spiele in ${WORLDS.length} Kapiteln – mal im Boot, mal in der Ich-Perspektive, mal als Prinzessin und Prinz. Am schönsten ist es, wenn ihr dabei telefoniert. Vor jedem Spiel drückt ihr beide auf „Bereit“.</p>
       <div class="who" id="cWho"></div>
       <button class="btn" id="cBtn">Ich bin bereit</button>
       ${role === 'host' ? '<button class="btn ghost" id="cMC">Master Control</button>' : ''}`;
@@ -1357,7 +1382,7 @@ function buildCard() {
       <p class="msg">${esc((CFG.lines || {})[L.id] || '')}</p>`;
     if (S.card === 'world') {
       const Wc = (CFG.worlds || [])[L.w] || {};
-      if (Wc.msg) html += `<div class="q"><small>Welt ${L.w + 1} geschafft</small><p>${esc(Wc.msg)}</p></div>`;
+      if (Wc.msg) html += `<div class="q"><small>Kapitel ${L.w + 1} geschafft</small><p>${esc(Wc.msg)}</p></div>`;
       if (Wc.question) html += `<div class="q"><small>Kleine Frage an euch beide</small><p>${esc(Wc.question)}</p></div>`;
     }
     html += `<div class="who" id="cWho"></div><button class="btn" id="cBtn">Weiter</button>`;
@@ -1771,6 +1796,25 @@ function skyLanterns(t) {
     ctx.fillStyle = rgba(l.c, .85); ctx.beginPath(); ctx.ellipse(x, l.y, 8, 11, 0, 0, TAU); ctx.fill();
   }
 }
+function drawFps(L) {
+  if (!L || L.ctrl !== 'fps' || !['play', 'count'].includes(S.phase)) return;
+  const free = !(L.noStick && L.noStick());
+  if (free) {
+    let st = null; for (const T of IN.tp.values()) if (T.side === 'L') st = T;
+    const bx = st ? st.sx : cw * .2, by = st ? st.sy : ch - 118;
+    let kx = 0, ky = 0; if (st) { kx = st.x - st.sx; ky = st.y - st.sy; const m = Math.hypot(kx, ky); if (m > 46) { kx *= 46 / m; ky *= 46 / m; } }
+    ctx.strokeStyle = st ? 'rgba(255,255,255,.4)' : 'rgba(255,255,255,.2)'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(bx, by, 46, 0, TAU); ctx.stroke();
+    ctx.fillStyle = st ? rgba(COL[me], .6) : 'rgba(255,255,255,.14)'; ctx.beginPath(); ctx.arc(bx + kx, by + ky, 21, 0, TAU); ctx.fill();
+    if (!st && S.t - S.lt < 12) { ctx.font = '600 12px Karla, system-ui'; ctx.textAlign = 'center'; ctx.fillStyle = 'rgba(255,255,255,.7)'; ctx.fillText('laufen', bx, by + 66); ctx.fillText('umsehen: hier wischen', cw * .72, ch - 60); }
+  }
+  if (L.cross && free) { ctx.fillStyle = 'rgba(255,255,255,.75)'; ctx.beginPath(); ctx.arc(cw / 2, ch / 2, 2.2, 0, TAU); ctx.fill(); ctx.strokeStyle = 'rgba(0,0,0,.35)'; ctx.lineWidth = 1; ctx.stroke(); }
+  if (LOC.useLabel) {
+    const Z = useZone(), pul = 1 + Math.sin(performance.now() / 180) * .04;
+    ctx.fillStyle = 'rgba(243,201,143,.3)'; ctx.strokeStyle = 'rgba(243,201,143,.95)'; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.arc(Z.x, Z.y, Z.r * pul, 0, TAU); ctx.fill(); ctx.stroke();
+    ctx.font = '700 13px Karla, system-ui'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#fff';
+    const w = String(LOC.useLabel).split(' '); w.forEach((x, i) => ctx.fillText(x, Z.x, Z.y + (i - (w.length - 1) / 2) * 15)); ctx.textBaseline = 'alphabetic';
+  }
+}
 function drawButtons(L) {
   if (!L || L.ctrl !== 'buttons' || !['play', 'count'].includes(S.phase)) return;
   const Z = btnZones(), b = LOC._btn || {};
@@ -1877,7 +1921,7 @@ function renderScene(now, L, three) {
     }
   }
   if (!fx2DActive() && !three) vignette();
-  drawButtons(L);
+  drawButtons(L); drawFps(L);
   if (SET.ctrl === 'stick' && IN.stick && S.phase === 'play' && !(L && L.ctrl === 'buttons')) {
     const s = IN.stick, dx = s.x - s.ox, dy = s.y - s.oy, m = Math.hypot(dx, dy), k = m > 55 ? 55 / m : 1;
     ctx.strokeStyle = 'rgba(255,255,255,.25)'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(s.ox, s.oy, 55, 0, TAU); ctx.stroke();
