@@ -173,17 +173,17 @@ window.ZL_REAL = (() => {
       const lay = [[2.0, 2.7, 2.7], [1.55, 2.4, 4.2], [1.05, 2.1, 5.6], [.55, 1.5, 6.8]].map(([rad, h, y], i) => ({im: new T.InstancedMesh(wob(new T.ConeGeometry(rad * (o.wide || 1), h, 9, 2), .3, 5 + i), leafM, n), y: y + hi}));
       pts.forEach((p, i) => {
         const s = p.s || 1, ry = r() * TAU, tilt = (r() - .5) * .08;
-        D.position.set(p.x, (2.1 + hi / 2) * s, p.z); D.rotation.set(tilt, ry, tilt); D.scale.setScalar(s); D.updateMatrix(); trunk.setMatrixAt(i, D.matrix);
+        const by = p.y || 0; D.position.set(p.x, by + (2.1 + hi / 2) * s, p.z); D.rotation.set(tilt, ry, tilt); D.scale.setScalar(s); D.updateMatrix(); trunk.setMatrixAt(i, D.matrix);
         const v = r(); col.setRGB(.07 + v * .07, .17 + v * .13, .1 + v * .06); if (o.tint) col.multiply(o.tint);
-        lay.forEach(L => { D.position.set(p.x, L.y * s, p.z); D.rotation.set(tilt, ry + L.y, tilt); D.updateMatrix(); L.im.setMatrixAt(i, D.matrix); L.im.setColorAt(i, col); });
+        lay.forEach(L => { D.position.set(p.x, by + L.y * s, p.z); D.rotation.set(tilt, ry + L.y, tilt); D.updateMatrix(); L.im.setMatrixAt(i, D.matrix); L.im.setColorAt(i, col); });
       });
-      for (const im of [trunk, ...lay.map(L => L.im)]) { im.castShadow = true; im.receiveShadow = true; im.frustumCulled = false; if (im.instanceColor) im.instanceColor.needsUpdate = true; g.add(im); }
+      for (const im of [trunk, ...lay.map(L => L.im)]) { im.castShadow = !o.noShadow; im.receiveShadow = true; im.frustumCulled = false; if (im.instanceColor) im.instanceColor.needsUpdate = true; g.add(im); }
       return g;
     };
     R.bushes = (T, pts, o = {}) => {
       const n = pts.length, r = rng(o.seed || 99), D = new T.Object3D(), col = new T.Color();
-      const im = new T.InstancedMesh(wob(new T.IcosahedronGeometry(1, 1), .35, 12), new T.MeshStandardMaterial({color: 0xffffff, roughness: 1, flatShading: true}), n);
-      pts.forEach((p, i) => { const s = p.s || 1; D.position.set(p.x, .55 * s, p.z); D.rotation.set(0, r() * TAU, 0); D.scale.set(s * (1 + r() * .4), s * (.6 + r() * .3), s * (1 + r() * .4)); D.updateMatrix(); im.setMatrixAt(i, D.matrix); const v = r(); col.setRGB(.06 + v * .06, .14 + v * .1, .07 + v * .05); im.setColorAt(i, col); });
+      const im = new T.InstancedMesh(wob(new T.IcosahedronGeometry(1, 2), .3, 12), new T.MeshStandardMaterial({color: 0xffffff, roughness: 1, flatShading: true}), n);
+      pts.forEach((p, i) => { const s = p.s || 1; D.position.set(p.x, (p.y || 0) + .55 * s, p.z); D.rotation.set(0, r() * TAU, 0); D.scale.set(s * (1 + r() * .4), s * (.6 + r() * .3), s * (1 + r() * .4)); D.updateMatrix(); im.setMatrixAt(i, D.matrix); const v = r(); col.setRGB(.035 + v * .045, .09 + v * .08, .045 + v * .04); im.setColorAt(i, col); });
       im.castShadow = true; im.receiveShadow = true; im.frustumCulled = false; im.instanceColor.needsUpdate = true; return im;
     };
     R.rock = (T, rad, seed = 1, o = {}) => {
@@ -229,6 +229,76 @@ window.ZL_REAL = (() => {
       ctx.fillStyle = o.col || '#fbf3e6'; lines.forEach((l, i) => ctx.fillText(l, x, y + 9 + i * lh));
       ctx.restore(); return h;
     };
+
+    /* ---------- Kleinteile für die Umgebung (ab 8.1) ---------- */
+    R.merge = (T, geos) => {
+      const pos = [], nor = [], uv = [];
+      for (const g0 of geos) { const g = g0.index ? g0.toNonIndexed() : g0; for (const v of g.attributes.position.array) pos.push(v); for (const v of g.attributes.normal.array) nor.push(v); for (const v of g.attributes.uv.array) uv.push(v); }
+      const g = new T.BufferGeometry(); g.setAttribute('position', new T.Float32BufferAttribute(pos, 3)); g.setAttribute('normal', new T.Float32BufferAttribute(nor, 3)); g.setAttribute('uv', new T.Float32BufferAttribute(uv, 2)); return g;
+    };
+    const PLANT = {
+      grass: (g, n, r) => { g.lineCap = 'round'; for (let i = 0; i < 30; i++) { const x = n * (.1 + r() * .8), h = n * (.4 + r() * .55), b = (r() - .5) * n * .4; g.strokeStyle = `rgb(${46 + r() * 44 | 0},${104 + r() * 76 | 0},${38 + r() * 30 | 0})`; g.lineWidth = 3 + r() * 4; g.beginPath(); g.moveTo(x, n); g.quadraticCurveTo(x + b * .3, n - h * .6, x + b, n - h); g.stroke(); } },
+      fern: (g, n, r) => { g.lineCap = 'round'; for (let f = 0; f < 6; f++) { const a = -Math.PI / 2 + (f - 2.5) * .42 + (r() - .5) * .2, len = n * (.6 + r() * .32), col = `rgb(${40 + r() * 30 | 0},${96 + r() * 60 | 0},${48 + r() * 24 | 0})`;
+        for (let k = 1; k <= 14; k++) { const u = k / 14, px = n / 2 + Math.cos(a) * len * u + Math.sin(u * 2.2) * (f - 2.5) * 5, py = n - 2 + Math.sin(a) * len * u, lw = (1 - u) * n * .1 + 2; g.strokeStyle = col; g.lineWidth = 3; g.beginPath(); g.moveTo(px - Math.sin(a) * lw, py + Math.cos(a) * lw - 3); g.lineTo(px, py); g.lineTo(px + Math.sin(a) * lw, py - Math.cos(a) * lw - 3); g.stroke(); } } },
+      flower: (g, n, r) => { PLANT.grass(g, n, r); for (let i = 0; i < 9; i++) { const x = n * (.12 + r() * .76), y = n * (.12 + r() * .45); g.strokeStyle = '#4c8a40'; g.lineWidth = 2.5; g.beginPath(); g.moveTo(x, n); g.lineTo(x, y); g.stroke(); g.fillStyle = ['#fff4f6', '#ffd86a', '#f6a8c0', '#c8b4ff', '#ffffff'][(r() * 5) | 0]; for (let k = 0; k < 5; k++) { const a = k / 5 * TAU; g.beginPath(); g.arc(x + Math.cos(a) * 5, y + Math.sin(a) * 5, 4.2, 0, TAU); g.fill(); } g.fillStyle = '#e8a020'; g.beginPath(); g.arc(x, y, 3, 0, TAU); g.fill(); } },
+      reed: (g, n, r) => { g.lineCap = 'round'; for (let i = 0; i < 14; i++) { const x = n * (.1 + r() * .8), h = n * (.6 + r() * .36), b = (r() - .5) * n * .14; g.strokeStyle = `rgb(${92 + r() * 40 | 0},${120 + r() * 40 | 0},${52 + r() * 20 | 0})`; g.lineWidth = 2.5 + r() * 2; g.beginPath(); g.moveTo(x, n); g.quadraticCurveTo(x + b * .4, n - h * .5, x + b, n - h); g.stroke(); if (r() < .55) { g.strokeStyle = '#5a3a22'; g.lineWidth = 8; g.beginPath(); g.moveTo(x + b * .92, n - h * .9); g.lineTo(x + b * .78, n - h * .72); g.stroke(); } } }
+    };
+    R.plantTex = (T, kind, seed = 1) => { const key = 'pl-' + kind + seed; if (!TX[key]) { const c = canvas(128); PLANT[kind](c.getContext('2d'), 128, rng(seed * 13 + 5)); const t = new T.CanvasTexture(c); t.anisotropy = 4; TX[key] = t; } return TX[key]; };
+    /* pts: [{x, y, z, s}] – zwei gekreuzte Flächen pro Pflanze, alle in einem Zeichenaufruf */
+    R.plants = (T, kind, pts, o = {}) => {
+      const w = o.w || 1, h = o.h || 1, p1 = new T.PlaneGeometry(w, h); p1.translate(0, h / 2, 0); const p2 = p1.clone(); p2.rotateY(Math.PI / 2);
+      const geo = R.merge(T, [p1, p2]), na = geo.attributes.normal; for (let i = 0; i < na.count; i++) na.setXYZ(i, 0, 1, 0);
+      const mat = new T.MeshStandardMaterial({map: R.plantTex(T, kind, o.seed || 1), alphaTest: .4, side: T.DoubleSide, roughness: 1, color: o.color || 0xffffff});
+      const im = new T.InstancedMesh(geo, mat, pts.length), D = new T.Object3D(), r = rng(o.seed || 3);
+      pts.forEach((p, i) => { const s = p.s || 1; D.position.set(p.x, p.y || 0, p.z); D.rotation.set(0, r() * TAU, 0); D.scale.set(s, s * (.8 + r() * .4), s); D.updateMatrix(); im.setMatrixAt(i, D.matrix); });
+      im.frustumCulled = false; im.receiveShadow = true; return im;
+    };
+    R.stones = (T, pts, o = {}) => {
+      const im = new T.InstancedMesh(wob(new T.IcosahedronGeometry(1, 1), .5, 21), R.pbr(T, 'rock', 1, 1, Object.assign({roughness: .95, flatShading: true}, o.mat || {})), pts.length), D = new T.Object3D(), r = rng(o.seed || 5);
+      pts.forEach((p, i) => { const s = p.s || 1; D.position.set(p.x, (p.y || 0) + s * .18, p.z); D.rotation.set(r() * 3, r() * 6, r() * 3); D.scale.set(s, s * (.5 + r() * .3), s * (.7 + r() * .5)); D.updateMatrix(); im.setMatrixAt(i, D.matrix); });
+      im.frustumCulled = false; im.castShadow = !o.noShadow; im.receiveShadow = true; return im;
+    };
+    R.mushrooms = (T, pts, o = {}) => {
+      const g = new T.Group(), n = pts.length, D = new T.Object3D(), r = rng(o.seed || 9), col = o.color || 0x7fe8d0;
+      const stem = new T.InstancedMesh(new T.CylinderGeometry(.03, .045, .16, 6), new T.MeshStandardMaterial({color: 0xe8e0d0, roughness: .8}), n);
+      const cap = new T.InstancedMesh(new T.SphereGeometry(.1, 10, 6, 0, TAU, 0, Math.PI / 2), new T.MeshStandardMaterial({color: col, emissive: col, emissiveIntensity: o.glow != null ? o.glow : .9, roughness: .5}), n);
+      pts.forEach((p, i) => { const s = (p.s || 1) * (.7 + r() * .7); D.rotation.set(0, 0, 0); D.scale.setScalar(s); D.position.set(p.x, (p.y || 0) + .08 * s, p.z); D.updateMatrix(); stem.setMatrixAt(i, D.matrix); D.position.y = (p.y || 0) + .15 * s; D.updateMatrix(); cap.setMatrixAt(i, D.matrix); });
+      stem.frustumCulled = cap.frustumCulled = false; g.add(stem, cap); return g;
+    };
+    R.softTex = T => { if (!TX.soft) { const c = canvas(64), g = c.getContext('2d'), gr = g.createRadialGradient(32, 32, 0, 32, 32, 32); gr.addColorStop(0, 'rgba(255,255,255,.9)'); gr.addColorStop(.5, 'rgba(255,255,255,.35)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = gr; g.fillRect(0, 0, 64, 64); TX.soft = new T.CanvasTexture(c); } return TX.soft; };
+    /* Vögel, die um einen Punkt kreisen */
+    R.birds = (T, n, o = {}) => {
+      const g = new T.Group(), m = new T.MeshBasicMaterial({color: o.color || 0x20202a, side: T.DoubleSide, fog: o.fog !== false}), wg = new T.BufferGeometry(), r = rng(o.seed || 4), list = [];
+      wg.setAttribute('position', new T.Float32BufferAttribute([0, 0, -.22, 0, 0, .2, 1.05, 0, .05], 3));
+      for (let i = 0; i < n; i++) { const b = new T.Group(), wl = new T.Mesh(wg, m), wr = new T.Mesh(wg, m); wr.scale.x = -1; b.add(wl, wr); b.scale.setScalar(o.size || .8); g.add(b); list.push({b, wl, wr, a: r() * TAU, rad: (o.r0 || 20) + r() * (o.r1 || 25), h: (o.h0 || 20) + r() * (o.h1 || 12), sp: (.12 + r() * .1) * (r() < .5 ? 1 : -1)}); }
+      g.userData.upd = t => list.forEach(q => { const a = t * q.sp + q.a; q.b.position.set((o.x || 0) + Math.cos(a) * q.rad, q.h + Math.sin(t * .6 + q.a) * 1.6, (o.z || 0) + Math.sin(a) * q.rad); q.b.rotation.y = -a + (q.sp > 0 ? 0 : Math.PI); const f = Math.sin(t * 8 + q.a * 5) * .65; q.wl.rotation.z = f; q.wr.rotation.z = -f; });
+      return g;
+    };
+    /* Nebelschwaden: große, weiche Flächen, die langsam ziehen */
+    R.mist = (T, n, o) => {
+      const g = new T.Group(), r = rng(o.seed || 6), list = [], b = o.box;
+      for (let i = 0; i < n; i++) { const s = new T.Sprite(new T.SpriteMaterial({map: R.softTex(T), color: o.color, transparent: true, opacity: (o.op || .1) * (.6 + r() * .8), depthWrite: false, fog: o.fog !== false})); const sc = (o.size || 12) * (.6 + r() * .9); s.scale.set(sc * 1.8, sc * .55, 1); s.position.set(b[0] + r() * (b[3] - b[0]), b[1] + r() * (b[4] - b[1]), b[2] + r() * (b[5] - b[2])); g.add(s); list.push({s, v: (.25 + r() * .5) * (o.speed || 1)}); }
+      g.userData.upd = (t, dt) => list.forEach(q => { q.s.position.x += q.v * dt; if (q.s.position.x > b[3]) q.s.position.x = b[0]; });
+      return g;
+    };
+    /* Schwebende Teilchen: Staub im Licht, Blütenblätter, fallendes Laub */
+    R.motes = (T, n, o) => {
+      const pos = new Float32Array(n * 3), geo = new T.BufferGeometry(), r = rng(o.seed || 8), b = o.box, d = Array.from({length: n}, () => ({x: b[0] + r() * (b[3] - b[0]), y: b[1] + r() * (b[4] - b[1]), z: b[2] + r() * (b[5] - b[2]), p: r() * 6, s: .3 + r() * .8}));
+      geo.setAttribute('position', new T.BufferAttribute(pos, 3));
+      const pts = new T.Points(geo, new T.PointsMaterial({color: o.color, size: o.size || .05, map: R.softTex(T), transparent: true, opacity: o.op || .7, depthWrite: false, blending: o.normal ? T.NormalBlending : T.AdditiveBlending, fog: o.fog !== false}));
+      pts.frustumCulled = false; const fall = o.fall || 0, H = b[4] - b[1];
+      pts.userData.upd = t => { const a = geo.attributes.position; d.forEach((q, i) => { const y = fall ? b[1] + ((((q.y - b[1]) - t * fall * q.s) % H) + H) % H : q.y + Math.sin(t * q.s * .7 + q.p) * .25; a.setXYZ(i, q.x + Math.sin(t * q.s * .5 + q.p) * (o.sway || .3), y, q.z + Math.cos(t * q.s * .4 + q.p) * (o.sway || .3)); }); a.needsUpdate = true; };
+      return pts;
+    };
+    /* Feuer: drei flackernde Flammen und ein warmes Licht */
+    R.fire = (T, o = {}) => {
+      const g = new T.Group(), sc = o.size || 1, fl = [[0xff7a28, 1.1, .34], [0xffb040, .8, .3], [0xffe6a0, .45, .24]].map(([c, s, y]) => { const sp = new T.Sprite(new T.SpriteMaterial({map: R.softTex(T), color: c, transparent: true, opacity: .95, depthWrite: false, blending: T.AdditiveBlending, fog: false})); sp.position.y = y * sc; sp.userData.s = s * sc; g.add(sp); return sp; });
+      const light = o.light === false ? null : new T.PointLight(0xff8a40, o.inten || 1.2, o.dist || 9, 1.5); if (light) { light.position.y = .6 * sc; g.add(light); }
+      g.userData.upd = t => { const k = 1 + Math.sin(t * 13 + (o.ph || 0)) * .1 + Math.sin(t * 29 + (o.ph || 0) * 2) * .07; fl.forEach((sp, i) => { const s = sp.userData.s; sp.scale.set(s * (.9 + (k - 1) * (i + 1)), s * 1.5 * k, 1); }); if (light) light.intensity = (o.inten || 1.2) * k; };
+      return g;
+    };
+    R.cobweb = T => { if (!TX.web) { const c = canvas(128), g = c.getContext('2d'); g.strokeStyle = 'rgba(255,255,255,.75)'; g.lineWidth = 1.2; for (let i = 0; i <= 6; i++) { const a = i / 6 * Math.PI / 2; g.beginPath(); g.moveTo(0, 0); g.lineTo(Math.cos(a) * 126, Math.sin(a) * 126); g.stroke(); } for (let k = 1; k <= 6; k++) { g.beginPath(); for (let i = 0; i <= 6; i++) { const a = i / 6 * Math.PI / 2, rr = k * 20 - (i % 2 ? 0 : 5); i ? g.lineTo(Math.cos(a) * rr, Math.sin(a) * rr) : g.moveTo(Math.cos(a) * rr, Math.sin(a) * rr); } g.stroke(); } TX.web = new T.CanvasTexture(c); }
+      return new T.Mesh(new T.PlaneGeometry(1, 1), new T.MeshBasicMaterial({map: TX.web, transparent: true, opacity: .32, depthWrite: false, side: T.DoubleSide})); };
     cache = R; return R;
   };
 })();

@@ -34,8 +34,62 @@ function trace(st, states, gateOpen) {
 }
 function solids(st) {
   const out = [], add = (c, r, h = .78) => out.push([wx(c) - h, wz(r) - h, wx(c) + h, wz(r) + h]);
+  VASES.forEach(([x, z]) => out.push([x - .32, z - .32, x + .32, z + .32]));
   st.pil.forEach(p => add(p[0], p[1])); st.mir.forEach(m => add(m.c, m.r)); st.cr.forEach(q => add(q.c, q.r, .55)); if (st.gate) add(st.gate.c, st.gate.r);
   return out;
+}
+
+/* ---------- Ausstattung des Saals: Vorhänge, Banner, Kronleuchter, Teppiche, Vasen, Staub im Licht ---------- */
+const VASES = [[-8.6, -8.6], [8.6, -8.6], [-8.6, 8.6], [8.6, 8.6]];
+function decorHall(T, scene, R, K, add) {
+  const upd = [], WH = 8.5, gold = new T.MeshStandardMaterial({color: 0xdcae60, metalness: .9, roughness: .3, envMapIntensity: 1.2}), wax = new T.MeshStandardMaterial({color: 0xf4ead8, roughness: .6});
+  const wallPlane = (w, h, mat, a, off, y, wall) => { // wall: 0 = Nord, 1 = Süd, 2 = West, 3 = Ost; a = Position entlang der Wand
+    const d = 9.26 - off, m = add(new T.PlaneGeometry(w, h), mat, wall === 2 ? -d : wall === 3 ? d : a, y, wall === 0 ? -d : wall === 1 ? d : a, false); m.rotation.y = [0, Math.PI, Math.PI / 2, -Math.PI / 2][wall]; m.receiveShadow = false; return m; };
+  const drapeT = R.paint(T, 64, 256, (g, w, h) => { for (let x = 0; x < w; x++) { const v = .5 + .5 * Math.sin(x / w * Math.PI * 5); g.fillStyle = `rgb(${70 + v * 80 | 0},${14 + v * 18 | 0},${30 + v * 26 | 0})`; g.fillRect(x, 0, 1, h); } g.fillStyle = '#d9ad62'; g.fillRect(0, h * .66, w, 6); g.fillRect(0, h - 8, w, 8); });
+  const drape = new T.MeshStandardMaterial({map: drapeT, roughness: .95}), pelmet = new T.MeshStandardMaterial({color: 0x5a1626, roughness: .95});
+  const banner = k => new T.MeshStandardMaterial({roughness: .95, map: R.paint(T, 120, 340, (g, w, h) => { g.clearRect(0, 0, w, h); g.fillStyle = k ? '#2c4680' : '#8a2c50'; g.beginPath(); g.moveTo(0, 0); g.lineTo(w, 0); g.lineTo(w, h - 50); g.lineTo(w / 2, h); g.lineTo(0, h - 50); g.closePath(); g.fill(); g.strokeStyle = '#d9ad62'; g.lineWidth = 8; g.stroke(); R.sym(g, k ? 1 : 0, w / 2, 120, 34, '#f3d9a0'); R.sym(g, k ? 2 : 3, w / 2, 220, 20, '#f3d9a0'); }), transparent: true, alphaTest: .4});
+  const bm = [banner(0), banner(1)];
+  for (let wall = 0; wall < 4; wall++) {
+    for (let i = 0; i < 4; i++) { const a = -6.6 + i * 4.4; for (const sd of [-1, 1]) wallPlane(.62, 5.9, drape, a + sd * 1.12, .03, 4.25, wall); wallPlane(3, .6, pelmet, a, .05, 7.15, wall); wallPlane(3.1, .09, gold, a, .06, 6.86, wall); }
+    for (const [i, a] of (wall < 2 ? [[0, -4.4], [1, 4.4]] : [[0, -4.4], [1, 0], [2, 4.4]])) {
+      wallPlane(.95, 2.7, bm[(i + wall) % 2], a, .04, 5.1, wall);
+      const d = 9.1, x = wall === 2 ? -d : wall === 3 ? d : a, z = wall === 0 ? -d : wall === 1 ? d : a; add(new T.CylinderGeometry(.05, .03, .3, 8), gold, x, 2.6, z, false);
+      const f = R.fire(T, {size: .36, light: false, ph: a + wall}); f.position.set(x, 2.78, z); scene.add(f); upd.push(f.userData.upd);
+    }
+    wallPlane(18.6, .32, gold, 0, .02, .16, wall); wallPlane(18.6, .26, gold, 0, .02, WH - .5, wall);
+  }
+  // großes Tor im Süden, Wappen im Norden
+  wallPlane(2.5, 4.7, new T.MeshStandardMaterial({roughness: .7, map: R.paint(T, 250, 470, (g, w, h) => { g.fillStyle = '#4a2e1c'; g.fillRect(0, 0, w, h); g.fillStyle = '#6a4428'; g.beginPath(); g.moveTo(10, h); g.lineTo(10, 120); g.arc(w / 2, 120, w / 2 - 10, Math.PI, 0); g.lineTo(w - 10, h); g.fill();
+    g.strokeStyle = '#2a1a10'; g.lineWidth = 4; for (let x = 30; x < w; x += 30) { g.beginPath(); g.moveTo(x, 20); g.lineTo(x, h); g.stroke(); } g.lineWidth = 6; g.beginPath(); g.moveTo(w / 2, 10); g.lineTo(w / 2, h); g.stroke();
+    g.fillStyle = '#d9ad62'; for (const y of [170, 380]) { g.fillRect(14, y, w - 28, 12); } g.beginPath(); g.arc(w / 2 - 22, 280, 10, 0, 6.283); g.arc(w / 2 + 22, 280, 10, 0, 6.283); g.fill(); })}), 0, .03, 2.35, 1);
+  wallPlane(2.5, 4.4, new T.MeshStandardMaterial({roughness: .95, map: R.paint(T, 250, 440, (g, w, h) => { g.fillStyle = '#3a1830'; g.fillRect(0, 0, w, h); g.strokeStyle = '#d9ad62'; g.lineWidth = 10; g.strokeRect(10, 10, w - 20, h - 20); g.lineWidth = 3; g.strokeRect(26, 26, w - 52, h - 52);
+    g.fillStyle = '#f3d9a0'; g.textAlign = 'center'; g.font = '700 84px Georgia, serif'; g.fillText(nm('a')[0], 72, 190); g.fillText(nm('d')[0], 178, 190); R.sym(g, 0, 125, 160, 22, '#f48aa3'); R.sym(g, 3, 125, 300, 40, '#f3d9a0'); for (let i = 0; i < 5; i++) R.sym(g, 1, 45 + i * 40, 386, 11, '#f3d9a0'); })}), 0, .03, 4.2, 0);
+  // Deckenbalken quer und vier Kronleuchter
+  for (const x of [-6.4, -3.2, 0, 3.2, 6.4]) add(new T.BoxGeometry(.4, .34, 19.2), R.pbr(T, 'wood', .3, 6, {color: 0x6a5244}), x, WH - .23, 0, false);
+  [[-4.4, -4.4], [4.4, -4.4], [-4.4, 4.4], [4.4, 4.4]].forEach(([x, z], i) => {
+    const y = 6.2; add(new T.TorusGeometry(1.05, .06, 8, 36), gold, x, y, z, false).rotation.x = Math.PI / 2; add(new T.TorusGeometry(.5, .04, 8, 24), gold, x, y + .5, z, false).rotation.x = Math.PI / 2;
+    add(new T.CylinderGeometry(.03, .03, WH - y - .5, 6), gold, x, (y + .5 + WH) / 2, z, false); add(new T.SphereGeometry(.14, 12, 10), gold, x, y - .15, z, false);
+    for (let q = 0; q < 4; q++) { const a = q * Math.PI / 2, sp = add(new T.CylinderGeometry(.02, .02, 1.15, 6), gold, x + Math.cos(a) * .53, y + .25, z + Math.sin(a) * .53, false); sp.rotation.set(0, -a, Math.PI / 2 - .44); }
+    const fl = [];
+    for (let q = 0; q < 8; q++) { const a = q / 8 * 6.283, cx = x + Math.cos(a) * 1.05, cz = z + Math.sin(a) * 1.05; add(new T.CylinderGeometry(.035, .04, .26, 8), wax, cx, y + .17, cz, false); const f = K.sprite(T, 0xffc070, .34, .95); f.position.set(cx, y + .4, cz); scene.add(f); fl.push(f); }
+    upd.push(t => fl.forEach((f, q) => { const k = 1 + Math.sin(t * 11 + q * 2 + i) * .1; f.scale.set(.34 * k, .46 * k, 1); }));
+    if (i === 0 || i === 3) { const pl = new T.PointLight(0xffc888, .5, 15, 1.4); pl.position.set(x, y - .3, z); scene.add(pl); }
+  });
+  // Boden: Rosette in der Mitte, rote Läufer im Umgang
+  const ros = add(new T.PlaneGeometry(9, 9), new T.MeshBasicMaterial({transparent: true, opacity: .55, depthWrite: false, map: R.paint(T, 512, 512, (g, w) => { g.clearRect(0, 0, w, w); g.translate(256, 256); g.strokeStyle = '#c99a48'; g.fillStyle = 'rgba(201,154,72,.5)';
+    for (const [r0, lw] of [[244, 6], [226, 2], [150, 3], [70, 2]]) { g.lineWidth = lw; g.beginPath(); g.arc(0, 0, r0, 0, 6.283); g.stroke(); }
+    for (let i = 0; i < 16; i++) { const a = i / 16 * 6.283, r1 = i % 2 ? 150 : 226; g.beginPath(); g.moveTo(0, 0); g.lineTo(Math.cos(a - .1) * 60, Math.sin(a - .1) * 60); g.lineTo(Math.cos(a) * r1, Math.sin(a) * r1); g.lineTo(Math.cos(a + .1) * 60, Math.sin(a + .1) * 60); g.closePath(); i % 4 === 0 ? g.fill() : g.stroke(); } })}), 0, .012, 0, false); ros.rotation.x = -Math.PI / 2; ros.receiveShadow = false;
+  const runT = R.paint(T, 128, 128, (g, w) => { g.fillStyle = '#6e1c30'; g.fillRect(0, 0, w, w); g.fillStyle = '#d9ad62'; g.fillRect(0, 8, w, 6); g.fillRect(0, w - 14, w, 6); g.fillStyle = '#8a2c44'; for (let x = 16; x < w; x += 32) { g.beginPath(); g.moveTo(x, 44); g.lineTo(x + 14, 64); g.lineTo(x, 84); g.lineTo(x - 14, 64); g.fill(); } for (let i = 0; i < 500; i++) { g.fillStyle = 'rgba(0,0,0,.08)'; g.fillRect(Math.random() * w, Math.random() * w, 2, 2); } }); runT.wrapS = T.RepeatWrapping; runT.repeat.set(10, 1);
+  const runM = new T.MeshStandardMaterial({map: runT, roughness: .96, envMapIntensity: .1});
+  for (const [x, z, ry] of [[0, -8, 0], [0, 8, 0], [-8, 0, Math.PI / 2], [8, 0, Math.PI / 2]]) { const c = add(new T.PlaneGeometry(14.4, 1.4), runM, x, .011, z, false); c.rotation.set(-Math.PI / 2, 0, ry); }
+  // Vasen mit Rosen in den Ecken
+  const vaseM = new T.MeshStandardMaterial({color: 0xe8e2ee, roughness: .25, metalness: .1, envMapIntensity: 1}), marble = R.pbr(T, 'marble', 1, 1, {color: 0xe8ddd0, roughness: .4});
+  VASES.forEach(([x, z], i) => { add(new T.BoxGeometry(.6, .9, .6), marble, x, .45, z); const pts = [[.16, 0], [.26, .16], [.2, .4], [.1, .52], [.15, .62]].map(([a, b]) => new T.Vector2(a, b)); add(new T.LatheGeometry(pts, 16), vaseM, x, .9, z).material.side = T.DoubleSide;
+    scene.add(R.plants(T, 'flower', [{x, y: 1.4, z, s: 1}, {x: x + .05, y: 1.36, z: z - .05, s: .85}], {w: .9, h: .8, seed: 2 + i})); });
+  // Staub in den Lichtbahnen und fallende Rosenblätter
+  const dust = R.motes(T, 140, {box: [-9, .4, -9, 9, 7.5, 9], color: 0xffe2b0, size: .06, op: .6, sway: .5, seed: 4}); scene.add(dust); upd.push(dust.userData.upd);
+  const petals = R.motes(T, 60, {box: [-8.5, 0, -8.5, 8.5, 8, 8.5], color: 0xf48aa3, size: .11, op: .85, sway: .7, fall: .32, normal: true, seed: 6}); scene.add(petals); upd.push(petals.userData.upd);
+  return upd;
 }
 
 function buildHall(T) {
@@ -45,7 +99,7 @@ function buildHall(T) {
   scene.add(new T.HemisphereLight(0xffe2c8, 0x3a2e40, .52));
   const sun = R.sun(T, scene, new T.Vector3(-.75, .62, .22), 0xffc48c, 1.05, {size: 13, map: 1024});
   const add = (geo, mat, x, y, z, cast = true) => { const m = new T.Mesh(geo, mat); m.position.set(x, y, z); m.castShadow = cast; m.receiveShadow = true; scene.add(m); return m; };
-  const fl = add(new T.PlaneGeometry(44, 44), R.pbr(T, 'marble', 22, 22, {roughness: .2, metalness: .05, envMapIntensity: .75}), 0, 0, 0, false); fl.rotation.x = -Math.PI / 2;
+  const fl = add(new T.PlaneGeometry(44, 44), R.pbr(T, 'marble', 22, 22, {color: 0xc4bcb2, roughness: .2, metalness: .05, envMapIntensity: .7}), 0, 0, 0, false); fl.rotation.x = -Math.PI / 2;
   const WH = 8.5, stone = R.pbr(T, 'stone', 8, 3.6, {color: 0xe2d2c2, roughness: .9});
   // Wände zeigen nur nach innen: steht die Kamera dahinter, schaut man einfach hindurch
   for (const [x, z, ry] of [[0, -9.3, 0], [0, 9.3, Math.PI], [-9.3, 0, Math.PI / 2], [9.3, 0, -Math.PI / 2]]) { const w = add(new T.PlaneGeometry(18.6, WH), stone, x, WH / 2, z, false); w.rotation.y = ry; }
@@ -71,7 +125,8 @@ function buildHall(T) {
   const mkPool = (n, th, op) => Array.from({length: n}, () => { const m = new T.Mesh(new T.BoxGeometry(1, th, th), new T.MeshBasicMaterial({color: 0xffffff, transparent: true, opacity: op, blending: T.AdditiveBlending, depthWrite: false, fog: false})); m.visible = false; m.frustumCulled = false; scene.add(m); return m; });
   const core = mkPool(26, .07, 1), halo = mkPool(26, .26, .22);
   const sparks = Array.from({length: 14}, () => { const s = K.sprite(T, 0xffffff, 1.1, .9); s.visible = false; scene.add(s); return s; });
-  return {scene, cam, sun, figs, blobs, core, halo, sparks, ray: new T.Raycaster(), stageIdx: -1, grp: null, head: {a: 0, d: 0}};
+  const upd = decorHall(T, scene, R, K, add);
+  return {scene, cam, sun, figs, blobs, core, halo, sparks, upd, ray: new T.Raycaster(), stageIdx: -1, grp: null, head: {a: 0, d: 0}};
 }
 function buildStage(T, M, si) {
   const K = window.ZL_KIT(API), R = window.ZL_REAL(API), st = STAGES[si], g = new T.Group(), me = API.me;
@@ -222,7 +277,7 @@ const spiegel = {
     if (!M.camPos || M.camPos.distanceTo(want) > 9) M.camPos = want.clone(); M.camPos.lerp(want, Math.min(1, dt * 9));
     M.cam.position.copy(M.camPos); M.cam.lookAt(mp.x, 1.5, mp.z);
     M.cam.aspect = sc.cw / sc.ch; M.cam.fov = sc.cw < sc.ch ? 70 : 58; M.cam.updateProjectionMatrix(); M.cam.updateMatrixWorld();
-    R.sunAt(M.sun, 0, 0, 0);
+    R.sunAt(M.sun, 0, 0, 0); M.upd.forEach(f => f(t, dt));
     API.render3D(M.scene, M.cam, {bloom: .85, th: .7});
     // Anzeige
     for (const k of [ot, me]) { const p = K.proj(M.cam, new T.Vector3(pos[k].x, 2.35, pos[k].z)); if (p.ok && p.y > 90) K.nameTag(nm(k), p.x, p.y, COL[k]); }

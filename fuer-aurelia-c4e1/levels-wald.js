@@ -46,6 +46,51 @@ function solidsNear(g, x, z) {
 /* Karte des Lotsen: Welt <-> Bildschirm */
 function mapGeo() { const s = API.screen(), hh = HW * s.ch / s.cw, z0 = -18 + hh - (132 / s.ch) * 2 * hh; return {s, hh, z0, X: x => (x / HW + 1) / 2 * s.cw, Y: z => ((z - z0) / hh + 1) / 2 * s.ch, wx: sx => (sx / s.cw * 2 - 1) * HW, wz: sy => z0 + (sy / s.ch * 2 - 1) * hh}; }
 
+/* ---------- Walddetails: Trampelpfade, Gras, Farne, Blumen, Pilze, Steine, Stämme, Eulenaugen, Spinnweben ---------- */
+function decorRound(T, g, R, K, G, A) {
+  const upd = [], r = R.rng(91 + A.r * 7), D = new T.Object3D(), free = (c, q) => c >= 0 && q >= 0 && c < NG && q < NG && G[q * NG + c] !== '#';
+  const cells = [], walls = []; for (let i = 0; i < G.length; i++) (G[i] !== '#' ? cells : walls).push(i);
+  // ausgetretener Pfad auf allen Wegen
+  const pg = new T.PlaneGeometry(3.7, 3.7); pg.rotateX(-Math.PI / 2);
+  const pim = new T.InstancedMesh(pg, new T.MeshStandardMaterial({transparent: true, depthWrite: false, roughness: 1, map: R.paint(T, 128, 128, (c, w) => { c.clearRect(0, 0, w, w); const gr = c.createRadialGradient(64, 64, 8, 64, 64, 64); gr.addColorStop(0, 'rgba(138,112,80,.62)'); gr.addColorStop(.6, 'rgba(120,98,70,.4)'); gr.addColorStop(1, 'rgba(110,90,64,0)'); c.fillStyle = gr; c.fillRect(0, 0, w, w); for (let i = 0; i < 260; i++) { c.fillStyle = Math.random() < .5 ? 'rgba(60,44,30,.25)' : 'rgba(190,160,120,.18)'; c.fillRect(20 + Math.random() * 88, 20 + Math.random() * 88, 2, 2); } })}), cells.length);
+  cells.forEach((i, n) => { D.position.set(wx(ic(i)), .012 + (n % 4) * .0015, wz(ir(i))); D.rotation.set(0, r() * 6.28, 0); D.scale.setScalar(1); D.updateMatrix(); pim.setMatrixAt(n, D.matrix); }); pim.frustumCulled = false; pim.receiveShadow = true; g.add(pim);
+  // Wegränder: Gras, Farne, Blumen, Steine, Pilze
+  const grass = [], fern = [], flow = [], stone = [], mush = [], webs = [];
+  for (const i of cells) {
+    const c = ic(i), q = ir(i), x = wx(c), z = wz(q);
+    for (const [dx, dz] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+      if (free(c + dx, q + dz)) continue;
+      for (let k = 0; k < 6; k++) { const a = -1.4 + k * .56 + (r() - .5) * .3, off = 1.2 + r() * .35; grass.push({x: x + dx * off + dz * a, z: z + dz * off + dx * a, s: .6 + r() * .6}); }
+      for (let k = 0; k < 2; k++) { const a = (r() - .5) * 2.6, off = 1.5 + r() * .5; fern.push({x: x + dx * off + dz * a, z: z + dz * off + dx * a, s: .8 + r() * .6}); }
+      if (r() < .45) { const a = (r() - .5) * 2.4; flow.push({x: x + dx * 1.15 + dz * a, z: z + dz * 1.15 + dx * a, s: .5 + r() * .35}); }
+      if (r() < .4) { const a = (r() - .5) * 2.6; stone.push({x: x + dx * 1.3 + dz * a, z: z + dz * 1.3 + dx * a, s: .12 + r() * .34}); }
+      if (r() < .22) { const a = (r() - .5) * 2.4; for (let k = 0; k < 3; k++) mush.push({x: x + dx * 1.3 + dz * a + (r() - .5) * .3, z: z + dz * 1.3 + dx * a + (r() - .5) * .3, s: .9 + r() * .8}); }
+      if (r() < .07) webs.push({x: x + dx * 1.45, z: z + dz * 1.45, ry: dx ? Math.PI / 2 : 0});
+    }
+    if (r() < .6) grass.push({x: x + (r() - .5) * 2, z: z + (r() - .5) * 2, s: .35 + r() * .3});
+  }
+  g.add(R.plants(T, 'grass', grass, {w: 1, h: .75, seed: 4 + A.r})); g.add(R.plants(T, 'fern', fern, {w: 1.5, h: 1.05, seed: 6 + A.r})); g.add(R.plants(T, 'flower', flow, {w: .9, h: .7, seed: 8 + A.r}));
+  g.add(R.stones(T, stone, {seed: 12 + A.r, noShadow: true})); g.add(R.mushrooms(T, mush, {seed: 5 + A.r, glow: 1.1}));
+  webs.forEach(w => { const m = R.cobweb(T); m.scale.setScalar(1.7); m.position.set(w.x, 1.9, w.z); m.rotation.y = w.ry; m.material.opacity = .4; g.add(m); });
+  // umgestürzte Stämme, Baumstümpfe und leuchtende Eulenaugen im Dickicht
+  const bark = R.pbr(T, 'bark', 3, 1, {roughness: 1}), moss = R.pbr(T, 'bark', 2, 1, {color: 0x7aa860, roughness: 1});
+  const inner = walls.filter(i => ic(i) > 0 && ir(i) > 0 && ic(i) < NG - 1 && ir(i) < NG - 1), pickW = () => inner[(r() * inner.length) | 0];
+  for (let k = 0; k < 9 && inner.length; k++) { const i = pickW(), l = new T.Mesh(new T.CylinderGeometry(.2, .24, 2.5, 9), k % 2 ? moss : bark); l.position.set(wx(ic(i)) + (r() - .5), .22, wz(ir(i)) + (r() - .5)); l.rotation.set(Math.PI / 2, 0, r() * 3.14); l.castShadow = l.receiveShadow = true; g.add(l); }
+  for (let k = 0; k < 10 && inner.length; k++) { const i = pickW(), st = new T.Mesh(new T.CylinderGeometry(.26, .34, .42, 9), bark); st.position.set(wx(ic(i)) + (r() - .5) * 2.2, .21, wz(ir(i)) + (r() - .5) * 2.2); st.castShadow = st.receiveShadow = true; g.add(st); }
+  const eyes = [];
+  for (let k = 0; k < 9 && inner.length; k++) { const i = pickW(), x = wx(ic(i)) + (r() - .5), y = 2.6 + r() * 2.2, z = wz(ir(i)) + (r() - .5), a = r() * 6.28;
+    const pair = [-1, 1].map(sd => { const e = K.sprite(T, 0xffd860, .13, .95); e.material.fog = false; e.position.set(x + Math.cos(a) * .09 * sd, y, z + Math.sin(a) * .09 * sd); g.add(e); return e; }); eyes.push({pair, p: r() * 20, d: 3 + r() * 4}); }
+  upd.push(t => eyes.forEach(e => { const k = (t + e.p) % e.d, open = k < .15 ? 0 : k > e.d * .6 && k < e.d * .6 + 1.4 ? 0 : 1; e.pair.forEach(s => { s.scale.set(.13, .13 * (open ? 1 : .08), 1); }); }));
+  // Lager am Ziel: Sitzstämme, Topf am Dreibein, Rucksack – und ein Zelt mit Kiste am Start
+  const dk = new T.MeshStandardMaterial({color: 0x1c1a1c, roughness: .6, metalness: .5}), add = (geo, m, x, y, z) => { const q = new T.Mesh(geo, m); q.position.set(x, y, z); q.castShadow = q.receiveShadow = true; g.add(q); return q; };
+  add(new T.CylinderGeometry(.2, .22, 1.3, 9), bark, EXIT.x - 1.05, .2, EXIT.z + .3).rotation.set(Math.PI / 2, 0, .5); add(new T.CylinderGeometry(.2, .22, 1.2, 9), bark, EXIT.x + 1.1, .2, EXIT.z + .1).rotation.set(Math.PI / 2, 0, -.6);
+  for (let k = 0; k < 3; k++) { const a = k / 3 * 6.28, s = add(new T.CylinderGeometry(.018, .018, 1.5, 5), dk, EXIT.x + Math.cos(a) * .3, .7, EXIT.z + Math.sin(a) * .3); s.rotation.set(Math.sin(a) * .42, 0, -Math.cos(a) * .42); }
+  add(new T.SphereGeometry(.16, 10, 8, 0, 6.283, Math.PI / 2.4), dk, EXIT.x, .95, EXIT.z); add(new T.BoxGeometry(.4, .5, .26), new T.MeshStandardMaterial({color: 0x6a4a34, roughness: .9}), EXIT.x + .9, .25, EXIT.z - .7).rotation.y = .4;
+  const tent = add(new T.ConeGeometry(1, 1.4, 4), new T.MeshStandardMaterial({color: 0x8a7458, roughness: .9, flatShading: true}), START.x - 1, .7, START.z + .95); tent.rotation.y = Math.PI / 4;
+  add(new T.BoxGeometry(.5, .4, .4), bark, START.x + .2, .2, START.z + 1.15).rotation.y = .3;
+  return upd;
+}
+
 function build(T) {
   const K = window.ZL_KIT(API), R = window.ZL_REAL(API), scene = new T.Scene(), cam = new T.PerspectiveCamera(84, 1, .08, 900), top = new T.OrthographicCamera(-1, 1, 1, -1, 1, 220);
   cam.rotation.order = 'YXZ'; scene.add(cam);
@@ -72,7 +117,10 @@ function build(T) {
   // Lichtsäule des Lotsen
   const pil = new T.Mesh(new T.CylinderGeometry(.42, .42, 70, 14, 1, true), new T.MeshBasicMaterial({color: 0xffd890, transparent: true, opacity: .34, blending: T.AdditiveBlending, depthWrite: false, side: T.DoubleSide, fog: false})); pil.position.y = 35; pil.visible = false; scene.add(pil);
   const pilG = K.sprite(T, 0xffd890, 5, .6); pilG.material.fog = false; pilG.visible = false; scene.add(pilG);
-  return {scene, cam, top, sky, hemi, moon, lamp, lampG, lan, lsp, flies, fdat, pil, pilG, round: -1, grp: null};
+  // Bodennebel und fallendes Laub
+  const mist = R.mist(T, 28, {box: [-18, .25, -18, 18, 1.3, 18], color: 0x9ab8b0, op: .055, size: 4.5, speed: .35, seed: 5}); scene.add(mist);
+  const leaves = R.motes(T, 90, {box: [-17, 0, -17, 17, 7, 17], color: 0xc88a40, size: .1, op: .9, fall: .45, sway: .7, normal: true, seed: 7}); scene.add(leaves);
+  return {scene, cam, top, sky, hemi, moon, lamp, lampG, lan, lsp, flies, fdat, pil, pilG, mist, leaves, round: -1, grp: null};
 }
 function buildRound(T, M, A) {
   const K = window.ZL_KIT(API), R = window.ZL_REAL(API), g = new T.Group(), G = grid(A), rr2 = R.rng(17 + A.r * 31), trees = [], bush = [];
@@ -114,8 +162,9 @@ function buildRound(T, M, A) {
   const pp = new T.Mesh(new T.CylinderGeometry(.04, .05, 1.9, 6), logM); pp.position.y = .95; post.add(pp);
   const pb = new T.Mesh(new T.SphereGeometry(.09, 8, 6), new T.MeshBasicMaterial({color: 0xffd9a0})); pb.position.y = 1.95; post.add(pb);
   const pg = K.sprite(T, 0xffb060, 1.6, .7); pg.position.y = 1.95; post.add(pg); g.add(post);
+  const upd = decorRound(T, g, R, K, G, A);
   M.scene.add(g);
-  return {g, haz, fl, fire, fireL};
+  return {g, haz, fl, fire, fireL, upd};
 }
 
 const wald = {
@@ -187,6 +236,7 @@ const wald = {
     // Blumen, Feuer, Glühwürmchen, Lichtsäule
     D.fl.forEach(f => { const got = A.got >> f.n & 1; f.f.visible = !got; f.head.rotation.y = t * .6; f.sp.material.opacity = .55 + Math.sin(t * 3 + f.n) * .18; });
     const fk = 1 + Math.sin(t * 13) * .1 + Math.sin(t * 29) * .06; D.fire[0].scale.set(1.3 * fk, 1.6 * fk, 1); D.fire[1].scale.set(.7 * fk, .95 * fk, 1); D.fireL.intensity = 1.6 * fk;
+    D.upd.forEach(f => f(t, dt)); M.mist.userData.upd(t, dt); M.leaves.userData.upd(t); M.mist.visible = M.leaves.visible = walker;
     const fp = M.flies.geometry.attributes.position; M.fdat.forEach((f, i) => fp.setXYZ(i, f.x + Math.sin(t * f.s + f.p) * 1.1, f.y + Math.sin(t * f.s * 1.7 + f.p) * .4, f.z + Math.cos(t * f.s * .8 + f.p) * 1.1)); fp.needsUpdate = true;
     const pg = A.ping; M.pil.visible = M.pilG.visible = !!pg;
     if (pg) { const px = wx(ic(pg.i)), pz = wz(ir(pg.i)); M.pil.position.set(px, 35, pz); M.pil.material.opacity = .28 + Math.sin(t * 5) * .08; M.pilG.position.set(px, 1.2, pz); }

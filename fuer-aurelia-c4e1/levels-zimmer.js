@@ -40,8 +40,86 @@ function rects() {
     add(.2, 3.3, -4.25, -4); add(4.7, 8.3, -4.25, -4);
     if (!(A.door && A.door[k])) add(3.3, 4.7, -4.25, -4);
     add(3.25, 5.35, 3.1, 4.3); add(.55, 2.65, 3.3, 4.3);
+    add(6, 8, -4.1, -3.2); add(.3, 1.8, -4, -2.6); add(.3, 1.4, -2.45, -1.35); add(7.1, 7.95, 3.35, 4.2); add(5.5, 5.95, 3.6, 4.2);
   }
+  out.push([-2.3, -10.1, -1.5, -9.4], [1.5, -10.1, 2.3, -9.4], [-7.35, -10.1, -5.05, -9.5], [5.05, -10.1, 7.35, -9.5], [-1.15, -4.85, -.65, -4.35], [.65, -4.85, 1.15, -4.35]);
   return out;
+}
+
+/* ---------- Einrichtung: Vertäfelung, Kamin, Sessel, Fässer, Wandteppiche, Fenster, Halle ---------- */
+function decor(T, scene, R, K, add, MT, me) {
+  const upd = [], {gold, iron, darkWood} = MT, B = (w, h, d) => new T.BoxGeometry(w, h, d), C = (a, b, h, n = 12) => new T.CylinderGeometry(a, b, h, n);
+  const panel = R.pbr(T, 'wood', 3, .5, {color: 0x7a5c44, roughness: .75}), caskM = R.pbr(T, 'wood', 2, 1, {color: 0x9a7450, roughness: .7}), hearthM = R.pbr(T, 'stone', 1, 1, {color: 0xb8aca0, roughness: .95});
+  const cloth = c => new T.MeshStandardMaterial({color: c, roughness: .96}), wax = new T.MeshStandardMaterial({color: 0xf2e8d4, roughness: .6}), black = new T.MeshStandardMaterial({color: 0x0c0a0a, roughness: 1});
+  const steel = new T.MeshStandardMaterial({color: 0xa4aab4, metalness: .9, roughness: .34, envMapIntensity: 1.2}), potM = new T.MeshStandardMaterial({color: 0x8a4a34, roughness: .8});
+  const flame = (x, y, z, sz = .16) => { const f = K.sprite(T, 0xffb860, sz, .95); f.position.set(x, y, z); scene.add(f); const ph = x * 3 + z; upd.push(t => { const k = 1 + Math.sin(t * 12 + ph) * .1 + Math.sin(t * 27 + ph) * .06; f.scale.set(sz * k, sz * 1.35 * k, 1); }); };
+  const candle = (x, y, z) => { add(C(.05, .07, .05, 8), gold, x, y + .025, z, false); add(C(.022, .026, .18, 8), wax, x, y + .14, z, false); flame(x, y + .29, z); };
+  const barrel = (x, z) => { add(C(.3, .3, .86, 14), caskM, x, .43, z); for (const y of [.16, .7]) { const t = add(new T.TorusGeometry(.303, .016, 6, 18), iron, x, y, z, false); t.rotation.x = Math.PI / 2; } };
+  const winTex = () => R.paint(T, 128, 240, (g, w, h) => { g.fillStyle = '#2a2420'; g.fillRect(0, 0, w, h); const gr = g.createLinearGradient(0, 0, 0, h); gr.addColorStop(0, '#16224a'); gr.addColorStop(1, '#3a4a7a'); g.fillStyle = gr;
+    g.beginPath(); g.moveTo(10, h - 8); g.lineTo(10, 64); g.arc(w / 2, 64, w / 2 - 10, Math.PI, 0); g.lineTo(w - 10, h - 8); g.closePath(); g.fill(); g.save(); g.clip();
+    for (let i = 0; i < 30; i++) { g.fillStyle = 'rgba(255,255,255,.8)'; g.fillRect(Math.random() * w, Math.random() * h * .7, 1.6, 1.6); } g.fillStyle = '#fff4d8'; g.beginPath(); g.arc(82, 70, 17, 0, 6.283); g.fill(); g.fillStyle = '#16224a'; g.beginPath(); g.arc(90, 64, 15, 0, 6.283); g.fill(); g.restore();
+    g.strokeStyle = '#1c1612'; g.lineWidth = 5; g.beginPath(); g.moveTo(w / 2, 12); g.lineTo(w / 2, h - 8); for (const y of [100, 150, 200]) { g.moveTo(10, y); g.lineTo(w - 10, y); } g.stroke(); });
+  const shaftT = R.paint(T, 32, 128, (g, w, h) => { const gr = g.createLinearGradient(0, 0, 0, h); gr.addColorStop(0, 'rgba(150,180,255,.5)'); gr.addColorStop(1, 'rgba(150,180,255,0)'); g.fillStyle = gr; g.fillRect(0, 0, w, h); });
+  const windowAt = (x, y, z, ry, shaft) => { const w = add(new T.PlaneGeometry(.95, 1.78), new T.MeshBasicMaterial({map: winTex()}), x, y, z, false); w.rotation.y = ry;
+    if (shaft) { const sh = add(new T.PlaneGeometry(.9, 3.4), new T.MeshBasicMaterial({map: shaftT, transparent: true, opacity: .22, blending: T.AdditiveBlending, depthWrite: false, side: T.DoubleSide}), x, y - 1.05, z - 1.2, false); sh.rotation.x = .85; sh.receiveShadow = false;
+      const fl = add(new T.PlaneGeometry(.9, 1.5), new T.MeshBasicMaterial({color: 0x6a86d0, transparent: true, opacity: .12, blending: T.AdditiveBlending, depthWrite: false}), x, .016, z - 2.3, false); fl.rotation.x = -Math.PI / 2; fl.receiveShadow = false; } };
+  const fernPot = (x, z, sc = 1) => { add(C(.24 * sc, .17 * sc, .4 * sc, 12), potM, x, .2 * sc, z); const f = R.plants(T, 'fern', [{x, y: .34 * sc, z, s: sc}, {x: x + .05, y: .32 * sc, z: z + .04, s: sc * .8}], {w: 1.1, h: .9, seed: 3}); scene.add(f); };
+  for (const k of ['a', 'd']) {
+    const s = sgn(k), own = k === me, X = u => s * u;
+    // Holzvertäfelung rundum, mit Abschlussleiste
+    const wains = (x, z, w, d) => { add(B(w, .9, d), panel, x, .45, z, false); add(B(w + (w > d ? 0 : .03), .06, d + (d > w ? 0 : .03)), darkWood, x, .93, z, false); };
+    wains(X(7.965), .1, .05, 8.2); wains(X(4.1), 4.165, 7.8, .05); wains(X(1.75), -3.965, 3.1, .05); wains(X(6.35), -3.965, 3.3, .05); wains(X(.228), 2.7, .05, 3); wains(X(.228), -2.6, .05, 2.8);
+    // Kamin mit Feuer, Sims, Kerzen und Uhr
+    add(B(.32, 1.45, .52), hearthM, X(6.26), .725, -3.74); add(B(.32, 1.45, .52), hearthM, X(7.74), .725, -3.74); add(B(1.8, .3, .56), hearthM, X(7), 1.6, -3.72);
+    add(B(2.04, .07, .68), darkWood, X(7), 1.785, -3.66); add(B(1.16, 1.45, .06), black, X(7), .725, -3.96, false); add(B(1.95, .06, .95), hearthM, X(7), .03, -3.55, false);
+    add(B(1.5, HH - 1.82, .36), hearthM, X(7), (1.82 + HH) / 2, -3.82);
+    for (const [dy, dz, rz] of [[.1, -3.72, 0], [.1, -3.6, .25], [.22, -3.68, -.12]]) { const l = add(C(.065, .07, .72, 8), caskM, X(7), dy, dz, false); l.rotation.set(0, rz, Math.PI / 2); }
+    const fire = R.fire(T, {size: .85, light: own, inten: 1.05, dist: 8, ph: s}); fire.position.set(X(7), .12, -3.66); scene.add(fire); upd.push(fire.userData.upd);
+    candle(X(6.25), 1.82, -3.62); candle(X(7.75), 1.82, -3.62);
+    add(C(.15, .15, .08, 16), gold, X(7), 1.97, -3.6, false).rotation.x = Math.PI / 2; add(B(.34, .06, .14), darkWood, X(7), 1.83, -3.6, false);
+    const pic = add(new T.PlaneGeometry(.62, .52), new T.MeshStandardMaterial({roughness: .8, map: R.paint(T, 124, 104, (g, w, h) => { g.fillStyle = '#d9ad62'; g.fillRect(0, 0, w, h); g.fillStyle = k === 'a' ? '#40243a' : '#243050'; g.fillRect(8, 8, w - 16, h - 16); R.sym(g, 0, w / 2, h / 2 + 2, 26, '#f48aa3'); })}), X(7), 2.55, -3.635, false); void pic;
+    // Ecke mit Fässern, Kisten und einem Sack
+    barrel(X(.7), -3.6); barrel(X(1.42), -3.55); add(B(.6, .6, .6), caskM, X(.72), .3, -2.95); add(B(.4, .4, .4), caskM, X(.74), .8, -2.97).rotation.y = .5;
+    add(new T.SphereGeometry(.3, 12, 10), cloth(0xb8a078), X(1.45), .24, -2.92).scale.set(1, .8, .9);
+    // Sessel mit Kissen und rundem Teppich
+    { const g = new T.Group(), fab = cloth(k === 'a' ? 0x7a3044 : 0x30487a), ad = (geo, m, x, y, z) => { const q = new T.Mesh(geo, m); q.position.set(x, y, z); q.castShadow = q.receiveShadow = true; g.add(q); return q; };
+      ad(B(.82, .34, .78), fab, 0, .17, 0); ad(B(.7, .14, .66), fab, 0, .4, -.03); ad(B(.82, .9, .17), fab, 0, .75, .33); ad(B(.14, .3, .74), fab, -.4, .5, 0); ad(B(.14, .3, .74), fab, .4, .5, 0);
+      ad(new T.SphereGeometry(.2, 12, 8), cloth(0xe8c888), 0, .56, .16).scale.set(1.1, .9, .5);
+      g.position.set(X(.86), 0, -1.9); g.rotation.y = -s * Math.PI / 2; scene.add(g);
+      const rug = add(new T.CircleGeometry(.95, 28), cloth(k === 'a' ? 0x5a2838 : 0x283a5a), X(1.5), .013, -1.9, false); rug.rotation.x = -Math.PI / 2; }
+    // Wandteppich und Wappen
+    const tap = add(new T.PlaneGeometry(1.5, 1.8), new T.MeshStandardMaterial({roughness: .95, map: R.paint(T, 300, 360, (g, w, h) => {
+      g.fillStyle = k === 'a' ? '#6a2440' : '#243a6a'; g.fillRect(0, 0, w, h); g.strokeStyle = '#d9ad62'; g.lineWidth = 10; g.strokeRect(12, 12, w - 24, h - 24); g.lineWidth = 3; g.strokeRect(30, 30, w - 60, h - 60);
+      R.sym(g, k === 'a' ? 2 : 3, w / 2, 130, 56, '#f3d9a0'); for (let i = 0; i < 5; i++) R.sym(g, 1, 60 + i * 45, 262, 13, '#f3d9a0'); g.fillStyle = '#f3d9a0'; g.font = '700 30px Georgia, serif'; g.textAlign = 'center'; g.fillText(nm(k), w / 2, 320);
+      for (let i = 0; i < 1600; i++) { g.fillStyle = 'rgba(0,0,0,.07)'; g.fillRect(Math.random() * w, Math.random() * h, 2, 3); } })}), X(.212), 2.1, -2.6, false); tap.rotation.y = s * Math.PI / 2;
+    add(C(.025, .025, 1.7, 8), gold, X(.24), 3.03, -2.6, false).rotation.x = Math.PI / 2;
+    const sh = add(new T.PlaneGeometry(1.15, 1.25), new T.MeshStandardMaterial({transparent: true, alphaTest: .3, roughness: .5, metalness: .4, map: R.paint(T, 230, 250, (g, w, h) => {
+      g.clearRect(0, 0, w, h); g.lineCap = 'round'; g.strokeStyle = '#b8bcc4'; g.lineWidth = 9; g.beginPath(); g.moveTo(26, 20); g.lineTo(204, 220); g.moveTo(204, 20); g.lineTo(26, 220); g.stroke(); g.strokeStyle = '#d9ad62'; g.lineWidth = 12; g.beginPath(); g.moveTo(44, 62); g.lineTo(76, 34); g.moveTo(186, 62); g.lineTo(154, 34); g.stroke();
+      g.fillStyle = k === 'a' ? '#8a2c4a' : '#2c4a8a'; g.beginPath(); g.moveTo(62, 52); g.lineTo(168, 52); g.lineTo(168, 130); g.quadraticCurveTo(168, 196, 115, 222); g.quadraticCurveTo(62, 196, 62, 130); g.closePath(); g.fill(); g.strokeStyle = '#d9ad62'; g.lineWidth = 7; g.stroke(); R.sym(g, 0, 115, 126, 30, '#f3d9a0'); })}), X(1.75), 2.2, -3.955, false); void sh;
+    // Fenster mit Mondlicht, Farn, Stehleuchter, Dinge auf dem Tisch und dem Regal
+    windowAt(X(6.7), 2.1, 4.168, Math.PI, true);
+    fernPot(X(7.5), 3.72, 1.25);
+    add(C(.03, .04, 1.5, 8), gold, X(5.72), .75, 3.85, false); add(C(.16, .2, .05, 12), gold, X(5.72), .03, 3.85, false); for (const dx of [-.14, 0, .14]) { add(C(.02, .02, .14, 6), wax, X(5.72) + dx, 1.57 + (dx ? 0 : .06), 3.85, false); flame(X(5.72) + dx, 1.7 + (dx ? 0 : .06), 3.85, .13); }
+    const cx = s * 4.3; candle(cx - .9, .89, 3.4);
+    [[0x7a2c2c, 0], [0x2c4a6a, .25], [0x3a5a34, -.2]].forEach(([c, ry], i) => { add(B(.3, .055, .22), cloth(c), cx + .9, .92 + i * .057, 3.45, false).rotation.y = ry; });
+    add(new T.SphereGeometry(.15, 12, 10), potM, X(1.2), 2.62, 3.85, false).scale.y = 1.25; add(B(.34, .26, .24), caskM, X(2.05), 2.63, 3.85, false);
+    // Spinnweben und Staub im Licht
+    for (const [u, z, ry] of [[7.6, 3.85, 2.4], [.6, 3.85, .8], [7.6, -3.6, -2.3]]) { const w = R.cobweb(T); w.scale.setScalar(1.25); w.position.set(X(u), HH - .62, z); w.rotation.y = s * ry; scene.add(w); }
+    if (own) { const m = R.motes(T, 70, {box: [Math.min(X(.5), X(7.8)), .3, -3.8, Math.max(X(.5), X(7.8)), 3, 4], color: 0xffdcae, size: .035, op: .55, sway: .25, seed: 3 + s}); scene.add(m); upd.push(m.userData.upd); }
+  }
+  // Halle: Ritterrüstungen, Fackeln, Bänke, Säulen, Farne, Mondfenster
+  for (const s of [-1, 1]) {
+    const x = s * 1.9, z = -9.72;
+    add(C(.26, .2, .78, 12), steel, x, 1.25, z); add(new T.SphereGeometry(.2, 14, 12), steel, x, 1.86, z); add(new T.ConeGeometry(.07, .3, 8), new T.MeshStandardMaterial({color: 0xb02c3c, roughness: .8}), x, 2.16, z);
+    for (const dx of [-.13, .13]) { add(C(.08, .09, .86, 8), steel, x + dx, .43, z); add(new T.SphereGeometry(.12, 10, 8), steel, x + dx * 2.6, 1.56, z); }
+    add(B(.3, .06, .3), black, x, .03, z, false); add(C(.02, .02, 2.5, 6), darkWood, x + s * .42, 1.25, z + .1); add(new T.ConeGeometry(.06, .3, 6), steel, x + s * .42, 2.62, z + .1, false);
+    for (const [tx, tz] of [[s * 5.2, -10.12], [s * 2.6, -4.36]]) { add(B(.1, .3, .14), iron, tx, 2.05, tz + (tz < -8 ? .08 : -.08), false); const f = R.fire(T, {size: .34, light: false, ph: tx}); f.position.set(tx, 2.2, tz + (tz < -8 ? .16 : -.16)); scene.add(f); upd.push(f.userData.upd); }
+    add(B(2.2, .09, .5), darkWood, s * 6.2, .46, -9.8); for (const dx of [-.95, .95]) add(B(.1, .45, .44), darkWood, s * 6.2 + dx, .225, -9.8);
+    add(C(.2, .23, HH, 16), R.pbr(T, 'marble', 1, 2, {color: 0xe8ddd0, roughness: .4}), s * .9, HH / 2, -4.6); add(B(.6, .2, .6), hearthM, s * .9, .1, -4.6);
+    fernPot(s * 7.45, -9.65, 1.5); fernPot(s * 7.45, -4.75, 1.5);
+    windowAt(s * 3.7, 2.2, -10.168, 0, false);
+  }
+  return upd;
 }
 
 function build(T) {
@@ -191,7 +269,8 @@ function build(T) {
   // Figuren
   const figs = {a: K.princess(T), d: K.prince(T)};
   for (const k of ['a', 'd']) { figs[k].scale.setScalar(.72); R.shadows(figs[k], true, false); scene.add(figs[k]); figs[k].visible = k !== me; }
-  return {scene, cam, rooms, lampsM, lampLight, symTex, inter, figs, ray: new T.Raycaster(), hl};
+  const upd = decor(T, scene, R, K, add, {gold, iron, darkWood}, me);
+  return {scene, cam, rooms, lampsM, lampLight, symTex, inter, figs, ray: new T.Raycaster(), hl, upd};
 }
 
 /* Was liegt unter dem Finger bzw. in der Bildmitte? */
@@ -315,7 +394,7 @@ const zimmer = {
     let on = 0;
     M.lampsM.forEach((l, i) => { const lit = lv >> i & 1; on += lit; l.m.emissiveIntensity += ((lit ? .9 : 0) - l.m.emissiveIntensity) * Math.min(1, dt * 10); l.sp.material.opacity = lit ? .4 : 0; l.m.color.set(lit ? 0xffd9a0 : 0x3a3028); });
     M.lampLight.intensity = on * .32;
-    M.hl.intensity = 1.2 + Math.sin(t * 9) * .06;
+    M.hl.intensity = 1.2 + Math.sin(t * 9) * .06; M.upd.forEach(f => f(t, dt));
     // Partner-Figur
     const f = M.figs[ot]; f.position.set(part.x / U, 0, part.y / U); f.rotation.y = part.e ? part.e[0] : 0;
     const pm = M.pp ? Math.hypot(part.x - M.pp.x, part.y - M.pp.y) > .4 : false; M.pp = {x: part.x, y: part.y}; K.animFigure(f, t, pm);
