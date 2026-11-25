@@ -5,7 +5,7 @@
    für Zustand/Positionen, zuverlässiger Kanal für Ereignisse und Aktionen. */
 (() => {
 'use strict';
-const VERSION = '8.4';
+const VERSION = '8.5';
 const CFG = window.ZL_CONFIG;
 const W = 600, H = 1000, R = 18, VMAX = 470, TAU = Math.PI * 2, HUDH = 64;
 const $ = id => document.getElementById(id);
@@ -1114,8 +1114,102 @@ const MC = {
 /* ---------- Netzwerk ---------- */
 const PEERCFG = {debug: 0, config: {iceServers: [
   {urls: 'stun:stun.l.google.com:19302'}, {urls: 'stun:stun1.l.google.com:19302'},
-  {urls: ['turn:eu-0.turn.peerjs.com:3478', 'turn:us-0.turn.peerjs.com:3478'], username: 'peerjs', credential: 'peerjsp'}
+  {urls: 'stun:stun.cloudflare.com:3478'},
+  {urls: ['turn:staticauth.openrelay.metered.ca:80', 'turn:staticauth.openrelay.metered.ca:443', 'turn:staticauth.openrelay.metered.ca:443?transport=tcp', 'turns:staticauth.openrelay.metered.ca:443?transport=tcp'], username: 'openrelayproject', credential: 'openrelayproject'}
 ]}};
+/* ---------- Ausweich-Verbindung ----------
+   Klappt die direkte Verbindung zwischen den Handys nicht (z. B. über mobile Daten), laufen die Daten
+   über einen öffentlichen Nachrichtendienst (MQTT über WebSocket). Das Objekt verhält sich wie eine PeerJS-Verbindung. */
+const RELAYS = window.ZL_RELAYS || ['wss://broker.emqx.io:8084/mqtt', 'wss://broker.hivemq.com:8884/mqtt'];
+const RTOP = code => 'zweilichter-reise/v1/' + code + '/';
+function mqtt(url, onMsg, onUp, onDown) {
+  const te = new TextEncoder(), td = new TextDecoder(), M = {ok: false, url};
+  const vlen = n => { const o = []; do { let b = n % 128; n = Math.floor(n / 128); if (n) b |= 128; o.push(b); } while (n); return o; };
+  const str = t => { const b = te.encode(t); return [b.length >> 8, b.length & 255, ...b]; };
+  const pkt = (h, body) => new Uint8Array([h, ...vlen(body.length), ...body]);
+  let ws, ping, pid = 1, dead = false;
+  try { ws = new WebSocket(url, 'mqtt'); } catch (e) { setTimeout(() => onDown && onDown(), 0); return M; }
+  ws.binaryType = 'arraybuffer';
+  ws.onopen = () => { try { ws.send(pkt(0x10, [...str('MQTT'), 4, 2, 0, 40, ...str('zl' + Math.random().toString(36).slice(2, 12))])); } catch (e) {} };
+  ws.onmessage = e => {
+    const b = new Uint8Array(e.data); let i = 0;
+    while (i < b.length) {
+      const h = b[i++]; let len = 0, mul = 1, c; do { c = b[i++]; len += (c & 127) * mul; mul *= 128; } while (c & 128);
+      const body = b.subarray(i, i + len); i += len;
+      if ((h & 0xf0) === 0x20) { if (body[1] === 0) { M.ok = true; ping = setInterval(() => { try { ws.send(new Uint8Array([0xc0, 0])); } catch (er) {} }, 25000); onUp && onUp(); } }
+      else if ((h & 0xf0) === 0x30) { const tl = (body[0] << 8) | body[1], topic = td.decode(body.subarray(2, 2 + tl)); let o = 2 + tl; if (h & 6) o += 2; try { onMsg(topic, td.decode(body.subarray(o))); } catch (er) {} }
+    }
+  };
+  const down = () => { if (dead) return; dead = true; M.ok = false; clearInterval(ping); onDown && onDown(); };
+  ws.onclose = down; ws.onerror = down;
+  M.sub = t => { try { const id = pid++; ws.send(pkt(0x82, [id >> 8, id & 255, ...str(t), 0])); } catch (e) {} };
+  M.pub = (t, txt) => { try { if (ws.readyState === 1 && ws.bufferedAmount < 200000) ws.send(pkt(0x30, [...str(t), ...te.encode(txt)])); } catch (e) {} };
+  M.close = () => { dead = true; clearInterval(ping); try { ws.close(); } catch (e) {} };
+  return M;
+}
+/* kleine Verbindung im Stil von PeerJS: on('open'|'data'|'close'|'error'), send(), close(), open */
+function relayConn(pubFn, label) {
+  const H = {}, C = {open: false, label, relay: true, dataChannel: null, last: 0};
+  C.on = (ev, f) => { (H[ev] = H[ev] || []).push(f); return C; };
+  C.emit = (ev, x) => (H[ev] || []).forEach(f => { try { f(x); } catch (e) {} });
+  C.send = d => {
+    const txt = typeof d === 'string' ? d : JSON.stringify(d), now = performance.now();
+    if ((txt.startsWith('{"t":"s"') || txt.startsWith('{"t":"pos"')) && now - C.last < 66) return;
+    if (txt.startsWith('{"t":"s"') || txt.startsWith('{"t":"pos"')) C.last = now;
+    pubFn(txt);
+  };
+  C.close = () => { if (!C.open) return; C.open = false; C.emit('close'); };
+  return C;
+}
+/* Gastgeber: hört auf allen Ausweich-Diensten, ob sich jemand über diesen Weg meldet */
+let relayHost = [];
+function relayListen(code) {
+  relayHost.forEach(m => m.close()); relayHost = [];
+  const T = RTOP(code), guests = {};
+  for (const url of RELAYS) {
+    const M = mqtt(url, (topic, txt) => {
+      let m; try { m = JSON.parse(txt); } catch (e) { return; }
+      if (!m || !m.g) return;
+      if (m.hello) {
+        let C = guests[m.g];
+        if (C && C.open) return;
+        C = guests[m.g] = relayConn(t => M.pub(T + 'g/' + m.g, t), 'main');
+        onHostConn(C); C.open = true; C.emit('open');
+        M.pub(T + 'g/' + m.g, JSON.stringify({t: 'relay-ok'}));
+        return;
+      }
+      if (m.bye && guests[m.g]) { guests[m.g].close(); return; }
+      const C = guests[m.g]; if (C && C.open && m.d != null) C.emit('data', m.d);
+    }, () => M.sub(T + 'h'), () => setTimeout(() => { if (relayHost.includes(M) && lastCode === code && role === 'host') relayListen(code); }, 5000));
+    relayHost.push(M);
+  }
+}
+/* Gast: versucht die Ausweich-Dienste nacheinander */
+let relayGuest = null;
+function relayJoin(code, onConn) {
+  if (relayGuest) { try { relayGuest.close(); } catch (e) {} }
+  const g = Math.random().toString(36).slice(2, 10), T = RTOP(code);
+  let idx = 0, done = false;
+  const tryNext = () => {
+    if (done || idx >= RELAYS.length) return;
+    const url = RELAYS[idx++]; let C = null, helloT = null;
+    const M = mqtt(url, (topic, txt) => {
+      let d; try { d = JSON.parse(txt); } catch (e) { return; }
+      if (d && d.t === 'relay-ok') { if (C && !C.open) { done = true; clearInterval(helloT); C.open = true; C.emit('open'); } return; }
+      if (C && C.open) C.emit('data', d);
+    }, () => {
+      M.sub(T + 'g/' + g);
+      C = relayConn(t => M.pub(T + 'h', JSON.stringify({g, d: t})), 'main');
+      const oldClose = C.close; C.close = () => { M.pub(T + 'h', JSON.stringify({g, bye: 1})); oldClose(); M.close(); };
+      relayGuest = C;
+      const hello = () => M.pub(T + 'h', JSON.stringify({g, hello: 1}));
+      setTimeout(hello, 300); helloT = setInterval(() => { if (C.open) clearInterval(helloT); else hello(); }, 2000);
+      onConn(C);
+      setTimeout(() => { if (!C.open && !done) { clearInterval(helloT); M.close(); tryNext(); } }, 9000);
+    }, () => { clearInterval(helloT); if (C && C.open) { C.open = false; C.emit('close'); } else if (!done) tryNext(); });
+  };
+  tryNext();
+}
 const ALPH = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
 const genCode = () => Array.from({length: 4}, () => ALPH[(Math.random() * ALPH.length) | 0]).join('');
 const PID = c => 'zwei-lichter-reise-' + c;
@@ -1173,6 +1267,7 @@ function openRoom(code, tries) {
   });
   peer.on('disconnected', () => setTimeout(() => { try { if (!peer.destroyed && peer.disconnected) peer.reconnect(); } catch (e) {} }, 1500));
   peer.on('connection', onHostConn);
+  try { relayListen(code); } catch (e) {}
 }
 function onHostData(c, d) {
   if (typeof d === 'string') { try { d = JSON.parse(d); } catch (e) { return; } }
@@ -1220,6 +1315,7 @@ function guestJoin() {
   try { localStorage.setItem('zl-gcode', code); } catch (e) {}
   gStatus('<span class="dots">Verbinde</span>');
   $('gJoin').disabled = true;
+  startRelay(code);
   makeGuestPeer(() => connectTo(code));
 }
 function makeGuestPeer(cb) {
@@ -1259,18 +1355,34 @@ function onGuestData(c, d) {
   if (pickMemo && S.quiz && pickMemo.key === quizKey() && S.quiz.pick[me] < 0) S.quiz.pick[me] = pickMemo.v;
   if (S.sid === lastSid) pushPartner(S.p[other].x, S.p[other].y, S.p[other].e);
 }
+let relayT = null;
+function startRelay(code) {
+  clearTimeout(relayT);
+  relayT = setTimeout(() => {
+    if (conn && conn.open) return;
+    if (!S.ok) gStatus('<span class="dots">Direkte Verbindung klappt nicht – nehme den Umweg</span>');
+    relayJoin(code, rc => wireGuest(rc, code));
+  }, 6000);
+}
 function connectTo(code) {
-  let c, f;
+  startRelay(code);
+  let c;
   try { c = peer.connect(PID(code), {reliable: true, serialization: 'json', label: 'main'}); } catch (e) { return; }
   if (!c) return;
   conn = c; lastQ = 0;
+  wireGuest(c, code);
+}
+function wireGuest(c, code) {
+  let f;
   const slow = setTimeout(() => { if (!c.open && !S.ok) gStatus('<span class="dots">Dauert etwas länger</span>'); }, 7000);
   c.on('open', () => {
+    if (conn && conn.open && conn !== c) { if (c.relay) { try { c.close(); } catch (e) {} return; } try { conn.close(); } catch (e) {} }
+    conn = c; clearTimeout(relayT);
     clearTimeout(slow); clearTimeout(reconT); reconTries = 0;
     lastRecv = performance.now();
     hideAll(); $('ovLost').hidden = true; startLoop(); $('gJoin').disabled = false;
     try { c.send({t: 'hello', v: VERSION}); } catch (e) {}
-    try {
+    if (!c.relay) try {
       f = peer.connect(PID(code), {reliable: false, serialization: 'json', label: 'fast'});
       if (f) { f.on('open', () => { fconn = f; }); f.on('data', d => onGuestData(f, d)); f.on('close', () => { if (fconn === f) fconn = null; }); f.on('error', () => {}); }
     } catch (e) {}
@@ -1292,6 +1404,7 @@ function scheduleRecon() {
     if (conn && conn.open) return;
     reconTries++;
     $('lStatus').innerHTML = `<span class="dots">Versuch ${reconTries}</span>`;
+    startRelay(lastCode);
     makeGuestPeer(() => connectTo(lastCode));
     scheduleRecon();
   }, reconTries ? 4000 : 1200);
