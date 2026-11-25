@@ -5,7 +5,7 @@
    für Zustand/Positionen, zuverlässiger Kanal für Ereignisse und Aktionen. */
 (() => {
 'use strict';
-const VERSION = '8.5';
+const VERSION = '8.6';
 const CFG = window.ZL_CONFIG;
 const W = 600, H = 1000, R = 18, VMAX = 470, TAU = Math.PI * 2, HUDH = 64;
 const $ = id => document.getElementById(id);
@@ -1120,7 +1120,9 @@ const PEERCFG = {debug: 0, config: {iceServers: [
 /* ---------- Ausweich-Verbindung ----------
    Klappt die direkte Verbindung zwischen den Handys nicht (z. B. über mobile Daten), laufen die Daten
    über einen öffentlichen Nachrichtendienst (MQTT über WebSocket). Das Objekt verhält sich wie eine PeerJS-Verbindung. */
-const RELAYS = window.ZL_RELAYS || ['wss://broker.emqx.io:8084/mqtt', 'wss://broker.hivemq.com:8884/mqtt'];
+const RELAYS = window.ZL_RELAYS || ['wss://public.cloud.shiftr.io', 'wss://broker.emqx.io:8084/mqtt', 'wss://broker.hivemq.com:8884/mqtt', 'wss://test.mosquitto.org:8081'];
+const RAUTH = url => url.includes('shiftr.io') ? ['public', 'public'] : null;
+let relayInfo = '';
 const RTOP = code => 'zweilichter-reise/v1/' + code + '/';
 function mqtt(url, onMsg, onUp, onDown) {
   const te = new TextEncoder(), td = new TextDecoder(), M = {ok: false, url};
@@ -1130,7 +1132,7 @@ function mqtt(url, onMsg, onUp, onDown) {
   let ws, ping, pid = 1, dead = false;
   try { ws = new WebSocket(url, 'mqtt'); } catch (e) { setTimeout(() => onDown && onDown(), 0); return M; }
   ws.binaryType = 'arraybuffer';
-  ws.onopen = () => { try { ws.send(pkt(0x10, [...str('MQTT'), 4, 2, 0, 40, ...str('zl' + Math.random().toString(36).slice(2, 12))])); } catch (e) {} };
+  ws.onopen = () => { const au = RAUTH(url); try { ws.send(pkt(0x10, [...str('MQTT'), 4, au ? 0xC2 : 2, 0, 40, ...str('zl' + Math.random().toString(36).slice(2, 12)), ...(au ? [...str(au[0]), ...str(au[1])] : [])])); } catch (e) {} };
   ws.onmessage = e => {
     const b = new Uint8Array(e.data); let i = 0;
     while (i < b.length) {
@@ -1180,35 +1182,39 @@ function relayListen(code) {
       }
       if (m.bye && guests[m.g]) { guests[m.g].close(); return; }
       const C = guests[m.g]; if (C && C.open && m.d != null) C.emit('data', m.d);
-    }, () => M.sub(T + 'h'), () => setTimeout(() => { if (relayHost.includes(M) && lastCode === code && role === 'host') relayListen(code); }, 5000));
+    }, () => { M.sub(T + 'h'); hostRelayInfo(); }, () => setTimeout(() => { if (relayHost.includes(M) && lastCode === code && role === 'host') relayListen(code); }, 5000));
     relayHost.push(M);
   }
 }
-/* Gast: versucht die Ausweich-Dienste nacheinander */
+function hostRelayInfo() { const n = relayHost.filter(m => m.ok).length; relayInfo = `Umweg bereit: ${n} von ${RELAYS.length}`; const e = $('hRelay'); if (e) e.textContent = relayInfo; }
+/* Gast: probiert alle Ausweich-Dienste gleichzeitig, der erste, über den Daniel antwortet, gewinnt */
 let relayGuest = null;
 function relayJoin(code, onConn) {
   if (relayGuest) { try { relayGuest.close(); } catch (e) {} }
-  const g = Math.random().toString(36).slice(2, 10), T = RTOP(code);
-  let idx = 0, done = false;
-  const tryNext = () => {
-    if (done || idx >= RELAYS.length) return;
-    const url = RELAYS[idx++]; let C = null, helloT = null;
+  const g = Math.random().toString(36).slice(2, 10), T = RTOP(code), all = [];
+  let done = false, up = 0, failed = 0;
+  const info = () => { if (!S.ok && !done) gStatus(`<span class="dots">Umweg: ${up} von ${RELAYS.length} Diensten erreicht – warte auf ${nm('d')}</span>`); };
+  for (const url of RELAYS) {
+    let C = null, helloT = null;
     const M = mqtt(url, (topic, txt) => {
       let d; try { d = JSON.parse(txt); } catch (e) { return; }
-      if (d && d.t === 'relay-ok') { if (C && !C.open) { done = true; clearInterval(helloT); C.open = true; C.emit('open'); } return; }
+      if (d && d.t === 'relay-ok') {
+        if (C && !C.open && !done) { done = true; clearInterval(helloT); all.forEach(o => { if (o !== M) o.close(); }); relayGuest = C; C.open = true; C.emit('open'); }
+        return;
+      }
       if (C && C.open) C.emit('data', d);
     }, () => {
+      up++; info();
       M.sub(T + 'g/' + g);
       C = relayConn(t => M.pub(T + 'h', JSON.stringify({g, d: t})), 'main');
       const oldClose = C.close; C.close = () => { M.pub(T + 'h', JSON.stringify({g, bye: 1})); oldClose(); M.close(); };
-      relayGuest = C;
-      const hello = () => M.pub(T + 'h', JSON.stringify({g, hello: 1}));
-      setTimeout(hello, 300); helloT = setInterval(() => { if (C.open) clearInterval(helloT); else hello(); }, 2000);
+      const hello = () => { if (!done) M.pub(T + 'h', JSON.stringify({g, hello: 1})); };
+      setTimeout(hello, 250); helloT = setInterval(() => { if (done) clearInterval(helloT); else hello(); }, 1500);
       onConn(C);
-      setTimeout(() => { if (!C.open && !done) { clearInterval(helloT); M.close(); tryNext(); } }, 9000);
-    }, () => { clearInterval(helloT); if (C && C.open) { C.open = false; C.emit('close'); } else if (!done) tryNext(); });
-  };
-  tryNext();
+    }, () => { clearInterval(helloT); if (C && C.open) { C.open = false; C.emit('close'); } else if (!done) { failed++; if (failed >= RELAYS.length && !S.ok) gStatus(`Kein Umweg erreichbar. Bitte WLAN an- oder ausschalten und neu laden.`, true); } });
+    all.push(M);
+  }
+  setTimeout(() => { if (!done) all.forEach(o => o.close()); }, 40000);
 }
 const ALPH = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
 const genCode = () => Array.from({length: 4}, () => ALPH[(Math.random() * ALPH.length) | 0]).join('');
@@ -1361,8 +1367,8 @@ function startRelay(code) {
   relayT = setTimeout(() => {
     if (conn && conn.open) return;
     if (!S.ok) gStatus('<span class="dots">Direkte Verbindung klappt nicht – nehme den Umweg</span>');
-    relayJoin(code, rc => wireGuest(rc, code));
-  }, 6000);
+    relayJoin(code, rc => { relayGuest = relayGuest || rc; wireGuest(rc, code); });
+  }, 4000);
 }
 function connectTo(code) {
   startRelay(code);
@@ -1374,7 +1380,7 @@ function connectTo(code) {
 }
 function wireGuest(c, code) {
   let f;
-  const slow = setTimeout(() => { if (!c.open && !S.ok) gStatus('<span class="dots">Dauert etwas länger</span>'); }, 7000);
+  const slow = setTimeout(() => { if (!c.open && !S.ok && !c.relay && !relayGuest) gStatus('<span class="dots">Dauert etwas länger</span>'); }, 5000);
   c.on('open', () => {
     if (conn && conn.open && conn !== c) { if (c.relay) { try { c.close(); } catch (e) {} return; } try { conn.close(); } catch (e) {} }
     conn = c; clearTimeout(relayT);
