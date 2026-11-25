@@ -58,8 +58,8 @@ function buildReef(T) {
   const skyM = K.sky(T, 0x2a8db2, 0x0d5878, 0x041a2a, 150); scene.add(skyM);
   scene.environment = K.env(T, 'sea3', 0x3aa0c4, 0x0e5876, 0x03141f, [[0, 50, 0, 30, 30, 0x9fd8ee]]);
   const cam = new T.PerspectiveCamera(62, 1, .1, 170);
-  const hemi = new T.HemisphereLight(0xb4ecfa, 0x0c3040, .85); scene.add(hemi);
-  const sun = new T.DirectionalLight(0xe8f8ff, .6); sun.position.set(6, 30, 8); scene.add(sun);
+  const hemi = new T.HemisphereLight(0xb4ecfa, 0x0c3040, .68); scene.add(hemi);
+  const sun = new T.DirectionalLight(0xe8f8ff, .45); sun.position.set(6, 30, 8); scene.add(sun);
   const openD = () => { let d; do { d = -20 + r0() * (KLEN + 70); } while (d > 455 && d < 662); return d; };
   const spot = (lat0, lat1) => { const d = openD(), c = pathC(d), l = (r0() < .5 ? -1 : 1) * (lat0 + r0() * (lat1 - lat0)); return {x: c.x + l, y: floorH(l, d), z: -d, d, l}; };
 
@@ -72,9 +72,9 @@ function buildReef(T) {
   for (let y = 0; y < 256; y += 9) { sg.strokeStyle = `rgba(86,70,44,${.22 + r0() * .2})`; sg.lineWidth = 3 + r0() * 2; sg.beginPath(); for (let x = -8; x <= 264; x += 8) { const yy = y + Math.sin(x * .049 + y * .3) * 3.2; x < 0 ? sg.moveTo(x, yy) : sg.lineTo(x, yy); } sg.stroke(); }
   for (let i = 0; i < 2600; i++) { sg.fillStyle = r0() < .5 ? 'rgba(60,48,30,.25)' : 'rgba(240,228,196,.25)'; sg.fillRect(r0() * 256, r0() * 256, 1.5, 1.5); }
   const sandT = new T.CanvasTexture(sc), sandN = R.nmap(T, sc, 3); for (const t of [sandT, sandN]) { t.wrapS = t.wrapT = T.RepeatWrapping; t.repeat.set(16, 130); }
-  const floor = new T.Mesh(fg, new T.MeshStandardMaterial({map: sandT, normalMap: sandN, color: 0xa8b8a8, roughness: .95, envMapIntensity: .2})); scene.add(floor);
+  const floor = new T.Mesh(fg, new T.MeshStandardMaterial({map: sandT, normalMap: sandN, color: 0x8e9e90, roughness: .95, envMapIntensity: .2})); scene.add(floor);
   const ctex = causticTex(T); ctex.repeat.set(9, 62);
-  const caus = new T.Mesh(fg, new T.MeshBasicMaterial({map: ctex, transparent: true, opacity: .2, blending: T.AdditiveBlending, depthWrite: false})); caus.position.y = .06; scene.add(caus);
+  const caus = new T.Mesh(fg, new T.MeshBasicMaterial({map: ctex, transparent: true, opacity: .12, blending: T.AdditiveBlending, depthWrite: false})); caus.position.y = .06; scene.add(caus);
 
   /* Korallen: Geweih, Röhren, Tische, Hirn, Fächer, Anemonen */
   const selfGlow = (m, k) => { m.onBeforeCompile = sh => { sh.fragmentShader = sh.fragmentShader.replace('#include <emissivemap_fragment>', '#include <emissivemap_fragment>\n#ifdef USE_COLOR\n totalEmissiveRadiance += vColor.rgb * ' + k.toFixed(2) + ';\n#endif'); }; return m; };
@@ -120,7 +120,7 @@ function buildReef(T) {
   const tg = new T.BufferGeometry(); tg.setAttribute('position', new T.Float32BufferAttribute(tp, 3)); tg.setAttribute('uv', new T.Float32BufferAttribute(tuv, 2)); tg.setIndex(ti); tg.computeVertexNormals();
   scene.add(new T.Mesh(tg, R.pbr(T, 'rock', 1, 1, {color: 0x7c8c90, side: T.DoubleSide, roughness: .95})));
   for (const [d, s] of [[466, 1], [470, -1], [654, 1], [650, -1], [478, 0], [644, 0]]) { const c = pathC(d), rk = R.rock(T, s ? 11 : 9, d, {flat: .9, mat: {color: 0x7c8c90}}); rk.castShadow = rk.receiveShadow = false; rk.position.set(c.x + s * 21, c.y + (s ? -4 : 17), -d); scene.add(rk); }
-  const CR = 70, cry = new T.InstancedMesh(new T.OctahedronGeometry(.3, 0), new T.MeshStandardMaterial({color: 0xffffff, emissive: 0xffffff, emissiveIntensity: .8, roughness: .3, flatShading: true}), CR), gl = [], glc = [];
+  const CR = 70, cry = new T.InstancedMesh(new T.OctahedronGeometry(.3, 0), new T.MeshStandardMaterial({color: 0xffffff, emissive: 0xffffff, emissiveIntensity: .5, roughness: .3, flatShading: true}), CR), gl = [], glc = [];
   for (let i = 0; i < CR; i++) { const d = 486 + r0() * 150, a = r0() * TAU, w = wall(d, a), c = pathC(d); D.position.set(w[0] + (c.x - w[0]) * .06, w[1] + (c.y - w[1]) * .06, w[2]); D.rotation.set(r0() * 3, r0() * 3, r0() * 3); D.scale.set(.6 + r0(), 1.4 + r0() * 2.2, .6 + r0()); D.updateMatrix(); cry.setMatrixAt(i, D.matrix); col.setHex(i % 3 ? 0x58d8c8 : 0xe88ab8).multiplyScalar(.8); cry.setColorAt(i, col); }
   cry.frustumCulled = false; cry.instanceColor.needsUpdate = true; scene.add(cry);
   for (let i = 0; i < 420; i++) { const d = 476 + r0() * 170, a = r0() * TAU, w = wall(d, a), c = pathC(d); gl.push(w[0] + (c.x - w[0]) * .04, w[1] + (c.y - w[1]) * .04, w[2]); const v = .35 + r0() * .5; glc.push(.3 * v, v, .85 * v); }
@@ -147,7 +147,7 @@ function buildReef(T) {
   const sgeo = new T.PlaneGeometry(220, 220, 12, 12), scol = []; for (let i = 0; i < sgeo.attributes.position.count; i++) { const v = 1 - sstep(.35, 1, Math.hypot(sgeo.attributes.position.getX(i), sgeo.attributes.position.getY(i)) / 110); scol.push(v, v, v); } sgeo.setAttribute('color', new T.Float32BufferAttribute(scol, 3));
   const surf = new T.Mesh(sgeo, new T.MeshBasicMaterial({map: stex, color: 0x9fd8ee, vertexColors: true, transparent: true, opacity: .2, blending: T.AdditiveBlending, depthWrite: false, side: T.DoubleSide, fog: false})); surf.rotation.x = Math.PI / 2; surf.position.y = 19; scene.add(surf);
   const mkCloud = (n, size, color, op, box) => { const pos = new Float32Array(n * 3), dat = []; for (let i = 0; i < n; i++) dat.push([(r0() - .5) * box[0], (r0() - .5) * box[1], r0() * box[2], r0() * 6]); const g = new T.BufferGeometry(); g.setAttribute('position', new T.BufferAttribute(pos, 3)); const m = new T.Points(g, new T.PointsMaterial({color, size, map: R.softTex(T), transparent: true, opacity: op, depthWrite: false, blending: T.AdditiveBlending})); m.frustumCulled = false; scene.add(m); return {m, dat, box, pos}; };
-  const bub = mkCloud(260, .26, 0xe6faff, .7, [44, 26, 130]), dust = mkCloud(420, .09, 0xcfeee0, .55, [40, 22, 70]), flow = mkCloud(160, .16, 0xbfe8ff, .5, [36, 14, 80]);
+  const bub = mkCloud(260, .24, 0xe6faff, .4, [44, 26, 130]), dust = mkCloud(420, .09, 0xcfeee0, .35, [40, 22, 70]), flow = mkCloud(160, .16, 0xbfe8ff, .5, [36, 14, 80]);
 
   /* Fischschwärme, Rochen, ein Wal in der Ferne */
   const fb = new T.SphereGeometry(1, 8, 6); fb.scale(.1, .2, .42); const ft = new T.ConeGeometry(.17, .3, 4); ft.rotateX(-Math.PI / 2); ft.scale(.3, 1, 1); ft.translate(0, 0, .52);
@@ -173,7 +173,7 @@ function buildReef(T) {
 
   /* Ringe, Quallen, Muschel mit Perle – und dahinter der Rahmen für euer Bild */
   const rings = {}, torus = new T.TorusGeometry(3, .22, 12, 44);
-  const rmat = o => { const mine2 = o === API.me || o === 'g', c = o === 'a' ? 0xe890a8 : o === 'd' ? 0x7fb0f0 : 0xe8bc78; return new T.MeshStandardMaterial({color: c, emissive: c, emissiveIntensity: mine2 ? .5 : .2, metalness: .5, roughness: .3, transparent: !mine2, opacity: mine2 ? 1 : .32}); };
+  const rmat = o => { const mine2 = o === API.me || o === 'g', c = o === 'a' ? 0xe890a8 : o === 'd' ? 0x7fb0f0 : 0xe8bc78; return new T.MeshStandardMaterial({color: c, emissive: c, emissiveIntensity: mine2 ? .32 : .14, metalness: .5, roughness: .3, transparent: !mine2, opacity: mine2 ? 1 : .32}); };
   const RM = {a: rmat('a'), d: rmat('d'), g: rmat('g')};
   for (const it of S.items) {
     const c = pathC(it.d), m = new T.Mesh(torus, RM[it.o]);
@@ -181,25 +181,25 @@ function buildReef(T) {
     if (it.o === API.me || it.o === 'g') m.add(K.sprite(T, it.o === 'a' ? 0xf4a8b8 : it.o === 'd' ? 0x9cc7ff : 0xf3c98f, 7.5, .12));
     scene.add(m); rings[it.id] = m;
   }
-  const jel = [], jm = new T.MeshStandardMaterial({color: 0xd0a0f0, transparent: true, opacity: .55, emissive: 0x8048c0, emissiveIntensity: .5, side: T.DoubleSide, roughness: .4});
+  const jel = [], jm = new T.MeshStandardMaterial({color: 0xd0a0f0, transparent: true, opacity: .55, emissive: 0x8048c0, emissiveIntensity: .32, side: T.DoubleSide, roughness: .4});
   const jg = new T.SphereGeometry(1.1, 20, 12, 0, TAU, 0, Math.PI / 2), tg2 = new T.CylinderGeometry(.03, .02, 2.4, 4); tg2.translate(0, -1.2, 0);
   const tm = new T.MeshBasicMaterial({color: 0xe0c8f0, transparent: true, opacity: .45});
   for (const j of (S.aux.jel || [])) {
     const m = new T.Mesh(jg, jm); m.userData.ten = [];
     for (let k = 0; k < 8; k++) { const a = k / 8 * TAU, tt = new T.Mesh(tg2, tm); tt.position.set(Math.cos(a) * .7, 0, Math.sin(a) * .7); m.add(tt); m.userData.ten.push(tt); }
-    m.add(K.sprite(T, 0xc890f0, 5, .28)); scene.add(m); jel.push(m);
+    m.add(K.sprite(T, 0xc890f0, 4, .14)); scene.add(m); jel.push(m);
   }
   const ce = pathC(KLEN + 12), shellG = new T.Group();
   const shm = new T.MeshStandardMaterial({color: 0xe8c4cc, roughness: .4, metalness: .25, side: T.DoubleSide});
   const lower = new T.Mesh(new T.SphereGeometry(5, 28, 12, 0, Math.PI, 0, Math.PI / 2), shm); lower.rotation.x = Math.PI; shellG.add(lower);
   const upper = new T.Mesh(new T.SphereGeometry(5, 28, 12, 0, Math.PI, 0, Math.PI / 2), shm); upper.rotation.x = -.9; shellG.add(upper);
-  const pearl = new T.Mesh(new T.SphereGeometry(2.1, 28, 20), new T.MeshStandardMaterial({color: 0xf4ece4, emissive: 0xe8d8c8, emissiveIntensity: .3, roughness: .18, metalness: .3}));
-  pearl.position.y = 1.2; pearl.add(K.sprite(T, 0xffd9e6, 16, .4)); shellG.add(pearl);
+  const pearl = new T.Mesh(new T.SphereGeometry(2.1, 28, 20), new T.MeshStandardMaterial({color: 0xf4ece4, emissive: 0xe8d8c8, emissiveIntensity: .12, roughness: .25, metalness: .3}));
+  pearl.position.y = 1.2; pearl.add(K.sprite(T, 0xffd9e6, 12, .18)); shellG.add(pearl);
   shellG.position.set(ce.x, ce.y - 3, -KLEN - 14); shellG.rotation.y = Math.PI; scene.add(shellG);
   const mos = document.createElement('canvas'); mos.width = 360; mos.height = 480;
   const mosT = new T.CanvasTexture(mos); mosT.anisotropy = 4;
   const pic = new T.Group(), cf = pathC(KLEN + 22);
-  const pm = new T.Mesh(new T.PlaneGeometry(12, 16), new T.MeshBasicMaterial({map: mosT, color: 0xc4c4c4})); pic.add(pm);
+  const pm = new T.Mesh(new T.PlaneGeometry(12, 16), new T.MeshBasicMaterial({map: mosT, color: 0x9c9c9c})); pic.add(pm);
   const fr = new T.Mesh(new T.BoxGeometry(13.4, 17.4, .5), R.pbr(T, 'rock', 2, 2, {color: 0xa8a090})); fr.position.z = -.3; pic.add(fr);
   pic.position.set(cf.x, cf.y + 6.5, -KLEN - 23); scene.add(pic);
   for (const s of [-1, 1]) { const rk = R.rock(T, 5, 30 + s, {flat: .8, mat: {color: 0x8aa0a0}}); rk.castShadow = false; rk.position.set(cf.x + s * 9.5, cf.y - 4, -KLEN - 24); scene.add(rk); }
@@ -211,7 +211,7 @@ function buildReef(T) {
     const n = 36, pos = new Float32Array(n * 3), g = new T.BufferGeometry(); g.setAttribute('position', new T.BufferAttribute(pos, 3));
     const pts = new T.Points(g, new T.PointsMaterial({color: k === 'a' ? 0xf4a8b8 : 0x9cc7ff, size: .22, map: K.glowTex(T), transparent: true, opacity: .4, depthWrite: false, blending: T.AdditiveBlending}));
     pts.frustumCulled = false; scene.add(pts); trails[k] = {pts, n, i: 0, init: false};
-    lights[k] = new T.PointLight(k === 'a' ? 0xffd0dc : 0xcfe2ff, k === API.me ? .8 : .45, 16, 1.5); scene.add(lights[k]);
+    lights[k] = new T.PointLight(k === 'a' ? 0xffd0dc : 0xcfe2ff, k === API.me ? .5 : .3, 16, 1.5); scene.add(lights[k]);
   }
   return {scene, cam, skyM, hemi, sun, rings, jel, turtle, sponge, rays, surf, stex, ctex, caus, kU, schools, mantas, whale, bub, dust, flow, trails, lights, pearl, upper, upd, mos, mosT, mosKey: '', camPos: null, fill: 0, endT: 0};
 }
@@ -328,11 +328,11 @@ const korallen = {
     K.jel.forEach((j, i) => { const jd = S.aux.jel[i]; if (!jd) { j.visible = false; return; } const dz = jd.d - myD; j.visible = dz > -12 && dz < 110; if (!j.visible) return; const c = pathC(jd.d); j.position.set(c.x + jd.x, c.y + jelY(jd, i, hn), -jd.d); const s = 1 + Math.sin(t * 3 + i) * .14; j.scale.set(s, 1 / s, s); j.userData.ten.forEach((tt, k) => { tt.rotation.x = Math.sin(t * 3 + k + i) * .25; }); });
     // Wasser, Licht und Leben
     K.kU.uT.value = t; K.ctex.offset.set((t * .02) % 1, (t * .035) % 1); K.stex.offset.set((t * .012) % 1, (t * .02) % 1);
-    K.caus.material.opacity = .2 * (1 - ck); K.surf.material.opacity = .2 * (1 - ck); K.surf.position.set(pathC(myD).x, 19, -myD - 30);
-    K.rays.children.forEach(r => { r.material.opacity = (.035 + Math.sin(t * .8 + r.userData.ph) * .018) * (1 - ck); });
+    K.caus.material.opacity = .12 * (1 - ck); K.surf.material.opacity = .11 * (1 - ck); K.surf.position.set(pathC(myD).x, 19, -myD - 30);
+    K.rays.children.forEach(r => { r.material.opacity = (.02 + Math.sin(t * .8 + r.userData.ph) * .01) * (1 - ck); });
     K.rays.position.z = -myD; K.rays.position.x = pathC(myD).x;
     K.scene.fog.color.setRGB(.043 - .03 * ck, .31 - .23 * ck, .424 - .3 * ck); K.scene.fog.density = .021 + .014 * ck;
-    K.hemi.intensity = .85 - .6 * ck; K.sun.intensity = .6 * (1 - ck);
+    K.hemi.intensity = .68 - .46 * ck; K.sun.intensity = .45 * (1 - ck);
     const wrap = (Q, vy, vx, zAhead) => { const a = Q.m.geometry.attributes.position, c = pathC(myD + zAhead * .4); Q.dat.forEach((q, i) => { const z = ((q[2] - myD) % Q.box[2] + Q.box[2]) % Q.box[2] - Q.box[2] * .18, y = ((q[1] + t * vy * (.6 + (i % 5) * .2) + Q.box[1] / 2) % Q.box[1] + Q.box[1]) % Q.box[1] - Q.box[1] / 2, x = ((q[0] + t * vx + Q.box[0] / 2) % Q.box[0] + Q.box[0]) % Q.box[0] - Q.box[0] / 2; a.setXYZ(i, c.x + x + Math.sin(t + q[3]) * .15, c.y + y, -(myD + z)); }); a.needsUpdate = true; };
     wrap(K.bub, 2.2, 0, 60); wrap(K.dust, .12, .3, 30);
     const cu = cur(myD + 12); K.flow.m.visible = Math.abs(cu) > .15 || (myD > 235 && myD < 470); if (K.flow.m.visible) { K.flow.ph = (K.flow.ph || 0) + cur(myD) * dt * 2.2; wrap(K.flow, 0, 0, 40); const a = K.flow.m.geometry.attributes.position; for (let i = 0; i < a.count; i++) a.setX(i, pathC(myD).x + (((K.flow.dat[i][0] + K.flow.ph * (1 + (i % 3) * .3)) % 36 + 54) % 36 - 18)); K.flow.m.material.opacity = clamp(Math.abs(cu) * .25, .08, .55); }
@@ -364,7 +364,7 @@ const korallen = {
     K.cam.position.copy(K.camPos); K.cam.lookAt(P(mine.x * .82, mine.y * .78 + .4 + endK * 3, myD + 13));
     K.cam.rotation.z += -(sw ? clamp(sw.vx * .006, -.06, .06) : 0); K.skyM.position.copy(K.cam.position);
     paM.visible = !(pD < myD - 1.5 && paM.position.distanceTo(K.cam.position) < 7.5);
-    API.render3D(K.scene, K.cam, {bloom: .62, th: .7});
+    API.render3D(K.scene, K.cam, {bloom: .5, th: .76});
 
     /* --- Anzeigen --- */
     for (const [M, k] of [[meM, API.me], [paM, API.other]]) {

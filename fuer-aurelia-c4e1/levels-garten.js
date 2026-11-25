@@ -180,7 +180,7 @@ function buildMaze(T) {
   // Rosen an den Hecken, Lichterketten obenauf
   const faces = []; walls.forEach(([c, r]) => { for (const [dc, dr] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) if (mopen(c + dc, r + dr)) faces.push([c, r, dc, dr]); });
   const roses = new T.InstancedMesh(new T.IcosahedronGeometry(.085, 1), xrayMat(new T.MeshStandardMaterial({roughness: .6, flatShading: true}), U), faces.length * 2);
-  const fairy = new T.InstancedMesh(new T.SphereGeometry(.045, 6, 4), xrayMat(new T.MeshBasicMaterial({color: 0xffffff}), U), faces.length);
+  const fairy = new T.InstancedMesh(new T.SphereGeometry(.045, 6, 4), xrayMat(new T.MeshBasicMaterial({color: 0x9a9a9a}), U), faces.length);
   const rc = [0xd85a80, 0xe8b8c4, 0xb8324e, 0xeadfe2].map(c => new T.Color(c)), fc = [0xe8b878, 0xe89ab0, 0xe8d8a8].map(c => new T.Color(c));
   let ri = 0;
   faces.forEach(([c, r, dc, dr], i) => {
@@ -196,7 +196,7 @@ function buildMaze(T) {
   const lamps = [], postM = new T.MeshStandardMaterial({color: 0x24262e, metalness: .7, roughness: .4}), junc = [];
   for (let r = 1; r < NR - 1; r++) for (let c = 1; c < NC - 1; c++) { if (!mopen(c, r) || inRoom(c, r)) continue; if ([[1, 0], [-1, 0], [0, 1], [0, -1]].filter(([dc, dr]) => mopen(c + dc, r + dr)).length >= 3) junc.push([c, r]); }
   const LJ = junc.filter((_, i) => i % 2 === 0), posts = new T.InstancedMesh(new T.CylinderGeometry(.045, .075, 2.1, 8), postM, LJ.length), caps = new T.InstancedMesh(new T.ConeGeometry(.2, .18, 6), postM, LJ.length);
-  const glass = new T.InstancedMesh(new T.CylinderGeometry(.13, .1, .3, 6), new T.MeshBasicMaterial({color: 0xf0cf9a}), LJ.length), pools = new T.InstancedMesh(new T.CircleGeometry(1.7, 24), new T.MeshBasicMaterial({map: R.softTex(T), color: 0xffb060, transparent: true, opacity: .2, blending: T.AdditiveBlending, depthWrite: false}), LJ.length), gpos = [];
+  const glass = new T.InstancedMesh(new T.CylinderGeometry(.13, .1, .3, 6), new T.MeshBasicMaterial({color: 0xb89a68}), LJ.length), pools = new T.InstancedMesh(new T.CircleGeometry(1.7, 24), new T.MeshBasicMaterial({map: R.softTex(T), color: 0xffb060, transparent: true, opacity: .11, blending: T.AdditiveBlending, depthWrite: false}), LJ.length), gpos = [];
   LJ.forEach(([c, r], i) => {
     const x = X3(c) + .74, z = Z3(r) + .74; D.rotation.set(0, 0, 0); D.scale.set(1, 1, 1);
     D.position.set(x, 1.05, z); D.updateMatrix(); posts.setMatrixAt(i, D.matrix); D.position.y = 2.24; D.updateMatrix(); glass.setMatrixAt(i, D.matrix); D.position.y = 2.48; D.updateMatrix(); caps.setMatrixAt(i, D.matrix);
@@ -205,8 +205,8 @@ function buildMaze(T) {
   });
   for (const m of [posts, caps, glass, pools]) { m.frustumCulled = false; scene.add(m); } posts.castShadow = true;
   const gg = new T.BufferGeometry(); gg.setAttribute('position', new T.Float32BufferAttribute(gpos, 3));
-  const lglow = new T.Points(gg, new T.PointsMaterial({color: 0xffc27a, size: 1.5, map: R.softTex(T), transparent: true, opacity: .6, depthWrite: false, blending: T.AdditiveBlending})); lglow.frustumCulled = false; scene.add(lglow);
-  const lampLights = [0, 1].map(() => { const l = new T.PointLight(0xffb878, 1.2, 8, 1.6); scene.add(l); return l; });
+  const lglow = new T.Points(gg, new T.PointsMaterial({color: 0xffc27a, size: 1.2, map: R.softTex(T), transparent: true, opacity: .32, depthWrite: false, blending: T.AdditiveBlending})); lglow.frustumCulled = false; scene.add(lglow);
+  const lampLights = [0, 1].map(() => { const l = new T.PointLight(0xffb878, .8, 8, 1.6); scene.add(l); return l; });
 
   /* Brunnen in der Mitte – dort wohnen die Wolken */
   const stone = R.pbr(T, 'rock', 2, 1, {color: 0xb0aeb8, roughness: .7});
@@ -214,7 +214,7 @@ function buildMaze(T) {
   const water = new T.Mesh(new T.CircleGeometry(2.1, 40), new T.MeshStandardMaterial({color: 0x24507a, metalness: .6, roughness: .12, envMapIntensity: 1.4})); water.rotation.x = -Math.PI / 2; water.position.y = .42; scene.add(water);
   const fcol = new T.Mesh(new T.CylinderGeometry(.22, .34, 1.6, 12), stone); fcol.position.y = .8; fcol.castShadow = true; scene.add(fcol);
   const bowl = new T.Mesh(new T.SphereGeometry(.75, 20, 10, 0, TAU, Math.PI / 2, Math.PI / 2), stone); bowl.position.y = 1.72; bowl.castShadow = true; scene.add(bowl);
-  const fh = new T.Mesh(K.heartGeo(T, .45, .2), new T.MeshStandardMaterial({color: 0xe8a8bc, emissive: 0xd0608a, emissiveIntensity: .6, roughness: .4})); fh.position.y = 2.3; scene.add(fh);
+  const fh = new T.Mesh(K.heartGeo(T, .45, .2), new T.MeshStandardMaterial({color: 0xe8a8bc, emissive: 0xd0608a, emissiveIntensity: .35, roughness: .4})); fh.position.y = 2.3; scene.add(fh);
   const SPN = 90, spos = new Float32Array(SPN * 3), spray = new T.Points(new T.BufferGeometry().setAttribute('position', new T.BufferAttribute(spos, 3)), new T.PointsMaterial({color: 0xb8d4f0, size: .08, transparent: true, opacity: .7}));
   spray.userData.p = Array.from({length: SPN}, () => ({t: rnd(0, 1), a: rnd(0, TAU), v: rnd(.8, 1.2)})); scene.add(spray);
   for (const [bx, bz, ry] of [[-4.6, 0, Math.PI / 2], [4.6, 0, -Math.PI / 2]]) { const b = new T.Group(), wood = R.pbr(T, 'wood', 1, 1); const seat = new T.Mesh(new T.BoxGeometry(1.7, .1, .5), wood); seat.position.y = .5; b.add(seat); const backr = new T.Mesh(new T.BoxGeometry(1.7, .5, .08), wood); backr.position.set(0, .85, -.24); b.add(backr); for (const s of [-1, 1]) { const lg2 = new T.Mesh(new T.BoxGeometry(.1, .5, .46), postM); lg2.position.set(s * .75, .25, 0); b.add(lg2); } b.position.set(bx, 0, bz); b.rotation.y = ry; R.shadows(b); scene.add(b); }
@@ -228,7 +228,7 @@ function buildMaze(T) {
   scene.add(R.bushes(T, ring(70, 4.5, 60).map(p => (p.s = 1 + r0() * 1.3, p)), {seed: 8}));
   scene.add(R.plants(T, 'grass', ring(500, 3.4, 50).map(p => (p.s = .8 + r0() * .9, p)), {w: 1, h: .7, seed: 9}));
   scene.add(R.plants(T, 'flower', ring(160, 3.4, 44).map(p => (p.s = .8 + r0() * .7, p)), {w: 1, h: .75, seed: 10}));
-  const castle = new T.Group(), cst = R.pbr(T, 'stone', 6, 3, {color: 0x7c7a8a}), winM = new T.MeshBasicMaterial({color: 0xe8b060}), roofM = new T.MeshStandardMaterial({color: 0x2a2c40, roughness: .8});
+  const castle = new T.Group(), cst = R.pbr(T, 'stone', 6, 3, {color: 0x7c7a8a}), winM = new T.MeshBasicMaterial({color: 0xa87c40}), roofM = new T.MeshStandardMaterial({color: 0x2a2c40, roughness: .8});
   const keep = new T.Mesh(new T.BoxGeometry(44, 20, 14), cst); keep.position.y = 10; castle.add(keep);
   for (const [tx, th, tr] of [[-24, 30, 5], [24, 30, 5], [0, 38, 6], [-11, 24, 3.4], [11, 24, 3.4]]) { const tw = new T.Mesh(new T.CylinderGeometry(tr, tr * 1.08, th, 14), cst); tw.position.set(tx, th / 2, 0); castle.add(tw); const rf = new T.Mesh(new T.ConeGeometry(tr * 1.25, tr * 2.2, 14), roofM); rf.position.set(tx, th + tr * 1.1, 0); castle.add(rf); for (let k = 0; k < 3; k++) if (r0() < .75) { const wn = new T.Mesh(new T.PlaneGeometry(1, 1.8), winM); wn.position.set(tx + (r0() - .5) * tr * .6, th * (.4 + k * .18), tr + .12); castle.add(wn); } }
   for (let k = 0; k < 9; k++) if (k !== 4 && r0() < .8) { const wn = new T.Mesh(new T.PlaneGeometry(1.3, 2.4), winM); wn.position.set(-18 + k * 4.5, 9 + (k % 2) * 4, 7.06); castle.add(wn); }
@@ -237,12 +237,12 @@ function buildMaze(T) {
 
   /* Lichtpunkte, Herzen mit Lichtsäule */
   const cells = []; for (let r = 0; r < NR; r++) for (let c = 0; c < NC; c++) if (MAZE[r][c] === '.' && !inRoom(c, r)) cells.push(r * NC + c);
-  const dim = new T.InstancedMesh(new T.SphereGeometry(.15, 10, 8), new T.MeshStandardMaterial({color: 0xf0d8a0, emissive: 0xf0b860, emissiveIntensity: 1.05, roughness: .4}), cells.length); dim.frustumCulled = false; scene.add(dim);
-  const hearts = {}, hgeo = K.heartGeo(T, .5, .2), hm = new T.MeshStandardMaterial({color: 0xe8809c, emissive: 0xd84a80, emissiveIntensity: .85, metalness: .4, roughness: .3});
+  const dim = new T.InstancedMesh(new T.SphereGeometry(.15, 10, 8), new T.MeshStandardMaterial({color: 0xc8ae78, emissive: 0xe0a850, emissiveIntensity: .55, roughness: .5}), cells.length); dim.frustumCulled = false; scene.add(dim);
+  const hearts = {}, hgeo = K.heartGeo(T, .5, .2), hm = new T.MeshStandardMaterial({color: 0xe8809c, emissive: 0xd84a80, emissiveIntensity: .5, metalness: .4, roughness: .3});
   for (let r = 0; r < NR; r++) for (let c = 0; c < NC; c++) if (MAZE[r][c] === 'o') {
     const g = new T.Group(); g.position.set(X3(c), 0, Z3(r));
-    const m = new T.Mesh(hgeo, hm); m.position.y = 1.1; g.add(m); const hs = K.sprite(T, 0xff9ec4, 3, .45); hs.position.y = 1.1; g.add(hs);
-    const beam = new T.Mesh(new T.CylinderGeometry(.3, .55, 26, 16, 1, true), new T.MeshBasicMaterial({color: 0xff9ec4, transparent: true, opacity: .08, blending: T.AdditiveBlending, depthWrite: false, side: T.DoubleSide, fog: false}));
+    const m = new T.Mesh(hgeo, hm); m.position.y = 1.1; g.add(m); const hs = K.sprite(T, 0xff9ec4, 2.4, .22); hs.position.y = 1.1; g.add(hs);
+    const beam = new T.Mesh(new T.CylinderGeometry(.3, .55, 26, 16, 1, true), new T.MeshBasicMaterial({color: 0xff9ec4, transparent: true, opacity: .045, blending: T.AdditiveBlending, depthWrite: false, side: T.DoubleSide, fog: false}));
     beam.position.y = 13; g.add(beam); scene.add(g); hearts[r * NC + c] = {g, m};
   }
   /* Glühwürmchen, Bodennebel, Funken */
@@ -255,7 +255,7 @@ function buildMaze(T) {
   const sparks = new T.Points(pg, new T.PointsMaterial({size: .13, vertexColors: true, map: K.glowTex(T), transparent: true, depthWrite: false, blending: T.AdditiveBlending})); sparks.frustumCulled = false; scene.add(sparks);
   /* Figuren, eigenes Licht */
   const fig = {a: K.princess(T), d: K.prince(T)}, lights = {};
-  for (const k of ['a', 'd']) { scene.add(fig[k]); fig[k].scale.setScalar(1.05); fig[k].traverse(o => { if (o.isMesh) o.castShadow = true; }); if (k === API.me) { lights[k] = new T.PointLight(k === 'a' ? 0xffd6e2 : 0xd6e6ff, .8, 8, 1.5); scene.add(lights[k]); } }
+  for (const k of ['a', 'd']) { scene.add(fig[k]); fig[k].scale.setScalar(1.05); fig[k].traverse(o => { if (o.isMesh) o.castShadow = true; }); if (k === API.me) { lights[k] = new T.PointLight(k === 'a' ? 0xffd6e2 : 0xd6e6ff, .55, 8, 1.5); scene.add(lights[k]); } }
   /* Regenwolken */
   const clouds = [0, 1, 2, 3].map(() => {
     const c = K.cloud(T); c.scale.setScalar(1.05); c.userData.mat.transparent = true; c.traverse(o => { if (o.isMesh) o.castShadow = true; }); scene.add(c);
@@ -302,7 +302,7 @@ irrgarten.render3d = function (t, part) {
   const pa = M.sparks.geometry.attributes.position, pc = M.sparks.geometry.attributes.color;
   M.sp.forEach((p, i) => {
     if (p.life > 0) { p.life -= dt; p.vy -= 7 * dt; p.x += p.vx * dt; p.y += p.vy * dt; p.z += p.vz * dt; }
-    const a = Math.max(0, p.life) * 1.2, c = p.c || [1, 1, 1]; pa.setXYZ(i, p.x || 0, p.life > 0 ? p.y : -99, p.z || 0); pc.setXYZ(i, c[0] * a, c[1] * a, c[2] * a);
+    const a = Math.max(0, p.life) * .8, c = p.c || [1, 1, 1]; pa.setXYZ(i, p.x || 0, p.life > 0 ? p.y : -99, p.z || 0); pc.setXYZ(i, c[0] * a, c[1] * a, c[2] * a);
   });
   pa.needsUpdate = true; pc.needsUpdate = true;
   // Figuren
@@ -329,7 +329,7 @@ irrgarten.render3d = function (t, part) {
     const waiting = hostNow() < cl.wait, m = C.c.userData.mat;
     if (!pw && Math.random() < dt * .12) C.flash = .22;
     C.flash = Math.max(0, C.flash - dt);
-    m.color.set(pw ? 0xa8c4f0 : 0x6c6884); m.emissive.set(pw ? 0x2a4488 : (C.flash > 0 ? 0xb0b8e8 : 0x121024)); m.emissiveIntensity = C.flash > 0 ? 1 : .5; m.opacity = waiting ? .45 : 1;
+    m.color.set(pw ? 0xa8c4f0 : 0x6c6884); m.emissive.set(pw ? 0x2a4488 : (C.flash > 0 ? 0xb0b8e8 : 0x121024)); m.emissiveIntensity = C.flash > 0 ? .6 : .4; m.opacity = waiting ? .45 : 1;
     const rp = C.rain.geometry.attributes.position;
     C.drops.forEach((d, j) => { d.y -= dt * 2.6; if (d.y < 0) d.y += 1; const y = d.y * (cy - .3); rp.setXYZ(j * 2, cx + d.x, y + .25, cz + d.z); rp.setXYZ(j * 2 + 1, cx + d.x, y, cz + d.z); });
     rp.needsUpdate = true; C.rain.visible = !pw && !waiting;
@@ -338,11 +338,11 @@ irrgarten.render3d = function (t, part) {
   const me3 = pos[meK];
   M.lamps.forEach(l => { l.d = (l.x - me3.x) ** 2 + (l.z - me3.z) ** 2; });
   const near = M.lamps.slice().sort((a, b) => a.d - b.d);
-  M.lampLights.forEach((L, i) => { const l = near[i]; if (l) { L.position.set(l.x, 2.2, l.z); L.intensity = 1.15 + Math.sin(t * 9 + l.ph) * .12; } });
-  M.lglow.material.opacity = .55 + Math.sin(t * 7) * .05;
+  M.lampLights.forEach((L, i) => { const l = near[i]; if (l) { L.position.set(l.x, 2.2, l.z); L.intensity = .78 + Math.sin(t * 9 + l.ph) * .08; } });
+  M.lglow.material.opacity = .3 + Math.sin(t * 7) * .03;
   const fp = M.flies.geometry.attributes.position;
   M.fdat.forEach((f, i) => fp.setXYZ(i, f.x + Math.sin(t * f.s + f.p) * 1.2, f.y + Math.sin(t * f.s * 1.7 + f.p) * .4, f.z + Math.cos(t * f.s * .8 + f.p) * 1.2));
-  fp.needsUpdate = true; M.flies.material.opacity = .6 + Math.sin(t * 3) * .2;
+  fp.needsUpdate = true; M.flies.material.opacity = .4 + Math.sin(t * 3) * .12;
   const sp = M.spray.geometry.attributes.position;
   M.spray.userData.p.forEach((p, i) => { p.t = (p.t + dt * .7 * p.v) % 1; const r = .2 + p.t * 1.1; sp.setXYZ(i, Math.cos(p.a) * r, 1.9 + p.t * 1.2 - p.t * p.t * 2.2, Math.sin(p.a) * r); });
   sp.needsUpdate = true; M.fh.rotation.y = t * 1.5;
@@ -356,7 +356,7 @@ irrgarten.render3d = function (t, part) {
   M.cam.position.copy(M.camPos); M.cam.lookAt(M.camPos.x, .9, M.camPos.z - (port ? 10 : 10.5));
   M.cam.aspect = sc.cw / sc.ch; M.cam.fov = port ? 70 : 52; M.cam.updateProjectionMatrix();
   M.U.uC.value.copy(M.cam.position); M.U.uP.value.set(me3.x, 1.1, me3.z);
-  API.render3D(M.scene, M.cam, {bloom: .7, th: .68});
+  API.render3D(M.scene, M.cam, {bloom: .55, th: .74});
   // Namen, Pfeil zum Partner
   const mp = K.proj(M.cam, new T.Vector3(me3.x, 1, me3.z)); LOC.meScr = {x: mp.x, y: mp.y};
   for (const k of [oK, meK]) { const p = K.proj(M.cam, new T.Vector3(pos[k].x, 3.1, pos[k].z)); if (p.ok && p.x > 0 && p.x < sc.cw && p.y > 0 && p.y < sc.ch) K.nameTag(nm(k), p.x, p.y, COL[k]); }

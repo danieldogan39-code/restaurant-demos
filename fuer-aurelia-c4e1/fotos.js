@@ -24,7 +24,7 @@ window.ZL_FOTO = (() => {
   const url = k => { const o = get(k); if (!o.ready) return ''; if (!o.url) { try { o.url = o.cv.toDataURL('image/jpeg', .86); } catch (e) { o.url = ''; } } return o.url; };
   /* Bilderrahmen wie ein Abzug: heller Rand, weicher Schatten */
   const frame = (g, x, y, w, h, b = 6) => {
-    g.save(); g.shadowColor = 'rgba(0,0,0,.55)'; g.shadowBlur = 18; g.shadowOffsetY = 6; g.fillStyle = '#f4ecdc'; g.fillRect(x - b, y - b, w + 2 * b, h + 2 * b); g.restore();
+    g.save(); g.shadowColor = 'rgba(0,0,0,.55)'; g.shadowBlur = 18; g.shadowOffsetY = 6; g.fillStyle = '#cfc6b4'; g.fillRect(x - b, y - b, w + 2 * b, h + 2 * b); g.restore();
     g.fillStyle = '#17131f'; g.fillRect(x, y, w, h);
   };
   /* Bild groß in der Bildschirmmitte: k = 0 … 1 lässt es aus dem Rechteck `from` herauswachsen */

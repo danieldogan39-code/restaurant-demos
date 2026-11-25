@@ -30,7 +30,7 @@ window.ZL_KIT = (() => {
       const m = new T.ShaderMaterial({side: T.BackSide, depthWrite: false, fog: false,
         uniforms: {a: {value: new T.Color(top)}, b: {value: new T.Color(mid)}, c: {value: new T.Color(bot)}},
         vertexShader: 'varying vec3 vP; void main(){ vP = normalize(position); gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.); }',
-        fragmentShader: 'uniform vec3 a; uniform vec3 b; uniform vec3 c; varying vec3 vP; void main(){ float h = vP.y; vec3 col = h > 0. ? mix(b, a, pow(min(h * 1.6, 1.), .7)) : mix(b, c, min(-h * 3., 1.)); gl_FragColor = vec4(col, 1.); }'});
+        fragmentShader: 'uniform vec3 a; uniform vec3 b; uniform vec3 c; varying vec3 vP; void main(){ float h = vP.y; vec3 col = h > 0. ? mix(b, a, pow(clamp(h * 1.6, 0., 1.), .7)) : mix(b, c, min(-h * 3., 1.)); gl_FragColor = vec4(col, 1.); }'});
       const s = new T.Mesh(new T.SphereGeometry(r, 32, 16), m); s.frustumCulled = false; return s;
     };
     K.heartGeo = (T, s = 1, depth = .35) => {

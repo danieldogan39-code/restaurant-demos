@@ -132,7 +132,7 @@ window.ZL_REAL = (() => {
           float fbm(vec2 p){ float a = .5, s = 0.; for (int i = 0; i < 5; i++) { s += a * vn(p); p = p * 2.03 + 7.; a *= .5; } return s; }
           void main(){ vec3 d = normalize(vD); vec3 c = skyCol(d); float s = max(dot(d, uSun), 0.);
             c += uSunC * smoothstep(.9990, .9995, s) * uDisc;
-            if (uStars > 0. && d.y > 0.) { vec2 g = d.xz / (d.y + .4) * 70.; vec2 id = floor(g); float st = step(.985, h2(id)) * smoothstep(.45, .08, length(fract(g) - .5));
+            if (uStars > 0. && d.y > 0.) { vec2 g = d.xz / (d.y + .4) * 70.; vec2 id = floor(g); float st = step(.985, h2(id)) * (1. - smoothstep(.08, .45, length(fract(g) - .5)));
               c += st * uStars * (.55 + .45 * sin(tm * 2. + h2(id + 3.) * 40.)) * smoothstep(0., .2, d.y); }
             if (uCloud > 0. && d.y > -.02) { vec2 p = d.xz / (d.y + .22) * 1.3 + vec2(tm * .01, tm * .004); float n = fbm(p);
               float cl = smoothstep(1. - uCloud * .62, 1.32 - uCloud * .62, n) * smoothstep(-.02, .2, d.y);
@@ -154,7 +154,7 @@ window.ZL_REAL = (() => {
             g += vec2(nx - n0, nz - n0) / e * .06;
             // Ringe von Paddelschlägen
             for (int i = 0; i < 6; i++) { vec4 r = uRip[i]; float age = tm - r.z; if (age < 0. || age > 3.) continue; vec2 q = p - r.xy; float l = length(q) + .001, rad = age * 2.4;
-              float k = exp(-pow((l - rad) / .5, 2.)) * (1. - age / 3.) * r.w; g += q / l * cos((l - rad) * 5.) * k * .9; }
+              float e1 = (l - rad) / .5, k = exp(-e1 * e1) * (1. - age / 3.) * r.w; g += q / l * cos((l - rad) * 5.) * k * .9; }
             g *= mix(.3, 1., att);
             vec3 N = normalize(vec3(-g.x, 1., -g.y)), V = normalize(cameraPosition - vW);
             float F = .03 + .97 * pow(1. - max(dot(N, V), 0.), 5.);

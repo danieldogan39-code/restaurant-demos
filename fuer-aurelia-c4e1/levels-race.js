@@ -103,7 +103,7 @@ function makeCar(T, kind) {
   const grill = new T.Mesh(new T.BoxGeometry(W * .5, suv ? .34 : .16, .06), trim); grill.position.set(0, fy - (suv ? .28 : .2), -fz); body.add(grill);
   for (const s of [-1, 1]) { const mir = new T.Mesh(new T.BoxGeometry(.28, .14, .2), paint); mir.position.set(s * (W / 2 + .08), suv ? 1.5 : 1.02, suv ? -.9 : -.6); body.add(mir); }
   const plate = new T.Mesh(new T.BoxGeometry(.62, .16, .03), new T.MeshStandardMaterial({color: 0xe9e6dc, roughness: .6})); plate.position.set(0, fy - .12, rz + .05); body.add(plate);
-  const hl = new T.MeshBasicMaterial({color: 0xfff3d8}), tl = new T.MeshBasicMaterial({color: 0x7a0c1e});
+  const hl = new T.MeshBasicMaterial({color: 0xc8bea4}), tl = new T.MeshBasicMaterial({color: 0x7a0c1e});
   for (const s of [-1, 1]) {
     const a = new T.Mesh(new T.BoxGeometry(.55, .16, .06), hl); a.position.set(s * (W / 2 - .38), fy, -fz); body.add(a);
     const b = new T.Mesh(new T.BoxGeometry(.6, .14, .06), tl); b.position.set(s * (W / 2 - .38), fy + .05, rz); body.add(b);
@@ -132,7 +132,7 @@ function makeCar(T, kind) {
   beam.rotation.x = -Math.PI / 2; beam.position.set(0, .07, -fz - 8); g.add(beam);
   const flames = [], tgl = [];
   for (const s of [-1, 1]) {
-    const hg = K.sprite(T, 0xfff0cc, 1.5, .55); hg.position.set(s * (W / 2 - .38), fy, -fz - .25); g.add(hg);
+    const hg = K.sprite(T, 0xfff0cc, 1.2, .3); hg.position.set(s * (W / 2 - .38), fy, -fz - .25); g.add(hg);
     const tg = K.sprite(T, 0xff2a48, .9, .22); tg.position.set(s * (W / 2 - .38), fy + .05, rz + .2); g.add(tg); tgl.push(tg);
     const f = K.sprite(T, suv ? 0xffa0c0 : 0x8cc8ff, 1.8, 0); f.position.set(s * .5, .5, rz + .7); g.add(f); flames.push(f);
   }
@@ -149,7 +149,7 @@ function buildScene(T) {
   scene.environment = K.env(T, 'race3', 0x070a18, 0x202c4c, 0x0b0d14, [[40, 16, -30, 30, 5, 0xffb070], [-40, 14, 30, 30, 5, 0x7090c0], [10, 50, 30, 16, 16, 0xaebbe6], [30, 6, 40, 16, 3, 0xffd9a0]]);
   const cam = new T.PerspectiveCamera(66, 1, .3, 2200);
   scene.add(new T.HemisphereLight(0x8094c8, 0x16161c, .62));
-  const moon = R.sun(T, scene, moonDir, 0xb4c2f0, .85, {size: 26, map: 1024});
+  const moon = R.sun(T, scene, moonDir, 0xb4c2f0, .7, {size: 26, map: 1024});
   // Wasser im Süden, Land mit Straßenraster im Norden
   const water = R.water(T, sky, {deep: 0x040a14, fog: .0016, size: 5000}); water.position.set(20, GY - .5, 0); scene.add(water);
   const G = 58, LX0 = -830, LZ0 = 34, LW = 1740, LD = 1160;
@@ -163,7 +163,7 @@ function buildScene(T) {
   eg.fillStyle = '#000'; eg.fillRect(0, 0, 256, 256);
   for (const [x, y] of [[22, 22], [234, 22], [22, 234], [234, 234], [128, 20], [128, 236], [20, 128], [236, 128]]) { const gr = eg.createRadialGradient(x, y, 0, x, y, 20); gr.addColorStop(0, 'rgba(255,190,120,.75)'); gr.addColorStop(1, 'rgba(255,170,90,0)'); eg.fillStyle = gr; eg.fillRect(x - 20, y - 20, 40, 40); }
   const mkT = c => { const t = new T.CanvasTexture(c); t.wrapS = t.wrapT = T.RepeatWrapping; t.repeat.set(LW / G, LD / G); t.anisotropy = 4; return t; };
-  const land = new T.Mesh(new T.PlaneGeometry(LW, LD), new T.MeshStandardMaterial({map: mkT(cityC), emissiveMap: mkT(emC), emissive: 0xffffff, emissiveIntensity: .55, roughness: .95}));
+  const land = new T.Mesh(new T.PlaneGeometry(LW, LD), new T.MeshStandardMaterial({map: mkT(cityC), emissiveMap: mkT(emC), emissive: 0xffffff, emissiveIntensity: .35, roughness: .95}));
   land.rotation.x = -Math.PI / 2; land.position.set(LX0 + LW / 2, GY, LZ0 - LD / 2); scene.add(land);
   const quay = new T.Mesh(new T.BoxGeometry(LW, 1.6, 1.2), R.pbr(T, 'stone', 300, 1, {color: 0x8a8f9a})); quay.position.set(LX0 + LW / 2, GY - .3, LZ0 + .4); scene.add(quay);
 
@@ -175,8 +175,8 @@ function buildScene(T) {
   for (let i = 0; i < 9; i++) { g.strokeStyle = 'rgba(10,10,12,.3)'; g.lineWidth = 1 + r0(); let x = r0() * 512, y = r0() * 1024; g.beginPath(); g.moveTo(x, y); for (let q = 0; q < 6; q++) { x += (r0() - .5) * 60; y += r0() * 70; g.lineTo(x, y); } g.stroke(); }
   for (const x of [140, 180, 330, 372]) { g.fillStyle = 'rgba(8,8,10,.16)'; g.fillRect(x, 0, 16, 1024); }
   const nrm = R.nmap(T, roadC, 2.2);
-  g.fillStyle = 'rgba(236,236,228,.9)'; g.fillRect(20, 0, 9, 1024); g.fillRect(483, 0, 9, 1024);
-  g.fillStyle = 'rgba(236,236,228,.82)'; for (const x of [172, 334]) for (const y of [60, 572]) g.fillRect(x, y, 7, 210);
+  g.fillStyle = 'rgba(176,176,170,.9)'; g.fillRect(20, 0, 9, 1024); g.fillRect(483, 0, 9, 1024);
+  g.fillStyle = 'rgba(170,170,164,.82)'; for (const x of [172, 334]) for (const y of [60, 572]) g.fillRect(x, y, 7, 210);
   const road = new T.CanvasTexture(roadC); road.wrapS = road.wrapT = T.RepeatWrapping; road.anisotropy = 8;
   const nv = (NPT + 1) * 2;
   const ribbon = (w0, w1, y0, y1, uvScale, uw = 1) => {
@@ -216,15 +216,15 @@ function buildScene(T) {
   // Kurvenschilder an der Außenseite enger Kurven
   const chevT = R.paint(T, 128, 64, (c2) => { c2.fillStyle = '#16161a'; c2.fillRect(0, 0, 128, 64); c2.fillStyle = '#f2c230'; R.rrect(c2, 3, 3, 122, 58, 5); c2.fill(); c2.strokeStyle = '#16161a'; c2.lineWidth = 12; c2.lineJoin = 'miter'; for (const x of [34, 70, 106]) { c2.beginPath(); c2.moveTo(x, 8); c2.lineTo(x - 22, 32); c2.lineTo(x, 56); c2.stroke(); } });
   const chevPts = []; for (let i = 0; i < NPT; i += 7) { const p = PTS[i]; if (Math.abs(p.k) > 1 / 95 && !inTunnel(p.u)) chevPts.push(p); }
-  const chev = new T.InstancedMesh(new T.PlaneGeometry(2.6, 1.3), new T.MeshStandardMaterial({map: chevT, emissiveMap: chevT, emissive: 0xffffff, emissiveIntensity: .3, roughness: .5, side: T.DoubleSide}), Math.max(1, chevPts.length));
+  const chev = new T.InstancedMesh(new T.PlaneGeometry(2.6, 1.3), new T.MeshStandardMaterial({map: chevT, emissiveMap: chevT, emissive: 0xffffff, emissiveIntensity: .12, roughness: .5, side: T.DoubleSide}), Math.max(1, chevPts.length));
   chevPts.forEach((p, i) => { const s = p.k > 0 ? -1 : 1, a = Math.atan2(-p.tx, -p.tz); D.position.set(p.x + p.nx * s * (WALL + .32), p.y + 2.1, p.z + p.nz * s * (WALL + .32)); D.rotation.set(0, a, 0); D.scale.set(p.k > 0 ? 1 : -1, 1, 1); D.updateMatrix(); chev.setMatrixAt(i, D.matrix); });
   chev.count = chevPts.length; chev.frustumCulled = false; scene.add(chev);
   // Laternen
   const lampP = []; for (let i = 8, k = 0; i < NPT; i += 30, k++) { const p = PTS[i]; if (!inTunnel(p.u)) lampP.push({p, s: k % 2 ? 1 : -1}); }
   const poleM = new T.MeshStandardMaterial({color: 0x3a3d48, metalness: .7, roughness: .45});
   const poles = new T.InstancedMesh(new T.CylinderGeometry(.11, .17, 9, 8), poleM, lampP.length), arms = new T.InstancedMesh(new T.BoxGeometry(.12, .12, 3.4), poleM, lampP.length);
-  const heads = new T.InstancedMesh(new T.BoxGeometry(.5, .14, 1.0), new T.MeshStandardMaterial({color: 0x2a2c34, emissive: 0xffc890, emissiveIntensity: .9, roughness: .5}), lampP.length);
-  const pools = new T.InstancedMesh(new T.CircleGeometry(8.5, 28), new T.MeshBasicMaterial({map: R.softTex(T), color: 0xffb46a, transparent: true, opacity: .13, blending: T.AdditiveBlending, depthWrite: false}), lampP.length);
+  const heads = new T.InstancedMesh(new T.BoxGeometry(.5, .14, 1.0), new T.MeshStandardMaterial({color: 0x2a2c34, emissive: 0xffc890, emissiveIntensity: .5, roughness: .5}), lampP.length);
+  const pools = new T.InstancedMesh(new T.CircleGeometry(8.5, 28), new T.MeshBasicMaterial({map: R.softTex(T), color: 0xffb46a, transparent: true, opacity: .08, blending: T.AdditiveBlending, depthWrite: false}), lampP.length);
   const lamps = [], gp = new Float32Array(lampP.length * 3);
   lampP.forEach(({p, s}, i) => {
     const bx = p.x + p.nx * s * (WALL + .8), bz = p.z + p.nz * s * (WALL + .8), hx = p.x + p.nx * s * (WALL - 2.4), hz = p.z + p.nz * s * (WALL - 2.4), a = Math.atan2(p.nx, p.nz);
@@ -236,8 +236,8 @@ function buildScene(T) {
   });
   for (const m of [poles, arms, heads, pools]) { m.frustumCulled = false; scene.add(m); } poles.castShadow = true;
   const glowG = new T.BufferGeometry(); glowG.setAttribute('position', new T.BufferAttribute(gp, 3));
-  const glows = new T.Points(glowG, new T.PointsMaterial({color: 0xffc48a, size: 3.4, map: R.softTex(T), transparent: true, opacity: .55, depthWrite: false, blending: T.AdditiveBlending})); glows.frustumCulled = false; scene.add(glows);
-  const lampL = [0, 1].map(() => { const l = new T.PointLight(0xffb878, 1.1, 30, 1.6); scene.add(l); return l; });
+  const glows = new T.Points(glowG, new T.PointsMaterial({color: 0xffc48a, size: 2.6, map: R.softTex(T), transparent: true, opacity: .32, depthWrite: false, blending: T.AdditiveBlending})); glows.frustumCulled = false; scene.add(glows);
+  const lampL = [0, 1].map(() => { const l = new T.PointLight(0xffb878, .75, 30, 1.6); scene.add(l); return l; });
 
   /* --- Tunnel durch den Hügel --- */
   const i0 = Math.floor(TUNNEL[0] * NPT), i1 = Math.floor(TUNNEL[1] * NPT), SEG = 12, TH = 7.2, tpos = [], tuv = [], tidx = [];
@@ -245,7 +245,7 @@ function buildScene(T) {
   for (let i = 0; i < i1 - i0; i++) for (let k = 0; k < SEG; k++) { const a = i * (SEG + 1) + k, b = a + SEG + 1; tidx.push(a, b, a + 1, a + 1, b, b + 1); }
   const tg = new T.BufferGeometry(); tg.setAttribute('position', new T.Float32BufferAttribute(tpos, 3)); tg.setAttribute('uv', new T.Float32BufferAttribute(tuv, 2)); tg.setIndex(tidx); tg.computeVertexNormals();
   const tubeM = R.pbr(T, 'stone', 1, 1, {color: 0x8e8a84, roughness: .9, side: T.DoubleSide}); scene.add(new T.Mesh(tg, tubeM));
-  const tlN = Math.floor((i1 - i0) / 5), tlamp = new T.InstancedMesh(new T.BoxGeometry(.5, .08, 1.6), new T.MeshBasicMaterial({color: 0xffc27a}), tlN * 2);
+  const tlN = Math.floor((i1 - i0) / 5), tlamp = new T.InstancedMesh(new T.BoxGeometry(.5, .08, 1.6), new T.MeshBasicMaterial({color: 0xb88a54}), tlN * 2);
   for (let k = 0; k < tlN; k++) for (const s of [-1, 1]) { const p = PTS[i0 + 2 + k * 5], a = Math.atan2(p.tx, p.tz), lx = s * 4.2; D.scale.set(1, 1, 1); D.rotation.set(0, a, 0); D.position.set(p.x + p.nx * lx, p.y + TH * .93, p.z + p.nz * lx); D.updateMatrix(); tlamp.setMatrixAt(k * 2 + (s > 0 ? 1 : 0), D.matrix); if (s > 0 && k % 2 === 0) lamps.push({x: p.x, y: p.y + 5.5, z: p.z, c: 0xffa860}); }
   tlamp.frustumCulled = false; scene.add(tlamp);
   // Einhausung: Betonkasten mit Park auf dem Deckel, Portale an beiden Enden
@@ -274,7 +274,7 @@ function buildScene(T) {
   }
   const facT = new T.CanvasTexture(facC), winT = new T.CanvasTexture(winC); facT.anisotropy = winT.anisotropy = 4;
   const bGeo = new T.BoxGeometry(1, 1, 1); bGeo.translate(0, .5, 0);
-  const sideM = new T.MeshStandardMaterial({map: facT, emissiveMap: winT, emissive: 0xffffff, emissiveIntensity: .8, roughness: .85}), roofM = new T.MeshStandardMaterial({color: 0x191b22, roughness: .9});
+  const sideM = new T.MeshStandardMaterial({map: facT, emissiveMap: winT, emissive: 0xffffff, emissiveIntensity: .5, roughness: .85}), roofM = new T.MeshStandardMaterial({color: 0x191b22, roughness: .9});
   const blds = [], trees = [], col = new T.Color();
   for (let iz = 0; iz < LD / G - 1; iz++) for (let ix = 0; ix < LW / G; ix++) {
     const cx = LX0 + (ix + .5) * G, cz = LZ0 - (iz + .5) * G, n = nearestT(cx, cz), dC = Math.hypot(cx - 20, cz + 110);
@@ -294,7 +294,7 @@ function buildScene(T) {
   blds.forEach((b, i) => { D.position.set(b.x, GY, b.z); D.scale.set(b.w, b.h, b.d); D.rotation.set(0, b.ry, 0); D.updateMatrix(); city.setMatrixAt(i, D.matrix); const v = .6 + r0() * .5; col.setRGB(v, v * (.92 + r0() * .1), v * (.9 + r0() * .2)); city.setColorAt(i, col); if (b.h > 70) blinkP.push(b.x, GY + b.h + 1.5, b.z); });
   city.frustumCulled = false; if (city.instanceColor) city.instanceColor.needsUpdate = true; scene.add(city);
   const blinkG = new T.BufferGeometry(); blinkG.setAttribute('position', new T.Float32BufferAttribute(blinkP, 3));
-  const blink = new T.Points(blinkG, new T.PointsMaterial({color: 0xff3040, size: 5, map: R.softTex(T), transparent: true, depthWrite: false, blending: T.AdditiveBlending})); blink.frustumCulled = false; scene.add(blink);
+  const blink = new T.Points(blinkG, new T.PointsMaterial({color: 0xc02838, size: 4, map: R.softTex(T), transparent: true, depthWrite: false, blending: T.AdditiveBlending})); blink.frustumCulled = false; scene.add(blink);
   upd.push(t => { blink.material.opacity = Math.sin(t * 2.6) > .2 ? .9 : .12; });
   // Bäume: entlang der Straße, in den Parks und auf dem Hügel
   for (let i = 0; i < NPT; i += 9) { const p = PTS[i]; for (const s of [-1, 1]) { if (r0() < .45) continue; const l = s * (RW / 2 + 9 + r0() * 16), x = p.x + p.nx * l, z = p.z + p.nz * l; if (z > LZ0 - 6 || onHill(x, z) != null || Math.abs(nearestT(x, z).lat) < RW / 2 + 7) continue; trees.push({x, y: GY, z, s: 1.6 + r0() * 1.3}); } }
@@ -304,7 +304,7 @@ function buildScene(T) {
   const TN = 90, tp = new Float32Array(TN * 3), tcol = new Float32Array(TN * 3), tdat = [];
   for (let i = 0; i < TN; i++) { const horiz = r0() < .5, line = Math.floor(r0() * (horiz ? 9 : 14)), dir = r0() < .5 ? 1 : -1; tdat.push({horiz, c: horiz ? LZ0 - (line + 1) * G + dir * 2 : LX0 + (8 + line) * G + dir * 2, ph: r0() * 900, sp: (9 + r0() * 8) * dir}); const red = dir < 0; tcol[i * 3] = 1; tcol[i * 3 + 1] = red ? .2 : .92; tcol[i * 3 + 2] = red ? .2 : .75; }
   const trG = new T.BufferGeometry(); trG.setAttribute('position', new T.BufferAttribute(tp, 3)); trG.setAttribute('color', new T.BufferAttribute(tcol, 3));
-  const traffic = new T.Points(trG, new T.PointsMaterial({size: 2.4, vertexColors: true, map: R.softTex(T), transparent: true, opacity: .8, depthWrite: false, blending: T.AdditiveBlending})); traffic.frustumCulled = false; scene.add(traffic);
+  const traffic = new T.Points(trG, new T.PointsMaterial({size: 2.4, vertexColors: true, map: R.softTex(T), transparent: true, opacity: .5, depthWrite: false, blending: T.AdditiveBlending})); traffic.frustumCulled = false; scene.add(traffic);
   upd.push(t => { tdat.forEach((d, i) => { const u = ((d.ph + t * d.sp) % 900 + 900) % 900 - 430; if (d.horiz) trG.attributes.position.setXYZ(i, u, GY + .6, d.c); else trG.attributes.position.setXYZ(i, d.c, GY + .6, Math.min(LZ0 - 4, -u * .62 - 260)); }); trG.attributes.position.needsUpdate = true; });
 
   /* --- Hafen: Riesenrad, Leuchtturm, Boote --- */
@@ -316,24 +316,24 @@ function buildScene(T) {
   for (let k = 0; k < 12; k++) { const gm = new T.Mesh(new T.BoxGeometry(2.6, 2.4, 2.6), new T.MeshStandardMaterial({color: gcol[k % 4], roughness: .6, emissive: 0xffd9a0, emissiveIntensity: .22})); wheel.add(gm); gond.push(gm); }
   const wl = new Float32Array(48 * 3); for (let k = 0; k < 48; k++) { const a = k / 48 * TAU; wl[k * 3] = Math.cos(a) * WR; wl[k * 3 + 1] = Math.sin(a) * WR; wl[k * 3 + 2] = 1.9; }
   const wlg = new T.BufferGeometry(); wlg.setAttribute('position', new T.BufferAttribute(wl, 3));
-  wheel.add(new T.Points(wlg, new T.PointsMaterial({color: 0xffc6a0, size: 2.2, map: R.softTex(T), transparent: true, opacity: .9, depthWrite: false, blending: T.AdditiveBlending})));
+  wheel.add(new T.Points(wlg, new T.PointsMaterial({color: 0xffc6a0, size: 1.8, map: R.softTex(T), transparent: true, opacity: .5, depthWrite: false, blending: T.AdditiveBlending})));
   wheel.position.set(170, GY + WR + 5, 70); scene.add(wheel);
   for (const sx of [-1, 1]) for (const zz of [-3, 3]) { const leg = new T.Mesh(new T.CylinderGeometry(.35, .5, WR + 8, 6), spokeM); leg.position.set(170 + sx * 7, GY + (WR + 6) / 2, 70 + zz); leg.rotation.z = sx * .27; scene.add(leg); }
   upd.push(t => { wheel.rotation.z = t * .12; gond.forEach((gm, k) => { const a = k / 12 * TAU; gm.position.set(Math.cos(a) * WR, Math.sin(a) * WR - 1.6, 0); gm.rotation.z = -wheel.rotation.z; }); });
   const rock = R.rock(T, 16, 4, {flat: .4}); rock.position.set(-60, GY - 1.5, 250); scene.add(rock);
   const lhT = R.paint(T, 64, 128, (c2) => { for (let k = 0; k < 4; k++) { c2.fillStyle = k % 2 ? '#b8423e' : '#e8e4da'; c2.fillRect(0, k * 32, 64, 32); } });
   const lh = new T.Mesh(new T.CylinderGeometry(2.2, 3.4, 26, 14), new T.MeshStandardMaterial({map: lhT, roughness: .8})); lh.position.set(-60, GY + 15, 250); scene.add(lh);
-  const lhTop = new T.Mesh(new T.CylinderGeometry(1.9, 1.9, 3, 12), new T.MeshBasicMaterial({color: 0xffe9b8})); lhTop.position.set(-60, GY + 29.5, 250); scene.add(lhTop);
+  const lhTop = new T.Mesh(new T.CylinderGeometry(1.9, 1.9, 3, 12), new T.MeshBasicMaterial({color: 0xc8b488})); lhTop.position.set(-60, GY + 29.5, 250); scene.add(lhTop);
   const lhCap = new T.Mesh(new T.ConeGeometry(2.6, 2.6, 12), new T.MeshStandardMaterial({color: 0x3a2a2a, roughness: .7})); lhCap.position.set(-60, GY + 32.3, 250); scene.add(lhCap);
-  const lhGlow = K.sprite(T, 0xffe2a8, 16, .5); lhGlow.position.copy(lhTop.position); scene.add(lhGlow);
+  const lhGlow = K.sprite(T, 0xffe2a8, 12, .28); lhGlow.position.copy(lhTop.position); scene.add(lhGlow);
   const beamM = new T.MeshBasicMaterial({color: 0xffe9c0, transparent: true, opacity: .06, blending: T.AdditiveBlending, depthWrite: false, side: T.DoubleSide, fog: false});
   const lbeam = new T.Group(); for (const s of [0, Math.PI]) { const b = new T.Mesh(new T.PlaneGeometry(150, 5), beamM); b.position.x = 76; const h = new T.Group(); h.rotation.y = s; h.add(b); lbeam.add(h); } lbeam.position.copy(lhTop.position); scene.add(lbeam);
-  upd.push(t => { lbeam.rotation.y = t * .5; lhGlow.material.opacity = .35 + .25 * Math.max(0, Math.sin(t * .5 + .6)); });
+  upd.push(t => { lbeam.rotation.y = t * .5; lhGlow.material.opacity = .18 + .14 * Math.max(0, Math.sin(t * .5 + .6)); });
   const hullM = new T.MeshStandardMaterial({color: 0xdad6cc, roughness: .6}), boats = [];
   for (const [x, z, s] of [[60, 80, 1], [120, 150, 1.3], [250, 120, 1.1], [-20, 120, .9], [-140, 90, 1.2], [330, 60, 1], [10, 210, 1.4], [-220, 160, 1]]) {
     const b = new T.Group(), hull = new T.Mesh(new T.CapsuleGeometry(1.4, 6, 4, 10), hullM); hull.rotation.z = Math.PI / 2; hull.scale.set(1, 1, .9); hull.position.y = .3; b.add(hull);
     const mast = new T.Mesh(new T.CylinderGeometry(.08, .1, 11, 6), poleM); mast.position.y = 6; b.add(mast);
-    const ml = K.sprite(T, 0xffe0a8, 2.4, .8); ml.position.y = 11.6; b.add(ml);
+    const ml = K.sprite(T, 0xffe0a8, 1.8, .4); ml.position.y = 11.6; b.add(ml);
     const cab = new T.Mesh(new T.BoxGeometry(2.6, 1.2, 1.6), new T.MeshStandardMaterial({color: 0x8a6a4a, emissive: 0xffc078, emissiveIntensity: .35})); cab.position.set(-.6, 1.5, 0); b.add(cab);
     b.position.set(x, GY - .6, z); b.scale.setScalar(s); b.rotation.y = r0() * TAU; scene.add(b); boats.push(b);
   }
@@ -341,11 +341,11 @@ function buildScene(T) {
 
   /* --- Start und Ziel: Torbogen, Tribüne, Fahnen --- */
   const p0 = PTS[0], gate = new T.Group(), a0 = Math.atan2(p0.tx, p0.tz);
-  const chk = R.paint(T, 256, 32, (c2) => { for (let x = 0; x < 32; x++) for (let y = 0; y < 4; y++) { c2.fillStyle = (x + y) % 2 ? '#16161a' : '#e6e6e0'; c2.fillRect(x * 8, y * 8, 8, 8); } });
+  const chk = R.paint(T, 256, 32, (c2) => { for (let x = 0; x < 32; x++) for (let y = 0; y < 4; y++) { c2.fillStyle = (x + y) % 2 ? '#16161a' : '#b4b4ae'; c2.fillRect(x * 8, y * 8, 8, 8); } });
   for (const s of [-1, 1]) { const post = new T.Mesh(new T.BoxGeometry(.9, 10, .9), poleM); post.position.set(s * (WALL + 1.2), 5, 0); post.castShadow = true; gate.add(post); }
-  const truss = new T.Mesh(new T.BoxGeometry(RW + 4.4, 1.5, .7), new T.MeshStandardMaterial({map: chk, roughness: .7, emissiveMap: chk, emissive: 0xffffff, emissiveIntensity: .18})); truss.position.y = 9.4; gate.add(truss);
+  const truss = new T.Mesh(new T.BoxGeometry(RW + 4.4, 1.5, .7), new T.MeshStandardMaterial({map: chk, roughness: .7, emissiveMap: chk, emissive: 0xffffff, emissiveIntensity: .06})); truss.position.y = 9.4; gate.add(truss);
   const ztx = R.paint(T, 512, 64, (c2, w) => { c2.fillStyle = '#141018'; c2.fillRect(0, 0, w, 64); c2.font = '700 40px Karla, sans-serif'; c2.textAlign = 'center'; c2.fillStyle = '#e8b870'; c2.fillText(`${nm('a')} ♥ ${nm('d')}`, w / 2, 46); });
-  const sign = new T.Mesh(new T.PlaneGeometry(RW * .66, 2.1), new T.MeshBasicMaterial({map: ztx, side: T.DoubleSide, color: 0xd0d0d0})); sign.position.y = 11.3; sign.rotation.y = Math.PI; gate.add(sign);
+  const sign = new T.Mesh(new T.PlaneGeometry(RW * .66, 2.1), new T.MeshBasicMaterial({map: ztx, side: T.DoubleSide, color: 0x9a9a9a})); sign.position.y = 11.3; sign.rotation.y = Math.PI; gate.add(sign);
   gate.position.set(p0.x, p0.y, p0.z); gate.rotation.y = a0; scene.add(gate);
   const line = new T.Mesh(new T.PlaneGeometry(RW, 2.4), new T.MeshStandardMaterial({map: chk, roughness: .7, polygonOffset: true, polygonOffsetFactor: -2})); line.rotation.x = -Math.PI / 2; line.rotation.z = -a0 + Math.PI / 2; line.position.set(p0.x, p0.y + .03, p0.z); line.receiveShadow = true; scene.add(line);
   const ps = PTS[NPT - 8], stand = new T.Group(), stM = R.pbr(T, 'stone', 6, 1, {color: 0x80848e});
@@ -369,20 +369,20 @@ function buildScene(T) {
   upd.push(t => flags.forEach((fl, i) => { const a = fl.geometry.attributes.position; for (let q = 0; q < a.count; q++) a.setZ(q, Math.sin(a.getX(q) * 2.4 - t * 6 + i) * .16 * (a.getX(q) + 1.2)); a.needsUpdate = true; }));
   // große Tafel an der ersten Kurve
   const pbd = PTS[Math.floor(.2 * NPT)], bdT = R.paint(T, 512, 256, (c2) => { const gr = c2.createLinearGradient(0, 0, 0, 256); gr.addColorStop(0, '#2a2038'); gr.addColorStop(1, '#141020'); c2.fillStyle = gr; c2.fillRect(0, 0, 512, 256); c2.textAlign = 'center'; c2.fillStyle = '#e8b870'; c2.font = '700 64px Karla, sans-serif'; c2.fillText(`${nm('a')} ♥ ${nm('d')}`, 256, 118); c2.fillStyle = '#c8c2d8'; c2.font = '600 34px Karla, sans-serif'; c2.fillText('Nachtrennen', 256, 182); c2.strokeStyle = '#e8b870'; c2.lineWidth = 5; c2.strokeRect(12, 12, 488, 232); });
-  const bd = new T.Group(), bdm = new T.Mesh(new T.PlaneGeometry(22, 11), new T.MeshBasicMaterial({map: bdT, color: 0xb8b8b8})); bdm.position.y = 15; bd.add(bdm);
+  const bd = new T.Group(), bdm = new T.Mesh(new T.PlaneGeometry(22, 11), new T.MeshBasicMaterial({map: bdT, color: 0x8c8c8c})); bdm.position.y = 15; bd.add(bdm);
   for (const sx of [-8, 8]) { const lg = new T.Mesh(new T.CylinderGeometry(.35, .4, 26, 8), poleM); lg.position.set(sx, 0, -.4); bd.add(lg); }
   bd.position.set(pbd.x - pbd.nx * (WALL + 16), pbd.y, pbd.z - pbd.nz * (WALL + 16)); bd.rotation.y = Math.atan2(-pbd.tx, -pbd.tz); scene.add(bd);
 
   /* --- Turbo-Felder und Herzen --- */
   const arrow = R.paint(T, 64, 128, (c2) => { c2.strokeStyle = '#ffc060'; c2.lineWidth = 11; c2.lineCap = 'round'; for (let k = 0; k < 3; k++) { c2.beginPath(); c2.moveTo(10, 44 + k * 32); c2.lineTo(32, 20 + k * 32); c2.lineTo(54, 44 + k * 32); c2.stroke(); } });
-  arrow.wrapT = T.RepeatWrapping; const padM = new T.MeshBasicMaterial({map: arrow, transparent: true, opacity: .75, blending: T.AdditiveBlending, depthWrite: false}), pads = [];
+  arrow.wrapT = T.RepeatWrapping; const padM = new T.MeshBasicMaterial({map: arrow, transparent: true, opacity: .45, blending: T.AdditiveBlending, depthWrite: false}), pads = [];
   for (const pd of PADS) { const p = PTS[pd.i], m = new T.Mesh(new T.PlaneGeometry(4.2, 8), padM); m.rotation.x = -Math.PI / 2; m.rotation.z = -Math.atan2(p.tx, p.tz) + Math.PI; m.position.set(p.x + p.nx * pd.lat, p.y + .06, p.z + p.nz * pd.lat); scene.add(m); pads.push(m); }
-  const hgeo = K.heartGeo(T, .85, .3), hearts = [], hm = new T.MeshStandardMaterial({color: 0xe86a90, emissive: 0xd03a6a, emissiveIntensity: .7, metalness: .3, roughness: .3});
+  const hgeo = K.heartGeo(T, .85, .3), hearts = [], hm = new T.MeshStandardMaterial({color: 0xe86a90, emissive: 0xd03a6a, emissiveIntensity: .4, metalness: .3, roughness: .3});
   HEARTS.forEach(h => { const p = PTS[h.i], m = new T.Mesh(hgeo, hm); m.position.set(p.x + p.nx * h.lat, p.y + 1.5, p.z + p.nz * h.lat); scene.add(m); hearts.push(m); });
 
   /* --- Autos, Scheinwerfer, Funken und Reifenqualm --- */
   const cars = {a: makeCar(T, 'suv'), d: makeCar(T, 'sport')}; scene.add(cars.a); scene.add(cars.d);
-  const mineCar = cars[API.me], spot = new T.SpotLight(0xfff0d0, 2.4, 95, .5, .7, 1.3);
+  const mineCar = cars[API.me], spot = new T.SpotLight(0xfff0d0, 1.35, 90, .5, .75, 1.3);
   spot.position.set(0, 1.2, -1.6); spot.target.position.set(0, -.4, -30); mineCar.add(spot); mineCar.add(spot.target); mineCar.userData.beam.visible = false;
   const mkPts = (n, size, add) => { const pos = new Float32Array(n * 3), c2 = new Float32Array(n * 3), bg = new T.BufferGeometry(); bg.setAttribute('position', new T.BufferAttribute(pos, 3)); bg.setAttribute('color', new T.BufferAttribute(c2, 3)); const m = new T.Points(bg, new T.PointsMaterial({size, vertexColors: true, map: R.softTex(T), transparent: true, blending: add ? T.AdditiveBlending : T.NormalBlending, depthWrite: false, opacity: add ? 1 : .5})); m.frustumCulled = false; scene.add(m); return {m, d: Array.from({length: n}, () => ({life: 0})), i: 0}; };
   return {scene, cam, sky, moon, cars, spot, pads, hearts, lamps, lampL, upd, sparks: mkPts(110, .4, true), smoke: mkPts(90, 2.6, true), camPos: null, camH: null, tubeM};
@@ -539,8 +539,8 @@ const rennen = {
       u.body.rotation.x = clamp(pitch + ((fl & 8) ? .035 : 0), -.25, .25);
       u.wheels.forEach(w => { w.spin.rotation.x -= v * dt / .45; if (w.front) w.w.rotation.y = -steer * .42; });
       const boost = fl & 4;
-      u.flames.forEach((f, i) => { f.material.opacity = boost ? .55 + Math.sin(t * 40 + i) * .15 : 0; f.scale.setScalar(boost ? 1.7 + Math.random() * .8 : 1); });
-      u.tl.color.setHex((fl & 8) ? 0xff2038 : 0x7a0c1e); u.tgl.forEach(s => { s.material.opacity = (fl & 8) ? .45 : .2; s.scale.setScalar((fl & 8) ? 1.25 : .85); });
+      u.flames.forEach((f, i) => { f.material.opacity = boost ? .34 + Math.sin(t * 40 + i) * .1 : 0; f.scale.setScalar(boost ? 1.7 + Math.random() * .8 : 1); });
+      u.tl.color.setHex((fl & 8) ? 0xc81c30 : 0x5e0a18); u.tgl.forEach(s => { s.material.opacity = (fl & 8) ? .3 : .12; s.scale.setScalar((fl & 8) ? 1.1 : .8); });
       // Reifenqualm im Drift und beim Bremsen
       if (play && ((fl & 16) || ((fl & 8) && v > 14)) && Math.random() < dt * 40) for (const s of [-1, 1]) puff(R.smoke, x + Math.cos(h) * s * 1.05 - Math.sin(h) * 1.7, y + .25, z - Math.sin(h) * s * 1.05 - Math.cos(h) * 1.7, [.2, .2, .22], rnd(-1, 1) + slide * Math.cos(h) * -3, rnd(.6, 1.6), rnd(-1, 1) + slide * Math.sin(h) * 3, rnd(.5, .9));
       if (play && (fl & 3) && Math.random() < dt * 50) { const cc = (fl & 3) === 2 ? [1, .55, .2] : [.45, .7, 1]; for (const s of [-1, 1]) puff(R.sparks, x + Math.cos(h) * s * 1.05 - Math.sin(h) * 1.8, y + .2, z - Math.sin(h) * s * 1.05 - Math.cos(h) * 1.8, cc, -Math.sin(h) * 6 + rnd(-3, 3), rnd(2, 5), -Math.cos(h) * 6 + rnd(-3, 3), rnd(.2, .45)); }
@@ -548,7 +548,7 @@ const rennen = {
     placeCar(R.cars[meK], mine.x, mine.y, myH, myY, c ? c.v : 0, myF, c ? c.st : 0, c ? -Math.atan2(c.vy, Math.max(c.v, 1)) * .6 : 0, c ? Math.sign(c.vl || 0) : 0);
     placeCar(R.cars[oK], part.x, part.y, oE[0], oY, oE[2] || 0, oF, oE[5] || 0, 0, 0);
     if (c && c.scr > 0 && play) { const pn = PTS[n0.i], sg = Math.sign(n0.lat); for (let i = 0; i < 2; i++) puff(R.sparks, mine.x + pn.nx * sg * 1.2, myY + .5, mine.y + pn.nz * sg * 1.2, [1, .8, .45], -c.vx * .15 + rnd(-4, 4), rnd(1, 5), -c.vz * .15 + rnd(-4, 4), rnd(.2, .45)); }
-    stepPts(R.sparks, dt, 16, 2); stepPts(R.smoke, dt, -1.2, .5);
+    stepPts(R.sparks, dt, 16, 1.2); stepPts(R.smoke, dt, -1.2, .32);
     // Welt
     R.sky.userData.u.tm.value = t; R.upd.forEach(f => f(t, dt));
     R.pads.forEach(m => { m.material.map.offset.y = (t * 1.5) % 1; });
@@ -575,7 +575,7 @@ const rennen = {
     R.cam.rotation.z += -(c ? c.st : 0) * .025;
     const fovT = (port ? 76 : 62) + sp * .1 + (boostOn ? 7 : 0);
     R.cam.fov += (fovT - R.cam.fov) * Math.min(1, dt * 4); R.cam.aspect = sc.cw / sc.ch; R.cam.updateProjectionMatrix();
-    API.render3D(R.scene, R.cam, {bloom: .8, th: .72});
+    API.render3D(R.scene, R.cam, {bloom: .7, th: .74});
 
     /* --- Anzeigen --- */
     const pp = K.proj(R.cam, new T.Vector3(part.x, oY + 3.6, part.y));
