@@ -408,5 +408,5 @@ const korallen = {
   }
 };
 
-return [zueinander, korallen];
+return [zueinander]; // Korallenflug liegt seit 8.2 in levels-korallen.js
 });

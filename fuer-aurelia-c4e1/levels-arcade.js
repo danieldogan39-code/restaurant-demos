@@ -969,5 +969,5 @@ function symbol(s, t) {
   else if (s === 'welle') { ctx.strokeStyle = '#5aa6e8'; ctx.lineWidth = 4; for (let k = -1; k <= 1; k++) { ctx.beginPath(); for (let x = -32; x <= 32; x += 4) ctx.lineTo(x, k * 16 + Math.sin(x / 8 + t * 2) * 5); ctx.stroke(); } }
 }
 
-return [mauer, kette, wolken, strasse, irrgarten, lied, memory];
+return [mauer, kette, wolken, strasse, lied, memory]; // der Irrgarten liegt seit 8.2 in levels-garten.js
 });

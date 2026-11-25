@@ -5,7 +5,7 @@
    für Zustand/Positionen, zuverlässiger Kanal für Ereignisse und Aktionen. */
 (() => {
 'use strict';
-const VERSION = '8.1';
+const VERSION = '8.2';
 const CFG = window.ZL_CONFIG;
 const W = 600, H = 1000, R = 18, VMAX = 470, TAU = Math.PI * 2, HUDH = 64;
 const $ = id => document.getElementById(id);
@@ -466,7 +466,7 @@ const DANG = {r: 0, d: Math.PI / 2, l: Math.PI, u: -Math.PI / 2};
 function camY() { const L = curL(); return L && L.camY ? (L.camY() || 0) : 0; }
 function camX() { const L = curL(); return L && L.camX ? (L.camX() || 0) : 0; }
 function toWorld(cx, cy) { return {x: (cx - ox) / sc + camX(), y: (cy - oy) / sc + camY()}; }
-const ownPointers = L => L && (L.ctrl === 'buttons' || L.ctrl === 'fps');
+const ownPointers = L => L && (L.ctrl === 'buttons' || L.ctrl === 'fps' || L.ctrl === 'pad');
 const useZone = () => ({x: cw - 66, y: ch - 122, r: 46});
 addEventListener('keydown', e => {
   if (document.activeElement && document.activeElement.tagName === 'INPUT') return;
@@ -523,7 +523,7 @@ cv.addEventListener('pointermove', e => {
 });
 function endPtr(e) {
   const T9 = IN.tp.get(e.pointerId), L9 = curL();
-  if (T9 && L9 && L9.ctrl === 'fps' && T9.side !== 'B' && T9.moved < 14 && performance.now() - T9.t0 < 350 && e.type === 'pointerup') IN.taps3.push({x: e.clientX, y: e.clientY});
+  if (T9 && L9 && (L9.ctrl === 'fps' || L9.ctrl === 'pad') && T9.side !== 'B' && T9.moved < 14 && performance.now() - T9.t0 < 350 && e.type === 'pointerup') IN.taps3.push({x: e.clientX, y: e.clientY});
   IN.tp.delete(e.pointerId);
   const P = IN.ptr; if (!P || e.pointerId !== P.id) return;
   const L = curL();
@@ -608,6 +608,7 @@ function readInput(dt) {
     if (keys.has('arrowleft')) lx -= 420 * dt; if (keys.has('arrowright')) lx += 420 * dt; if (keys.has('arrowup')) ly -= 300 * dt; if (keys.has('arrowdown')) ly += 300 * dt;
     inp.fps = {mx: clamp(mx, -1, 1), my: clamp(my, -1, 1), lx, ly, taps: IN.taps3.splice(0), use: IN.useBtn};
   }
+  if (L && L.ctrl === 'pad') inp.pad = {tp: [...IN.tp.values()], taps: IN.taps3.splice(0), key: k => keys.has(k), tilt: SET.ctrl === 'tilt' && IN.tilt.on ? IN.tilt : null, cw, ch};
   IN.look.x = IN.look.y = 0; IN.useBtn = false; IN.taps3.length = 0;
   if (L && L.ctrl === 'fly' && SET.ctrl === 'tap' && IN.ptr) inp.center = {x: clamp((IN.ptr.x - cw / 2) / (cw * .35), -1, 1), y: clamp((IN.ptr.y - ch / 2) / (ch * .28), -1, 1)};
   return inp;
@@ -1349,7 +1350,7 @@ function ctrlText(L) {
   }[L.ctrl || 'free'];
   return (base && base[m]) || '';
 }
-const CTRL_ICON = L => L.ctrl === 'tap' ? 'tap' : L.ctrl === 'buttons' ? 'pad' : L.ctrl === 'fps' ? 'stick' : L.ctrl === 'drive' ? 'wheel' : SET.ctrl;
+const CTRL_ICON = L => L.ctrl === 'tap' ? 'tap' : L.ctrl === 'buttons' ? 'pad' : L.ctrl === 'fps' ? 'stick' : L.ctrl === 'drive' ? 'wheel' : L.ctrl === 'pad' ? (L.padIcon || 'stick') : SET.ctrl;
 function buildCard() {
   const box = $('cardBox');
   if (S.phase === 'quiz') { buildQuiz(box); return; }
@@ -1358,6 +1359,7 @@ function buildCard() {
   if (S.phase === 'end') {
     const tot = Object.values(S.stars).reduce((s, v) => s + (v || 0), 0);
     html = `<p class="kicker">Alle Kapitel geschafft</p><h2>${esc(CFG.finale.title)}</h2>
+      ${window.ZL_FOTO && ZL_FOTO.url('m1') && ZL_FOTO.url('m2') ? `<div class="memos"><img class="memo" alt="" src="${ZL_FOTO.url('m1')}"><img class="memo" alt="" src="${ZL_FOTO.url('m2')}"></div>` : ''}
       <p class="msg">${esc(CFG.finale.text)}</p><p class="sign">${esc(CFG.finale.sign)}</p>
       <p class="time">Eure Sterne: <b>${tot} von ${LV.length * 3}</b></p>
       ${role === 'host' ? '<button class="btn" id="cBtn">Nochmal spielen</button><button class="btn ghost" id="cMC">Master Control</button>' : `<p class="hint">${esc(nm('d'))} kann jederzeit eine neue Runde starten.</p>`}`;
@@ -1365,7 +1367,7 @@ function buildCard() {
     const sk = (L.isNew ? '<span class="chip new">Neu ✨</span>' : '') + (L.skinName ? `<span class="chip">${esc(L.skinName())}</span>` : '');
     html = `<div class="chips"><span class="chip">Kapitel ${L.w + 1} · ${WORLDS[L.w].n}</span><span class="chip">Spiel ${S.lv + 1}/${LV.length}</span>${sk}</div>
       <h2>${esc(L.n)}</h2><p class="hint big">${esc(L.h(me))}</p>
-      <div class="ctrl"><span class="cico">${ICON[CTRL_ICON(L)] || ''}</span><span>${esc(ctrlText(L))}</span>${['tap', 'buttons', 'fps'].includes(L.ctrl) ? '' : '<button class="link" id="cCtrl">ändern</button>'}</div>
+      <div class="ctrl"><span class="cico">${ICON[CTRL_ICON(L)] || ''}</span><span>${esc(ctrlText(L))}</span>${['tap', 'buttons', 'fps', 'pad'].includes(L.ctrl) ? '' : '<button class="link" id="cCtrl">ändern</button>'}</div>
       <div class="who" id="cWho"></div>
       <button class="btn" id="cBtn">Bereit</button>`;
   } else if (S.card === 'welcome') {
@@ -1379,6 +1381,7 @@ function buildCard() {
   } else if (L) {
     html = `<p class="kicker">${WORLDS[L.w].n} · ${esc(L.n)}</p>${starsHTML(S.lastStars || 0)}
       <p class="time">${S.lastNote ? esc(S.lastNote) : 'geschafft in ' + fmt(S.lastTime || 0)}</p>
+      ${L.foto && window.ZL_FOTO && ZL_FOTO.url(L.foto) ? `<img class="memo" alt="Euer Bild" src="${ZL_FOTO.url(L.foto)}">` : ''}
       <p class="msg">${esc((CFG.lines || {})[L.id] || '')}</p>`;
     if (S.card === 'world') {
       const Wc = (CFG.worlds || [])[L.w] || {};

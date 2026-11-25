@@ -85,6 +85,9 @@ window.ZL_REAL = (() => {
         speck(g, 1800, r, ['#000', '#fff'], 2, .12);
       }, {bump: 5, seed: 41})
     };
+    /* Relief-Textur aus einer eigenen Zeichnung (für Asphalt, Sand, Hecken …) */
+    R.canvas = canvas;
+    R.nmap = (T, cv, strength) => { const t = new T.CanvasTexture(normalFrom(cv, strength)); t.wrapS = t.wrapT = T.RepeatWrapping; t.anisotropy = 4; return t; };
     /* Material mit Relief; rx, ry = wie oft sich die Oberfläche wiederholt */
     R.pbr = (T, key, rx = 1, ry = 1, o = {}) => {
       const t = DEF[key](T), map = t.map.clone(); map.repeat.set(rx, ry); map.needsUpdate = true;
