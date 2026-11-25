@@ -634,8 +634,8 @@ const L = [
     }
   }
 },
-{ id: 'herz', w: 4, n: 'Unser Herz', ic: '♥', t3: 55, t2: 100,
-  h: () => 'Stellt euch gleichzeitig auf eure Sterne. Spitze und Mitte zündet ihr nur gemeinsam an.',
+{ id: 'herz', w: 4, n: 'Unser Herz', ic: '♥', t3: 55, t2: 100, get hidePlayers() { return !!(S.done && S.cur >= 9); },
+  h: () => `Stellt euch gleichzeitig auf eure Sterne: ${nm('a')} links, ${nm('d')} rechts. Spitze und Mitte zündet ihr nur gemeinsam an. Mit jedem Sternenpaar wächst im Herz etwas heran – von unten nach oben.`,
   setup() {
     S.items = [];
     for (let j = 0; j < 16; j++) {
@@ -656,20 +656,21 @@ const L = [
       S.cur++; S.count = S.cur;
       const s = S.items[st[0]];
       emit({k: 'pairlit', x: s.x, y: s.y, i: S.cur});
-      if (S.cur >= S.aux.steps.length) { emit({k: 'fireworks', dur: 6000}); emit({k: 'meet', x: W / 2, y: 300}); finish(4.2); }
+      if (S.cur >= S.aux.steps.length) { emit({k: 'fireworks', dur: 6000}); emit({k: 'meet', x: W / 2, y: 300}); finish(10); }
     }
   },
   draw(t, pos) {
     const st = S.items;
+    heartPhotos(t);
     ctx.strokeStyle = 'rgba(255,255,255,.09)'; ctx.lineWidth = 1.5; ctx.setLineDash([3, 7]);
     ctx.beginPath(); st.forEach((s, i) => i ? ctx.lineTo(s.x, s.y) : ctx.moveTo(s.x, s.y)); ctx.closePath(); ctx.stroke(); ctx.setLineDash([]);
     ctx.lineWidth = 2.5; ctx.lineCap = 'round';
     for (let j = 0; j < 16; j++) { const a = st[j], b = st[(j + 1) % 16]; if (a.lit && b.lit) line2(a, b, .85); }
-    if (S.cur >= 9) { glow(W / 2, 300, 330, CA, .14 + Math.sin(t * 1.5) * .04); API.light(W / 2, 300, CA, 320, .9); }
+    if (S.cur >= 9) { glow(W / 2, 300, 330, CA, .05 + Math.sin(t * 1.5) * .015); API.light(W / 2, 300, CA, 320, .22); }
     const cur = S.aux.steps[S.cur] || [];
     st.forEach(s => {
       const c = COL[s.o];
-      if (s.lit) { glow(s.x, s.y, 34, c, .6); dotW(s.x, s.y, 4.5); }
+      if (s.lit) { glow(s.x, s.y, S.cur >= 9 ? 22 : 34, c, S.cur >= 9 ? .3 : .6); dotW(s.x, s.y, S.cur >= 9 ? 3 : 4.5); }
       else if (cur.includes(s.id)) {
         if (s.o === 'g') pairTarget(s, t, pos, 52, 0);
         else {
@@ -684,6 +685,39 @@ const L = [
   }
 }
 ];
+
+/* Das Herz füllt sich mit euren Bildern: Alles unterhalb des höchsten brennenden Sterns wird sichtbar.
+   Ist das Herz geschlossen, wechseln sich beide Bilder langsam ab. */
+const HFIT = {m1: {s: .762, x: 44, y: 80}, m2: {s: .5, x: 120, y: 44}};
+function heartPhotos(t) {
+  const F = window.ZL_FOTO; if (!F || !S.items.length || !S.aux.steps) return;
+  const A = F.get('m1'), B = F.get('m2'); if (!A.ready) return;
+  const st = S.items, full = S.cur >= S.aux.steps.length;
+  let yT = 640; st.forEach(s => { if (s.lit) yT = Math.min(yT, s.y - 6); }); if (full) yT = 60;
+  LOC.hy = LOC.hy == null ? 640 : LOC.hy + (yT - LOC.hy) * .045;
+  if (LOC.hy > 600) return;
+  if (full && LOC.hd == null) LOC.hd = t;
+  const soft = o => { if (o.soft) return o.soft; const c = document.createElement('canvas'); c.width = o.w; c.height = o.h; const g = c.getContext('2d'); g.drawImage(o.cv, 0, 0);
+    try { const im = g.getImageData(0, 0, o.w, o.h), d = im.data, lut = new Uint8ClampedArray(256); for (let i = 0; i < 256; i++) { const v = i / 255; lut[i] = 255 * (.8 * v - .19 * v * v * v); } for (let i = 0; i < d.length; i += 4) { d[i] = lut[d[i]]; d[i + 1] = lut[d[i + 1]]; d[i + 2] = lut[d[i + 2]]; } g.putImageData(im, 0, 0); } catch (e) {}
+    o.soft = c; return c; };
+  const one = (o, f, al) => {
+    if (!o.ready || al <= 0) return;
+    if (!o.tiny) { o.tiny = document.createElement('canvas'); o.tiny.width = 18; o.tiny.height = 24; o.tiny.getContext('2d').drawImage(soft(o), 0, 0, 18, 24); }
+    ctx.globalAlpha = al; ctx.drawImage(o.tiny, 30, 60, 540, 720); ctx.drawImage(soft(o), f.x, f.y, o.w * f.s, o.h * f.s);
+  };
+  ctx.save(); ctx.beginPath();
+  for (let i = 0; i <= 72; i++) { const a = i / 72 * TAU, hx = 16 * Math.pow(Math.sin(a), 3), hy = -(13 * Math.cos(a) - 5 * Math.cos(2 * a) - 2 * Math.cos(3 * a) - Math.cos(4 * a)); const x = W / 2 + hx * 16, y = 300 + hy * 15.5; i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }
+  ctx.closePath(); ctx.clip(); ctx.beginPath(); ctx.rect(0, LOC.hy, W, 700); ctx.clip();
+  const mix = full && B.ready ? .5 - .5 * Math.cos(Math.max(0, t - LOC.hd - 2.8) * .68) : 0;
+  one(A, HFIT.m1, 1); one(B, HFIT.m2, mix);
+  ctx.globalAlpha = 1;
+  // weiche Kante dort, wo das Bild gerade wächst
+  if (!full) { const gr = ctx.createLinearGradient(0, LOC.hy, 0, LOC.hy + 46); gr.addColorStop(0, 'rgba(14,10,30,.96)'); gr.addColorStop(1, 'rgba(14,10,30,0)'); ctx.fillStyle = gr; ctx.fillRect(0, LOC.hy, W, 46); }
+  const eg = ctx.createRadialGradient(W / 2, 320, 150, W / 2, 320, 290); eg.addColorStop(0, 'rgba(10,8,24,0)'); eg.addColorStop(1, 'rgba(10,8,24,.42)'); ctx.fillStyle = eg; ctx.fillRect(0, 60, W, 560);
+  ctx.restore();
+  // ist das Herz geschlossen, wandern zwei kleine Lichter die Linie entlang und treffen sich oben und unten
+  if (full && S.done) for (const [sg, c] of [[1, CD], [-1, CA]]) { const a = sg * (t - LOC.hd) * .55, hx = 16 * Math.pow(Math.sin(a), 3), hy = -(13 * Math.cos(a) - 5 * Math.cos(2 * a) - 2 * Math.cos(3 * a) - Math.cos(4 * a)), x = W / 2 + hx * 16, y = 300 + hy * 15.5; glow(x, y, 24, c, .5); dotW(x, y, 3.2); }
+}
 
 const byId = {}; L.forEach(l => byId[l.id] = l);
 const SEA = {a: 'turtle', d: 'sponge'}, ROYAL = {a: 'princess', d: 'prince'};

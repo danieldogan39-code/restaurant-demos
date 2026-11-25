@@ -6,7 +6,11 @@
 'use strict';
 const {S, LOC, ctx, TAU, COL, CG, rgba, rnd, clamp, nm, emit, finish, hostNow, tone, buzz, rr, mine} = API;
 const KIT = () => window.ZL_KIT(API), REAL = () => window.ZL_REAL(API), FOTO = window.ZL_FOTO;
-const KLEN = 820, NR = 40, MX = 5, MY = 8, TILE = FOTO.perm(NR, 77);
+const KLEN = 820, NR = 40, MX = 5, MY = 8;
+const ownerOf = i => i % 5 === 4 ? 'g' : i % 2 ? 'd' : 'a';
+/* Aurelias Ringe legen die linke Bildhälfte frei, Daniels die rechte, die goldenen den Streifen in der Mitte */
+const TILE = (() => { const pool = {a: [], g: [], d: []}, out = []; for (let ty = 0; ty < MY; ty++) for (let tx = 0; tx < MX; tx++) pool[tx < 2 ? 'a' : tx > 2 ? 'd' : 'g'].push(ty * MX + tx);
+  const ord = {a: FOTO.perm(16, 77), g: FOTO.perm(8, 78), d: FOTO.perm(16, 79)}, n = {a: 0, g: 0, d: 0}; for (let i = 0; i < NR; i++) { const o = ownerOf(i); out.push(pool[o][ord[o][n[o]++]]); } return out; })();
 const pathC = d => ({x: Math.sin(d * .018) * 14 + Math.sin(d * .0071) * 9, y: Math.sin(d * .011) * 4});
 const pathYaw = d => { const a = pathC(d), b = pathC(d + 2); return Math.atan2(-(b.x - a.x), 2); };
 const sstep = (a, b, x) => { const t = clamp((x - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); };
@@ -211,32 +215,37 @@ function buildReef(T) {
   }
   return {scene, cam, skyM, hemi, sun, rings, jel, turtle, sponge, rays, surf, stex, ctex, caus, kU, schools, mantas, whale, bub, dust, flow, trails, lights, pearl, upper, upd, mos, mosT, mosKey: '', camPos: null, fill: 0, endT: 0};
 }
+/* Drei Streifen: links (Aurelia), Mitte (Gold), rechts (Daniel) – mit Lücke, bis sie sich am Ende verbinden */
+function drawStrips(K, x, y, w, h, gap, edge) {
+  const cw = (w - 2 * gap) / MX, parts = [[0, 2, COL.a], [2, 1, CG], [3, 2, COL.d]]; let px = x;
+  for (const [c0, n, c] of parts) { const pw = cw * n; ctx.drawImage(K.mos, c0 * 72, 0, n * 72, 480, px, y, pw, h); if (edge > 0) { ctx.strokeStyle = rgba(c, edge); ctx.lineWidth = Math.max(1.5, w / 90); ctx.strokeRect(px, y, pw, h); } px += pw + gap; }
+}
 /* Das Mosaik: jeder gesammelte Ring legt eine Kachel des Bildes frei */
 function drawMosaic(K, n) {
-  const g = K.mos.getContext('2d'), F = FOTO.get('m2'), tw = 360 / MX, th = 480 / MY;
+  const g = K.mos.getContext('2d'), F = FOTO.get('m2'), SV = FOTO.soft('m2'), tw = 360 / MX, th = 480 / MY;
   g.fillStyle = '#0a2230'; g.fillRect(0, 0, 360, 480);
   S.items.forEach((it, i) => {
     const tI = TILE[i], tx = tI % MX, ty = (tI / MX) | 0, on = it.got || i < n;
-    if (on && F.ready) g.drawImage(F.cv, tx * F.w / MX, ty * F.h / MY, F.w / MX, F.h / MY, tx * tw, ty * th, tw, th);
+    if (on && SV) g.drawImage(SV, tx * F.w / MX, ty * F.h / MY, F.w / MX, F.h / MY, tx * tw, ty * th, tw, th);
     else { g.fillStyle = (tx + ty) % 2 ? '#0d2a3a' : '#0b2534'; g.fillRect(tx * tw, ty * th, tw, th); g.strokeStyle = 'rgba(160,220,240,.12)'; g.lineWidth = 1.5; g.strokeRect(tx * tw + 1, ty * th + 1, tw - 2, th - 2); }
   });
   K.mosT.needsUpdate = true;
 }
 
 const korallen = {
-  id: 'korallen', n: 'Korallenflug', ic: '◯', t3: 0, t2: 0, ctrl: 'pad', padIcon: 'swipe', three: true, noTimer: true, noClamp: true, hidePlayers: true, foto: 'm2',
+  id: 'korallen', n: 'Korallenflug', ic: '◯', t3: 0, t2: 0, ctrl: 'pad', padIcon: 'swipe', three: true, noTimer: true, noClamp: true, hidePlayers: true,
   staticAux: ['jel'],
   skinName: () => `${nm('a')}: Schildkröte · ${nm('d')}: Schwamm`,
   ctrlText: () => 'Du schwimmst von selbst. Daumen irgendwo auflegen und ziehen – deine Figur folgt weich. Rechts unten: Schub halten für einen Sprint.',
-  h: () => `Schildkröte ${nm('a')} und Schwamm ${nm('d')} schwimmen durchs Riff, durch den Tangwald mit seiner Strömung, durch die Leuchthöhle und am Wrack vorbei. Nehmt die Ringe eurer Farbe, goldene darf jeder nehmen. Jeder Ring legt ein Stück eines Bildes frei – am Ende, bei der großen Perle, seht ihr, was es zeigt. Quallen betäuben kurz.`,
+  h: () => `Schildkröte ${nm('a')} und Schwamm ${nm('d')} schwimmen durchs Riff, durch den Tangwald mit seiner Strömung, durch die Leuchthöhle und am Wrack vorbei. Jeder Ring ist ein Stück von einem Bild: ${nm('a')}s Ringe gehören zur linken Hälfte, ${nm('d')}s zur rechten, die goldenen zum Streifen dazwischen. Noch ist alles verschwommen – was es zeigt, seht ihr erst später, im Spiel „Unser Bild“. Je mehr ihr sammelt, desto mehr liegt dort schon bereit. Quallen betäuben kurz.`,
   start: k => ({x: k === 'a' ? -2.5 : 2.5, y: 0}),
-  note: () => `${S.count} von ${S.total} Ringen – euer Bild ist da`,
+  note: () => `${S.count} von ${S.total} Bildstücken gesammelt`,
   posExtra: () => [Math.round((LOC.sw ? LOC.sw.d : 0) * 100) / 100],
   onTeleport() { if (LOC.sw) { LOC.sw.tx = mine.x; LOC.sw.ty = mine.y; LOC.sw.vx = LOC.sw.vy = 0; } },
   setup() {
     S.items = []; const last = {};
     for (let i = 0; i < NR; i++) {
-      const d = 45 + i * 19, o = i % 5 === 4 ? 'g' : i % 2 ? 'd' : 'a', kx = BX(d) - 2.8, ky = BY(d) - 1.7, pv = last[o === 'g' ? (i % 2 ? 'd' : 'a') : o];
+      const d = 45 + i * 19, o = ownerOf(i), kx = BX(d) - 2.8, ky = BY(d) - 1.7, pv = last[o === 'g' ? (i % 2 ? 'd' : 'a') : o];
       let x = rnd(-kx, kx), y = rnd(-ky, ky);
       if (pv) { x = clamp(x, pv.x - 8, pv.x + 8); y = clamp(y, pv.y - 4.5, pv.y + 4.5); }
       const it = {id: i, d, x: +x.toFixed(1), y: +y.toFixed(1), o, got: 0}; S.items.push(it);
@@ -283,7 +292,7 @@ const korallen = {
       A.pd[k] = d;
     }
     const da = (S.p.a.e && S.p.a.e[0]) || 0, dd = (S.p.d.e && S.p.d.e[0]) || 0;
-    if (da >= KLEN - .5 && dd >= KLEN - .5) { const pct = S.count / S.total; emit({k: 'meet', x: 0, y: 0}); finish(6.5, pct >= .8 ? 3 : pct >= .55 ? 2 : 1); }
+    if (da >= KLEN - .5 && dd >= KLEN - .5) { const pct = S.count / S.total; (S.memo = S.memo || {}).m2 = +pct.toFixed(2); emit({k: 'meet', x: 0, y: 0}); finish(8, pct >= .8 ? 3 : pct >= .55 ? 2 : 1); }
   },
   render3d(t, part) {
     const T = window.THREE, R3 = API.renderer3D(); if (!R3) return;
@@ -394,9 +403,16 @@ const korallen = {
         ctx.strokeStyle = rgba(CG, .95); ctx.lineWidth = 5; ctx.lineCap = 'round'; ctx.beginPath(); ctx.arc(Z.x, Z.y, Z.r + 5, -Math.PI / 2, -Math.PI / 2 + TAU * clamp(sw.en, .001, 1)); ctx.stroke();
         ctx.font = '700 14px Karla, system-ui'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = sw.en > .08 ? '#fff' : 'rgba(255,255,255,.4)'; ctx.fillText('Schub', Z.x, Z.y); ctx.textBaseline = 'alphabetic';
       }
-      if (!done) { FOTO.frame(ctx, tx, ty, tw, thh, 3); ctx.drawImage(K.mos, tx, ty, tw, thh); ctx.font = '600 11px Karla, system-ui'; ctx.textAlign = 'center'; ctx.fillStyle = 'rgba(255,255,255,.8)'; ctx.fillText(`Bild ${S.count}/${NR}`, tx + tw / 2, ty + thh + 18); }
+      if (!done) { FOTO.frame(ctx, tx, ty, tw, thh, 3); drawStrips(K, tx, ty, tw, thh, 3, .9); ctx.font = '600 11px Karla, system-ui'; ctx.textAlign = 'center'; ctx.fillStyle = 'rgba(255,255,255,.8)'; ctx.fillText(`Bild ${S.count}/${NR}`, tx + tw / 2, ty + thh + 18); }
     }
-    if (done && S.phase === 'play') { const q = FOTO.big(ctx, {w: 360, h: 480}, sc, clamp((K.endT - .6) / 1.4, 0, 1), {x: tx, y: ty, w: tw, h: thh}, `Euer Bild – aus ${S.count} von ${NR} Ringen`); ctx.drawImage(K.mos, q.x, q.y, q.w, q.h); }
+    if (done && S.phase === 'play') {
+      // die Hälften wachsen in die Mitte, rücken zusammen – und die Naht leuchtet auf wie die Linien im Herz
+      const join = clamp((K.endT - 3) / 1.3, 0, 1), jk = join * join * (3 - 2 * join), lit = clamp((K.endT - 4.3) / .5, 0, 1) * (1 - clamp((K.endT - 5.6) / 1.2, 0, 1));
+      const q = FOTO.big(ctx, {w: 360, h: 480}, sc, clamp((K.endT - .6) / 1.4, 0, 1), {x: tx, y: ty, w: tw, h: thh}, join < 1 ? `Links: von ${nm('a')} freigelegt · rechts: von ${nm('d')}\nDie goldene Mitte gehört euch beiden` : 'Zwei Hälften, ein Bild – noch verschwommen.\nScharf wird es später, in „Unser Bild“');
+      drawStrips(K, q.x, q.y, q.w, q.h, (3 + q.w * .045) * (1 - jk), .9 * (1 - jk));
+      if (lit > 0) { ctx.save(); ctx.globalCompositeOperation = 'lighter'; for (const f of [2 / MX, 3 / MX]) { const gx = q.x + q.w * f, gr = ctx.createLinearGradient(gx - 9, 0, gx + 9, 0); gr.addColorStop(0, 'rgba(243,201,143,0)'); gr.addColorStop(.5, `rgba(243,201,143,${.55 * lit})`); gr.addColorStop(1, 'rgba(243,201,143,0)'); ctx.fillStyle = gr; ctx.fillRect(gx - 9, q.y, 18, q.h); } ctx.restore(); }
+      if (join >= 1 && !K.joined) { K.joined = 1; tone(659.25, .9, .05); tone(987.77, 1.1, .04, 'sine', .12); buzz([20, 40, 30]); }
+    }
   }
 };
 return [korallen];

@@ -7,60 +7,48 @@ window.ZL_CONFIG = {
   a: 'Aurelia',
   d: 'Daniel',
 
-  welcome: 'Vier Kapitel, elf Abenteuer: Wir paddeln zusammen über einen See, knacken ein Schloss voller Rätsel und finden uns im Nebelwald. Keins davon schafft man allein. Bereit für unsere Reise?',
+  welcome: 'Zwölf Spiele, vier Kapitel. Unterwegs sammeln wir Stücke von zwei Bildern, auf denen man noch nichts erkennt. Was sie zeigen, siehst du erst, wenn deine Hälfte und meine zusammenkommen. Bereit?',
 
-  // Kurzer Satz nach jedem Level (Schlüssel = Level-Kennung)
+  // Kurzer Satz nach jedem Spiel (Schlüssel = Kennung des Spiels)
   lines: {
-    see: 'Allein dreht man sich im Kreis. Mit dir komme ich an.',
-    zimmer: 'Egal welche Wand zwischen uns steht – wir finden immer einen Weg zueinander.',
-    spiegel: 'Du lenkst mein Licht dorthin, wo ich allein nie hingekommen wäre.',
-    wald: 'Wenn ich im Nebel stehe, ist deine Stimme mein Licht.',
-    funken: 'Gold gibt es nur zu zweit. Wie so vieles Schöne.',
-    schnuppen: 'Mein Wunsch bei jeder Sternschnuppe? Du.',
-    immer: '∞ – so lange möchte ich mit dir zusammen leuchten.',
-    perlen: 'Eine echte Perle findet man selten. Ich habe meine gefunden.',
-    korallen: 'Egal wie tief es geht – ich schwimme an deiner Seite.',
-    echo: 'Du hast ein gutes Gedächtnis. Vergiss nur nie, wie lieb ich dich hab.',
-    saeen: 'Was wir zusammen pflanzen, wächst.',
-    schmetterlinge: 'Manches Glück fängt man nur zu zweit.',
-    netz: 'Was uns verbindet, hält mehr als nur Glühwürmchen.',
-    tor: 'Du hältst mir Türen auf – und ich dir.',
-    mauer: 'Zusammen halten wir alles in der Luft – sogar einen Ball aus Licht.',
-    kette: 'Wie eine Lichterkette: Erst zusammen leuchtet es richtig.',
-    strasse: 'Egal wie viel Verkehr ist – ich warte auf der anderen Seite auf dich.',
-    irrgarten: 'In jedem Irrgarten finde ich den Weg zu dir.',
-    lied: 'Unser erstes gemeinsames Lied. Ich hoffe, es folgen noch viele.',
-    memory: 'Die schönsten Erinnerungen sind die, die wir zusammen machen.',
-    zueinander: 'Egal wie viele Tore zwischen uns stehen – wir finden immer zueinander.',
-    kugel: 'Zu zweit wird sogar das Schwerste ganz leicht.',
-    rennen: 'Wer auch gewonnen hat: Am schönsten ist es, wenn wir zusammen ankommen.',
-    flammen: 'Wenn mein Licht mal ausgeht, gibst du mir neues Feuer.',
-    wege: 'Selbst im Dunkeln finde ich zu dir, wenn ich deine Stimme höre.',
-    teppich: 'Überall, wo wir beide waren, leuchtet es golden.'
+    see: 'Wenn nur einer paddelt, drehen wir uns im Kreis. Im gleichen Takt kommen wir überall an.',
+    korallen: 'Die ersten Stücke haben wir. Noch erkennt man nichts – aber ich weiß schon, wie gern ich dieses Bild habe.',
+    zimmer: 'Zwischen uns war eine Wand, und trotzdem hast du mir alles gesagt, was ich brauchte. Das schaffen wir auch über viele Kilometer.',
+    spiegel: 'Ein Spiegel allein wirft das Licht nur zurück. Zu zweit bringen wir es ans Ziel.',
+    irrgarten: 'Du bist deinen Weg gegangen und ich meinen. Darunter lag die ganze Zeit dasselbe Bild.',
+    wald: 'Ich sehe den Weg nicht immer. Aber ich höre dich, und das reicht.',
+    lied: 'Jeder hatte nur seine Töne. Ein Lied wurde es erst zusammen.',
+    rennen: 'Egal, wer vorne lag: Ich fahre am liebsten dorthin, wo du bist.',
+    kugel: 'Allein rollt sie davon. Zu zweit bringen wir sie ins Ziel.',
+    zueinander: 'Zwei Schlösser, viele Tore – und wir treffen uns trotzdem in der Mitte.',
+    bild: 'Deine Hälfte und meine Hälfte. Scharf wird es erst, wenn beide da sind – auf den Bildern und bei uns.',
+    herz: 'Deine Seite und meine Seite. Erst zusammen wird ein Herz daraus.'
   },
 
-  // Nach jeder Welt: ein Gedanke und eine Frage zum Reden
+  // Nach jedem Kapitel: ein Gedanke und zwei Fragen zum Reden
   worlds: [
-    { msg: 'Wir haben abgelegt – und sind zusammen angekommen. Danke, dass du dir heute Abend Zeit für uns nimmst.',
-      question: 'Wohin würdest du mit mir am liebsten einfach losfahren?' },
-    { msg: 'Kein Schloss, kein Rätsel und kein Irrgarten hält uns voneinander fern.',
-      question: 'Was ist bisher dein schönster Moment mit uns beiden?' },
-    { msg: 'Selbst in der dunkelsten Nacht finde ich zu dir.',
-      question: 'Was wollen wir unbedingt machen, wenn wir uns das nächste Mal sehen?' }
+    { msg: 'Kapitel eins: einmal über den See und einmal durchs Riff. Die ersten Bildstücke liegen bereit. Verrat mir nicht, falls du schon etwas ahnst.',
+      questions: ['Was glaubst du: Welcher Moment von uns steckt in dem ersten Bild?',
+                  'Wohin würdest du mit mir sofort losfahren, wenn wir morgen beide frei hätten?'] },
+    { msg: 'Zwei Zimmer, ein Saal voller Spiegel und ein Irrgarten – und wir haben uns jedes Mal gefunden. Jetzt liegen auch die Stücke vom zweiten Bild bereit.',
+      questions: ['Welche Kleinigkeit von mir fehlt dir am meisten, wenn wir uns nicht sehen?',
+                  'Welchen Moment mit mir hättest du gern als Foto, obwohl es keins davon gibt?'] },
+    { msg: 'Durch den Nebel, durch ein Lied und einmal quer durch die Nacht. Im letzten Kapitel setzen wir zusammen, was wir gesammelt haben.',
+      questions: ['Was machen wir beim nächsten Wiedersehen als Allererstes?',
+                  'Wovon träumst du gerade, bei dem ich unbedingt dabei sein soll?'] }
   ],
 
-  // „Dies oder Das“ zwischen den Welten (je 4 Paare pro Pause)
+  // „Dies oder Das“ zwischen den Kapiteln (je 4 Paare pro Pause, die letzten vier sind Reserve)
   quiz: [
-    ['Berge', 'Meer'], ['Kaffee', 'Tee'], ['Sonnenaufgang', 'Sonnenuntergang'], ['Kinoabend', 'Spieleabend'],
-    ['Pizza', 'Sushi'], ['Frühling', 'Herbst'], ['Sprachnachricht', 'Anruf'], ['Alles planen', 'Spontan sein'],
-    ['Frühstück im Bett', 'Brunch draußen'], ['Stadtbummel', 'Natur'], ['Süß', 'Salzig'], ['Fotos machen', 'Einfach genießen'],
-    ['Morgenmensch', 'Nachteule'], ['Tanzen', 'Singen'], ['Gemütlicher Abend', 'Ausgehen'], ['Alte Spiele', 'Neue Spiele'],
-    ['Roadtrip', 'Städtereise'], ['Schloss', 'Strandhaus'], ['Sportwagen', 'SUV'], ['Meer', 'Pool']
+    ['Sonnenuntergang am Wasser', 'Lichter der Stadt bei Nacht'], ['Lange telefonieren', 'Viele kleine Nachrichten'], ['Erst umarmen', 'Erst etwas sagen'], ['Zusammen kochen', 'Essen gehen'],
+    ['Überraschung', 'Vorfreude'], ['Regentag auf dem Sofa', 'Sonnentag draußen'], ['Brief schreiben', 'Sprachnachricht schicken'], ['Karte lesen', 'Einfach loslaufen'],
+    ['Früh aufstehen', 'Lange wach bleiben'], ['Zusammen lachen', 'Zusammen still sein'], ['Selbst fahren', 'Sich fahren lassen'], ['Viele Fotos machen', 'Den Moment einfach genießen'],
+    ['Paddeln', 'Treiben lassen'], ['Tanzen', 'Mitsingen'], ['Plan machen', 'Spontan sein'], ['Jetzt sofort', 'In Ruhe morgen']
   ],
 
   finale: {
     title: 'Unser Herz',
-    text: 'Vier Kapitel, elf Abenteuer – über den See, durchs Schloss und durch die Nacht. Und am Ende ein Herz, das wir nur zusammen anzünden konnten. Egal wie weit du gerade weg bist: Wir leuchten zusammen. Ich liebe dich.',
+    text: 'Zwölf Spiele, vier Kapitel – und zwei Bilder von uns, die erst scharf wurden, als deine Hälfte und meine zusammenkamen. So ist es mit allem bei uns: Allein bleibt es verschwommen, zu zweit ergibt es ein Ganzes. Egal, wie weit du gerade weg bist: Ich bin bei dir. Ich liebe dich.',
     sign: '– Dein Daniel'
   }
 };

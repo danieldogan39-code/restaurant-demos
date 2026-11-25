@@ -44,7 +44,7 @@ h2{font-size:33px;margin-bottom:10px}
 .sub{color:var(--mute);margin:10px 0 20px;font-size:16px;line-height:1.5}
 .msg{font-family:var(--serif);font-size:23px;line-height:1.35;margin:4px 0 16px}
 .memo{display:block;margin:6px auto 14px;max-width:58%;max-height:34vh;border:6px solid #f4ecdc;border-radius:3px;box-shadow:0 8px 26px rgba(0,0,0,.5);transform:rotate(-1.5deg)}
-.memos{display:flex;justify-content:center;gap:10px;margin:4px 0 12px}.memos .memo{max-width:44%;margin:0}.memos .memo+.memo{transform:rotate(2deg)}
+.memos{display:flex;justify-content:center;align-items:center;margin:4px 0 12px;position:relative}.memos .memo{max-width:46%;margin:0 -5px}.memos .memo:last-child{transform:rotate(2.5deg)}.memos .mh{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;font-size:30px;color:#f29cb4;text-shadow:0 2px 10px rgba(0,0,0,.6)}
 .sign{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--a);margin:-4px 0 12px}
 .stars{font-size:40px;letter-spacing:.12em;color:var(--gold);margin:2px 0;text-shadow:0 0 22px rgba(243,201,143,.5)}
 .stars .off{color:rgba(255,255,255,.16);text-shadow:none}
@@ -177,7 +177,7 @@ input.code-in:focus{border-color:var(--gold)}
     <p class="kicker">Ein Spiel für zwei</p>
     <h1>Zwei Lichter</h1>
     <p class="kicker" style="margin:8px 0 0;letter-spacing:.32em">Die Reise</p>
-    <p class="sub"><span data-n="a"></span> <span class="amp">&amp;</span> <span data-n="d"></span> – vier Kapitel, elf Abenteuer, zwei Handys.</p>
+    <p class="sub"><span data-n="a"></span> <span class="amp">&amp;</span> <span data-n="d"></span> – vier Kapitel, zwölf Spiele, zwei Handys.</p>
     <button class="btn blue" id="bHost">Ich bin <span data-n="d"></span> – Raum öffnen</button>
     <button class="btn" id="bGuest">Ich bin <span data-n="a"></span> – Raum beitreten</button>
   </div>
@@ -276,21 +276,22 @@ input.code-in:focus{border-color:var(--gold)}
 </div>
 
 <script src="peerjs.min.js?v=155"></script>
-<script src="config.js?v=82"></script>
-<script src="kit3d.js?v=82"></script>
-<script src="real3d.js?v=82"></script>
-<script src="levels-classic.js?v=82"></script>
-<script src="levels-arcade.js?v=82"></script>
-<script src="levels-adventure.js?v=82"></script>
-<script src="levels-neu.js?v=82"></script>
-<script src="levels-see.js?v=82"></script>
-<script src="levels-zimmer.js?v=82"></script>
-<script src="levels-spiegel.js?v=82"></script>
-<script src="levels-wald.js?v=82"></script>
-<script src="fotos.js?v=82"></script>
-<script src="levels-korallen.js?v=82"></script>
-<script src="levels-garten.js?v=82"></script>
-<script src="levels-race.js?v=82"></script>
-<script src="engine.js?v=82"></script>
+<script src="config.js?v=83"></script>
+<script src="kit3d.js?v=83"></script>
+<script src="real3d.js?v=83"></script>
+<script src="levels-classic.js?v=83"></script>
+<script src="levels-arcade.js?v=83"></script>
+<script src="levels-adventure.js?v=83"></script>
+<script src="levels-neu.js?v=83"></script>
+<script src="levels-see.js?v=83"></script>
+<script src="levels-zimmer.js?v=83"></script>
+<script src="levels-spiegel.js?v=83"></script>
+<script src="levels-wald.js?v=83"></script>
+<script src="fotos.js?v=83"></script>
+<script src="levels-korallen.js?v=83"></script>
+<script src="levels-garten.js?v=83"></script>
+<script src="levels-bild.js?v=83"></script>
+<script src="levels-race.js?v=83"></script>
+<script src="engine.js?v=83"></script>
 </body>
 </html>

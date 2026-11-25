@@ -5,7 +5,7 @@
    für Zustand/Positionen, zuverlässiger Kanal für Ereignisse und Aktionen. */
 (() => {
 'use strict';
-const VERSION = '8.2';
+const VERSION = '8.3';
 const CFG = window.ZL_CONFIG;
 const W = 600, H = 1000, R = 18, VMAX = 470, TAU = Math.PI * 2, HUDH = 64;
 const $ = id => document.getElementById(id);
@@ -23,7 +23,7 @@ const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&': '&amp
 const WORLDS = [{n: 'Aufbruch', th: 'meer'}, {n: 'Das alte Schloss', th: 'schloss'}, {n: 'Die Nacht', th: 'nacht'}, {n: 'Zueinander', th: 'laternen'}];
 /* Die 11 Spiele in Reihenfolge – [Kennung, Kapitel] */
 const ORDER = [['see', 0], ['korallen', 0], ['zimmer', 1], ['spiegel', 1], ['irrgarten', 1], ['wald', 2], ['lied', 2], ['rennen', 2],
-  ['kugel', 3], ['zueinander', 3], ['herz', 3]];
+  ['kugel', 3], ['zueinander', 3], ['bild', 3], ['herz', 3]];
 const CTRL = {
   swipe: {n: 'Wischen', d: 'Finger irgendwo auflegen und ziehen'},
   stick: {n: 'Joystick', d: 'Daumen auflegen – dort erscheint ein Stick'},
@@ -1359,7 +1359,7 @@ function buildCard() {
   if (S.phase === 'end') {
     const tot = Object.values(S.stars).reduce((s, v) => s + (v || 0), 0);
     html = `<p class="kicker">Alle Kapitel geschafft</p><h2>${esc(CFG.finale.title)}</h2>
-      ${window.ZL_FOTO && ZL_FOTO.url('m1') && ZL_FOTO.url('m2') ? `<div class="memos"><img class="memo" alt="" src="${ZL_FOTO.url('m1')}"><img class="memo" alt="" src="${ZL_FOTO.url('m2')}"></div>` : ''}
+      ${window.ZL_FOTO && ZL_FOTO.url('m1') && ZL_FOTO.url('m2') ? `<div class="memos"><img class="memo" alt="" src="${ZL_FOTO.url('m1')}"><span class="mh">♥</span><img class="memo" alt="" src="${ZL_FOTO.url('m2')}"></div>` : ''}
       <p class="msg">${esc(CFG.finale.text)}</p><p class="sign">${esc(CFG.finale.sign)}</p>
       <p class="time">Eure Sterne: <b>${tot} von ${LV.length * 3}</b></p>
       ${role === 'host' ? '<button class="btn" id="cBtn">Nochmal spielen</button><button class="btn ghost" id="cMC">Master Control</button>' : `<p class="hint">${esc(nm('d'))} kann jederzeit eine neue Runde starten.</p>`}`;
@@ -1381,12 +1381,13 @@ function buildCard() {
   } else if (L) {
     html = `<p class="kicker">${WORLDS[L.w].n} · ${esc(L.n)}</p>${starsHTML(S.lastStars || 0)}
       <p class="time">${S.lastNote ? esc(S.lastNote) : 'geschafft in ' + fmt(S.lastTime || 0)}</p>
-      ${L.foto && window.ZL_FOTO && ZL_FOTO.url(L.foto) ? `<img class="memo" alt="Euer Bild" src="${ZL_FOTO.url(L.foto)}">` : ''}
+      ${(fs => fs.length && window.ZL_FOTO && fs.every(k => ZL_FOTO.url(k)) ? (fs.length > 1 ? `<div class="memos">${fs.map(k => `<img class="memo" alt="" src="${ZL_FOTO.url(k)}">`).join('<span class="mh">♥</span>')}</div>` : `<img class="memo" alt="Euer Bild" src="${ZL_FOTO.url(fs[0])}">`) : '')(L.fotos || (L.foto ? [L.foto] : []))}
       <p class="msg">${esc((CFG.lines || {})[L.id] || '')}</p>`;
     if (S.card === 'world') {
       const Wc = (CFG.worlds || [])[L.w] || {};
       if (Wc.msg) html += `<div class="q"><small>Kapitel ${L.w + 1} geschafft</small><p>${esc(Wc.msg)}</p></div>`;
-      if (Wc.question) html += `<div class="q"><small>Kleine Frage an euch beide</small><p>${esc(Wc.question)}</p></div>`;
+      const qs = Wc.questions || (Wc.question ? [Wc.question] : []);
+      qs.forEach((q, i) => { html += `<div class="q"><small>${qs.length > 1 ? `Frage ${i + 1} an euch beide` : 'Kleine Frage an euch beide'}</small><p>${esc(q)}</p></div>`; });
     }
     html += `<div class="who" id="cWho"></div><button class="btn" id="cBtn">Weiter</button>`;
     if (role === 'host' && (S.lastStars || 0) < 3) html += `<button class="btn ghost" id="cAgain">Nochmal für mehr Sterne</button>`;

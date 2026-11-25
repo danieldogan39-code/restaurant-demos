@@ -61,12 +61,12 @@ function readPad(inp) {
 }
 
 const irrgarten = {
-  id: 'irrgarten', n: 'Irrgarten', ic: '•', t3: 170, t2: 260, ctrl: 'pad', padIcon: 'swipe', noClamp: true, three: true, hidePlayers: true, hideNames: true, foto: 'm1',
+  id: 'irrgarten', n: 'Irrgarten', ic: '•', t3: 170, t2: 260, ctrl: 'pad', padIcon: 'swipe', noClamp: true, three: true, hidePlayers: true, hideNames: true,
   skinName: () => `Prinzessin ${nm('a')} · Prinz ${nm('d')}`,
   ctrlText: () => 'Wische in die Richtung, in die du laufen willst – du läufst von selbst weiter. Für die nächste Abzweigung einfach weiterwischen, ohne den Finger abzusetzen.',
-  h: () => `Prinzessin ${nm('a')} und Prinz ${nm('d')} im Heckengarten des alten Schlosses: Sammelt gemeinsam alle Lichtpunkte. Unter ihnen liegt ein Bild – auf der Karte oben rechts seht ihr, was ihr schon freigelaufen habt. Vier Regenwolken streifen durch die Gänge; die leuchtenden Herzen in den Ecken lassen sie ein paar Sekunden vor euch fliehen. Teilt euch auf!`,
+  h: () => `Prinzessin ${nm('a')} und Prinz ${nm('d')} im Heckengarten des alten Schlosses: Sammelt gemeinsam alle Lichtpunkte. Unter ihnen liegt ein zweites Bild, noch verschwommen – die Karte oben rechts zeigt, was ihr schon freigelaufen habt. Am Ende seht ihr, wer welchen Weg gegangen ist. Scharf wird das Bild erst im Spiel „Unser Bild“. Vier Regenwolken streifen durch die Gänge; die leuchtenden Herzen in den Ecken lassen sie ein paar Sekunden vor euch fliehen. Teilt euch auf!`,
   start: k => mazeStart(k),
-  note: () => `Bild freigelaufen in ${API.fmt(S.lastTime || (S.t - S.lt))}`,
+  note: () => `Zwei Wege, ein Bild – in ${API.fmt(S.lastTime || (S.t - S.lt))}`,
   setup() {
     let dots = '', total = 0;
     for (let r = 0; r < NR; r++) for (let c = 0; c < NC; c++) { const ch = MAZE[r][c]; if (ch === '.' && !inRoom(c, r)) { dots += '1'; total++; } else if (ch === 'o') { dots += '2'; total++; } else dots += '0'; }
@@ -103,7 +103,7 @@ const irrgarten = {
       if (v !== '1' && v !== '2') continue;
       const cc = cen(c, r);
       if (Math.abs(p.x - cc.x) > 21 || Math.abs(p.y - cc.y) > 21) continue;
-      A.dots = A.dots.slice(0, i) + '0' + A.dots.slice(i + 1); S.count++;
+      A.dots = A.dots.slice(0, i) + k + A.dots.slice(i + 1); S.count++;
       if (v === '2') { A.power = S.t + 8; emit({k: 'power', x: cc.x, y: cc.y}); emit({k: 'toast', txt: 'Ein Herz! Die Wolken fliehen – jetzt könnt ihr sie verscheuchen.'}); }
       else emit({k: 'dot', o: k});
     }
@@ -129,7 +129,7 @@ const irrgarten = {
         if (p.inv <= 0) { const s = mazeStart(k); emit({k: 'caught', x: p.x, y: p.y, o: k}); teleport(k, s.x, s.y); p.inv = 2.5; emit({k: 'toast', txt: `Eine Wolke hat ${nm(k)} erwischt – zurück zum Start.`}); }
       }
     }
-    if (S.count >= S.total) finish(6.5);
+    if (S.count >= S.total) { (S.memo = S.memo || {}).m1 = 1; finish(8.5); }
   }
 };
 
@@ -269,15 +269,15 @@ function buildMaze(T) {
     spray, fh, pic, picKey: '', last: '', camPos: null, prev: {}, head: {a: 0, d: 0}, endT: 0};
 }
 /* Karte: Hecken dunkelgrün, freigelaufene Felder zeigen das Bild; am Ende lösen sich die Hecken auf */
-function drawPic(M, dots, fade) {
-  const g = M.pic.getContext('2d'), F = FOTO.get('m1'), cs = 16, k = F.w / NC;
+function drawPic(M, dots, fade, tint) {
+  const g = M.pic.getContext('2d'), F = FOTO.get('m1'), SV = FOTO.soft('m1'), cs = 16, k = F.w / NC;
   g.globalAlpha = 1; g.fillStyle = '#0c1410'; g.fillRect(0, 0, M.pic.width, M.pic.height);
-  if (fade > 0 && F.ready) { g.globalAlpha = fade; g.drawImage(F.cv, 0, 0, M.pic.width, M.pic.height); g.globalAlpha = 1; }
+  if (fade > 0 && SV) { g.globalAlpha = fade; g.drawImage(SV, 0, 0, M.pic.width, M.pic.height); g.globalAlpha = 1; }
   for (let r = 0; r < NR; r++) for (let c = 0; c < NC; c++) {
     const v = MAZE[r][c], d = dots[r * NC + c], x = c * cs, y = r * cs;
     if (v === '#') { if (fade < 1) { g.globalAlpha = 1 - fade; g.fillStyle = (c + r) % 2 ? '#1f4a2c' : '#1b4227'; g.fillRect(x, y, cs, cs); g.globalAlpha = 1; } continue; }
     const had = v === 'o' || (v === '.' && !inRoom(c, r));
-    if (had && d === '0' && F.ready) g.drawImage(F.cv, c * k, r * k, k, k, x, y, cs, cs);
+    if (had && d !== '1' && d !== '2' && SV) { g.drawImage(SV, c * k, r * k, k, k, x, y, cs, cs); if (tint > 0 && (d === 'a' || d === 'd')) { g.fillStyle = rgba(COL[d], tint * .62); g.fillRect(x, y, cs, cs); } }
     else if (fade < 1) { g.globalAlpha = 1 - fade; g.fillStyle = '#10161c'; g.fillRect(x, y, cs, cs); if (d === '1') { g.fillStyle = 'rgba(240,200,130,.9)'; g.fillRect(x + cs / 2 - 1.5, y + cs / 2 - 1.5, 3, 3); } g.globalAlpha = 1; }
   }
 }
@@ -289,7 +289,7 @@ irrgarten.render3d = function (t, part) {
   const pw = A.power > hostNow(), o = M.o3 || (M.o3 = new T.Object3D());
   // Punkte und Funken beim Einsammeln
   if (M.last !== A.dots) {
-    for (let i = 0; i < A.dots.length && M.last; i++) if (M.last[i] !== '0' && A.dots[i] === '0') {
+    for (let i = 0; i < A.dots.length && M.last; i++) if ((M.last[i] === '1' || M.last[i] === '2') && A.dots[i] !== M.last[i]) {
       const c = i % NC, r = (i / NC) | 0, cl = M.last[i] === '2' ? [1, .5, .7] : [1, .85, .5];
       for (let k = 0; k < 12; k++) { const p = M.sp[M.spi]; M.spi = (M.spi + 1) % M.sp.length; Object.assign(p, {x: X3(c), y: .6, z: Z3(r), vx: rnd(-2, 2), vy: rnd(1.5, 4.2), vz: rnd(-2, 2), life: rnd(.45, .8), c: cl}); }
     }
@@ -368,11 +368,12 @@ irrgarten.render3d = function (t, part) {
   }
   // Karte mit dem Bild
   const done = !!S.done; if (done) M.endT += dt;
-  const fade = done ? clamp((M.endT - .5) / 1.6, 0, 1) : 0, F = FOTO.get('m1'), key = A.dots + (F.ready ? 'r' : '') + fade.toFixed(2);
-  if (key !== M.picKey) { M.picKey = key; drawPic(M, A.dots, fade); }
+  // am Ende: erst leuchten Aurelias und Daniels Wege in ihren Farben, dann lösen sich die Hecken auf – aus beiden wird ein Bild
+  const tint = done ? clamp((M.endT - 1.6) / .6, 0, 1) * (1 - clamp((M.endT - 4.2) / 1.2, 0, 1)) : 0, fade = done ? clamp((M.endT - 4.4) / 1.8, 0, 1) : 0, F = FOTO.get('m1'), key = A.dots + (F.ready ? 'r' : '') + fade.toFixed(2) + tint.toFixed(2);
+  if (key !== M.picKey) { M.picKey = key; drawPic(M, A.dots, fade, tint); }
   const cs = Math.min(6.6, (sc.cw * .31) / NC), mw = NC * cs, mh = NR * cs, mx = sc.cw - mw - 14, my = 70;
   let q = {x: mx, y: my, w: mw, h: mh};
-  if (done && S.phase === 'play') q = FOTO.big(ctx, {w: NC, h: NR}, sc, clamp((M.endT - .4) / 1.5, 0, 1), q, 'Euer Bild – Feld für Feld freigelaufen'); else FOTO.frame(ctx, mx, my, mw, mh, 3);
+  if (done && S.phase === 'play') q = FOTO.big(ctx, {w: NC, h: NR}, sc, clamp((M.endT - .4) / 1.5, 0, 1), q, fade > .5 ? 'Zwei Wege, ein Bild – noch verschwommen.\nScharf wird es später, in „Unser Bild“' : `Rosa: ${nm('a')}s Wege · Blau: ${nm('d')}s Wege`); else FOTO.frame(ctx, mx, my, mw, mh, 3);
   ctx.drawImage(M.pic, q.x, q.y, q.w, q.h);
   if (!done) {
     const toM = (x, z) => [mx + (x + NC) / 2 * cs, my + (z + NR) / 2 * cs];
